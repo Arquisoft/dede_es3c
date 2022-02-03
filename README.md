@@ -51,3 +51,4 @@ You can get more information about the respository in the other README files:
 - Restapi: https://github.com/arquisoft/dede_0/tree/master/restapi
 ## Miembros del equipo:
 -Sonia Fernández Coto - UO276237@uniovi.es
+-Alejandro Álvarez Solís - UO232627@uniovi.es
