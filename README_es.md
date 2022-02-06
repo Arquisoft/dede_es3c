@@ -52,3 +52,4 @@ Encontrarás más información sobre el repositorio en los otros archivos README
 - Restapi: https://github.com/pglez82/asw2122_0/tree/master/restapi
 ## Miembros del equipo:
 - Sonia Fernández Coto - UO276237
+- Sergio Arroni del Riego - UO276341
