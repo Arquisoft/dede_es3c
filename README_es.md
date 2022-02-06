@@ -54,3 +54,4 @@ Encontrarás más información sobre el repositorio en los otros archivos README
 - Sonia Fernández Coto - UO276237
 - Sergio Arroni del Riego - UO276341
 - Alejandro Álvarez Solís - UO232627
+- Nuria Inchaurrandieta Fernández - UO277418
