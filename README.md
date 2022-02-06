@@ -52,3 +52,4 @@ You can get more information about the respository in the other README files:
 ## Miembros del equipo:
 -Sonia Fernández Coto - UO276237@uniovi.es
 -Alejandro Álvarez Solís - UO232627@uniovi.es
+-Nuria Inchaurrandieta Fernández - UO277418@uniovi.es
