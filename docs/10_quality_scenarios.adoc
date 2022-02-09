@@ -15,11 +15,14 @@ image:Quality-Requirements.png["Quality Requirements Tree"]
 
 [role="arc42help"]
 ****
+.Privacy
+The app is SOLID based which means the users have their personal information storaged in pods (personal online data stores) this technology makes it better for the users always respecting their privacy. For example, the client's address can be consulted con it's pod in props of calculate the shipping price.
+
 .Efficiency
 The system is able to act quickly and with fluidity when the user interacts with it. For example, if a client wants to buy a product, the shipping price should be rapidly calulated not making it tedious to the user.
 
 .Testability
-DeDe can be tested with certain ease using Postman as an external help to make sure everything works properly.
+DeDe can be tested with certain ease using technologies such as Prometeus, Grafana and Postman as an external help to make sure everything works properly and finding bugs or mistakes in props to improve the application.
 
 .Modifiability
 The system, divided in Frontend, Backend and documentation (which makes it easer to develop) has a quite reusable code, which increments the possibilities of adding new functions or update the existing ones with more looseness. For example, the code used for the implementation of the function that allows clients see theis orders, can also be used for the function that allows administrators see every single order made on DeDe.
