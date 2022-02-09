@@ -51,11 +51,12 @@ Spanish: https://arquisoft.github.io/course2122/labEnunciadoPractica.html
 
 * Add ratings and reviews to products or distribution centers so the users can provide feedback about their experience.
 
-=== Quality Goals
-
 [role="arc42help"]
 ****
+=== Quality Goals
 
+[options="header",cols="1,2,2"]
+|===
 |Quality Goal|Motivation|Priority
 | Privacy | The treatment of private information will be decentralized, ensuring customer privacy | High
 | Usability | All users must be able to use it, whether they have previous knowledge about the application or not | High
@@ -63,15 +64,16 @@ Spanish: https://arquisoft.github.io/course2122/labEnunciadoPractica.html
 | Efficiency | Making a purchase should be easy for the user, reducing response and load times | High
 | Testability | Major components should be easily tested and fixed | Medium
 | Modifiability | The architecture must be easy to modify, adding new features or changing existing ones | Medium
+|===
+
 
 === Stakeholders
 
-[role="arc42help"]
-****
 
 [options="header",cols="1,2,2"]
 |===
 |Role/Name|Contact|Expectations
-| Client | They interact directly with the application. They select the products to purchase and view their order history. | The aim is for the customer to be able to interact with the application intuitively and have a comfortable shopping experience. In addition, that their privacy is respected in accordance with the SOLID principles.
+| Client | They interact directly with the application. They select the products to purchase and view their order history. | The aim is for the customer to be able to interact with the application intuitively and have a comfortable shopping experience. In addition, their privacy is respected in accordance with the SOLID principles.
 | Administrator | They are in charge of modifying prices, calculating inventories, seeing all orders placed or placing orders with suppliers. | Administrators will be able to access their exclusive functions through a simple login. 
 | Development Team | They are the creators of the application. They can modify, update and improve it. | Develop a complete application that contain the requirements. Learn to work in a team efficiently and learn new technologies.
+|===
