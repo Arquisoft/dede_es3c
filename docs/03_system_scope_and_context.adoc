@@ -55,9 +55,9 @@ image:https://github.com/Arquisoft/dede_es3c/blob/Sergio/docs/images/Technical%2
 [options = "header"]
 |===
 | Technology | Explication |
-| MongoDB | we will use it to store the location of the SOLID POD. |
-| React | is a library to help us carry out the project. |
-| TypeScript | is used for program. |
-| Grafana and Prometeus | are used to monitor. |
-| Postman | is used for testing. |
+| MongoDB | We will use it to store the location of the SOLID POD |
+| React | It is a library to help us carry out the project |
+| TypeScript | It is used for program |
+| Grafana and Prometeus | This is used to monitor |
+| Postman | It is used for testing |
 |===
