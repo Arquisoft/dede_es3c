@@ -52,7 +52,7 @@ As the SOLID principles say, the idea is that the information is not centralized
 
 image:https://github.com/Arquisoft/dede_es3c/blob/Sergio/docs/images/Technical%20Context.png["Technical Context diagram"]
 
-[options = "header", cols="1,2,2"]
+[options = "header", cols="1,2"]
 |===
 | Technology | Explication |
 | MongoDB | we will use it to store the location of the SOLID POD. |
