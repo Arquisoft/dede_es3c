@@ -8,7 +8,7 @@
 
 [role="arc42help"]
 ****
-image:Quality-Requirements.png["Quality Requirements Tree"]
+image:Quality-Requirements.png["Quality Tree"]
 ****
 
 === Quality Scenarios
