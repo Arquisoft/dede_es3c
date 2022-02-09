@@ -52,6 +52,8 @@ As the SOLID principles say, the idea is that the information is not centralized
 
 ![Technical Context diagram](https://github.com/Arquisoft/dede_es3c/blob/Sergio/docs/images/Technical%20Context.png)
 
+| Technology | Explication |
+|-------------|----------------------------------------------------|
 | MongoDB | we will use it to store the location of the SOLID POD. |
 | React | is a library to help us carry out the project. |
 | TypeScript | is used for program. |
