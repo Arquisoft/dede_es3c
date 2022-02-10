@@ -1,16 +1,15 @@
 [[section-solution-strategy]]
 == Solution Strategy
 
-
 [role="arc42help"]
 
 === 4.1. Technology decisions
 
 The technologies we have decided to use for the development of the app are:
 
-- React: React is an open source library, which makes it easy for us to program user interfaces, React is responsible for rendering and updating the components of our interfaces in the best way.
+- React: React is an open source library, which makes it easy for us to program user interfaces. React is responsible for rendering and updating the components of our interfaces in the best way.
 
-- SOLID: SOLID provides the user with the peace of mind of knowing that their data is safe and decentralized, also giving them the ability to provide their data to other entities very quickly and easily.
+- SOLID: SOLID provides the user with the peace of mind of knowing that their data is safe and decentralized. As well as giving them the ability to provide their data to other entities very quickly and easily.
 
 - TypeScript: TypeScript is a superset of JavaScript, meaning that it contains all of the functionality of JavaScript and then some.
 
@@ -20,10 +19,9 @@ The technologies we have decided to use for the development of the app are:
 
 - Prometheus: Prometheus is open source software, which gives us the ability to monitor our system through a wide range of available tools. This data is stored together with a time instance, with which we manage to have a fairly accurate record of the events that occur in our system.
 
-- Grafana: Grafana is an open source software which allows us to analyze, consult, visualize, alert and explore the metrics, records and monitoring of our system, with all this data we can make quite interesting graphs or visualizations.
+- Grafana: Grafana is an open source software which allows us to analyze, consult, visualize, alert and explore the metrics, records and monitoring of our system. With this data we can make interesting graphs and visualizations.
 
 - Postman: Postman is an open source software which offers us the necessary help to build, use and test APIs, making the steps easier.
-
 
 === 4.2. Decisions about the top-level decomposition of the system
 
@@ -31,9 +29,9 @@ We will follow the Redux pattern, this pattern was created initially to be used 
 
 === 4.3. Decisions to achieve quality goals
 
-To try to achieve all the proposed quality objectives, we will strive to obtain very good accessibility with a help system for people who need it, we will also focus on making an accessible and adaptable website following the AAA level. To improve the privacy of the users we will use the SOLID POD, which decentralize the personal information of each user, we will store only the location of this data, with this we also manage to improve security since we do not have sensitive data of the users.
+To try to achieve all the proposed quality objectives, we will strive to obtain very good accessibility with a help system for people who need it. We will also focus on making an accessible and adaptable website following the AAA level. To improve the privacy of the users we will use SOLID POD, which decentralizes the personal information of each user. We will store only the location of this data, managing to improve security since we do not have sensitive data of the users.
 
 === 4.4. Organizational decisions
 
-We will try to hold weekly meetings via Teams, apart from the meetings in the classes of the subject, for minor doubts and fluid communication we use WhatsApp. We also communicate via GitHub through the Issues, we establish the work of each member, we update these tasks in a Kamba board with the already mentioned Issues.
+We will try to hold weekly meetings via Teams, in addition to the meeting classes of the subject, for minor doubts and fluid communication we use WhatsApp. We also communicate via GitHub through the Issues, we determine the work of each member and update these tasks in a Kanbam board with the already mentioned Issues.
 
