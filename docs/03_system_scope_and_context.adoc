@@ -55,7 +55,7 @@ Users have control over who has their information, thus increasing privacy.
 
 image:https://github.com/Arquisoft/dede_es3c/blob/Sergio/docs/images/Technical%20Context.png["Technical Context diagram"]
 
-[options = "header",cols="1,2"]
+[options = "header",cols="1,1"]
 |===
 | Technology | Explication |
 | MongoDB | We will use it to store the location of the SOLID POD |
