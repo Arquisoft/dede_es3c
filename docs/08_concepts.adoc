@@ -62,6 +62,6 @@ _<explanation>_
 
 ...
 
-=== _<Concept n>_
+=== _User interface_
 
-_<explanation>_
+_DeDe user interface is desinged to give every user an intuitive and familiar experience related using the React framework combined with TypeScript as constraints. We follow the usual standards of e-commerce online sites to make the navigation closer to what most of the people already know._
