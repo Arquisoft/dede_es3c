@@ -13,7 +13,7 @@
 |===
 |Communication Partner|Inputs|Outputs
 | _Users_ | _Petitions or interactions_ | _Responses to users petitions_
-| _User Pods_ | _Users information respecting their privacy_ | _Specific functionalities such as the shipping price_
+| _User Pods_ | _Users information respecting their privacy_ | _Makes pecific functionalities possible such as the shipping price respecting users privacy_
 | _DeDe_ | _The user petitions and their information storaged in pods_ | _The calculated and prepared responses to satisfy users needs_
 | _Database (undetermined for now)_ | _Querys, information requests_ | _Storaged and consistent data responding to the system needs_
 |===
