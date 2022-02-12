@@ -65,3 +65,6 @@ _<explanation>_
 === _User interface_
 
 _DeDe user interface is desinged to give every user an intuitive and familiar experience related using the React framework combined with TypeScript as constraints. We follow the usual standards of e-commerce online sites to make the navigation closer to what most of the people already know._
+
+image:https://github.com/Arquisoft/dede_es3c/blob/Sonia/docs/images/dede%homepage.png["HomePage Prototype"]
+image:https://github.com/Arquisoft/dede_es3c/blob/Sonia/docs/images/dede%homepage.png["DeDe-Small-Windows-Prototypes"]
