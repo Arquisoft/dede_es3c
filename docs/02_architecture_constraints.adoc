@@ -7,7 +7,7 @@
 
 ## 2.1 Technical constraints
 |===
-|Constraint|Explanation|
+|Constraint|Explanation
 |React|We will use the React Framework for the UI (User Interface). This ir a requirement
 |SOLID|With SOLID, we'll be able to let people be propietary of their own intformation using PODs. This way, they can allow or reject the application to access the data or not. This is a requirement
 |Docker|The application will be running in a Docker Host
@@ -18,7 +18,7 @@
 
 ## 2.2 Organizational and political constraints
 |===
-|Constraint|Explanation|
+|Constraint|Explanation
 |Team and meetings|This is a course application. Development team consist in 5 (five) people with a very limited experience in techonolgies used in the project. Is our first time working together, so some organizational decisions could be not as agile or accurate as they could. Also we don't have the same class schedule so find a room for a meeting could be difficult sometimes
 |Time|The project has a very tight time to be finished. This means that our application will not be as developed as it could be
 |Other work|All of us have other subjects that take time
