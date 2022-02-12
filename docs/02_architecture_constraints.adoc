@@ -1,34 +1,34 @@
 [[section-architecture-constraints]]
-== Architecture Constraints
+== 2. Architecture Constraints
 
 
 [role="arc42help"]
 ****
 
-##2.1 Technical constraints
+## 2.1 Technical constraints
 |===
 |Constraint|Explanation|
-|React|We will use the React Framework for the UI (User Interface). This ir a requirement|
-|SOLID|With SOLID, we'll be able to let people be propietary of their own intformation using PODs. This way, they can allow or reject the application to access the data or not. This is a requirement|
-|Docker|The application will be running in a Docker Host|
-|GitHub|We will use GitHub to deploy the project and all the files related with it. This is a requirement|
-|MongoDB|As data storage we will use MongoDB. MongoDB is a NonSQL data base that will allow us an easier y faster integration. This is a decision made by all team members|
-|TypeScrypt|TypeScript is the techonology used for the backend. Based on JavaScript is quite similar. This is a requirement|
+|React|We will use the React Framework for the UI (User Interface). This ir a requirement
+|SOLID|With SOLID, we'll be able to let people be propietary of their own intformation using PODs. This way, they can allow or reject the application to access the data or not. This is a requirement
+|Docker|The application will be running in a Docker Host
+|GitHub|We will use GitHub to deploy the project and all the files related with it. This is a requirement
+|MongoDB|As data storage we will use MongoDB. MongoDB is a NonSQL data base that will allow us an easier y faster integration. This is a decision made by all team members
+|TypeScrypt|TypeScript is the techonology used for the backend. Based on JavaScript is quite similar. This is a requirement
 |===
 
-##2.2 Organizational and political constraints
+## 2.2 Organizational and political constraints
 |===
 |Constraint|Explanation|
-|Team and meetings|This is a course application. Development team consist in 5 (five) people with a very limited experience in techonolgies used in the project. Is our first time working together, so some organizational decisions could be not as agile or accurate as they could. Also we don't have the same class schedule so find a room for a meeting could be difficult sometimes|
-|Time|The project has a very tight time to be finished. This means that our application will not be as developed as it could be|
-|Other work|All of us have other subjects that take time|
+|Team and meetings|This is a course application. Development team consist in 5 (five) people with a very limited experience in techonolgies used in the project. Is our first time working together, so some organizational decisions could be not as agile or accurate as they could. Also we don't have the same class schedule so find a room for a meeting could be difficult sometimes
+|Time|The project has a very tight time to be finished. This means that our application will not be as developed as it could be
+|Other work|All of us have other subjects that take time
 |===
 
-##2.3 Conventions
+## 2.3 Conventions
 |===
-|Constraint|Explanation|
-|Aesthetic and ease of use|The UI (User Interface) has to be aesthetic and easy to use. Both of them are very important criteria in our application, so all of our decisions need to have this in mind|
-|Documentation|We will use Arc42 template|
-|Solid|The application must follow Solid conventions|
-|TypeScript|We will use TypeScript/JavaScript naming conventions|
+|Constraint|Explanation
+|Aesthetic and ease of use|The UI (User Interface) has to be aesthetic and easy to use. Both of them are very important criteria in our application, so all of our decisions need to have this in mind
+|Documentation|We will use Arc42 template
+|Solid|The application must follow Solid conventions
+|TypeScript|We will use TypeScript/JavaScript naming conventions
 |===
