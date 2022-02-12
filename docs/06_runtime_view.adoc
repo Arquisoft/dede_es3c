@@ -50,7 +50,7 @@ Alice  --> Pod: Store route
 Alice -> Bob: Another authentication Request
 Alice <-- Bob: another authentication Response
 ----
-=== 6.21Register User
+=== 6.2 Register User
 
 [plantuml,"Sequence diagram",png]
 ----
