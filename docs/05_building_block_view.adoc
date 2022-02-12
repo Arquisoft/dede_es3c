@@ -7,7 +7,7 @@
 
 == Whitebox Overall System
 
-image: 5.1 - Building Block View - Level 1.png["Building block view - Whitebox Overall System"]
+image:5_1_Building_Block_View_Level_1.png["Building block view - Whitebox Overall System"]
 
 [role="arc42help"]
 ****
