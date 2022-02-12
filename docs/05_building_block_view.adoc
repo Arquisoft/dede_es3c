@@ -5,9 +5,9 @@
 [role="arc42help"]
 ****
 
-=== Whitebox Overall System
+== Whitebox Overall System
 
-image: 5.1 - Building Block View - Level 1.png
+image: 5.1 - Building Block View - Level 1.png["Building block view - Whitebox Overall System"]
 
 [role="arc42help"]
 ****
@@ -19,9 +19,9 @@ We have two types of actors interacting with the application:
 The application is represented as a whitebox. Inside of it we can see the three layers of MVC (Model View Controller) convention.
 
 ## Black Box descriptions of Overall System
-|==
+|===
 |Name|Responsability
 |Model|Store data and get data from data base. Defines business model. Gives information to View layer to represent it on the device
 |View|Receives data from Model layer to represent it on the device. Is the layer wich interacts with actors (users and administrator)
 |Controller|Receives inputs and manage the interactions between View layer and Model layer
-|==
+|===
