@@ -50,7 +50,20 @@ Alice  --> Pod: Store route
 Alice -> Bob: Another authentication Request
 Alice <-- Bob: another authentication Response
 ----
-=== <Runtime Scenario 2>
+=== 6.21Register User
+
+[plantuml,"Sequence diagram",png]
+----
+@startuml
+User-> WebApp : Register
+WebApp-> ApiRest : send user data
+ApiRest -> SOLID_POD : store user data
+SOLID_POD -> ApiRest : return data location
+ApiRest -> DataBase: store data location
+ApiRest -> WebApp: Notify success
+WebApp-> User: Notify success
+@enduml
+----
 
 === ...
 
