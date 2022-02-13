@@ -67,6 +67,22 @@ WebApp -> Client: Show a list of client orders
 The user presses a button to visualize their previous orders, the WebApp send the petition to the RestApi. The RestApi asks for the client's orders from the user pod.
 User pod returns the client's orders to the RestApi, and the RestApi sends them to the WebApp. The WebApp show a list of client orders.
 
-=== ...
+=== Delete a product from the shopping chart
+[plantuml,"Delete a product from the shopping cart",png]
+@startuml
+actor Client
+entity WebApp
+entity RestApi
+database POD
+database DataBase
+Client -> WebApp: Delete a product
+WebApp -> RestApi: Send user data
+RestApi -> POD: Delete product
+POD -> DataBase: Delete product
+POD -> RestApi: Return success
+RestApi -> WebApp: Return success
+WebApp -> Client: Return success
+@enduml
+The user chooses the product and presses the button to delete it. The WebApp send this petition to the RestApi. The RestApi send the petition to delete a product to the POD, and the POD to the DataBase. Once the product is deleted from the DataBase, success is returned to the client.
 
 === <Runtime Scenario n>
