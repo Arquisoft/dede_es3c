@@ -63,6 +63,7 @@ database DataBase
 User -> WebApp: Visualize the orders done
 WebApp -> RestApi: Send petition
 RestApi -> USER_POD: Ask for client's information
+USER_POD -> RestApi: Give client's information
 RestApi -> DataBase: Ask for the client's orders
 DataBase -> RestApi: Return the client's orders
 RestApi -> WebApp: Return the orders
