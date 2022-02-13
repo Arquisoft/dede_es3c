@@ -59,10 +59,12 @@ actor User
 entity WebApp
 entity RestApi
 database USER_POD
+database DataBase
 User -> WebApp: Visualize the orders done
-WebApp -> RestApi: Send user data
-RestApi -> USER_POD: Ask for the client's orders
-USER_POD -> RestApi: Return the client's orders
+WebApp -> RestApi: Send petition
+RestApi -> USER_POD: Ask for client's information
+RestApi -> DataBase: Ask for the client's orders
+DataBase -> RestApi: Return the client's orders
 RestApi -> WebApp: Return the orders
 WebApp -> User: Show a list of client orders
 @enduml
@@ -78,13 +80,11 @@ User pod returns the client's orders to the RestApi, and the RestApi sends them 
 actor User
 entity WebApp
 entity RestApi
-database USER_POD
 database DataBase
 User -> WebApp: Delete a product
-WebApp -> RestApi: Send user data
-RestApi -> USER_POD: Delete product
-USER_POD -> DataBase: Delete product
-USER_POD -> RestApi: Return success
+WebApp -> RestApi: Send petition
+RestApi -> DataBase: Delete product
+DataBase -> RestApi: Return success
 RestApi -> WebApp: Return success
 WebApp -> User: Return success
 @enduml
