@@ -14,6 +14,9 @@
 |GitHub|We will use GitHub to deploy the project and all the files related with it. This is a requirement
 |MongoDB|As data storage we will use MongoDB. MongoDB is a NonSQL data base that will allow us an easier y faster integration. This is a decision made by all team members
 |TypeScrypt|TypeScript is the techonology used for the backend. Based on JavaScript is quite similar. This is a requirement
+|Heroku|Heroku allows us to run build and run our application entirely in the cloud
+|Bootstrap|Bootstrap is a multiplatform framework. We will use it as frontend framework to styles and everything related with user interface
+|Node.js|Based on JavaScript, is a backend technology wich allows us to execute our code
 |===
 
 ## 2.2 Organizational and political constraints
@@ -28,7 +31,10 @@
 |===
 |Constraint|Explanation
 |Aesthetic and ease of use|The UI (User Interface) has to be aesthetic and easy to use. Both of them are very important criteria in our application, so all of our decisions need to have this in mind
-|Documentation|We will use Arc42 template
+|Documentation|We will use Arc42 template to develop documentation
 |Solid|The application must follow Solid conventions
 |TypeScript|We will use TypeScript/JavaScript naming conventions
+|Redux|We will use Redux style guide (based on REACT) conventions
+|MVC|We will follow MVC conventions in naming and layer separation
+|W3C AAA|Our application will follow AAA conventions. This allow us to make the aplication more usable to everybody
 |===

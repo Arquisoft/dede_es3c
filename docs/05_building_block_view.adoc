@@ -7,7 +7,7 @@
 
 == Whitebox Overall System
 
-image:5_1_Building_Block_View_Level_1.png["Building block view - Whitebox Overall System"]
+image:https://github.com/Arquisoft/dede_es3c/blob/Alejandro/docs/images/5_1_Building_Block_View_Level_1.png["Building block view - Whitebox Overall System"]
 
 [role="arc42help"]
 ****

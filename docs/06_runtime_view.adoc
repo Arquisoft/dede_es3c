@@ -61,9 +61,9 @@ Alice <-- Bob: another authentication Response
 [plantuml,"(Admin) Delete User",png]
 ----
 actor Admin
-participant WebApp
-participant RestAPI
-participant DataBase
+WebApp
+RestAPI
+DataBase
 
 Admin -> WebApp: Request User List
 WebApp -> RestAPI: Request User List
@@ -73,7 +73,7 @@ RestAPI -> WebApp: Represent User List
 Admin -> WebApp: Select User To Remove
 WebApp -> RestAPI: Request Delete User
 RestAPI -> DataBase: Request Delete User
-DataBase -> DataBase: Delete User
+DataBase -> DataBase: Delete User POD Ubication
 DataBase -> RestAPI: Give Updated User List
 RestAPI -> WebApp: Represent Updated User List
 ----
@@ -83,9 +83,9 @@ RestAPI -> WebApp: Represent Updated User List
 [plantuml,"(Admin) View Item Statistics",png]
 ----
 actor Admin
-participant WebApp
-participant RestAPI
-participant DataBase
+WebApp
+RestAPI
+DataBase
 
 Admin -> WebApp: Request Item List
 WebApp -> RestAPI: Request Item List
@@ -107,10 +107,10 @@ RestAPI -> WebApp: Display Item List
 [plantuml,"(Admin) Monitor Order Status",png]
 ----
 actor Admin
-participant WebApp
-participant RestAPI
-participant DataBase
-participant UserPOD
+WebApp
+RestAPI
+DataBase
+UserPOD
 
 Admin -> WebApp: Request Order List
 WebApp -> RestAPI: Request Order List
