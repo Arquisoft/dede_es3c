@@ -65,6 +65,17 @@ WebApp-> User: Notify success
 @enduml
 ----
 
-=== ...
+=== 6.3 Login User
+----
+@startuml
+User-> WebApp : Login
+WebApp-> ApiRest : send login data
+ApiRest -> DataBase : find data location
+ApiRest -> SOLID_POD : load login data
+ApiRest -> ApiRest : check login data
+ApiRest -> WebApp: Notify success
+WebApp-> User: Notify success
+@enduml
+----
 
 === <Runtime Scenario n>
