@@ -55,12 +55,17 @@ Alice <-- Bob: another authentication Response
 [plantuml,"Sequence diagram",png]
 ----
 @startuml
+actor User
+entity WebApp
+entity RestApi
+database USER_POD
+database DataBase
 User-> WebApp : Register
-WebApp-> ApiRest : send user data
-ApiRest -> SOLID_POD : store user data
-SOLID_POD -> ApiRest : return data location
-ApiRest -> DataBase: store data location
-ApiRest -> WebApp: Notify success
+WebApp-> RestApi : send user data
+RestApi -> USER_POD : store user data
+USER_POD -> RestApi : return data location
+RestApi -> DataBase: store data location
+RestApi -> WebApp: Notify success
 WebApp-> User: Notify success
 @enduml
 ----
@@ -68,12 +73,17 @@ WebApp-> User: Notify success
 === 6.3 Login User
 ----
 @startuml
+actor User
+entity WebApp
+entity RestApi
+database USER_POD
+database DataBase
 User-> WebApp : Login
-WebApp-> ApiRest : send login data
-ApiRest -> DataBase : find data location
-ApiRest -> SOLID_POD : load login data
-ApiRest -> ApiRest : check login data
-ApiRest -> WebApp: Notify success
+WebApp-> RestApi : send login data
+RestApi -> DataBase : find data location
+RestApi -> USER_POD : load login data
+RestApi -> RestApi : check login data
+RestApi -> WebApp: Notify success
 WebApp-> User: Notify success
 @enduml
 ----
