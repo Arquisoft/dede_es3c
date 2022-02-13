@@ -78,7 +78,11 @@ App -> App: "Represent Updated User List"
 === (Admin) View Item Statistics
 
 [plantuml,"(Admin) View Item Statistics",png]
----
+----
+actor Admin
+participant App
+participant DataBase
+
 Admin -> App: "Request Item List"
 App -> DataBase: "Request Item List"
 DataBase -> App: "Give Item List"
@@ -89,12 +93,12 @@ DataBase -> App: "Give Item/s Statistics"
 App -> App: "Display Item Statistics"
 Admin -> App: "Close Item Statistics"
 App -> App: "Display Item List"
----
+----
 
 === (Admin) Monitor Order Status
 
 [plantuml,"(Admin) Monitor Order Status",png]
----
+----
 actor Admin
 participant App
 participant UserPOD
@@ -110,4 +114,4 @@ UserPOD -> App: "Give Order Info."
 App -> App: "Display Order Info."
 Admin -> App: "Close Order Info."
 App -> App: "Display Order List"
----
+----
