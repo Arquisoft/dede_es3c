@@ -36,6 +36,8 @@ when your infrastructure is more complex.
 
 === Infrastructure Level 1
 
+image:https://github.com/Arquisoft/dede_es3c/blob/Sergio_doc/docs/images/DiagramaDespliegue.png["Deployment View Level1"]
+
 [role="arc42help"]
 ****
 Describe (usually in a combination of diagrams, tables, and text):
@@ -63,6 +65,9 @@ _<description of the mapping>_
 
 
 === Infrastructure Level 2
+
+
+image:https://github.com/Arquisoft/dede_es3c/blob/Sergio_doc/docs/images/Diagrama%20de%20despliege%20T2.png["Deployment View Level2"]
 
 [role="arc42help"]
 ****
