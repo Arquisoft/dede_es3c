@@ -61,18 +61,21 @@ Alice <-- Bob: another authentication Response
 [plantuml,"(Admin) Delete User",png]
 ----
 actor Admin
-participant App
+participant WebApp
+participant RestAPI
 participant DataBase
 
-Admin -> App: "Request Users List"
-App -> DataBase: "Request Users List"
-DataBase -> App: "Give User List"
-App -> App: "Represent User List"
-Admin -> App: "Select User To Remove"
-App -> DataBase: "Request Delete User"
-DataBase -> DataBase: "Delete User"
-DataBase -> App: "Give Updated User List"
-App -> App: "Represent Updated User List"
+Admin -> WebApp: Request User List
+WebApp -> RestAPI: Request User List
+RestAPI -> DataBase: Request User List
+DataBase -> RestAPI: Give User List
+RestAPI -> WebApp: Represent User List
+Admin -> WebApp: Select User To Remove
+WebApp -> RestAPI: Request Delete User
+RestAPI -> DataBase: Request Delete User
+DataBase -> DataBase: Delete User
+DataBase -> RestAPI: Give Updated User List
+RestAPI -> WebApp: Represent Updated User List
 ----
 
 === (Admin) View Item Statistics
@@ -80,19 +83,23 @@ App -> App: "Represent Updated User List"
 [plantuml,"(Admin) View Item Statistics",png]
 ----
 actor Admin
-participant App
+participant WebApp
+participant RestAPI
 participant DataBase
 
-Admin -> App: "Request Item List"
-App -> DataBase: "Request Item List"
-DataBase -> App: "Give Item List"
-App -> App: "Display Item List"
-Admin -> App: "Select Items"
-App -> DataBase: "Request Selected Item/s Statistics"
-DataBase -> App: "Give Item/s Statistics"
-App -> App: "Display Item Statistics"
-Admin -> App: "Close Item Statistics"
-App -> App: "Display Item List"
+Admin -> WebApp: Request Item List
+WebApp -> RestAPI: Request Item List
+RestAPI -> DataBase: Request Item List
+DataBase -> RestAPI: Give Item List
+RestAPI -> WebApp: Display Item List
+Admin -> WebApp: Select Items
+WebApp -> RestAPI: Request Selected Item Statistics
+RestAPI -> DataBase: Request Selected Item Statistics
+DataBase -> RestAPI: Give Selected Item Statistics
+RestAPI -> WebApp: Display Item Statistics
+Admin -> WebApp: Close Selected Item Statistics
+WebApp -> RestAPI: Close Selected Item Statistics
+RestAPI -> WebApp: Display Item List
 ----
 
 === (Admin) Monitor Order Status
@@ -100,18 +107,24 @@ App -> App: "Display Item List"
 [plantuml,"(Admin) Monitor Order Status",png]
 ----
 actor Admin
-participant App
-participant UserPOD
+participant WebApp
+participant RestAPI
 participant DataBase
+participant UserPOD
 
-Admin -> App: "Request Order List"
-App -> DataBase: "Request Order List"
-DataBase -> App: "Give Order List"
-App -> App: "Display Order List"
-Admin -> App: "Select Order To Display"
-App -> UserPOD: "Request Order Info."
-UserPOD -> App: "Give Order Info."
-App -> App: "Display Order Info."
-Admin -> App: "Close Order Info."
-App -> App: "Display Order List"
+Admin -> WebApp: Request Order List
+WebApp -> RestAPI: Request Order List
+RestAPI -> DataBase: Request Order List
+DataBase -> RestAPI: Give Order List
+RestAPI -> WebApp: Display Order List
+Admin -> WebApp: Select Order To Display
+WebApp -> RestAPI: Give Selected Order
+RestAPI -> DataBase: Request Order Info.
+DataBase -> RestAPI: Give Order Info.
+RestAPI -> UserPOD: Request User Info.
+UserPOD -> RestAPI: Give User Info.
+RestAPI -> WebApp: Display Order Info.
+Admin -> WebApp: Close Order Info.
+WebApp -> RestAPI: Close Order Info.
+RestAPI -> WebApp: Display Order List
 ----
