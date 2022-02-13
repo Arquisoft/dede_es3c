@@ -55,3 +55,59 @@ Alice <-- Bob: another authentication Response
 === ...
 
 === <Runtime Scenario n>
+
+=== (Admin) Delete User
+
+[plantuml,"(Admin) Delete User",png]
+----
+actor Admin
+participant App
+participant DataBase
+
+Admin -> App: "Request Users List"
+App -> DataBase: "Request Users List"
+DataBase -> App: "Give User List"
+App -> App: "Represent User List"
+Admin -> App: "Select User To Remove"
+App -> DataBase: "Request Delete User"
+DataBase -> DataBase: "Delete User"
+DataBase -> App: "Give Updated User List"
+App -> App: "Represent Updated User List"
+----
+
+=== (Admin) View Item Statistics
+
+[plantuml,"(Admin) View Item Statistics",png]
+---
+Admin -> App: "Request Item List"
+App -> DataBase: "Request Item List"
+DataBase -> App: "Give Item List"
+App -> App: "Display Item List"
+Admin -> App: "Select Items"
+App -> DataBase: "Request Selected Item/s Statistics"
+DataBase -> App: "Give Item/s Statistics"
+App -> App: "Display Item Statistics"
+Admin -> App: "Close Item Statistics"
+App -> App: "Display Item List"
+---
+
+=== (Admin) Monitor Order Status
+
+[plantuml,"(Admin) Monitor Order Status",png]
+---
+actor Admin
+participant App
+participant UserPOD
+participant DataBase
+
+Admin -> App: "Request Order List"
+App -> DataBase: "Request Order List"
+DataBase -> App: "Give Order List"
+App -> App: "Display Order List"
+Admin -> App: "Select Order To Display"
+App -> UserPOD: "Request Order Info."
+UserPOD -> App: "Give Order Info."
+App -> App: "Display Order Info."
+Admin -> App: "Close Order Info."
+App -> App: "Display Order List"
+---
