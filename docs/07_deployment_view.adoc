@@ -68,24 +68,3 @@ _<description of the mapping>_
 
 
 image:https://github.com/Arquisoft/dede_es3c/blob/Sergio_doc/docs/images/Diagrama%20de%20despliege%20T2.png["Deployment View Level2"]
-
-[role="arc42help"]
-****
-Here you can include the internal structure of (some) infrastructure elements from level 1.
-
-Please copy the structure from level 1 for each selected element.
-****
-
-==== _<Infrastructure Element 1>_
-
-_<diagram + explanation>_
-
-==== _<Infrastructure Element 2>_
-
-_<diagram + explanation>_
-
-...
-
-==== _<Infrastructure Element n>_
-
-_<diagram + explanation>_
