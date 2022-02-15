@@ -41,7 +41,6 @@ when your infrastructure is more complex.
 * Quality and/or Performance Features
 
 * Mapping of Building Blocks to Infrastructure
-
  image:https://github.com/Arquisoft/dede_es3c/blob/Sergio_doc/docs/images/DiagramaDespliegue.png["Deployment View Level1"]
 
 [role="arc42help"]
