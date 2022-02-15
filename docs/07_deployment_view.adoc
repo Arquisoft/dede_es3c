@@ -36,7 +36,13 @@ when your infrastructure is more complex.
 
 === Infrastructure Level 1
 
-image:https://github.com/Arquisoft/dede_es3c/blob/Sergio_doc/docs/images/DiagramaDespliegue.png["Deployment View Level1"]
+* Motivation
+
+* Quality and/or Performance Features
+
+* Mapping of Building Blocks to Infrastructure
+
+ image:https://github.com/Arquisoft/dede_es3c/blob/Sergio_doc/docs/images/DiagramaDespliegue.png["Deployment View Level1"]
 
 [role="arc42help"]
 ****
@@ -50,21 +56,11 @@ Describe (usually in a combination of diagrams, tables, and text):
 For multiple environments or alternative deployments please copy that section of arc42 for all relevant environments.
 ****
 
-_**<Overview Diagram>**_
-
-Motivation::
-
-_<explanation in text form>_
-
-Quality and/or Performance Features::
-
-_<explanation in text form>_
-
-Mapping of Building Blocks to Infrastructure::
-_<description of the mapping>_
-
-
 === Infrastructure Level 2
 
+* Motivation::
 
-image:https://github.com/Arquisoft/dede_es3c/blob/Sergio_doc/docs/images/Diagrama%20de%20despliege%20T2.png["Deployment View Level2"]
+* Quality and/or Performance Features::
+
+* Mapping of Building Blocks to Infrastructure::
+ image:https://github.com/Arquisoft/dede_es3c/blob/Sergio_doc/docs/images/Diagrama%20de%20despliege%20T2.png["Deployment View Level2"]
