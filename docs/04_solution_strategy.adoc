@@ -45,5 +45,5 @@ To try to achieve all the proposed quality objectives, we will strive to obtain 
 
 === 4.4. Organizational decisions
 
-We will try to hold weekly meetings via Teams, in addition to the meeting classes of the subject, for minor doubts and fluid communication we use WhatsApp. We also communicate via GitHub through the Issues, we determine the work of each member and update these tasks in a Kanbam board with the already mentioned Issues.
+We will try to hold weekly meetings via Teams, in addition to the meeting classes of the subject, for minor doubts and fluid communication we use WhatsApp. We also communicate via GitHub through the Issues, we determine the work of each member and update these tasks in a Kanban board with the already mentioned Issues.
 
