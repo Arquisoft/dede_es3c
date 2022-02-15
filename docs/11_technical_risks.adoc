@@ -11,8 +11,12 @@ This is the compilation of the identified risks ordered by priority that we must
 ** MongoDB: We may run into difficulties using a NoSQL database, as we have experience only using SQL databases, which can cause delays while we learn how to use it.
 ** Grafana and Prometeus: We have never used these tools to monitor a project and we need to adapt to them.
 ** Postman: We have never used this testing tool.
+** Node.js: We don't know how to use it.
+** Heroku: It costs time to adapt to it due to we have never used it.
+** Docker: We have to learn how to use it.
+** Express: We may have some dificulties, we need to learn about it.
+** Bootstrap: We have to learn about this style library. It will cost some time.
 ** TypeScript: Some members of the group have some knowledge of JavaScript, and since TypeScript is similar to JavaScript, it won't be too difficult to adapt, although it will take time to learn this language.
-
 * Have low knowledge in the following technologies:
 ** Git: We have little knowledge about using Git, so we can easily go wrong.
 
