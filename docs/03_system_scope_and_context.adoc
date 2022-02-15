@@ -13,31 +13,20 @@
 |===
 |Communication Partner|Inputs|Outputs
 | _Users_ | _Petitions or interactions_ | _Responses to users petitions_
-| _User Pods_ | _Users information respecting their privacy_ | _Makes pecific functionalities possible such as the shipping price respecting users privacy_
+| _User Pods_ | _Users information respecting their privacy_ | _Makes specific functionalities possible such as the shipping price respecting users privacy_
 | _DeDe_ | _The user petitions and their information storaged in pods_ | _The calculated and prepared responses to satisfy users needs_
-| _Database (undetermined for now)_ | _Querys, information requests_ | _Storaged and consistent data responding to the system needs_
+| _Database (MongoDB)_ | _Queries, information requests_ | _Storaged and consistent data responding to the system needs_
+| _Docker_ | _Deployment Containers_ | _Possibility of DeDe to be deployed and launched_
+| _Heroku_ | _Deployment Server_ | _Possibility of DeDe to be deployed and launched_
 |===
-image:https://github.com/Arquisoft/dede_es3c/blob/Sonia/docs/images/Business%20Context.png["Technical Context diagram"]
+
 ****
 
 === Technical Context
 
+image:https://github.com/Arquisoft/dede_es3c/blob/Sonia/docs/images/03-Technical%20Context.png["Technical Context diagram"]
+
 [role="arc42help"]
 ****
-.Contents
-Technical interfaces (channels and transmission media) linking your system to its environment. In addition a mapping of domain specific input/output to the channels, i.e. an explanation with I/O uses which channel.
-
-.Motivation
-Many stakeholders make architectural decision based on the technical interfaces between the system and its context. Especially infrastructure or hardware designers decide these technical interfaces.
-
-.Form
-E.g. UML deployment diagram describing channels to neighboring systems,
-together with a mapping table showing the relationships between channels and input/output.
 
 ****
-
-**<Diagram or Table>**
-
-**<optionally: Explanation of technical interfaces>**
-
-**<Mapping Input/Output to Channels>**
