@@ -30,6 +30,6 @@ npm run build
 The documentation will be generated under the `docs/build` directory. 
 
 ### Documentation deployment
-If we want to deploy it to GitHub pages, so it is accesible via [https://pglez82.github.io/asw2122_0/](https://pglez82.github.io/asw2122_0/) we need to execute `npm run deploy`.
+If we want to deploy it to GitHub pages, so it is accesible via [https://arquisoft.github.io/dede_es3c/](https://arquisoft.github.io/dede_es3c/) we need to execute `npm run deploy`.
 
 If you check the `package.json` in this directory you can see how deploying is as easy as executing `gh-pages -d build`, which can be directly executed using `npm run deploy` in the docs directory. The `gh-pages` package is in charge of pushing the documentation generated directory (basically some htmls) to a special github branch called gh-pages. Everything pushed to this branch is accessible in the repository page. Note that we only want to push there the documentation. Also is important that the documentation build is not pushed to the other branches of the project.
