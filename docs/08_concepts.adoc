@@ -1,67 +1,60 @@
-[[section-concepts]]
-== Cross-cutting Concepts
+
+=== 8.1 Domain model
+
+[options="header",cols="1,2,2"]
+|===
+|Name|Description
+| Client | User who choose and buy products
+| POD | User's information
+| Order | Keep a list of the products that the customer has ordered.
+| Product | Contains information about a product, such as name and price.
+| ProductInOrder | Product associated with an order, saves the quantity that the customer wants of the product.
+| Distribution Center | Place from where the products are distributed, contains the address of the distribution center.
+|===
+
+image:https://github.com/Arquisoft/dede_es3c/blob/Nuria/docs/images/08_umldiagram.png["Domain Model - UML Diagram"]
+
+=== 8.2. Persistence
+
+At the beginning there was a debate about whether it was better to use SQL or NoSQL for persistence. After some discussion it was concluded that the best option for this problem is NoSQL. To be more specific MongoDB, which is a NoSQL document database. We will use a NoSQL database as opposed to a SQL database, because our model encompasses many products. These products have several attributes which are very different. For example, a power supply differs in many ways from a graphics card. Because there are so many items, we believe it is best to use a NoSQL DB.
+
+=== 8.3. User interface_
+
+_DeDe user interface is desinged to give every user an intuitive and familiar experience related using the React framework combined with TypeScript as constraints. We follow the usual standards of e-commerce online sites to make the navigation closer to what most of the people already know. Also, the interface is meant to pass the AAA validation so we make sure it's usable for almost everyone_
+
+image:https://github.com/Arquisoft/dede_es3c/blob/Sonia/docs/images/dede_homepage.png["HomePage Prototype"]
+image:https://github.com/Arquisoft/dede_es3c/blob/Sonia/docs/images/DeDe-Small-Window-Prototypes.png["DeDe-Small-Windows-Prototypes"]
+
+=== 8.4. Internazionalization
+
+The application will potentially deal with various locations and people, so make a multi-language application looks like the best decision. This decision must be done since the begining of the desing (lately will cost a lot of resources).
+
+This allows us to reach a bigger audience and make the application more accesible.
 
 
-[role="arc42help"]
-****
-.Content
-This section describes overall, principal regulations and solution ideas that are
-relevant in multiple parts (= cross-cutting) of your system.
-Such concepts are often related to multiple building blocks.
-They can include many different topics, such as
+=== 8.5. Security
 
-* domain models
-* architecture patterns or design patterns
-* rules for using specific technology
-* principal, often technical decisions of overall decisions
-* implementation rules
-
-.Motivation
-Concepts form the basis for _conceptual integrity_ (consistency, homogeneity)
-of the architecture. Thus, they are an important contribution to achieve inner qualities of your system.
-
-Some of these concepts cannot be assigned to individual building blocks
-(e.g. security or safety). This is the place in the template that we provided for a
-cohesive specification of such concepts.
-
-.Form
-The form can be varied:
-
-* concept papers with any kind of structure
-* cross-cutting model excerpts or scenarios using notations of the architecture views
-* sample implementations, especially for technical concepts
-* reference to typical usage of standard frameworks (e.g. using Hibernate for object/relational mapping)
-
-.Structure
-A potential (but not mandatory) structure for this section could be:
-
-* Domain concepts
-* User Experience concepts (UX)
-* Safety and security concepts
-* Architecture and design patterns
-* "Under-the-hood"
-* development concepts
-* operational concepts
-
-Note: it might be difficult to assign individual concepts to one specific topic
-on this list.
-
-image:08-Crosscutting-Concepts-Structure-EN.png["Possible topics for crosscutting concepts"]
-****
+Security is a key aspect of our software (and almost all) project. We will follow SOLID as recommendation to store our customers data and we will manage the data base to be always in a consistent state.
 
 
-=== Domain model
+=== 8.6. Additional libraries
 
-image:UmlDiagram.png["Example UML Diagram"]
+TODO
 
 
+=== 8.7. Archiutecture and design patterns
 
-=== _<Concept 2>_
+TODO
 
-_<explanation>_
 
-...
+=== 8.8 Code Quality standards
 
-=== _<Concept n>_
+Code quality standars allows us to make an understable, maintainable and reusable code for future revisions and changes. Code should always have a correct structure to be easily understandable.
 
-_<explanation>_
+To achieve this we will use all tools programs give us and make correct decisions like design patters, use convention naming and try to reduce technical debt.
+
+=== 8.9. Testability
+
+Applications should be strongly tested. We will use user histories to make acceptance tests and unit test to test the rest of the application components and states during running process.
+
+We think this is the best way to be sure the project works correctly.

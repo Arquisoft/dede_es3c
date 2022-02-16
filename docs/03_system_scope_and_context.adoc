@@ -1,66 +1,38 @@
 [[section-system-scope-and-context]]
 == System Scope and Context
 
+=== 3.1 Business Context
 
-[role="arc42help"]
-****
-.Contents
-System scope and context - as the name suggests - delimits your system (i.e. your scope) from all its communication partners
-(neighboring systems and users, i.e. the context of your system). It thereby specifies the external interfaces.
+image:https://github.com/Arquisoft/dede_es3c/blob/Sergio/docs/images/Technical%20Context.png["Technical Context diagram"]
 
-If necessary, differentiate the business context (domain specific inputs and outputs) from the technical context (channels, protocols, hardware).
+[options = "header",cols="1,1,1"]
+|===
+| Entity | Input | Output
+| _User_ | _The user will interact with the application through a computer or other device. The user will see the frontend of the application and send requests to the backend_ | _The output is represented in many parts of the system, reaching almost every point in the system_
+| _User Pod_ | _It creates new PODs for users who have not created them, can update the information contained in them, and also handles requests made to it by providing the requested information_ | _Submit the information requested by the application_
+| _Hefesto System_ | _It is the system with which the user interacts, it receives the requests sent by the user through the interface_  | _It processes incoming requests and manages the database so that it is consistent with incoming requests. Once it has the requested information, it shows it to the user via the interface_
+| _Database (MongoDB)_ | _Queries, information requests_ | _Storaged and consistent data responding to the system needs_
+|===
 
-.Motivation
-The domain interfaces and technical interfaces to communication partners are among your system's most critical aspects. Make sure that you completely understand them.
+=== 3.2 Technical Context
 
-.Form
-Various options:
+Our goal is to have an online sales system called DeDe (Decentralized Delivery), that respects customer privacy by following SOLID principles.
+SOLID principles tell us that each user's personal information must be decentralised, and for this we use SOLID PODs.
+SOLID PODs are stores of information outside our system.
+In our system we only store the accesses to the PODs, in order to speed up the reading processes.
+Users have control over who has their information, thus increasing privacy. 
 
-* Context diagrams
-* Lists of communication partners and their interfaces.
-****
+image:https://github.com/Arquisoft/dede_es3c/blob/Developer/docs/images/03-Business%20Context.png["Technical Context diagram"]
 
+[options = "header",cols="1,1"]
+|===
+| Technology | Explication 
+| _MongoDB_ | _We will use it to store the location of the SOLID POD_ 
+| _React_ | _It is a library to help us carry out the project_ 
+| _TypeScript_ | _It is used for program_ 
+| _Grafana and Prometeus_ | _This is used to monitor_
+| _Postman_ | _It is used for testing_
+| _Docker_ |  _Possibility of DeDe to be deployed and launched_
+| _Heroku_ |  _Possibility of DeDe to be deployed and launched_
+|===
 
-=== Business Context
-
-[role="arc42help"]
-****
-.Contents
-Specification of *all* communication partners (users, IT-systems, ...) with explanations of domain specific inputs and outputs or interfaces.
-Optionally you can add domain specific formats or communication protocols.
-
-.Motivation
-All stakeholders should understand which data are exchanged with the environment of the system.
-
-.Form
-All kinds of diagrams that show the system as a black box and specify the domain interfaces to communication partners.
-
-Alternatively (or additionally) you can use a table.
-The title of the table is the name of your system, the three columns contain the name of the communication partner, the inputs, and the outputs.
-****
-
-**<Diagram or Table>**
-
-**<optionally: Explanation of external domain interfaces>**
-
-=== Technical Context
-
-[role="arc42help"]
-****
-.Contents
-Technical interfaces (channels and transmission media) linking your system to its environment. In addition a mapping of domain specific input/output to the channels, i.e. an explanation with I/O uses which channel.
-
-.Motivation
-Many stakeholders make architectural decision based on the technical interfaces between the system and its context. Especially infrastructure or hardware designers decide these technical interfaces.
-
-.Form
-E.g. UML deployment diagram describing channels to neighboring systems,
-together with a mapping table showing the relationships between channels and input/output.
-
-****
-
-**<Diagram or Table>**
-
-**<optionally: Explanation of technical interfaces>**
-
-**<Mapping Input/Output to Channels>**

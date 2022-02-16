@@ -1,75 +1,79 @@
 [[section-introduction-and-goals]]
 == Introduction and Goals
 
-[role="arc42help"]
-****
-Describes the relevant requirements and the driving forces that software architects and development team must consider. These include
+DeDe is an e-Commerce application (online retail system) in which users will be able to select and order products.
 
-* underlying business goals, essential features and functional requirements for the system
-* quality goals for the architecture
-* relevant stakeholders and their expectations
-****
+It follows SOLID principles, guaranteeing the client's privacy.
+
+[role="arc42help"]
 
 === Requirements Overview
 
 [role="arc42help"]
 ****
-.Contents
-Short description of the functional requirements, driving forces, extract (or abstract)
-of requirements. Link to (hopefully existing) requirements documents
-(with version number and information where to find it).
 
-.Motivation
-From the point of view of the end users a system is created or modified to
-improve support of a business activity and/or improve the quality.
+Requirements document:
 
-.Form
-Short textual description, probably in tabular use-case format.
-If requirements documents exist this overview should refer to these documents.
+English: https://arquisoft.github.io/course2122/labAssignmentDescription.html
 
-Keep these excerpts as short as possible. Balance readability of this document with potential redundancy w.r.t to requirements documents.
-****
+Spanish: https://arquisoft.github.io/course2122/labEnunciadoPractica.html
 
-=== Quality Goals
+
+* The system will emulate an online shopping system where end-users can select and order products to buy.
+
+* Once a user selects the products to buy, the system will calculate the delivery costs by looking up the desired address of the end-users in their pods and calculating the costs according to the distance from the distribution center to that address.
+
+* The system will show the final costs of the products to buy and once the user decides to buy them, it will record the event simulating that the sale has been done and it can proceed with the delivery.
+
+* The system will allow the users to visualize the orders done.
+
+* The application should be accessible and deployed using a continuous integration system.
+
+* Allow a user to have more than one shipping address in their pods (e.g. Home, work, Gym, School etc.).
+
+* Add the possibility to include estimation of time people are at a location (e.g. Monday-Thursday work 09.00-18.00) and restrict some of the addresses to be used for delivery at some point in time.
+
+* Add pick-up locations that the delivery services can use. Based on the delivery address the pick-up location could be calculated (this can either be by one of the addresses in the profile or a pick-up location that's on the route of the receiver (e.g. between home and work).
+
+* In order to calculate the delivery costs, external APIs from different carriers could be used and selected, so the users can compare and select the carrier.
+
+* The system can allow some users with administrative roles to visualize statistics about products ordered and monitor the state of orders.
+
+* Implement both a web application and a mobile application.
+
+* Implement an emulator of the delivery system which can notify the users when the products have arrived and keep track of the deliveries.
+
+* Support for different types of actors like customers, managers, administrators, etc. who can do different actions like inventory management, prices changes, items cataloging, etc.
+
+* Add the possibility that there are several distribution centers or warehouses where the products are stored.
+
+* Add the possibility that the users can add or update their address information to their pods directly from the app.
+
+* Add ratings and reviews to products or distribution centers so the users can provide feedback about their experience.
 
 [role="arc42help"]
 ****
-.Contents
-The top three (max five) quality goals for the architecture whose fulfillment is of highest importance to the major stakeholders. We really mean quality goals for the architecture. Don't confuse them with project goals. They are not necessarily identical.
+=== Quality Goals
 
-.Motivation
-You should know the quality goals of your most important stakeholders, since they will influence fundamental architectural decisions. Make sure to be very concrete about these qualities, avoid buzzwords.
-If you as an architect do not know how the quality of your work will be judged …
+[options="header",cols="1,2,2"]
+|===
+|Quality Goal|Motivation|Priority
+| Privacy | The treatment of private information will be decentralized, ensuring customer privacy | High
+| Usability | All users must be able to use it, whether they have previous knowledge about the application or not | High
+| Integrity| Data must be consistent and complete at all times | High
+| Efficiency | Making a purchase should be easy for the user, reducing response and load times | High
+| Testability | Major components should be easily tested and fixed | Medium
+| Modifiability | The architecture must be easy to modify, adding new features or changing existing ones | Medium
+|===
 
-.Form
-A table with quality goals and concrete scenarios, ordered by priorities
-****
 
 === Stakeholders
 
-[role="arc42help"]
-****
-.Contents
-Explicit overview of stakeholders of the system, i.e. all person, roles or organizations that
-
-* should know the architecture
-* have to be convinced of the architecture
-* have to work with the architecture or with code
-* need the documentation of the architecture for their work
-* have to come up with decisions about the system or its development
-
-.Motivation
-You should know all parties involved in development of the system or affected by the system.
-Otherwise, you may get nasty surprises later in the development process.
-These stakeholders determine the extent and the level of detail of your work and its results.
-
-.Form
-Table with role names, person names, and their expectations with respect to the architecture and its documentation.
-****
 
 [options="header",cols="1,2,2"]
 |===
 |Role/Name|Contact|Expectations
-| _<Role-1>_ | _<Contact-1>_ | _<Expectation-1>_
-| _<Role-2>_ | _<Contact-2>_ | _<Expectation-2>_
+| Client | They interact directly with the application. They select the products to purchase and view their order history. | The aim is for the customer to be able to interact with the application intuitively and have a comfortable shopping experience. In addition, their privacy is respected in accordance with the SOLID principles.
+| Administrator | They are in charge of modifying prices, calculating inventories, seeing all orders placed or placing orders with suppliers. | Administrators will be able to access their exclusive functions through a simple login. 
+| Development Team | They are the creators of the application. They can modify, update and improve it. | Develop a complete application that contain the requirements. Learn to work in a team efficiently and learn new technologies.
 |===

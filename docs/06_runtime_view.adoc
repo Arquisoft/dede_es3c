@@ -1,57 +1,200 @@
-[[section-runtime-view]]
-== Runtime View
+== 6 Runtime View
 
+=== 6.1 Register User
 
-[role="arc42help"]
-****
-.Contents
-The runtime view describes concrete behavior and interactions of the system’s building blocks in form of scenarios from the following areas:
-
-* important use cases or features: how do building blocks execute them?
-* interactions at critical external interfaces: how do building blocks cooperate with users and neighboring systems?
-* operation and administration: launch, start-up, stop
-* error and exception scenarios
-
-Remark: The main criterion for the choice of possible scenarios (sequences, workflows) is their *architectural relevance*. It is *not* important to describe a large number of scenarios. You should rather document a representative selection.
-
-.Motivation
-You should understand how (instances of) building blocks of your system perform their job and communicate at runtime.
-You will mainly capture scenarios in your documentation to communicate your architecture to stakeholders that are less willing or able to read and understand the static models (building block view, deployment view).
-
-.Form
-There are many notations for describing scenarios, e.g.
-
-* numbered list of steps (in natural language)
-* activity diagrams or flow charts
-* sequence diagrams
-* BPMN or EPCs (event process chains)
-* state machines
-* ...
-
-****
-
-=== <Runtime Scenario 1>
-
-
-* _<insert runtime diagram or textual description of the scenario>_
-* _<insert description of the notable aspects of the interactions between the
-building block instances depicted in this diagram.>_
-
-It is possible to use a sequence diagram:
-
-[plantuml,"Sequence diagram",png]
+[plantuml,"Register User",png]
 ----
-actor Alice
-actor Bob
-database Pod as "Bob's Pod"
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
-Alice  --> Pod: Store route
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+@startuml
+actor User
+entity WebApp
+entity RestApi
+database USER_POD
+database DataBase
+User-> WebApp : Register
+WebApp-> RestApi : send user data
+RestApi -> USER_POD : store user data
+USER_POD -> RestApi : return data location
+RestApi -> DataBase: store data location
+RestApi -> WebApp: Notify success
+WebApp-> User: Notify success
+@enduml
 ----
-=== <Runtime Scenario 2>
 
-=== ...
+=== 6.2 Login User
+[plantuml,"Login User",png]
+----
+@startuml
+actor User
+entity WebApp
+entity RestApi
+database USER_POD
+database DataBase
+User-> WebApp : Login
+WebApp-> RestApi : send login data
+RestApi -> DataBase : find data location
+RestApi -> USER_POD : load login data
+RestApi -> RestApi : check login data
+RestApi -> WebApp: Notify success
+WebApp-> User: Notify success
+@enduml
+----
 
-=== <Runtime Scenario n>
+=== 6.3 Visualize orders done
+
+[plantuml,"Visualize orders done",png]
+----
+@startuml
+actor User
+entity WebApp
+entity RestApi
+database USER_POD
+database DataBase
+User -> WebApp: Visualize the orders done
+WebApp -> RestApi: Send petition
+RestApi -> USER_POD: Ask for client's information
+USER_POD -> RestApi: Give client's information
+RestApi -> DataBase: Ask for the client's orders
+DataBase -> RestApi: Return the client's orders
+RestApi -> WebApp: Return the orders
+WebApp -> User: Show a list of client orders
+@enduml
+----
+The user presses a button to visualize their previous orders, the WebApp send the petition to the RestApi. The RestApi asks for the client's orders from the user pod.
+User pod returns the client's orders to the RestApi, and the RestApi sends them to the WebApp. The WebApp show a list of client orders.
+
+=== 6.4 Delete a product from the shopping chart
+
+[plantuml,"Delete a product from the shopping cart",png]
+----
+@startuml
+actor User
+entity WebApp
+entity RestApi
+database DataBase
+User -> WebApp: Delete a product
+WebApp -> RestApi: Send petition
+RestApi -> DataBase: Delete product
+DataBase -> RestApi: Return success
+RestApi -> WebApp: Return success
+WebApp -> User: Return success
+@enduml
+----
+The user chooses the product and presses the button to delete it. The WebApp send this petition to the RestApi. The RestApi send the petition to delete a product to the POD, and the POD to the DataBase. Once the product is deleted from the DataBase, success is returned to the client.
+
+=== 6.5 Add products to the shopping cart
+
+[plantuml,"Add Products to the shopping cart",png]
+----
+actor User
+entity Webapp
+entity Restapi
+database Database
+User-> Webapp: Selects a product cattegory
+Webapp -> Restapi : Sends petition 
+Restapi-> Database: Asks for the protucts of the selected cattegory
+Database --> Restapi: Returns the searched products
+Restapi --> Webapp : Returns the searched products
+Webapp --> User: Shows the products
+User-> Webapp: Presses de add button
+Webapp -> Restapi : Sends the added products
+Restapi-> Database: Storages the information so the client can pay anytime
+----
+_The user, identified as a client, selects the cattegory of the product of its choice and the DeDe app returns the filtered products to them. Then, the user can scroll through de app looking for the returned products and press the button "Add to Cart" to add them into the shopping cart and pay for them whenever they want._
+
+=== 6.6 Paying process
+[plantuml,"Paying Process",png]
+----
+actor User
+entity Webapp
+entity Restapi
+database Database
+database UserPod
+User-> Webapp: Presses the pay button
+Webapp -> Restapi: Sends the petition
+Webapp--> User: Takes the client to the paying page
+Restapi-> UserPod: Asks for the client's Address
+UserPod --> Restapi: Returns the client Address
+Restapi -> Restapi : Calculates the shipping price
+Restapi --> Webapp : Returns the calculated data
+Webapp --> User: Returns the shipping price and the final price
+User-> Webapp: Presses the pay button
+Webapp -> Restapi : Sends a petition to save the order data
+Restapi -> Database : Sends a petition to save the order data
+Database -> Database : saves the order data
+Restapi --> Webapp: Returns the order validation
+Webapp --> User: Shows the order validation
+----
+_The user presses the pay button on their shopping cart and the DeDe app takes them to the paying page where they can see the total price to pay in addition to the shipping price previously calculated by the DeDe application after asking the user's pod for their address and calculating the distance from that address to the distribution center. After seeing the final price, the client must press the pay button so the DeDe app registers the order on the database and returns the confirmation_
+
+=== 6.7 (Admin) Delete User
+
+[plantuml,"(Admin) Delete User",png]
+----
+actor Admin
+entity WebApp
+entity RestAPI
+database DataBase
+
+Admin -> WebApp: Request User List
+WebApp -> RestAPI: Request User List
+RestAPI -> DataBase: Request User List
+DataBase -> RestAPI: Give User List
+RestAPI -> WebApp: Represent User List
+Admin -> WebApp: Select User To Remove
+WebApp -> RestAPI: Request Delete User
+RestAPI -> DataBase: Request Delete User
+DataBase -> DataBase: Delete User POD Ubication
+DataBase -> RestAPI: Give Updated User List
+RestAPI -> WebApp: Represent Updated User List
+----
+
+=== 6.8 (Admin) View Item Statistics
+
+[plantuml,"(Admin) View Item Statistics",png]
+----
+actor Admin
+entity WebApp
+entity RestAPI
+database DataBase
+
+Admin -> WebApp: Request Item List
+WebApp -> RestAPI: Request Item List
+RestAPI -> DataBase: Request Item List
+DataBase -> RestAPI: Give Item List
+RestAPI -> WebApp: Display Item List
+Admin -> WebApp: Select Items
+WebApp -> RestAPI: Request Selected Item Statistics
+RestAPI -> DataBase: Request Selected Item Statistics
+DataBase -> RestAPI: Give Selected Item Statistics
+RestAPI -> WebApp: Display Item Statistics
+Admin -> WebApp: Close Selected Item Statistics
+WebApp -> RestAPI: Close Selected Item Statistics
+RestAPI -> WebApp: Display Item List
+----
+
+=== 6.9 (Admin) Monitor Order Status
+
+[plantuml,"(Admin) Monitor Order Status",png]
+----
+actor Admin
+entity WebApp
+entity RestAPI
+database DataBase
+database UserPOD
+
+Admin -> WebApp: Request Order List
+WebApp -> RestAPI: Request Order List
+RestAPI -> DataBase: Request Order List
+DataBase -> RestAPI: Give Order List
+RestAPI -> WebApp: Display Order List
+Admin -> WebApp: Select Order To Display
+WebApp -> RestAPI: Give Selected Order
+RestAPI -> DataBase: Request Order Info.
+DataBase -> RestAPI: Give Order Info.
+RestAPI -> UserPOD: Request User Info.
+UserPOD -> RestAPI: Give User Info.
+RestAPI -> WebApp: Display Order Info.
+Admin -> WebApp: Close Order Info.
+WebApp -> RestAPI: Close Order Info.
+RestAPI -> WebApp: Display Order List
+----
