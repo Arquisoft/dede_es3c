@@ -1,17 +1,33 @@
 [[section-technical-risks]]
 == Risks and Technical Debts
 
+=== Risks
+This is the compilation of the identified risks ordered by priority that we must minimize or avoid.
 
-[role="arc42help"]
-****
-.Contents
-A list of identified technical risks or technical debts, ordered by priority
+* Not having knowledge of the following technologies:
+** SOLID: We may have difficulty following SOLID principles as we have not worked on a SOLID project before and handling decentralized data may be difficult.
+** PODs: We don't have any knowledge about PODs prior to this project, so we need to learn how to keep user information secure and private, which can take considerable time.
+** React: We have never used it, so we must learn during the project.
+** MongoDB: We may run into difficulties using a NoSQL database, as we have experience only using SQL databases, which can cause delays while we learn how to use it.
+** Grafana and Prometeus: We have never used these tools to monitor a project and we need to adapt to them.
+** Postman: We have never used this testing tool.
+** Node.js: We don't know how to use it.
+** Heroku: It costs time to adapt to it due to we have never used it.
+** Docker: We have to learn how to use it.
+** Express: We may have some dificulties, we need to learn about it.
+** Bootstrap: We have to learn about this style library. It will cost some time.
+** TypeScript: Some members of the group have some knowledge of JavaScript, and since TypeScript is similar to JavaScript, it won't be too difficult to adapt, although it will take time to learn this language.
+* Have low knowledge in the following technologies:
+** Git: We have little knowledge about using Git, so we can easily go wrong.
 
-.Motivation
-“Risk management is project management for grown-ups” (Tim Lister, Atlantic Systems Guild.) 
+* Abandonment of a member: if a member leaves the group, it would mean redistributing the work, suddenly having more workload for the members who remain. 
 
-This should be your motto for systematic detection and evaluation of risks and technical debts in the architecture, which will be needed by management stakeholders (e.g. project managers, product owners) as part of the overall risk analysis and measurement planning.
 
-.Form
-List of risks and/or technical debts, probably including suggested measures to minimize, mitigate or avoid risks or reduce technical debts.
-****
+==== Minimize or avoid risks
+
+* To minimize the risk of not knowing the technologies or having a basic understanding of them, we seek information and practice using them.
+
+* To minimize the possibility of a team member leaving, we need to have good communication and help each other.
+
+
+=== Technical debts
