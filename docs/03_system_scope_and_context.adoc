@@ -22,7 +22,7 @@ SOLID PODs are stores of information outside our system.
 In our system we only store the accesses to the PODs, in order to speed up the reading processes.
 Users have control over who has their information, thus increasing privacy. 
 
-image:https://github.com/Arquisoft/dede_es3c/blob/Sonia/docs/images/03-Technical%20Context.png["Technical Context diagram"]
+image:https://github.com/Arquisoft/dede_es3c/blob/Sonia/docs/images/03-Business%20Context.png["Technical Context diagram"]
 
 [options = "header",cols="1,1"]
 |===
