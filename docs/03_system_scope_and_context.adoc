@@ -5,7 +5,7 @@
 
 image:https://github.com/Arquisoft/dede_es3c/blob/Sergio/docs/images/Technical%20Context.png["Technical Context diagram"]
 
-[options = "header",cols="1,1"]
+[options = "header",cols="1,1,1"]
 |===
 | Entity | Input | Output
 | User | The user will interact with the application through a computer or other device. The user will see the frontend of the application and send requests to the backend | The output is represented in many parts of the system, reaching almost every point in the system
@@ -22,7 +22,7 @@ In our system we only store the accesses to the PODs, in order to speed up the r
 Users have control over who has their information, thus increasing privacy. 
 
 
-[options = "header",cols="1,1,1"]
+[options = "header",cols="1,1"]
 |===
 | Technology | Explication 
 | MongoDB | We will use it to store the location of the SOLID POD 
