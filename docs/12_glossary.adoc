@@ -8,15 +8,24 @@
 [options="header"]
 |===
 | Term         | Definition
-| POD     | Personal Online Datastore. Allows its users store every kind of personal data and manage the external access.
-| Frontend    | Part of the application that defines the user interface and is on charge of interacting with the user and send the information and petitions to the Backend 
-| Backend    | Part of the application that implements the logical business and interacts with both the frontend and the database
-| ACID    | Acronym that refers to the set of 4 key properties that define a transaction: Atomicity (The transaction can be commited or rollbacked), Consistency (the data must be coherent), Isolation (multiple transactions should be able to execute at the same time without interfering with each other) , and Durability (The changes must be persistent).
-| Privacy    | The right of not sharing information if the user decides so
-| Efficiency    | Hability of working fast consuming the least amount of resources
-| Testability | Hability of something to be tested as an experiment and make decisions with the obtained results
-| Modifiability | The hability of something to be modified easily.
-| Usability | The hability of something to be easily used by the biggest part of users
-| Integrity | The hability of being in a consistent state. 
+| _POD_     | _Personal Online Datastore. Allows its users store every kind of personal data and manage the external access_
+| _Frontend_    | _Part of the application that defines the user interface and is on charge of interacting with the user and send the information and petitions to the Backend_
+| _Backend_    | _Part of the application that implements the logical business and interacts with both the frontend and the database_
+| _ACID_    | _Acronym that refers to the set of 4 key properties that define a transaction: Atomicity (The transaction can be commited or rollbacked), Consistency (the data must be coherent), Isolation (multiple transactions should be able to execute at the same time without interfering with each other) , and Durability (The changes must be persistent)_
+| _Privacy_    | _The right of not sharing information if the user decides so_
+| _Efficiency_    | _Hability of working fast consuming the least amount of resources_
+| _Testability_ | _Hability of something to be tested as an experiment and make decisions with the obtained results_
+| _Modifiability_ | _The hability of something to be modified easily_
+| _Usability_ | _The hability of something to be easily used by the biggest part of users_
+| _Integrity_ | _The hability of being in a consistent state_ 
+| _Continuous integration system_ | _The practice of making automatic integrations to a project in order to detect errors prematurely_
+| _Hosting service_ | _Service where Web pages are hosted_
+| _API_ | _Application Programming Interface. A set of routines and methods provided by a library for use by other software_
+| _Web application_ | _Tools that a user can use by accessing a web server_
+| _Mobile application_ | _Tools that a user can use by accessing an application on a mobile device_
+| _SOLID_ | _Web data decentralisation project_
+| _Open Source_| _Software development model based on open collaboration_
+| _Decentralised data warehouse (DeDe)_ | _Collection of centrally available data stores maintained by individual regions_
+| _Superset_ | _A language that is a subset of another language, fully compatible with that language_
 |===
 ****
