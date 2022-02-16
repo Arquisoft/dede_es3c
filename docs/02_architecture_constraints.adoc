@@ -1,10 +1,6 @@
 [[section-architecture-constraints]]
 == 2. Architecture Constraints
 
-
-[role="arc42help"]
-****
-
 === 2.1. Technical constraints
 
 |===
@@ -41,5 +37,3 @@
 |MVC|We will follow MVC conventions in naming and layer separation
 |W3C AAA|Our application will follow AAA conventions. This allow us to make the aplication more usable to everybody
 |===
-
-****
