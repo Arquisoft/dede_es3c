@@ -5,7 +5,7 @@
 [role="arc42help"]
 ****
 
-## 2.1 Technical constraints
+2.1 Technical constraints
 |===
 |Constraint|Explanation
 |React|We will use the React Framework for the UI (User Interface). This ir a requirement
@@ -19,7 +19,7 @@
 |Node.js|Based on JavaScript, is a backend technology wich allows us to execute our code
 |===
 
-## 2.2 Organizational and political constraints
+2.2 Organizational and political constraints
 |===
 |Constraint|Explanation
 |Team and meetings|This is a course application. Development team consist in 5 (five) people with a very limited experience in techonolgies used in the project. Is our first time working together, so some organizational decisions could be not as agile or accurate as they could. Also we don't have the same class schedule so find a room for a meeting could be difficult sometimes
@@ -27,7 +27,7 @@
 |Other work|All of us have other subjects that take time
 |===
 
-## 2.3 Conventions
+2.3 Conventions
 |===
 |Constraint|Explanation
 |Aesthetic and ease of use|The UI (User Interface) has to be aesthetic and easy to use. Both of them are very important criteria in our application, so all of our decisions need to have this in mind

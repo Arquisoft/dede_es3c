@@ -1,11 +1,11 @@
 [[section-building-block-view]]
 
-== Building Block View
+=== Building Block View
 
 [role="arc42help"]
 ****
 
-== Whitebox Overall System
+=== Whitebox Overall System
 
 image:https://github.com/Arquisoft/dede_es3c/blob/Alejandro/docs/images/5_1_Building_Block_View_Level_1.png["Building block view - Whitebox Overall System"]
 
@@ -13,6 +13,7 @@ image:https://github.com/Arquisoft/dede_es3c/blob/Alejandro/docs/images/5_1_Buil
 ****
 
 We have two types of actors interacting with the application:
+
   - User: Is the owner of his POD. He interacts with the system through user view (this view will be explained in level 2).
   - Administrator: He interacts with the system via admin view (this view will be explained in level 2).
 
