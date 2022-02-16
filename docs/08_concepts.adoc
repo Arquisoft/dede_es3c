@@ -3,7 +3,18 @@
 
 === 8.1 Domain model
 
+[options="header",cols="1,2,2"]
+|===
+|Name|Description
+| Client | User who choose and buy products
+| POD | User's information
+| Order | Keep a list of the products that the customer has ordered.
+| Product | Contains information about a product, such as name and price.
+| ProductInOrder | Product associated with an order, saves the quantity that the customer wants of the product.
+| Distribution Center | Place from where the products are distributed, contains the address of the distribution center.
+|===
+
+image:https://github.com/Arquisoft/dede_es3c/blob/Nuria/docs/images/08_umldiagram.png["Domain Model - UML Diagram"]
 === 8.2. Persistence
 
 At the beginning there was a debate about whether it was better to use SQL or NoSQL for persistence. After some discussion it was concluded that the best option for this problem is NoSQL. To be more specific MongoDB, which is a NoSQL document database. We will use a NoSQL database as opposed to a SQL database, because our model encompasses many products. These products have several attributes which are very different. For example, a power supply differs in many ways from a graphics card. Because there are so many items, we believe it is best to use a NoSQL DB.
-
