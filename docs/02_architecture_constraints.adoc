@@ -22,6 +22,7 @@
 
 === 2.2 Organizational and political constraints
 
+
 |===
 |Constraint|Explanation
 |Team and meetings|This is a course application. Development team consist in 5 (five) people with a very limited experience in techonolgies used in the project. Is our first time working together, so some organizational decisions could be not as agile or accurate as they could. Also we don't have the same class schedule so find a room for a meeting could be difficult sometimes
