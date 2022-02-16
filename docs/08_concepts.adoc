@@ -19,3 +19,10 @@ image:https://github.com/Arquisoft/dede_es3c/blob/Nuria/docs/images/08_umldiagra
 === 8.2. Persistence
 
 At the beginning there was a debate about whether it was better to use SQL or NoSQL for persistence. After some discussion it was concluded that the best option for this problem is NoSQL. To be more specific MongoDB, which is a NoSQL document database. We will use a NoSQL database as opposed to a SQL database, because our model encompasses many products. These products have several attributes which are very different. For example, a power supply differs in many ways from a graphics card. Because there are so many items, we believe it is best to use a NoSQL DB.
+
+=== 8.3. User interface_
+
+_DeDe user interface is desinged to give every user an intuitive and familiar experience related using the React framework combined with TypeScript as constraints. We follow the usual standards of e-commerce online sites to make the navigation closer to what most of the people already know. Also, the interface is meant to pass the AAA validation so we make sure it's usable for almost everyone_
+
+image:https://github.com/Arquisoft/dede_es3c/blob/Sonia/docs/images/dede%homepage.png["HomePage Prototype"]
+image:https://github.com/Arquisoft/dede_es3c/blob/Sonia/docs/images/dede%homepage.png["DeDe-Small-Windows-Prototypes"]
