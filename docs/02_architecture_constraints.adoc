@@ -5,7 +5,7 @@
 [role="arc42help"]
 ****
 
-=== 2.1 Technical constraints
+=== 2.1. Technical constraints
 
 |===
 |Constraint|Explanation
@@ -20,8 +20,7 @@
 |Node.js|Based on JavaScript, is a backend technology wich allows us to execute our code
 |===
 
-=== 2.2 Organizational and political constraints
-
+=== 2.2. Organizational and political constraints
 
 |===
 |Constraint|Explanation
@@ -30,7 +29,7 @@
 |Other work|All of us have other subjects that take time
 |===
 
-=== 2.3 Conventions
+=== 2.3. Conventions
 
 |===
 |Constraint|Explanation
@@ -42,3 +41,5 @@
 |MVC|We will follow MVC conventions in naming and layer separation
 |W3C AAA|Our application will follow AAA conventions. This allow us to make the aplication more usable to everybody
 |===
+
+****
