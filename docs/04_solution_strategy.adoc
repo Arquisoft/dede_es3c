@@ -1,24 +1,49 @@
 [[section-solution-strategy]]
 == Solution Strategy
 
-
 [role="arc42help"]
-****
-.Contents
-A short summary and explanation of the fundamental decisions and solution strategies, that shape the system's architecture. These include
 
-* technology decisions
-* decisions about the top-level decomposition of the system, e.g. usage of an architectural pattern or design pattern
-* decisions on how to achieve key quality goals
-* relevant organizational decisions, e.g. selecting a development process or delegating certain tasks to third parties.
+=== 4.1. Technology decisions
 
-.Motivation
-These decisions form the cornerstones for your architecture. They are the basis for many other detailed decisions or implementation rules.
+The technologies we have decided to use for the development of the app are:
 
-.Form
-Keep the explanation of these key decisions short.
+- React: React is an open source library, which makes it easy for us to program user interfaces. React is responsible for rendering and updating the components of our interfaces in the best way.
 
-Motivate what you have decided and why you decided that way,
-based upon your problem statement, the quality goals and key constraints.
-Refer to details in the following sections.
-****
+- Node.js: It was created to be used in JavaScript, specialising in the use of asynchronous events. Thanks to Node.js, the use of these events is much easier. This technology is more focused on the management and creation of scalable network applications.
+
+- SOLID: SOLID provides the user with the peace of mind of knowing that their data is safe and decentralized. As well as giving them the ability to provide their data to other entities very quickly and easily.
+
+- TypeScript: TypeScript is a superset of JavaScript, meaning that it contains all of the functionality of JavaScript and then some.
+
+- GitHub: It is a version management system.
+
+- MongoDB: MongoDB is open source software, which is a NoSQL document database, we use NoSQL as it gives us the ability to work with many different data without spending so much time modeling these elements.
+
+- Heroku: Heroku is a cloud server which we will use to deploy our App. Heroku makes it easy to deploy and scale Node.js applications. Run any recent version of Node.js. Deploy apps in seconds using dependency caching.
+
+- Docker: We will use it to launch the application in a container of the technologies we need to carry out the DeDe. 
+
+- Express: Express is Node's most popular web framework, providing basic mechanisms for Node. 
+
+- Bootstrap: Bootstrap is a style library, which we will use for the frontend.
+
+- Prometheus: Prometheus is open source software, which gives us the ability to monitor our system through a wide range of available tools. This data is stored together with a time instance, with which we manage to have a fairly accurate record of the events that occur in our system.
+
+- Grafana: Grafana is an open source software which allows us to analyze, consult, visualize, alert and explore the metrics, records and monitoring of our system. With this data we can make interesting graphs and visualizations.
+
+- Postman: Postman is an open source software which offers us the necessary help to build, use and test APIs, making the steps easier.
+
+=== 4.2. Decisions about the top-level decomposition of the system
+
+- On the frontend we are going to use the Redux pattern. This pattern was created initially to be used in React, so it optimizes the loading of components since it only reloads the modified components, it will also help us in passing information between components by storing the state of each component in an easily accessible way.
+
+- In the backend part we are going to use the MVC pattern (model, view, controller) this pattern is one of the most used for this part of the application. The pattern will be used without the view part as this part would be the WebApp. 
+
+=== 4.3. Decisions to achieve quality goals
+
+To try to achieve all the proposed quality objectives, we will strive to obtain very good accessibility with a help system for people who need it. We will also focus on making an accessible and adaptable website following the AAA level. To improve the privacy of the users we will use SOLID POD, which decentralizes the personal information of each user. We will store only the location of this data, managing to improve security since we do not have sensitive data of the users.
+
+=== 4.4. Organizational decisions
+
+We will try to hold weekly meetings via Teams, in addition to the meeting classes of the subject, for minor doubts and fluid communication we use WhatsApp. We also communicate via GitHub through the Issues, we determine the work of each member and update these tasks in a Kanban board with the already mentioned Issues.
+
