@@ -82,6 +82,4 @@ WebApp -> User: Return success
 ----
 The user chooses the product and presses the button to delete it. The WebApp send this petition to the RestApi. The RestApi send the petition to delete a product to the POD, and the POD to the DataBase. Once the product is deleted from the DataBase, success is returned to the client.
 
-=== <Runtime Scenario n>
-=======
 
