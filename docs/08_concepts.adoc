@@ -91,7 +91,7 @@ TODO
 
 === 8.7 Code Quality standards
 
-Code quality standars allows us to make an understable, maintainable and reusable code for future revisions and changes. Code should allways have a correct structure to be easily understandable.
+Code quality standars allows us to make an understable, maintainable and reusable code for future revisions and changes. Code should always have a correct structure to be easily understandable.
 
 To achieve this we will use all tools programs give us and make correct decisions like design patters, use convention naming and try to reduce technical debt.
 
