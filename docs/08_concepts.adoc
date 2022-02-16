@@ -69,7 +69,7 @@ _<explanation>_
 
 === 8.3. Internazionalization
 
-The application will potentially deal with various locations and people, so make a multi-languaje application looks like the best decision. This decision must be done since the begining of the desing (lately will cost a lot of resources).
+The application will potentially deal with various locations and people, so make a multi-language application looks like the best decision. This decision must be done since the begining of the desing (lately will cost a lot of resources).
 
 This allows us to reach a bigger audience and make the application more accesible.
 
