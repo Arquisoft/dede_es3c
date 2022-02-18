@@ -1,10 +1,6 @@
 [[section-design-decisions]]
 == Design Decisions
 
-
-[role="arc42help"]
-****
-
 |===
 |Decision|Details|Advantages|Disadvantages
 |Internazionalization|We will develop the documentation in english and the application in english and spanish|With this internazionalization we improve accesibility a lot|Time can be a factor to consider and make two language internazionalization can use a lot of time
@@ -12,5 +8,3 @@
 |Frameworks|We will choose REACT framework to develop application frontend|We can use it to facilitate the implementation|Is a new technology to us so we need to improve our knowledge about it
 |Data Base|We choosed MongoDB to store all the information|MongoDB allows us to make an easier implementation|Is a new technology to us so we need to improbe our kownledge about it
 |===
-
-****
