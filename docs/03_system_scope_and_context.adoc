@@ -3,7 +3,7 @@
 
 === 3.1 Business Context
 
-image:https://github.com/Arquisoft/dede_es3c/blob/Sergio/docs/images/Technical%20Context.png["Technical Context diagram"]
+image:03-Business_Context.png["Business Context diagram"]
 
 [options = "header",cols="1,1,1"]
 |===

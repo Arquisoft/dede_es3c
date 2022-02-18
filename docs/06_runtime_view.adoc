@@ -20,8 +20,10 @@ WebApp-> User: Notify success
 @enduml
 ----
 
+This runtime view shows the process of registering a user, going through WebApp and ApiRest to the user POD and storing the location in the database.
+
 === Login User
-[plantuml,"Login User",png]
+
 ----
 @startuml
 actor User
@@ -38,6 +40,8 @@ RestApi -> WebApp: Notify success
 WebApp-> User: Notify success
 @enduml
 ----
+
+This runtime view shows the login process of a user, going through WebApp and ApiRest to the user POD, via the location stored in the database.
 
 === Visualize orders done
 
@@ -102,7 +106,6 @@ Restapi-> Database: Storages the information so the client can pay anytime
 _The user, identified as a client, selects the cattegory of the product of its choice and the DeDe app returns the filtered products to them. Then, the user can scroll through de app looking for the returned products and press the button "Add to Cart" to add them into the shopping cart and pay for them whenever they want._
 
 === Paying process
-
 [plantuml,"Paying Process",png]
 ----
 actor User
