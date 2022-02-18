@@ -1,16 +1,11 @@
-[[section-introduction-and-goals]]
 == Introduction and Goals
 
 DeDe is an e-Commerce application (online retail system) in which users will be able to select and order products.
 
 It follows SOLID principles, guaranteeing the client's privacy.
 
-[role="arc42help"]
-
 === Requirements Overview
 
-[role="arc42help"]
-****
 
 Requirements document:
 
@@ -51,8 +46,6 @@ Spanish: https://arquisoft.github.io/course2122/labEnunciadoPractica.html
 
 * Add ratings and reviews to products or distribution centers so the users can provide feedback about their experience.
 
-[role="arc42help"]
-****
 === Quality Goals
 
 [options="header",cols="1,2,2,1"]
