@@ -1,7 +1,7 @@
 [[section-system-scope-and-context]]
 == System Scope and Context
 
-=== 3.1 Business Context
+=== Business Context
 
 image:03-Business_Context.png["Business Context diagram"]
 
@@ -14,7 +14,7 @@ image:03-Business_Context.png["Business Context diagram"]
 | _Database (MongoDB)_ | _Queries, information requests_ | _Storaged and consistent data responding to the system needs_
 |===
 
-=== 3.2 Technical Context
+=== Technical Context
 
 Our goal is to have an online sales system called DeDe (Decentralized Delivery), that respects customer privacy by following SOLID principles.
 SOLID principles tell us that each user's personal information must be decentralised, and for this we use SOLID PODs.
@@ -22,7 +22,7 @@ SOLID PODs are stores of information outside our system.
 In our system we only store the accesses to the PODs, in order to speed up the reading processes.
 Users have control over who has their information, thus increasing privacy. 
 
-image:https://github.com/Arquisoft/dede_es3c/blob/Developer/docs/images/03-Business%20Context.png["Technical Context diagram"]
+image:03-Technical-Context.png["Technical Context diagram"]
 
 [options = "header",cols="1,1"]
 |===
