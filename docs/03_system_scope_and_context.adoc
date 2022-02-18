@@ -3,7 +3,7 @@
 
 === Business Context
 
-image:Technical%20Context.png["Technical Context diagram"]
+image:03-Business_Context.png["Business Context diagram"]
 
 [options = "header",cols="1,1,1"]
 |===
@@ -23,7 +23,6 @@ In our system we only store the accesses to the PODs, in order to speed up the r
 Users have control over who has their information, thus increasing privacy. 
 
 image:03-Technical-Context.png["Technical Context diagram"]
-=======
 
 [options = "header",cols="1,1"]
 |===
