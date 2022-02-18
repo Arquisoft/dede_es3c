@@ -1,10 +1,5 @@
-[[section-glossary]]
 == Glossary
 
-
-
-[role="arc42help"]
-****
 [options="header"]
 |===
 | Term         | Definition
@@ -29,4 +24,3 @@
 | _Web application_ | _Tools that a user can use by accessing a web server_
 
 |===
-****
