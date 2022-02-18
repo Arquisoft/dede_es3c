@@ -1,4 +1,3 @@
-[[section-solution-strategy]]
 == Solution Strategy
 
 === Technology decisions
