@@ -55,15 +55,15 @@ Spanish: https://arquisoft.github.io/course2122/labEnunciadoPractica.html
 ****
 === Quality Goals
 
-[options="header",cols="1,2,2"]
+[options="header",cols="1,2,2,1"]
 |===
-|Quality Goal|Motivation|Priority
-| Privacy | The treatment of private information will be decentralized, ensuring customer privacy | High
-| Usability | All users must be able to use it, whether they have previous knowledge about the application or not | High
-| Integrity| Data must be consistent and complete at all times | High
-| Efficiency | Making a purchase should be easy for the user, reducing response and load times | High
-| Testability | Major components should be easily tested and fixed | Medium
-| Modifiability | The architecture must be easy to modify, adding new features or changing existing ones | Medium
+|Quality Goal|Motivation|Development Team Priority | Client Prority
+| Privacy | The treatment of private information will be decentralized, ensuring customer privacy | High | High
+| Usability | All users must be able to use it, whether they have previous knowledge about the application or not | High | High
+| Integrity| Data must be consistent and complete at all times | High | Medium
+| Efficiency | Making a purchase should be easy for the user, reducing response and load times | High | High
+| Testability | Major components should be easily tested and fixed | Medium | Medium
+| Modifiability | The architecture must be easy to modify, adding new features or changing existing ones | Medium | Medium
 |===
 
 
