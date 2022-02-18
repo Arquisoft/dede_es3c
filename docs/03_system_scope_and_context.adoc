@@ -1,13 +1,17 @@
 [[section-system-scope-and-context]]
 == System Scope and Context
 
+=== 3.1 Business Context
 
-[role="arc42help"]
+image:https://github.com/Arquisoft/dede_es3c/blob/Sergio/docs/images/Technical%20Context.png["Technical Context diagram"]
 
-=== Business Context
-
-[role="arc42help"]
-****
+[options = "header",cols="1,1,1"]
+|===
+| Entity | Input | Output
+| User | The user will interact with the application through a computer or other device. The user will see the frontend of the application and send requests to the backend | The output is represented in many parts of the system, reaching almost every point in the system
+| User Pod | It creates new PODs for users who have not created them, can update the information contained in them, and also handles requests made to it by providing the requested information | Submit the information requested by the application 
+| Hefesto System | It is the system with which the user interacts, it receives the requests sent by the user through the interface  | It processes incoming requests and manages the database so that it is consistent with incoming requests. Once it has the requested information, it shows it to the user via the interface
+|===
 
 [options="header",cols="1,2,2"]
 |===
@@ -20,13 +24,23 @@
 | _Heroku_ | _Deployment Server_ | _Possibility of DeDe to be deployed and launched_
 |===
 
-****
+=== 3.2 Technical Context
 
-=== Technical Context
+Our goal is to have an online sales system called DeDe (Decentralized Delivery), that respects customer privacy by following SOLID principles.
+SOLID principles tell us that each user's personal information must be decentralised, and for this we use SOLID PODs.
+SOLID PODs are stores of information outside our system.
+In our system we only store the accesses to the PODs, in order to speed up the reading processes.
+Users have control over who has their information, thus increasing privacy. 
 
 image:https://github.com/Arquisoft/dede_es3c/blob/Sonia/docs/images/03-Technical%20Context.png["Technical Context diagram"]
 
-[role="arc42help"]
-****
+[options = "header",cols="1,1"]
+|===
+| Technology | Explication 
+| MongoDB | We will use it to store the location of the SOLID POD 
+| React | It is a library to help us carry out the project 
+| TypeScript | It is used for program 
+| Grafana and Prometeus | This is used to monitor 
+| Postman | It is used for testing 
+|===
 
-****
