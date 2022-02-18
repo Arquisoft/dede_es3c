@@ -3,7 +3,7 @@
 
 === Business Context
 
-image:Business_Context["Business Context diagram"]
+image:Business_Context.png["Business Context diagram"]
 
 [options = "header",cols="1,1,1"]
 |===
