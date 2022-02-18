@@ -493,11 +493,35 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel2">
 <li><a href="#_infrastructure_level_1">7.1. Infrastructure Level 1</a></li>
 <li><a href="#_infrastructure_level_2">7.2. Infrastructure Level 2</a></li>
-<li><a href="#_domain_model">7.3. Domain model</a></li>
-<li><a href="#_persistence">7.4. Persistence</a></li>
-<li><a href="#_user_interface">7.5. User interface</a></li>
 </ul>
 </li>
+<li><a href="#_domain_model">8. Domain model</a>
+<ul class="sectlevel2">
+<li><a href="#_persistence">8.1. Persistence</a></li>
+<li><a href="#_user_interface">8.2. User interface</a></li>
+<li><a href="#_internazionalization">8.3. Internazionalization</a></li>
+<li><a href="#_security">8.4. Security</a></li>
+<li><a href="#_additional_libraries">8.5. Additional libraries</a></li>
+<li><a href="#_archiutecture_and_design_patterns">8.6. Archiutecture and design patterns</a></li>
+<li><a href="#_code_quality_standards">8.7. Code Quality standards</a></li>
+<li><a href="#_testability">8.8. Testability</a></li>
+</ul>
+</li>
+<li><a href="#_design_decisions">9. Design Decisions</a></li>
+<li><a href="#_quality_requirements">10. Quality Requirements</a>
+<ul class="sectlevel2">
+<li><a href="#_quality_tree">10.1. Quality Tree</a></li>
+<li><a href="#_quality_scenarios">10.2. Quality Scenarios</a></li>
+</ul>
+</li>
+<li><a href="#_risks_and_technical_debts">11. Risks and Technical Debts</a>
+<ul class="sectlevel2">
+<li><a href="#_risks">11.1. Risks</a></li>
+<li><a href="#_minimize_or_avoid_risks">11.2. Minimize or avoid risks</a></li>
+<li><a href="#_technical_debts">11.3. Technical debts</a></li>
+</ul>
+</li>
+<li><a href="#_glossary">12. Glossary</a></li>
 </ul>
 </div>
 </div>
@@ -1208,8 +1232,11 @@ As we can see in the following image, we are going to use Heroku to deploy the a
 </div>
 <div style="page-break-after: always;"></div>
 </div>
-<div class="sect2">
-<h3 id="_domain_model">7.3. Domain model</h3>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_domain_model">8. Domain model</h2>
+<div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 20%;">
@@ -1244,15 +1271,14 @@ As we can see in the following image, we are going to use Heroku to deploy the a
 <div class="paragraph">
 <p><span class="image"><img src="./images/08_umldiagram.png" alt="Domain Model - UML Diagram"></span></p>
 </div>
-</div>
 <div class="sect2">
-<h3 id="_persistence">7.4. Persistence</h3>
+<h3 id="_persistence">8.1. Persistence</h3>
 <div class="paragraph">
 <p>At the beginning there was a debate about whether it was better to use SQL or NoSQL for persistence. After some discussion it was concluded that the best option for this problem is NoSQL. To be more specific MongoDB, which is a NoSQL document database. We will use a NoSQL database as opposed to a SQL database, because our model encompasses many products. These products have several attributes which are very different. For example, a power supply differs in many ways from a graphics card. Because there are so many items, we believe it is best to use a NoSQL DB.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_user_interface">7.5. User interface</h3>
+<h3 id="_user_interface">8.2. User interface</h3>
 <div class="paragraph">
 <p><em>DeDe user interface is desinged to give every user an intuitive and familiar experience related using the React framework combined with TypeScript as constraints. We follow the usual standards of e-commerce online sites to make the navigation closer to what most of the people already know. Also, the interface is meant to pass the AAA validation so we make sure it&#8217;s usable for almost everyone</em></p>
 </div>
@@ -1260,47 +1286,45 @@ As we can see in the following image, we are going to use Heroku to deploy the a
 <p><span class="image"><img src="./images/08_UI-Homepage.png" alt="Homepage prototype"></span>
 <span class="image"><img src="./images/08_UI-OtherWindows.png" alt="Other Functionalities"></span></p>
 </div>
-<div class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p>=== Internazionalization</p>
 </div>
+<div class="sect2">
+<h3 id="_internazionalization">8.3. Internazionalization</h3>
 <div class="paragraph">
 <p>The application will potentially deal with various locations and people, so make a multi-language application looks like the best decision. This decision must be done since the begining of the desing (lately will cost a lot of resources).</p>
 </div>
 <div class="paragraph">
 <p>This allows us to reach a bigger audience and make the application more accesible.</p>
 </div>
-<div class="paragraph">
-<p>=== Security</p>
 </div>
+<div class="sect2">
+<h3 id="_security">8.4. Security</h3>
 <div class="paragraph">
 <p>Security is a key aspect of our software (and almost all) project. We will follow SOLID as recommendation to store our customers data and we will manage the data base to be always in a consistent state.</p>
 </div>
-<div class="paragraph">
-<p>=== Additional libraries</p>
 </div>
-<div class="paragraph">
-<p>TODO</p>
-</div>
-<div class="paragraph">
-<p>=== Archiutecture and design patterns</p>
-</div>
+<div class="sect2">
+<h3 id="_additional_libraries">8.5. Additional libraries</h3>
 <div class="paragraph">
 <p>TODO</p>
 </div>
-<div class="paragraph">
-<p>=== Code Quality standards</p>
 </div>
+<div class="sect2">
+<h3 id="_archiutecture_and_design_patterns">8.6. Archiutecture and design patterns</h3>
+<div class="paragraph">
+<p>TODO</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_code_quality_standards">8.7. Code Quality standards</h3>
 <div class="paragraph">
 <p>Code quality standars allows us to make an understable, maintainable and reusable code for future revisions and changes. Code should always have a correct structure to be easily understandable.</p>
 </div>
 <div class="paragraph">
 <p>To achieve this we will use all tools programs give us and make correct decisions like design patters, use convention naming and try to reduce technical debt.</p>
 </div>
-<div class="paragraph">
-<p>=== Testability</p>
 </div>
+<div class="sect2">
+<h3 id="_testability">8.8. Testability</h3>
 <div class="paragraph">
 <p>Applications should be strongly tested. We will use user histories to make acceptance tests and unit test to test the rest of the application components and states during running process.</p>
 </div>
@@ -1308,9 +1332,12 @@ As we can see in the following image, we are going to use Heroku to deploy the a
 <p>We think this is the best way to be sure the project works correctly.</p>
 </div>
 <div style="page-break-after: always;"></div>
-<div class="paragraph">
-<p>== Design Decisions</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_design_decisions">9. Design Decisions</h2>
+<div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -1352,15 +1379,19 @@ As we can see in the following image, we are going to use Heroku to deploy the a
 </tbody>
 </table>
 <div style="page-break-after: always;"></div>
-<div class="paragraph">
-<p>== Quality Requirements</p>
 </div>
-<div class="paragraph">
-<p>=== Quality Tree</p>
 </div>
+<div class="sect1">
+<h2 id="_quality_requirements">10. Quality Requirements</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_quality_tree">10.1. Quality Tree</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_quality_scenarios">10.2. Quality Scenarios</h3>
 <div class="paragraph">
-<p>=== Quality Scenarios
-<span class="image"><img src="./images/10_Quality-Requirements.png" alt="Quality Requirements"></span></p>
+<p><span class="image"><img src="./images/10_Quality-Requirements.png" alt="Quality Requirements"></span></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -1410,12 +1441,16 @@ As we can see in the following image, we are going to use Heroku to deploy the a
 <p>This quality requirements are priorized and more described in the epigraph 1</p>
 </div>
 <div style="page-break-after: always;"></div>
-<div class="paragraph">
-<p>== Risks and Technical Debts</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_risks_and_technical_debts">11. Risks and Technical Debts</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_risks">11.1. Risks</h3>
 <div class="paragraph">
-<p>=== Risks
-This is the compilation of the identified risks ordered by priority that we must minimize or avoid.</p>
+<p>This is the compilation of the identified risks ordered by priority that we must minimize or avoid.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1477,9 +1512,9 @@ This is the compilation of the identified risks ordered by priority that we must
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>=== Minimize or avoid risks</p>
 </div>
+<div class="sect2">
+<h3 id="_minimize_or_avoid_risks">11.2. Minimize or avoid risks</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1490,13 +1525,16 @@ This is the compilation of the identified risks ordered by priority that we must
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>=== Technical debts</p>
 </div>
+<div class="sect2">
+<h3 id="_technical_debts">11.3. Technical debts</h3>
 <div style="page-break-after: always;"></div>
-<div class="paragraph">
-<p>== Glossary</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_glossary">12. Glossary</h2>
+<div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -1606,9 +1644,6 @@ software and system architecture.</p>
 We acknowledge that this document uses material from the
 arc 42 architecture template, <a href="http://www.arc42.de" class="bare">http://www.arc42.de</a>.
 Created by Dr. Peter Hruschka &amp; Dr. Gernot Starke.</p>
-</div>
-</div>
-</div>
 </div>
 </div>
 </div>
