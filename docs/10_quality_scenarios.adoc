@@ -8,7 +8,7 @@
 
 [role="arc42help"]
 ****
-image:https://github.com/Arquisoft/dede_es3c/blob/Sonia/docs/images/Quality%20Requirements.png["Business diagram"]
+ image:Quality-Requirements.png["TQuality Requirements"]
 ****
 
 === Quality Scenarios
