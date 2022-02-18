@@ -1,7 +1,7 @@
 [[section-runtime-view]]
 == Runtime View
 
-=== 6.2 Register User
+=== Register User
 
 [plantuml,"Sequence diagram",png]
 ----
@@ -20,8 +20,9 @@ RestApi -> WebApp: Notify success
 WebApp-> User: Notify success
 @enduml
 ----
+This runtime view shows the process of registering a user, going through WebApp and ApiRest to the user POD and storing the location in the database.
 
-=== 6.3 Login User
+=== Login User
 ----
 @startuml
 actor User
@@ -38,3 +39,5 @@ RestApi -> WebApp: Notify success
 WebApp-> User: Notify success
 @enduml
 ----
+
+This runtime view shows the login process of a user, going through WebApp and ApiRest to the user POD, via the location stored in the database.
