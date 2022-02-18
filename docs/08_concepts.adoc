@@ -1,4 +1,4 @@
-=== Domain model
+== Domain model
 
 [options="header",cols="1,2,2"]
 |===
