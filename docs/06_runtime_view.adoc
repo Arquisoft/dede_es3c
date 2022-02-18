@@ -1,6 +1,6 @@
-== 6 Runtime View
+== Runtime View
 
-=== 6.1 Register User
+=== Register User
 
 [plantuml,"Register User",png]
 ----
@@ -20,7 +20,7 @@ WebApp-> User: Notify success
 @enduml
 ----
 
-=== 6.2 Login User
+=== Login User
 [plantuml,"Login User",png]
 ----
 @startuml
@@ -39,7 +39,7 @@ WebApp-> User: Notify success
 @enduml
 ----
 
-=== 6.3 Visualize orders done
+=== Visualize orders done
 
 [plantuml,"Visualize orders done",png]
 ----
@@ -62,7 +62,7 @@ WebApp -> User: Show a list of client orders
 The user presses a button to visualize their previous orders, the WebApp send the petition to the RestApi. The RestApi asks for the client's orders from the user pod.
 User pod returns the client's orders to the RestApi, and the RestApi sends them to the WebApp. The WebApp show a list of client orders.
 
-=== 6.4 Delete a product from the shopping chart
+=== Delete a product from the shopping chart
 
 [plantuml,"Delete a product from the shopping cart",png]
 ----
@@ -81,7 +81,7 @@ WebApp -> User: Return success
 ----
 The user chooses the product and presses the button to delete it. The WebApp send this petition to the RestApi. The RestApi send the petition to delete a product to the POD, and the POD to the DataBase. Once the product is deleted from the DataBase, success is returned to the client.
 
-=== 6.5 Add products to the shopping cart
+=== Add products to the shopping cart
 
 [plantuml,"Add Products to the shopping cart",png]
 ----
@@ -101,7 +101,8 @@ Restapi-> Database: Storages the information so the client can pay anytime
 ----
 _The user, identified as a client, selects the cattegory of the product of its choice and the DeDe app returns the filtered products to them. Then, the user can scroll through de app looking for the returned products and press the button "Add to Cart" to add them into the shopping cart and pay for them whenever they want._
 
-=== 6.6 Paying process
+=== Paying process
+
 [plantuml,"Paying Process",png]
 ----
 actor User
@@ -126,7 +127,7 @@ Webapp --> User: Shows the order validation
 ----
 _The user presses the pay button on their shopping cart and the DeDe app takes them to the paying page where they can see the total price to pay in addition to the shipping price previously calculated by the DeDe application after asking the user's pod for their address and calculating the distance from that address to the distribution center. After seeing the final price, the client must press the pay button so the DeDe app registers the order on the database and returns the confirmation_
 
-=== 6.7 (Admin) Delete User
+=== (Admin) Delete User
 
 [plantuml,"(Admin) Delete User",png]
 ----
@@ -148,7 +149,7 @@ DataBase -> RestAPI: Give Updated User List
 RestAPI -> WebApp: Represent Updated User List
 ----
 
-=== 6.8 (Admin) View Item Statistics
+=== (Admin) View Item Statistics
 
 [plantuml,"(Admin) View Item Statistics",png]
 ----
@@ -172,7 +173,7 @@ WebApp -> RestAPI: Close Selected Item Statistics
 RestAPI -> WebApp: Display Item List
 ----
 
-=== 6.9 (Admin) Monitor Order Status
+=== (Admin) Monitor Order Status
 
 [plantuml,"(Admin) Monitor Order Status",png]
 ----
