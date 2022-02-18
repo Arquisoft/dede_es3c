@@ -1,5 +1,5 @@
 
-=== 8.1 Domain model
+=== Domain model
 
 [options="header",cols="1,2,2"]
 |===
@@ -12,48 +12,51 @@
 | Distribution Center | Place from where the products are distributed, contains the address of the distribution center.
 |===
 
-image:https://github.com/Arquisoft/dede_es3c/blob/Nuria/docs/images/08_umldiagram.png["Domain Model - UML Diagram"]
 
-=== 8.2. Persistence
+image:08_umldiagram.png["Domain Model - UML Diagram"]
+
+=======
+
+=== Persistence
 
 At the beginning there was a debate about whether it was better to use SQL or NoSQL for persistence. After some discussion it was concluded that the best option for this problem is NoSQL. To be more specific MongoDB, which is a NoSQL document database. We will use a NoSQL database as opposed to a SQL database, because our model encompasses many products. These products have several attributes which are very different. For example, a power supply differs in many ways from a graphics card. Because there are so many items, we believe it is best to use a NoSQL DB.
 
-=== 8.3. User interface_
+=== User interface
 
 _DeDe user interface is desinged to give every user an intuitive and familiar experience related using the React framework combined with TypeScript as constraints. We follow the usual standards of e-commerce online sites to make the navigation closer to what most of the people already know. Also, the interface is meant to pass the AAA validation so we make sure it's usable for almost everyone_
 
 image:https://github.com/Arquisoft/dede_es3c/blob/Sonia/docs/images/dede_homepage.png["HomePage Prototype"]
 image:https://github.com/Arquisoft/dede_es3c/blob/Sonia/docs/images/DeDe-Small-Window-Prototypes.png["DeDe-Small-Windows-Prototypes"]
 
-=== 8.4. Internazionalization
+=== Internazionalization
 
 The application will potentially deal with various locations and people, so make a multi-language application looks like the best decision. This decision must be done since the begining of the desing (lately will cost a lot of resources).
 
 This allows us to reach a bigger audience and make the application more accesible.
 
 
-=== 8.5. Security
+=== Security
 
 Security is a key aspect of our software (and almost all) project. We will follow SOLID as recommendation to store our customers data and we will manage the data base to be always in a consistent state.
 
 
-=== 8.6. Additional libraries
+=== Additional libraries
 
 TODO
 
 
-=== 8.7. Archiutecture and design patterns
+=== Archiutecture and design patterns
 
 TODO
 
 
-=== 8.8 Code Quality standards
+=== Code Quality standards
 
 Code quality standars allows us to make an understable, maintainable and reusable code for future revisions and changes. Code should always have a correct structure to be easily understandable.
 
 To achieve this we will use all tools programs give us and make correct decisions like design patters, use convention naming and try to reduce technical debt.
 
-=== 8.9. Testability
+=== Testability
 
 Applications should be strongly tested. We will use user histories to make acceptance tests and unit test to test the rest of the application components and states during running process.
 
