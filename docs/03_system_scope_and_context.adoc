@@ -8,23 +8,13 @@ image:Technical%20Context.png["Technical Context diagram"]
 [options = "header",cols="1,1,1"]
 |===
 | Entity | Input | Output
-| User | The user will interact with the application through a computer or other device. The user will see the frontend of the application and send requests to the backend | The output is represented in many parts of the system, reaching almost every point in the system
-| User Pod | It creates new PODs for users who have not created them, can update the information contained in them, and also handles requests made to it by providing the requested information | Submit the information requested by the application 
-| Hefesto System | It is the system with which the user interacts, it receives the requests sent by the user through the interface  | It processes incoming requests and manages the database so that it is consistent with incoming requests. Once it has the requested information, it shows it to the user via the interface
-|===
-
-[options="header",cols="1,2,2"]
-|===
-|Communication Partner|Inputs|Outputs
-| _Users_ | _Petitions or interactions_ | _Responses to users petitions_
-| _User Pods_ | _Users information respecting their privacy_ | _Makes specific functionalities possible such as the shipping price respecting users privacy_
-| _DeDe_ | _The user petitions and their information storaged in pods_ | _The calculated and prepared responses to satisfy users needs_
+| _User_ | _The user will interact with the application through a computer or other device. The user will see the frontend of the application and send requests to the backend_ | _The output is represented in many parts of the system, reaching almost every point in the system_
+| _User Pod_ | _It creates new PODs for users who have not created them, can update the information contained in them, and also handles requests made to it by providing the requested information_ | _Submit the information requested by the application_
+| _Hefesto System_ | _It is the system with which the user interacts, it receives the requests sent by the user through the interface_  | _It processes incoming requests and manages the database so that it is consistent with incoming requests. Once it has the requested information, it shows it to the user via the interface_
 | _Database (MongoDB)_ | _Queries, information requests_ | _Storaged and consistent data responding to the system needs_
-| _Docker_ | _Deployment Containers_ | _Possibility of DeDe to be deployed and launched_
-| _Heroku_ | _Deployment Server_ | _Possibility of DeDe to be deployed and launched_
 |===
 
-=== 3.2 Technical Context
+=== Technical Context
 
 Our goal is to have an online sales system called DeDe (Decentralized Delivery), that respects customer privacy by following SOLID principles.
 SOLID principles tell us that each user's personal information must be decentralised, and for this we use SOLID PODs.
@@ -33,14 +23,17 @@ In our system we only store the accesses to the PODs, in order to speed up the r
 Users have control over who has their information, thus increasing privacy. 
 
 image:03-Technical-Context.png["Technical Context diagram"]
+=======
 
 [options = "header",cols="1,1"]
 |===
 | Technology | Explication 
-| MongoDB | We will use it to store the location of the SOLID POD 
-| React | It is a library to help us carry out the project 
-| TypeScript | It is used for program 
-| Grafana and Prometeus | This is used to monitor 
-| Postman | It is used for testing 
+| _MongoDB_ | _We will use it to store the location of the SOLID POD_ 
+| _React_ | _It is a library to help us carry out the project_ 
+| _TypeScript_ | _It is used for program_ 
+| _Grafana and Prometeus_ | _This is used to monitor_
+| _Postman_ | _It is used for testing_
+| _Docker_ |  _Possibility of DeDe to be deployed and launched_
+| _Heroku_ |  _Possibility of DeDe to be deployed and launched_
 |===
 
