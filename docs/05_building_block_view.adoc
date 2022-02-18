@@ -1,5 +1,3 @@
-[[section-building-block-view]]
-
 == Building Block View
 
 === Whitebox Overall System

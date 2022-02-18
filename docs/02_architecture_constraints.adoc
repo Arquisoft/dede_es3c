@@ -1,4 +1,3 @@
-[[section-architecture-constraints]]
 == Architecture Constraints
 
 === Technical constraints
