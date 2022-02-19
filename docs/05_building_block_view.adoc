@@ -2,7 +2,7 @@
 
 === Whitebox Overall System
 
-image:5_1_Building_Block_View_Level_1.png["Building block view - Whitebox Overall System"]
+image:05_1_Building_Block_View_Level_1.png["Building block view - Whitebox Overall System"]
 
 We have two types of actors interacting with the application:
 
