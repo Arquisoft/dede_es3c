@@ -1,5 +1,4 @@
-
-=== Domain model
+== Domain model
 
 [options="header",cols="1,2,2"]
 |===
@@ -24,7 +23,6 @@ _DeDe user interface is desinged to give every user an intuitive and familiar ex
 
 image:08_UI-Homepage.png["Homepage prototype"]
 image:08_UI-OtherWindows.png["Other Functionalities"]
-=======
 
 === Internazionalization
 
