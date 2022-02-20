@@ -1,7 +1,6 @@
-[[section-architecture-constraints]]
-== 2. Architecture Constraints
+== Architecture Constraints
 
-=== 2.1. Technical constraints
+=== Technical constraints
 
 |===
 |Constraint|Explanation
@@ -16,7 +15,7 @@
 |Node.js|Based on JavaScript, is a backend technology wich allows us to execute our code
 |===
 
-=== 2.2. Organizational and political constraints
+=== Organizational and political constraints
 
 |===
 |Constraint|Explanation
@@ -25,7 +24,7 @@
 |Other work|All of us have other subjects that take time
 |===
 
-=== 2.3. Conventions
+=== Conventions
 
 |===
 |Constraint|Explanation

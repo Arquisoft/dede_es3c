@@ -1,4 +1,3 @@
-[[section-technical-risks]]
 == Risks and Technical Debts
 
 === Risks
@@ -23,7 +22,7 @@ This is the compilation of the identified risks ordered by priority that we must
 * Abandonment of a member: if a member leaves the group, it would mean redistributing the work, suddenly having more workload for the members who remain. 
 
 
-==== Minimize or avoid risks
+=== Minimize or avoid risks
 
 * To minimize the risk of not knowing the technologies or having a basic understanding of them, we seek information and practice using them.
 
