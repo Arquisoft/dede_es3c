@@ -9,7 +9,7 @@
  To improve the quality of our system we have used the best technologies at our disposal, trying to minimise waiting times for user requests. It helps us to use MongoDB, as it is a very efficient DB.
  
 * Mapping of Building Blocks to Infrastructure:
- image:07-DiagramaDespliege.png["Deployment View Level 1"]
+ image:07-DiagramaDespliegue.png["Deployment View Level 1"]
 
 
 === Infrastructure Level 2
