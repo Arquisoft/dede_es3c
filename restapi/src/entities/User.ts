@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, Column, ObjectIdColumn, ObjectID } from "typeorm";
 
 @Entity()
 export class User {
@@ -8,8 +8,8 @@ export class User {
         this.email = email;
     }
 
-    @PrimaryGeneratedColumn()
-    id: number | undefined;
+    @ObjectIdColumn()
+    id: ObjectID | undefined;
 
     @Column()
     username: string;

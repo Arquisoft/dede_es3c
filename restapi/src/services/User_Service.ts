@@ -1,5 +1,5 @@
 import { User } from '../entities/User';
-import { DeleteResult, UpdateResult } from 'typeorm';
+import { DeleteResult, ObjectID, UpdateResult } from 'typeorm';
 import { Application } from 'express';
 
 export class UserService {
@@ -19,7 +19,7 @@ export class UserService {
      * @param id User id
      * @returns Promise<User>
      */
-    public static getUserById(app: Application, id: number): Promise<User> {
+    public static getUserById(app: Application, id: ObjectID): Promise<User> {
         return app.get('db').getRepository(User).findOne({
             where: {
                 id: id

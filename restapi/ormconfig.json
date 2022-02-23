@@ -1,13 +1,11 @@
-
 [
     {
         "name": "default",
         "type": "mongodb",
-        "host": "localhost",
-        "port": 27017,
+        "url": "mongodb+srv://SergioArroni:julio321%24@cluster0.hhkbe.mongodb.net/DeDesktop?retryWrites=true&w=majority",
         "synchronize": true, 
         "logging": false,
-        "entities": ["src/models/*.ts"],
+        "entities": ["src/entities/*.ts"],
         "database": "test"
     }
 ]

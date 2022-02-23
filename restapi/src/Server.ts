@@ -28,6 +28,7 @@
      const databaseName: string = process.env.DATABASE_NAME || 'default';
      if ( await database.setDB(databaseName) ) {
          console.log(`Database connection established to ${databaseName}`);
+         await database.getDB().synchronize();
          app.set('db', database.getDB());
          return true;
      } else {

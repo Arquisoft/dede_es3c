@@ -2,7 +2,7 @@ import * as crypto from 'crypto';
 import { Request, Response } from 'express';
 import { UserService } from '../services/User_Service';
 import { User } from '../entities/User';
-import { DeleteResult } from 'typeorm';
+import { DeleteResult, ObjectID } from 'typeorm';
 
 
 export class UserController {
@@ -29,7 +29,7 @@ export class UserController {
      */
     public async getUserById(req: Request, res: Response) {
         try {
-            const user = await UserService.getUserById(req.app, Number.parseInt(req.params.id));
+            const user = await UserService.getUserById(req.app, new ObjectID(req.params.id));
             user ? res.status(200).json(user) : res.status(404).json({ error: "User not found" });
         } catch (error) {
             res.status(500).json({ error: "Error on get user by id" })
