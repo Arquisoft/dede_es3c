@@ -1,0 +1,13 @@
+
+[
+    {
+        "name": "default",
+        "type": "mongodb",
+        "host": "localhost",
+        "port": 27017,
+        "synchronize": true, 
+        "logging": false,
+        "entities": ["src/models/*.ts"],
+        "database": "test"
+    }
+]
