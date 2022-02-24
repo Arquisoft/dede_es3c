@@ -62,7 +62,7 @@ Spanish: https://arquisoft.github.io/course2122/labEnunciadoPractica.html
 |6| Modifiability | The architecture must be easy to modify, adding new features or changing existing ones 
 |===
 
-Detailed priority in epigraph 1
+Detailed priority in epigraph 10.
 
 === Stakeholders
 
