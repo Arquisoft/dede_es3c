@@ -73,4 +73,5 @@ Detailed priority in epigraph 1
 | Client | They interact directly with the application. They select the products to purchase and view their order history. | The aim is for the customer to be able to interact with the application intuitively and have a comfortable shopping experience. In addition, their privacy is respected in accordance with the SOLID principles.
 | Administrator | They are in charge of modifying prices, calculating inventories, seeing all orders placed or placing orders with suppliers. | Administrators will be able to access their exclusive functions through a simple login. 
 | Development Team | They are the creators of the application. They can modify, update and improve it. | Develop a complete application that contain the requirements. Learn to work in a team efficiently and learn new technologies.
+|Delivery business|Dstribute the products to the client's address| Their objective is to get the list of the products to deliver and the address of the client who ordered.
 |===
