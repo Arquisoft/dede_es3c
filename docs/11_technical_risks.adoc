@@ -4,29 +4,45 @@
 This is the compilation of the identified risks ordered by priority that we must minimize or avoid.
 
 * Not having knowledge of the following technologies:
-** SOLID: We may have difficulty following SOLID principles as we have not worked on a SOLID project before and handling decentralized data may be difficult.
-** PODs: We don't have any knowledge about PODs prior to this project, so we need to learn how to keep user information secure and private, which can take considerable time.
-** React: We have never used it, so we must learn during the project.
-** MongoDB: We may run into difficulties using a NoSQL database, as we have experience only using SQL databases, which can cause delays while we learn how to use it.
-** Grafana and Prometeus: We have never used these tools to monitor a project and we need to adapt to them.
-** Postman: We have never used this testing tool.
-** Node.js: We don't know how to use it.
-** Heroku: It costs time to adapt to it due to we have never used it.
-** Docker: We have to learn how to use it.
-** Express: We may have some dificulties, we need to learn about it.
-** Bootstrap: We have to learn about this style library. It will cost some time.
-** TypeScript: Some members of the group have some knowledge of JavaScript, and since TypeScript is similar to JavaScript, it won't be too difficult to adapt, although it will take time to learn this language.
-* Have low knowledge in the following technologies:
-** Git: We have little knowledge about using Git, so we can easily go wrong.
 
-* Abandonment of a member: if a member leaves the group, it would mean redistributing the work, suddenly having more workload for the members who remain. 
+[options="header",cols="1,1"]
+|===
+|Technology| Risk
+| SOLID| We may have difficulty following SOLID principles as we have not worked on a SOLID project before and handling decentralized data may be difficult.
+| PODs| We don't have any knowledge about PODs prior to this project, so we need to learn how to keep user information secure and private, which can take considerable time.
+| React| We have never used it, so we must learn during the project.
+| MongoDB| We may run into difficulties using a NoSQL database, as we have experience only using SQL databases, which can cause delays while we learn how to use it.
+| Grafana and Prometeus| We have never used these tools to monitor a project and we need to adapt to them.
+| Postman| We have never used this testing tool.
+| Node.js|We don't know how to use it.
+| Heroku| It costs time to adapt to it due to we have never used it.
+| Docker| We have to learn how to use it.
+| Express| We may have some dificulties, we need to learn about it.
+| Bootstrap| We have to learn about this style library. It will cost some time.
+| TypeScript| Some members of the group have some knowledge of JavaScript, and since TypeScript is similar to JavaScript, it won't be too difficult to adapt, although it will take time to learn this language.
+|Git| We have little knowledge about using Git, so we can easily go wrong.
+|===
+
+* Other risks:
+
+[options="header",cols="1,1"]
+|===
+|Risk|Explanation
+|Abandonment of a member| If a member leaves the group, it would mean redistributing the work, suddenly having more workload for the members who remain. 
+|Being just 4 members| It can be more difficult to develop this application being only 4 due to other groups have 5 or even 6 members to do the same work.
+|===
 
 
-=== Minimize or avoid risks
+==== Minimize or avoid risks
 
-* To minimize the risk of not knowing the technologies or having a basic understanding of them, we seek information and practice using them.
+[options="header",cols="1,1"]
+|===
+|Risk|How to avoid or minimize
+|Not knowing the technologies|We seek information and practice using them.
+|Posibility of a team member leaving|We will have good communication and help each other.
+|Being only 4 members| We have to do a hard work to develop tha application.
+|===
 
-* To minimize the possibility of a team member leaving, we need to have good communication and help each other.
 
 
 === Technical debts
