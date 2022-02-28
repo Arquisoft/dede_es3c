@@ -18,7 +18,7 @@
 |Constraint|Explanation
 |Team and meetings|This is a course application. Development team consist in 5 (five) people with a very limited experience in techonolgies used in the project. Is our first time working together, so some organizational decisions could be not as agile or accurate as they could. Also we don't have the same class schedule so find a room for a meeting could be difficult sometimes
 |Time|The project has a very tight time to be finished. This means that our application will not be as developed as it could be
-|Deadlines|This application is part of course calification criteria. This means we have several deadlines and important releases in a target date. This means we can hace trouble finishing the parts we need to release in some of that targets.
+|Deadlines|This application is part of course calification criteria. This means we have several deadlines and important releases in a target date. This means we can have trouble finishing the parts we need to release in some of that targets.
 |===
 
 === Conventions
