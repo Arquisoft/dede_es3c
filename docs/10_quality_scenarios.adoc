@@ -5,10 +5,9 @@
 [role="arc42help"]
 
 === Quality Tree
-
+image:10_Quality-Requirements.png["Quality Requirements"]
 [role="arc42help"]
 === Quality Scenarios
-image:10_Quality-Requirements.png["Quality Requirements"]
 
 [role="arc42help"]
 ****
