@@ -30,3 +30,5 @@ yarn-error.log*
 docs/build
 
 ormconfig.json
+
+dist/

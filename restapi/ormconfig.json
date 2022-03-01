@@ -1,11 +1,13 @@
+
 [
     {
         "name": "default",
         "type": "mongodb",
-        "url": "mongodb+srv://SergioArroni:julio321%24@cluster0.hhkbe.mongodb.net/DeDesktop?retryWrites=true&w=majority",
+        "host": "localhost",
         "synchronize": true, 
         "logging": false,
-        "entities": ["src/entities/*.ts"],
-        "database": "test"
+        "entities": ["dist/src/entities/*.js"],
+        "database": "DeDesktop",
+        "moduleResolution": "node"
     }
 ]

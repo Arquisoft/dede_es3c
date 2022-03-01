@@ -3,10 +3,10 @@ LABEL org.opencontainers.image.source https://github.com/Arquisoft/dede_es3c
 COPY . /app
 WORKDIR /app
 #Install the dependencies
-RUN npm install
+RUN npm install --quiet
 
 #Create an optimized version of the webapp
-RUN npm run build
+RUN npm run build 
 
 #Ver como podemos llamar npm run prod aquí
-CMD [ "npm", "run", "prod" ]
+CMD  npm run prod

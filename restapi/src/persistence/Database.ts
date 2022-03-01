@@ -7,7 +7,7 @@
  class Database {
  
      private db!: Connection;
- 
+
      /**
       * Get connection to database
       * @returns Connection
@@ -34,7 +34,6 @@
          } finally {
              return result;
          }
-         
      }
  }
  

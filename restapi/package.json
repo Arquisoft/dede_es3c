@@ -4,7 +4,7 @@
   "scripts": {
     "start": "ts-node-dev ./src/server.ts",
     "build": "tsc",
-    "prod": "npm run build && node ./dist/server.js",
+    "prod": "npm run build && node ./dist/src/server.js",
     "test": "cd tests && jest --runInBand"
   },
   "keywords": [],
@@ -22,7 +22,7 @@
     "mongodb": "^3.7.3",
     "prom-client": "^14.0.1",
     "reflect-metadata": "^0.1.13",
-    "typeorm": "^0.2.41"
+    "typeorm": "^0.2.44"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",
