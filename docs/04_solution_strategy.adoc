@@ -1,9 +1,6 @@
-[[section-solution-strategy]]
 == Solution Strategy
 
-[role="arc42help"]
-
-=== 4.1. Technology decisions
+=== Technology decisions
 
 The technologies we have decided to use for the development of the app are:
 
@@ -33,17 +30,17 @@ The technologies we have decided to use for the development of the app are:
 
 - Postman: Postman is an open source software which offers us the necessary help to build, use and test APIs, making the steps easier.
 
-=== 4.2. Decisions about the top-level decomposition of the system
+=== Decisions about the top-level decomposition of the system
 
 - On the frontend we are going to use the Redux pattern. This pattern was created initially to be used in React, so it optimizes the loading of components since it only reloads the modified components, it will also help us in passing information between components by storing the state of each component in an easily accessible way.
 
 - In the backend part we are going to use the MVC pattern (model, view, controller) this pattern is one of the most used for this part of the application. The pattern will be used without the view part as this part would be the WebApp. 
 
-=== 4.3. Decisions to achieve quality goals
+=== Decisions to achieve quality goals
 
 To try to achieve all the proposed quality objectives, we will strive to obtain very good accessibility with a help system for people who need it. We will also focus on making an accessible and adaptable website following the AAA level. To improve the privacy of the users we will use SOLID POD, which decentralizes the personal information of each user. We will store only the location of this data, managing to improve security since we do not have sensitive data of the users.
 
-=== 4.4. Organizational decisions
+=== Organizational decisions
 
-We will try to hold weekly meetings via Teams, in addition to the meeting classes of the subject, for minor doubts and fluid communication we use WhatsApp. We also communicate via GitHub through the Issues, we determine the work of each member and update these tasks in a Kanbam board with the already mentioned Issues.
+We will try to hold weekly meetings via Teams, in addition to the meeting classes of the subject, for minor doubts and fluid communication we use WhatsApp. We also communicate via GitHub through the Issues, we determine the work of each member and update these tasks in a Kanban board with the already mentioned Issues.
 
