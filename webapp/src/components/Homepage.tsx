@@ -8,7 +8,6 @@ import Welcome from './Welcome';
 import UserList from './UserList';
 import  {getUsers} from '../api/api';
 import {User} from '../shared/shareddtypes';
-import "bootswatch/dist/quartz/bootstrap.min.css";
 
 interface HomepageProps {
     translate: (key: string) => string

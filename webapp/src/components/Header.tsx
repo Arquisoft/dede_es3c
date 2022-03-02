@@ -1,6 +1,5 @@
 import React, { useCallback, useState, useEffect, useRef, useContext, FC, Fragment } from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import "bootswatch/dist/quartz/bootstrap.min.css";
 
 import { LangContext } from '../lang';
 
