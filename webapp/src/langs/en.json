@@ -1,0 +1,18 @@
+{
+    "app.hi": "Hi, ",
+    "app.students": "ASW Students",
+    "app.description": "This is a basic example of a React application using Typescript. You can add your email to the list filling the form below.",
+    "app.textName": "Name",
+    "app.textEmail": "Email",
+    "app.accept": "Accept",
+    "app.code": "Source code",
+    "login.h1": "Log in DeDesktop",
+    "login.h2": "Please, enter your SOLID user and password",
+    "login.id": "DeDesktop ID",
+    "login.validate": "validate",
+    "login.solid":"Login with your solid pod",
+    "login.solidUser":"Solid user: ",
+    "login.solidPass":"Solid password",
+    "login.idButton":"Log in with id",
+    "login.signup" : "Don't have a Solid Pod? Sign Up"
+}

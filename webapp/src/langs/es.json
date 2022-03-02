@@ -1,0 +1,18 @@
+{
+    "app.hi": "Hola, ",
+    "app.students": "Estudiantes de ASW",
+    "app.description": "Este es un ejemplo de react usando typescript",
+    "app.textName": "Nombre",
+    "app.textEmail": "Correo electrónico",
+    "app.accept": "Aceptar",
+    "app.code": "Código fuente",
+    "login.h1": "Iniciar sesión en DeDesktop",
+    "login.h2": "Por favor, introduzca su usuario y contraseña de SOLID",
+    "login.id": "ID de DeDesktop",
+    "login.validate": "Validar",
+    "login.solid": "Inicia sesión con tu POD de SOLID",
+    "login.solidUser":"Usuario Solid:",
+    "login.solidPass": "Contraseña Solid",
+    "login.idButton": "Iniciar sesión con ID ",
+    "login.signup":"¿No tienes POD de solid? Regístrate"
+}
