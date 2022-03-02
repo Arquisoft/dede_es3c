@@ -6,7 +6,7 @@
         "host": "localhost",
         "synchronize": true, 
         "logging": false,
-        "entities": ["dist/src/entities/*.js"],
+        "entities": ["src/entities/*.ts"],
         "database": "DeDesktop",
         "moduleResolution": "node"
     }

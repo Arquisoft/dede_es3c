@@ -19,7 +19,7 @@ export class UserService {
      * @param id User id
      * @returns Promise<User>
      */
-    public static getUserById(app: Application, id: ObjectID): Promise<User> {
+    public static getUserById(app: Application, id: string): Promise<User> {
         return app.get('db').getRepository(User).findOne({
             where: {
                 id: id

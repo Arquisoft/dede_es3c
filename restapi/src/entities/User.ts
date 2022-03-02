@@ -1,4 +1,5 @@
-import { Entity, Column, ObjectIdColumn, ObjectID } from "typeorm";
+import { Entity, Column, ObjectIdColumn, ObjectID, Unique, PrimaryColumn } from "typeorm";
+import {v4 as uuidv4} from 'uuid';
 
 @Entity()
 export class User {
@@ -6,10 +7,14 @@ export class User {
     constructor(username: string, email: string) {
         this.username = username;
         this.email = email;
+        this.id = uuidv4();
     }
 
     @ObjectIdColumn()
-    id: ObjectID | undefined;
+    _id: string | undefined;
+  
+    @PrimaryColumn()
+    id: string;
 
     @Column()
     username: string;
