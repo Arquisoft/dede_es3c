@@ -1,6 +1,6 @@
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import logo from '../logo.svg';
+import logo from '../img/logo-dede.svg';
 
 type WelcomeProps = {
   message: string;
@@ -15,7 +15,7 @@ function Welcome(props: WelcomeProps): JSX.Element {
         <Box component="h2"> {props.translate('app.hi')}{props.message}</Box>
       </Grid>
       <Grid item xs={2}>
-        <img src={logo} className="App-logo" alt="logo" />
+        <img width={5} height = {5} src={logo} className="App-logo" alt="logo" />
       </Grid>
       
     </Grid>

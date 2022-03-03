@@ -7,12 +7,12 @@
     "app.accept": "Aceptar",
     "app.code": "Código fuente",
     "login.h1": "Iniciar sesión en DeDesktop",
-    "login.h2": "Por favor, introduzca su usuario y contraseña de SOLID",
+    "login.h2": "Por favor, introduzca su usuario y contraseña",
     "login.id": "ID de DeDesktop",
     "login.validate": "Validar",
-    "login.solid": "Inicia sesión con tu POD de SOLID",
-    "login.solidUser":"Usuario Solid:",
-    "login.solidPass": "Contraseña Solid",
-    "login.idButton": "Iniciar sesión con ID ",
-    "login.signup":"¿No tienes POD de solid? Regístrate"
+    "login.solid": "Inicia sesión con tu usuario y contraseña",
+    "login.solidUser":"Usuario:",
+    "login.solidPass": "Contraseña: ",
+    "login.signup":"¿No tienes una cuenta? Regístrate",
+    "login.input.error": "Obligatorio"
 }
