@@ -1,16 +1,12 @@
-[[section-quality-scenarios]]
 == Quality Requirements
 
-
-[role="arc42help"]
-
 === Quality Tree
+
 image:10_Quality-Requirements.png["Quality Requirements"]
-[role="arc42help"]
+
+
 === Quality Scenarios
 
-[role="arc42help"]
-****
 |===
 |Quality goal|Scenario|User Priority|Developer Priority
 | _Privacy_ | _The app is SOLID based which means the users have their personal information storaged in pods (personal online data stores) this technology makes it better for the users always respecting their privacy. For example, the client's address can be consulted on it's pod in props of calculate the shipping price._ | _High_ |_High_ 
@@ -21,4 +17,4 @@ image:10_Quality-Requirements.png["Quality Requirements"]
 | _Integrity_ | _The data should be always in a valid state following the ACID values. If some process fails, there are not going to be any changes and the system will stay in a consistent state without harming the user. For example, if a purchase fails just before the order confirmation, the system will return to a consistent state where the purchase won't be made._ | _High_ | _High_ 
 |===
 This quality requirements are priorized and more described in the epigraph 1
-****
+
