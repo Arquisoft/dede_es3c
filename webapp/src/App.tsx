@@ -6,15 +6,36 @@ import Homepage from './components/Homepage';
 import Header from './components/Header';
 import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
-import Layout from './components/Layout';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const App: FC = () => {
   const { dispatch: { translate }} = useContext(LangContext);
   return (
-    <div>
-      <Header fixed transparent />  
-      <SignUpPage translate={translate} />
-    </div>
+    <Router>
+      <Header fixed transparent />
+      <Routes>
+        <Route
+          index element = 
+          {
+            <Homepage translate={translate}/>
+          }
+        />
+        <Route
+        path='login'
+        element = 
+        {
+          <LoginPage translate={translate} />
+        }
+        />
+        <Route
+        path='signup'
+        element =
+        {
+          <SignUpPage translate={translate} />
+        }
+        />
+      </Routes>
+    </Router>
     
 );
 

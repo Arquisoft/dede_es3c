@@ -54,7 +54,7 @@ const Header: FC<HeaderProps> = ({ fixed, transparent }) => {
               <Button onClick={() => chooseLanguageHandler('EN')}>EN</Button>  
               <Button onClick={() => chooseLanguageHandler('ES')}>ES</Button> 
               <Nav.Item key = "home">
-                <Nav.Link href = "/SignUpPage">
+                <Nav.Link href = "/login">
                   Login
                 </Nav.Link>
               </Nav.Item>
