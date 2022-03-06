@@ -69,7 +69,7 @@ export class ProductService {
      * @returns Promise<UpdateResult>
      */
     public static updateProduct(app: Application, id: string, product: Product): Promise<UpdateResult> {
-        return app.get('db').getRepository(Product).update(id, product);
+        return app.get('db').getRepository(Product).update({id: id}, product);
     }
 
 }

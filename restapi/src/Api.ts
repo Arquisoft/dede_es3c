@@ -4,7 +4,6 @@
  */
  import express, { Router } from 'express';
  import {check} from 'express-validator';
-import { AdminController } from './controllers/Admin_Controller';
 import { ProductController } from './controllers/Product_Controller';
  import { UserController } from './controllers/User_Controller';
  import { Auth } from './middlewares/Auth_Middleware';
@@ -14,7 +13,6 @@ import { ProductController } from './controllers/Product_Controller';
  const auth: Auth = new Auth(); // Auth middleware
  const userController: UserController = new UserController(); // User Routes Controller
  const productsController: ProductController = new ProductController(); // Products Routes Controller
- const adminController: AdminController = new AdminController(); // Products Routes Controller
  
  // =================================> Routes
  const setAuthRoutes = (): void => {
@@ -24,12 +22,6 @@ import { ProductController } from './controllers/Product_Controller';
              check('password').isLength({min: 1}),
              check('email').isEmail().normalizeEmail()
          ], auth.login);
-     api.route('/register')
-         .post([
-             check('username').isLength({min: 1}),
-             check('password').isLength({min: 1}),
-             check('email').isEmail().normalizeEmail()
-         ], userController.addUser);
  };
  
  /**
@@ -53,33 +45,10 @@ import { ProductController } from './controllers/Product_Controller';
          // Get user by id
          .get(userController.getUserById)
          // Delete user by id
-         .delete(auth.isAuth, userController.deleteUser)
+         .delete(auth.isAdminAuth, userController.deleteUser)
          // Update user by id
-         .put(auth.isAuth, userController.updateUser)
+         .put(auth.isAdminAuth, userController.updateUser)
  }
-
- const setAdminRoutes = (): void => {
- 
-    api.route('/admin')
-        // Get all admins
-        .get(adminController.getAdmins)
-        // Create new admin
-        .post([
-            check('username').isLength({ min: 1 }).trim().escape(),
-            check('email').isEmail().normalizeEmail()
-        ], adminController.addAdmin);
-
-    api.route('/admin/username/:username')
-        .get(adminController.getAdminByAdminUsername);
-
-    api.route('/admin/:id')
-        // Get admin by id
-        .get(adminController.getAdminById)
-        // Delete admin by id
-        .delete(auth.isAuth, adminController.deleteAdmin)
-        // Update admin by id
-        .put(auth.isAuth, adminController.updateAdmin)
-}
 
  const setProductsRoutes = (): void => {
  
@@ -87,7 +56,7 @@ import { ProductController } from './controllers/Product_Controller';
         // Get all products
         .get(productsController.getProducts)
         // Create new products
-        .post([
+        .post(auth.isAdminAuth,[
             check('name').isLength({ min: 1 }).trim().escape()
         ], productsController.addProduct);
 
@@ -107,7 +76,6 @@ import { ProductController } from './controllers/Product_Controller';
  setAuthRoutes();
  setUserRoutes();
  setProductsRoutes();
- setAdminRoutes();
 
  
  export default api;

@@ -69,7 +69,7 @@ export class UserService {
      * @returns Promise<UpdateResult>
      */
     public static updateUser(app: Application, id: string, user: User): Promise<UpdateResult> {
-        return app.get('db').getRepository(User).update(id, user);
+        return app.get('db').getRepository(User).update({id: id}, user);
     }
 
 }

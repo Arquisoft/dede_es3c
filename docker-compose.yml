@@ -42,13 +42,6 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: SergioArroni
       MONGO_INITDB_ROOT_PASSWORD: julio321
-
-  mongo-express:
-    image: mongo-express
-    restart: always
+      MONGO_INITDB_DATABASE: DeDesktop
     ports:
-      - 8081:8081
-    environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: SergioArroni
-      ME_CONFIG_MONGODB_ADMINPASSWORD: julio321
-      ME_CONFIG_MONGODB_URL: mongodb://SergioArroni:julio321@mongo:27017/
+      - "27017:27017"

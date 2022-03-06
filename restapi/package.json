@@ -2,9 +2,9 @@
   "name": "restapi",
   "version": "1.0.0",
   "scripts": {
-    "start": "ts-node-dev ./src/server.ts",
+    "start": "ts-node-dev ./src/Server.ts",
     "build": "tsc",
-    "prod": "npm run build && node ./dist/src/server.js",
+    "prod": "npm run build && node ./dist/src/Server.js",
     "test": "cd tests && jest --runInBand"
   },
   "keywords": [],

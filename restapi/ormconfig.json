@@ -3,11 +3,12 @@
     {
         "name": "default",
         "type": "mongodb",
-        "host": "localhost",
+        "url": "mongodb://SergioArroni:julio321@mongo:27017/DeDesktop?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false",
         "synchronize": true, 
         "logging": false,
         "entities": ["src/entities/*.ts"],
-        "database": "DeDesktop",
+        "useUnifiedTopology": true,
+        "useNewUrlParser": true,
         "moduleResolution": "node"
     }
 ]
