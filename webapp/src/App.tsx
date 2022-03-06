@@ -5,16 +5,18 @@ import { LangContext } from './lang';
 import Homepage from './components/Homepage';
 import Header from './components/Header';
 import LoginPage from './pages/LoginPage';
+import SignUpPage from './pages/SignUpPage';
+import Layout from './components/Layout';
 
 const App: FC = () => {
   const { dispatch: { translate }} = useContext(LangContext);
   return (
     <div>
       <Header fixed transparent />  
-      <LoginPage translate={translate} />
+      <SignUpPage translate={translate} />
     </div>
     
 );
-}
 
+}
 export default App;

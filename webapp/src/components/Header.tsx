@@ -1,5 +1,7 @@
 import React, { useCallback, useState, useEffect, useRef, useContext, FC, Fragment } from 'react';
 import { NavLink, Link } from 'react-router-dom';
+import {Navbar, Form, Nav, Button} from "react-bootstrap";
+import "bootswatch/dist/superhero/bootstrap.min.css"
 
 import { LangContext } from '../lang';
 
@@ -43,12 +45,24 @@ const Header: FC<HeaderProps> = ({ fixed, transparent }) => {
   }
 
   return(
-    <header className={headerClass}>
-      <Fragment>
-      <button onClick={() => chooseLanguageHandler('EN')}>EN</button>  
-      <button onClick={() => chooseLanguageHandler('ES')}>ES</button> 
-      </Fragment> 
-    </header>
+
+    <Navbar id="basic-navbar-nav">
+      {
+        <Nav>
+          {
+            <Fragment>
+              <Button onClick={() => chooseLanguageHandler('EN')}>EN</Button>  
+              <Button onClick={() => chooseLanguageHandler('ES')}>ES</Button> 
+              <Nav.Item key = "home">
+                <Nav.Link href = "/SignUpPage">
+                  Login
+                </Nav.Link>
+              </Nav.Item>
+            </Fragment>
+          }
+        </Nav>
+      }
+  </Navbar>
   );
 }
 

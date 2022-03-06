@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import {Container, Card , CardContent, Grid} from "@mui/material";
 import Link from '@mui/material/Link';
 import logo from '../img/logo-dede.svg'
+import SignUpPage from './SignUpPage'
 
 const checkParams = (text: string) => {
     return text == "" || text == null;
@@ -60,7 +61,7 @@ const LoginPage: FC<LoginPageProps> = ({ translate }) => {
                         </form>
                     </Fragment>
                     <Button onClick={() => setPulsed(true)} variant="contained" type="submit" sx={{ my: 2 }}>{translate('login.solid')}</Button>
-            <Link href="https://inrupt.net/register">{translate('login.signup')}</Link>
+            <Link href="/signup">{translate('login.signup')}</Link>
             </CardContent>
             </Card>
         </Container>

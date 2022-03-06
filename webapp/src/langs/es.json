@@ -14,5 +14,15 @@
     "login.solidUser":"Usuario:",
     "login.solidPass": "Contraseña: ",
     "login.signup":"¿No tienes una cuenta? Regístrate",
-    "login.input.error": "Obligatorio"
+    "login.input.error": "Obligatorio",
+    "signup.h1": "Registro en DeDesktop",
+    "signup.h2": "Por favor, rellene los siguientes campos",
+    "signup.name":"Nombre",
+    "signup.surname":"Apellidos",
+    "signup.email":"Correo electrónico",
+    "signup.pass":"Contraseña",
+    "signup.passwd":"Verificar contraseña",
+    "signup.signup":"Registrarse",
+    "signup.login":"¿Ya tienes una cuenta? Inicia sesión"
+
 }
