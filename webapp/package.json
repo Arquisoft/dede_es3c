@@ -62,5 +62,10 @@
     "start-server-and-test": "^1.14.0",
     "ts-jest": "^27.1.2",
     "ts-node-dev": "^1.1.8"
-  }
+    "react-scripts": "5.0.0"
+  },
+  "description": "In this case we are using React with Typescript for the webapp. Lets create the app in the directory webapp with the following command (make sure you have npm installed in your system):\r ```console\r npx create-react-app my-app --template typescript\r ```\r At this point we can already run the app with:\r ```console\r cd webapp\r npm start\r ```\r The app will launch and it will be listening in port 3000. At this point this app is a Hello World app in React.",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC"
 }
