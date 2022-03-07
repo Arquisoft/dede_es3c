@@ -1,9 +1,4 @@
-############################################################
-# Dockerfile Node.js - Express
-############################################################
-
 FROM node:lts-alpine
-
 
 # Crear directorio de trabajo
 RUN mkdir -p /opt/app
@@ -14,8 +9,6 @@ RUN npm install -g typescript ts-node
 
 # Copia la Aplicación
 COPY . .
-
-RUN echo $(ls -1 ./src)
 
 RUN npm install --quiet
 

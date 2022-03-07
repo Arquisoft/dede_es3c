@@ -52,6 +52,21 @@ export class ProductController {
     }
 
     /**
+     * Get user by category
+     * @param req Request
+     * @param res Response
+     * @returns User with status 200 or error 500
+     */
+         public async getProductByCategory(req: Request, res: Response) {
+            try {
+                const product = await ProductService.getProductByCategory(req.app, req.params.category);
+                product ? res.status(200).json(product) : res.status(404).json({ error: "Product not found" });
+            } catch (error) {
+                res.status(500).json({ error: "Error on get Product by category: " + error })
+            }
+        }
+
+    /**
      * Update user
      * @param req Request
      * @param res Response

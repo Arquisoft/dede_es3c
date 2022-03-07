@@ -90,7 +90,7 @@ export class UserController {
      */
     public async addUser(req: Request, res: Response) {
         try {
-            let userBody = new User(req.body.username, req.body.email,req.body.password, "Client" );
+            let userBody = new User(req.body.username, req.body.email,req.body.password, req.body.rol );
             const user = await UserService.addUser(req.app, userBody);
             user ? res.status(200).json(user) : res.status(500).json({ error: "Error add user" });
         } catch (error) {

@@ -31,4 +31,5 @@ docs/build
 
 ormconfig.json
 
+docker-compose.yml
 dist/
