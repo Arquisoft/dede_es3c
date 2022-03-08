@@ -6,6 +6,8 @@ import {Container, Card , CardContent, Grid} from "@mui/material";
 import Link from '@mui/material/Link';
 import logo from '../img/logo-dede.svg'
 import SignUpPage from './SignUpPage'
+import { ContactlessOutlined } from "@mui/icons-material";
+import { checkUser } from "../api/api";
 
 const checkParams = (text: string) => {
     return text == "" || text == null;
@@ -13,10 +15,21 @@ const checkParams = (text: string) => {
 
 interface LoginPageProps {
     translate: (key: string) => string
+    //session: (user: User) => void;
 }
-
-
 const LoginPage: FC<LoginPageProps> = ({ translate }) => {
+
+    const checkLog = async () => {
+        const correctSingIn = await checkUser(username, password);
+        if (correctSingIn) {
+          //props.setCurrentUser(await getUser(email));
+          //setRedirect(true);
+          console.log("correcto");
+        } else {
+          console.log("Incorrect email or password");
+        }
+    };
+
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [pulsed, setPulsed] = useState(false);
@@ -60,7 +73,7 @@ const LoginPage: FC<LoginPageProps> = ({ translate }) => {
                         /> 
                         </form>
                     </Fragment>
-                    <Button onClick={() => setPulsed(true)} variant="contained" type="submit" sx={{ my: 2 }}>{translate('login.solid')}</Button>
+                    <Button onClick={() => checkLog()} variant="contained" type="submit" sx={{ my: 2 }}>{translate('login.solid')}</Button>
             <Link href="/signup">{translate('login.signup')}</Link>
             </CardContent>
             </Card>
