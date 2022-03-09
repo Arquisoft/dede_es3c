@@ -4,24 +4,27 @@ import {Navbar, Form, Nav, Button} from "react-bootstrap";
 import "bootswatch/dist/superhero/bootstrap.min.css"
 
 import { LangContext } from '../lang';
+import { render } from '@testing-library/react';
+import { User } from '../shared/shareddtypes';
 
 interface HeaderProps {
+  setSession: (user: User) => void;
   fixed?: boolean;
   transparent?: boolean;
 }
 
-const Header: FC<HeaderProps> = ({ fixed, transparent }) => {
+const Header: FC<HeaderProps> = (props: HeaderProps) => {
   const { state: { language}, dispatch: { setLanguage, translate } } = useContext(LangContext);
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownEl = useRef<HTMLUListElement>(null);
 
   let headerClass = 'header';
 
-  if(fixed) {
+  if(props.fixed) {
     headerClass += ' header--fixed';
   }
 
-  if(transparent) {
+  if(props.transparent) {
     headerClass += ' header--transparent';
   }
 
@@ -39,31 +42,52 @@ const Header: FC<HeaderProps> = ({ fixed, transparent }) => {
     }
   }, [handleClickOutside]);
 
+
   const chooseLanguageHandler = (value: string) => {
     setShowDropdown(false);
     setLanguage(value);
   }
 
-  return(
-
-    <Navbar id="basic-navbar-nav">
-      {
-        <Nav>
-          {
-            <Fragment>
-              <Button onClick={() => chooseLanguageHandler('EN')}>EN</Button>  
-              <Button onClick={() => chooseLanguageHandler('ES')}>ES</Button> 
-              <Nav.Item key = "home">
-                <Nav.Link href = "/login">
-                  Login
-                </Nav.Link>
-              </Nav.Item>
-            </Fragment>
-          }
-        </Nav>
-      }
-  </Navbar>
+  const logOut = () => {
+    localStorage.removeItem("token");
+  }
+  if (localStorage.getItem("token") === null){
+      return (
+    <Nav>
+        {
+          <Fragment>
+            <Button onClick={() => chooseLanguageHandler('EN')}>EN</Button>  
+            <Button onClick={() => chooseLanguageHandler('ES')}>ES</Button> 
+            <Nav.Item key = "home">
+              <Nav.Link  onClick={() => logOut} href = "/login">
+                Log in
+              </Nav.Link>
+            </Nav.Item>
+          </Fragment>
+        }
+      </Nav>
   );
+  } else{
+    return (
+    <Navbar id="basic-navbar-nav">
+    {
+      <Nav>
+        {
+          <Fragment>
+            <Button onClick={() => chooseLanguageHandler('EN')}>EN</Button>  
+            <Button onClick={() => chooseLanguageHandler('ES')}>ES</Button> 
+            <Nav.Item key = "home">
+              <Nav.Link  href = "/">
+                Log out
+              </Nav.Link>
+              <label>{}</label>
+            </Nav.Item>
+          </Fragment>
+        }
+      </Nav>
+    }
+</Navbar>
+ );}
 }
 
 export default Header;

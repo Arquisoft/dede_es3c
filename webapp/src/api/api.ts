@@ -2,10 +2,10 @@ import {User} from '../shared/shareddtypes';
 
 export async function addUser(user:User):Promise<boolean>{
     const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
-    let response = await fetch(apiEndPoint+'/users/add', {
+    let response = await fetch(apiEndPoint+'/users', {
         method: 'POST',
         headers: {'Content-Type':'application/json'},
-        body: JSON.stringify({'name':user.name, 'email':user.email})
+        body: JSON.stringify({'username':user.username, 'password': user.password, 'rol': user.rol, 'email':user.email})
       });
     if (response.status===200)
       return true;
@@ -21,25 +21,34 @@ export async function getUsers():Promise<User[]>{
 }
 
 
-export async function checkUser(
-  email: String,
-  password: String
-  ): Promise<boolean> {
-  let response = await fetch("http://localhost:5000/api/login", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({
-  email: email,
-  password: password,
-  }),
+export async function checkUser(username: String, password: String): Promise<boolean> {
+  let response = await fetch("http://localhost:5000/api/users/username/" + username, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
   });
-  
-  
-  
   if (response.status === 200) {
-  localStorage.setItem("token", JSON.stringify(response.json));
-  return true;
+    localStorage.setItem("token", JSON.stringify(response.json));
+    return true;
   } else {
-  return false;
+    return false;
   }
-  }
+}
+
+export async function login(username:String ,password:String) {
+  const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+  let response = await fetch(apiEndPoint+'/login', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({'username': username, 'password': password})
+    });
+    return response.json();
+}
+
+export async function getUser(username: String): Promise<User> {
+  const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api/users';
+  let response = await fetch(apiEndPoint + "/username/" + username, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
+  return response.json();
+}

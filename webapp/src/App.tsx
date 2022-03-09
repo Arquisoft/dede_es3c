@@ -1,4 +1,4 @@
-import React, { FC, useContext } from 'react';
+import React, { FC, useContext, useState } from 'react';
 import './App.css';
 import { BrowserRouter } from 'react-router-dom';
 import { LangContext } from './lang';
@@ -7,12 +7,20 @@ import Header from './components/Header';
 import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { User } from './shared/shareddtypes';
 
 const App: FC = () => {
-  const { dispatch: { translate }} = useContext(LangContext);
+  const { dispatch: {translate }} = useContext(LangContext);
+  const [user, setUser] = useState<User | null>(null);
+
+  const setCurrentUser = (user: User) => {
+    setUser(user);
+    console.log(user.email);
+  };
+
   return (
     <Router>
-      <Header fixed transparent />
+      <Header setSession={setCurrentUser} fixed transparent />
       <Routes>
         <Route
           index element = 
@@ -24,7 +32,7 @@ const App: FC = () => {
         path='login'
         element = 
         {
-          <LoginPage translate={translate} />
+          <LoginPage setSession={setCurrentUser} translate={translate} />
         }
         />
         <Route

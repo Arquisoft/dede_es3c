@@ -20,7 +20,7 @@ import { ProductController } from './controllers/Product_Controller';
          .post([
              check('username').isLength({min: 1}),
              check('password').isLength({min: 1}),
-             check('email').isEmail().normalizeEmail()
+             //check('email').isEmail().normalizeEmail()
          ], auth.login);
  };
  

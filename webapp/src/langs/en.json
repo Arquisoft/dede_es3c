@@ -16,6 +16,7 @@
     "login.idButton":"Log in with id",
     "login.signup" : "Don't have an account? Sign Up", 
     "login.input.error": "Required",
+    "login.singin.error": "Incorrect email or password",
     "signup.h1": "Sign up in DeDesktop",
     "signup.h2": "Please, fill the following requirements",
     "signup.name":"Name",
