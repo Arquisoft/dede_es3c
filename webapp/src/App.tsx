@@ -24,6 +24,7 @@ const App: FC = () => {
 
   const setCurrentUser = (user: User) => {
     setUser(user);
+    localStorage.setItem("currentUser", user.username);
     console.log(user.email);
   };
 
