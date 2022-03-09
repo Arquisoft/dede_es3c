@@ -6,9 +6,10 @@ import * as api from './../api/api'
 jest.mock('../api/api');
 
 test('check register fail', async () => {
+  const translate = (key:string) => "Email"
   jest.spyOn(api,'addUser').mockImplementation((user:User):Promise<boolean> => Promise.resolve(false))
   await act(async () => {    
-    const {container, getByText} = render(<EmailForm OnUserListChange={()=>{}}/>)  
+    const {container, getByText} = render(<EmailForm translate ={ translate} OnUserListChange={()=>{}}/>)  
     const inputName = container.querySelector('input[name="username"]')!;
     const inputEmail = container.querySelector('input[name="email"]')!;
     fireEvent.change(inputName, { target: { value: "Pablo" } });
@@ -19,10 +20,10 @@ test('check register fail', async () => {
 })
 
 test('check register ok', async () => {
-  
+  const translate = (key:string) => "Email"
   jest.spyOn(api,'addUser').mockImplementation((user:User):Promise<boolean> => Promise.resolve(true))
   await act(async () => {    
-    const {container, getByText} = render(<EmailForm OnUserListChange={()=>{}}/>)  
+    const {container, getByText} = render(<EmailForm translate = {translate} OnUserListChange={()=>{}}/>)  
     const inputName = container.querySelector('input[name="username"]')!;
     const inputEmail = container.querySelector('input[name="email"]')!;
     fireEvent.change(inputName, { target: { value: "Pablo" } });

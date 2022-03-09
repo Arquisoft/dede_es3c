@@ -1,7 +1,19 @@
-FROM node:16.13.1
-LABEL org.opencontainers.image.source https://github.com/Arquisoft/dede_es3c
-COPY . /app
-WORKDIR /app
-#Install the dependencies
-RUN npm install
-CMD [ "npm", "start" ]
+FROM node:lts-alpine
+
+# Crear directorio de trabajo
+RUN mkdir -p /opt/app
+
+WORKDIR /opt/app
+
+RUN npm install -g typescript ts-node
+
+# Copia la Aplicación
+COPY . .
+
+RUN npm install --quiet
+
+EXPOSE 3000
+
+
+# Inicia la aplicación al iniciar al contenedor
+CMD npm start

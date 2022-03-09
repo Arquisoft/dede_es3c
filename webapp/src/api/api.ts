@@ -19,3 +19,27 @@ export async function getUsers():Promise<User[]>{
     //The objects returned by the api are directly convertible to User objects
     return response.json()
 }
+
+
+export async function checkUser(
+  email: String,
+  password: String
+  ): Promise<boolean> {
+  let response = await fetch("http://localhost:5000/api/login", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+  email: email,
+  password: password,
+  }),
+  });
+  
+  
+  
+  if (response.status === 200) {
+  localStorage.setItem("token", JSON.stringify(response.json));
+  return true;
+  } else {
+  return false;
+  }
+  }

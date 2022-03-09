@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {Fragment, FC, useEffect, useState} from "react";
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Snackbar from '@mui/material/Snackbar';
@@ -6,8 +6,9 @@ import Alert from '@mui/material/Alert';
 import type { AlertColor } from '@mui/material/Alert';
 import {addUser} from '../api/api';
 
-type EmailFormProps = {
+interface EmailFormProps {
   OnUserListChange: () => void;
+  translate: (key: string) => string
 }
 
 type NotificationType = {
@@ -15,7 +16,7 @@ type NotificationType = {
   message: string;
 }
 
-function EmailForm(props: EmailFormProps): JSX.Element {
+const EmailForm: FC<EmailFormProps> = ({translate}, {OnUserListChange}) =>{
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -35,7 +36,7 @@ function EmailForm(props: EmailFormProps): JSX.Element {
         message:'You have been registered in the system!'
       });
       //Notify the change to the parent component
-      props.OnUserListChange();
+      //props.OnUserListChange();
     }
     else{
       setNotificationStatus(true);
@@ -52,7 +53,7 @@ function EmailForm(props: EmailFormProps): JSX.Element {
         <TextField
             required
             name="username"
-            label="Name" 
+            label={translate ('app.textName')} 
             variant="outlined"
             value={name}
             onChange={e => setName(e.target.value)}
@@ -61,13 +62,13 @@ function EmailForm(props: EmailFormProps): JSX.Element {
         <TextField
           required
           name="email"
-          label="Email" 
+          label= {translate ('app.textEmail')} 
           variant="outlined"
           value={email}
           onChange={e => setEmail(e.target.value)}
           sx={{ my: 2 }}
         />
-        <Button variant="contained" type="submit" sx={{ my: 2 }}>Accept</Button>
+        <Button variant="contained" type="submit" sx={{ my: 2 }}>{translate('app.accept')}</Button>
       </form>
       <Snackbar open={notificationStatus} autoHideDuration={3000} onClose={()=>{setNotificationStatus(false)}}>
         <Alert severity={notification.severity} sx={{ width: '100%' }}>

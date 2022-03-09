@@ -1,0 +1,28 @@
+{
+    "app.hi": "Hola, ",
+    "app.students": "Estudiantes de ASW",
+    "app.description": "Este es un ejemplo de react usando typescript",
+    "app.textName": "Nombre",
+    "app.textEmail": "Correo electrónico",
+    "app.accept": "Aceptar",
+    "app.code": "Código fuente",
+    "login.h1": "Iniciar sesión en DeDesktop",
+    "login.h2": "Por favor, introduzca su usuario y contraseña",
+    "login.id": "ID de DeDesktop",
+    "login.validate": "Validar",
+    "login.solid": "Inicia sesión con tu usuario y contraseña",
+    "login.solidUser":"Usuario:",
+    "login.solidPass": "Contraseña: ",
+    "login.signup":"¿No tienes una cuenta? Regístrate",
+    "login.input.error": "Obligatorio",
+    "signup.h1": "Registro en DeDesktop",
+    "signup.h2": "Por favor, rellene los siguientes campos",
+    "signup.name":"Nombre",
+    "signup.surname":"Apellidos",
+    "signup.email":"Correo electrónico",
+    "signup.pass":"Contraseña",
+    "signup.passwd":"Verificar contraseña",
+    "signup.signup":"Registrarse",
+    "signup.login":"¿Ya tienes una cuenta? Inicia sesión"
+
+}
