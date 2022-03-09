@@ -51,25 +51,9 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
   const logOut = () => {
     localStorage.removeItem("token");
   }
-  if (localStorage.getItem("token") === null){
+  if (localStorage.getItem("token") != undefined){
       return (
-    <Nav>
-        {
-          <Fragment>
-            <Button onClick={() => chooseLanguageHandler('EN')}>EN</Button>  
-            <Button onClick={() => chooseLanguageHandler('ES')}>ES</Button> 
-            <Nav.Item key = "home">
-              <Nav.Link  onClick={() => logOut} href = "/login">
-                Log in
-              </Nav.Link>
-            </Nav.Item>
-          </Fragment>
-        }
-      </Nav>
-  );
-  } else{
-    return (
-    <Navbar id="basic-navbar-nav">
+   <Navbar id="basic-navbar-nav">
     {
       <Nav>
         {
@@ -77,16 +61,33 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
             <Button onClick={() => chooseLanguageHandler('EN')}>EN</Button>  
             <Button onClick={() => chooseLanguageHandler('ES')}>ES</Button> 
             <Nav.Item key = "home">
-              <Nav.Link  href = "/">
+              <Nav.Link onClick={logOut} href = "/">
                 Log out
               </Nav.Link>
-              <label>{}</label>
+              <Button>{localStorage.getItem("token")}</Button>
             </Nav.Item>
           </Fragment>
         }
       </Nav>
     }
 </Navbar>
+  );
+  } else{
+    return (
+      <Nav>
+      {
+        <Fragment>
+          <Button onClick={() => chooseLanguageHandler('EN')}>EN</Button>  
+          <Button onClick={() => chooseLanguageHandler('ES')}>ES</Button> 
+          <Nav.Item >
+            <Nav.Link  onClick={() => logOut} href = "/login">
+              Log in
+            </Nav.Link>
+          </Nav.Item>
+        </Fragment>
+      }
+    </Nav>
+    
  );}
 }
 
