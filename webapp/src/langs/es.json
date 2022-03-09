@@ -24,6 +24,8 @@
     "signup.pass":"Contraseña",
     "signup.passwd":"Verificar contraseña",
     "signup.signup":"Registrarse",
-    "signup.login":"¿Ya tienes una cuenta? Inicia sesión"
+    "signup.login":"¿Ya tienes una cuenta? Inicia sesión",
+    "navbar.login":"Iniciar sesión",
+    "navbar.logout":"Cerrar sesión"
 
 }

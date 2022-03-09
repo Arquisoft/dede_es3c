@@ -27,10 +27,11 @@ const LoginPage: FC<LoginPageProps> = (props: LoginPageProps) => {
     const [logged, setLogged] = useState(false);
 
     const checkLog = async () => {
+          const valid = await checkUser(username, password);
           const token = await login(username, password);
           localStorage.setItem("token", token);
           console.log("logged")
-          if (token != null) {
+          if (valid) {
               props.setSession(await getUser(username));;
               setLogged(true);
           } else {

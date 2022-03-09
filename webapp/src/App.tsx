@@ -11,7 +11,16 @@ import { User } from './shared/shareddtypes';
 
 const App: FC = () => {
   const { dispatch: {translate }} = useContext(LangContext);
-  const [user, setUser] = useState<User | null>(null);
+
+  const defaultUser: User =
+  {
+    name: "host",
+    username: "host",
+    password: "host",
+    email: "host",
+    rol: "user"
+  }
+  const [user, setUser] = useState<User>(defaultUser);
 
   const setCurrentUser = (user: User) => {
     setUser(user);
@@ -20,7 +29,7 @@ const App: FC = () => {
 
   return (
     <Router>
-      <Header setSession={setCurrentUser} fixed transparent />
+      <Header fixed transparent />
       <Routes>
         <Route
           index element = 

@@ -2,13 +2,12 @@ import React, { useCallback, useState, useEffect, useRef, useContext, FC, Fragme
 import { NavLink, Link } from 'react-router-dom';
 import {Navbar, Form, Nav, Button} from "react-bootstrap";
 import "bootswatch/dist/superhero/bootstrap.min.css"
-
+import { Label } from '@mui/icons-material';
 import { LangContext } from '../lang';
 import { render } from '@testing-library/react';
 import { User } from '../shared/shareddtypes';
 
 interface HeaderProps {
-  setSession: (user: User) => void;
   fixed?: boolean;
   transparent?: boolean;
 }
@@ -62,7 +61,7 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
             <Button onClick={() => chooseLanguageHandler('ES')}>ES</Button> 
             <Nav.Item key = "home">
               <Nav.Link onClick={logOut} href = "/">
-                Log out
+                {translate('navbar.logout')}
               </Nav.Link>
               <Button>{localStorage.getItem("token")}</Button>
             </Nav.Item>
@@ -81,7 +80,7 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
           <Button onClick={() => chooseLanguageHandler('ES')}>ES</Button> 
           <Nav.Item >
             <Nav.Link  onClick={() => logOut} href = "/login">
-              Log in
+            {translate('navbar.login')}
             </Nav.Link>
           </Nav.Item>
         </Fragment>
