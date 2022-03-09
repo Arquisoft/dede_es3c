@@ -23,6 +23,12 @@
     "signup.pass":"Contraseña",
     "signup.passwd":"Verificar contraseña",
     "signup.signup":"Registrarse",
-    "signup.login":"¿Ya tienes una cuenta? Inicia sesión"
-
+    "signup.login":"¿Ya tienes una cuenta? Inicia sesión",
+    "nav.home":"Inicio",
+    "nav.catalogue":"Catálogo",
+    "nav.register":"Regístrate",
+    "nav.login":"Iniciar sesión",
+    "nav.logout":"Cerrar sesión",
+    "nav.shoppingcart":"Carrito",
+    "nav.languaje":"Idioma"
 }

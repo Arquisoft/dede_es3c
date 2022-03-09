@@ -24,5 +24,12 @@
     "signup.pass":"Password",
     "signup.passwd":"Confirm password",
     "signup.signup":"Sign up",
-    "signup.login":"¿Have an account already? Log in"
+    "signup.login":"¿Have an account already? Log in",
+    "nav.home":"Home",
+    "nav.catalogue":"Catalogue",
+    "nav.register": "Register",
+    "nav.login": "Login",
+    "nav.logout": "Logout",
+    "nav.shoppingcart": "Cart",
+    "nav.languaje":"Languaje"
 }
