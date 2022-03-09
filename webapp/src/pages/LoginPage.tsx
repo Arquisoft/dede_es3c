@@ -24,13 +24,14 @@ const LoginPage: FC<LoginPageProps> = (props: LoginPageProps) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [pulsed, setPulsed] = useState(false);
+    const [logged, setLogged] = useState(false);
 
     const checkLog = async () => {
           const token = await login(username, password);
           console.log("logged")
           if (token != null) {
-              props.setSession(await getUser(username));
-              <Navigate to="/" />;
+              props.setSession(await getUser(username));;
+              setLogged(true);
           } else {
               <Alert>
                   {props.translate("login.singin.error")}
@@ -38,6 +39,9 @@ const LoginPage: FC<LoginPageProps> = (props: LoginPageProps) => {
            }
 };
 
+    if (logged){
+        return ( <Navigate to="/" />);
+    }
     return(
     <div>
         <Container component="main" maxWidth="sm">
