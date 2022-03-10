@@ -5,8 +5,6 @@ import uuid
 import os
 from dotenv import load_dotenv
 
-load_dotenv()
-
 try:
 	conn = MongoClient("mongodb://SergioArroni:julio321@localhost:27017/DeDesktop?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false")
 	print("Connected successfully!!!")
@@ -50,14 +48,14 @@ user1 = {
 		"id": str(uuid.uuid4()),
 		"username":"LeBron Raymone James Sr.",
 		"email":"Thegoat@gmail.com",
-        "password":os.getenv('ADMIN_PASS'),
+        "password":"lakers",
 		"rol":"Admin"
 		}
 user2 = {
 		"id": str(uuid.uuid4()),
 		"username":"Wardell Stephen Curry II",
 		"email":"Chef@gmail.com",
-        "password":os.getenv('CLIENT_PASS'),
+        "password":"123456",
 		"rol":"Client"
 		}
 

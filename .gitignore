@@ -36,3 +36,5 @@ dist/
 
 /.env
 /process.env
+/restapi/src/data
+/restapi/src/data/data.py
