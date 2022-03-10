@@ -6,7 +6,7 @@ import Homepage from './components/Homepage';
 import Header from './components/Header';
 import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
-import CataloguePage from './pages/CataloguePage';
+import CatalogPage from './pages/CatalogPage';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { User } from './shared/shareddtypes';
 
@@ -54,9 +54,9 @@ const App: FC = () => {
         }
         />
         <Route
-          path='catalogue'
+          path='catalog'
           element={
-            <CataloguePage translate={translate}/>
+            <CatalogPage translate={translate}/>
           }
         />
       </Routes>

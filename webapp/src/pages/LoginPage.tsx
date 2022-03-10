@@ -32,7 +32,7 @@ const LoginPage: FC<LoginPageProps> = (props: LoginPageProps) => {
           localStorage.setItem("token", token);
           console.log("logged")
           if (valid) {
-              props.setSession(await getUser(username));;
+              props.setSession(await getUser(username));
               setLogged(true);
           } else {
               <Alert>

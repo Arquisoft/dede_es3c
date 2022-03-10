@@ -4,7 +4,7 @@
  */
  import express, { Router } from 'express';
  import {check} from 'express-validator';
-import { ProductController } from './controllers/Product_Controller';
+ import { ProductController } from './controllers/Product_Controller';
  import { UserController } from './controllers/User_Controller';
  import { Auth } from './middlewares/Auth_Middleware';
  
