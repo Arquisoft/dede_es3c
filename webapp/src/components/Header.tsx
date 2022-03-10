@@ -68,7 +68,7 @@ const Header: FC<HeaderProps> = ({ fixed, transparent }) => {
                 <img alt="" src={homeIcon} width="20" height="20" className="d-inline-block align-top" />
                 {translate('nav.home')}
               </Nav.Link>
-              <Nav.Link href="/catalogo">
+              <Nav.Link href="/catalogue">
                 <img alt="" src={catalogIcon} width="20" height="20" className="d-inline-block align-top" />
                 {translate('nav.catalogue')}
               </Nav.Link>

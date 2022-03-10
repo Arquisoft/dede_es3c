@@ -6,6 +6,7 @@ import Homepage from './components/Homepage';
 import Header from './components/Header';
 import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
+import CataloguePage from './pages/CataloguePage';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const App: FC = () => {
@@ -33,6 +34,12 @@ const App: FC = () => {
         {
           <SignUpPage translate={translate} />
         }
+        />
+        <Route
+          path='catalogue'
+          element={
+            <CataloguePage translate={translate}/>
+          }
         />
       </Routes>
     </Router>
