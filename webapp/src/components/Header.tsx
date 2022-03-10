@@ -1,10 +1,7 @@
 import React, { useCallback, useState, useEffect, useRef, useContext, FC, Fragment } from 'react';
-import { NavLink, Link } from 'react-router-dom';
 import {Navbar, Form, Nav, Button} from "react-bootstrap";
 import "bootswatch/dist/superhero/bootstrap.min.css"
 import { LangContext } from '../lang';
-import { render } from '@testing-library/react';
-import { User } from '../shared/shareddtypes';
 
 interface HeaderProps {
   fixed?: boolean;
@@ -50,7 +47,7 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
     localStorage.removeItem("token");
     localStorage.removeItem("currentUser")
   }
-  if (localStorage.getItem("token") != undefined){
+  if (localStorage.getItem("token") != null) {
       return (
    <Navbar id="basic-navbar-nav">
     {
@@ -83,6 +80,7 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
           <Nav.Item >
             <Nav.Link  onClick={() => logOut} href = "/login">
             {translate('navbar.login')}
+            {localStorage.getItem("token")}
             </Nav.Link>
           </Nav.Item>
         </Fragment>
