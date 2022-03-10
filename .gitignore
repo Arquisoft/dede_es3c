@@ -33,5 +33,6 @@ ormconfig.json
 
 docker-compose.yml
 dist/
-/restapi/src/data
-restapi/src/data/data.py
+
+/.env
+/process.env

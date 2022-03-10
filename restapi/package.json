@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "start": "ts-node-dev ./src/Server.ts ",
-    "data":"python ./dist/src/data/data.py",
+    "data": "python ./dist/src/data/data.py",
     "build": "tsc",
     "prod": "npm run build && node ./dist/src/Server.js",
     "test": "cd tests && jest --runInBand"
@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.1",
+    "cloudinary": "^1.28.1",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
     "dotenv": "^16.0.0",
