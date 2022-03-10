@@ -11,26 +11,27 @@ import logoutIcon from '../img/logout-icon.svg'
 import shoppingCartIcon from '../img/shopping-cart-icon.svg'
 import spanishIcon from '../img/spanish-icon.svg'
 import registerIcon from '../img/register-icon.svg'
-
 import { LangContext } from '../lang';
+import { render } from '@testing-library/react';
+import { User } from '../shared/shareddtypes';
 
 interface HeaderProps {
   fixed?: boolean;
   transparent?: boolean;
 }
 
-const Header: FC<HeaderProps> = ({ fixed, transparent }) => {
+const Header: FC<HeaderProps> = (props: HeaderProps) => {
   const { state: { language}, dispatch: { setLanguage, translate } } = useContext(LangContext);
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownEl = useRef<HTMLUListElement>(null);
 
   let headerClass = 'header';
 
-  if(fixed) {
+  if(props.fixed) {
     headerClass += ' header--fixed';
   }
 
-  if(transparent) {
+  if(props.transparent) {
     headerClass += ' header--transparent';
   }
 
@@ -48,14 +49,42 @@ const Header: FC<HeaderProps> = ({ fixed, transparent }) => {
     }
   }, [handleClickOutside]);
 
+
   const chooseLanguageHandler = (value: string) => {
     setShowDropdown(false);
     setLanguage(value);
   }
 
-  return(
-
-    <Navbar id="basic-navbar-nav">
+  const logOut = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("currentUser")
+  }
+  if (localStorage.getItem("token") != undefined){
+      return (
+   <Navbar id="basic-navbar-nav">
+    {
+      <Nav>
+        {
+          <Fragment>
+            <Button onClick={() => chooseLanguageHandler('EN')}>EN</Button>  
+            <Button onClick={() => chooseLanguageHandler('ES')}>ES</Button> 
+            <Nav.Item key = "home">
+              <Nav.Link onClick={logOut} href = "/">
+                {translate('navbar.logout')}
+              </Nav.Link>
+              <label>
+            {localStorage.getItem("currentUser")}
+            </label>
+            </Nav.Item>
+          </Fragment>
+        }
+      </Nav>
+    }
+</Navbar>
+  );
+  } else{
+    return (
+      <Nav>
       {
         <Nav className="container-fluid">
           {
@@ -80,7 +109,7 @@ const Header: FC<HeaderProps> = ({ fixed, transparent }) => {
                 <img alt="" src={loginIcon} width="20" height="20" className="d-inline-block align-top" />
                 {translate('nav.login')}
               </Nav.Link>
-              <Nav.Link href="/home">
+              <Nav.Link onClick={() => logOut} href = "/login">
                 <img alt="" src={logoutIcon} width="20" height="20" className="d-inline-block align-top" />
                 {translate('nav.logout')}
               </Nav.Link>
@@ -102,8 +131,9 @@ const Header: FC<HeaderProps> = ({ fixed, transparent }) => {
           }
         </Nav>
       }
-  </Navbar>
-  );
+    </Nav>
+    
+ );}
 }
 
 export default Header;
