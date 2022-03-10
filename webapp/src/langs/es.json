@@ -25,6 +25,13 @@
     "signup.signup":"Registrarse",
     "signup.login":"¿Ya tienes una cuenta? Inicia sesión",
     "navbar.login":"Iniciar sesión",
-    "navbar.logout":"Cerrar sesión"
+    "navbar.logout":"Cerrar sesión",
+    "nav.home":"Inicio",
+    "nav.catalogue":"Catálogo",
+    "nav.register":"Regístrate",
+    "nav.login":"Iniciar sesión",
+    "nav.logout":"Cerrar sesión",
+    "nav.shoppingcart":"Carrito",
+    "nav.languaje":"Idioma"
 
 }

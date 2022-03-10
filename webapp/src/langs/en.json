@@ -26,5 +26,12 @@
     "signup.signup":"Sign up",
     "signup.login":"¿Have an account already? Log in",
     "navbar.login":"Log in",
-    "navbar.logout":"Log out"
+    "navbar.logout":"Log out",
+    "nav.home":"Home",
+    "nav.catalogue":"Catalogue",
+    "nav.register": "Register",
+    "nav.login": "Login",
+    "nav.logout": "Logout",
+    "nav.shoppingcart": "Cart",
+    "nav.languaje":"Language"
 }
