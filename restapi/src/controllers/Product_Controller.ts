@@ -51,7 +51,7 @@ export class ProductController {
         }
     }
 
-    /**
+    /** 
      * Get user by category
      * @param req Request
      * @param res Response
@@ -74,7 +74,7 @@ export class ProductController {
      */
     public async updateProduct(req: Request, res: Response) {
         try {
-            let productServiceBody = new Product(req.body.name, req.body.description,req.body.price,req.body.category);
+            let productServiceBody = new Product(req.body.name, req.body.description,req.body.price,req.body.category, req.body.urlPhoto);
             const product = await ProductService.updateProduct(req.app, String(req.params.id), productServiceBody);
             product ? res.status(200).json(product.raw) : res.status(404).json({ error: "Product not found" });
         } catch (error) {
@@ -105,7 +105,7 @@ export class ProductController {
      */
     public async addProduct(req: Request, res: Response) {
         try {
-            let productBody = new Product(req.body.name, req.body.description, req.body.price, req.body.category);
+            let productBody = new Product(req.body.name, req.body.description, req.body.price, req.body.category, req.body.urlPhoto);
             const product = await ProductService.addProduct(req.app, productBody);
             product ? res.status(200).json(product) : res.status(500).json({ error: "Error add Product" });
         } catch (error) {

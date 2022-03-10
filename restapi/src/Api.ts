@@ -23,6 +23,18 @@
              //check('email').isEmail().normalizeEmail()
          ], auth.login);
  };
+
+  // =================================> Routes
+  
+  const setRegisterRoutes = (): void => {
+    api.route('/register')
+             // Create new user
+        .post([
+            check('username').isLength({min: 1}),
+            check('password').isLength({min: 1}),
+            check('email').isEmail().normalizeEmail()
+        ], userController.addUser);
+};
  
  /**
   * Set User Routes for express App
@@ -32,11 +44,6 @@
      api.route('/users')
          // Get all users
          .get(userController.getUsers)
-         // Create new user
-         .post([
-             check('username').isLength({ min: 1 }).trim().escape(),
-             check('email').isEmail().normalizeEmail()
-         ], userController.addUser);
  
      api.route('/users/username/:username')
          .get(userController.getUserByUsername);
@@ -76,6 +83,7 @@
  setAuthRoutes();
  setUserRoutes();
  setProductsRoutes();
+ setRegisterRoutes();
 
  
  export default api;
