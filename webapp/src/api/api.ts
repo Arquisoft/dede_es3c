@@ -27,19 +27,29 @@ export async function checkUser(username: String, password: String): Promise<boo
     headers: { "Content-Type": "application/json" },
   });
   if (response.status === 200) {
-    localStorage.setItem("token", JSON.stringify(response.json));
+    //localStorage.setItem("token", JSON.stringify(response.json));
     return true;
   } else {
     return false;
   }
 }
 
-export async function login(username:String ,password:String) {
+export async function loginB(username:String ,password:String) {
   const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
   let response = await fetch(apiEndPoint+'/login', {
       method: 'POST',
       headers: {'Content-Type':'application/json'},
       body: JSON.stringify({'username': username, 'password': password})
+    });
+    return response.json();
+}
+
+export async function signup(username:String ,password:String, email:String) {
+  const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+  let response = await fetch(apiEndPoint+'/register', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({'username': username, 'password': password, 'email':email})
     });
     return response.json();
 }

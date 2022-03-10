@@ -9,9 +9,10 @@ import {User} from '../shared/shareddtypes';
 
 interface HomepageProps {
     translate: (key: string) => string
+    setUser: (user:string) => void
 }
 
-const Homepage: FC<HomepageProps> = ({ translate }) => {
+const Homepage: FC<HomepageProps> = (props: HomepageProps) => {
     const [users,setUsers] = useState<User[]>([]);
     const refreshUserList = async () => {
       setUsers(await getUsers());
@@ -22,9 +23,10 @@ const Homepage: FC<HomepageProps> = ({ translate }) => {
 
     return(
         <Fragment>  
-          <Welcome translate = {translate} message= {translate('app.students')}/>
-          <Box component="div" sx={{ py: 2}}>{translate('app.description')}</Box>
-          <Link href="https://github.com/pglez82/asw2122_0">{translate('app.code')}</Link>
+          <Header setUser={props.setUser}/>
+          <Welcome translate = {props.translate} message= {props.translate('app.students')}/>
+          <Box component="div" sx={{ py: 2}}>{props.translate('app.description')}</Box>
+          <Link href="https://github.com/pglez82/asw2122_0">{props.translate('app.code')}</Link>
       </Fragment>
     );
   }

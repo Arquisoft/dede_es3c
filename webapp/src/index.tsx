@@ -4,12 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import LangState from './lang';
+import UserState from './User'
+import {Provider} from 'react-redux';
 
 ReactDOM.render(
   <React.StrictMode>
+    <UserState>
     <LangState>
       <App />
     </LangState>
+    </UserState>
   </React.StrictMode>,
   document.getElementById('root')
 );
