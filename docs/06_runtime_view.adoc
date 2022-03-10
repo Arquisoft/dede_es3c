@@ -32,7 +32,8 @@ entity RestApi
 database DataBase
 User-> WebApp : Login
 WebApp-> RestApi : send login data
-RestApi -> DataBase : find data location
+RestApi -> DataBase : find data
+DataBase -> RestApi : send data
 RestApi -> RestApi : check login data
 RestApi -> WebApp: Notify success
 WebApp-> User: Notify success
@@ -52,7 +53,9 @@ database USER_POD
 database DataBase
 User-> WebApp : Login
 WebApp-> RestApi : send login data
+RestApi -> DataBase : find data location
 RestApi -> USER_POD : load login data
+USER_POD -> RestApi : send data
 RestApi -> RestApi : check login data
 RestApi -> WebApp: Notify success
 WebApp-> User: Notify success
