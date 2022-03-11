@@ -59,12 +59,3 @@ export async function getProducts(): Promise<Product[]>{
   let response = await fetch(apiEndPoint + '/products/list');
   return response.json()
 }
-
-export async function getProduct(name: String): Promise<Product> {
-  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api/products';
-  let response = await fetch(apiEndPoint + "/username/" + name, {
-    method: "GET",
-    headers: { "Content-Type": "application/json" },
-  });
-  return response.json();
-}

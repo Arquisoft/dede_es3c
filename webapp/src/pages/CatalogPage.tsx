@@ -1,9 +1,8 @@
-import React, { Fragment, FC, useEffect, useState } from "react";
+import React, { Fragment, FC, useEffect, useState, Component } from "react";
 import "bootswatch/dist/superhero/bootstrap.min.css"
 import Button from '@mui/material/Button';
 import { Form, FormControl } from "react-bootstrap";
-import { getProduct, getProducts } from "../api/api";
-import { CoPresentSharp } from "@mui/icons-material";
+import JsonDataDisplay from "../components/ProductDisplay";
 
 const checkParams = (text: string) => {
     return text == "" || text == null;
@@ -13,20 +12,20 @@ interface CatalogPageProps {
     translate: (key: string) => string
     //session: (user: User) => void;
 }
+
+function Load() {
+    return (
+        <div id="datos">
+            <h1>Products</h1>
+            <JsonDataDisplay />
+        </div>
+    );
+}
+
 const CatalogPage: FC<CatalogPageProps> = ({ translate }) => {
 
-    const loadProducts = async () => {
-        const productList = await getProducts();
-        
-        const listAux = [];
-
-        for (let product of productList) {
-            listAux.push(product);
-        }
-    };
-
     return (
-        <div>
+        <Fragment>
             <h1>CATÁLOGO</h1>
 
             <Form>
@@ -34,9 +33,9 @@ const CatalogPage: FC<CatalogPageProps> = ({ translate }) => {
                 <Button type="submit">Search</Button>
             </Form>
 
-
+            {Load()}
             
-        </div>
+        </Fragment>
     );
 }
 export default CatalogPage;
