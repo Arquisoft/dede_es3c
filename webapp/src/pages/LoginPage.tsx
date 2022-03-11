@@ -28,7 +28,6 @@ const LoginPage: FC<LoginPageProps> = (props: LoginPageProps) => {
           const valid = await checkUser(username, password);
           console.log("logged")
           if (valid) {
-              props.setSession(await getUser(username));
               const token = await loginB(username, password);
               const user =await getUser(username);
               props.setUser(user.username);

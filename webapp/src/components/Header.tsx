@@ -71,9 +71,9 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
                   <img alt="" src={homeIcon} width="20" height="20" className="d-inline-block align-top" />
                   {translate('nav.home')}
                 </Nav.Link>
-                <Nav.Link href="/catalogue">
+                <Nav.Link href="/catalog">
                   <img alt="" src={catalogIcon} width="20" height="20" className="d-inline-block align-top" />
-                  {translate('nav.catalogue')}
+                  {translate('nav.catalog')}
                 </Nav.Link>
                 <Nav.Link onClick={logOut} href = "/login">
                   <img alt="" src={logoutIcon} width="20" height="20" className="d-inline-block align-top" />

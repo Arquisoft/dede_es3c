@@ -7,10 +7,12 @@ function JsonDataDisplay() {
     
     const [products, setProducts] = useState<Product[]>([]);
 
-    const loadProducts = async () => {
+    async function LoadProducts() {
         const productsAux: Product[] = await getProducts();
         setProducts(productsAux);
     };
+
+    LoadProducts();
 
     const DisplayData = products.map(
         (info) => {

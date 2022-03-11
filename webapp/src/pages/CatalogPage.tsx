@@ -3,6 +3,7 @@ import "bootswatch/dist/superhero/bootstrap.min.css"
 import Button from '@mui/material/Button';
 import { Form, FormControl } from "react-bootstrap";
 import JsonDataDisplay from "../components/ProductDisplay";
+import Header from "../components/Header";
 
 const checkParams = (text: string) => {
     return text == "" || text == null;
@@ -10,7 +11,7 @@ const checkParams = (text: string) => {
 
 interface CatalogPageProps {
     translate: (key: string) => string
-    //session: (user: User) => void;
+    setUser: (user: string) => void
 }
 
 function Load() {
@@ -22,10 +23,11 @@ function Load() {
     );
 }
 
-const CatalogPage: FC<CatalogPageProps> = ({ translate }) => {
+const CatalogPage: FC<CatalogPageProps> = (props: CatalogPageProps) => {
 
     return (
-        <Fragment>
+        <div>
+            <Header setUser={props.setUser} />
             <h1>CATÁLOGO</h1>
 
             <Form>
@@ -34,8 +36,7 @@ const CatalogPage: FC<CatalogPageProps> = ({ translate }) => {
             </Form>
 
             {Load()}
-            
-        </Fragment>
+        </div>
     );
 }
 export default CatalogPage;
