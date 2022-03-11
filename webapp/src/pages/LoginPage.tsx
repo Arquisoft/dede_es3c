@@ -5,11 +5,9 @@ import Button from '@mui/material/Button';
 import {Container, Card , CardContent, Grid} from "@mui/material";
 import Link from '@mui/material/Link';
 import logo from '../img/logo-dede.svg'
-import SignUpPage from './SignUpPage'
-import { addUser, checkUser, getUser, login } from "../api/api";
-import { User } from "../shared/shareddtypes";
-import { Alert} from "@mui/material"
+import {checkUser, getUser, loginB } from "../api/api";
 import {Navigate} from "react-router-dom";
+import Header from "../components/Header";
 
 
 const checkParams = (text: string) => {
@@ -17,8 +15,8 @@ const checkParams = (text: string) => {
 }
 
 interface LoginPageProps {
-    setSession: (user: User) => void;
     translate: (key: string) => string
+    setUser:(user:string) => void
 }
 const LoginPage: FC<LoginPageProps> = (props: LoginPageProps) => {
     const [username, setUsername] = useState('');
@@ -28,16 +26,16 @@ const LoginPage: FC<LoginPageProps> = (props: LoginPageProps) => {
 
     const checkLog = async () => {
           const valid = await checkUser(username, password);
-          const token = await login(username, password);
-          localStorage.setItem("token", token);
           console.log("logged")
           if (valid) {
               props.setSession(await getUser(username));
+              const token = await loginB(username, password);
+              const user =await getUser(username);
+              props.setUser(user.username);
+              localStorage.setItem("token", token);
               setLogged(true);
           } else {
-              <Alert>
-                  {props.translate("login.singin.error")}
-              </Alert>
+              console.log("fallo")
            }
 };
 
@@ -46,6 +44,7 @@ const LoginPage: FC<LoginPageProps> = (props: LoginPageProps) => {
     }
     return(
     <div>
+        <Header setUser={props.setUser}/>
         <Container component="main" maxWidth="sm">
         <Card className={"main"} elevation={10} style={{display: "grid"}}>
         <CardContent style={{ display: "grid", margin: "auto", textAlign: "center" }}>
@@ -91,5 +90,5 @@ const LoginPage: FC<LoginPageProps> = (props: LoginPageProps) => {
         </Container>
     </div>
     );
-}
+} 
   export default LoginPage;

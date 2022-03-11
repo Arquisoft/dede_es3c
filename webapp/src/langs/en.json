@@ -19,18 +19,19 @@
     "login.singin.error": "Incorrect email or password",
     "signup.h1": "Sign up in DeDesktop",
     "signup.h2": "Please, fill the following requirements",
-    "signup.name":"Name",
-    "signup.surname":"Surname",
+    "signup.name":"Username",
     "signup.email":"Email",
     "signup.pass":"Password",
     "signup.passwd":"Confirm password",
     "signup.signup":"Sign up",
     "signup.login":"¿Have an account already? Log in",
+    "navbar.login":"Log in",
+    "navbar.logout":"Log out",
     "nav.home":"Home",
-    "nav.catalog":"Catalogue",
+    "nav.catalog":"Catalog",
     "nav.register": "Register",
     "nav.login": "Login",
     "nav.logout": "Logout",
     "nav.shoppingcart": "Cart",
-    "nav.languaje":"Languaje"
+    "nav.languaje":"Language"
 }
