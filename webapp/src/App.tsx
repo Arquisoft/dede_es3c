@@ -3,6 +3,7 @@ import './App.css';
 import { LangContext } from './lang';
 import { UserContext } from './User';
 import Homepage from './components/Homepage';
+import "bootswatch/dist/minty/bootstrap.min.css"
 import Header from './components/Header';
 import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';

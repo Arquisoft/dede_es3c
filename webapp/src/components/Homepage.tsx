@@ -6,6 +6,7 @@ import Container from '@mui/material/Container';
 import Welcome from './Welcome';
 import  {getUsers} from '../api/api';
 import {User} from '../shared/shareddtypes';
+import "bootswatch/dist/minty/bootstrap.min.css"
 
 interface HomepageProps {
     translate: (key: string) => string

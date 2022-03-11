@@ -1,6 +1,6 @@
 import React, { useCallback, useState, useEffect, useRef, useContext, FC, Fragment } from 'react';
 import {Navbar, Form, Nav, Button, NavDropdown, DropdownButton, Dropdown, Container} from "react-bootstrap";
-import "bootswatch/dist/superhero/bootstrap.min.css"
+import "bootswatch/dist/minty/bootstrap.min.css"
 import { LangContext } from '../lang';
 import { UserContext } from '../User';
 import logo from '../img/logo-dede.svg'
@@ -12,9 +12,6 @@ import logoutIcon from '../img/logout-icon.svg'
 import shoppingCartIcon from '../img/shopping-cart-icon.svg'
 import spanishIcon from '../img/spanish-icon.svg'
 import registerIcon from '../img/register-icon.svg'
-import { render } from '@testing-library/react';
-import { User } from '../shared/shareddtypes';
-
 interface HeaderProps {
   setUser:(user:string) => void
 }
@@ -54,7 +51,7 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
   }
   const [greet, setGreet] = useState("Hi," + user)
 
-  if (localStorage.getItem("currentUser") !== "not logged") {
+  if (localStorage.getItem("currentUser") !== "not logged" && !(localStorage.getItem("currentUser")?.includes("admin"))) {
       return (
         <Nav>
         {
@@ -65,7 +62,7 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
                   <img alt="" src={logo} width="30" height="30" className="d-inline-block align-top"/>
                   DeDesktop
                 </Navbar.Brand>
-                <Nav.Link href="/home" className="float-left">
+                <Nav.Link href="/" className="float-left">
                   <img alt="" src={homeIcon} width="20" height="20" className="d-inline-block align-top" />
                   {translate('nav.home')}
                 </Nav.Link>
@@ -97,7 +94,7 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
         }
       </Nav>
   );
-  } else{
+    } else{
     return (
       <Nav>
       {
@@ -108,7 +105,7 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
                 <img alt="" src={logo} width="30" height="30" className="d-inline-block align-top"/>
                 DeDesktop
               </Navbar.Brand>
-              <Nav.Link href="/home" className="float-left">
+              <Nav.Link href="/" className="float-left">
                 <img alt="" src={homeIcon} width="20" height="20" className="d-inline-block align-top" />
                 {translate('nav.home')}
               </Nav.Link>
