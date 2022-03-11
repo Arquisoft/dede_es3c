@@ -2,6 +2,8 @@
 # inserting data in MongoDB
 from pymongo import MongoClient
 import uuid
+import os
+from dotenv import load_dotenv
 
 try:
 	conn = MongoClient("mongodb://SergioArroni:julio321@localhost:27017/DeDesktop?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false")
@@ -21,7 +23,7 @@ prod1 = {
 		"description":"It's a bad monitor",
         "price":10,
 		"category":"Monitor",
-		"urlPhoto":"b"
+		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1646938754/samples/ecommerce/HP_l9kqjo.jpg"
 		}
 prod2 = {
 		"id": str(uuid.uuid4()),
@@ -29,7 +31,7 @@ prod2 = {
 		"description":"It's a good monitor",
         "price":100,
 		"category":"Monitor",
-		"urlPhoto":"a"
+		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1646938754/samples/ecommerce/NiSiPu_dfue3n.jpg"
 		}
 
 # Insert Data
@@ -44,14 +46,14 @@ collection = db.user
 
 user1 = {
 		"id": str(uuid.uuid4()),
-		"name":"LeBron Raymone James Sr.",
+		"username":"LeBron Raymone James Sr.",
 		"email":"Thegoat@gmail.com",
         "password":"lakers",
 		"rol":"Admin"
 		}
 user2 = {
 		"id": str(uuid.uuid4()),
-		"name":"Wardell Stephen Curry II",
+		"username":"Wardell Stephen Curry II",
 		"email":"Chef@gmail.com",
         "password":"123456",
 		"rol":"Client"
