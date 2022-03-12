@@ -1,6 +1,5 @@
 import React, {Fragment, FC, useEffect, useState} from "react";
 import TextField from '@mui/material/TextField';
-import "bootswatch/dist/superhero/bootstrap.min.css"
 import Button from '@mui/material/Button';
 import {Container, Card , CardContent, Grid} from "@mui/material";
 import Link from '@mui/material/Link';
@@ -8,6 +7,7 @@ import logo from '../img/logo-dede.svg'
 import {checkUser, getUser, loginB } from "../api/api";
 import {Navigate} from "react-router-dom";
 import Header from "../components/Header";
+import "bootswatch/dist/minty/bootstrap.min.css"
 
 
 const checkParams = (text: string) => {
@@ -30,7 +30,12 @@ const LoginPage: FC<LoginPageProps> = (props: LoginPageProps) => {
           if (valid) {
               const token = await loginB(username, password);
               const user =await getUser(username);
-              props.setUser(user.username);
+              if (user.rol === "Admin"){
+                  const adminName = "admin " + user.username;
+                props.setUser(adminName);
+              } else {
+                props.setUser(user.username);
+              }
               localStorage.setItem("token", token);
               setLogged(true);
           } else {

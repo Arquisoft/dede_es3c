@@ -54,7 +54,7 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
 
   const [greet, setGreet] = useState("Hi," + user)
 
-  if (localStorage.getItem("currentUser") !== "not logged") {
+  if (localStorage.getItem("currentUser") !== "not logged" && !(localStorage.getItem("currentUser")?.includes("admin"))) {
       return (
         <Nav>
         {
@@ -65,7 +65,7 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
                   <img alt="" src={logo} width="30" height="30" className="d-inline-block align-top"/>
                   DeDesktop
                 </Navbar.Brand>
-                <Nav.Link href="/home" className="float-left">
+                <Nav.Link href="/" className="float-left">
                   <img alt="" src={homeIcon} width="20" height="20" className="d-inline-block align-top" />
                   {translate('nav.home')}
                 </Nav.Link>
@@ -97,7 +97,7 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
         }
       </Nav>
   );
-  } else{
+    } else{
     return (
       <Nav>
       {
@@ -108,7 +108,7 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
                 <img alt="" src={logo} width="30" height="30" className="d-inline-block align-top"/>
                 DeDesktop
               </Navbar.Brand>
-              <Nav.Link href="/home" className="float-left">
+              <Nav.Link href="/" className="float-left">
                 <img alt="" src={homeIcon} width="20" height="20" className="d-inline-block align-top" />
                 {translate('nav.home')}
               </Nav.Link>

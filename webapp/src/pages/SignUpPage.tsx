@@ -1,14 +1,17 @@
 import React, {Fragment, FC, useEffect, useState} from "react";
 import TextField from '@mui/material/TextField';
-import "bootswatch/dist/superhero/bootstrap.min.css"
+import "bootswatch/dist/minty/bootstrap.min.css"
 import Button from '@mui/material/Button';
-import {Container, Card , CardContent, Grid} from "@mui/material";
+import {Container, Card , CardContent, Grid, Alert} from "@mui/material";
+import AccountCircle from '@mui/icons-material/AccountCircle';
+import InputAdornment from '@mui/material/InputAdornment';
 import Link from '@mui/material/Link';
 import logo from '../img/logo-dede.svg'
 import { addUser, checkUser, getUser, signup } from "../api/api";
 import { User } from "../shared/shareddtypes";
 import {Navigate} from "react-router-dom";
 import Header from "../components/Header";
+import { isObjectLiteralElementLike } from "typescript";
 
 
 interface SignUpProps{
@@ -23,8 +26,17 @@ const LoginPage: FC<SignUpProps> = (props: SignUpProps) => {
     const [repeatedPassword, setRepeatedPassword] = useState('');
     const [exists, setExists] = useState(0);
     const [registered, setRegistered] = useState(false);
+    const [pulsed, setPulsed] = useState (false);
+
+
+    const isBlank = (text: string) => 
+    {
+        return(text.length == 0);
+    }
+
 
     const register = async () => {
+        setPulsed(true);
 
         const user:User = 
         {
@@ -34,16 +46,19 @@ const LoginPage: FC<SignUpProps> = (props: SignUpProps) => {
             name: name,
             rol: "Client"
         }
-        const found = await checkUser(name, password);
-        if (!found){
-            await addUser(user);
-            setRegistered(true);
-        } else {
-            setExists(2);
-        }
-    
-    }
 
+        if (isBlank(user.name) || isBlank(user.password) || isBlank(user.email) || isBlank(repeatedPassword)){
+            console.log("novalido");
+        } else {
+           const found = await checkUser(name, password);
+           if (!found){
+               await signup(name, password, email);
+                setRegistered(true);
+            } else {
+                setExists(2);
+        } 
+     }
+    }
     if (registered){
         return(  
         <div>
@@ -76,12 +91,20 @@ const LoginPage: FC<SignUpProps> = (props: SignUpProps) => {
                         size="small"
                         name="name"
                         label= {props.translate ('signup.name')} 
+                        InputProps={{
+                            startAdornment: (
+                              <InputAdornment position="start">
+                                <AccountCircle />
+                              </InputAdornment>
+                            ),
+                          }}
                         variant="outlined"
                         value={name}
                         helperText= {props.translate('signup.name')}
                         onChange={e => setName(e.target.value)}
-                        error = {exists === 2}
+                        error = {exists == 2 || (pulsed && name.length == 0)}
                         sx={{ my: 2 }}
+                        
                         /> 
                     </div>
                     <div>
@@ -95,6 +118,7 @@ const LoginPage: FC<SignUpProps> = (props: SignUpProps) => {
                         variant="outlined"
                         onChange={e => setEmail(e.target.value)}
                         helperText= {props.translate('signup.email')}
+                        error = {(pulsed && email.length == 0)}
                         sx={{ my: 2 }}
                         /> 
                     </div>
@@ -109,6 +133,7 @@ const LoginPage: FC<SignUpProps> = (props: SignUpProps) => {
                         variant="outlined"
                         onChange={e => setPassword(e.target.value)}
                         helperText= {props.translate('signup.pass')}
+                        error = {(pulsed && password.length == 0)}
                         sx={{ my: 2 }}
                         /> 
                     </div>
@@ -123,7 +148,7 @@ const LoginPage: FC<SignUpProps> = (props: SignUpProps) => {
                         variant="outlined"
                         onChange={e => setRepeatedPassword(e.target.value)}
                         helperText= {props.translate('signup.passwd')}
-                        error = {(password !== repeatedPassword)}
+                        error = {(password != repeatedPassword) || (pulsed && repeatedPassword.length == 0)}
                         sx={{ my: 2 }}
                         /> 
                     </div>
