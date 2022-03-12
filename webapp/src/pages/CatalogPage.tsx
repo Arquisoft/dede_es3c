@@ -1,9 +1,12 @@
 import React, { Fragment, FC, useEffect, useState, Component } from "react";
 import "bootswatch/dist/superhero/bootstrap.min.css"
 import Button from '@mui/material/Button';
-import { Form, FormControl } from "react-bootstrap";
-import JsonDataDisplay from "../components/ProductDisplay";
+import { Dropdown, DropdownButton, Form, FormControl } from "react-bootstrap";
+import LoadedProducts from "../components/ProductDisplay";
 import Header from "../components/Header";
+import DropdownItem from "react-bootstrap/esm/DropdownItem";
+import { Product } from '../shared/shareddtypes';
+import { getProducts } from "../api/api";
 
 const checkParams = (text: string) => {
     return text == "" || text == null;
@@ -14,11 +17,10 @@ interface CatalogPageProps {
     setUser: (user: string) => void
 }
 
-function Load() {
+function DisplayProducts() {
     return (
-        <div id="datos">
-            <h1>Products</h1>
-            <JsonDataDisplay />
+        <div id="productos">
+            <LoadedProducts  />
         </div>
     );
 }
@@ -35,7 +37,14 @@ const CatalogPage: FC<CatalogPageProps> = (props: CatalogPageProps) => {
                 <Button type="submit">Search</Button>
             </Form>
 
-            {Load()}
+            <DropdownButton title="Selecciona una categoría">
+                <Dropdown.Menu>
+                    <Dropdown.Item href="#">Monitores</Dropdown.Item>
+                </Dropdown.Menu>
+                
+            </DropdownButton>
+
+            {DisplayProducts()}
         </div>
     );
 }

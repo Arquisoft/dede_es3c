@@ -7,7 +7,9 @@ import Header from './components/Header';
 import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
 import CatalogPage from './pages/CatalogPage';
+import HomePage from './pages/HomePage';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 const App: FC = () => {
   const { dispatch: {translate }} = useContext(LangContext);
   const { dispatch: {setUser}} = useContext(UserContext);
@@ -16,9 +18,10 @@ const App: FC = () => {
     <Router>
       <Routes>
         <Route
-          index element = 
+          path='home'
+          element = 
           {
-            <Homepage setUser={setUser} translate={translate}/>
+            <HomePage setUser={setUser} translate={translate}/>
           }
         />
         <Route

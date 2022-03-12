@@ -80,7 +80,7 @@ const LoginPage: FC<SignUpProps> = (props: SignUpProps) => {
                         value={name}
                         helperText= {props.translate('signup.name')}
                         onChange={e => setName(e.target.value)}
-                        error = {exists == 2}
+                        error = {exists === 2}
                         sx={{ my: 2 }}
                         /> 
                     </div>
@@ -123,7 +123,7 @@ const LoginPage: FC<SignUpProps> = (props: SignUpProps) => {
                         variant="outlined"
                         onChange={e => setRepeatedPassword(e.target.value)}
                         helperText= {props.translate('signup.passwd')}
-                        error = {(password != repeatedPassword)}
+                        error = {(password !== repeatedPassword)}
                         sx={{ my: 2 }}
                         /> 
                     </div>

@@ -13,8 +13,6 @@ import spanishIcon from '../img/spanish-icon.svg';
 import registerIcon from '../img/register-icon.svg';
 import { LangContext } from '../lang';
 import { UserContext } from '../User';
-import { render } from '@testing-library/react';
-import { User } from '../shared/shareddtypes';
 
 interface HeaderProps {
   setUser:(user:string) => void

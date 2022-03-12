@@ -61,7 +61,7 @@
  
     api.route('/products')
         // Get all products
-        .get(auth.isAuth, productsController.getProducts)
+        .get(productsController.getProducts)
         // Create new products
         .post(auth.isAdminAuth,[
             check('name').isLength({ min: 1 }).trim().escape()

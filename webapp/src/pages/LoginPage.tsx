@@ -36,7 +36,7 @@ const LoginPage: FC<LoginPageProps> = (props: LoginPageProps) => {
           } else {
               console.log("fallo")
            }
-};
+    };
 
     if (logged){
         return ( <Navigate to="/" />);
