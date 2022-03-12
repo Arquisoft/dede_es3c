@@ -6,7 +6,7 @@ import LoadedProducts from "../components/ProductDisplay";
 import Header from "../components/Header";
 import DropdownItem from "react-bootstrap/esm/DropdownItem";
 import { Product } from '../shared/shareddtypes';
-import { getProducts, getProductsByName } from "../api/api";
+import { getProducts, getProductsByCategory, getProductsByName } from "../api/api";
 import { Grid } from "@mui/material";
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -26,7 +26,7 @@ interface CatalogPageProps {
     setUser: (user: string) => void
 }
 
-let productsToDisplay:any = null;
+let productsToDisplay: any = null;
 
 function LoadProducts(){
     productsToDisplay = null;
@@ -50,6 +50,21 @@ function FilterProducts(name: string){
 
     async function LoadProductsAux() {
         const productsAux: Product[] = await getProductsByName(name);
+        setProducts(productsAux);
+    };
+
+    LoadProductsAux();
+
+    productsToDisplay = DisplayProducts(products);
+}
+
+function FilterProductsByCategory(category: string) {
+    productsToDisplay = null;
+
+    const [products, setProducts] = useState<Product[]>([]);
+
+    async function LoadProductsAux() {
+        const productsAux: Product[] = await getProductsByCategory(category);
         setProducts(productsAux);
     };
 
@@ -92,7 +107,7 @@ function DisplayProducts(products: Product[]) {
 
 const CatalogPage: FC<CatalogPageProps> = (props: CatalogPageProps) => {
 
-    LoadProducts();
+    //LoadProducts()
 
     return (
         <div>
@@ -100,21 +115,21 @@ const CatalogPage: FC<CatalogPageProps> = (props: CatalogPageProps) => {
             <h1>CATÁLOGO</h1>
 
             <Form>
-                <FormControl type="search" placeholder="Search" className="me-2" aria-label="Search"/>
-                <Button type="submit" onClick={() => FilterProducts("Monitor HP")} >Search</Button>
+                <FormControl type="search" placeholder="Search" className="me-2" aria-label="Search" />
+                <Button type="submit" onClick={() => FilterProducts("HP Monitor")} >Search</Button>
             </Form>
 
             <DropdownButton title="Selecciona una categoría">
                 <Dropdown.Menu>
                     <Dropdown.Item href="#">Monitores</Dropdown.Item>
                 </Dropdown.Menu>
-                
+
             </DropdownButton>
 
             {productsToDisplay}
         </div>
     );
+
+    
 }
 export default CatalogPage;
-
-

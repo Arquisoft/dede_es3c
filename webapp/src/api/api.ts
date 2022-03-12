@@ -78,3 +78,12 @@ export async function getProductsByName(name: String): Promise<Product[]> {
   });
   return response.json()
 }
+
+export async function getProductsByCategory(category: String): Promise<Product[]> {
+  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api/products'
+  let response = await fetch(apiEndPoint + '/category/' + category, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
+  return response.json()
+}

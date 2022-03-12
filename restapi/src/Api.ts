@@ -61,17 +61,17 @@ import { ProductController } from './controllers/Product_Controller';
  
     api.route('/products')
         // Get all products
-        .get(auth.isAuth, productsController.getProducts)
+        .get(productsController.getProducts)
         // Create new products
         .post(auth.isAdminAuth,[
             check('name').isLength({ min: 1 }).trim().escape()
         ], productsController.addProduct);
 
     api.route('/products/name/:name')
-        .get(auth.isAuth, productsController.getProductByName);
+        .get(productsController.getProductByName);
     
-    api.route('/products/category/:categry')
-        .get(auth.isAuth, productsController.getProductByCategory);
+    api.route('/products/category/:category')
+        .get(productsController.getProductByCategory);
 
     api.route('/products/:id')
         // Get products by id
