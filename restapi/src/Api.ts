@@ -68,7 +68,7 @@
         ], productsController.addProduct);
 
     api.route('/products/name/:name')
-        .get(auth.isAuth, productsController.getProductByName);
+        .get(productsController.getProductByName);
 
     api.route('/products/:id')
         // Get products by id

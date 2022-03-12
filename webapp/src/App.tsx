@@ -1,4 +1,4 @@
-import React, { FC, useContext } from 'react';
+import React, { FC, useContext, useState } from 'react';
 import './App.css';
 import { LangContext } from './lang';
 import { UserContext } from './User';
@@ -9,6 +9,7 @@ import SignUpPage from './pages/SignUpPage';
 import CatalogPage from './pages/CatalogPage';
 import HomePage from './pages/HomePage';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Prueba from './pages/Prueba';
 
 const App: FC = () => {
   const { dispatch: {translate }} = useContext(LangContext);
@@ -41,9 +42,15 @@ const App: FC = () => {
         <Route
           path='catalog'
           element={
-            <CatalogPage setUser={setUser} translate={translate}/>
+            <CatalogPage setUser={setUser} translate={translate} />
           }
         />
+        <Route
+          path='prueba'
+          element={
+            <Prueba />
+          }
+          />
       </Routes>
     </Router>
     

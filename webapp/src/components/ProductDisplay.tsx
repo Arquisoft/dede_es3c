@@ -49,11 +49,9 @@ function JsonDataDisplay() {
 
     return (
         <div>
-            <table>
                 <Grid container spacing={2}>
                     {DisplayData}
                 </Grid>
-            </table>
         </div>
     )
 }
