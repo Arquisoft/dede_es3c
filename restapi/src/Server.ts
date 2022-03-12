@@ -11,9 +11,6 @@
  import api from "./Api";
  import database from "./persistence/Database";
 
- require('dotenv').config();
-
- 
  // =================================> Constants
  const PORT = Number.parseInt(`${process.env.PORT}`) || 5000; // Port to listen, default 5000
  const app: Application = express(); // Express application
@@ -21,18 +18,6 @@
      origin: ['http://localhost:3000']
  };
  const metricsMiddleware:RequestHandler = promBundle({includeMethod: true}); // Prometheus middleware
-
-
- // Config API cloudinary
-
- var cloudinary = require('cloudinary').v2;
-
- cloudinary.config({ 
-    cloud_name: 'dedesktop', 
-    api_key: process.env.API_KEY, 
-    api_secret: process.env.API_SECRET, 
-    secure: true
-  });
  
  // =================================> Functions
  

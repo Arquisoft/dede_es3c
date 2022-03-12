@@ -42,18 +42,18 @@ export class ProductService {
     }
 
     /**
-     * Return user by username
+     * Return user by category
      * @param app Express application
      * @param username Product username
      * @returns Promise<User>
      */
-         public static getProductByCategory(app: Application, category: string): Promise<Product> {
-            return app.get('db').getRepository(Product).findOne({
-                where: {
-                    category: category
-                }
-            });
-        }
+    public static getProductByCategory(app: Application, category: string): Promise<Product[]> {
+        return app.get('db').getRepository(Product).findOne({
+            where: {
+                category: category
+            }
+        });
+    }
 
     /**
      * Delete user by id

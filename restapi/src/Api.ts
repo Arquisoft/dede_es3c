@@ -29,7 +29,7 @@ import { ProductController } from './controllers/Product_Controller';
   const setRegisterRoutes = (): void => {
     api.route('/register')
              // Create new user
-        .post(auth.isAuth, [
+        .post( [
             check('username').isLength({min: 1}),
             check('password').isLength({min: 1}),
             check('email').isEmail().normalizeEmail()
@@ -69,6 +69,9 @@ import { ProductController } from './controllers/Product_Controller';
 
     api.route('/products/name/:name')
         .get(auth.isAuth, productsController.getProductByName);
+    
+    api.route('/products/category/:categry')
+        .get(auth.isAuth, productsController.getProductByCategory);
 
     api.route('/products/:id')
         // Get products by id
