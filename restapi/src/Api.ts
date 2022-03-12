@@ -4,7 +4,7 @@
  */
  import express, { Router } from 'express';
  import {check} from 'express-validator';
- import { ProductController } from './controllers/Product_Controller';
+import { ProductController } from './controllers/Product_Controller';
  import { UserController } from './controllers/User_Controller';
  import { Auth } from './middlewares/Auth_Middleware';
  
@@ -20,7 +20,7 @@
          .post([
              check('username').isLength({min: 1}),
              check('password').isLength({min: 1}),
-             //check('email').isEmail().normalizeEmail()
+             check('email').isEmail().normalizeEmail()
          ], auth.login);
  };
 
@@ -29,7 +29,7 @@
   const setRegisterRoutes = (): void => {
     api.route('/register')
              // Create new user
-        .post(auth.isAuth, [
+        .post( [
             check('username').isLength({min: 1}),
             check('password').isLength({min: 1}),
             check('email').isEmail().normalizeEmail()
@@ -61,14 +61,17 @@
  
     api.route('/products')
         // Get all products
-        .get(productsController.getProducts)
+        .get(auth.isAuth, productsController.getProducts)
         // Create new products
         .post(auth.isAdminAuth,[
             check('name').isLength({ min: 1 }).trim().escape()
         ], productsController.addProduct);
 
     api.route('/products/name/:name')
-        .get(productsController.getProductByName);
+        .get(auth.isAuth, productsController.getProductByName);
+    
+    api.route('/products/category/:categry')
+        .get(auth.isAuth, productsController.getProductByCategory);
 
     api.route('/products/:id')
         // Get products by id

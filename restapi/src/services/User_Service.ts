@@ -1,5 +1,5 @@
 import { User } from '../entities/User';
-import { DeleteResult, ObjectID, UpdateResult } from 'typeorm';
+import { DeleteResult, UpdateResult } from 'typeorm';
 import { Application } from 'express';
 
 export class UserService {

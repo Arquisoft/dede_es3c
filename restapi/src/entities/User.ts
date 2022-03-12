@@ -1,7 +1,8 @@
-import { Entity, Column, ObjectIdColumn, ObjectID, Unique, PrimaryColumn } from "typeorm";
+import { Entity, Column, ObjectIdColumn, Unique, PrimaryColumn } from "typeorm";
 import {v4 as uuidv4} from 'uuid';
 
 @Entity()
+@Unique('unique_email', ['email'])  // make email unique
 export class User {
 
     constructor(username: string, email: string, password: string, rol: string) {
@@ -21,7 +22,7 @@ export class User {
     @Column()
     username: string;
 
-    @Column()
+    @Column({ unique: true })
     email: string;
 
     @Column()
