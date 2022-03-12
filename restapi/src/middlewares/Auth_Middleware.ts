@@ -45,7 +45,6 @@ export class Auth {
             jwt.verify(`${req.headers.authorization}`, secret, function(err, decoded) {
                 console.log(decoded)
                 if(err){
-                    //next();
                     res.status(403).send("Invalid authorization: "+err);
                 }else{
                     next();
@@ -67,7 +66,6 @@ export class Auth {
             try {
                 jwt.verify(`${req.headers.authorization}`, secret, function(err, decoded) {
                     if(err || (decoded as jwt.JwtPayload).rol != "Admin"){
-                        //next();
                         res.status(403).send("Invalid authorization: "+err);
                     }else{
                         next();

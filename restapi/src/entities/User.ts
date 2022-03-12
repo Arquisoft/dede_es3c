@@ -1,4 +1,4 @@
-import { Entity, Column, ObjectIdColumn, ObjectID, Unique, PrimaryColumn } from "typeorm";
+import { Entity, Column, ObjectIdColumn, Unique, PrimaryColumn } from "typeorm";
 import {v4 as uuidv4} from 'uuid';
 
 @Entity()

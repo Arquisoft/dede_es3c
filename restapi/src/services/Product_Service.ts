@@ -1,4 +1,4 @@
-import { DeleteResult, ObjectID, UpdateResult } from 'typeorm';
+import { DeleteResult, UpdateResult } from 'typeorm';
 import { Application } from 'express';
 import { Product } from '../entities/Product';
 
@@ -33,7 +33,7 @@ export class ProductService {
      * @param username Product username
      * @returns Promise<User>
      */
-    public static getProductByName(app: Application, name: string): Promise<Product> {
+    public static getProductByName(app: Application, name: string): Promise<Product[]> {
         return app.get('db').getRepository(Product).findOne({
             where: {
                 name: name
@@ -42,18 +42,18 @@ export class ProductService {
     }
 
     /**
-     * Return user by username
+     * Return user by category
      * @param app Express application
      * @param username Product username
      * @returns Promise<User>
      */
-         public static getProductByCategory(app: Application, category: string): Promise<Product> {
-            return app.get('db').getRepository(Product).findOne({
-                where: {
-                    category: category
-                }
-            });
-        }
+    public static getProductByCategory(app: Application, category: string): Promise<Product[]> {
+        return app.get('db').getRepository(Product).findOne({
+            where: {
+                category: category
+            }
+        });
+    }
 
     /**
      * Delete user by id

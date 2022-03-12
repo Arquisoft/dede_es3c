@@ -27,7 +27,6 @@
          try {
              let options = await getConnectionOptions(databaseName);
              this.db = await createConnection(options);
-             //this.db.synchronize();
              result = true;
          } catch (error) {
              console.log(`Error on create connection: ${error.message}`);

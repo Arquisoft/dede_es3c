@@ -1,8 +1,7 @@
-import * as crypto from 'crypto';
 import { Request, Response } from 'express';
 import { UserService } from '../services/User_Service';
 import { User } from '../entities/User';
-import { DeleteResult, ObjectID } from 'typeorm';
+import { DeleteResult } from 'typeorm';
 
 
 export class UserController {

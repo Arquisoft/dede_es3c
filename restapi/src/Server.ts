@@ -10,7 +10,7 @@
  import promBundle from 'express-prom-bundle';
  import api from "./Api";
  import database from "./persistence/Database";
- 
+
  // =================================> Constants
  const PORT = Number.parseInt(`${process.env.PORT}`) || 5000; // Port to listen, default 5000
  const app: Application = express(); // Express application

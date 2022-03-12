@@ -29,7 +29,7 @@ import { ProductController } from './controllers/Product_Controller';
   const setRegisterRoutes = (): void => {
     api.route('/register')
              // Create new user
-        .post([
+        .post( [
             check('username').isLength({min: 1}),
             check('password').isLength({min: 1}),
             check('email').isEmail().normalizeEmail()
@@ -43,10 +43,10 @@ import { ProductController } from './controllers/Product_Controller';
  
      api.route('/users')
          // Get all users
-         .get(userController.getUsers)
+         .get(auth.isAdminAuth, userController.getUsers)
  
      api.route('/users/username/:username')
-         .get(userController.getUserByUsername);
+         .get(auth.isAdminAuth, userController.getUserByUsername);
  
      api.route('/users/:id')
          // Get user by id
@@ -61,18 +61,21 @@ import { ProductController } from './controllers/Product_Controller';
  
     api.route('/products')
         // Get all products
-        .get(productsController.getProducts)
+        .get(auth.isAuth, productsController.getProducts)
         // Create new products
         .post(auth.isAdminAuth,[
             check('name').isLength({ min: 1 }).trim().escape()
         ], productsController.addProduct);
 
     api.route('/products/name/:name')
-        .get(productsController.getProductByName);
+        .get(auth.isAuth, productsController.getProductByName);
+    
+    api.route('/products/category/:categry')
+        .get(auth.isAuth, productsController.getProductByCategory);
 
     api.route('/products/:id')
         // Get products by id
-        .get(productsController.getProductById)
+        .get(auth.isAuth, productsController.getProductById)
         // Delete products by id
         .delete(auth.isAuth, productsController.deleteProduct)
         // Update products by id
