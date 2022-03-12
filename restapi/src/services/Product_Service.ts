@@ -33,7 +33,7 @@ export class ProductService {
      * @param username Product username
      * @returns Promise<User>
      */
-    public static getProductByName(app: Application, name: string): Promise<Product> {
+    public static getProductByName(app: Application, name: string): Promise<Product[]> {
         return app.get('db').getRepository(Product).findOne({
             where: {
                 name: name

@@ -162,7 +162,7 @@ rec_user_id5 = collection.insert_one(user5)
 
 
 # print("Data inserted with record ids",rec_user_id1," ",rec_user_id2)
-
+'''
 # Printing the data inserted
 cursor = collection.find()
 for record in cursor:
@@ -171,3 +171,4 @@ import sys
 print("Output from Python") 
 print("First name: " + sys.argv[1]) 
 print("Last name: " + sys.argv[2]) 
+'''
