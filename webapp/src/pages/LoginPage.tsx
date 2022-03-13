@@ -1,7 +1,7 @@
-import React, {Fragment, FC, useEffect, useState} from "react";
+import React, {Fragment, FC, useState} from "react";
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import {Container, Card , CardContent, Grid, Alert} from "@mui/material";
+import {Container, Card , CardContent, Alert} from "@mui/material";
 import Link from '@mui/material/Link';
 import logo from '../img/logo-dede.svg'
 import {checkUser, getUser, loginB } from "../api/api";
@@ -24,8 +24,8 @@ const LoginPage: FC<LoginPageProps> = (props: LoginPageProps) => {
     const [pulsed, setPulsed] = useState(false);
     const [logged, setLogged] = useState(false);
 
-    const errorMessage = (logged: boolean, pulsed:boolean) => {
-        if (!logged && pulsed){
+    const errorMessage = (loggedV: boolean, pulsedV:boolean) => {
+        if (!loggedV && pulsedV){
             return (<Alert  severity="error">{props.translate("login.singin.error")}</Alert>)
         }
     }
