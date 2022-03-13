@@ -33,7 +33,7 @@ import { ProductController } from './controllers/Product_Controller';
             check('username').isLength({min: 1}),
             check('password').isLength({min: 1}),
             check('email').isEmail().normalizeEmail()
-        ], userController.addUser);
+        ], auth.register);
 };
  
  /**
@@ -71,7 +71,7 @@ import { ProductController } from './controllers/Product_Controller';
         .get(productsController.getProductByName);
     
     api.route('/products/category/:category')
-        .get(productsController.getProductByCategory);
+        .get(auth.isAuth, productsController.getProductByCategory);
 
     api.route('/products/:id')
         // Get products by id

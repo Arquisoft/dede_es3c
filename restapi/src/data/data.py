@@ -162,6 +162,7 @@ rec_user_id5 = collection.insert_one(user5)
 
 
 # print("Data inserted with record ids",rec_user_id1," ",rec_user_id2)
+
 '''
 # Printing the data inserted
 cursor = collection.find()

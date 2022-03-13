@@ -39,3 +39,4 @@ dist/
 /restapi/src/data
 /restapi/src/data/data.py
 /restapi/src/Solid.ts
+/restapi/package.json
