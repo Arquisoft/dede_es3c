@@ -3,7 +3,6 @@
 from pymongo import MongoClient
 import uuid
 import os
-from dotenv import load_dotenv
 
 try:
 	conn = MongoClient("mongodb://SergioArroni:julio321@localhost:27017/DeDesktop?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false")
@@ -39,7 +38,7 @@ prod3 = {
 		"description":"It's a bad Laptop",
         "price":56.5,
 		"category":"Laptop",
-		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1646938754/samples/ecommerce/NiSiPu_dfue3n.jpg"
+		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1647193157/samples/ecommerce/Portatil_Malo_so3bll.jpg"
 		}
 prod4 = {
 		"id": str(uuid.uuid4()),
@@ -47,7 +46,7 @@ prod4 = {
 		"description":"It's a good Laptop",
         "price":345.99,
 		"category":"Laptop",
-		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1646938754/samples/ecommerce/HP_l9kqjo.jpg"
+		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1647193012/samples/ecommerce/Portatil_bueno.jpg"
 		}
 prod5 = {
 		"id": str(uuid.uuid4()),
@@ -55,7 +54,7 @@ prod5 = {
 		"description":"It's a very good monitor",
         "price":842.99,
 		"category":"Monitors",
-		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1646938754/samples/ecommerce/NiSiPu_dfue3n.jpg"
+		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1647193343/samples/ecommerce/Deus_Monitor_awrfqo.jpg"
 		}
 prod6 = {
 		"id": str(uuid.uuid4()),
@@ -63,7 +62,7 @@ prod6 = {
 		"description":"It is so expensive because it has RGB",
         "price":8400.99,
 		"category":"Graphic_card",
-		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1646938754/samples/ecommerce/NiSiPu_dfue3n.jpg"
+		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1647193197/samples/ecommerce/Grafica_NVIDIA_olazl1.jpg"
 		}
 prod7 = {
 		"id": str(uuid.uuid4()),
@@ -71,7 +70,7 @@ prod7 = {
 		"description":"Sitting here is like being on a cloud",
         "price":485.99,
 		"category":"Chair",
-		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1646938754/samples/ecommerce/HP_l9kqjo.jpg"
+		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1647193125/samples/ecommerce/Cloud_h9hgsc.png"
 		}
 prod8 = {
 		"id": str(uuid.uuid4()),
@@ -79,7 +78,7 @@ prod8 = {
 		"description":"This graph gets hotter than hell",
         "price":7823.65,
 		"category":"Graphic_card",
-		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1646938754/samples/ecommerce/NiSiPu_dfue3n.jpg"
+		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1647193186/samples/ecommerce/Grafica_AMD_mwbknw.jpg"
 		}
 prod9 = {
 		"id": str(uuid.uuid4()),
@@ -87,7 +86,7 @@ prod9 = {
 		"description":"This computer programs only",
         "price":9999.54,
 		"category":"PC",
-		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1646938754/samples/ecommerce/NiSiPu_dfue3n.jpg"
+		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1647193137/samples/ecommerce/PC_Master_dlbgig.webp"
 		}
 prod10 = {
 		"id": str(uuid.uuid4()),
@@ -95,7 +94,7 @@ prod10 = {
 		"description":"A good software architect will use this humble PC",
         "price":49.34,
 		"category":"PC",
-		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1646938754/samples/ecommerce/NiSiPu_dfue3n.jpg"
+		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1647193512/samples/ecommerce/ElHumildePC_sp9ovk.webp"
 		}
 
 
