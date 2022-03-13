@@ -30,9 +30,8 @@
              result = true;
          } catch (error) {
              console.log(`Error on create connection: ${error.message}`);
-         } finally {
-             return result;
          }
+         return result;
      }
  }
  
