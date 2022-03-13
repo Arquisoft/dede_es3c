@@ -12,10 +12,6 @@
   "author": "SergioArroni",
   "license": "ISC",
   "dependencies": {
-    "@inrupt/solid-client": "^1.20.1",
-    "@inrupt/solid-client-authn-browser": "^1.11.6",
-    "@inrupt/vocab-common-rdf": "^1.0.3",
-    "body-parser": "^1.19.1",
     "cloudinary": "^1.28.1",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",

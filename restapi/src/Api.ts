@@ -72,7 +72,7 @@ import { Auth } from './middlewares/Auth_Middleware';
     api.route('/products/name/:name')
         .get(auth.isAuth, productsController.getProductByName);
     
-    api.route('/products/category/:categry')
+    api.route('/products/category/:category')
         .get(auth.isAuth, productsController.getProductByCategory);
 
     api.route('/products/:id')

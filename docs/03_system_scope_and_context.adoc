@@ -9,7 +9,7 @@ image:03-Business_Context.png["Business Context diagram"]
 | Entity | Input | Output
 | _User_ | _The user will interact with the application through a computer or other device. The user will see the frontend of the application and send requests to the backend_ | _The output is represented in many parts of the system, reaching almost every point in the system_
 | _User Pod_ | _It creates new PODs for users who have not created them, can update the information contained in them, and also handles requests made to it by providing the requested information_ | _Submit the information requested by the application_
-| _Hefesto System_ | _It is the system with which the user interacts, it receives the requests sent by the user through the interface_  | _It processes incoming requests and manages the database so that it is consistent with incoming requests. Once it has the requested information, it shows it to the user via the interface_
+| _DeDesktop System_ | _It is the system with which the user interacts, it receives the requests sent by the user through the interface_  | _It processes incoming requests and manages the database so that it is consistent with incoming requests. Once it has the requested information, it shows it to the user via the interface_
 | _Database (MongoDB)_ | _Queries, information requests_ | _Storaged and consistent data responding to the system needs_
 |===
 
