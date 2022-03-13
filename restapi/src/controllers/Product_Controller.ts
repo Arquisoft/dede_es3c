@@ -1,6 +1,5 @@
-import * as crypto from 'crypto';
 import { Request, Response } from 'express';
-import { DeleteResult, ObjectID } from 'typeorm';
+import { DeleteResult} from 'typeorm';
 import { Product } from '../entities/Product';
 import { ProductService } from '../services/Product_Service';
 
@@ -8,10 +7,10 @@ import { ProductService } from '../services/Product_Service';
 export class ProductController {
 
     /**
-     * Get all users
+     * Get all products
      * @param req Request
      * @param res Response
-     * @returns All users with status 200 or error 500
+     * @returns All products with status 200 or error 500
      */
     public async getProducts(req: Request, res: Response) {
         try {
@@ -22,25 +21,25 @@ export class ProductController {
     }
 
     /**
-     * Get user by id
+     * Get product by id
      * @param req Request
      * @param res Response
-     * @returns User with status 200 or error 500
+     * @returns product with status 200 or error 500
      */
     public async getProductById(req: Request, res: Response) {
         try {
-            const user = await ProductService.getProductById(req.app, String(req.params.id));
-            user ? res.status(200).json(user) : res.status(404).json({ error: "Product not found" });
+            const product = await ProductService.getProductById(req.app, String(req.params.id));
+            product ? res.status(200).json(product) : res.status(404).json({ error: "Product not found" });
         } catch (error) {
             res.status(500).json({ error: "Error on get Product by id" })
         }
     }
 
     /**
-     * Get user by username
+     * Get product by name
      * @param req Request
      * @param res Response
-     * @returns User with status 200 or error 500
+     * @returns product with status 200 or error 500
      */
     public async getProductByName(req: Request, res: Response) {
         try {
@@ -52,10 +51,10 @@ export class ProductController {
     }
 
     /** 
-     * Get user by category
+     * Get product by category
      * @param req Request
      * @param res Response
-     * @returns User with status 200 or error 500
+     * @returns product with status 200 or error 500
      */
          public async getProductByCategory(req: Request, res: Response) {
             try {
@@ -67,10 +66,10 @@ export class ProductController {
         }
 
     /**
-     * Update user
+     * Update product
      * @param req Request
      * @param res Response
-     * @returns User with status 200 or error 500
+     * @returns product with status 200 or error 500
      */
     public async updateProduct(req: Request, res: Response) {
         try {
@@ -83,10 +82,10 @@ export class ProductController {
     }
 
     /**
-     * Delete user
+     * Delete product
      * @param req Request
      * @param res Response
-     * @returns User with status 200 or error 500
+     * @returns product with status 200 or error 500
      */
     public async deleteProduct(req: Request, res: Response) {
         try {
@@ -98,10 +97,10 @@ export class ProductController {
     }
 
     /**
-     * Create user
+     * Create product
      * @param req Request
      * @param res Response
-     * @returns User with status 200 or error 500
+     * @returns product with status 200 or error 500
      */
     public async addProduct(req: Request, res: Response) {
         try {
