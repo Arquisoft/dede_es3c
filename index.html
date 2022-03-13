@@ -5,7 +5,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.17">
-<meta name="author" content="= DeDe_es3c (DeDesktop)">
 <title></title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -437,99 +436,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 </head>
-<body class="article toc2 toc-left">
+<body class="article">
 <div id="header">
 <h1><span class="image"><img src="./images/logo-dede.png" alt="DeDesktop"></span></h1>
-<div class="details">
-<span id="author" class="author">= DeDe_es3c (DeDesktop)</span><br>
-</div>
-<div id="toc" class="toc2">
-<div id="toctitle">Table of Contents</div>
-<ul class="sectlevel1">
-<li><a href="#_introduction_and_goals">1. Introduction and Goals</a>
-<ul class="sectlevel2">
-<li><a href="#_requirements_overview">1.1. Requirements Overview</a></li>
-<li><a href="#_quality_goals">1.2. Quality Goals</a></li>
-<li><a href="#_stakeholders">1.3. Stakeholders</a></li>
-</ul>
-</li>
-<li><a href="#_architecture_constraints">2. Architecture Constraints</a>
-<ul class="sectlevel2">
-<li><a href="#_technical_constraints">2.1. Technical constraints</a></li>
-<li><a href="#_organizational_and_political_constraints">2.2. Organizational and political constraints</a></li>
-<li><a href="#_conventions">2.3. Conventions</a></li>
-</ul>
-</li>
-<li><a href="#_system_scope_and_context">3. System Scope and Context</a>
-<ul class="sectlevel2">
-<li><a href="#_business_context">3.1. Business Context</a></li>
-<li><a href="#_technical_context">3.2. Technical Context</a></li>
-</ul>
-</li>
-<li><a href="#_solution_strategy">4. Solution Strategy</a>
-<ul class="sectlevel2">
-<li><a href="#_technology_decisions">4.1. Technology decisions</a></li>
-<li><a href="#_decisions_about_the_top_level_decomposition_of_the_system">4.2. Decisions about the top-level decomposition of the system</a></li>
-<li><a href="#_decisions_to_achieve_quality_goals">4.3. Decisions to achieve quality goals</a></li>
-<li><a href="#_organizational_decisions">4.4. Organizational decisions</a></li>
-</ul>
-</li>
-<li><a href="#_building_block_view">5. Building Block View</a>
-<ul class="sectlevel2">
-<li><a href="#_whitebox_overall_system">5.1. Whitebox Overall System</a></li>
-<li><a href="#_black_box_descriptions_of_overall_system">5.2. Black Box descriptions of Overall System</a></li>
-</ul>
-</li>
-<li><a href="#_runtime_view">6. Runtime View</a>
-<ul class="sectlevel2">
-<li><a href="#_register_user">6.1. Register User</a></li>
-<li><a href="#_login_user">6.2. Login User</a></li>
-<li><a href="#_visualize_orders_done">6.3. Visualize orders done</a></li>
-<li><a href="#_delete_a_product_from_the_shopping_chart">6.4. Delete a product from the shopping chart</a></li>
-<li><a href="#_add_products_to_the_shopping_cart">6.5. Add products to the shopping cart</a></li>
-<li><a href="#_paying_process">6.6. Paying process</a></li>
-<li><a href="#_admin_delete_user">6.7. (Admin) Delete User</a></li>
-<li><a href="#_admin_view_item_statistics">6.8. (Admin) View Item Statistics</a></li>
-<li><a href="#_admin_monitor_order_status">6.9. (Admin) Monitor Order Status</a></li>
-</ul>
-</li>
-<li><a href="#_deployment_view">7. Deployment View</a>
-<ul class="sectlevel2">
-<li><a href="#_infrastructure_level_1">7.1. Infrastructure Level 1</a></li>
-<li><a href="#_infrastructure_level_2">7.2. Infrastructure Level 2</a></li>
-</ul>
-</li>
-<li><a href="#_domain_model">8. Domain model</a>
-<ul class="sectlevel2">
-<li><a href="#_persistence">8.1. Persistence</a></li>
-<li><a href="#_user_interface">8.2. User interface</a></li>
-<li><a href="#_internazionalization">8.3. Internazionalization</a></li>
-<li><a href="#_security">8.4. Security</a></li>
-<li><a href="#_additional_libraries">8.5. Additional libraries</a></li>
-<li><a href="#_archiutecture_and_design_patterns">8.6. Archiutecture and design patterns</a></li>
-<li><a href="#_code_quality_standards">8.7. Code Quality standards</a></li>
-<li><a href="#_testability">8.8. Testability</a></li>
-</ul>
-</li>
-<li><a href="#_design_decisions">9. Design Decisions</a></li>
-<li><a href="#_quality_requirements">10. Quality Requirements</a>
-<ul class="sectlevel2">
-<li><a href="#_quality_tree">10.1. Quality Tree</a></li>
-<li><a href="#_quality_scenarios">10.2. Quality Scenarios</a></li>
-</ul>
-</li>
-<li><a href="#_risks_and_technical_debts">11. Risks and Technical Debts</a>
-<ul class="sectlevel2">
-<li><a href="#_risks">11.1. Risks</a></li>
-<li><a href="#_technical_debts">11.2. Technical debts</a></li>
-</ul>
-</li>
-</ul>
-</div>
 </div>
 <div id="content">
-<div id="preamble">
-<div class="sectionbody">
+<h1 id="_dede_es3c_dedesktop" class="sect0">DeDe_es3c (DeDesktop)</h1>
 <style>
 .arc42help {font-size:small; width: 14px; height: 16px; overflow: hidden; position: absolute; right: 0px; padding: 2px 0px 3px 2px;}
 .arc42help::before {content: "?";}
@@ -561,8 +473,6 @@ For documentation of your own system you use better the <em>plain</em> version.<
 </div>
 </div>
 <div style="page-break-after: always;"></div>
-</div>
-</div>
 <div class="sect1">
 <h2 id="_introduction_and_goals">1. Introduction and Goals</h2>
 <div class="sectionbody">
@@ -1616,7 +1526,7 @@ Created by Dr. Peter Hruschka &amp; Dr. Gernot Starke.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-03-13 19:46:39 +0100
+Last updated 2022-03-13 19:56:20 +0100
 </div>
 </div>
 </body>
