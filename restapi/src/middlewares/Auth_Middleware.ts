@@ -1,4 +1,3 @@
-import * as crypto from 'crypto';
 import * as jwt from 'jsonwebtoken';
 import { Request, Response } from 'express';
 import { UserService } from '../services/User_Service';
