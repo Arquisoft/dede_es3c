@@ -23,13 +23,27 @@ export class Auth {
             const user = await UserService.getUserByUsername(req.app, req.body.username);
             if(user){
                 if(req.body.password == user.password){
-
                     res.status(200).json(Auth.createToken(user.username, user.rol));
                 }
             } else res.status(404).json({error: "El usuario no existe"});
         } catch (error) {
             res.status(500).json({ error: "Error al intentar iniciar sesion" });
         }
+    }
+
+    /**
+     * Register user and return token
+     * @param req Request
+     * @param res Response
+     * @returns Token with status 200, error 500 or error 403 if user not found or password is incorrect
+     */
+    public async register(req: Request, res: Response) {
+            try {
+                const user = await UserService.addUser(req.app, req.body);
+                res.status(200).json(Auth.createToken(user.username, user.rol));
+            } catch (error) {
+                res.status(500).json({ error: "Error al intentar registrarse" });
+            }
     }
 
     /**

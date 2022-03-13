@@ -35,7 +35,7 @@ import { Auth } from './middlewares/Auth_Middleware';
             check('username').isLength({min: 1}),
             check('password').isLength({min: 1}),
             check('email').isEmail().normalizeEmail()
-        ], userController.addUser);
+        ], auth.register);
 };
  
  /**

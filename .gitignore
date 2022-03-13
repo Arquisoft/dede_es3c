@@ -36,7 +36,7 @@ dist/
 
 /.env
 /process.env
-/restapi/src/data
-/restapi/src/data/data.py
 /restapi/src/Solid.ts
 /restapi/package.json
+/docker-compose.yml
+/data/data.py
