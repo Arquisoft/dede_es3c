@@ -1,4 +1,4 @@
-import { DeleteResult, ObjectID, UpdateResult } from 'typeorm';
+import { DeleteResult, UpdateResult } from 'typeorm';
 import { Application } from 'express';
 import { Order } from '../entities/Order';
 

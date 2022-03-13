@@ -92,12 +92,7 @@ const setOrdersRoutes = (): void => {
         // Create new products
         .post(auth.isAuth, ordersController.addOrder);
 
-    /*api.route('/orders/name/:name')
-        .get(auth.isAuth, productsController.getProductByName);
     
-    api.route('/orders/category/:categry')
-        .get(auth.isAuth, productsController.getProductByCategory);*/
-
     api.route('/orders/:id')
         // Get products by id
         .get(auth.isAuth, ordersController.getOrderById)
