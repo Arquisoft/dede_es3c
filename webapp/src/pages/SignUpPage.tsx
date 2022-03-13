@@ -60,7 +60,7 @@ const LoginPage: FC<SignUpProps> = (props: SignUpProps) => {
     if (registered){
         return(  
         <div>
-            <Card className={"main"} elevation={50} style={{display: "grid"}}>
+            <Card className={"mainElement"} elevation={50} style={{display: "grid"}}>
                 <CardContent style={{ display: "grid", margin: "auto", textAlign: "center" }}>
                     <h1>{props.translate("signup.sucess")}</h1>
                 <Button href="/login">
