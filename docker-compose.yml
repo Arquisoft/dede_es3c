@@ -7,6 +7,8 @@ services:
     build: ./restapi
     ports:
       - "5000:5000"
+    depends_on: 
+      - mongo
   webapp:
     build: ./webapp
     ports:
@@ -36,3 +38,19 @@ services:
       - "9091:9091"
     depends_on: 
       - restapi
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: SergioArroni
+      MONGO_INITDB_ROOT_PASSWORD: julio321
+      MONGO_INITDB_DATABASE: DeDesktop
+    ports:
+      - "27017:27017"
+  python:
+    build: ./data
+    image: python
+    ports:
+      - "8000:8000"
+    depends_on: 
+      - mongo
