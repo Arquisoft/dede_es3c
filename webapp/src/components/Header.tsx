@@ -1,6 +1,7 @@
 import React, { useCallback, useState, useEffect, useRef, useContext, FC, Fragment } from 'react';
-import {Navbar, Form, Nav, Button, NavDropdown, DropdownButton, Dropdown, Container} from "react-bootstrap";
-import "bootswatch/dist/superhero/bootstrap.min.css";
+import {Navbar, Nav, NavDropdown, Dropdown} from "react-bootstrap";
+import "bootswatch/dist/minty/bootstrap.min.css"
+import { LangContext } from '../lang';
 import logo from '../img/logo-dede.svg';
 import homeIcon from '../img/home-icon.svg';
 import catalogIcon from '../img/catalog-icon.svg';
@@ -10,16 +11,13 @@ import logoutIcon from '../img/logout-icon.svg';
 import shoppingCartIcon from '../img/shopping-cart-icon.svg';
 import spanishIcon from '../img/spanish-icon.svg';
 import registerIcon from '../img/register-icon.svg';
-import { LangContext } from '../lang';
-import { UserContext } from '../User';
 
 interface HeaderProps {
   setUser:(user:string) => void
 }
 
 const Header: FC<HeaderProps> = (props: HeaderProps) => {
-  const { state: { language}, dispatch: { setLanguage, translate } } = useContext(LangContext);
-  const { state: { user}, dispatch: { setUser} } = useContext(UserContext);
+  const {dispatch: { setLanguage, translate } } = useContext(LangContext);
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownEl = useRef<HTMLUListElement>(null);
 
@@ -48,8 +46,6 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
     props.setUser("not logged");
     console.log(localStorage.getItem("currentUser"))
   }
-
-  const [greet, setGreet] = useState("Hi," + user)
 
   if (localStorage.getItem("currentUser") !== "not logged" && !(localStorage.getItem("currentUser")?.includes("admin"))) {
       return (

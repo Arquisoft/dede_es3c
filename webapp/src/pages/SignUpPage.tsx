@@ -1,13 +1,13 @@
-import React, {Fragment, FC, useEffect, useState} from "react";
+import React, {FC, useState} from "react";
 import TextField from '@mui/material/TextField';
 import "bootswatch/dist/minty/bootstrap.min.css"
 import Button from '@mui/material/Button';
-import {Container, Card , CardContent, Grid, Alert} from "@mui/material";
+import {Container, Card , CardContent} from "@mui/material";
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import InputAdornment from '@mui/material/InputAdornment';
 import Link from '@mui/material/Link';
 import logo from '../img/logo-dede.svg'
-import { addUser, checkUser, getUser, signup } from "../api/api";
+import {checkUser, signup } from "../api/api";
 import { User } from "../shared/shareddtypes";
 import Header from "../components/Header";
 
@@ -50,8 +50,11 @@ const LoginPage: FC<SignUpProps> = (props: SignUpProps) => {
         } else {
            const found = await checkUser(name, password);
            if (!found){
-               await signup(name, password, email);
+               const token = await signup(name, password, email);
                 setRegistered(true);
+                props.setUser(name);
+                localStorage.setItem("token", token);
+                console.log(localStorage.getItem("token"));
             } else {
                 setExists(2);
         } 
@@ -60,11 +63,11 @@ const LoginPage: FC<SignUpProps> = (props: SignUpProps) => {
     if (registered){
         return(  
         <div>
-            <Card className={"main"} elevation={50} style={{display: "grid"}}>
+            <Card className={"mainElement"} elevation={50} style={{display: "grid"}}>
                 <CardContent style={{ display: "grid", margin: "auto", textAlign: "center" }}>
-                    <h1>Registro realizado</h1>
+                    <h1>{props.translate("signup.sucess")}</h1>
                 <Button href="/login">
-                    Iniciar sesion
+                   {props.translate("signup.redirect")}
                 </Button>
                </CardContent>
             </Card>
@@ -151,7 +154,12 @@ const LoginPage: FC<SignUpProps> = (props: SignUpProps) => {
                         /> 
                     </div>
                         </form>
-                    <Button onClick={ () => register()} variant="contained" type="submit" sx={{ my: 2 }}>{props.translate('signup.signup')}</Button>
+                    <Button 
+                    onClick={ () => register()} 
+                    variant="contained" 
+                    type="submit"
+                    color="primary"
+                     sx={{ my: 2 }}>{props.translate('signup.signup')}</Button>
             <Link href="/login">{props.translate('signup.login')}</Link>
             </CardContent>
             </Card>

@@ -25,6 +25,8 @@
     "signup.passwd":"Verificar contraseña",
     "signup.signup":"Registrarse",
     "signup.login":"¿Ya tienes una cuenta? Inicia sesión",
+    "signup.sucess":"¡Hecho! ya estás registrado en DeDesktop",
+    "signup.redirect":"Iniciar sesión",
     "navbar.login":"Iniciar sesión",
     "navbar.logout":"Cerrar sesión",
     "nav.home":"Inicio",
