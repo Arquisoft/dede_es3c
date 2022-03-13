@@ -47,8 +47,8 @@ const HomePage: FC<HomePageProps> = (props: HomePageProps) => {
                             </p>
                             <p>{translate('home.p4')}</p>
                             <Button onClick={() => setPage('catalog')} type="submit" variant="contained" sx={{ my: 2 }}>{translate('home.catalog')}</Button>
-                            <Button onClick={() => setPage('login')} variant="contained" sx={{ my: 2 }}>{translate('home.register')}</Button>
-                            <Button onClick={() => setPage('signup')} variant="contained" sx={{ my: 2 }}>{translate('home.login')}</Button>
+                            <Button onClick={() => setPage('signup')} variant="contained" sx={{ my: 2 }}>{translate('home.register')}</Button>
+                            <Button onClick={() => setPage('login')} variant="contained" sx={{ my: 2 }}>{translate('home.login')}</Button>
                         </CardContent>
                     </Card>
                 </Container>
