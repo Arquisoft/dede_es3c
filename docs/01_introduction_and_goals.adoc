@@ -1,8 +1,11 @@
 == Introduction and Goals
 
-DeDe is an e-Commerce application (online retail system) in which users will be able to select and order products.
 
-It follows SOLID principles, guaranteeing the client's privacy.
+DeDe (Descentralized Delivery) is an e-Commerce application (online retail system) in which users will be able to select and order products.
+
+DeDesktop is the name of the application. It is an online technology store in which it is sold products such as personal computers, laptops, peripherals, etc.
+
+It follows SOLID principles, guaranteeing the client's privacy regarding the personal data of the client such as the address.
 
 === Requirements Overview
 
@@ -48,17 +51,18 @@ Spanish: https://arquisoft.github.io/course2122/labEnunciadoPractica.html
 
 === Quality Goals
 
-[options="header",cols="1,2,2,1"]
+[options="header",cols="1,2,2"]
 |===
-|Quality Goal|Motivation|Development Team Priority | Client Prority
-| Privacy | The treatment of private information will be decentralized, ensuring customer privacy | High | High
-| Usability | All users must be able to use it, whether they have previous knowledge about the application or not | High | High
-| Integrity| Data must be consistent and complete at all times | High | Medium
-| Efficiency | Making a purchase should be easy for the user, reducing response and load times | High | High
-| Testability | Major components should be easily tested and fixed | Medium | Medium
-| Modifiability | The architecture must be easy to modify, adding new features or changing existing ones | Medium | Medium
+|Priority |Quality Goal|Motivation
+|1| Privacy | The treatment of private information will be decentralized, ensuring customer privacy 
+|2| Usability | All users must be able to use it, whether they have previous knowledge about the application or not 
+|3| Integrity| Data must be consistent and complete at all times
+|4| Efficiency | Making a purchase should be easy for the user, reducing response and load times
+|5| Testability | Major components should be easily tested and fixed 
+|6| Modifiability | The architecture must be easy to modify, adding new features or changing existing ones 
 |===
 
+Detailed priority in epigraph 10.
 
 === Stakeholders
 
@@ -69,4 +73,5 @@ Spanish: https://arquisoft.github.io/course2122/labEnunciadoPractica.html
 | Client | They interact directly with the application. They select the products to purchase and view their order history. | The aim is for the customer to be able to interact with the application intuitively and have a comfortable shopping experience. In addition, their privacy is respected in accordance with the SOLID principles.
 | Administrator | They are in charge of modifying prices, calculating inventories, seeing all orders placed or placing orders with suppliers. | Administrators will be able to access their exclusive functions through a simple login. 
 | Development Team | They are the creators of the application. They can modify, update and improve it. | Develop a complete application that contain the requirements. Learn to work in a team efficiently and learn new technologies.
+|Delivery business|Dstribute the products to the client's address| Their objective is to get the list of the products to deliver and the address of the client who ordered.
 |===
