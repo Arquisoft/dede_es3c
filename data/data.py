@@ -5,7 +5,7 @@ import uuid
 import os
 
 try:
-	conn = MongoClient("mongodb://SergioArroni:julio321@localhost:27017/DeDesktop?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false")
+	conn = MongoClient("mongodb://SergioArroni:julio321@mongo:27017/DeDesktop?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false")
 	print("Connected successfully!!!")
 except:
 	print("Could not connect to MongoDB")
