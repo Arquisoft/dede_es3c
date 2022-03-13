@@ -1,6 +1,4 @@
-import { Password } from '@mui/icons-material';
 import React, { useReducer, FC, createContext, ReactNode } from 'react';
-import { User } from './shared/shareddtypes';
 
 enum UserActionType {
     SET_USER = 'SET_USER'
@@ -8,7 +6,7 @@ enum UserActionType {
 
 interface UserState  {
     user: string
-  };
+  }
 
   interface UserStateProps {
     children: ReactNode;
@@ -53,10 +51,6 @@ interface UserState  {
           type: UserActionType.SET_USER,
           payload: user
         });
-      }
-
-      function getUser(state:UserState){
-          return state.user;
       }
 
     return (
