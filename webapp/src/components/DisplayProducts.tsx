@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Product } from '../shared/shareddtypes';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -10,12 +10,14 @@ import CardContent from '@mui/material/CardContent';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Typography from '@mui/material/Typography';
 import { Collapse, Grid, styled } from "@mui/material";
+import { LangContext } from '../lang';
 
 type ProductsType = {
     products: Product[]
 }
 
 const DisplayProducts = (products: ProductsType) => {
+    const { dispatch: { translate } } = useContext(LangContext);
     interface ExpandMoreProps extends IconButtonProps {
         expand: boolean;
     }
@@ -49,7 +51,7 @@ const DisplayProducts = (products: ProductsType) => {
                                 <CardHeader title={info.name} />
                                 <CardMedia component="img" width="200" height="200" src={info.urlPhoto} alt={info.name} />
                                 <CardContent>
-                                    Price: {info.price}
+                                    {translate('prodDisp.price')}: {info.price}
                                 </CardContent>
                                 <CardActions disableSpacing>
                                     <IconButton aria-label="add to cart" disableFocusRipple size="small">

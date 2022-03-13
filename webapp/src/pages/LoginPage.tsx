@@ -7,7 +7,7 @@ import logo from '../img/logo-dede.svg'
 import {checkUser, getUser, loginB } from "../api/api";
 import {Navigate} from "react-router-dom";
 import Header from "../components/Header";
-import "bootswatch/dist/minty/bootstrap.min.css"
+import "bootswatch/dist/morph/bootstrap.min.css"
 
 
 const checkParams = (text: string) => {

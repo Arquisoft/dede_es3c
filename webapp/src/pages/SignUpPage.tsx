@@ -1,6 +1,6 @@
 import React, {FC, useState} from "react";
 import TextField from '@mui/material/TextField';
-import "bootswatch/dist/minty/bootstrap.min.css"
+import "bootswatch/dist/morph/bootstrap.min.css"
 import Button from '@mui/material/Button';
 import {Container, Card , CardContent} from "@mui/material";
 import AccountCircle from '@mui/icons-material/AccountCircle';
