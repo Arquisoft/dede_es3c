@@ -22,8 +22,28 @@ WebApp-> User: Notify success
 
 This runtime view shows the process of registering a user, going through WebApp and ApiRest to the user POD and storing the location in the database.
 
-=== Login User
-[plantuml,"LoginUser",png]
+=== Login User DataBase
+[plantuml,"LoginUserDataBase",png]
+----
+@startuml
+actor User
+entity WebApp
+entity RestApi
+database DataBase
+User-> WebApp : Login
+WebApp-> RestApi : send login data
+RestApi -> DataBase : find data
+DataBase -> RestApi : send data
+RestApi -> RestApi : check login data
+RestApi -> WebApp: Notify success
+WebApp-> User: Notify success
+@enduml
+----
+
+This runtime view shows the login process of a user, going through WebApp and ApiRest to the DataBase, via the location stored in the database.
+
+=== Login User POD
+[plantuml,"LoginUserPOD",png]
 ----
 @startuml
 actor User
@@ -35,13 +55,14 @@ User-> WebApp : Login
 WebApp-> RestApi : send login data
 RestApi -> DataBase : find data location
 RestApi -> USER_POD : load login data
+USER_POD -> RestApi : send data
 RestApi -> RestApi : check login data
 RestApi -> WebApp: Notify success
 WebApp-> User: Notify success
 @enduml
 ----
 
-This runtime view shows the login process of a user, going through WebApp and ApiRest to the user POD, via the location stored in the database.
+This runtime view shows the login process of a user, going through WebApp and ApiRest to the user POD.
 
 === Visualize orders done
 
