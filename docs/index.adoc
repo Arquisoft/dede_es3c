@@ -3,7 +3,8 @@
 //
 // ====================================
 
-= image:logo-dede.png[DeDesktop] DeDe_es3c (DeDesktop)
+= image:logo-dede.png[DeDesktop] 
+= DeDe_es3c (DeDesktop)
 // toc-title definition MUST follow document title without blank line!
 :toc: left
 :toc-title: Table of Contents
