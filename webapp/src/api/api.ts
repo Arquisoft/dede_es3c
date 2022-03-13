@@ -104,7 +104,7 @@ export async function addProduct(product: Product): Promise<boolean>{
 export async function updateProduct(id: string, product: Product): Promise<boolean> {
   const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
   let response = await fetch(apiEndPoint + '/products/' + id, {
-    method: 'POST',
+    method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ 'name': product.name, 'description': product.description, 'price': product.price, 'category': product.category, 'urlPhoto': product.urlPhoto })
   });
@@ -117,7 +117,7 @@ export async function updateProduct(id: string, product: Product): Promise<boole
 export async function deleteProduct(id: string): Promise<boolean> {
   const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
   let response = await fetch(apiEndPoint + '/products/' + id, {
-    method: 'POST',
+    method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ 'id': id })
   });

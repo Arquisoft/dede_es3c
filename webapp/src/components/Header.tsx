@@ -1,5 +1,4 @@
 import React, { useCallback, useState, useEffect, useRef, useContext, FC, Fragment } from 'react';
-import { NavLink, Link } from 'react-router-dom';
 import {Navbar, Form, Nav, Button, NavDropdown, DropdownButton, Dropdown, Container} from "react-bootstrap";
 import "bootswatch/dist/superhero/bootstrap.min.css";
 import logo from '../img/logo-dede.svg';
@@ -23,8 +22,6 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
   const { state: { user}, dispatch: { setUser} } = useContext(UserContext);
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownEl = useRef<HTMLUListElement>(null);
-
-  let headerClass = 'header';
 
   const handleClickOutside = useCallback((e) => {
     if(showDropdown && e.target.closest('.dropdown') !== dropdownEl.current) {

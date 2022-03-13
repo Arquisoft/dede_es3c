@@ -11,6 +11,7 @@ import "bootswatch/dist/minty/bootstrap.min.css"
 import { addProduct } from "../api/api";
 import { Product } from "../shared/shareddtypes";
 import {updateProduct} from "../api/api";
+import { Alert } from "react-bootstrap";
 
 interface CrudPageProps {
     translate: (key: string) => string
@@ -21,7 +22,6 @@ const isBlank = (text: string) => {
     return (text.length == 0);
 }
 
-
 const CrudEditPage: FC<CrudPageProps> = (props: CrudPageProps) => {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
@@ -30,14 +30,13 @@ const CrudEditPage: FC<CrudPageProps> = (props: CrudPageProps) => {
     const [urlPhoto, setUrlPhoto] = useState('');
     const [id, setId] = useState('');
 
-    const updateProduct = async () => {
+    const updateProductAux = async () => {
         const product: Product = { name: name, description: description, price: Number(price), category: category, urlPhoto: urlPhoto }
 
         if (isBlank(product.name) || isBlank(product.description) || isBlank(product.category) || isBlank(product.urlPhoto) || isBlank(id)) {
             console.log("novalido");
         } else {
-            //await updateProduct(id, product);
-            console.log("actualizado");
+            await updateProduct(id, product);
         }
     }
 
@@ -49,7 +48,7 @@ const CrudEditPage: FC<CrudPageProps> = (props: CrudPageProps) => {
                     <CardContent style={{ display: "grid", margin: "auto", textAlign: "center" }}>
                         <h3>Actualizar un producto</h3>
                         <Fragment>
-                            <form id="edit">
+                            <form id="edit" >
                                 <TextField
                                     required
                                     size="small"
@@ -118,7 +117,7 @@ const CrudEditPage: FC<CrudPageProps> = (props: CrudPageProps) => {
                                 </FormControl>
                             </form>
                         </Fragment>
-                        <Button onClick={() => updateProduct()} variant="contained" type="submit" sx={{ my: 2 }}>Actualizar producto</Button>
+                        <Button onClick={() => updateProductAux()} variant="contained" type="submit" sx={{ my: 2 }}>Actualizar producto</Button>
                     </CardContent>
                 </Card>
             </Container>

@@ -2,17 +2,15 @@ import React, { FC, useContext, useState } from 'react';
 import './App.css';
 import { LangContext } from './lang';
 import { UserContext } from './User';
-import Homepage from './components/Homepage';
 import "bootswatch/dist/minty/bootstrap.min.css"
-import Header from './components/Header';
 import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
-import CatalogPage from './pages/CatalogPage';
 import HomePage from './pages/HomePage';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import CrudAddPage from './pages/CrudAddPage';
 import CrudEditPage from './pages/CrudEditPage';
 import CrudDeletePage from './pages/CrudDeletePage';
+import Prueba from './pages/Catalog';
 
 const App: FC = () => {
   const { dispatch: {translate }} = useContext(LangContext);
@@ -43,12 +41,6 @@ const App: FC = () => {
         }
         />
         <Route
-          path='catalog'
-          element={
-            <CatalogPage setUser={setUser} translate={translate} />
-          }
-        />
-        <Route
           path='addProduct'
           element={
             <CrudAddPage setUser={setUser} translate={translate}/>
@@ -64,6 +56,12 @@ const App: FC = () => {
           path='deleteProduct'
           element={
             <CrudDeletePage setUser={setUser} translate={translate} />
+          }
+        />
+        <Route
+          path='catalog'
+          element={
+            <Prueba setUser={setUser} translate={translate} />
           }
         />
       </Routes>

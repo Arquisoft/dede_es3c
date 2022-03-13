@@ -63,7 +63,7 @@ import { ProductController } from './controllers/Product_Controller';
         // Get all products
         .get(productsController.getProducts)
         // Create new products
-        .post(auth.isAdminAuth,[
+        .post(/*auth.isAdminAuth,*/[
             check('name').isLength({ min: 1 }).trim().escape()
         ], productsController.addProduct);
 
@@ -71,15 +71,15 @@ import { ProductController } from './controllers/Product_Controller';
         .get(productsController.getProductByName);
     
     api.route('/products/category/:category')
-        .get(auth.isAuth, productsController.getProductByCategory);
+        .get(/*auth.isAuth, */productsController.getProductByCategory);
 
     api.route('/products/:id')
         // Get products by id
-        .get(auth.isAuth, productsController.getProductById)
+        .get(/*auth.isAuth, */productsController.getProductById)
         // Delete products by id
-        .delete(auth.isAuth, productsController.deleteProduct)
+        .delete(/*auth.isAuth, */productsController.deleteProduct)
         // Update products by id
-        .put(auth.isAuth, productsController.updateProduct)
+        .put(/*auth.isAuth, */productsController.updateProduct)
 }
  
  // =================================> Main

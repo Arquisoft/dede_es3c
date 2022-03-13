@@ -1,16 +1,11 @@
 import React, { Fragment, FC, useEffect, useState } from "react";
 import Header from "../components/Header";
-import logo from '../img/logo-dede.svg';
 import { Container, Card, CardContent, Grid, FormControl, InputLabel, Select, MenuItem, SelectChangeEvent } from "@mui/material";
 import Button from '@mui/material/Button';
-import { Navigate } from "react-router-dom";
 import TextField from '@mui/material/TextField';
-import Link from '@mui/material/Link';
-import { checkUser, getUser, loginB } from "../api/api";
-import "bootswatch/dist/minty/bootstrap.min.css"
-import { addProduct } from "../api/api";
+import "bootswatch/dist/minty/bootstrap.min.css";
 import { Product } from "../shared/shareddtypes";
-import {updateProduct} from "../api/api";
+import { addProduct } from "../api/api"
 
 interface CrudPageProps {
     translate: (key: string) => string
@@ -21,23 +16,20 @@ const isBlank = (text: string) => {
     return (text.length == 0);
 }
 
-
 const CrudAddPage: FC<CrudPageProps> = (props: CrudPageProps) => {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
     const [category, setCategory] = useState('');
     const [urlPhoto, setUrlPhoto] = useState('');
-    const [id, setId] = useState('');
 
-    const addProduct = async () => {
+    const addProductAux = async () => {
         const product: Product = {name: name, description: description, price: Number(price), category: category, urlPhoto: urlPhoto}
 
         if (isBlank(product.name) || isBlank(product.description) || isBlank(product.category) || isBlank(product.urlPhoto)) {
             console.log("novalido");
         } else {
-            //await addProduct(product);
-            console.log("añadido");
+            await addProduct(product);
         }
     }
 
@@ -102,13 +94,13 @@ const CrudAddPage: FC<CrudPageProps> = (props: CrudPageProps) => {
                                         size="small"
                                         sx={{ my: 2 }}
                                     >
-                                        <MenuItem value={10}>Laptop</MenuItem>
-                                        <MenuItem value={20}>Monitors</MenuItem>
+                                        <MenuItem value="Laptop">Laptop</MenuItem>
+                                        <MenuItem value="Monitors">Monitors</MenuItem>
                                     </Select>
                                 </FormControl>
                             </form>
                         </Fragment>
-                        <Button onClick={() => addProduct()} variant="contained" type="submit" sx={{ my: 2 }}>Añadir producto</Button>
+                        <Button onClick={() => addProductAux()} variant="contained" type="submit" sx={{ my: 2 }}>Añadir producto</Button>
                     </CardContent>
                 </Card>
             </Container>

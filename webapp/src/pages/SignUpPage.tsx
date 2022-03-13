@@ -9,9 +9,7 @@ import Link from '@mui/material/Link';
 import logo from '../img/logo-dede.svg'
 import { addUser, checkUser, getUser, signup } from "../api/api";
 import { User } from "../shared/shareddtypes";
-import {Navigate} from "react-router-dom";
 import Header from "../components/Header";
-import { isObjectLiteralElementLike } from "typescript";
 
 
 interface SignUpProps{
