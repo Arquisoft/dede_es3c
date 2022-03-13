@@ -27,7 +27,6 @@ export async function checkUser(username: string, password: string): Promise<boo
     headers: { "Content-Type": "application/json" },
   });
   if (response.status === 200) {
-    //localStorage.setItem("token", JSON.stringify(response.json));
     return true;
   } else {
     return false;
