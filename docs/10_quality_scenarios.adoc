@@ -2,8 +2,10 @@
 
 === Quality Tree
 
-=== Quality Scenarios
 image:10_Quality-Requirements.png["Quality Requirements"]
+
+=== Quality Scenarios
+
 
 |===
 |Quality goal|Scenario|User Priority|Developer Priority

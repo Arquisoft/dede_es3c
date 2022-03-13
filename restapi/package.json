@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "start": "ts-node-dev ./src/Server.ts ",
-    "data":"python ./dist/src/data/data.py",
+    "data": "python ./dist/src/data/data.py",
     "build": "tsc",
     "prod": "npm run build && node ./dist/src/Server.js",
     "test": "cd tests && jest --runInBand"
@@ -12,7 +12,7 @@
   "author": "SergioArroni",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.19.1",
+    "cloudinary": "^1.28.1",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
     "dotenv": "^16.0.0",
@@ -22,6 +22,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.7.3",
     "nodemon": "^2.0.15",
+    "parcel-bundler": "^1.12.5",
     "prom-client": "^14.0.1",
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.2.44",
