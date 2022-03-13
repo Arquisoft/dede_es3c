@@ -1,5 +1,6 @@
-FROM node:lts-alpine
+FROM node:16.13.1
 
+LABEL org.opencontainers.image.source https://github.com/Arquisoft/dede_es3c
 # Crear directorio de trabajo
 RUN mkdir -p /opt/app
 

@@ -5,19 +5,19 @@ import { Product } from '../entities/Product';
 export class ProductService {
 
     /**
-     * Return all users
+     * Return all products
      * @param app Express application
-     * @returns Promise<User[]>
+     * @returns Promise<Product[]>
      */
     public static getProducts(app: Application): Promise<Product[]> {
         return app.get('db').getRepository(Product).find();
     }
 
     /**
-     * Return user by id
+     * Return product by id
      * @param app Express application
      * @param id Product id
-     * @returns Promise<User>
+     * @returns Promise<Product>
      */
     public static getProductById(app: Application, id: string): Promise<Product> {
         return app.get('db').getRepository(Product).findOne({
@@ -28,13 +28,13 @@ export class ProductService {
     }
 
     /**
-     * Return user by username
+     * Return product by name
      * @param app Express application
-     * @param username Product username
-     * @returns Promise<User>
+     * @param name Product name
+     * @returns Promise<Product>
      */
     public static getProductByName(app: Application, name: string): Promise<Product[]> {
-        return app.get('db').getRepository(Product).findOne({
+        return app.get('db').getRepository(Product).find({
             where: {
                 name: name
             }
@@ -42,13 +42,13 @@ export class ProductService {
     }
 
     /**
-     * Return user by category
+     * Return product by category
      * @param app Express application
-     * @param username Product username
-     * @returns Promise<User>
+     * @param category Product category
+     * @returns Promise<Product>
      */
     public static getProductByCategory(app: Application, category: string): Promise<Product[]> {
-        return app.get('db').getRepository(Product).findOne({
+        return app.get('db').getRepository(Product).find({
             where: {
                 category: category
             }
@@ -56,9 +56,9 @@ export class ProductService {
     }
 
     /**
-     * Delete user by id
+     * Delete product by id
      * @param app Express application
-     * @param id User id
+     * @param id Product id
      * @returns Promise<DeleteResult>
      */
     public static deleteProduct(app: Application, id: string): Promise<DeleteResult> {
@@ -66,20 +66,20 @@ export class ProductService {
     }
 
     /**
-     * Add new user
+     * Add new product
      * @param app Express application
-     * @param user User object
-     * @returns Promise<User>
+     * @param product Product object
+     * @returns Promise<Product>
      */
     public static addProduct(app: Application, product: Product): Promise<Product> {
         return app.get('db').getRepository(Product).save(product);
     }
 
     /**
-     * Update user by id
+     * Update product by id
      * @param app Express application
-     * @param id User id
-     * @param user User object
+     * @param id Product id
+     * @param product Product object
      * @returns Promise<UpdateResult>
      */
     public static updateProduct(app: Application, id: string, product: Product): Promise<UpdateResult> {
