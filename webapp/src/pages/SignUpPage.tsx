@@ -50,8 +50,11 @@ const LoginPage: FC<SignUpProps> = (props: SignUpProps) => {
         } else {
            const found = await checkUser(name, password);
            if (!found){
-               await signup(name, password, email);
+               const token = await signup(name, password, email);
                 setRegistered(true);
+                props.setUser(name);
+                localStorage.setItem("token", token);
+                console.log(localStorage.getItem("token"));
             } else {
                 setExists(2);
         } 
