@@ -21,7 +21,6 @@ interface UserState  {
       state: UserState;
       dispatch: {
           setUser:(user:string) => void;
-          //setLogged:(isLogged:boolean) => void
       }
   }
 

@@ -17,8 +17,7 @@ interface HeaderProps {
 }
 
 const Header: FC<HeaderProps> = (props: HeaderProps) => {
-  const { state: {}, dispatch: { setLanguage, translate } } = useContext(LangContext);
-  const { state: {}, dispatch: {} } = useContext(UserContext);
+  const {dispatch: { setLanguage, translate } } = useContext(LangContext);
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownEl = useRef<HTMLUListElement>(null);
 
