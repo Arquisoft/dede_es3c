@@ -1,15 +1,9 @@
-import React, { Fragment, FC, useEffect, useState } from "react";
+import { Fragment, FC, useState } from "react";
 import Header from "../components/Header";
-import logo from '../img/logo-dede.svg';
-import { Container, Card, CardContent, Grid, FormControl, InputLabel, Select, MenuItem, SelectChangeEvent } from "@mui/material";
+import { Container, Card, CardContent } from "@mui/material";
 import Button from '@mui/material/Button';
-import { Navigate } from "react-router-dom";
 import TextField from '@mui/material/TextField';
-import Link from '@mui/material/Link';
-import { checkUser, getUser, loginB } from "../api/api";
 import "bootswatch/dist/minty/bootstrap.min.css"
-import { addProduct } from "../api/api";
-import { Product } from "../shared/shareddtypes";
 import { deleteProduct } from "../api/api";
 
 interface CrudPageProps {

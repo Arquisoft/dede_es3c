@@ -29,12 +29,12 @@ interface ContextProps {
 }
 
 const langReducer = (state: LangState, action: SetLanguageAction): LangState => {
-  switch(action.type) {
-    case LangActionType.SET_LANGUAGE:
-      return {
-        language: action.payload
-      }
-    default:
+  if (action.type == LangActionType.SET_LANGUAGE){
+    return {
+      language: action.payload
+    }
+  }
+  else{
       return state;
   }
 }
@@ -46,7 +46,7 @@ const initialState = {
 
 export const LangContext = createContext({} as ContextProps);
 
-const LangState: FC<LangStateProps> = ({ children }) => {
+const LangState_: FC<LangStateProps> = ({ children }) => {
   const [state, dispatch] = useReducer(langReducer, initialState);
 
   const setLanguage = (lang: string) => {
@@ -77,4 +77,4 @@ const LangState: FC<LangStateProps> = ({ children }) => {
   );
 }
 
-export default LangState;
+export default LangState_;

@@ -25,13 +25,13 @@ interface UserState  {
   }
 
   const userReducer = (state: UserState, action: SetUserAction): UserState => {
-      switch(action.type){
-          case UserActionType.SET_USER:
-              return {
-                  user: action.payload
-              }
-            default:
-                return state;
+      if (action.type == UserActionType.SET_USER){
+        return {
+          user: action.payload
+        }
+      }
+      else{
+        return state;
       }
   }
 
@@ -42,7 +42,7 @@ interface UserState  {
 
   export const UserContext = createContext({} as ContextProps);
 
-  const UserState: FC<UserStateProps> = ({children}) => {
+  const UserState_: FC<UserStateProps> = ({children}) => {
       const [state, dispatch] = useReducer(userReducer, initialState);
       const setUser = (user: string) => {
         localStorage.setItem('currentUser', user);
@@ -59,5 +59,5 @@ interface UserState  {
 
     );
   }
-  export default UserState
+  export default UserState_
 

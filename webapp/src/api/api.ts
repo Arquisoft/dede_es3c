@@ -1,5 +1,4 @@
-import {User} from '../shared/shareddtypes';
-import {Product} from '../shared/shareddtypes';
+import {User, Product} from '../shared/shareddtypes';
 
 export async function addUser(user:User):Promise<boolean>{
     const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
@@ -69,7 +68,7 @@ export async function getProducts(): Promise<Product[]>{
   return response.json()
 }
 
-export async function getProductsByName(name: String): Promise<Product[]> {
+export async function getProductsByName(name: string): Promise<Product[]> {
   const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api/products'
   let response = await fetch(apiEndPoint + '/name/' + name, {
     method: "GET",
@@ -78,7 +77,7 @@ export async function getProductsByName(name: String): Promise<Product[]> {
   return response.json()
 }
 
-export async function getProductsByCategory(category: String): Promise<Product[]> {
+export async function getProductsByCategory(category: string): Promise<Product[]> {
   const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api/products'
   let response = await fetch(apiEndPoint + '/category/' + category, {
     method: "GET",

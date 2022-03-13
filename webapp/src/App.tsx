@@ -1,4 +1,4 @@
-import React, { FC, useContext, useState } from 'react';
+import React, { FC, useContext } from 'react';
 import './App.css';
 import { LangContext } from './lang';
 import { UserContext } from './User';

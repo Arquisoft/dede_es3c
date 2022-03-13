@@ -36,6 +36,7 @@ const DisplayProducts = (products: ProductsType) => {
 
     const handleExpandClick = (i: React.SetStateAction<number>) => {
         setExpandedId(expandedId === i ? -1 : i);
+        setExpanded(expandedId === -1 ? true : false);
     };
 
     return (
