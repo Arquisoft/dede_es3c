@@ -1,6 +1,6 @@
 import React, { useCallback, useState, useEffect, useRef, useContext, FC, Fragment } from 'react';
 import {Navbar, Nav, NavDropdown, Dropdown} from "react-bootstrap";
-import "bootswatch/dist/minty/bootstrap.min.css"
+import "bootswatch/dist/morph/bootstrap.min.css"
 import { LangContext } from '../lang';
 import logo from '../img/logo-dede.svg';
 import homeIcon from '../img/home-icon.svg';
@@ -58,7 +58,7 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
                   <img alt="" src={logo} width="30" height="30" className="d-inline-block align-top"/>
                   DeDesktop
                 </Navbar.Brand>
-                <Nav.Link href="/home" className="float-left">
+                <Nav.Link href="/" className="float-left">
                   <img alt="" src={homeIcon} width="20" height="20" className="d-inline-block align-top" />
                   {translate('nav.home')}
                 </Nav.Link>
@@ -101,7 +101,7 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
                     <img alt="" src={logo} width="30" height="30" className="d-inline-block align-top" />
                     DeDesktop
                   </Navbar.Brand>
-                  <Nav.Link href="/home" className="float-left">
+                  <Nav.Link href="/" className="float-left">
                     <img alt="" src={homeIcon} width="20" height="20" className="d-inline-block align-top" />
                     {translate('nav.home')}
                   </Nav.Link>
@@ -113,15 +113,15 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
                     <img alt="" src={shoppingCartIcon} width="20" height="20" className="d-inline-block align-top" />
                     {translate('nav.shoppingcart')}
                   </Nav.Link>
-                  <NavDropdown title="Gestionar productos" id="productos-admin-dropdown">
+                  <NavDropdown title={translate('nav.admin')} id="productos-admin-dropdown">
                     <Dropdown.Item href="/addProduct">
-                      Añadir
+                      {translate('crud.add')}
                     </Dropdown.Item>
                     <Dropdown.Item href="/editProduct">
-                      Editar
+                      {translate('crud.update')}
                     </Dropdown.Item>
                     <Dropdown.Item href="/deleteProduct">
-                      Eliminar
+                      {translate('crud.delete')}
                     </Dropdown.Item>
                   </NavDropdown>
                   <Nav.Link onClick={logOut} href="/login">
@@ -155,7 +155,7 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
                 <img alt="" src={logo} width="30" height="30" className="d-inline-block align-top"/>
                 DeDesktop
               </Navbar.Brand>
-              <Nav.Link href="/home" className="float-left">
+              <Nav.Link href="/" className="float-left">
                 <img alt="" src={homeIcon} width="20" height="20" className="d-inline-block align-top" />
                 {translate('nav.home')}
               </Nav.Link>
