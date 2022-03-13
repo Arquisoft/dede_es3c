@@ -1,15 +1,15 @@
-import { Entity, Column, ObjectIdColumn, ObjectID, Unique, PrimaryColumn, Double } from "typeorm";
+import { Entity, Column, ObjectIdColumn, ObjectID, Unique, PrimaryColumn } from "typeorm";
 import {v4 as uuidv4} from 'uuid';
 import { User } from "./User";
-import { Product } from "./Product";
+import { ProductInOrder } from "./ProductInOrder";
 
 @Entity()
 export class Order {
 
-    constructor(user: User, products: Product[]) {
+    constructor(user: User, products: ProductInOrder[]) {
         this.user = user;
         this.products = products;
-        this.price = this.calculatePrice();
+        this.price = 0.0;
         this.id = uuidv4();
     }
 
@@ -23,18 +23,23 @@ export class Order {
     user: User;
 
     @Column()
-    products: Product[];
+    products: ProductInOrder[];
 
     @Column()
-    price: Double;
+    price: number;
 
-    public calculatePrice():Double{
+
+    /*
+    public onLoad(){
         var p = 0.0;
-        for (var product of this.products) {
-            p=p+product.price;
+        for (var pr of this.products) {
+            console.log(pr.price);
+            p=p+pr.price;
         }
-        return p;
-    }
+        console.log("Total: "+p);
+        this.price = p;
+    }*/
+
 
 
 }

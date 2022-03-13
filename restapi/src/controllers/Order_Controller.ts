@@ -41,7 +41,7 @@ export class OrderController {
      * @param res Response
      * @returns Order with status 200 or error 500
      */
-    public async updateProduct(req: Request, res: Response) {
+    public async updateOrder(req: Request, res: Response) {
         try {
             let orderServiceBody = new Order(req.body.user,req.body.products);
             const order = await OrderService.updateOrder(req.app, String(req.params.id), orderServiceBody);
@@ -57,7 +57,7 @@ export class OrderController {
      * @param res Response
      * @returns Order with status 200 or error 500
      */
-    public async deleteProduct(req: Request, res: Response) {
+    public async deleteOrder(req: Request, res: Response) {
         try {
             const order: DeleteResult = await OrderService.deleteOrder(req.app, String(req.params.id));
             order ? res.status(200).json(order.raw) : res.status(404).json({ error: "Order not found" });

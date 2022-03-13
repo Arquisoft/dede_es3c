@@ -99,6 +99,7 @@ prod10 = {
 		}
 
 
+
 # Insert Data
 rec_prod_id1 = collection.insert_one(prod1)
 rec_prod_id2 = collection.insert_one(prod2)
@@ -172,3 +173,31 @@ print("Output from Python")
 print("First name: " + sys.argv[1]) 
 print("Last name: " + sys.argv[2]) 
 '''
+
+
+collection = db.productorder
+
+prodord1 = {
+		"id": str(uuid.uuid4()),
+		"product": prod1,
+		"quantity": 5
+		}
+prodord2 = {
+		"id": str(uuid.uuid4()),
+		"product": prod3,
+		"quantity": 2
+		}
+# Insert Data
+rec_prodorder_id1=collection.insert_one(prodord1)
+rec_prodorder_id2=collection.insert_one(prodord2)
+
+collection = db.order
+
+ord1 = {
+		"id": str(uuid.uuid4()),
+		"user": user1,
+		"products": [prodord1,prodord2]
+		}
+# Insert Data
+rec_order_id1=collection.insert_one(ord1)
+print("Data inserted with record ids",rec_order_id1)

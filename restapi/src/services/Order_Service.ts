@@ -43,8 +43,8 @@ export class OrderService {
      * @param order Order object
      * @returns Promise<Order>
      */
-    public static addOrder(app: Application, Order: Order): Promise<Order> {
-        return app.get('db').getRepository(Order).save(Order);
+    public static addOrder(app: Application, order: Order): Promise<Order> {
+        return app.get('db').getRepository(Order).save(order);
     }
 
     /**
@@ -54,8 +54,8 @@ export class OrderService {
      * @param order Order object
      * @returns Promise<UpdateResult>
      */
-    public static updateOrder(app: Application, id: string, Order: Order): Promise<UpdateResult> {
-        return app.get('db').getRepository(Order).update({id: id}, Order);
+    public static updateOrder(app: Application, id: string, order: Order): Promise<UpdateResult> {
+        return app.get('db').getRepository(Order).update({id: id}, order);
     }
 
 }
