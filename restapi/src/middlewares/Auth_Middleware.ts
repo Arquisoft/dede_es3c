@@ -23,7 +23,6 @@ export class Auth {
             const user = await UserService.getUserByUsername(req.app, req.body.username);
             if(user){
                 if(req.body.password == user.password){
-
                     res.status(200).json(Auth.createToken(user.username, user.rol));
                 }
             } else res.status(404).json({error: "El usuario no existe"});
@@ -32,7 +31,7 @@ export class Auth {
         }
     }
 
-        /**
+    /**
      * Register user and return token
      * @param req Request
      * @param res Response
