@@ -22,8 +22,6 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownEl = useRef<HTMLUListElement>(null);
 
-  let headerClass = 'header';
-
   const handleClickOutside = useCallback((e) => {
     if(showDropdown && e.target.closest('.dropdown') !== dropdownEl.current) {
       setShowDropdown(false);
@@ -49,7 +47,6 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
     props.setUser("not logged");
     console.log(localStorage.getItem("currentUser"))
   }
-  const [greet, setGreet] = useState("Hi," + user)
 
   if (localStorage.getItem("currentUser") !== "not logged" && !(localStorage.getItem("currentUser")?.includes("admin"))) {
       return (
