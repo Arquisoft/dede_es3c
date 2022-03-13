@@ -1,0 +1,7 @@
+== Hexagonal architecture
+
+We are using hexagonal architecture in our app. We took this decisin because it presents several advantadges.
+
+The hexagonal architecture is an architectural pattern used in software design. It divides a system into different layers or regions with their own responsibility. In this way, it manages to decouple layers of our application, allowing them to evolve in isolation. In addition, having the system separated by responsibilities will facilitate reuse. The components are loosely-coupled and interchangeable, such as the application core, the database, the user interface, test scripts and interfaces with other systems.
+
+Hexagonal architecture is an alternative to traditional layered architecture.
