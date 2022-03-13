@@ -1,10 +1,11 @@
-import { Fragment, FC, useState } from "react";
+import { Fragment, FC, useState, useContext } from "react";
 import Header from "../components/Header";
 import { Container, Card, CardContent } from "@mui/material";
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import "bootswatch/dist/minty/bootstrap.min.css"
+import "bootswatch/dist/morph/bootstrap.min.css"
 import { deleteProduct } from "../api/api";
+import { LangContext } from '../lang';
 
 interface CrudPageProps {
     translate: (key: string) => string
@@ -16,6 +17,7 @@ const isBlank = (text: string) => {
 }
 
 const CrudDeletePage: FC<CrudPageProps> = (props: CrudPageProps) => {
+    const { dispatch: { translate } } = useContext(LangContext);
     const [id, setId] = useState('');
 
     const deleteProductAux = async () => {
@@ -32,14 +34,14 @@ const CrudDeletePage: FC<CrudPageProps> = (props: CrudPageProps) => {
             <Container component="main" maxWidth="sm">
                 <Card className={"main"} elevation={10} style={{ display: "grid" }}>
                     <CardContent style={{ display: "grid", margin: "auto", textAlign: "center" }}>
-                        <h3>Eliminar un producto</h3>
+                        <h3>{translate('crud.delete')}</h3>
                         <Fragment>
                             <form>
                                 <TextField
                                     required
                                     size="small"
                                     id="standard-helperText"
-                                    label="ID"
+                                    label={translate('crud.ID')}
                                     variant="outlined"
                                     sx={{ my: 2 }}
                                     value={id}
@@ -47,7 +49,7 @@ const CrudDeletePage: FC<CrudPageProps> = (props: CrudPageProps) => {
                                 />
                             </form>
                         </Fragment>
-                        <Button onClick={() => deleteProductAux()} variant="contained" type="submit" sx={{ my: 2 }}>Eliminar producto</Button>
+                        <Button onClick={() => deleteProductAux()} variant="contained" type="submit" sx={{ my: 2 }}>{translate('crud.delete')}</Button>
                     </CardContent>
                 </Card>
             </Container>
