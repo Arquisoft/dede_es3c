@@ -1,11 +1,12 @@
-import { Fragment, FC, useState } from "react";
+import { Fragment, FC, useState, useContext } from "react";
 import Header from "../components/Header";
 import { Container, Card, CardContent, FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import "bootswatch/dist/minty/bootstrap.min.css"
+import "bootswatch/dist/morph/bootstrap.min.css"
 import { Product } from "../shared/shareddtypes";
 import {updateProduct} from "../api/api";
+import { LangContext } from '../lang';
 
 interface CrudPageProps {
     translate: (key: string) => string
@@ -17,6 +18,7 @@ const isBlank = (text: string) => {
 }
 
 const CrudEditPage: FC<CrudPageProps> = (props: CrudPageProps) => {
+    const { dispatch: { translate } } = useContext(LangContext);
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
@@ -40,14 +42,14 @@ const CrudEditPage: FC<CrudPageProps> = (props: CrudPageProps) => {
             <Container component="main" maxWidth="sm">
                 <Card className={"main"} elevation={10} style={{ display: "grid" }}>
                     <CardContent style={{ display: "grid", margin: "auto", textAlign: "center" }}>
-                        <h3>Actualizar un producto</h3>
+                        <h3>{translate('crud.update')}</h3>
                         <Fragment>
                             <form id="edit" >
                                 <TextField
                                     required
                                     size="small"
                                     id="standard-helperText"
-                                    label="ID"
+                                    label={translate('crud.ID')}
                                     variant="outlined"
                                     sx={{ my: 2 }}
                                     value={id}
@@ -57,7 +59,7 @@ const CrudEditPage: FC<CrudPageProps> = (props: CrudPageProps) => {
                                     required
                                     size="small"
                                     id="standard-helperText"
-                                    label="NombreEdit"
+                                    label={translate('crud.name')}
                                     variant="outlined"
                                     sx={{ my: 2 }}
                                     value={name}
@@ -67,7 +69,7 @@ const CrudEditPage: FC<CrudPageProps> = (props: CrudPageProps) => {
                                     required
                                     size="small"
                                     id="standard-helperText"
-                                    label="Descripción"
+                                    label={translate('crud.description')}
                                     variant="outlined"
                                     sx={{ my: 2 }}
                                     value={description}
@@ -77,7 +79,7 @@ const CrudEditPage: FC<CrudPageProps> = (props: CrudPageProps) => {
                                     required
                                     size="small"
                                     id="standard-helperText"
-                                    label="Precio"
+                                    label={translate('crud.price')}
                                     variant="outlined"
                                     sx={{ my: 2 }}
                                     value={price}
@@ -87,31 +89,31 @@ const CrudEditPage: FC<CrudPageProps> = (props: CrudPageProps) => {
                                     required
                                     size="small"
                                     id="standard-helperText"
-                                    label="URL de la foto"
+                                    label={translate('crud.URL')}
                                     variant="outlined"
                                     sx={{ my: 2 }}
                                     value={urlPhoto}
                                     onChange={e => setUrlPhoto(e.target.value)}
                                 />
                                 <FormControl variant="outlined" sx={{ m: 1, minWidth: 120 }}>
-                                    <InputLabel id="demo-simple-select-standard-label">Categoría</InputLabel>
+                                    <InputLabel id="demo-simple-select-standard-label">{translate('crud.category')}</InputLabel>
                                     <Select
                                         required
                                         labelId="demo-simple-select-label-standar"
                                         id="demo-simple-select-standar"
                                         value={category}
-                                        label="Categoria"
+                                        label={translate('crud.category')}
                                         onChange={e => setCategory(e.target.value)}
                                         size="small"
                                         sx={{ my: 2 }}
                                     >
-                                        <MenuItem value={10}>Laptop</MenuItem>
-                                        <MenuItem value={20}>Monitors</MenuItem>
+                                        <MenuItem value="Laptop">{translate('category.laptop')}</MenuItem>
+                                        <MenuItem value="Monitors">{translate('category.monitors')}</MenuItem>
                                     </Select>
                                 </FormControl>
                             </form>
                         </Fragment>
-                        <Button onClick={() => updateProductAux()} variant="contained" type="submit" sx={{ my: 2 }}>Actualizar producto</Button>
+                        <Button onClick={() => updateProductAux()} variant="contained" type="submit" sx={{ my: 2 }}>{translate('crud.update')}</Button>
                     </CardContent>
                 </Card>
             </Container>

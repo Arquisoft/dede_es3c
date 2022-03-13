@@ -2,7 +2,7 @@ import React, { FC, useContext } from 'react';
 import './App.css';
 import { LangContext } from './lang';
 import { UserContext } from './User';
-import "bootswatch/dist/minty/bootstrap.min.css"
+import "bootswatch/dist/morph/bootstrap.min.css"
 import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
 import HomePage from './pages/HomePage';
@@ -20,7 +20,7 @@ const App: FC = () => {
     <Router>
       <Routes>
         <Route
-          path='home'
+          path='/'
           element = 
           {
             <HomePage setUser={setUser} translate={translate}/>
