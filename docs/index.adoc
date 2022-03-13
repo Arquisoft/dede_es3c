@@ -3,7 +3,7 @@
 //
 // ====================================
 
-= image:logo-dede.png[DeDesktop] 
+image:logo-dede.png[DeDesktop] 
 
 = DeDe_es3c (DeDesktop)
 // toc-title definition MUST follow document title without blank line!
