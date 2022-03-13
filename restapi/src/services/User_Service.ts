@@ -19,7 +19,7 @@ export class UserService {
      * @param id User id
      * @returns Promise<User>
      */
-    public static getUserById(app: Application, id: number): Promise<User> {
+    public static getUserById(app: Application, id: string): Promise<User> {
         return app.get('db').getRepository(User).findOne({
             where: {
                 id: id
@@ -47,7 +47,7 @@ export class UserService {
      * @param id User id
      * @returns Promise<DeleteResult>
      */
-    public static deleteUser(app: Application, id: number): Promise<DeleteResult> {
+    public static deleteUser(app: Application, id: string): Promise<DeleteResult> {
         return app.get('db').getRepository(User).delete({id: id});
     }
 
@@ -68,8 +68,8 @@ export class UserService {
      * @param user User object
      * @returns Promise<UpdateResult>
      */
-    public static updateUser(app: Application, id: number, user: User): Promise<UpdateResult> {
-        return app.get('db').getRepository(User).update(id, user);
+    public static updateUser(app: Application, id: string, user: User): Promise<UpdateResult> {
+        return app.get('db').getRepository(User).update({id: id}, user);
     }
 
 }

@@ -1,4 +1,3 @@
-import * as crypto from 'crypto';
 import { Request, Response } from 'express';
 import { UserService } from '../services/User_Service';
 import { User } from '../entities/User';
@@ -29,7 +28,7 @@ export class UserController {
      */
     public async getUserById(req: Request, res: Response) {
         try {
-            const user = await UserService.getUserById(req.app, Number.parseInt(req.params.id));
+            const user = await UserService.getUserById(req.app, String(req.params.id));
             user ? res.status(200).json(user) : res.status(404).json({ error: "User not found" });
         } catch (error) {
             res.status(500).json({ error: "Error on get user by id" })
@@ -59,8 +58,8 @@ export class UserController {
      */
     public async updateUser(req: Request, res: Response) {
         try {
-            let userBody = new User(req.body.username, req.body.lastname);
-            const user = await UserService.updateUser(req.app, Number.parseInt(req.params.id), userBody);
+            let userBody = new User(req.body.username, req.body.email, req.body.password, req.body.rol );
+            const user = await UserService.updateUser(req.app, String(req.params.id), userBody);
             user ? res.status(200).json(user.raw) : res.status(404).json({ error: "User not found" });
         } catch (error) {
             res.status(500).json({ error: "Error on update user: " + error })
@@ -75,7 +74,7 @@ export class UserController {
      */
     public async deleteUser(req: Request, res: Response) {
         try {
-            const user: DeleteResult = await UserService.deleteUser(req.app, Number.parseInt(req.params.id));
+            const user: DeleteResult = await UserService.deleteUser(req.app, String(req.params.id));
             user ? res.status(200).json(user.raw) : res.status(404).json({ error: "User not found" });
         } catch (error) {
             res.status(500).json({ delete: false, error: "Error on delete user: " + error})
@@ -90,9 +89,9 @@ export class UserController {
      */
     public async addUser(req: Request, res: Response) {
         try {
-            let userBody = new User(req.body.username, req.body.email);
+            let userBody = new User(req.body.username, req.body.email,req.body.password, req.body.rol );
             const user = await UserService.addUser(req.app, userBody);
-            user ? res.status(201).json(user) : res.status(500).json({ error: "Error add user" });
+            user ? res.status(200).json(user) : res.status(500).json({ error: "Error add user" });
         } catch (error) {
             res.status(500).json({ error: "Error add user: " + error})
         }

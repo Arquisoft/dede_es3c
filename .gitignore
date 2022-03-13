@@ -29,3 +29,14 @@ yarn-error.log*
 #documentation build does not go into master
 docs/build
 
+ormconfig.json
+
+docker-compose.yml
+dist/
+
+/.env
+/process.env
+/restapi/src/data
+/restapi/src/data/data.py
+/restapi/src/Solid.ts
+/restapi/package.json
