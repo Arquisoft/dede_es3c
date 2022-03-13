@@ -33,5 +33,6 @@
     "nav.login": "Login",
     "nav.logout": "Logout",
     "nav.shoppingcart": "Cart",
-    "nav.languaje":"Language"
+    "nav.languaje":"Language",
+    "nav.admin":"Edit products"
 }

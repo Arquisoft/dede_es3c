@@ -44,7 +44,7 @@ const LoginPage: FC<LoginPageProps> = (props: LoginPageProps) => {
     };
 
     if (logged){
-        return ( <Navigate to="/" />);
+        return ( <Navigate to="/catalog" />);
     }
     return(
     <div>

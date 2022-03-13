@@ -33,5 +33,6 @@
     "nav.login":"Iniciar sesión",
     "nav.logout":"Cerrar sesión",
     "nav.shoppingcart":"Carrito",
-    "nav.languaje":"Idioma"
+    "nav.languaje":"Idioma",
+    "nav.admin": "Editar productos"
 }

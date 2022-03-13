@@ -10,7 +10,9 @@ import SignUpPage from './pages/SignUpPage';
 import CatalogPage from './pages/CatalogPage';
 import HomePage from './pages/HomePage';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Prueba from './pages/Prueba';
+import CrudAddPage from './pages/CrudAddPage';
+import CrudEditPage from './pages/CrudEditPage';
+import CrudDeletePage from './pages/CrudDeletePage';
 
 const App: FC = () => {
   const { dispatch: {translate }} = useContext(LangContext);
@@ -47,11 +49,23 @@ const App: FC = () => {
           }
         />
         <Route
-          path='prueba'
+          path='addProduct'
           element={
-            <Prueba />
+            <CrudAddPage setUser={setUser} translate={translate}/>
           }
           />
+        <Route
+          path='editProduct'
+          element={
+            <CrudEditPage setUser={setUser} translate={translate} />
+          }
+        />
+        <Route
+          path='deleteProduct'
+          element={
+            <CrudDeletePage setUser={setUser} translate={translate} />
+          }
+        />
       </Routes>
     </Router>
     

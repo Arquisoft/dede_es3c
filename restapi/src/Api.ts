@@ -43,10 +43,10 @@ import { ProductController } from './controllers/Product_Controller';
  
      api.route('/users')
          // Get all users
-         .get(auth.isAdminAuth, userController.getUsers)
+         .get(/*auth.isAdminAuth, */userController.getUsers)
  
      api.route('/users/username/:username')
-         .get(auth.isAdminAuth, userController.getUserByUsername);
+         .get(/*auth.isAdminAuth, */userController.getUserByUsername);
  
      api.route('/users/:id')
          // Get user by id
