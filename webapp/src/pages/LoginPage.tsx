@@ -1,7 +1,7 @@
 import React, {Fragment, FC, useEffect, useState} from "react";
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import {Container, Card , CardContent, Grid} from "@mui/material";
+import {Container, Card , CardContent, Grid, Alert} from "@mui/material";
 import Link from '@mui/material/Link';
 import logo from '../img/logo-dede.svg'
 import {checkUser, getUser, loginB } from "../api/api";
@@ -24,7 +24,14 @@ const LoginPage: FC<LoginPageProps> = (props: LoginPageProps) => {
     const [pulsed, setPulsed] = useState(false);
     const [logged, setLogged] = useState(false);
 
+    const errorMessage = (logged: boolean, pulsed:boolean) => {
+        if (!logged && pulsed){
+            return (<Alert  severity="error">{props.translate("login.singin.error")}</Alert>)
+        }
+    }
+
     const checkLog = async () => {
+        setPulsed(true);
           const valid = await checkUser(username, password);
           console.log("logged")
           if (valid) {
@@ -38,9 +45,7 @@ const LoginPage: FC<LoginPageProps> = (props: LoginPageProps) => {
               }
               localStorage.setItem("token", token);
               setLogged(true);
-          } else {
-              console.log("fallo")
-           }
+          } 
 };
 
     if (logged){
@@ -87,6 +92,9 @@ const LoginPage: FC<LoginPageProps> = (props: LoginPageProps) => {
                         /> 
                         </form>
                     </Fragment>
+                    {
+                     errorMessage(logged, pulsed)
+                    }
                     <Button onClick={() => checkLog()} variant="contained" type="submit" sx={{ my: 2 }}>{props.translate('login.solid')}</Button>
             <Link href="/signup">{props.translate('login.signup')}</Link>
             </CardContent>
