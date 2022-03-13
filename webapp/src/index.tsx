@@ -3,10 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import LangState from './lang';
+import UserState from './User'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <UserState>
+    <LangState>
+      <App />
+    </LangState>
+    </UserState>
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -1,37 +1,72 @@
-import React, { useState, useEffect } from 'react';
-import Box from '@mui/material/Box';
-import Link from '@mui/material/Link';
-import Container from '@mui/material/Container';
-import EmailForm from './components/EmailForm';
-import Welcome from './components/Welcome';
-import UserList from './components/UserList';
-import  {getUsers} from './api/api';
-import {User} from './shared/shareddtypes';
+import React, { FC, useContext } from 'react';
 import './App.css';
+import { LangContext } from './lang';
+import { UserContext } from './User';
+import "bootswatch/dist/minty/bootstrap.min.css"
+import LoginPage from './pages/LoginPage';
+import SignUpPage from './pages/SignUpPage';
+import HomePage from './pages/HomePage';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import CrudAddPage from './pages/CrudAddPage';
+import CrudEditPage from './pages/CrudEditPage';
+import CrudDeletePage from './pages/CrudDeletePage';
+import Prueba from './pages/Catalog';
 
-function App(): JSX.Element {
-
-  const [users,setUsers] = useState<User[]>([]);
-
-  const refreshUserList = async () => {
-    setUsers(await getUsers());
-  }
-
-  useEffect(()=>{
-    refreshUserList();
-  },[]);
+const App: FC = () => {
+  const { dispatch: {translate }} = useContext(LangContext);
+  const { dispatch: {setUser}} = useContext(UserContext);
 
   return (
-    <>
-      <Container maxWidth="sm">
-        <Welcome message="ASW students"/>
-        <Box component="div" sx={{ py: 2}}>This is a basic example of a React application using Typescript. You can add your email to the list filling the form below.</Box>
-        <EmailForm OnUserListChange={refreshUserList}/>        
-        <UserList users={users}/>
-        <Link href="https://github.com/pglez82/asw2122_0">Source code</Link>
-      </Container>
-    </>
-  );
+    <Router>
+      <Routes>
+        <Route
+          path='home'
+          element = 
+          {
+            <HomePage setUser={setUser} translate={translate}/>
+          }
+        />
+        <Route
+        path='login'
+        element = 
+        {
+          <LoginPage setUser={setUser} translate={translate} />
+        }
+        />
+        <Route
+        path='signup'
+        element =
+        {
+          <SignUpPage setUser={setUser} translate={translate} />
+        }
+        />
+        <Route
+          path='addProduct'
+          element={
+            <CrudAddPage setUser={setUser} translate={translate}/>
+          }
+          />
+        <Route
+          path='editProduct'
+          element={
+            <CrudEditPage setUser={setUser} translate={translate} />
+          }
+        />
+        <Route
+          path='deleteProduct'
+          element={
+            <CrudDeletePage setUser={setUser} translate={translate} />
+          }
+        />
+        <Route
+          path='catalog'
+          element={
+            <Prueba setUser={setUser} translate={translate} />
+          }
+        />
+      </Routes>
+    </Router>
+    
+);
 }
-
 export default App;
