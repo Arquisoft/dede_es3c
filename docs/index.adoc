@@ -88,8 +88,13 @@ include::10_quality_scenarios.adoc[]
 include::11_technical_risks.adoc[]
 
 <<<<
-// 12. Glossary
-include::12_glossary.adoc[]
+// 12. Hexagonal architecture
+include::12_hexagonal_architecture.adoc[]
+
+
+<<<<
+// 13. Glossary
+include::13_glossary.adoc[]
 
 <<<<
 // About
