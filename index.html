@@ -517,8 +517,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_risks_and_technical_debts">11. Risks and Technical Debts</a>
 <ul class="sectlevel2">
 <li><a href="#_risks">11.1. Risks</a></li>
-<li><a href="#_minimize_or_avoid_risks">11.2. Minimize or avoid risks</a></li>
-<li><a href="#_technical_debts">11.3. Technical debts</a></li>
+<li><a href="#_technical_debts">11.2. Technical debts</a></li>
 </ul>
 </li>
 <li><a href="#_glossary">12. Glossary</a></li>
@@ -565,10 +564,13 @@ For documentation of your own system you use better the <em>plain</em> version.<
 <h2 id="_introduction_and_goals">1. Introduction and Goals</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>DeDe is an e-Commerce application (online retail system) in which users will be able to select and order products.</p>
+<p>DeDe (Descentralized Delivery) is an e-Commerce application (online retail system) in which users will be able to select and order products.</p>
 </div>
 <div class="paragraph">
-<p>It follows SOLID principles, guaranteeing the client&#8217;s privacy.</p>
+<p>DeDesktop is the name of the application. It is an online technology store in which it is sold products such as personal computers, laptops, peripherals, etc.</p>
+</div>
+<div class="paragraph">
+<p>It follows SOLID principles, guaranteeing the client&#8217;s privacy regarding the personal data of the client such as the address.</p>
 </div>
 <div class="sect2">
 <h3 id="_requirements_overview">1.1. Requirements Overview</h3>
@@ -638,58 +640,53 @@ For documentation of your own system you use better the <em>plain</em> version.<
 <h3 id="_quality_goals">1.2. Quality Goals</h3>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 16.6666%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 16.6668%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+<col style="width: 40%;">
 </colgroup>
 <thead>
 <tr>
+<th class="tableblock halign-left valign-top">Priority</th>
 <th class="tableblock halign-left valign-top">Quality Goal</th>
 <th class="tableblock halign-left valign-top">Motivation</th>
-<th class="tableblock halign-left valign-top">Development Team Priority</th>
-<th class="tableblock halign-left valign-top">Client Prority</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Privacy</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The treatment of private information will be decentralized, ensuring customer privacy</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">High</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">High</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Usability</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">All users must be able to use it, whether they have previous knowledge about the application or not</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">High</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">High</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Integrity</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Data must be consistent and complete at all times</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">High</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Medium</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Efficiency</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Making a purchase should be easy for the user, reducing response and load times</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">High</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">High</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Testability</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Major components should be easily tested and fixed</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Medium</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Medium</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Modifiability</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The architecture must be easy to modify, adding new features or changing existing ones</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Medium</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Medium</p></td>
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p>Detailed priority in epigraph 10.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_stakeholders">1.3. Stakeholders</h3>
@@ -721,6 +718,11 @@ For documentation of your own system you use better the <em>plain</em> version.<
 <td class="tableblock halign-left valign-top"><p class="tableblock">Development Team</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">They are the creators of the application. They can modify, update and improve it.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Develop a complete application that contain the requirements. Learn to work in a team efficiently and learn new technologies.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Delivery business</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dstribute the products to the client&#8217;s address</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Their objective is to get the list of the products to deliver and the address of the client who ordered.</p></td>
 </tr>
 </tbody>
 </table>
@@ -760,20 +762,8 @@ For documentation of your own system you use better the <em>plain</em> version.<
 <td class="tableblock halign-left valign-top"><p class="tableblock">We will use GitHub to deploy the project and all the files related with it. This is a requirement</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">MongoDB</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">As data storage we will use MongoDB. MongoDB is a NonSQL data base that will allow us an easier y faster integration. This is a decision made by all team members</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TypeScrypt</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TypeScript is the techonology used for the backend. Based on JavaScript is quite similar. This is a requirement</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Heroku</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Heroku allows us to run build and run our application entirely in the cloud</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Bootstrap</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Bootstrap is a multiplatform framework. We will use it as frontend framework to styles and everything related with user interface</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Node.js</p></td>
@@ -803,8 +793,8 @@ For documentation of your own system you use better the <em>plain</em> version.<
 <td class="tableblock halign-left valign-top"><p class="tableblock">The project has a very tight time to be finished. This means that our application will not be as developed as it could be</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Other work</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">All of us have other subjects that take time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Deadlines</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This application is part of course calification criteria. This means we have several deadlines and important releases in a target date. This means we can have trouble finishing the parts we need to release in some of that targets.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1366,7 +1356,7 @@ As we can see in the following image, we are going to use Heroku to deploy the a
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Frameworks</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">We will choose REACT framework to develop application frontend</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We will choose Redux framework to develop application frontend</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">We can use it to facilitate the implementation</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Is a new technology to us so we need to improve our knowledge about it</p></td>
 </tr>
@@ -1394,45 +1384,53 @@ As we can see in the following image, we are going to use Heroku to deploy the a
 <h3 id="_quality_scenarios">10.2. Quality Scenarios</h3>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
 </colgroup>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Quality goal</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Scenario</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Difficulty</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User Priority</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Developer Priority</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>Privacy</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>The app is SOLID based which means the users have their personal information storaged in pods (personal online data stores) this technology makes it better for the users always respecting their privacy. For example, the client&#8217;s address can be consulted on it&#8217;s pod in props of calculate the shipping price.</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Hard</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>High</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>High</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>Efficiency</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>The system is able to act quickly and with fluidity when the user interacts with it. For example, if a client wants to buy a product, the shipping price should be rapidly calulated not making it tedious to the user.</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Medium</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>High</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>High</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>Testability</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>DeDe can be tested with certain ease using technologies such as Prometeus, Grafana and Postman as an external help to make sure everything works properly and finding bugs or mistakes in props to improve the application.</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Hard</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Low</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>High</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>Modifiability</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>The system, divided in Frontend, Backend and documentation (which makes it easer to develop) has a quite reusable code, which increments the possibilities of adding new functions or update the existing ones with more looseness. For example, the code used for the implementation of the function that allows clients see theis orders, can also be used for the function that allows administrators see every single order made on DeDe.</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Easy</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Low</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>High</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>Usability</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>The site has an intuitive design that makes the experience comfortable for every user in the application with them being clients or administrators. They should know where to go or what to do with a glance due to the familiarity of the design.</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Easy</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>High</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>High</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>Integrity</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>The data should be always in a valid state following the ACID values. If some process fails, there are not going to be any changes and the system will stay in a consistent state without harming the user. For example, if a purchase fails just before the order confirmation, the system will return to a consistent state where the purchase won&#8217;t be made.</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Medium</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>High</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>High</em></p></td>
 </tr>
 </tbody>
 </table>
@@ -1455,78 +1453,136 @@ As we can see in the following image, we are going to use Heroku to deploy the a
 <ul>
 <li>
 <p>Not having knowledge of the following technologies:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>SOLID: We may have difficulty following SOLID principles as we have not worked on a SOLID project before and handling decentralized data may be difficult.</p>
-</li>
-<li>
-<p>PODs: We don&#8217;t have any knowledge about PODs prior to this project, so we need to learn how to keep user information secure and private, which can take considerable time.</p>
-</li>
-<li>
-<p>React: We have never used it, so we must learn during the project.</p>
-</li>
-<li>
-<p>MongoDB: We may run into difficulties using a NoSQL database, as we have experience only using SQL databases, which can cause delays while we learn how to use it.</p>
-</li>
-<li>
-<p>Grafana and Prometeus: We have never used these tools to monitor a project and we need to adapt to them.</p>
-</li>
-<li>
-<p>Postman: We have never used this testing tool.</p>
-</li>
-<li>
-<p>Node.js: We don&#8217;t know how to use it.</p>
-</li>
-<li>
-<p>Heroku: It costs time to adapt to it due to we have never used it.</p>
-</li>
-<li>
-<p>Docker: We have to learn how to use it.</p>
-</li>
-<li>
-<p>Express: We may have some dificulties, we need to learn about it.</p>
-</li>
-<li>
-<p>Bootstrap: We have to learn about this style library. It will cost some time.</p>
-</li>
-<li>
-<p>TypeScript: Some members of the group have some knowledge of JavaScript, and since TypeScript is similar to JavaScript, it won&#8217;t be too difficult to adapt, although it will take time to learn this language.</p>
 </li>
 </ul>
 </div>
-</li>
-<li>
-<p>Have low knowledge in the following technologies:</p>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Technology</th>
+<th class="tableblock halign-left valign-top">Risk</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SOLID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We may have difficulty following SOLID principles as we have not worked on a SOLID project before and handling decentralized data may be difficult.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PODs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We don&#8217;t have any knowledge about PODs prior to this project, so we need to learn how to keep user information secure and private, which can take considerable time.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">React</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We have never used it, so we must learn during the project.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MongoDB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We may run into difficulties using a NoSQL database, as we have experience only using SQL databases, which can cause delays while we learn how to use it.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Grafana and Prometeus</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We have never used these tools to monitor a project and we need to adapt to them.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Postman</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We have never used this testing tool.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Node.js</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We don&#8217;t know how to use it.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Heroku</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It costs time to adapt to it due to we have never used it.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Docker</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We have to learn how to use it.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Express</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We may have some dificulties, we need to learn about it.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bootstrap</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We have to learn about this style library. It will cost some time.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TypeScript</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Some members of the group have some knowledge of JavaScript, and since TypeScript is similar to JavaScript, it won&#8217;t be too difficult to adapt, although it will take time to learn this language.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Git</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We have little knowledge about using Git, so we can easily go wrong.</p></td>
+</tr>
+</tbody>
+</table>
 <div class="ulist">
 <ul>
 <li>
-<p>Git: We have little knowledge about using Git, so we can easily go wrong.</p>
+<p>Other risks:</p>
 </li>
 </ul>
 </div>
-</li>
-<li>
-<p>Abandonment of a member: if a member leaves the group, it would mean redistributing the work, suddenly having more workload for the members who remain.</p>
-</li>
-</ul>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Risk</th>
+<th class="tableblock halign-left valign-top">Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Abandonment of a member</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If a member leaves the group, it would mean redistributing the work, suddenly having more workload for the members who remain.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Being just 4 members</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It can be more difficult to develop this application being only 4 due to other groups have 5 or even 6 members to do the same work.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="_minimize_or_avoid_risks">11.1.1. Minimize or avoid risks</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Risk</th>
+<th class="tableblock halign-left valign-top">How to avoid or minimize</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Not knowing the technologies</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We seek information and practice using them.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Posibility of a team member leaving</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We will have good communication and help each other.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Being only 4 members</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We have to do a hard work to develop tha application.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_minimize_or_avoid_risks">11.2. Minimize or avoid risks</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>To minimize the risk of not knowing the technologies or having a basic understanding of them, we seek information and practice using them.</p>
-</li>
-<li>
-<p>To minimize the possibility of a team member leaving, we need to have good communication and help each other.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_technical_debts">11.3. Technical debts</h3>
+<h3 id="_technical_debts">11.2. Technical debts</h3>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
@@ -1649,7 +1705,7 @@ Created by Dr. Peter Hruschka &amp; Dr. Gernot Starke.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-02-21 09:34:34 +0100
+Last updated 2022-03-13 19:37:29 +0100
 </div>
 </div>
 </body>
