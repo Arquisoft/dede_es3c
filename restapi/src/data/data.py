@@ -188,6 +188,11 @@ prodord2 = {
 		"product": prod3,
 		"quantity": 2
 		}
+prodord3 = {
+		"id": str(uuid.uuid4()),
+		"product": prod9,
+		"quantity": 6
+		}
 # Insert Data
 rec_prodorder_id1=collection.insert_one(prodord1)
 rec_prodorder_id2=collection.insert_one(prodord2)
@@ -198,6 +203,11 @@ ord1 = {
 		"id": str(uuid.uuid4()),
 		"user": user1,
 		"products": [prodord1,prodord2]
+		}
+ord1 = {
+		"id": str(uuid.uuid4()),
+		"user": user2,
+		"products": [prodord1,prodord2,prod3]
 		}
 # Insert Data
 rec_order_id1=collection.insert_one(ord1)
