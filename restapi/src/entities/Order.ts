@@ -1,4 +1,4 @@
-import { Entity, Column, ObjectIdColumn, PrimaryColumn } from "typeorm";
+import { Entity, Column, ObjectIdColumn, PrimaryColumn, AfterLoad } from "typeorm";
 import {v4 as uuidv4} from 'uuid';
 import { User } from "./User";
 import { ProductInOrder } from "./ProductInOrder";
@@ -10,6 +10,7 @@ export class Order {
         this.user = user;
         this.products = products;
         this.price = 0.0;
+        this.priceIVA = 0.0;
         this.id = uuidv4();
     }
 
@@ -28,17 +29,41 @@ export class Order {
     @Column()
     price: number;
 
+    @Column()
+    priceIVA: number;
 
-    /*
-    public onLoad(){
+    @AfterLoad()
+    getPrice() {
         var p = 0.0;
         for (var pr of this.products) {
-            console.log(pr.price);
-            p=p+pr.price;
+            p=p+pr.product.price*pr.quantity;
         }
-        console.log("Total: "+p);
         this.price = p;
-    }*/
+
+        //Calcular distancia
+        //var distance=mapa.calculateDistance("Avenida de la Constitución, 10, Gijón");
+        //console.log(distance);
+
+        //Calcular precio de envío
+        //this.price += this.calculateShippingPrice(distance);
+
+        this.getPriceIVA();
+    }
+
+    getPriceIVA(){
+        this.priceIVA = this.price*1.21;
+    }
+
+    @AfterLoad()
+    decrementStock(){
+        for (var pr of this.products) {
+            //Comprobar si tengo stock suficiente
+            //pr.product.stock-=pr.quantity;
+        }
+    }
+
+
+    
 
 
 
