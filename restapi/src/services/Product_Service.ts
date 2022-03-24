@@ -86,4 +86,14 @@ export class ProductService {
         return app.get('db').getRepository(Product).update({id: id}, product);
     }
 
+    /**
+     * Update stock product by id 
+     * @param app Express application
+     * @param id Product id
+     * @param product Product object
+     * @returns Promise<UpdateResult>
+     */
+         public static updateProductStock(app: Application, id: string, stock: number): Promise<UpdateResult> {
+            return app.get('db').getRepository(Product).update({id: id}, stock);
+        }
 }

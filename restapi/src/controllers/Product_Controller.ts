@@ -73,13 +73,30 @@ export class ProductController {
      */
     public async updateProduct(req: Request, res: Response) {
         try {
-            let productServiceBody = new Product(req.body.name, req.body.description,req.body.price,req.body.category, req.body.urlPhoto);
+            let productServiceBody = new Product(req.body.name, req.body.description,req.body.price,req.body.category, req.body.urlPhoto, req.body.stock);
             const product = await ProductService.updateProduct(req.app, String(req.params.id), productServiceBody);
             product ? res.status(200).json(product.raw) : res.status(404).json({ error: "Product not found" });
         } catch (error) {
             res.status(500).json({ error: "Error on update Product: " + error })
         }
     }
+
+    /**
+     * Update Stock product
+     * @param req Request
+     * @param res Response
+     * @returns product with status 200 or error 500
+     */
+        public async updateProductStock(req: Request, res: Response) {
+            try {
+                const product = await ProductService.getProductById(req.app, String(req.params.id));
+                product.stock >= req.body.stock ? res.status(200).json(product) : res.status(404).json({ error: "Product not found" });
+                const productU = await ProductService.updateProduct(req.app, String(req.params.id), req.body.stock);
+                productU ? res.status(200).json(productU.raw) : res.status(404).json({ error: "Product not found" });
+            } catch (error) {
+                res.status(500).json({ error: "Error on update Product: " + error })
+            }
+        }
 
     /**
      * Delete product
@@ -104,7 +121,7 @@ export class ProductController {
      */
     public async addProduct(req: Request, res: Response) {
         try {
-            let productBody = new Product(req.body.name, req.body.description, req.body.price, req.body.category, req.body.urlPhoto);
+            let productBody = new Product(req.body.name, req.body.description, req.body.price, req.body.category, req.body.urlPhoto, req.body.stock);
             const product = await ProductService.addProduct(req.app, productBody);
             product ? res.status(200).json(product) : res.status(500).json({ error: "Error add Product" });
         } catch (error) {
