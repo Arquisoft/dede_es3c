@@ -2,6 +2,10 @@ import { DeleteResult, UpdateResult } from "typeorm";
 import { Application } from "express";
 import { Product } from "../entities/Product";
 
+const reg = function escapeRegExp(text:string) {
+  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+}
+
 export class ProductService {
   /**
    * Return all products
@@ -64,7 +68,7 @@ export class ProductService {
         .getRepository(Product)
         .find({
           where: {
-            name: new RegExp(name, "gi") ,
+            name: RegExp(reg(name), "gi") ,
           },
         });
     }
