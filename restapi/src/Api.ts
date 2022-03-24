@@ -82,8 +82,6 @@ import { Auth } from './middlewares/Auth_Middleware';
         .delete(auth.isAdminAuth,productsController.deleteProduct)
         // Update products by id
         .put(auth.isAdminAuth,productsController.updateProduct)
-        // Update Stock by id
-        .put(auth.isAdminAuth, productsController.updateProductStock)
 }
 
 const setOrdersRoutes = (): void => {

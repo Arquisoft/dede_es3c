@@ -22,7 +22,8 @@ prod1 = {
 		"description":"It's a bad Monitor",
         "price":69.96,
 		"category":"Monitors",
-		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1646938754/samples/ecommerce/HP_l9kqjo.jpg"
+		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1646938754/samples/ecommerce/HP_l9kqjo.jpg",
+		"stock":34
 		}
 prod2 = {
 		"id": str(uuid.uuid4()),
@@ -30,7 +31,8 @@ prod2 = {
 		"description":"It's a good Monitor",
         "price":99.99,
 		"category":"Monitors",
-		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1646938754/samples/ecommerce/NiSiPu_dfue3n.jpg"
+		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1646938754/samples/ecommerce/NiSiPu_dfue3n.jpg",
+		"stock":36
 		}
 prod3 = {
 		"id": str(uuid.uuid4()),
@@ -38,7 +40,8 @@ prod3 = {
 		"description":"It's a bad Laptop",
         "price":56.5,
 		"category":"Laptop",
-		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1647193157/samples/ecommerce/Portatil_Malo_so3bll.jpg"
+		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1647193157/samples/ecommerce/Portatil_Malo_so3bll.jpg",
+		"stock":58
 		}
 prod4 = {
 		"id": str(uuid.uuid4()),
@@ -46,7 +49,8 @@ prod4 = {
 		"description":"It's a good Laptop",
         "price":345.99,
 		"category":"Laptop",
-		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1647193012/samples/ecommerce/Portatil_bueno.jpg"
+		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1647193012/samples/ecommerce/Portatil_bueno.jpg",
+		"stock":95
 		}
 prod5 = {
 		"id": str(uuid.uuid4()),
@@ -54,7 +58,8 @@ prod5 = {
 		"description":"It's a very good monitor",
         "price":842.99,
 		"category":"Monitors",
-		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1647193343/samples/ecommerce/Deus_Monitor_awrfqo.jpg"
+		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1647193343/samples/ecommerce/Deus_Monitor_awrfqo.jpg",
+		"stock":23
 		}
 prod6 = {
 		"id": str(uuid.uuid4()),
@@ -62,7 +67,8 @@ prod6 = {
 		"description":"It is so expensive because it has RGB",
         "price":8400.99,
 		"category":"Graphic_card",
-		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1647193197/samples/ecommerce/Grafica_NVIDIA_olazl1.jpg"
+		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1647193197/samples/ecommerce/Grafica_NVIDIA_olazl1.jpg",
+		"stock":6
 		}
 prod7 = {
 		"id": str(uuid.uuid4()),
@@ -70,7 +76,8 @@ prod7 = {
 		"description":"Sitting here is like being on a cloud",
         "price":485.99,
 		"category":"Chair",
-		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1647193125/samples/ecommerce/Cloud_h9hgsc.png"
+		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1647193125/samples/ecommerce/Cloud_h9hgsc.png",
+		"stock":10
 		}
 prod8 = {
 		"id": str(uuid.uuid4()),
@@ -78,7 +85,9 @@ prod8 = {
 		"description":"This graph gets hotter than hell",
         "price":7823.65,
 		"category":"Graphic_card",
-		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1647193186/samples/ecommerce/Grafica_AMD_mwbknw.jpg"
+		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1647193186/samples/ecommerce/Grafica_AMD_mwbknw.jpg",
+		"stock":18
+		
 		}
 prod9 = {
 		"id": str(uuid.uuid4()),
@@ -86,7 +95,8 @@ prod9 = {
 		"description":"This computer programs only",
         "price":9999.54,
 		"category":"PC",
-		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1647193137/samples/ecommerce/PC_Master_dlbgig.webp"
+		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1647193137/samples/ecommerce/PC_Master_dlbgig.webp",
+		"stock":40
 		}
 prod10 = {
 		"id": str(uuid.uuid4()),
@@ -94,7 +104,8 @@ prod10 = {
 		"description":"A good software architect will use this humble PC",
         "price":49.34,
 		"category":"PC",
-		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1647193512/samples/ecommerce/ElHumildePC_sp9ovk.webp"
+		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1647193512/samples/ecommerce/ElHumildePC_sp9ovk.webp",
+		"stock":4
 		}
 
 
