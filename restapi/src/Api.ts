@@ -70,10 +70,11 @@ import { Auth } from './middlewares/Auth_Middleware';
         ], productsController.addProduct);
 
     api.route('/products/name/:name')
-        .get(productsController.getProductByName);
+        .get(productsController.getProductByPartialName);
     
     api.route('/products/category/:category')
         .get(productsController.getProductByCategory);
+
 
     api.route('/products/:id')
         // Get products by id

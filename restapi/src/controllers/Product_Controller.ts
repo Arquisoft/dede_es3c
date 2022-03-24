@@ -59,6 +59,26 @@ export class ProductController {
   }
 
   /**
+   * Get product by name
+   * @param req Request
+   * @param res Response
+   * @returns product with status 200 or error 500
+   */
+     public async getProductByPartialName(req: Request, res: Response) {
+      try {
+        const product = await ProductService.getProductByPartialName(
+          req.app,
+          req.params.name
+        );
+        product
+          ? res.status(200).json(product)
+          : res.status(404).json({ error: "Product not found" });
+      } catch (error) {
+        res.status(500).json({ error: "Error on get Product by name: " + error });
+      }
+    }
+
+  /**
    * Get product by category
    * @param req Request
    * @param res Response
