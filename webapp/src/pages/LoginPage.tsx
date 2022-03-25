@@ -1,13 +1,13 @@
 import React, {Fragment, FC, useState} from "react";
 import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import {Container, Card , CardContent, Alert} from "@mui/material";
-import Link from '@mui/material/Link';
+import {Container, Card , CardContent, Alert, Link} from "@mui/material";
+
 import logo from '../img/logo-dede.svg'
 import {checkUser, getUser, loginB } from "../api/api";
 import {Navigate} from "react-router-dom";
 import Header from "../components/Header";
 import "bootswatch/dist/morph/bootstrap.min.css"
+import { Button } from "react-bootstrap";
 
 
 const checkParams = (text: string) => {
@@ -95,7 +95,7 @@ const LoginPage: FC<LoginPageProps> = (props: LoginPageProps) => {
                     {
                      errorMessage(logged, pulsed)
                     }
-                    <Button onClick={() => checkLog()} variant="contained" type="submit" sx={{ my: 2 }}>{props.translate('login.solid')}</Button>
+                    <Button onClick={() => checkLog()} variant="contained" type="submit">{props.translate('login.solid')}</Button>
             <Link href="/signup">{props.translate('login.signup')}</Link>
             </CardContent>
             </Card>

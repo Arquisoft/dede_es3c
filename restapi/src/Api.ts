@@ -88,14 +88,14 @@ const setOrdersRoutes = (): void => {
  
     api.route('/orders')
         // Get all products
-        .get(auth.isAuth, ordersController.getOrders)
+        .get(/*auth.isAuth,*/ ordersController.getOrders)
         // Create new products
         .post(auth.isAuth, ordersController.addOrder);
 
     
     api.route('/orders/:id')
         // Get products by id
-        .get(auth.isAuth, ordersController.getOrderById)
+        .get(/*auth.isAuth,*/ ordersController.getOrderById)
         // Delete products by id
         .delete(auth.isAdminAuth, ordersController.deleteOrder)
         // Update products by id

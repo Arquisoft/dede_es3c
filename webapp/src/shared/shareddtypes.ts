@@ -13,3 +13,10 @@ export type Product = {
   category: string,
   urlPhoto: string
 }
+
+export type Order = {
+  id:String
+  user: User
+  products: Product[],
+  price: number,
+}

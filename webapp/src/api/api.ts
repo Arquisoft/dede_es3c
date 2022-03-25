@@ -1,4 +1,4 @@
-import {User, Product} from '../shared/shareddtypes';
+import {User, Product, Order} from '../shared/shareddtypes';
 
 export async function addUser(user:User):Promise<boolean>{
     const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
@@ -123,4 +123,10 @@ export async function deleteProduct(id: string): Promise<boolean> {
     return true;
   else
     return false;
+}
+
+export async function getOrders(): Promise<Order[]>{
+  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+  let response = await fetch(apiEndPoint + '/orders');
+  return response.json()
 }

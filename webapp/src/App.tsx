@@ -11,6 +11,7 @@ import CrudAddPage from './pages/CrudAddPage';
 import CrudEditPage from './pages/CrudEditPage';
 import CrudDeletePage from './pages/CrudDeletePage';
 import Prueba from './pages/Catalog';
+import OrdersPage from './pages/OrdersPage';
 
 const App: FC = () => {
   const { dispatch: {translate }} = useContext(LangContext);
@@ -62,6 +63,12 @@ const App: FC = () => {
           path='catalog'
           element={
             <Prueba setUser={setUser} translate={translate} />
+          }
+        />
+        <Route
+          path='orders'
+          element={
+            <OrdersPage setUser={setUser} translate={translate} />
           }
         />
       </Routes>

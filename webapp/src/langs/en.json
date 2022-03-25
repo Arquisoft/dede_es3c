@@ -37,6 +37,7 @@
     "nav.shoppingcart": "Cart",
     "nav.languaje":"Language",
     "nav.admin":"Edit products",
+    "nav.orders":"My orders",
     "prodDisp.price":"Price",
     "catalog.search":"Search",
     "category.monitors":"Monitors",
@@ -57,5 +58,12 @@
     "home.p4":"With this project we intend to make people (and our teachers) aware of the viability of a new system like Solid, in addition to improving it with the use of React and Node technologies.",
     "home.catalog":"See all our products in our catalog",
     "home.register":"Don't have an account? Register",
-    "home.login":"Already have an account? Login"
+    "home.login":"Already have an account? Login",
+    "orders.title":"My orders",
+    "orders.empty":"You haven't made any orders yet",
+    "orders.shopping":"Go Shopping",
+    "orders.id":"Reference",
+    "orders.products":"Products",
+    "orders.price":"Price",
+    "orders.date": "Order date"
 }

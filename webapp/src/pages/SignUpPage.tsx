@@ -1,7 +1,6 @@
 import React, {FC, useState} from "react";
 import TextField from '@mui/material/TextField';
 import "bootswatch/dist/morph/bootstrap.min.css"
-import Button from '@mui/material/Button';
 import {Container, Card , CardContent} from "@mui/material";
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import InputAdornment from '@mui/material/InputAdornment';
@@ -10,6 +9,7 @@ import logo from '../img/logo-dede.svg'
 import {checkUser, signup } from "../api/api";
 import { User } from "../shared/shareddtypes";
 import Header from "../components/Header";
+import { Button } from "react-bootstrap";
 
 
 interface SignUpProps{
@@ -159,7 +159,7 @@ const LoginPage: FC<SignUpProps> = (props: SignUpProps) => {
                     variant="contained" 
                     type="submit"
                     color="primary"
-                     sx={{ my: 2 }}>{props.translate('signup.signup')}</Button>
+                     >{props.translate('signup.signup')}</Button>
             <Link href="/login">{props.translate('signup.login')}</Link>
             </CardContent>
             </Card>
