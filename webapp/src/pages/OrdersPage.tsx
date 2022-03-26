@@ -48,22 +48,25 @@ const OrdersPage: FC<OrdersPageProps> = (props: OrdersPageProps) => {
               <Table stickyHeader aria-label="sticky table">
                 <TableHead>
                   <TableRow>
+                  <TableCell align="center" colSpan={1}>
+                      {props.translate("orders.preview")}
+                    </TableCell>
                     <TableCell align="center" colSpan={2}>
                       {props.translate("orders.id")}
                     </TableCell>
                     <TableCell align="center" colSpan={3}>
                     {props.translate("orders.products")}
                     </TableCell>
-                    <TableCell align="center" colSpan={3}>
+                    <TableCell align="center" colSpan={4}>
                     {props.translate("orders.price")}
                     </TableCell>
-                    <TableCell align="center" colSpan={3}>
+                    <TableCell align="center" colSpan={5}>
                     {props.translate("orders.date")}
                     </TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                <DisplayOrders orders={orders}/>            
+                {<DisplayOrders key={"orders"} orders={orders}/>}       
                 </TableBody>
               </Table>
             </TableContainer>

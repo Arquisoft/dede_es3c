@@ -65,5 +65,6 @@
     "orders.id":"Referencia",
     "orders.products":"Productos",
     "orders.price":"Precio",
-    "orders.date": "Fecha de pedido"
+    "orders.date": "Fecha de pedido",
+    "orders.preview":"Vista previa"
 }

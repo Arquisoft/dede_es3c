@@ -17,6 +17,12 @@ export type Product = {
 export type Order = {
   id:String
   user: User
-  products: Product[],
+  products: ProductInOrder[],
   price: number,
+}
+
+export type ProductInOrder = {
+  id:String
+  product: Product
+  quantity: number,
 }
