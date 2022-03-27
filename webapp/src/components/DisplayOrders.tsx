@@ -1,8 +1,7 @@
-import React, { FC, useContext } from 'react';
-import { Order, Product } from '../shared/shareddtypes';
+import React, {useContext } from 'react';
+import { Order } from '../shared/shareddtypes';
 import { LangContext } from '../lang';
-import { Table, TableCell, TableRow } from '@mui/material';
-import { height } from '@mui/system';
+import { TableCell, TableRow } from '@mui/material';
 
 type OrdersProps = {
     orders: Order[]
@@ -16,7 +15,7 @@ const DisplayOrders = (props: OrdersProps) => {
             return (        
             <TableRow>
                 <TableCell align="center" colSpan={1}>
-                {order.products.map((prod) => {return <img src={prod.product.urlPhoto} width= "50" height= "50"/>})}
+                {order.products.map((prod) => {return <img src={prod.product.urlPhoto} width= "100" height= "100"/>})}
                     </TableCell>
                     <TableCell align="center" colSpan={2}>
                          {order.id}
@@ -25,7 +24,7 @@ const DisplayOrders = (props: OrdersProps) => {
                          {order.products.map((prod) => {return prod.product.name + "\n "})}
                     </TableCell>
                     <TableCell align="center" colSpan={4}>
-                         {order.price}
+                         {order.price + "$"}
                     </TableCell>
             </TableRow>
             );

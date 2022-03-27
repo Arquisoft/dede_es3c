@@ -5,9 +5,10 @@ import { getOrders } from "../api/api";
 import DisplayOrders from "../components/DisplayOrders"
 import { Button} from "react-bootstrap";
 import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
+import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
-import { Table, TableContainer, TableHead } from "@mui/material";
+import { Paper, Table, TableContainer, TableHead } from "@mui/material";
+import { maxWidth } from "@mui/system";
 
 interface OrdersPageProps {
     translate: (key: string) => string
@@ -24,7 +25,6 @@ const OrdersPage: FC<OrdersPageProps> = (props: OrdersPageProps) => {
   useEffect(() => {
     reloadItems();
 }, []);
-    console.log(orders);
 
     if (orders.length === 0){
         return (
@@ -41,10 +41,11 @@ const OrdersPage: FC<OrdersPageProps> = (props: OrdersPageProps) => {
 
     }
     return (
-        <div className="mainContainer">
+        <div className="mainContainer" style={{alignContent:"center", alignItems:"center", alignSelf:"center"}}>
             <Header setUser={props.setUser}/>
             <h1>{props.translate("orders.title")}</h1>
-            <TableContainer sx={{ maxHeight: 440 }}>
+            <div style={{ alignContent:"center", alignItems:"center" }}>
+              <TableContainer component={Paper} sx={{maxHeight: "440",maxWidth: "1000" , alignSelf:"center"}}>
               <Table stickyHeader aria-label="sticky table">
                 <TableHead>
                   <TableRow>
@@ -70,6 +71,10 @@ const OrdersPage: FC<OrdersPageProps> = (props: OrdersPageProps) => {
                 </TableBody>
               </Table>
             </TableContainer>
+            </div>
+            <div style={{alignContent:"center"}}>
+            <Button href="/catalog">{props.translate("orders.shopping")}</Button>
+            </div>
         </div>
         
     );
