@@ -45,10 +45,10 @@ import { Auth } from './middlewares/Auth_Middleware';
  
      api.route('/users')
          // Get all users
-         .get(/*auth.isAdminAuth, */userController.getUsers)
+         .get(auth.isAdminAuth, userController.getUsers)
  
      api.route('/users/username/:username')
-         .get(/*auth.isAdminAuth, */userController.getUserByUsername);
+         .get(auth.isAdminAuth, userController.getUserByUsername);
  
      api.route('/users/:id')
          // Get user by id
@@ -65,23 +65,24 @@ import { Auth } from './middlewares/Auth_Middleware';
         // Get all products
         .get(productsController.getProducts)
         // Create new products
-        .post(/*auth.isAdminAuth,*/[
+        .post(auth.isAdminAuth,[
             check('name').isLength({ min: 1 }).trim().escape()
         ], productsController.addProduct);
 
     api.route('/products/name/:name')
-        .get(productsController.getProductByName);
+        .get(productsController.getProductByPartialName);
     
     api.route('/products/category/:category')
-        .get(/*auth.isAuth, */productsController.getProductByCategory);
+        .get(productsController.getProductByCategory);
+
 
     api.route('/products/:id')
         // Get products by id
-        .get(/*auth.isAuth, */productsController.getProductById)
+        .get(productsController.getProductById)
         // Delete products by id
-        .delete(/*auth.isAuth, */productsController.deleteProduct)
+        .delete(auth.isAdminAuth,productsController.deleteProduct)
         // Update products by id
-        .put(/*auth.isAuth, */productsController.updateProduct)
+        .put(auth.isAdminAuth,productsController.updateProduct)
 }
 
 const setOrdersRoutes = (): void => {
