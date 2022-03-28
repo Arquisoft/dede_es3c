@@ -11,5 +11,15 @@ export type Product = {
   description: string,
   price: number,
   category: string,
-  urlPhoto: string
+  urlPhoto: string,
+  amount: number
+}
+
+export type CartProduct = {
+  name: string,
+  description: string,
+  price: number,
+  urlPhoto: string,
+  category: string,
+  amount: number
 }

@@ -1,11 +1,15 @@
 import DisplayProducts from '../components/DisplayProducts';
 import { useState, useEffect, useContext } from 'react';
-import { Product } from '../shared/shareddtypes';
 import { getProducts, getProductsByName, getProductsByCategory } from '../api/api';
 import Header from "../components/Header";
 import { Dropdown, DropdownButton, Form, FormControl } from "react-bootstrap";
 import Button from '@mui/material/Button';
 import { LangContext } from '../lang';
+import { Product, CartProduct } from '../shared/shareddtypes';
+import Item from '../components/Item';
+import { Drawer, LinearProgress, Grid, Badge } from "@material-ui/core";
+import Cart from '../components/Cart';
+import { AddShoppingCartSharp } from "@material-ui/icons";
 
 interface DisplayPageProps {
     translate: (key: string) => string
@@ -32,6 +36,39 @@ const Catalog = (props: DisplayPageProps) => {
         reloadItems();
     }, []);
 
+    const [cartOpen, setCartOpen] = useState(false);
+    const [cartItems, setCartItems] = useState([] as CartProduct[]);
+
+    const getTotalItems = (items: CartProduct[]) => items.reduce((ack: number, item) => ack + item.amount, 0);
+
+    const handleAddToCart = (clickedItem: CartProduct) => {
+        setCartItems(prev => {
+            //1. is item already added in the cart?
+            const isItemInCart = prev.find(item => item.name === clickedItem.name);
+
+            if (isItemInCart) {
+                return prev.map(item =>
+                    item.name === clickedItem.name ? { ...item, amount: item.amount + 1 } : item
+                )
+            }
+            //First time item is added
+            return [...prev, { ...clickedItem, amount: 1 }]
+        })
+    };
+
+    const handleRemoveFromCart = (name: string) => {
+        setCartItems(prev => (
+            prev.reduce((ack, item) => {
+                if (item.name === name) {
+                    if (item.amount === 1) return ack;
+                    return [...ack, { ...item, amount: item.amount - 1 }];
+                } else {
+                    return [...ack, item];
+                }
+            }, [] as CartProduct[])
+        ))
+    };
+
     return (
         <div>
             <Header setUser={props.setUser} />
@@ -49,7 +86,30 @@ const Catalog = (props: DisplayPageProps) => {
                 </Dropdown.Menu>
             </DropdownButton>
 
-            <DisplayProducts products={products} />
+            {/*<DisplayProducts products={products} />*/}
+
+            <Drawer anchor="right" open={cartOpen} onClose={() => setCartOpen(false)}>
+                <Cart
+                    cartItems={cartItems}
+                    addToCart={handleAddToCart}
+                    removeFromCart={handleRemoveFromCart}
+                />
+            </Drawer>
+            <Button onClick={() => setCartOpen(true)}>
+                <Badge badgeContent={getTotalItems(cartItems)} color="error">
+                    <AddShoppingCartSharp />
+                </Badge>
+            </Button>
+
+            <Grid container spacing={3}>
+                {products?.map((item: CartProduct) => {
+                    return (
+                        <Grid item key={item.name} xs={12} sm={4}>
+                            <Item item={item} handleAddToCart={handleAddToCart} />
+                        </Grid>
+                    );
+                })}
+            </Grid>
         </div>
     );
 };
