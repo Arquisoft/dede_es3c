@@ -1,6 +1,6 @@
 import CartItem from "../components/CartItem";
 
-import { Product, CartProduct } from '../shared/shareddtypes';
+import { CartProduct } from '../shared/shareddtypes';
 
 type Props = {
     cartItems: CartProduct[];
@@ -9,6 +9,8 @@ type Props = {
 }
 
 const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart }) => {
+    localStorage.setItem("cart", JSON.stringify(cartItems));
+
     const calculateTotal = (items: CartProduct[]) => {
         return items.reduce((ack: number, item) => ack + (item.amount * item.price), 0)
     }

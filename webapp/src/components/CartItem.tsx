@@ -1,6 +1,6 @@
 import Button from "@material-ui/core/Button";
 
-import { Product, CartProduct } from '../shared/shareddtypes';
+import { CartProduct } from '../shared/shareddtypes';
 
 type Props = {
     item: CartProduct;
@@ -32,7 +32,7 @@ const CartItem: React.FC<Props> = ({ item, addToCart, removeFromCart }) => (
                 > + </Button>
             </div>
         </div>
-        <img src={item.urlPhoto} alt={item.name} />
+        <img src={item.urlPhoto} alt={item.name} width="200" height="200"/>
     </div>
 );
 

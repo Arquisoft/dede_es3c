@@ -43,7 +43,6 @@ const Catalog = (props: DisplayPageProps) => {
 
     const handleAddToCart = (clickedItem: CartProduct) => {
         setCartItems(prev => {
-            //1. is item already added in the cart?
             const isItemInCart = prev.find(item => item.name === clickedItem.name);
 
             if (isItemInCart) {
@@ -51,7 +50,7 @@ const Catalog = (props: DisplayPageProps) => {
                     item.name === clickedItem.name ? { ...item, amount: item.amount + 1 } : item
                 )
             }
-            //First time item is added
+            
             return [...prev, { ...clickedItem, amount: 1 }]
         })
     };
