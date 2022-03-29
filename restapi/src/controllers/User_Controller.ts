@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { UserService } from '../services/User_Service';
 import { User } from '../entities/User';
 import { DeleteResult } from 'typeorm';
+import * as crypto from 'crypto';
 
 
 export class UserController {
@@ -58,7 +59,9 @@ export class UserController {
      */
     public async updateUser(req: Request, res: Response) {
         try {
-            let userBody = new User(req.body.username, req.body.email, req.body.password, req.body.rol );
+            let salt = crypto.randomBytes(16).toString("hex");
+            let hash = crypto.pbkdf2Sync(req.body.password, salt, 1000, 64, `sha512`).toString(`hex`);
+            let userBody = new User(req.body.username, req.body.email,salt, hash, req.body.rol );
             const user = await UserService.updateUser(req.app, String(req.params.id), userBody);
             user ? res.status(200).json(user.raw) : res.status(404).json({ error: "User not found" });
         } catch (error) {
@@ -89,7 +92,9 @@ export class UserController {
      */
     public async addUser(req: Request, res: Response) {
         try {
-            let userBody = new User(req.body.username, req.body.email,req.body.password, req.body.rol );
+            let salt = crypto.randomBytes(16).toString("hex");
+            let hash = crypto.pbkdf2Sync(req.body.password, salt, 1000, 64, `sha512`).toString(`hex`);
+            let userBody = new User(req.body.username, req.body.email, salt, hash, req.body.rol );
             const user = await UserService.addUser(req.app, userBody);
             user ? res.status(200).json(user) : res.status(500).json({ error: "Error add user" });
         } catch (error) {

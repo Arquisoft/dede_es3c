@@ -1,5 +1,4 @@
 export type User = {
-  name:string
     username:string;
     password:string;
     email:string;
@@ -22,4 +21,26 @@ export type CartProduct = {
   urlPhoto: string,
   category: string,
   amount: number
+}
+}
+
+export type Order = {
+  id:String
+  user: User
+  products: ProductInOrder[],
+  price: number,
+}
+
+export type ProductInOrder = {
+  id:String
+  product: Product
+  quantity: number,
+}
+
+export type Address = {
+  country_name: string;
+  locality: string;
+  postal_code: string;
+  region: string;
+  street_address: string; 
 }

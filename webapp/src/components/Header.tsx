@@ -74,6 +74,10 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
                   <img alt="" src={logoutIcon} width="20" height="20" className="d-inline-block align-top" />
                   {translate('nav.logout')}
                 </Nav.Link>
+                <Nav.Link href="/orders">
+                  <img alt="" src={logoutIcon} width="20" height="20" className="d-inline-block align-top" />
+                  {translate("nav.orders")}
+                </Nav.Link>
                 <NavDropdown title={translate('nav.languaje')} id="idioma-dropdown" className="ms-auto">
                   <Dropdown.Item as="button" onClick={() => chooseLanguageHandler('ES')}>
                     <img alt="" src={spanishIcon} width="20" height="20" className="d-inline-block align-top" />
