@@ -66,5 +66,8 @@
     "orders.products":"Productos",
     "orders.price":"Precio",
     "orders.date": "Fecha de pedido",
-    "orders.preview":"Vista previa"
+    "orders.preview":"Vista previa",
+    "shipping.title":"Confirmación del pedido",
+    "shipping.selectedProducts":"Productos seleccionados",
+    "shipping.proceed":"Continuar"
 }

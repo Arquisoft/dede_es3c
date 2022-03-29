@@ -38,19 +38,20 @@ const LoginPage: FC<SignUpProps> = (props: SignUpProps) => {
 
         const user:User = 
         {
-            username: name,
-            password: password,
-            email: email,
-            name: name,
-            rol: "Client"
+            username:name,
+            password:password,
+            email:email,
+            rol:"Client"
         }
 
-        if (isBlank(user.name) || isBlank(user.password) || isBlank(user.email) || isBlank(repeatedPassword)){
+        if (isBlank(user.username) || isBlank(user.password) || isBlank(user.email) || isBlank(repeatedPassword)){
             console.log("novalido");
         } else {
            const found = await checkUser(name, password);
            if (!found){
+            console.log("entra a signup");
                const token = await signup(name, password, email);
+               console.log("sale de signup");
                 setRegistered(true);
                 props.setUser(name);
                 localStorage.setItem("token", token);
@@ -58,7 +59,7 @@ const LoginPage: FC<SignUpProps> = (props: SignUpProps) => {
             } else {
                 setExists(2);
         } 
-     }
+    }
     }
     if (registered){
         return(  
@@ -66,7 +67,7 @@ const LoginPage: FC<SignUpProps> = (props: SignUpProps) => {
             <Card className={"mainElement"} elevation={50} style={{display: "grid"}}>
                 <CardContent style={{ display: "grid", margin: "auto", textAlign: "center" }}>
                     <h1>{props.translate("signup.sucess")}</h1>
-                <Button href="/login">
+                <Button href="/catalog">
                    {props.translate("signup.redirect")}
                 </Button>
                </CardContent>

@@ -4,10 +4,11 @@ import {v4 as uuidv4} from 'uuid';
 @Entity()
 export class User {
 
-    constructor(username: string, email: string, password: string, rol: string) {
+    constructor(username: string, email: string, salt: string,hash: string, rol: string) {
         this.username = username;
         this.email = email;
-        this.password = password;
+        this.salt = salt;
+        this.hash = hash;
         this.rol = rol;
         this.id = uuidv4();
     }
@@ -25,7 +26,10 @@ export class User {
     email: string;
 
     @Column()
-    password: string;
+    salt: string;
+
+    @Column()
+    hash: string;
 
     @Column()
     rol: string;

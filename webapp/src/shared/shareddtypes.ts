@@ -1,5 +1,4 @@
 export type User = {
-  name:string
     username:string;
     password:string;
     email:string;
@@ -26,3 +25,12 @@ export type ProductInOrder = {
   product: Product
   quantity: number,
 }
+
+export type Address = {
+  country_name: string;
+  locality: string;
+  postal_code: string;
+  region: string;
+  street_address: string; 
+}
+

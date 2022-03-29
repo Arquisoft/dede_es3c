@@ -1,4 +1,4 @@
-import {User, Product, Order} from '../shared/shareddtypes';
+import {User, Product, Order, Address} from '../shared/shareddtypes';
 
 export async function addUser(user:User):Promise<boolean>{
     const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
@@ -40,16 +40,18 @@ export async function loginB(username:string ,password:string) {
       headers: {'Content-Type':'application/json'},
       body: JSON.stringify({'username': username, 'password': password})
     });
-    return response.json();
+    return response;
 }
 
 export async function signup(username:string ,password:string, email:string) {
   const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+  console.log("antes de la peticion");
   let response = await fetch(apiEndPoint+'/register', {
       method: 'POST',
       headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({'username': username, 'password': password, 'email':email})
+      body: JSON.stringify({'username': username, 'password': password, 'email':email, 'rol':"Client"})
     });
+    console.log("llega al return");
     return response.json();
 }
 
@@ -129,4 +131,14 @@ export async function getOrders(): Promise<Order[]>{
   const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
   let response = await fetch(apiEndPoint + '/orders');
   return response.json()
+}
+
+export async function getAddress(webID: String): Promise<Address>{
+  const apiEndPoint = 'http://localhost:5000/api'
+  let response = await fetch(apiEndPoint + '/pod', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ 'name': webID })
+  });
+    return response.json();
 }

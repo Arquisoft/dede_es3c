@@ -43,7 +43,7 @@ const LoginPage: FC<LoginPageProps> = (props: LoginPageProps) => {
               } else {
                 props.setUser(user.username);
               }
-              localStorage.setItem("token", token);
+              //localStorage.setItem("token", token);
               setLogged(true);
           } 
 };
