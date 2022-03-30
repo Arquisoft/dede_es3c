@@ -2,9 +2,8 @@ import { useContext } from "react";
 import { Button } from "react-bootstrap";
 import CartItem from "../components/CartItem";
 import { CartProduct } from '../shared/shareddtypes';
-import Button from '@mui/material/Button';
 import { Navigate } from "react-router-dom";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { LangContext } from '../lang';
 
 type CartProps = {
@@ -17,9 +16,9 @@ const Cart: React.FC<CartProps> = ({ cartItems, addToCart, removeFromCart }) => 
     const { dispatch: { translate } } = useContext(LangContext);
     const [page, setPage] = useState('');
 
-    if (page === 'orders') {
+    if (page === 'shipping') {
         return (
-            <Navigate to="/orders" />
+            <Navigate to="/shipping" />
         )
     }
 
@@ -40,7 +39,7 @@ const Cart: React.FC<CartProps> = ({ cartItems, addToCart, removeFromCart }) => 
                 />
             )}
             <h2>Total: $ {calculateTotal(cartItems).toFixed(2)}</h2>
-            <Button onClick={() => setPage('orders')}>{translate('cart.orderButton')}</Button>
+            <Button onClick={() => setPage('shipping')}>{translate('cart.orderButton')}</Button>
         </div>
     )
 }

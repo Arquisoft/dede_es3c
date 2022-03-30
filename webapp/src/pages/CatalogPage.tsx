@@ -8,8 +8,6 @@ import { Product, CartProduct } from '../shared/shareddtypes';
 import Item from '../components/Item';
 import { Drawer, Grid, Badge } from "@material-ui/core";
 import Cart from '../components/Cart';
-
-import { Badge, Drawer, Grid } from '@mui/material';
 import { AddShoppingCartSharp } from '@mui/icons-material';
 
 interface CatalogPageProps {
