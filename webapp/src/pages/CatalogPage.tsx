@@ -28,7 +28,12 @@ const Catalog = (props: CatalogPageProps) => {
     }
 
     async function FilterByName(name: string){
-        setProducts(await getProductsByName(name));
+        if(name === ""){
+            setProducts(await getProducts());
+        }
+        else{
+            setProducts(await getProductsByName(name));
+        }
     }
 
     async function FilterByCategory(category: string) {
@@ -88,7 +93,7 @@ const Catalog = (props: CatalogPageProps) => {
 
             <Form>
                 <FormControl type="search" value={val} placeholder={translate('catalog.search')} className="me-2" aria-label="Search" onChange={e => {setNameFilter(e.target.value); setVal(e.target.value)}}/>
-                <Button onClick={() => {reloadItems(); setVal("")}}>{translate('category.reset')}</Button>
+                <Button onClick={() => {reloadItems(); setVal(""); setNameFilter("")}}>{translate('category.reset')}</Button>
                 <Button onClick={() => FilterByName(nameFilter)} >{translate('catalog.search')}</Button>
             </Form>
 
