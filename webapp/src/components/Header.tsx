@@ -8,7 +8,6 @@ import catalogIcon from '../img/catalog-icon.svg';
 import englishIcon from '../img/english-icon.svg';
 import loginIcon from '../img/login-icon.svg';
 import logoutIcon from '../img/logout-icon.svg';
-import shoppingCartIcon from '../img/shopping-cart-icon.svg';
 import spanishIcon from '../img/spanish-icon.svg';
 import registerIcon from '../img/register-icon.svg';
 
