@@ -18,6 +18,7 @@ interface LoginPageProps {
     translate: (key: string) => string
     setUser:(user:string) => void
 }
+
 const LoginPage: FC<LoginPageProps> = (props: LoginPageProps) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -47,7 +48,7 @@ const LoginPage: FC<LoginPageProps> = (props: LoginPageProps) => {
           } 
 };
 
-    if (logged){
+    if (logged || localStorage.getItem("currentUser") !== "not logged"){
         return ( <Navigate to="/catalog" />);
     }
     return(

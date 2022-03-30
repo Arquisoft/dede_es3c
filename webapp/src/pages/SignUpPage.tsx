@@ -10,7 +10,7 @@ import {checkUser, signup } from "../api/api";
 import { User } from "../shared/shareddtypes";
 import Header from "../components/Header";
 import { Button } from "react-bootstrap";
-
+import { Navigate } from "react-router-dom";
 
 interface SignUpProps{
     translate: (key: string) => string
@@ -26,12 +26,10 @@ const LoginPage: FC<SignUpProps> = (props: SignUpProps) => {
     const [registered, setRegistered] = useState(false);
     const [pulsed, setPulsed] = useState (false);
 
-
     const isBlank = (text: string) => 
     {
         return(text.length === 0);
     }
-
 
     const register = async () => {
         setPulsed(true);
@@ -49,20 +47,20 @@ const LoginPage: FC<SignUpProps> = (props: SignUpProps) => {
         } else {
            const found = await checkUser(name, password);
            if (!found){
-            console.log("entra a signup");
-               const token = await signup(name, password, email);
-               console.log("sale de signup");
+                //console.log("entra a signup");
+                const token = await signup(name, password, email);
+                //console.log("sale de signup");
                 setRegistered(true);
                 props.setUser(name);
                 localStorage.setItem("token", token);
-                console.log(localStorage.getItem("token"));
+                //console.log(localStorage.getItem("token"));
             } else {
                 setExists(2);
         } 
     }
     }
-    if (registered){
-        return(  
+    if (registered || localStorage.getItem("currentUser") !== "not logged"){
+        /*return(  
         <div>
             <Card className={"mainElement"} elevation={50} style={{display: "grid"}}>
                 <CardContent style={{ display: "grid", margin: "auto", textAlign: "center" }}>
@@ -72,7 +70,8 @@ const LoginPage: FC<SignUpProps> = (props: SignUpProps) => {
                 </Button>
                </CardContent>
             </Card>
-        </div>);
+        </div>);*/
+        return (<Navigate to="/catalog" />);
     } else {
     return(
     <div>

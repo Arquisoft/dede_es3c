@@ -10,6 +10,8 @@ import loginIcon from '../img/login-icon.svg';
 import logoutIcon from '../img/logout-icon.svg';
 import spanishIcon from '../img/spanish-icon.svg';
 import registerIcon from '../img/register-icon.svg';
+import ordersIcon from '../img/checkout-icon.svg';
+import { Navigate } from "react-router-dom";
 
 interface HeaderProps {
   setUser:(user:string) => void
@@ -44,7 +46,7 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
     localStorage.setItem("cart", "[]");
     localStorage.removeItem("token");
     props.setUser("not logged");
-    console.log(localStorage.getItem("currentUser"))
+    //console.log(localStorage.getItem("currentUser"))
   }
 
   if (localStorage.getItem("currentUser") !== "not logged" && !(localStorage.getItem("currentUser")?.includes("admin"))) {
@@ -71,7 +73,7 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
                   {translate('nav.logout')}
                 </Nav.Link>
                 <Nav.Link href="/orders">
-                  <img alt="" src={logoutIcon} width="20" height="20" className="d-inline-block align-top" />
+                  <img alt="" src={ordersIcon} width="25" height="25" className="d-inline-block align-top" />
                   {translate("nav.orders")}
                 </Nav.Link>
                 <NavDropdown title={translate('nav.languaje')} id="idioma-dropdown" className="ms-auto">

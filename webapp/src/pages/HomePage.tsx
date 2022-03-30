@@ -80,7 +80,5 @@ const HomePage: FC<HomePageProps> = (props: HomePageProps) => {
             )
         }
     }
-
-    
 }
 export default HomePage;

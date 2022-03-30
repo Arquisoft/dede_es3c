@@ -29,19 +29,19 @@ const App: FC = () => {
           }
         />
         <Route
-        path='login'
-        element = 
-        {
-          <LoginPage setUser={setUser} translate={translate} />
-        }
-        />
+          path='login'
+          element = 
+          {
+            <LoginPage setUser={setUser} translate={translate} />
+          }
+          />
         <Route
-        path='signup'
-        element =
-        {
-          <SignUpPage setUser={setUser} translate={translate} />
-        }
-        />
+          path='signup'
+          element =
+          {
+            <SignUpPage setUser={setUser} translate={translate} />
+          }
+          />
         <Route
           path='addProduct'
           element={
