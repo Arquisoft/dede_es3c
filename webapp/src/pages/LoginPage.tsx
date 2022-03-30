@@ -11,7 +11,7 @@ import { Button } from "react-bootstrap";
 
 
 const checkParams = (text: string) => {
-    return text == "" || text == null;
+    return text === "" || text === null;
 }
 
 interface LoginPageProps {
@@ -43,7 +43,6 @@ const LoginPage: FC<LoginPageProps> = (props: LoginPageProps) => {
               } else {
                 props.setUser(user.username);
               }
-              //localStorage.setItem("token", token);
               setLogged(true);
           } 
 };
@@ -58,7 +57,7 @@ const LoginPage: FC<LoginPageProps> = (props: LoginPageProps) => {
         <Card className={"main"} elevation={10} style={{display: "grid"}}>
         <CardContent style={{ display: "grid", margin: "auto", textAlign: "center" }}>
             <div>
-            <img  width={150} height = {150} src={logo} />
+            <img alt="Logo" width={150} height = {150} src={logo} />
             </div>
                 <h1>{props.translate('login.h1')}</h1>
                 <h3>{props.translate('login.h2')}</h3>

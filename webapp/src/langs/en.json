@@ -73,5 +73,6 @@
     "cart.title":"Your shopping cart",
     "cart.empty":"No items in cart",
     "cart.orderButton":"Proceed to checkout",
-    "cartItem.price":"Price"
+    "cartItem.price":"Price",
+    "cartItem.total":"Total (with IVA)"
 }

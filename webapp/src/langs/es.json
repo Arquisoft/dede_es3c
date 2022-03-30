@@ -73,5 +73,6 @@
     "cart.title": "Tu carrito de la compra",
     "cart.empty": "Carrito vacío",
     "cart.orderButton": "Realiza tu pedido",
-    "cartItem.price": "Precio"
+    "cartItem.price": "Precio",
+    "cartItem.total": "Total (con IVA)"
 }
