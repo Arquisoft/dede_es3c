@@ -48,7 +48,10 @@ import { Auth } from './middlewares/Auth_Middleware';
          .get(auth.isAdminAuth, userController.getUsers)
  
      api.route('/users/username/:username')
-         .get(auth.isAdminAuth, userController.getUserByUsername);
+         .get(auth.isAuth, userController.getUserByUsername);
+
+    api.route('/users/userpod/:username')
+         .get(auth.isAuth, userController.findPod);
  
      api.route('/users/:id')
          // Get user by id
