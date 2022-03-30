@@ -10,9 +10,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import CrudAddPage from './pages/CrudAddPage';
 import CrudEditPage from './pages/CrudEditPage';
 import CrudDeletePage from './pages/CrudDeletePage';
-import Prueba from './pages/Catalog';
 import OrdersPage from './pages/OrdersPage';
 import ShippingPage from './pages/ShippingPage';
+import Catalog from './pages/Catalog';
 
 const App: FC = () => {
   const { dispatch: {translate }} = useContext(LangContext);
@@ -63,7 +63,7 @@ const App: FC = () => {
         <Route
           path='catalog'
           element={
-            <Prueba setUser={setUser} translate={translate} />
+            <Catalog setUser={setUser} translate={translate} />
           }
         />
         <Route
