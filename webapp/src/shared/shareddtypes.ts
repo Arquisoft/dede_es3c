@@ -22,7 +22,6 @@ export type CartProduct = {
   category: string,
   amount: number
 }
-}
 
 export type Order = {
   id:String

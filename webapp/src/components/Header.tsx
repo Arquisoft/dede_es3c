@@ -42,6 +42,7 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
   }
 
   const logOut = () => {
+    localStorage.setItem("cart", "[]");
     localStorage.removeItem("token");
     props.setUser("not logged");
     console.log(localStorage.getItem("currentUser"))
@@ -65,10 +66,6 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
                 <Nav.Link href="/catalog">
                   <img alt="" src={catalogIcon} width="20" height="20" className="d-inline-block align-top" />
                   {translate('nav.catalog')}
-                </Nav.Link>
-                <Nav.Link href="/carrito">
-                  <img alt="" src={shoppingCartIcon} width="20" height="20" className="d-inline-block align-top" />
-                  {translate('nav.shoppingcart')}
                 </Nav.Link>
                 <Nav.Link onClick={logOut} href="/login">
                   <img alt="" src={logoutIcon} width="20" height="20" className="d-inline-block align-top" />
@@ -112,10 +109,6 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
                   <Nav.Link href="/catalog">
                     <img alt="" src={catalogIcon} width="20" height="20" className="d-inline-block align-top" />
                     {translate('nav.catalog')}
-                  </Nav.Link>
-                  <Nav.Link href="/carrito">
-                    <img alt="" src={shoppingCartIcon} width="20" height="20" className="d-inline-block align-top" />
-                    {translate('nav.shoppingcart')}
                   </Nav.Link>
                   <NavDropdown title={translate('nav.admin')} id="productos-admin-dropdown">
                     <Dropdown.Item href="/addProduct">
@@ -166,10 +159,6 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
               <Nav.Link href="/catalog">
                 <img alt="" src={catalogIcon} width="20" height="20" className="d-inline-block align-top" />
                 {translate('nav.catalog')}
-              </Nav.Link>
-              <Nav.Link href="/carrito">
-                <img alt="" src={shoppingCartIcon} width="20" height="20" className="d-inline-block align-top" />
-                {translate('nav.shoppingcart')}
               </Nav.Link>
               <Nav.Link href="/signup">
                 <img alt="" src={registerIcon} width="20" height="20" className="d-inline-block align-top" />

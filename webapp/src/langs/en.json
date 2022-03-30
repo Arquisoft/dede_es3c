@@ -69,5 +69,9 @@
     "orders.preview":"Preview",
     "shipping.title":"Order confirmation",
     "shipping.selectedProducts":"Selected Products",
-    "shipping.proceed":"Proceed"
+    "shipping.proceed":"Proceed",
+    "cart.title":"Your shopping cart",
+    "cart.empty":"No items in cart",
+    "cart.orderButton":"Proceed to checkout",
+    "cartItem.price":"Price"
 }
