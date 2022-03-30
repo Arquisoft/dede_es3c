@@ -1,6 +1,6 @@
 import React, {Fragment, FC, useState} from "react";
 import TextField from '@mui/material/TextField';
-import {Container, Card , CardContent, Alert, Link} from "@mui/material";
+import {Container, Card , CardContent, Link} from "@mui/material";
 
 import logo from '../img/logo-dede.svg'
 import {checkUser, getUser, loginB } from "../api/api";
@@ -22,7 +22,6 @@ const LoginPage: FC<LoginPageProps> = (props: LoginPageProps) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [pulsed, setPulsed] = useState(false);
-    const [logged, setLogged] = useState(false);
 
     const checkLog = async () => {
         setPulsed(true);
