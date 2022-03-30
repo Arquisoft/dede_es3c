@@ -73,5 +73,10 @@
     "shipping.selectedProducts":"Selected Products",
     "shipping.proceed":"Proceed",
     "shipping.nothing":"You haven't selected anything",
-    "shipping.address":"Introduce your solid ID to select the shipping address"
+    "shipping.address":"Introduce your solid ID to select the shipping address",
+    "cart.title":"Your shopping cart",
+    "cart.empty":"No items in cart",
+    "cart.orderButton":"Proceed to checkout",
+    "cartItem.price":"Price",
+    "cartItem.total":"Total (with IVA)"
 }
