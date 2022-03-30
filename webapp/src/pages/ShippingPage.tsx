@@ -1,12 +1,6 @@
-import React, {Fragment, FC, useState, useEffect} from "react";
+import React, {Fragment, FC} from "react";
 import Header from "../components/Header"
-import { Order, Product } from "../shared/shareddtypes";
-import { getAddress, getOrders } from "../api/api";
-import DisplayOrders from "../components/DisplayOrders"
-import TableBody from "@mui/material/TableBody";
-import TableCell, { tableCellClasses } from "@mui/material/TableCell";
-import TableRow from "@mui/material/TableRow";
-import { Card, CardContent, Container, Paper, Table, TableContainer, TableHead, TextField } from "@mui/material";
+import { Card, CardContent, Container, TextField} from "@mui/material";
 import { Button } from "react-bootstrap";
 
 interface ShippingPageProps {
@@ -26,6 +20,16 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
             </div>
                 <h3>{props.translate('shipping.selectedProducts')}</h3>
                     <Fragment>
+                      {}
+                    </Fragment>
+                    <Fragment>
+                      <h2>{props.translate("shipping.address")}</h2>
+                      <TextField>
+
+                      </TextField>
+                      <Button>
+                        check
+                      </Button>
                     </Fragment>
             </CardContent>
             </Card>

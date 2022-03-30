@@ -38,7 +38,7 @@ const HomePage: FC<HomePageProps> = (props: HomePageProps) => {
                     <Card className={"main"} elevation={10} style={{ display: "grid" }}>
                         <CardContent style={{ display: "grid", margin: "auto", textAlign: "center" }}>
                             <div>
-                                <img width={400} height={400} src={logo} />
+                                <img alt="" width={400} height={400} src={logo} />
                             </div>
                             <p>{translate('home.p1')}</p>
                             <p>

@@ -1,14 +1,13 @@
-import React, {Fragment, FC, useState, useEffect} from "react";
+import React, {FC, useState, useEffect} from "react";
 import Header from "../components/Header"
-import { Order, Product } from "../shared/shareddtypes";
+import { Order } from "../shared/shareddtypes";
 import { getOrders } from "../api/api";
 import DisplayOrders from "../components/DisplayOrders"
 import { Button} from "react-bootstrap";
 import TableBody from "@mui/material/TableBody";
-import TableCell, { tableCellClasses } from "@mui/material/TableCell";
+import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
 import { Paper, Table, TableContainer, TableHead } from "@mui/material";
-import { maxWidth } from "@mui/system";
 
 interface OrdersPageProps {
     translate: (key: string) => string

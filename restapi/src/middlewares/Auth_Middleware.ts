@@ -26,7 +26,7 @@ export class Auth {
             if(user){
                 const hash = crypto.pbkdf2Sync(req.body.password, user.salt, 1000, 64, `sha512`).toString(`hex`);
                 hash == user.hash ? 
-                    res.status(200).send(Auth.createToken(user.username, user.rol)) :
+                    res.status(200).json(Auth.createToken(user.username, user.rol)) :
                     res.status(403).json({error: "Error, la contraseña no coincide"});
             } else res.status(404).json({error: "El usuario no existe"});
         } catch (error) {

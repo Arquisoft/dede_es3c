@@ -29,7 +29,7 @@ const LoginPage: FC<SignUpProps> = (props: SignUpProps) => {
 
     const isBlank = (text: string) => 
     {
-        return(text.length == 0);
+        return(text.length === 0);
     }
 
 
@@ -81,7 +81,7 @@ const LoginPage: FC<SignUpProps> = (props: SignUpProps) => {
         <Card className={"main"} elevation={10} style={{display: "grid"}}>
         <CardContent style={{ display: "grid", margin: "auto", textAlign: "center" }}>
             <div>
-            <img  width={150} height = {150} src={logo} />
+            <img alt="" width={150} height = {150} src={logo} />
             </div>
                 <h1>{props.translate('signup.h1')}</h1>
                 <h2>{props.translate('signup.h2')}</h2>
@@ -104,7 +104,7 @@ const LoginPage: FC<SignUpProps> = (props: SignUpProps) => {
                         value={name}
                         helperText= {props.translate('signup.name')}
                         onChange={e => setName(e.target.value)}
-                        error = {exists == 2 || (pulsed && name.length == 0)}
+                        error = {exists === 2 || (pulsed && name.length === 0)}
                         sx={{ my: 2 }}
                         
                         /> 
@@ -120,7 +120,7 @@ const LoginPage: FC<SignUpProps> = (props: SignUpProps) => {
                         variant="outlined"
                         onChange={e => setEmail(e.target.value)}
                         helperText= {props.translate('signup.email')}
-                        error = {(pulsed && email.length == 0)}
+                        error = {(pulsed && email.length === 0)}
                         sx={{ my: 2 }}
                         /> 
                     </div>
@@ -135,7 +135,7 @@ const LoginPage: FC<SignUpProps> = (props: SignUpProps) => {
                         variant="outlined"
                         onChange={e => setPassword(e.target.value)}
                         helperText= {props.translate('signup.pass')}
-                        error = {(pulsed && password.length == 0)}
+                        error = {(pulsed && password.length === 0)}
                         sx={{ my: 2 }}
                         /> 
                     </div>
@@ -150,7 +150,7 @@ const LoginPage: FC<SignUpProps> = (props: SignUpProps) => {
                         variant="outlined"
                         onChange={e => setRepeatedPassword(e.target.value)}
                         helperText= {props.translate('signup.passwd')}
-                        error = {(password != repeatedPassword) || (pulsed && repeatedPassword.length == 0)}
+                        error = {(password !== repeatedPassword) || (pulsed && repeatedPassword.length === 0)}
                         sx={{ my: 2 }}
                         /> 
                     </div>

@@ -1,4 +1,3 @@
-import DisplayProducts from '../components/DisplayProducts';
 import { useState, useEffect, useContext } from 'react';
 import { getProducts, getProductsByName, getProductsByCategory } from '../api/api';
 import Header from "../components/Header";
@@ -7,9 +6,10 @@ import Button from '@mui/material/Button';
 import { LangContext } from '../lang';
 import { Product, CartProduct } from '../shared/shareddtypes';
 import Item from '../components/Item';
-import { Drawer, LinearProgress, Grid, Badge } from "@material-ui/core";
 import Cart from '../components/Cart';
-import { AddShoppingCartSharp } from "@material-ui/icons";
+
+import { Badge, Drawer, Grid } from '@mui/material';
+import { AddShoppingCartSharp } from '@mui/icons-material';
 
 interface DisplayPageProps {
     translate: (key: string) => string

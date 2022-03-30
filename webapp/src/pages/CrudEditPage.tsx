@@ -14,7 +14,7 @@ interface CrudPageProps {
 }
 
 const isBlank = (text: string) => {
-    return (text.length == 0);
+    return (text.length === 0);
 }
 
 const CrudEditPage: FC<CrudPageProps> = (props: CrudPageProps) => {

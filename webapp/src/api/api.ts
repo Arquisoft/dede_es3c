@@ -40,7 +40,7 @@ export async function loginB(username:string ,password:string) {
       headers: {'Content-Type':'application/json'},
       body: JSON.stringify({'username': username, 'password': password})
     });
-    return response;
+    return response.json();
 }
 
 export async function signup(username:string ,password:string, email:string) {

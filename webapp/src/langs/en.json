@@ -66,8 +66,12 @@
     "orders.products":"Products",
     "orders.price":"Price",
     "orders.date": "Order date",
+    "cart.title":"Carrito",
+    "cart.pay":"Settle order",
     "orders.preview":"Preview",
     "shipping.title":"Order confirmation",
     "shipping.selectedProducts":"Selected Products",
-    "shipping.proceed":"Proceed"
+    "shipping.proceed":"Proceed",
+    "shipping.nothing":"You haven't selected anything",
+    "shipping.address":"Introduce your solid ID to select the shipping address"
 }
