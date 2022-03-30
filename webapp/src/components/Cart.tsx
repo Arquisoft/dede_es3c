@@ -22,7 +22,7 @@ const Cart: React.FC<CartProps> = ({ cartItems, addToCart, removeFromCart }) => 
     }
 
     const calculateTotal = (items: CartProduct[]) => {
-        return items.reduce((ack: number, item) => ack + (item.amount * item.price), 0)
+        return items.reduce((ack: number, item) => ack + (item.amount * item.price * 1.21), 0)
     }
 
     return (
