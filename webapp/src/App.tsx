@@ -12,7 +12,11 @@ import CrudEditPage from './pages/CrudEditPage';
 import CrudDeletePage from './pages/CrudDeletePage';
 import OrdersPage from './pages/OrdersPage';
 import ShippingPage from './pages/ShippingPage';
+<<<<<<< HEAD
 import Catalog from './pages/Catalog';
+=======
+import Catalog from './pages/CatalogPage';
+>>>>>>> d0396816cb83613fd854764b101b649015e94dfe
 
 const App: FC = () => {
   const { dispatch: {translate }} = useContext(LangContext);
@@ -29,19 +33,19 @@ const App: FC = () => {
           }
         />
         <Route
-        path='login'
-        element = 
-        {
-          <LoginPage setUser={setUser} translate={translate} />
-        }
-        />
+          path='login'
+          element = 
+          {
+            <LoginPage setUser={setUser} translate={translate} />
+          }
+          />
         <Route
-        path='signup'
-        element =
-        {
-          <SignUpPage setUser={setUser} translate={translate} />
-        }
-        />
+          path='signup'
+          element =
+          {
+            <SignUpPage setUser={setUser} translate={translate} />
+          }
+          />
         <Route
           path='addProduct'
           element={

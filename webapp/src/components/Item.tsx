@@ -1,16 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import CardActions from '@mui/material/CardActions';
-import IconButton, { IconButtonProps } from '@mui/material/IconButton';
+import IconButton from '@mui/material/IconButton';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import CardContent from '@mui/material/CardContent';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Typography from '@mui/material/Typography';
-import { Collapse, Grid, styled } from "@mui/material";
-import { LangContext } from '../lang';
-
 import { CartProduct } from '../shared/shareddtypes'
 
 
