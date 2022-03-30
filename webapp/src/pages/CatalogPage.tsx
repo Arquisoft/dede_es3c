@@ -15,8 +15,6 @@ interface CatalogPageProps {
     setUser: (user: string) => void
 }
 
-let aux = false;
-
 const Catalog = (props: CatalogPageProps) => {
     const { dispatch: { translate } } = useContext(LangContext);
     const [products, setProducts] = useState<Product[]>([]);
@@ -49,7 +47,7 @@ const Catalog = (props: CatalogPageProps) => {
 
         let { name } = clickedItem;
 
-        let existingItem = cartCopy.find(cartItem => cartItem.name == name);
+        let existingItem = cartCopy.find(cartItem => cartItem.name === name);
 
         if (existingItem) {
             existingItem.amount = existingItem.amount + 1;
@@ -67,13 +65,13 @@ const Catalog = (props: CatalogPageProps) => {
     const handleRemoveFromCart = (name: string) => {
         let cartCopy = [...cartItems]
 
-        let existingItem = cartCopy.find(cartItem => cartItem.name == name);
+        let existingItem = cartCopy.find(cartItem => cartItem.name === name);
 
         if (existingItem) {
             if (existingItem.amount > 1){
                 existingItem.amount = existingItem.amount - 1;
             } else{
-                cartCopy = cartCopy.filter(item => item.name != name);
+                cartCopy = cartCopy.filter(item => item.name !== name);
             }
             
         }

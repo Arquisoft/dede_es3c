@@ -6,7 +6,6 @@ import CardActions from '@mui/material/CardActions';
 import IconButton from '@mui/material/IconButton';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import CardContent from '@mui/material/CardContent';
-
 import { CartProduct } from '../shared/shareddtypes'
 
 
