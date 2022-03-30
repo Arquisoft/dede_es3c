@@ -6,8 +6,8 @@ import { ProductInOrder } from "./ProductInOrder";
 @Entity()
 export class Order {
 
-    constructor(user: User, products: ProductInOrder[]) {
-        this.user = user;
+    constructor(userEmail: string, products: ProductInOrder[]) {
+        this.user = userEmail;
         this.products = products;
         this.price = 0.0;
         this.priceIVA = 0.0;
@@ -21,7 +21,7 @@ export class Order {
     id: string;
 
     @Column()
-    user: User;
+    user: string;
 
     @Column()
     products: ProductInOrder[];
@@ -59,6 +59,7 @@ export class Order {
         for (var pr of this.products) {
             //Comprobar si tengo stock suficiente
             //pr.product.stock-=pr.quantity;
+
         }
     }
 

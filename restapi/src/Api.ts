@@ -88,19 +88,25 @@ import { Auth } from './middlewares/Auth_Middleware';
 const setOrdersRoutes = (): void => {
  
     api.route('/orders')
-        // Get all products
-        .get(auth.isAuth, ordersController.getOrders)
-        // Create new products
+        // Get all orders
+        .get(/*auth.isAuth,*/ ordersController.getOrders)
+        // Create new orders
         .post(auth.isAuth, ordersController.addOrder);
 
+
+    api.route('/orders/user/:email')
+        // Get orders by user email
+        .get(/*auth.isAuth,*/ ordersController.getOrdersByUserEmail)
     
     api.route('/orders/:id')
-        // Get products by id
+        // Get orders by id
         .get(auth.isAuth, ordersController.getOrderById)
-        // Delete products by id
+        // Delete orders by id
         .delete(auth.isAdminAuth, ordersController.deleteOrder)
-        // Update products by id
+        // Update orders by id
         .put(auth.isAdminAuth, ordersController.updateOrder)
+
+    
 }
  
  // =================================> Main

@@ -210,12 +210,12 @@ collection = db.order
 
 ord1 = {
 		"id": str(uuid.uuid4()),
-		"user": user1,
+		"user": "Thegoat@gmail.com",
 		"products": [prodord1,prodord2]
 		}
 ord2 = {
 		"id": str(uuid.uuid4()),
-		"user": user2,
+		"user": "Chef@gmail.com",
 		"products": [prodord1,prodord2,prodord3]
 		}
 # Insert Data
