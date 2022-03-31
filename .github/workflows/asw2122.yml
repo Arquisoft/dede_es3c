@@ -1,4 +1,4 @@
-name: CI for ASW2122
+name: CI tests
 
 on: push
 
@@ -9,7 +9,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Publish to Registry
-      uses: elgohr/Publish-Docker-Github-Action@3.04
     - name: Deploy to Heroku
       uses: AkhileshNS/heroku-deploy@v3.12.12
       with:
@@ -27,7 +26,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Publish to Registry
-      uses: elgohr/Publish-Docker-Github-Action@3.04
     - name: Deploy to Heroku
       uses: AkhileshNS/heroku-deploy@v3.12.12
       with:
@@ -45,7 +43,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Publish to Registry
-      uses: elgohr/Publish-Docker-Github-Action@3.04
     - name: Deploy to Heroku
       uses: AkhileshNS/heroku-deploy@v3.12.12
       with:
