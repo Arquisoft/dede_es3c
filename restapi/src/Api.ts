@@ -82,25 +82,55 @@
          // Update products by id
          .put(auth.isAdminAuth,productsController.updateProduct)
  }
+ const setProductsRoutes = (): void => {
  
- const setOrdersRoutes = (): void => {
-  
-     api.route('/orders')
-         // Get all products
-         .get(/*auth.isAuth, */ ordersController.getOrders)
-         // Create new products
-         .post(auth.isAuth, ordersController.addOrder);
+    api.route('/products')
+        // Get all products
+        .get(productsController.getProducts)
+        // Create new products
+        .post(auth.isAdminAuth,[
+            check('name').isLength({ min: 1 }).trim().escape()
+        ], productsController.addProduct);
+
+    api.route('/products/name/:name')
+        .get(productsController.getProductByPartialName);
+    
+    api.route('/products/category/:category')
+        .get(productsController.getProductByCategory);
+
+
+    api.route('/products/:id')
+        // Get products by id
+        .get(productsController.getProductById)
+        // Delete products by id
+        .delete(auth.isAdminAuth,productsController.deleteProduct)
+        // Update products by id
+        .put(auth.isAdminAuth,productsController.updateProduct)
+}
+
+const setOrdersRoutes = (): void => {
  
-     
-     api.route('/orders/:id')
-         // Get products by id
-         .get(/*auth.isAuth, */ordersController.getOrderById)
-         // Delete products by id
-         .delete(auth.isAdminAuth, ordersController.deleteOrder)
-         // Update products by id
-         .put(auth.isAdminAuth, ordersController.updateOrder)
- }
-  // =================================> Main
+    api.route('/orders')
+        // Get all orders
+        .get(/*auth.isAuth,*/ ordersController.getOrders)
+        // Create new orders
+        .post(auth.isAuth, ordersController.addOrder);
+
+
+    api.route('/orders/user/:email')
+        // Get orders by user email
+        .get(/*auth.isAuth,*/ ordersController.getOrdersByUserEmail)
+    
+    api.route('/orders/:id')
+        // Get orders by id
+        .get(auth.isAuth, ordersController.getOrderById)
+        // Delete orders by id
+        .delete(auth.isAdminAuth, ordersController.deleteOrder)
+        // Update orders by id
+        .put(auth.isAdminAuth, ordersController.updateOrder)
+
+    
+}
   setAuthRoutes();
   setUserRoutes();
   setProductsRoutes();
