@@ -1,7 +1,7 @@
-export interface IAddress extends Document{
-    country_name: string;
+export interface AddressFields extends Document{
+    country: string;
     locality: string;
-    postal_code: string;
     region: string;
-    street_address: string; 
+    postalCode: string;
+    street: string; 
 };

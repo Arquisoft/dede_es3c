@@ -10,7 +10,7 @@ import {
   } from "@inrupt/solid-client";
   
 import { VCARD } from "@inrupt/vocab-common-rdf";
-import { IAddress } from '../entities/Address';
+import { AddressFields } from '../entities/Address';
 
 
 export class UserController {
@@ -94,64 +94,64 @@ export class UserController {
 
     public async findPod(req: Request, res: Response) {
 
-            const name = req.params.username;
+            const webID = req.params.username;
         
             try {
                 const myDataset = await getSolidDataset(
-                    "https://" + name  + ".inrupt.net/profile/card", {
+                    "https://" + webID  + ".inrupt.net/profile/card", {
                     fetch: fetch
                 });
                 
-                const profile = getThing(myDataset, "https://" + name + ".inrupt.net/profile/card#me")
+                const profile = getThing(myDataset, "https://" + webID + ".inrupt.net/profile/card#me")
                 const addressWebID = profile!.predicates["http://www.w3.org/2006/vcard/ns#hasAddress"]["namedNodes"]
                 const idAddress = addressWebID![0].split('#')[1]
                 
-                if (idAddress == null){
-                    return res.status(400).json({msg: "We can't find an address"});
+                if (idAddress === null){
+                    return res.status(400).json({msg: "Address not found"});
                 }
                 
-                let result = {} as IAddress;
+                let result = {} as AddressFields;
         
-                const getAddress = getThing(myDataset, "https://" + name + ".inrupt.net/profile/card#" + idAddress);
+                const getAddress = getThing(myDataset, "https://" + webID + ".inrupt.net/profile/card#" + idAddress);
         
                 const country = getStringNoLocale(getAddress!, VCARD.country_name);
                 if (country == null){
-                    return res.status(400).json({msg: "We can't find the country."});
+                    return res.status(400).json({msg: "Country not found"});
                 } else {
-                    result.country_name = country;
+                    result.country = country;
                 }
         
                 const region = getStringNoLocale(getAddress!, VCARD.region);
                 if (region == null){
-                    return res.status(400).json({msg: "We can't find the region."});
+                    return res.status(400).json({msg: "Region not found"});
                 } else {
                     result.region = region;
                 }
         
                 const locality = getStringNoLocale(getAddress!, VCARD.locality);
                 if (locality == null){
-                    return res.status(400).json({msg: "We can't find the locality."});
+                    return res.status(400).json({msg: "Locality not found"});
                 } else {
                     result.locality = locality;
                 }
         
                 const streetAddress = getStringNoLocale(getAddress!, VCARD.street_address);
                 if (streetAddress == null){
-                    return res.status(400).json({msg: "We can't find the street of this address."});
+                    return res.status(400).json({msg: "Street not found"});
                 } else {
-                    result.street_address = streetAddress;
+                    result.street = streetAddress;
                 }
         
                 const postalCode = getStringNoLocale(getAddress!, VCARD.postal_code);
                 if (postalCode == null){
-                    return res.status(400).json({msg: "We can't find the postal code."})
+                    return res.status(400).json({msg: "Postal code not found"})
                 } else {
-                    result.postal_code = postalCode;
+                    result.postalCode = postalCode;
                 }
         
                 return res.status(200).json({ result });
             } catch (error) {
-                return res.status(400).json({msg: "We can't find a POD with this username."})
+                return res.status(400).json({msg: "POD not found"})
             }
     }
 
