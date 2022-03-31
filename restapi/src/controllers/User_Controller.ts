@@ -104,8 +104,7 @@ export class UserController {
                 
                 const user = getThing(myDataset, "https://" + webID + ".inrupt.net/profile/card#me")
                 const addressWebID = user!.predicates["http://www.w3.org/2006/vcard/ns#hasAddress"]["namedNodes"]
-                const userAddress = addressWebID![0].split('#')[1]
-                
+                const userAddress = addressWebID![0].split('#')[1]             
                 if (userAddress === null){
                     return res.status(400).json({msg: "Address not found"});
                 }
@@ -115,35 +114,18 @@ export class UserController {
                 const getAddress = getThing(myDataset, "https://" + webID + ".inrupt.net/profile/card#" + userAddress);    
                 const country = getStringNoLocale(getAddress!, VCARD.country_name);
                 const region = getStringNoLocale(getAddress!, VCARD.region);
-                const streetAddress = getStringNoLocale(getAddress!, VCARD.street_address);
                 const locality = getStringNoLocale(getAddress!, VCARD.locality);
+                const street = getStringNoLocale(getAddress!, VCARD.street_address);
                 const postalCode = getStringNoLocale(getAddress!, VCARD.postal_code);
-                if (country == null){
-                    return res.status(400).json({msg: "Country not found"});
+                if (country === null  ||region === null ||locality === null || street === null ||postalCode === null){
+                    return res.status(400).json({msg: "Error finding the Address requirements"});
                 } else {
                     finalAddress.country = country;
-                }       
-                if (region == null){
-                    return res.status(400).json({msg: "Region not found"});
-                } else {
                     finalAddress.region = region;
-                }               
-                if (locality == null){
-                    return res.status(400).json({msg: "Locality not found"});
-                } else {
                     finalAddress.locality = locality;
-                }               
-                if (streetAddress == null){
-                    return res.status(400).json({msg: "Street not found"});
-                } else {
-                    finalAddress.street = streetAddress;
-                }              
-                if (postalCode == null){
-                    return res.status(400).json({msg: "Postal code not found"})
-                } else {
+                    finalAddress.street = street;
                     finalAddress.postalCode = postalCode;
                 }
-                return res.status(200).json({ finalAddress });
             } catch (error) {
                 return res.status(400).json({msg: "POD not found"})
             }
