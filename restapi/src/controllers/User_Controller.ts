@@ -10,7 +10,6 @@ import {
   } from "@inrupt/solid-client";
   
 import { VCARD } from "@inrupt/vocab-common-rdf";
-import { AddressFields } from '../entities/Address';
 
 
 export class UserController {
@@ -108,8 +107,6 @@ export class UserController {
                 if (userAddress === null){
                     return res.status(400).json({msg: "Address not found"});
                 }
-                
-                let finalAddress = {} as AddressFields;
         
                 const getAddress = getThing(myDataset, "https://" + webID + ".inrupt.net/profile/card#" + userAddress);    
                 const country = getStringNoLocale(getAddress!, VCARD.country_name);
@@ -120,11 +117,15 @@ export class UserController {
                 if (country === null  ||region === null ||locality === null || street === null ||postalCode === null){
                     return res.status(400).json({msg: "Error finding the Address requirements"});
                 } else {
-                    finalAddress.country = country;
-                    finalAddress.region = region;
-                    finalAddress.locality = locality;
-                    finalAddress.street = street;
-                    finalAddress.postalCode = postalCode;
+                    const addfields = res.status(200).json({
+                        country: country,
+                        region: region,
+                        locality: locality,
+                        street: street,
+                        postalCode: postalCode
+
+                    })
+                    return addfields;
                 }
             } catch (error) {
                 return res.status(400).json({msg: "POD not found"})

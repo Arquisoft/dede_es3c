@@ -42,13 +42,13 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
   async function getAdd() {
     const address = await getAddress(webID);
     console.log(address);
-    if (address['finalAddress'] !== undefined){
+    if (address !== undefined){
       console.log(address);
-      setCountryName(address['finalAddress']['country']);
-      setLocality(address['finalAddress']['locality']);
-      setPostalCode(address['finalAddress']['postalCode']);
-      setRegion(address['finalAddress']['region']);
-      setStreetAddress(address['finalAddress']['street']);
+      setCountryName(address['country']);
+      setLocality(address['locality']);
+      setPostalCode(address['postalCode']);
+      setRegion(address['region']);
+      setStreetAddress(address['street']);
     } else {
       Swal.fire({
         title: "Error",
