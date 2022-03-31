@@ -1,4 +1,4 @@
-name: CI tests
+name: CI for ASW2122
 
 on: push
 
