@@ -1,7 +1,6 @@
 import React, {FC, useState} from "react";
 import TextField from '@mui/material/TextField';
 import "bootswatch/dist/morph/bootstrap.min.css"
-import Button from '@mui/material/Button';
 import {Container, Card , CardContent} from "@mui/material";
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import InputAdornment from '@mui/material/InputAdornment';
@@ -10,7 +9,8 @@ import logo from '../img/logo-dede.svg'
 import {checkUser, signup } from "../api/api";
 import { User } from "../shared/shareddtypes";
 import Header from "../components/Header";
-
+import { Button } from "react-bootstrap";
+import { Navigate } from "react-router-dom";
 
 interface SignUpProps{
     translate: (key: string) => string
@@ -26,52 +26,52 @@ const LoginPage: FC<SignUpProps> = (props: SignUpProps) => {
     const [registered, setRegistered] = useState(false);
     const [pulsed, setPulsed] = useState (false);
 
-
     const isBlank = (text: string) => 
     {
-        return(text.length == 0);
+        return(text.length === 0);
     }
-
 
     const register = async () => {
         setPulsed(true);
 
         const user:User = 
         {
-            username: name,
-            password: password,
-            email: email,
-            name: name,
-            rol: "Client"
+            username:name,
+            password:password,
+            email:email,
+            rol:"Client"
         }
 
-        if (isBlank(user.name) || isBlank(user.password) || isBlank(user.email) || isBlank(repeatedPassword)){
+        if (isBlank(user.username) || isBlank(user.password) || isBlank(user.email) || isBlank(repeatedPassword)){
             console.log("novalido");
         } else {
            const found = await checkUser(name, password);
            if (!found){
-               const token = await signup(name, password, email);
+                //console.log("entra a signup");
+                const token = await signup(name, password, email);
+                //console.log("sale de signup");
                 setRegistered(true);
                 props.setUser(name);
                 localStorage.setItem("token", token);
-                console.log(localStorage.getItem("token"));
+                //console.log(localStorage.getItem("token"));
             } else {
                 setExists(2);
         } 
-     }
     }
-    if (registered){
-        return(  
+    }
+    if (registered || localStorage.getItem("currentUser") !== "not logged"){
+        /*return(  
         <div>
             <Card className={"mainElement"} elevation={50} style={{display: "grid"}}>
                 <CardContent style={{ display: "grid", margin: "auto", textAlign: "center" }}>
                     <h1>{props.translate("signup.sucess")}</h1>
-                <Button href="/login">
+                <Button href="/catalog">
                    {props.translate("signup.redirect")}
                 </Button>
                </CardContent>
             </Card>
-        </div>);
+        </div>);*/
+        return (<Navigate to="/catalog" />);
     } else {
     return(
     <div>
@@ -80,7 +80,7 @@ const LoginPage: FC<SignUpProps> = (props: SignUpProps) => {
         <Card className={"main"} elevation={10} style={{display: "grid"}}>
         <CardContent style={{ display: "grid", margin: "auto", textAlign: "center" }}>
             <div>
-            <img  width={150} height = {150} src={logo} />
+            <img  alt="Logo" width={150} height = {150} src={logo} />
             </div>
                 <h1>{props.translate('signup.h1')}</h1>
                 <h2>{props.translate('signup.h2')}</h2>
@@ -103,7 +103,7 @@ const LoginPage: FC<SignUpProps> = (props: SignUpProps) => {
                         value={name}
                         helperText= {props.translate('signup.name')}
                         onChange={e => setName(e.target.value)}
-                        error = {exists == 2 || (pulsed && name.length == 0)}
+                        error = {exists === 2 || (pulsed && name.length === 0)}
                         sx={{ my: 2 }}
                         
                         /> 
@@ -119,7 +119,7 @@ const LoginPage: FC<SignUpProps> = (props: SignUpProps) => {
                         variant="outlined"
                         onChange={e => setEmail(e.target.value)}
                         helperText= {props.translate('signup.email')}
-                        error = {(pulsed && email.length == 0)}
+                        error = {(pulsed && email.length === 0)}
                         sx={{ my: 2 }}
                         /> 
                     </div>
@@ -134,7 +134,7 @@ const LoginPage: FC<SignUpProps> = (props: SignUpProps) => {
                         variant="outlined"
                         onChange={e => setPassword(e.target.value)}
                         helperText= {props.translate('signup.pass')}
-                        error = {(pulsed && password.length == 0)}
+                        error = {(pulsed && password.length === 0)}
                         sx={{ my: 2 }}
                         /> 
                     </div>
@@ -149,7 +149,7 @@ const LoginPage: FC<SignUpProps> = (props: SignUpProps) => {
                         variant="outlined"
                         onChange={e => setRepeatedPassword(e.target.value)}
                         helperText= {props.translate('signup.passwd')}
-                        error = {(password != repeatedPassword) || (pulsed && repeatedPassword.length == 0)}
+                        error = {(password !== repeatedPassword) || (pulsed && repeatedPassword.length === 0)}
                         sx={{ my: 2 }}
                         /> 
                     </div>
@@ -159,7 +159,7 @@ const LoginPage: FC<SignUpProps> = (props: SignUpProps) => {
                     variant="contained" 
                     type="submit"
                     color="primary"
-                     sx={{ my: 2 }}>{props.translate('signup.signup')}</Button>
+                     >{props.translate('signup.signup')}</Button>
             <Link href="/login">{props.translate('signup.login')}</Link>
             </CardContent>
             </Card>
