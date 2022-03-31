@@ -16,7 +16,6 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
   var finalPrice: number = 0;
   if (products !== null){
     size  = JSON.parse(products).length;
-    //console.log(JSON.parse(products));
     for (let index = 0; index < size; index++) {
       cartProducts[index] = 
       {
@@ -55,17 +54,17 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                     >
                       <li key={'Productos'}>
                         <ul>
-                          <ListSubheader>{'Seleccionados'}</ListSubheader>
+                          <ListSubheader>{props.translate('shipping.selectedProducts')}</ListSubheader>
                           {cartProducts.map((item) => (
                           <ListItem key={item.name}>
                             <img alt="desc" src= {item.urlPhoto} width= '70' height='70'/>
-                            <ListItemText primary={"\t"+item.name + "\:" + item.price + "$"} />
+                            <ListItemText primary={"x" + item.amount + "\t"+item.name + "\:" + item.price + "$"} />
                             </ListItem>
                             ))}
                         </ul>
                         <ul>
                         <ListItem>
-                        <ListItemText primary={"Total: "+finalPrice} />
+                        <ListItemText primary={props.translate("shipping.withoutA") +finalPrice} />
                         </ListItem>
                         </ul>
                       </li>
@@ -76,7 +75,7 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                       <TextField>
                       </TextField>
                       <Button>
-                        check
+                        {props.translate("login.validate")}
                       </Button>
                     </Fragment>
             </CardContent>

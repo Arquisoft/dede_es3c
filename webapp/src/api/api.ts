@@ -133,6 +133,12 @@ export async function getOrders(): Promise<Order[]>{
   return response.json()
 }
 
+export async function getOrdersByEmail(email:string) {
+  const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+  let response = await fetch(apiEndPoint+'/orders/user/' + email);
+    return response.json();
+}
+
 export async function getAddress(webID: String): Promise<Address>{
   const apiEndPoint = 'http://localhost:5000/api'
   let response = await fetch(apiEndPoint + '/pod', {

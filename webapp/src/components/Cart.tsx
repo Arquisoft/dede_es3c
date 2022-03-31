@@ -22,6 +22,10 @@ const Cart: React.FC<CartProps> = ({ cartItems, addToCart, removeFromCart }) => 
         )
     }
 
+    const redirect = () => {
+        console.log(localStorage.getItem("currentUser"))
+    }
+
     const calculateTotal = (items: CartProduct[]) => {
         return items.reduce((ack: number, item) => ack + (item.amount * item.price), 0)
     }
@@ -39,7 +43,7 @@ const Cart: React.FC<CartProps> = ({ cartItems, addToCart, removeFromCart }) => 
                 />
             )}
             <h2>Total: $ {calculateTotal(cartItems).toFixed(2)}</h2>
-            <Button onClick={() => setPage('shipping')}>{translate('cart.orderButton')}</Button>
+            <Button onClick={() => setPage("shipping")} disabled = {localStorage.getItem("currentUser") === "not logged"}>{translate('cart.orderButton')}</Button>
         </div>
     )
 }

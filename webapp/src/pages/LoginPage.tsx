@@ -25,9 +25,9 @@ const LoginPage: FC<LoginPageProps> = (props: LoginPageProps) => {
         setPulsed(true);
           const valid = await checkUser(username, password);
           if (valid) {
+            const user =await getUser(username)
               const token = await loginB(username, password);
-              const user =await getUser(username);
-              if (user.rol === "Admin"){
+              if (user.rol === "Admin") {
                   const adminName = "admin " + user.username;
                 props.setUser(adminName);
               } else {

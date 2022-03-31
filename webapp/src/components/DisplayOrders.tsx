@@ -21,10 +21,13 @@ const DisplayOrders = (props: OrdersProps) => {
                          {order.id}
                     </TableCell>
                     <TableCell align="center" colSpan={3}>
-                         {order.products.map((prod) => {return prod.product.name + "\n "})}
+                         {order.products.map((prod) => {return prod.product.name + "(x" + prod.quantity+ ")\t" + "\n "})}
                     </TableCell>
                     <TableCell align="center" colSpan={4}>
                          {order.price + "$"}
+                    </TableCell>
+                    <TableCell align="center" colSpan={4}>
+                         {(order.price * 1.21) + "$"}
                     </TableCell>
             </TableRow>
             );
