@@ -102,54 +102,48 @@ export class UserController {
                     fetch: fetch
                 });
                 
-                const profile = getThing(myDataset, "https://" + webID + ".inrupt.net/profile/card#me")
-                const addressWebID = profile!.predicates["http://www.w3.org/2006/vcard/ns#hasAddress"]["namedNodes"]
-                const idAddress = addressWebID![0].split('#')[1]
+                const user = getThing(myDataset, "https://" + webID + ".inrupt.net/profile/card#me")
+                const addressWebID = user!.predicates["http://www.w3.org/2006/vcard/ns#hasAddress"]["namedNodes"]
+                const userAddress = addressWebID![0].split('#')[1]
                 
-                if (idAddress === null){
+                if (userAddress === null){
                     return res.status(400).json({msg: "Address not found"});
                 }
                 
-                let result = {} as AddressFields;
+                let finalAddress = {} as AddressFields;
         
-                const getAddress = getThing(myDataset, "https://" + webID + ".inrupt.net/profile/card#" + idAddress);
-        
+                const getAddress = getThing(myDataset, "https://" + webID + ".inrupt.net/profile/card#" + userAddress);    
                 const country = getStringNoLocale(getAddress!, VCARD.country_name);
+                const region = getStringNoLocale(getAddress!, VCARD.region);
+                const streetAddress = getStringNoLocale(getAddress!, VCARD.street_address);
+                const locality = getStringNoLocale(getAddress!, VCARD.locality);
+                const postalCode = getStringNoLocale(getAddress!, VCARD.postal_code);
                 if (country == null){
                     return res.status(400).json({msg: "Country not found"});
                 } else {
-                    result.country = country;
-                }
-        
-                const region = getStringNoLocale(getAddress!, VCARD.region);
+                    finalAddress.country = country;
+                }       
                 if (region == null){
                     return res.status(400).json({msg: "Region not found"});
                 } else {
-                    result.region = region;
-                }
-        
-                const locality = getStringNoLocale(getAddress!, VCARD.locality);
+                    finalAddress.region = region;
+                }               
                 if (locality == null){
                     return res.status(400).json({msg: "Locality not found"});
                 } else {
-                    result.locality = locality;
-                }
-        
-                const streetAddress = getStringNoLocale(getAddress!, VCARD.street_address);
+                    finalAddress.locality = locality;
+                }               
                 if (streetAddress == null){
                     return res.status(400).json({msg: "Street not found"});
                 } else {
-                    result.street = streetAddress;
-                }
-        
-                const postalCode = getStringNoLocale(getAddress!, VCARD.postal_code);
+                    finalAddress.street = streetAddress;
+                }              
                 if (postalCode == null){
                     return res.status(400).json({msg: "Postal code not found"})
                 } else {
-                    result.postalCode = postalCode;
+                    finalAddress.postalCode = postalCode;
                 }
-        
-                return res.status(200).json({ result });
+                return res.status(200).json({ finalAddress });
             } catch (error) {
                 return res.status(400).json({msg: "POD not found"})
             }
