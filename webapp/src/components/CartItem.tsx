@@ -1,7 +1,8 @@
-import Button from "@material-ui/core/Button";
+
 import { CartProduct } from '../shared/shareddtypes';
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { LangContext } from '../lang';
+import { Button } from '@mui/material';
 
 type CartItemProps = {
     item: CartProduct;

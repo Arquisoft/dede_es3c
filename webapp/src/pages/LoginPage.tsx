@@ -1,14 +1,12 @@
 import React, {Fragment, FC, useState} from "react";
 import TextField from '@mui/material/TextField';
-import {Container, Card , CardContent, Alert, Link} from "@mui/material";
-
+import {Container, Card , CardContent, Link} from "@mui/material";
 import logo from '../img/logo-dede.svg'
 import {checkUser, getUser, loginB } from "../api/api";
-import {Navigate} from "react-router-dom";
 import Header from "../components/Header";
 import "bootswatch/dist/morph/bootstrap.min.css"
 import { Button } from "react-bootstrap";
-
+import Swal from 'sweetalert2';
 
 const checkParams = (text: string) => {
     return text === "" || text === null;
@@ -18,39 +16,39 @@ interface LoginPageProps {
     translate: (key: string) => string
     setUser:(user:string) => void
 }
-
 const LoginPage: FC<LoginPageProps> = (props: LoginPageProps) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [pulsed, setPulsed] = useState(false);
-    const [logged, setLogged] = useState(false);
-
-    const errorMessage = (loggedV: boolean, pulsedV:boolean) => {
-        if (!loggedV && pulsedV){
-            return (<Alert  severity="error">{props.translate("login.singin.error")}</Alert>)
-        }
-    }
 
     const checkLog = async () => {
         setPulsed(true);
           const valid = await checkUser(username, password);
-          console.log("logged")
           if (valid) {
+            const user =await getUser(username)
               const token = await loginB(username, password);
-              const user =await getUser(username);
-              if (user.rol === "Admin"){
+              if (user.rol === "Admin") {
                   const adminName = "admin " + user.username;
                 props.setUser(adminName);
               } else {
                 props.setUser(user.username);
               }
-              setLogged(true);
+              localStorage.setItem("currentEmail", user.email);
+              localStorage.setItem("token", token);
+              Swal.fire({
+                title: props.translate("login.welcome") + user.username,
+                icon: "success"
+            }).then(() => {
+                window.location.assign("/catalog");
+            });
+          } else {
+            Swal.fire({
+                title: "Error",
+                text: props.translate("login.singin.error"),
+                icon: "error",
+            });
           } 
 };
-
-    if (logged || localStorage.getItem("currentUser") !== "not logged"){
-        return ( <Navigate to="/catalog" />);
-    }
     return(
     <div>
         <Header setUser={props.setUser}/>
@@ -92,9 +90,6 @@ const LoginPage: FC<LoginPageProps> = (props: LoginPageProps) => {
                         /> 
                         </form>
                     </Fragment>
-                    {
-                     errorMessage(logged, pulsed)
-                    }
                     <Button onClick={() => checkLog()} variant="contained" type="submit">{props.translate('login.solid')}</Button>
             <Link href="/signup">{props.translate('login.signup')}</Link>
             </CardContent>

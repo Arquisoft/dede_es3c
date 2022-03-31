@@ -40,7 +40,7 @@ export async function loginB(username:string ,password:string) {
       headers: {'Content-Type':'application/json'},
       body: JSON.stringify({'username': username, 'password': password})
     });
-    return response;
+    return response.json();
 }
 
 export async function signup(username:string ,password:string, email:string) {
@@ -133,12 +133,14 @@ export async function getOrders(): Promise<Order[]>{
   return response.json()
 }
 
-export async function getAddress(webID: String): Promise<Address>{
-  const apiEndPoint = 'http://localhost:5000/api'
-  let response = await fetch(apiEndPoint + '/pod', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ 'name': webID })
-  });
+export async function getOrdersByEmail(email:string) {
+  const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+  let response = await fetch(apiEndPoint+'/orders/user/' + email);
+    return response.json();
+}
+
+export async function getAddress(webID:string) {
+  const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+  let response = await fetch(apiEndPoint+'/users/userpod/' + webID);
     return response.json();
 }

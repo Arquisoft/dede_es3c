@@ -14,6 +14,22 @@ export class OrderService {
     }
 
     /**
+     * Return all orders
+     * @param app Express application
+     * @returns Promise<Order[]>
+     */
+     public static getOrdersByUserEmail(app: Application, email: string): Promise<Order[]> {
+        return app
+            .get('db')
+            .getRepository(Order)
+            .find({
+            where:{
+                user: email,
+            },
+        });
+    }
+
+    /**
      * Return order by id
      * @param app Express application
      * @param id Order id

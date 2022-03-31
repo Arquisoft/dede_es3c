@@ -1,14 +1,13 @@
-import React, {Fragment, FC, useState, useEffect} from "react";
+import React, {FC, useState, useEffect} from "react";
 import Header from "../components/Header"
-import { Order, Product } from "../shared/shareddtypes";
-import { getOrders } from "../api/api";
+import { Order } from "../shared/shareddtypes";
+import { getOrders, getOrdersByEmail, getUser } from "../api/api";
 import DisplayOrders from "../components/DisplayOrders"
 import { Button} from "react-bootstrap";
 import TableBody from "@mui/material/TableBody";
-import TableCell, { tableCellClasses } from "@mui/material/TableCell";
+import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
 import { Paper, Table, TableContainer, TableHead } from "@mui/material";
-import { maxWidth } from "@mui/system";
 
 interface OrdersPageProps {
     translate: (key: string) => string
@@ -17,9 +16,18 @@ interface OrdersPageProps {
 
 const OrdersPage: FC<OrdersPageProps> = (props: OrdersPageProps) => {
     const [orders, setOrders] = useState<Order[]>([]);
-
     const reloadItems = async () => {
-      setOrders(await getOrders());
+      if (localStorage.getItem("currentUser") !== null && !localStorage.getItem("currentUser")?.includes("admin")){
+        const username = localStorage.getItem("currentUser");
+        if (username!== null){
+          const user = await getUser(username);
+          console.log(user);
+          setOrders(await getOrdersByEmail(user.email));
+        }
+      } else if (localStorage.getItem("currentUser") !== null && localStorage.getItem("currentUser")?.includes("admin")){
+        setOrders(await getOrders());
+      }
+      console.log(orders);
   }
 
   useEffect(() => {
@@ -62,7 +70,7 @@ const OrdersPage: FC<OrdersPageProps> = (props: OrdersPageProps) => {
                     {props.translate("orders.price")}
                     </TableCell>
                     <TableCell align="center" colSpan={5}>
-                    {props.translate("orders.date")}
+                    {props.translate("orders.iva")}
                     </TableCell>
                   </TableRow>
                 </TableHead>

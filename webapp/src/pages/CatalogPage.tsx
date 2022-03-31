@@ -8,7 +8,7 @@ import { Product, CartProduct } from '../shared/shareddtypes';
 import Item from '../components/Item';
 import { Drawer, Grid, Badge } from "@material-ui/core";
 import Cart from '../components/Cart';
-import { AddShoppingCartSharp } from "@material-ui/icons";
+import { AddShoppingCartSharp } from '@mui/icons-material';
 
 interface CatalogPageProps {
     translate: (key: string) => string

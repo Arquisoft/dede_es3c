@@ -26,81 +26,89 @@
   };
  
    // =================================> Routes
-   
-   const setRegisterRoutes = (): void => {
-     api.route('/register')
-              // Create new user
-         .post( [
-             check('username').isLength({min: 1}),
-             check('password').isLength({min: 1}),
-             check('email').isEmail().normalizeEmail()
-         ], auth.register);
- };
-  
-  /**
-   * Set User Routes for express App
-   */
-  const setUserRoutes = (): void => {
-  
-      api.route('/users')
-          // Get all users
-          .get(/*auth.isAdminAuth,*/ userController.getUsers)
-  
-      api.route('/users/username/:username')
-          .get(/*auth.isAdminAuth,*/ userController.getUserByUsername);
-  
-      api.route('/users/:id')
-          // Get user by id
-          .get(userController.getUserById)
-          // Delete user by id
-          .delete(auth.isAdminAuth, userController.deleteUser)
-          // Update user by id
-          .put(auth.isAdminAuth, userController.updateUser)
-  }
+  const setRegisterRoutes = (): void => {
+    api.route('/register')
+             // Create new user
+        .post( [
+            check('username').isLength({min: 1}),
+            check('password').isLength({min: 1}),
+            check('email').isEmail().normalizeEmail()
+        ], auth.register);
+};
  
-  const setProductsRoutes = (): void => {
-  
-     api.route('/products')
-         // Get all products
-         .get(productsController.getProducts)
-         // Create new products
-         .post(auth.isAdminAuth,[
-             check('name').isLength({ min: 1 }).trim().escape()
-         ], productsController.addProduct);
+ /**
+  * Set User Routes for express App
+  */
+ const setUserRoutes = (): void => {
  
-     api.route('/products/name/:name')
-     
-     api.route('/products/category/:category')
-         .get(productsController.getProductByCategory);
+     api.route('/users')
+         // Get all users
+         .get(/*auth.isAdminAuth, */userController.getUsers)
  
+     api.route('/users/username/:username')
+         .get(/*auth.isAdminAuth, */userController.getUserByUsername);
+
+    api.route('/users/userpod/:username')
+         .get(/*auth.isAdminAuth, */userController.findPod);
  
-     api.route('/products/:id')
-         // Get products by id
-         .get(productsController.getProductById)
-         // Delete products by id
-         .delete(auth.isAdminAuth,productsController.deleteProduct)
-         // Update products by id
-         .put(auth.isAdminAuth,productsController.updateProduct)
+     api.route('/users/:id')
+         // Get user by id
+         .get(userController.getUserById)
+         // Delete user by id
+         .delete(auth.isAdminAuth, userController.deleteUser)
+         // Update user by id
+         .put(auth.isAdminAuth, userController.updateUser)
  }
+
+ const setProductsRoutes = (): void => {
  
- const setOrdersRoutes = (): void => {
-  
-     api.route('/orders')
-         // Get all products
-         .get(auth.isAuth, ordersController.getOrders)
-         // Create new products
-         .post(auth.isAuth, ordersController.addOrder);
+    api.route('/products')
+        // Get all products
+        .get(productsController.getProducts)
+        // Create new products
+        .post(auth.isAdminAuth,[
+            check('name').isLength({ min: 1 }).trim().escape()
+        ], productsController.addProduct);
+
+    api.route('/products/name/:name')
+        .get(productsController.getProductByPartialName);
+    
+    api.route('/products/category/:category')
+        .get(productsController.getProductByCategory);
+
+
+    api.route('/products/:id')
+        // Get products by id
+        .get(productsController.getProductById)
+        // Delete products by id
+        .delete(auth.isAdminAuth,productsController.deleteProduct)
+        // Update products by id
+        .put(auth.isAdminAuth,productsController.updateProduct)
+}
+
+const setOrdersRoutes = (): void => {
  
-     
-     api.route('/orders/:id')
-         // Get products by id
-         .get(auth.isAuth, ordersController.getOrderById)
-         // Delete products by id
-         .delete(auth.isAdminAuth, ordersController.deleteOrder)
-         // Update products by id
-         .put(auth.isAdminAuth, ordersController.updateOrder)
- }
-  // =================================> Main
+    api.route('/orders')
+        // Get all orders
+        .get(/*auth.isAuth,*/ ordersController.getOrders)
+        // Create new orders
+        .post(auth.isAuth, ordersController.addOrder);
+
+
+    api.route('/orders/user/:email')
+        // Get orders by user email
+        .get(/*auth.isAuth,*/ ordersController.getOrdersByUserEmail)
+    
+    api.route('/orders/:id')
+        // Get orders by id
+        .get(auth.isAuth, ordersController.getOrderById)
+        // Delete orders by id
+        .delete(auth.isAdminAuth, ordersController.deleteOrder)
+        // Update orders by id
+        .put(auth.isAdminAuth, ordersController.updateOrder)
+
+    
+}
   setAuthRoutes();
   setUserRoutes();
   setProductsRoutes();
