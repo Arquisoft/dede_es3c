@@ -139,12 +139,8 @@ export async function getOrdersByEmail(email:string) {
     return response.json();
 }
 
-export async function getAddress(webID: String): Promise<Address>{
-  const apiEndPoint = 'http://localhost:5000/api'
-  let response = await fetch(apiEndPoint + '/pod', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ 'name': webID })
-  });
+export async function getAddress(webID:string) {
+  const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+  let response = await fetch(apiEndPoint+'/users/userpod/' + webID);
     return response.json();
 }

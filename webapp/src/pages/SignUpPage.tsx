@@ -60,17 +60,6 @@ const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
     }
     }
     if (registered || localStorage.getItem("currentUser") !== "not logged"){
-        /*return(  
-        <div>
-            <Card className={"mainElement"} elevation={50} style={{display: "grid"}}>
-                <CardContent style={{ display: "grid", margin: "auto", textAlign: "center" }}>
-                    <h1>{props.translate("signup.sucess")}</h1>
-                <Button href="/catalog">
-                   {props.translate("signup.redirect")}
-                </Button>
-               </CardContent>
-            </Card>
-        </div>);*/
         return (<Navigate to="/catalog" />);
     } else {
     return(

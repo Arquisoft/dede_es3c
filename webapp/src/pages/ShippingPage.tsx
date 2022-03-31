@@ -3,6 +3,7 @@ import Header from "../components/Header"
 import { Card, CardContent, Container, ImageListItem, List, ListItem, ListItemButton, ListItemText, ListSubheader, TextField} from "@mui/material";
 import { Button } from "react-bootstrap";
 import { Product } from "../shared/shareddtypes";
+import { getAddress } from "../api/api";
 
 interface ShippingPageProps {
     translate: (key: string) => string
@@ -10,6 +11,13 @@ interface ShippingPageProps {
 }
 
 const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
+  const [webID, setWebID] = useState("");
+  const [countryName, setCountryName] = useState("");
+  const [locality, setLocality] = useState("");
+  const [postalCode, setPostalCode] = useState("");
+  const [region, setRegion] = useState("");
+  const [streetAddress, setStreetAddress] = useState("");
+
   const products = localStorage.getItem("cart");
   var size:number = 0;
   var cartProducts: Product[] = [];
@@ -28,8 +36,16 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
       }
       finalPrice+= cartProducts[index].price;
     }
-    console.log(finalPrice);
-    console.log(cartProducts);
+  }
+
+  async function getAdd() {
+    const address = await getAddress(webID);
+    console.log(address);
+    setCountryName(address['result']['country_name']);
+    setLocality(address['result']['locality']);
+    setPostalCode(address['result']['postal_code']);
+    setRegion(address['result']['region']);
+    setStreetAddress(address['result']['street_address']);
   }
   return(
     <div>
@@ -72,11 +88,33 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                     </Fragment>
                     <Fragment>
                       <h2>{props.translate("shipping.address")}</h2>
-                      <TextField>
+                      <TextField
+                        required
+                        size="small"
+                        name="username"
+                        label= {props.translate ('login.solidUser')} 
+                        variant="outlined"
+                        value={webID}
+                        helperText= {props.translate('login.input')}
+                        onChange={e => setWebID(e.target.value)}
+                        sx={{ my: 2 }} >
                       </TextField>
-                      <Button>
+                      <Button onClick={() => getAdd()}>
                         {props.translate("login.validate")}
                       </Button>
+                      <div>
+                      <TextField
+                        required
+                        size="small"
+                        name="country"
+                        label= {props.translate ('shipping.country')} 
+                        variant="outlined"
+                        value={countryName}
+                        helperText= {props.translate('login.input')}
+                        sx={{ my: 2 }} 
+                        >
+                      </TextField>
+                      </div>
                     </Fragment>
             </CardContent>
             </Card>

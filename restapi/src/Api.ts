@@ -43,13 +43,13 @@
  
      api.route('/users')
          // Get all users
-         .get(auth.isAdminAuth, userController.getUsers)
+         .get(/*auth.isAdminAuth, */userController.getUsers)
  
      api.route('/users/username/:username')
-         .get(auth.isAuth, userController.getUserByUsername);
+         .get(/*auth.isAdminAuth, */userController.getUserByUsername);
 
     api.route('/users/userpod/:username')
-         .get(auth.isAuth, userController.findPod);
+         .get(/*auth.isAdminAuth, */userController.findPod);
  
      api.route('/users/:id')
          // Get user by id
