@@ -46,7 +46,6 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
     localStorage.setItem("cart", "[]");
     localStorage.removeItem("token");
     props.setUser("not logged");
-    //console.log(localStorage.getItem("currentUser"))
   }
 
   if (localStorage.getItem("currentUser") !== "not logged" && !(localStorage.getItem("currentUser")?.includes("admin"))) {

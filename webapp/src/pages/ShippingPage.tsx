@@ -1,9 +1,10 @@
 import React, {Fragment, FC, useState} from "react";
 import Header from "../components/Header"
-import { Card, CardContent, Container, ImageListItem, List, ListItem, ListItemButton, ListItemText, ListSubheader, TextField} from "@mui/material";
+import { Card, CardContent, Container, List, ListItem, ListItemButton, ListItemText, ListSubheader, TextField} from "@mui/material";
 import { Button } from "react-bootstrap";
 import { Product } from "../shared/shareddtypes";
 import { getAddress } from "../api/api";
+import Swal from 'sweetalert2';
 
 interface ShippingPageProps {
     translate: (key: string) => string
@@ -41,11 +42,21 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
   async function getAdd() {
     const address = await getAddress(webID);
     console.log(address);
-    setCountryName(address['result']['country_name']);
-    setLocality(address['result']['locality']);
-    setPostalCode(address['result']['postal_code']);
-    setRegion(address['result']['region']);
-    setStreetAddress(address['result']['street_address']);
+    if (address['result'] !== undefined){
+      console.log(address);
+      setCountryName(address['result']['country_name']);
+      setLocality(address['result']['locality']);
+      setPostalCode(address['result']['postal_code']);
+      setRegion(address['result']['region']);
+      setStreetAddress(address['result']['street_address']);
+    } else {
+      Swal.fire({
+        title: "Error",
+        text: props.translate("solid.error"),
+        icon: "error",
+    });
+
+    }
   }
   return(
     <div>
@@ -60,11 +71,11 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                     style={{ display: "grid", margin: "auto", textAlign: "center" }}
                     sx={{
                       width: '100%',
-                      maxWidth: 360,
+                      maxWidth: 500,
                       bgcolor: 'background.paper',
                       position: 'relative',
                       overflow: 'auto',
-                      maxHeight: 300,
+                      maxHeight: 500,
                       '& ul': { padding: 0 },
                     }}
                     >
@@ -104,21 +115,65 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                       </Button>
                       <div>
                       <TextField
+                        disabled
                         required
                         size="small"
                         name="country"
                         label= {props.translate ('shipping.country')} 
                         variant="outlined"
                         value={countryName}
-                        helperText= {props.translate('login.input')}
                         sx={{ my: 2 }} 
                         >
                       </TextField>
+                      <TextField
+                        disabled
+                        required
+                        size="small"
+                        name="locality"
+                        label= {props.translate ('shipping.locality')} 
+                        variant="outlined"
+                        value={locality}
+                        sx={{ my: 2 }} 
+                        >
+                      </TextField>
+                      <TextField
+                        disabled
+                        required
+                        size="small"
+                        name="postalCode"
+                        label= {props.translate ('shipping.postal')} 
+                        variant="outlined"
+                        value={postalCode}
+                        sx={{ my: 2 }} 
+                        >
+                      </TextField>
+                      <TextField
+                        disabled
+                        required
+                        size="small"
+                        name="region"
+                        label= {props.translate ('shipping.region')} 
+                        variant="outlined"
+                        value={region}
+                        sx={{ my: 2 }} 
+                        >
+                      </TextField>        
                       </div>
+                      <TextField
+                        disabled
+                        required
+                        size="small"
+                        name="street"
+                        label= {props.translate ('shipping.street')} 
+                        variant="outlined"
+                        value={streetAddress}
+                        sx={{ my: 2 }} 
+                        >
+                      </TextField>
+                      <Button variant="contained" type="submit">{props.translate('shipping.proceed')}</Button>
                     </Fragment>
             </CardContent>
             </Card>
-            <Button variant="contained" type="submit">{props.translate('shipping.proceed')}</Button>
         </Container>
     </div>     
     );

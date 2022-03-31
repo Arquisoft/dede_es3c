@@ -9,7 +9,7 @@ type OrdersProps = {
 
 const DisplayOrders = (props: OrdersProps) => {
     const { dispatch: { translate } } = useContext(LangContext);
-    return (
+    return ( 
     <>
         {props.orders.map((order) => {
             return (        

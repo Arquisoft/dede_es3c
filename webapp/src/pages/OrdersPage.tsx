@@ -16,7 +16,6 @@ interface OrdersPageProps {
 
 const OrdersPage: FC<OrdersPageProps> = (props: OrdersPageProps) => {
     const [orders, setOrders] = useState<Order[]>([]);
-
     const reloadItems = async () => {
       if (localStorage.getItem("currentUser") !== null && !localStorage.getItem("currentUser")?.includes("admin")){
         const username = localStorage.getItem("currentUser");
@@ -28,6 +27,7 @@ const OrdersPage: FC<OrdersPageProps> = (props: OrdersPageProps) => {
       } else if (localStorage.getItem("currentUser") !== null && localStorage.getItem("currentUser")?.includes("admin")){
         setOrders(await getOrders());
       }
+      console.log(orders);
   }
 
   useEffect(() => {
