@@ -26,37 +26,39 @@
   };
  
    // =================================> Routes
-   
-   const setRegisterRoutes = (): void => {
-     api.route('/register')
-              // Create new user
-         .post( [
-             check('username').isLength({min: 1}),
-             check('password').isLength({min: 1}),
-             check('email').isEmail().normalizeEmail()
-         ], auth.register);
- };
-  
-  /**
-   * Set User Routes for express App
-   */
-  const setUserRoutes = (): void => {
-  
-      api.route('/users')
-          // Get all users
-          .get(/*auth.isAdminAuth,*/ userController.getUsers)
-  
-      api.route('/users/username/:username')
-          .get(/*auth.isAdminAuth,*/ userController.getUserByUsername);
-  
-      api.route('/users/:id')
-          // Get user by id
-          .get(userController.getUserById)
-          // Delete user by id
-          .delete(auth.isAdminAuth, userController.deleteUser)
-          // Update user by id
-          .put(auth.isAdminAuth, userController.updateUser)
-  }
+  const setRegisterRoutes = (): void => {
+    api.route('/register')
+             // Create new user
+        .post( [
+            check('username').isLength({min: 1}),
+            check('password').isLength({min: 1}),
+            check('email').isEmail().normalizeEmail()
+        ], auth.register);
+};
+ 
+ /**
+  * Set User Routes for express App
+  */
+ const setUserRoutes = (): void => {
+ 
+     api.route('/users')
+         // Get all users
+         .get(auth.isAdminAuth, userController.getUsers)
+ 
+     api.route('/users/username/:username')
+         .get(auth.isAuth, userController.getUserByUsername);
+
+    api.route('/users/userpod/:username')
+         .get(auth.isAuth, userController.findPod);
+ 
+     api.route('/users/:id')
+         // Get user by id
+         .get(userController.getUserById)
+         // Delete user by id
+         .delete(auth.isAdminAuth, userController.deleteUser)
+         // Update user by id
+         .put(auth.isAdminAuth, userController.updateUser)
+ }
 
  const setProductsRoutes = (): void => {
  

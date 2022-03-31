@@ -17,7 +17,7 @@ interface SignUpProps{
     setUser: (user:string) => void
 }
 
-const LoginPage: FC<SignUpProps> = (props: SignUpProps) => {
+const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -168,4 +168,4 @@ const LoginPage: FC<SignUpProps> = (props: SignUpProps) => {
     );
   }
 }
-  export default LoginPage;
+  export default SignUpPage;
