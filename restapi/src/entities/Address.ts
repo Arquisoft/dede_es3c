@@ -1,7 +1,7 @@
 export interface AddressFields extends Document{
     country: string;
-    locality: string;
     region: string;
-    postalCode: string;
+    locality: string;
     street: string; 
+    postalCode: string;
 };

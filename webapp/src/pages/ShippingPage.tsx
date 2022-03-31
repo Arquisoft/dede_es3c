@@ -42,13 +42,13 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
   async function getAdd() {
     const address = await getAddress(webID);
     console.log(address);
-    if (address['result'] !== undefined){
+    if (address['finalAddress'] !== undefined){
       console.log(address);
-      setCountryName(address['result']['country_name']);
-      setLocality(address['result']['locality']);
-      setPostalCode(address['result']['postal_code']);
-      setRegion(address['result']['region']);
-      setStreetAddress(address['result']['street_address']);
+      setCountryName(address['finalAddress']['country']);
+      setLocality(address['finalAddress']['locality']);
+      setPostalCode(address['finalAddress']['postalCode']);
+      setRegion(address['finalAddress']['region']);
+      setStreetAddress(address['finalAddress']['street']);
     } else {
       Swal.fire({
         title: "Error",
@@ -91,7 +91,7 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                         </ul>
                         <ul>
                         <ListItem>
-                        <ListItemText primary={props.translate("shipping.withoutA") +finalPrice} />
+                        <ListItemText primary={props.translate("shipping.withoutA") + Math.fround(finalPrice)} />
                         </ListItem>
                         </ul>
                       </li>
