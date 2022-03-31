@@ -91,7 +91,7 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                         </ul>
                         <ul>
                         <ListItem>
-                        <ListItemText primary={props.translate("shipping.withoutA") + Math.fround(finalPrice)} />
+                        <ListItemText primary={props.translate("shipping.withoutA") + finalPrice.toFixed(2) + "$"}/>
                         </ListItem>
                         </ul>
                       </li>
