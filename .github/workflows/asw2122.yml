@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Deploy to Heroku
-      uses: AkhileshNS/heroku-deploy@v3.12.12
+      uses: akhileshns/heroku-deploy@v3.8.9 # This is the action
       with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "fast-badlands-67730"
@@ -26,7 +26,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Deploy to Heroku
-      uses: AkhileshNS/heroku-deploy@v3.12.12
+      uses: akhileshns/heroku-deploy@v3.8.9 # This is the action
       with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "fast-badlands-67730"
@@ -42,7 +42,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Deploy to Heroku
-      uses: AkhileshNS/heroku-deploy@v3.12.12
+      uses: akhileshns/heroku-deploy@v3.8.9 # This is the action
       with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "fast-badlands-67730"
