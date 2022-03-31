@@ -10,7 +10,7 @@ import {
   } from "@inrupt/solid-client";
   
 import { VCARD } from "@inrupt/vocab-common-rdf";
-import { IAddress } from '../entities/Address';
+import { UserPOD } from '../entities/UserPOD';
 
 
 export class UserController {
@@ -110,7 +110,7 @@ export class UserController {
                 const Userprofile = getThing(SOLIDDataset, "https://" + username + ".inrupt.net/profile/card#me")
                 const addressUserWebID = Userprofile!.predicates["http://www.w3.org/2006/vcard/ns#hasAddress"]["namedNodes"]
                 const idUserPodAddress = addressUserWebID![0].split('#')[1]
-                let userAddress = {} as IAddress;
+                let userAddress = {} as UserPOD;
 
                 
                 if (idUserPodAddress == null){
