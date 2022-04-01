@@ -3,7 +3,7 @@
 //
 // ====================================
 
-= image:LogoASW.png[arc42] DeDe_es3c
+= image:logo-dede.png[DeDesktop] DeDe_es3c
 // toc-title definition MUST follow document title without blank line!
 :toc: left
 :toc-title: Table of Contents
@@ -88,8 +88,13 @@ include::10_quality_scenarios.adoc[]
 include::11_technical_risks.adoc[]
 
 <<<<
-// 12. Glossary
-include::12_glossary.adoc[]
+// 12. Hexagonal architecture
+include::12_hexagonal_architecture.adoc[]
+
+
+<<<<
+// 13. Glossary
+include::13_glossary.adoc[]
 
 <<<<
 // About
