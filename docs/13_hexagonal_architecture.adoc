@@ -6,4 +6,4 @@ The hexagonal architecture is an architectural pattern used in software design. 
 
 Hexagonal architecture is an alternative to traditional layered architecture.
 
-image:13_hexagonal.png["Hexagonal architecture"]
+image:13_Hexagonal.png["Hexagonal architecture"]
