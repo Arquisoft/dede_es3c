@@ -2,6 +2,7 @@
   "dependencies": {
     "@inrupt/solid-client": "^1.21.0",
     "@inrupt/vocab-common-rdf": "^1.0.3",
-    "cloudinary": "^1.28.1"
+    "cloudinary": "^1.28.1",
+    "sweetalert2": "^11.4.8"
   }
 }

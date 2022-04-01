@@ -70,6 +70,7 @@
     "@types/jest": "^27.4.0",
     "@types/puppeteer": "^5.4.4",
     "expect-puppeteer": "^6.0.2",
+    "jest": "^27.5.1",
     "jest-cucumber": "^3.0.1",
     "jest-puppeteer": "^6.0.3",
     "puppeteer": "^13.0.1",

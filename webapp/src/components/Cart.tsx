@@ -21,14 +21,12 @@ const Cart: React.FC<CartProps> = ({ cartItems, addToCart, removeFromCart }) => 
             <Navigate to="/shipping" />
         )
     }
-
-    const calculateSubTotal = (items: CartProduct[]) => {
 		
     const redirect = () => {
         console.log(localStorage.getItem("currentUser"))
     }
 
-    const calculateTotal = (items: CartProduct[]) => {
+        const calculateSubTotal = (items: CartProduct[]) => {
         return items.reduce((ack: number, item) => ack + (item.amount * item.price), 0)
     }
 
