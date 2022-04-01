@@ -479,14 +479,15 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_runtime_view">6. Runtime View</a>
 <ul class="sectlevel2">
 <li><a href="#_register_user">6.1. Register User</a></li>
-<li><a href="#_login_user">6.2. Login User</a></li>
-<li><a href="#_visualize_orders_done">6.3. Visualize orders done</a></li>
-<li><a href="#_delete_a_product_from_the_shopping_chart">6.4. Delete a product from the shopping chart</a></li>
-<li><a href="#_add_products_to_the_shopping_cart">6.5. Add products to the shopping cart</a></li>
-<li><a href="#_paying_process">6.6. Paying process</a></li>
-<li><a href="#_admin_delete_user">6.7. (Admin) Delete User</a></li>
-<li><a href="#_admin_view_item_statistics">6.8. (Admin) View Item Statistics</a></li>
-<li><a href="#_admin_monitor_order_status">6.9. (Admin) Monitor Order Status</a></li>
+<li><a href="#_login_user_database">6.2. Login User DataBase</a></li>
+<li><a href="#_login_user_pod">6.3. Login User POD</a></li>
+<li><a href="#_visualize_orders_done">6.4. Visualize orders done</a></li>
+<li><a href="#_delete_a_product_from_the_shopping_chart">6.5. Delete a product from the shopping chart</a></li>
+<li><a href="#_add_products_to_the_shopping_cart">6.6. Add products to the shopping cart</a></li>
+<li><a href="#_paying_process">6.7. Paying process</a></li>
+<li><a href="#_admin_delete_user">6.8. (Admin) Delete User</a></li>
+<li><a href="#_admin_view_item_statistics">6.9. (Admin) View Item Statistics</a></li>
+<li><a href="#_admin_monitor_order_status">6.10. (Admin) Monitor Order Status</a></li>
 </ul>
 </li>
 <li><a href="#_deployment_view">7. Deployment View</a>
@@ -879,7 +880,7 @@ For documentation of your own system you use better the <em>plain</em> version.<
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>Submit the information requested by the application</em></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Hefesto System</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>DeDesktop System</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>It is the system with which the user interacts, it receives the requests sent by the user through the interface</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>It processes incoming requests and manages the database so that it is consistent with incoming requests. Once it has the requested information, it shows it to the user via the interface</em></p></td>
 </tr>
@@ -1099,18 +1100,29 @@ Users have control over who has their information, thus increasing privacy.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_login_user">6.2. Login User</h3>
+<h3 id="_login_user_database">6.2. Login User DataBase</h3>
 <div class="imageblock">
 <div class="content">
-<img src="./images/LoginUser.png" alt="LoginUser" width="472" height="417">
+<img src="./images/LoginUserDataBase.png" alt="LoginUserDataBase" width="387" height="417">
 </div>
 </div>
 <div class="paragraph">
-<p>This runtime view shows the login process of a user, going through WebApp and ApiRest to the user POD, via the location stored in the database.</p>
+<p>This runtime view shows the login process of a user, going through WebApp and ApiRest to the DataBase, via the location stored in the database.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_visualize_orders_done">6.3. Visualize orders done</h3>
+<h3 id="_login_user_pod">6.3. Login User POD</h3>
+<div class="imageblock">
+<div class="content">
+<img src="./images/LoginUserPOD.png" alt="LoginUserPOD" width="472" height="448">
+</div>
+</div>
+<div class="paragraph">
+<p>This runtime view shows the login process of a user, going through WebApp and ApiRest to the user POD.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_visualize_orders_done">6.4. Visualize orders done</h3>
 <div class="imageblock">
 <div class="content">
 <img src="./images/VisualizeOrdersDone.png" alt="VisualizeOrdersDone" width="618" height="435">
@@ -1122,7 +1134,7 @@ User pod returns the client&#8217;s orders to the RestApi, and the RestApi sends
 </div>
 </div>
 <div class="sect2">
-<h3 id="_delete_a_product_from_the_shopping_chart">6.4. Delete a product from the shopping chart</h3>
+<h3 id="_delete_a_product_from_the_shopping_chart">6.5. Delete a product from the shopping chart</h3>
 <div class="imageblock">
 <div class="content">
 <img src="./images/DeleteProductFromTheShoppingCart.png" alt="DeleteProductFromTheShoppingCart" width="405" height="374">
@@ -1133,7 +1145,7 @@ User pod returns the client&#8217;s orders to the RestApi, and the RestApi sends
 </div>
 </div>
 <div class="sect2">
-<h3 id="_add_products_to_the_shopping_cart">6.5. Add products to the shopping cart</h3>
+<h3 id="_add_products_to_the_shopping_cart">6.6. Add products to the shopping cart</h3>
 <div class="imageblock">
 <div class="content">
 <img src="./images/AddProductsToTheShoppingCart.png" alt="AddProductsToTheShoppingCart" width="782" height="465">
@@ -1144,7 +1156,7 @@ User pod returns the client&#8217;s orders to the RestApi, and the RestApi sends
 </div>
 </div>
 <div class="sect2">
-<h3 id="_paying_process">6.6. Paying process</h3>
+<h3 id="_paying_process">6.7. Paying process</h3>
 <div class="imageblock">
 <div class="content">
 <img src="./images/PayingProcess.png" alt="PayingProcess" width="958" height="643">
@@ -1155,7 +1167,7 @@ User pod returns the client&#8217;s orders to the RestApi, and the RestApi sends
 </div>
 </div>
 <div class="sect2">
-<h3 id="_admin_delete_user">6.7. (Admin) Delete User</h3>
+<h3 id="_admin_delete_user">6.8. (Admin) Delete User</h3>
 <div class="imageblock">
 <div class="content">
 <img src="./images/AdminDeleteUser.png" alt="AdminDeleteUser" width="706" height="539">
@@ -1163,7 +1175,7 @@ User pod returns the client&#8217;s orders to the RestApi, and the RestApi sends
 </div>
 </div>
 <div class="sect2">
-<h3 id="_admin_view_item_statistics">6.8. (Admin) View Item Statistics</h3>
+<h3 id="_admin_view_item_statistics">6.9. (Admin) View Item Statistics</h3>
 <div class="imageblock">
 <div class="content">
 <img src="./images/AdminViewItemStatistics.png" alt="AdminViewItemStatistics" width="691" height="586">
@@ -1171,7 +1183,7 @@ User pod returns the client&#8217;s orders to the RestApi, and the RestApi sends
 </div>
 </div>
 <div class="sect2">
-<h3 id="_admin_monitor_order_status">6.9. (Admin) Monitor Order Status</h3>
+<h3 id="_admin_monitor_order_status">6.10. (Admin) Monitor Order Status</h3>
 <div class="imageblock">
 <div class="content">
 <img src="./images/AdminMonitorOrderStatus.png" alt="AdminMonitorOrderStatus" width="574" height="647">
@@ -1721,7 +1733,7 @@ Created by Dr. Peter Hruschka &amp; Dr. Gernot Starke.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-03-13 20:31:01 +0100
+Last updated 2022-03-31 17:35:12 +0200
 </div>
 </div>
 </body>
