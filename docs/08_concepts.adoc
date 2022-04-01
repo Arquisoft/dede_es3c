@@ -37,9 +37,39 @@ For security we have used an asynchronous encryption algorithm called PBKDF2, wh
 We have a role system, which defines if a user is an Administrator or a normal User, and depending on that he will have one or other options enabled, such as a CRUD of products or users, to avoid a scale of privileges we have made it impossible to be Admin, it always inserts users as User and we have a couple of Administrators created by default.
 
 === Additional libraries
+Dependencies in the backend:
 
-TODO
+- https://www.npmjs.com/package/cloudinary[_"cloudinary"_]: "^1.28.1"
 
+- https://www.npmjs.com/package/cors[_"cors"_]: "^2.8.5"
+
+- https://www.npmjs.com/package/crypto-js[_"crypto"_]: "^1.0.1"
+
+- https://www.npmjs.com/package/dotenv[_"dotenv"_]: "^16.0.0"
+
+- https://www.npmjs.com/package/express[_"express"_]: "^4.17.2"
+
+- https://www.npmjs.com/package/express-prom-bundle[_"express-prom-bundle"_]:"^6.4.1"
+
+- https://www.npmjs.com/package/express-validator[_"express-validator"_]: "^6.14.0"
+
+- https://www.npmjs.com/package/jsonwebtoken[_"jsonwebtoken"_]: "^8.5.1"
+
+- https://www.npmjs.com/package/mongodb[_"mongodb"_]: "^3.7.3"
+
+- https://www.npmjs.com/package/@inrupt/solid-client[_"@inrupt/solid-client"_]: "^1.19.0"
+
+- https://www.npmjs.com/package/@inrupt/vocab-common-rdf[_"@inrupt/vocab-common-rdf"_]: "^1.0.3"
+
+- https://www.npmjs.com/package/parcel-bundler[_"parcel-bundler"_]: "^1.12.5"
+
+- https://www.npmjs.com/package/prom-client[_"prom-client"_]: "^14.0.1"
+
+- https://www.npmjs.com/package/reflect-metadata[_"reflect-metadata"_]: "^0.1.13"
+
+- https://www.npmjs.com/package/typeorm[_"typeorm"_]: "^0.2.44"
+
+- https://www.npmjs.com/package/uuid[_"uuid"_]: "^8.3.2"
 
 === Archiutecture and design patterns
 
