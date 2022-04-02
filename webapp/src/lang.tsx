@@ -29,7 +29,7 @@ interface ContextProps {
 }
 
 const langReducer = (state: LangState, action: SetLanguageAction): LangState => {
-  if (action.type == LangActionType.SET_LANGUAGE){
+  if (action.type === LangActionType.SET_LANGUAGE){
     return {
       language: action.payload
     }
