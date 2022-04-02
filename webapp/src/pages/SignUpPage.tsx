@@ -4,7 +4,8 @@ import "bootswatch/dist/morph/bootstrap.min.css"
 import {Container, Card , CardContent} from "@mui/material";
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import InputAdornment from '@mui/material/InputAdornment';
-import Link from '@mui/material/Link';
+//import Link from '@mui/material/Link';
+import { Link } from 'react-router-dom';
 import logo from '../img/logo-dede.svg'
 import {checkUser, signup } from "../api/api";
 import { User } from "../shared/shareddtypes";
@@ -149,7 +150,7 @@ const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
                     type="submit"
                     color="primary"
                      >{props.translate('signup.signup')}</Button>
-            <Link href="/login">{props.translate('signup.login')}</Link>
+            <Link to="/login">{props.translate('signup.login')}</Link>
             </CardContent>
             </Card>
         </Container>
