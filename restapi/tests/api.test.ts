@@ -42,14 +42,12 @@ afterAll(async () => {
     server.close() //close the server
 })
 
-
 describe("products", () => {
     /**
      * Test that we can list products without any error.
      */
     it("can be listed", async () => {
-      const response: Response = await request(app).get("/api/products");
-      console.log(response.text);
+      const response: Response = await request(app).get("/api/products").set('Authorization', 'asd');
       expect(response.statusCode).toBe(200);
     });
   

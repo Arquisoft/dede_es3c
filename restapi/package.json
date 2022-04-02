@@ -6,7 +6,7 @@
     "data": "python ./dist/src/data/data.py",
     "build": "tsc",
     "prod": "npm run build && node ./dist/src/Server.js",
-    "test": "cd tests && jest --runInBand"
+    "test": "cd tests && jest --runInBand --forceExit"
   },
   "keywords": [],
   "author": "SergioArroni",
