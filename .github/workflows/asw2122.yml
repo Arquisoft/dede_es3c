@@ -26,11 +26,10 @@ jobs:
     - uses: actions/setup-node@v2
       with:
         node-version: 16
-        mongodb-version: ['4.2', '4.4', '5.0']
-    - name: Start MongoDB
+        mongodb-version: '4.4'
       uses: supercharge/mongodb-github-action@1.7.0
       with:
-        mongodb-version: ${{ matrix.mongodb-version }}
+        mongodb-version: '4.4'
         mongodb-username: SergioArroni
         mongodb-password: julio321
         mongodb-db: DeDesktop
