@@ -3,6 +3,7 @@ import { DeleteResult } from 'typeorm';
 import { Order } from '../entities/Order';
 import { OrderService } from '../services/Order_Service';
 import { ProductService } from '../services/Product_Service';
+//import { Map } from "../entities/Map";
 
 
 export class OrderController {
@@ -89,14 +90,18 @@ export class OrderController {
     public async addOrder(req: Request, res: Response) {
         try {
             let orderBody = new Order(req.body.user,req.body.products);
+            var price = 0.0;
             for (var p of orderBody.products) {
                 ProductService.decrementProductStock(req.app, p.product.id, p.quantity);
+                price+=p.product.price*p.quantity;
             }
-            const order = await OrderService.addOrder(req.app, orderBody);
+            const order = await OrderService.addOrder(req.app, orderBody, price);
             order ? res.status(200).json(order) : res.status(500).json({ error: "Error add Order" });
         } catch (error) {
             res.status(500).json({ error: "Error add Order: " + error})
         }
     }
+
+    
 
 }

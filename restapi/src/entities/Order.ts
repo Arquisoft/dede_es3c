@@ -2,6 +2,7 @@ import { Entity, Column, ObjectIdColumn, PrimaryColumn, AfterLoad } from "typeor
 import {v4 as uuidv4} from 'uuid';
 import { User } from "./User";
 import { ProductInOrder } from "./ProductInOrder";
+//import { Mapa } from "./Mapa";
 
 @Entity()
 export class Order {
@@ -11,6 +12,7 @@ export class Order {
         this.products = products;
         this.price = 0.0;
         this.priceIVA = 0.0;
+        //this.distributionCenter = "";
         this.id = uuidv4();
     }
 
@@ -32,6 +34,9 @@ export class Order {
     @Column()
     priceIVA: number;
 
+    /*@Column()
+    distributionCenter: string;*/
+
     @AfterLoad()
     getPrice() {
         var p = 0.0;
@@ -41,26 +46,25 @@ export class Order {
         this.price = p;
 
         //Calcular distancia
-        //var distance=mapa.calculateDistance("Avenida de la Constitución, 10, Gijón");
-        //console.log(distance);
+        /*var mapa = new Mapa();
+        var distance=mapa.calculateDistance("Avenida de la Constitución, 10, Gijón");
+        console.log(distance);*/
 
         //Calcular precio de envío
         //this.price += this.calculateShippingPrice(distance);
 
-        this.getPriceIVA();
+        //this.getPriceIVA();
     }
 
     getPriceIVA(){
         this.priceIVA = this.price*1.21;
     }
 
-    @AfterLoad()
-    decrementStock(){
-        for (var pr of this.products) {
-            //Comprobar si tengo stock suficiente
-            //pr.product.stock-=pr.quantity;
+    selectDistributionCenter(){
+        //calcular el centro de distribución más cercano
 
-        }
+        var center = "";
+        //this.distributionCenter = center;
     }
 
 
