@@ -34,12 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Deploy to Heroku
-      uses: AkhileshNS/heroku-deploy@v3.12.12
       with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "fast-badlands-67730"
-          heroku_email: "sergioadgi38@gmail.com"
           name: arquisoft/dede_es3c/webapp
           username: ${{ github.actor }}
           password: ${{ secrets.DOCKER_PUSH_TOKEN }}
@@ -50,30 +45,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Deploy to Heroku
-      uses: AkhileshNS/heroku-deploy@v3.12.12
       with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "fast-badlands-67730"
-          heroku_email: "sergioadgi38@gmail.com"
           name: arquisoft/dede_es3c/restapi
           username: ${{ github.actor }}
           password: ${{ secrets.DOCKER_PUSH_TOKEN }}
           registry: ghcr.io
           workdir: restapi
-  docker-push-mongo:
-    name: Push mongo Docker Image to GitHub Packages
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Deploy to Heroku
-      uses: AkhileshNS/heroku-deploy@v3.12.12
-      with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "fast-badlands-67730"
-          heroku_email: "sergioadgi38@gmail.com"
-          name: arquisoft/dede_es3c/mongo
-          username: ${{ github.actor }}
-          password: ${{ secrets.DOCKER_PUSH_TOKEN }}
-          registry: ghcr.io
-          workdir: mongo
