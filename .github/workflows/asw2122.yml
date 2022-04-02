@@ -26,6 +26,14 @@ jobs:
     - uses: actions/setup-node@v2
       with:
         node-version: 16
+        mongodb-version: ['4.2', '4.4', '5.0']
+    - name: Start MongoDB
+      uses: supercharge/mongodb-github-action@1.7.0
+      with:
+        mongodb-version: ${{ matrix.mongodb-version }}
+        mongodb-username: SergioArroni
+        mongodb-password: julio321
+        mongodb-db: DeDesktop
     - run: npm ci
     - run: npm test
     - uses: codecov/codecov-action@v2
