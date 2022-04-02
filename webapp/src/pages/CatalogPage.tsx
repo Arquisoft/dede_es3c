@@ -12,7 +12,7 @@ import { AddShoppingCartSharp } from '@mui/icons-material';
 import { UserContext } from '../User';
 
 /*interface CatalogPageProps {
-    //translate: string
+    translate: string
     setUser: (user: string) => void
 }*/
 

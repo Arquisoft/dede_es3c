@@ -61,33 +61,33 @@ const LoginPage: FC<LoginPageProps> = (props: LoginPageProps) => {
                 <h1>{props.translate('login.h1')}</h1>
                 <h3>{props.translate('login.h2')}</h3>
                     <Fragment>
-                        <form>
-                            <TextField
-                        id = "textUser"
-                        required
-                        size="small"
-                        name="username"
-                        label= {props.translate ('login.solidUser')} 
-                        variant="outlined"
-                        value={username}
-                        error = {(checkParams(username) && pulsed)}
-                        helperText= {props.translate('login.input')}
-                        onChange={e => setUsername(e.target.value)}
-                        sx={{ my: 2 }}
-                        /> 
+                        <form name="loginForm">
+                          <TextField
+                            id = "textUser"
+                            required
+                            size="small"
+                            name="username"
+                            label= {props.translate ('login.solidUser')} 
+                            variant="outlined"
+                            value={username}
+                            error = {(checkParams(username) && pulsed)}
+                            helperText= {props.translate('login.input')}
+                            onChange={e => setUsername(e.target.value)}
+                            sx={{ my: 2 }}
+                            /> 
 
-                        <TextField
-                        required
-                        name="password"
-                        type={"password"}
-                        size="small"
-                        label= {props.translate ('login.solidPass')} 
-                        variant="outlined"
-                        value={password} error = {checkParams(password) && pulsed}
-                        onChange={e => setPassword(e.target.value)}
-                        helperText= {props.translate('login.input')}
-                        sx={{ my: 2 }}
-                        /> 
+                            <TextField
+                            required
+                            name="password"
+                            type={"password"}
+                            size="small"
+                            label= {props.translate ('login.solidPass')} 
+                            variant="outlined"
+                            value={password} error = {checkParams(password) && pulsed}
+                            onChange={e => setPassword(e.target.value)}
+                            helperText= {props.translate('login.input')}
+                            sx={{ my: 2 }}
+                          /> 
                         </form>
                     </Fragment>
                     <Button onClick={() => checkLog()} variant="contained" type="submit">{props.translate('login.solid')}</Button>
