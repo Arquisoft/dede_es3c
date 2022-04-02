@@ -2,7 +2,6 @@ import { Entity, Column, ObjectIdColumn, PrimaryColumn, AfterLoad } from "typeor
 import {v4 as uuidv4} from 'uuid';
 import { User } from "./User";
 import { ProductInOrder } from "./ProductInOrder";
-//import { Mapa } from "./Mapa";
 
 @Entity()
 export class Order {

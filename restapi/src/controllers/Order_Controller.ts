@@ -3,7 +3,6 @@ import { DeleteResult } from 'typeorm';
 import { Order } from '../entities/Order';
 import { OrderService } from '../services/Order_Service';
 import { ProductService } from '../services/Product_Service';
-//import { Map } from "../entities/Map";
 
 
 export class OrderController {
