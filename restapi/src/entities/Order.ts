@@ -36,40 +36,8 @@ export class Order {
 
     /*@Column()
     distributionCenter: string;*/
-
-    @AfterLoad()
-    getPrice() {
-        var p = 0.0;
-        for (var pr of this.products) {
-            p=p+pr.product.price*pr.quantity;
-        }
-        this.price = p;
-
-        //Calcular distancia
-        /*var mapa = new Mapa();
-        var distance=mapa.calculateDistance("Avenida de la Constitución, 10, Gijón");
-        console.log(distance);*/
-
-        //Calcular precio de envío
-        //this.price += this.calculateShippingPrice(distance);
-
-        //this.getPriceIVA();
-    }
-
-    getPriceIVA(){
-        this.priceIVA = this.price*1.21;
-    }
-
-    selectDistributionCenter(){
-        //calcular el centro de distribución más cercano
-
-        var center = "";
-        //this.distributionCenter = center;
-    }
-
-
+ 
     
-
 
 
 }
