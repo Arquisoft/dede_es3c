@@ -9,14 +9,16 @@ import Item from '../components/Item';
 import { Drawer, Grid, Badge } from "@material-ui/core";
 import Cart from '../components/Cart';
 import { AddShoppingCartSharp } from '@mui/icons-material';
+import { UserContext } from '../User';
 
-interface CatalogPageProps {
-    translate: (key: string) => string
+/*interface CatalogPageProps {
+    //translate: string
     setUser: (user: string) => void
-}
+}*/
 
-const Catalog = (props: CatalogPageProps) => {
+const Catalog = (/*props: CatalogPageProps*/) => {
     const { dispatch: { translate } } = useContext(LangContext);
+    const { dispatch: { setUser } } = useContext(UserContext);
     const [products, setProducts] = useState<Product[]>([]);
     const [nameFilter, setNameFilter] = useState('');
     const [val, setVal] = useState('');
@@ -89,7 +91,8 @@ const Catalog = (props: CatalogPageProps) => {
 
     return (
         <div>
-            <Header setUser={props.setUser} />
+            {/*<Header setUser={props.setUser} />*/}
+            <Header setUser={setUser} />
 
             <Form>
                 <FormControl type="search" value={val} placeholder={translate('catalog.search')} className="me-2" aria-label="Search" onChange={e => {setNameFilter(e.target.value); setVal(e.target.value)}}/>
