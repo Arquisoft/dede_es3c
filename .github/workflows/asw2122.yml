@@ -24,11 +24,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v2
+    - uses: supercharge/mongodb-github-action@1.7.0
       with:
         node-version: 16
-        mongodb-version: '4.4'
-      uses: supercharge/mongodb-github-action@1.7.0
-      with:
         mongodb-version: '4.4'
         mongodb-username: SergioArroni
         mongodb-password: julio321
