@@ -1,5 +1,8 @@
 {
-  "dependencies": {
-    "cloudinary": "^1.28.1"
-  }
+  "name": "dedesktop",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "docker-compose up -d --build"
+  },
+  "author": "SergioArroni"
 }
