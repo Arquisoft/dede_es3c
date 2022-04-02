@@ -1,8 +1,8 @@
 {
-  "dependencies": {
-    "@inrupt/solid-client": "^1.21.0",
-    "@inrupt/vocab-common-rdf": "^1.0.3",
-    "cloudinary": "^1.28.1",
-    "sweetalert2": "^11.4.8"
-  }
+  "name": "dedesktop",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "docker-compose up -d --build"
+  },
+  "author": "SergioArroni"
 }
