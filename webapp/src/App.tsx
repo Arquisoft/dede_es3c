@@ -25,7 +25,7 @@ const App: FC = () => {
           path='/'
           element = 
           {
-            <HomePage setUser={setUser} translate={translate}/>
+            <HomePage /*setUser={setUser} translate={translate}*//>
           }
         />
         <Route

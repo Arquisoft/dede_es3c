@@ -5,14 +5,16 @@ import { Container, Card, CardContent } from "@mui/material";
 import Button from '@mui/material/Button';
 import { Navigate } from "react-router-dom";
 import { LangContext } from '../lang';
+import { UserContext } from '../User';
 
-interface HomePageProps {
+/*interface HomePageProps {
     translate: (key: string) => string
     setUser: (user: string) => void
-}
+}*/
 
-const HomePage: FC<HomePageProps> = (props: HomePageProps) => {
+const HomePage/*: FC<HomePageProps>*/ = (/*props: HomePageProps*/) => {
     const { dispatch: { translate } } = useContext(LangContext);
+    const { dispatch: { setUser } } = useContext(UserContext);
     const [page, setPage] = useState('');
 
     if(page === 'catalog'){
@@ -34,7 +36,9 @@ const HomePage: FC<HomePageProps> = (props: HomePageProps) => {
         if (localStorage.getItem("currentUser") !== "not logged"){
             return (
                 <div>
-                    <Header setUser={props.setUser} />
+                    {/*<Header setUser={props.setUser} />*/}
+                    <Header setUser={setUser} />
+
                     <Container component="main" maxWidth="sm">
                         <Card className={"main"} elevation={10} style={{ display: "grid" }}>
                             <CardContent style={{ display: "grid", margin: "auto", textAlign: "center" }}>
@@ -57,7 +61,9 @@ const HomePage: FC<HomePageProps> = (props: HomePageProps) => {
         else{
             return (
                 <div>
-                    <Header setUser={props.setUser} />
+                    {/*<Header setUser={props.setUser} />*/}
+                    <Header setUser={setUser} />
+
                     <Container component="main" maxWidth="sm">
                         <Card className={"main"} elevation={10} style={{ display: "grid" }}>
                             <CardContent style={{ display: "grid", margin: "auto", textAlign: "center" }}>
