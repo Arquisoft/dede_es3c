@@ -2,17 +2,20 @@
 
 === Quality Tree
 
-=== Quality Scenarios
 image:10_Quality-Requirements.png["Quality Requirements"]
 
+
+
+=== Quality Scenarios
+
 |===
-|Quality goal|Scenario|Difficulty
-| _Privacy_ | _The app is SOLID based which means the users have their personal information storaged in pods (personal online data stores) this technology makes it better for the users always respecting their privacy. For example, the client's address can be consulted on it's pod in props of calculate the shipping price._ | _Hard_ 
-| _Efficiency_ | _The system is able to act quickly and with fluidity when the user interacts with it. For example, if a client wants to buy a product, the shipping price should be rapidly calulated not making it tedious to the user._ | _Medium_ 
-| _Testability_ | _DeDe can be tested with certain ease using technologies such as Prometeus, Grafana and Postman as an external help to make sure everything works properly and finding bugs or mistakes in props to improve the application._ | _Hard_ 
-| _Modifiability_ | _The system, divided in Frontend, Backend and documentation (which makes it easer to develop) has a quite reusable code, which increments the possibilities of adding new functions or update the existing ones with more looseness. For example, the code used for the implementation of the function that allows clients see theis orders, can also be used for the function that allows administrators see every single order made on DeDe._ | _Easy_ 
-| _Usability_ | _The site has an intuitive design that makes the experience comfortable for every user in the application with them being clients or administrators. They should know where to go or what to do with a glance due to the familiarity of the design._ | _Easy_ 
-| _Integrity_ | _The data should be always in a valid state following the ACID values. If some process fails, there are not going to be any changes and the system will stay in a consistent state without harming the user. For example, if a purchase fails just before the order confirmation, the system will return to a consistent state where the purchase won't be made._ | _Medium_ 
+|Quality goal|Scenario|User Priority|Developer Priority
+| _Privacy_ | _The app is SOLID based which means the users have their personal information storaged in pods (personal online data stores) this technology makes it better for the users always respecting their privacy. For example, the client's address can be consulted on it's pod in props of calculate the shipping price._ | _High_ |_High_ 
+| _Efficiency_ | _The system is able to act quickly and with fluidity when the user interacts with it. For example, if a client wants to buy a product, the shipping price should be rapidly calulated not making it tedious to the user._ | _High_ | _High_ 
+| _Testability_ | _DeDe can be tested with certain ease using technologies such as Prometeus, Grafana and Postman as an external help to make sure everything works properly and finding bugs or mistakes in props to improve the application._ | _Low_ | _High_ 
+| _Modifiability_ | _The system, divided in Frontend, Backend and documentation (which makes it easer to develop) has a quite reusable code, which increments the possibilities of adding new functions or update the existing ones with more looseness. For example, the code used for the implementation of the function that allows clients see theis orders, can also be used for the function that allows administrators see every single order made on DeDe._ | _Low_ | _High_ 
+| _Usability_ | _The site has an intuitive design that makes the experience comfortable for every user in the application with them being clients or administrators. They should know where to go or what to do with a glance due to the familiarity of the design._ | _High_ | _High_ 
+| _Integrity_ | _The data should be always in a valid state following the ACID values. If some process fails, there are not going to be any changes and the system will stay in a consistent state without harming the user. For example, if a purchase fails just before the order confirmation, the system will return to a consistent state where the purchase won't be made._ | _High_ | _High_ 
 |===
 This quality requirements are priorized and more described in the epigraph 1
 

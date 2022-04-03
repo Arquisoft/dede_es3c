@@ -31,4 +31,12 @@ docs/build
 
 ormconfig.json
 
+docker-compose.yml
 dist/
+
+/.env
+/process.env
+/restapi/src/Solid.ts
+/restapi/package.json
+/docker-compose.yml
+/data/data.py
