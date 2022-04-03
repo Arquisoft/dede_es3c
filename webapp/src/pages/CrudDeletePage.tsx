@@ -13,7 +13,7 @@ interface CrudPageProps {
 }
 
 const isBlank = (text: string) => {
-    return (text.length == 0);
+    return (text.length === 0);
 }
 
 const CrudDeletePage: FC<CrudPageProps> = (props: CrudPageProps) => {

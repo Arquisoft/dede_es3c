@@ -14,7 +14,7 @@ interface CrudPageProps {
 }
 
 const isBlank = (text: string) => {
-    return (text.length == 0);
+    return (text.length === 0);
 }
 
 const CrudEditPage: FC<CrudPageProps> = (props: CrudPageProps) => {
@@ -27,7 +27,7 @@ const CrudEditPage: FC<CrudPageProps> = (props: CrudPageProps) => {
     const [id, setId] = useState('');
 
     const updateProductAux = async () => {
-        const product: Product = { name: name, description: description, price: Number(price), category: category, urlPhoto: urlPhoto }
+        const product: Product = { name: name, description: description, price: Number(price), category: category, urlPhoto: urlPhoto, amount: 0 }
 
         if (isBlank(product.name) || isBlank(product.description) || isBlank(product.category) || isBlank(product.urlPhoto) || isBlank(id)) {
             console.log("novalido");
