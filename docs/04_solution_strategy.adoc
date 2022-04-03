@@ -30,6 +30,10 @@ The technologies we have decided to use for the development of the app are:
 
 - Postman: Postman is an open source software which offers us the necessary help to build, use and test APIs, making the steps easier.
 
+- Jest: Jest is a delightful JavaScript Testing Framework with a focus on simplicity.
+
+- Cloudinary: It is an API used to store images, we will save the URL of the images. 
+
 === Decisions about the top-level decomposition of the system
 
 - On the frontend we are going to use the Redux pattern. This pattern was created initially to be used in React, so it optimizes the loading of components since it only reloads the modified components, it will also help us in passing information between components by storing the state of each component in an easily accessible way.
