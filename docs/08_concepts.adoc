@@ -15,14 +15,14 @@ image:08_umldiagram.png["Domain Model - UML Diagram"]
 
 === Persistence
 
-At the beginning there was a debate about whether it was better to use SQL or NoSQL for persistence. After some discussion it was concluded that the best option for this problem is NoSQL. To be more specific MongoDB, which is a NoSQL document database. We will use a NoSQL database as opposed to a SQL database, because our model encompasses many products. These products have several attributes which are very different. For example, a power supply differs in many ways from a graphics card. Because there are so many items, we believe it is best to use a NoSQL DB.
+At the beginning there was a debate about whether it was better to use SQL or NoSQL for persistence. After some discussion it was concluded that the best option for this problem is NoSQL. To be more specific MongoDB, which is a NoSQL document database. We will use a NoSQL database as opposed to a SQL database, because our model encompasses many products. These products have several attributes which are very different. For example, a power supply differs in many ways from a graphics card. Because there are so many items, we believe it is best to use a NoSQL DB. But, because of our hexagonal architecture, we can switch from NoSQL to SQL without needing to modify the code, or switch from MongoDB to Cassandra, the change doesn't matter because the backend is not related to the persistence used
 
 === User interface
 
-_DeDe user interface is desinged to give every user an intuitive and familiar experience related using the React framework combined with TypeScript as constraints. We follow the usual standards of e-commerce online sites to make the navigation closer to what most of the people already know. Also, the interface is meant to pass the AAA validation so we make sure it's usable for almost everyone_
+_DeDe user interface is desinged to give every user an intuitive and familiar experience related using the React framework combined with TypeScript as constraints. We follow the usual standards of e-commerce online sites to make the navigation closer to what most of the people already know. Also, the interface is meant to pass the AAA validation so we make sure it's usable for almost everyone. In terms of dependencies, we worked with MUI for some of the components (buttons, tables...), bootstrap alongside with bootswatch to give the app a defined style and use some of it's components, and, sweetalert2 to throw modal windows at some points of the application._
 
-image:08_UI-Homepage.png["Homepage prototype"]
-image:08_UI-OtherWindows.png["Other Functionalities"]
+image:08_dede_login.png["Login"]
+image:08_dede_catalog.png["Catalogo"]
 
 === Internazionalization
 
@@ -33,13 +33,43 @@ This allows us to reach a bigger audience and make the application more accesibl
 
 === Security
 
-Security is a key aspect of our software (and almost all) project. We will follow SOLID as recommendation to store our customers data and we will manage the data base to be always in a consistent state.
-
+For security we have used an asynchronous encryption algorithm called PBKDF2, which is one of the most famous KDF encryption algorithms. The user will put a password in plain text, which will be encrypted using a Hash function, a salt will be added to it, which is a random number added at the beginning of the password, all this string will be saved in the database, achieving a very high level of security.
+We have a role system, which defines if a user is an Administrator or a normal User, and depending on that he will have one or other options enabled, such as a CRUD of products or users, to avoid a scale of privileges we have made it impossible to be Admin, it always inserts users as User and we have a couple of Administrators created by default.
 
 === Additional libraries
+Dependencies in the backend:
 
-TODO
+- https://www.npmjs.com/package/cloudinary[_"cloudinary"_]: "^1.28.1"
 
+- https://www.npmjs.com/package/cors[_"cors"_]: "^2.8.5"
+
+- https://www.npmjs.com/package/crypto-js[_"crypto"_]: "^1.0.1"
+
+- https://www.npmjs.com/package/dotenv[_"dotenv"_]: "^16.0.0"
+
+- https://www.npmjs.com/package/express[_"express"_]: "^4.17.2"
+
+- https://www.npmjs.com/package/express-prom-bundle[_"express-prom-bundle"_]:"^6.4.1"
+
+- https://www.npmjs.com/package/express-validator[_"express-validator"_]: "^6.14.0"
+
+- https://www.npmjs.com/package/jsonwebtoken[_"jsonwebtoken"_]: "^8.5.1"
+
+- https://www.npmjs.com/package/mongodb[_"mongodb"_]: "^3.7.3"
+
+- https://www.npmjs.com/package/@inrupt/solid-client[_"@inrupt/solid-client"_]: "^1.19.0"
+
+- https://www.npmjs.com/package/@inrupt/vocab-common-rdf[_"@inrupt/vocab-common-rdf"_]: "^1.0.3"
+
+- https://www.npmjs.com/package/parcel-bundler[_"parcel-bundler"_]: "^1.12.5"
+
+- https://www.npmjs.com/package/prom-client[_"prom-client"_]: "^14.0.1"
+
+- https://www.npmjs.com/package/reflect-metadata[_"reflect-metadata"_]: "^0.1.13"
+
+- https://www.npmjs.com/package/typeorm[_"typeorm"_]: "^0.2.44"
+
+- https://www.npmjs.com/package/uuid[_"uuid"_]: "^8.3.2"
 
 === Archiutecture and design patterns
 
@@ -55,5 +85,6 @@ To achieve this we will use all tools programs give us and make correct decision
 === Testability
 
 Applications should be strongly tested. We will use user histories to make acceptance tests and unit test to test the rest of the application components and states during running process.
-
 We think this is the best way to be sure the project works correctly.
+
+To test our code, Postman was used in the backend during the whole development of the work, to check if the requests were being carried out correctly. Later, once we had a more or less solid project, we added a series of unit tests, which use Jest technology, these tests try to include all the backend and frontend parts, but separately, without joining them. Once these tests passed successfully, integration tests were implemented, which test the union of frontend and backend, all these tests were done exhaustively and were performed by people who had not done that part of the code, with that we get that we do not test things that are known to work. 

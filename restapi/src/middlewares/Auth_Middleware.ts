@@ -12,8 +12,6 @@ const signOpts = {
 const userController: UserController = new UserController(); // User Routes Controller
 export class Auth {
 
-
-
     /**
      * Login user and return token
      * @param req Request
@@ -34,23 +32,23 @@ export class Auth {
         }
     }
 
-   /**
+    /**
      * Register user and return token
      * @param req Request
      * @param res Response
      * @returns Token with status 200, error 500 or error 403 if user not found or password is incorrect
      */
     public async register(req: Request, res: Response) {
-        try {
-            let salt = crypto.randomBytes(16).toString("hex");
-            let hash = crypto.pbkdf2Sync(req.body.password, salt, 1000, 64, `sha512`).toString(`hex`);
-            let userBody = new User(req.body.username, req.body.email, salt, hash, req.body.rol );
-            const user = await UserService.addUser(req.app, userBody);
-            res.status(200).json(Auth.createToken(user.username, user.rol));
-        } catch (error) {
-            res.status(500).json({ error: "Error al intentar registrarse" });
-        }
-}
+            try {
+                let salt = crypto.randomBytes(16).toString("hex");
+                let hash = crypto.pbkdf2Sync(req.body.password, salt, 1000, 64, `sha512`).toString(`hex`);
+                let userBody = new User(req.body.username, req.body.email, salt, hash, req.body.rol );
+                const user = await UserService.addUser(req.app, userBody);
+                res.status(200).json(Auth.createToken(user.username, user.rol));
+            } catch (error) {
+                res.status(500).json({ error: "Error al intentar registrarse" });
+            }
+    }
 
     /**
      * Is Authenticated Middleware
@@ -61,8 +59,7 @@ export class Auth {
      */
     public isAuth(req: Request, res: Response, next: () => void) {
         try {
-            jwt.verify(`${req.headers.authorization}`, secret, function(err, decoded) {
-                console.log(decoded)
+            jwt.verify(`${req.headers.authorization}`, secret, function(err) {
                 if(err){
                     res.status(403).send("Invalid authorization: "+err);
                 }else{

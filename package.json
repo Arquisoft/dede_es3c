@@ -1,8 +1,14 @@
 {
-  "dependencies": {
-    "@inrupt/solid-client": "^1.21.0",
-    "@inrupt/vocab-common-rdf": "^1.0.3",
     "axios": "^0.26.1",
     "cloudinary": "^1.28.1"
+    "@inrupt/vocab-common-rdf": "^1.0.3",
+    "@inrupt/solid-client": "^1.21.0",
+  "dependencies": {
   }
+  "name": "dedesktop",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "docker-compose up -d --build"
+  },
+  
 }

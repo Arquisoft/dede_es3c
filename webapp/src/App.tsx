@@ -1,6 +1,5 @@
-import React, { FC, useContext } from 'react';
+import { FC, useContext } from 'react';
 import './App.css';
-import { LangContext } from './lang';
 import { UserContext } from './User';
 import "bootswatch/dist/morph/bootstrap.min.css"
 import LoginPage from './pages/LoginPage';
@@ -12,10 +11,9 @@ import CrudEditPage from './pages/CrudEditPage';
 import CrudDeletePage from './pages/CrudDeletePage';
 import OrdersPage from './pages/OrdersPage';
 import ShippingPage from './pages/ShippingPage';
-import CatalogPage from './pages/CatalogPage';
+import CatalogPage from './pages/Catalog';
 
 const App: FC = () => {
-  const { dispatch: {translate }} = useContext(LangContext);
   const { dispatch: {setUser}} = useContext(UserContext);
 
   return (
@@ -25,57 +23,57 @@ const App: FC = () => {
           path='/'
           element = 
           {
-            <HomePage setUser={setUser} translate={translate}/>
+            <HomePage setUser={setUser}/>
           }
         />
         <Route
           path='login'
           element = 
           {
-            <LoginPage setUser={setUser} translate={translate} />
+            <LoginPage setUser={setUser}/>
           }
           />
         <Route
           path='signup'
           element =
           {
-            <SignUpPage setUser={setUser} translate={translate} />
+            <SignUpPage setUser={setUser}/>
           }
           />
         <Route
           path='addProduct'
           element={
-            <CrudAddPage setUser={setUser} translate={translate}/>
+            <CrudAddPage setUser={setUser}/>
           }
           />
         <Route
           path='editProduct'
           element={
-            <CrudEditPage setUser={setUser} translate={translate} />
+            <CrudEditPage setUser={setUser} />
           }
         />
         <Route
           path='deleteProduct'
           element={
-            <CrudDeletePage setUser={setUser} translate={translate} />
+            <CrudDeletePage setUser={setUser}/>
           }
         />
         <Route
           path='catalog'
           element={
-            <CatalogPage setUser={setUser} translate={translate} />
+            <CatalogPage setUser={setUser}/>
           }
         />
         <Route
           path='orders'
           element={
-            <OrdersPage setUser={setUser} translate={translate} />
+            <OrdersPage setUser={setUser}/>
           }
         />
         <Route
           path='shipping'
           element={
-            <ShippingPage setUser={setUser} translate={translate} />
+            <ShippingPage setUser={setUser}/>
           }
         />
       </Routes>

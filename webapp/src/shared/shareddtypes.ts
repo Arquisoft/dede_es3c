@@ -24,14 +24,15 @@ export type CartProduct = {
 }
 
 export type Order = {
-  id:String
-  user: User
+  id:string
+  user: string
   products: ProductInOrder[],
   price: number,
+  priceIVA: number
 }
 
 export type ProductInOrder = {
-  id:String
+  id:string
   product: Product
   quantity: number,
 }

@@ -6,13 +6,13 @@
     "data": "python ./dist/src/data/data.py",
     "build": "tsc",
     "prod": "npm run build && node ./dist/src/Server.js",
-    "test": "cd tests && jest --runInBand"
+    "test": "cd tests && jest --runInBand --forceExit"
   },
   "keywords": [],
   "author": "SergioArroni",
   "license": "ISC",
   "dependencies": {
-    "@inrupt/solid-client": "^1.21.0",
+    "@inrupt/solid-client": "^1.19.0",
     "@inrupt/vocab-common-rdf": "^1.0.3",
     "cloudinary": "^1.28.1",
     "cors": "^2.8.5",
@@ -31,6 +31,7 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "@types/chai": "^4.3.0",
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",
     "@types/googlemaps": "^3.43.3",

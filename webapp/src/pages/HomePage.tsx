@@ -7,7 +7,6 @@ import { Navigate } from "react-router-dom";
 import { LangContext } from '../lang';
 
 interface HomePageProps {
-    translate: (key: string) => string
     setUser: (user: string) => void
 }
 

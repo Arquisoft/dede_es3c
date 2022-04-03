@@ -11,7 +11,6 @@ import logoutIcon from '../img/logout-icon.svg';
 import spanishIcon from '../img/spanish-icon.svg';
 import registerIcon from '../img/register-icon.svg';
 import ordersIcon from '../img/checkout-icon.svg';
-import { Navigate } from "react-router-dom";
 
 interface HeaderProps {
   setUser:(user:string) => void
@@ -46,7 +45,6 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
     localStorage.setItem("cart", "[]");
     localStorage.removeItem("token");
     props.setUser("not logged");
-    //console.log(localStorage.getItem("currentUser"))
   }
 
   if (localStorage.getItem("currentUser") !== "not logged" && !(localStorage.getItem("currentUser")?.includes("admin"))) {

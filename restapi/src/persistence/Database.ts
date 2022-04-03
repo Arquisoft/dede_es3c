@@ -1,6 +1,6 @@
 /**
  * Database Manager class
- * @author: Sergio Arroni del Reigo - UO276341
+ * @author: Sergio Arroni del Riego - UO276341
  */
  import { createConnection, getConnectionOptions, Connection } from "typeorm";
 
@@ -22,7 +22,6 @@
       * @returns Promise<boolean>
       */
      public async setDB(databaseName: string) : Promise<boolean> {
-
          let result = false;
          try {
              let options = await getConnectionOptions(databaseName);
