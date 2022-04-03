@@ -14,7 +14,7 @@ export class ProductController {
     try {
       res.status(200).json(await ProductService.getProducts(req.app));
     } catch (error) {
-      res.status(500).json({ error: "Error on get all Products" });
+      res.status(500).json({ error: `Error on get all Products: ${error}` });
     }
   }
 
