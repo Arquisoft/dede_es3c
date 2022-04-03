@@ -69,7 +69,7 @@ const App: FC = () => {
         <Route
           path='orders'
           element={
-            <OrdersPage setUser={setUser} translate={translate} />
+            <OrdersPage setUser={setUser} />
           }
         />
         <Route
