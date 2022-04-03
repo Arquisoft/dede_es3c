@@ -24,7 +24,7 @@ const LoginPage: FC<LoginPageProps> = (props: LoginPageProps) => {
 
     const checkLog = async () => {
         setPulsed(true);
-          const valid = await checkUser(username, password);
+          const valid = await checkUser(username);
           if (valid) {
             const user =await getUser(username)
               const token = await loginB(username, password);

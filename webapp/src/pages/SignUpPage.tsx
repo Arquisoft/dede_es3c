@@ -45,7 +45,7 @@ const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
 
         if (isBlank(user.username) || isBlank(user.password) || isBlank(user.email) || isBlank(repeatedPassword)){
         } else {
-           const found = await checkUser(name, password);
+           const found = await checkUser(name);
            if (!found){
                 const token = await signup(name, password, email);
                 setRegistered(true);
