@@ -11,6 +11,7 @@ import logoutIcon from '../img/logout-icon.svg';
 import spanishIcon from '../img/spanish-icon.svg';
 import registerIcon from '../img/register-icon.svg';
 import ordersIcon from '../img/checkout-icon.svg';
+import { Link } from 'react-router-dom';
 
 interface HeaderProps {
   setUser:(user:string) => void
@@ -70,7 +71,7 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
                   <img alt="" src={logoutIcon} width="20" height="20" className="d-inline-block align-top" />
                   {translate('nav.logout')}
                 </Link>
-                <Link href="/orders">
+                <Link to="/orders" className="nav-link">
                   <img alt="" src={ordersIcon} width="25" height="25" className="d-inline-block align-top nav-link" />
                   {translate("nav.orders")}
                 </Link>
