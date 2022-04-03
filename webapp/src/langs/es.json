@@ -85,5 +85,6 @@
     "cart.empty": "Carrito vacío",
     "cart.orderButton": "Realiza tu pedido",
     "cartItem.price": "Precio",
-    "cartItem.total": "Total (con IVA)"
+    "cartItem.total": "Total (con IVA)",
+    "crud.add.error":"Campos en blanco detectados"
 }

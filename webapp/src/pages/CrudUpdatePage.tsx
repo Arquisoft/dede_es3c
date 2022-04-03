@@ -8,6 +8,7 @@ import { Product } from "../shared/shareddtypes";
 import {updateProduct} from "../api/api";
 import { LangContext } from '../lang';
 import Home from '../pages/HomePage';
+import Swal from "sweetalert2";
 
 interface CrudPageProps {
     setUser: (user: string) => void
@@ -30,6 +31,11 @@ const CrudUpdatePage: FC<CrudPageProps> = (props: CrudPageProps) => {
         const product: Product = { name: name, description: description, price: Number(price), category: category, urlPhoto: urlPhoto, amount: 0 }
 
         if (isBlank(product.name) || isBlank(product.description) || isBlank(product.category) || isBlank(product.urlPhoto) || isBlank(id)) {
+            Swal.fire({
+                title: "Error",
+                text: translate("crud.add.error"),
+                icon: "error",
+            });
         } else {
             await updateProduct(id, product);
         }

@@ -85,5 +85,6 @@
     "cart.empty":"No items in cart",
     "cart.orderButton":"Proceed to checkout",
     "cartItem.price":"Price",
-    "cartItem.total":"Total (with IVA)"
+    "cartItem.total":"Total (with IVA)",
+    "crud.add.error":"Blank files detected"
 }
