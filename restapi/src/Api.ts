@@ -96,7 +96,6 @@ const setOrdersRoutes = (): void => {
         // Create new products
         .post(auth.isAuth, ordersController.addOrder);
 
-    
     api.route('/orders/:id')
         // Get products by id
         .get(auth.isAuth, ordersController.getOrderById)

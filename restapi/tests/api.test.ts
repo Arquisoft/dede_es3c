@@ -11,6 +11,8 @@ let server: http.Server;
 let adminToken: String;
 let clientToken: String;
 let userId: String;
+let productId: String;
+let orderId: String;
 
 beforeAll(async () => {
   app = express();
@@ -57,13 +59,6 @@ beforeAll(async () => {
     .set("Accept", "application/json");
   adminToken = response.body.toString();
 
-  const responseId: Response = await request(app)
-    .post("/api/users/username/Dios")
-    .send(admin)
-    .set("Accept", "application/json")
-    .set("Authorization", String(clientToken));
-  userId = responseId.body.id;
-
   /**
    * Inicializar token Admin
    */
@@ -85,6 +80,18 @@ afterAll(async () => {
 });
 
 describe("CRUD Users", () => {
+  /**
+   * This test checks that a particular user can be accessed as a registered user.
+   */
+  it("search user by registered user", async () => {
+    const response: Response = await request(app)
+      .get("/api/users/username/Dios")
+      .set("Authorization", String(clientToken));
+    expect(response.statusCode).toBe(200);
+    expect(response.body.username).toBe("Dios");
+    userId = response.body.id;
+  });
+
   /**
    * Tests that a user can be register
    */
@@ -129,7 +136,6 @@ describe("CRUD Users", () => {
     };
     const response: Response = await request(app).post("/api/login").send(user);
     expect(response.statusCode).toBe(200);
-    console.log(response.text);
   });
 
   /**
@@ -155,7 +161,6 @@ describe("CRUD Users", () => {
     };
     const response: Response = await request(app).post("/api/login").send(user);
     expect(response.statusCode).toBe(404);
-    console.log(response.text);
   });
 
   /**
@@ -174,17 +179,6 @@ describe("CRUD Users", () => {
       "/api/users/username/Dios"
     );
     expect(response.statusCode).toBe(403);
-  });
-
-  /**
-   * This test checks that a particular user can be accessed as a registered user.
-   */
-  it("search user by registered user", async () => {
-    const response: Response = await request(app)
-      .get("/api/users/username/Dios")
-      .set("Authorization", String(clientToken));
-    expect(response.statusCode).toBe(200);
-    expect(response.body.username).toBe("Dios");
   });
 
   /**
@@ -211,6 +205,17 @@ describe("CRUD Users", () => {
   });
 
   /**
+   * Tests that search by id for a user whose id exists
+   */
+  it("search by id for a user whose id exists", async () => {
+    const response: Response = await request(app)
+      .get("/api/users/" + userId)
+      .set("Accept", "application/json");
+
+    expect(response.statusCode).toBe(200);
+  });
+
+  /**
    * Tests that update user as admin
    */
   it("update user as admin", async () => {
@@ -220,6 +225,7 @@ describe("CRUD Users", () => {
       password: "123456",
       rol: "Admin",
     };
+
     const response: Response = await request(app)
       .put("/api/users/" + userId)
       .send(user)
@@ -227,25 +233,6 @@ describe("CRUD Users", () => {
       .set("Authorization", String(adminToken));
 
     expect(response.statusCode).toBe(200);
-  });
-
-  /**
-   * Tests update user that does not exist as admin
-   
-  it("update user that does not exist as admin", async () => {
-    const user = {
-      username: "Lucifer",
-      email: "Lucifer@jaja.com",
-      password: "123456",
-      rol: "Admin",
-    };
-    const response: Response = await request(app)
-      .put("/api/users/Lucifer")
-      .send(user)
-      .set("Accept", "application/json")
-      .set("Authorization", String(adminToken));
-
-    expect(response.statusCode).toBe(500);
   });
 
   /**
@@ -258,6 +245,7 @@ describe("CRUD Users", () => {
       password: "123456",
       rol: "Admin",
     };
+
     const response: Response = await request(app)
       .put("/api/users/" + userId)
       .send(user)
@@ -268,37 +256,11 @@ describe("CRUD Users", () => {
   });
 
   /**
-   * Tests that delete user as admin
-   */
-  it("delete user as admin", async () => {
-    const user = {
-      username: "Jesucristo",
-      email: "ElRedentor@jaja.com",
-      password: "123456",
-      rol: "Admin",
-    };
-    const response: Response = await request(app)
-      .delete("/api/users/" + userId)
-      .send(user)
-      .set("Accept", "application/json")
-      .set("Authorization", String(adminToken));
-
-    expect(response.statusCode).toBe(200);
-  });
-
-  /**
    * Tests that delete user without being admin
    */
   it("delete user without being admin", async () => {
-    const user = {
-      username: "Jesucristo",
-      email: "ElRedentor@jaja.com",
-      password: "123456",
-      rol: "Admin",
-    };
     const response: Response = await request(app)
       .delete("/api/users/" + userId)
-      .send(user)
       .set("Accept", "application/json")
       .set("Authorization", String(clientToken));
 
@@ -306,39 +268,26 @@ describe("CRUD Users", () => {
   });
 
   /**
-   * Tests that get user as admin
-   
-  it("get user as admin", async () => {
-    const user = {
-      username: "Jesucristo",
-      email: "ElRedentor@jaja.com",
-      password: "123456",
-      rol: "Admin",
-    };
+   * Tests that delete user as admin
+   */
+  it("delete user as admin", async () => {
     const response: Response = await request(app)
-      .get("/api/users/" + userId)
-      .send(user)
-      .set("Accept", "application/json");
+      .delete("/api/users/" + userId)
+      .set("Accept", "application/json")
+      .set("Authorization", String(adminToken));
 
     expect(response.statusCode).toBe(200);
   });
 
   /**
-   * Tests that get user without being admin
-   
-  it("get user without being admin", async () => {
-    const user = {
-      username: "Jesucristo",
-      email: "ElRedentor@jaja.com",
-      password: "123456",
-      rol: "Admin",
-    };
+   * Tests that search by id for a user whose id does not exist
+   */
+  it("search by id for a user whose id does not exist", async () => {
     const response: Response = await request(app)
       .get("/api/users/123" + userId)
-      .send(user)
       .set("Accept", "application/json");
 
-    expect(response.statusCode).toBe(500);
+    expect(response.statusCode).toBe(404);
   });
 
   /**
@@ -351,6 +300,7 @@ describe("CRUD Users", () => {
       password: "123456",
       rol: "Admin",
     };
+
     const response: Response = await request(app)
       .get("/api/users")
       .send(user)
@@ -358,6 +308,7 @@ describe("CRUD Users", () => {
       .set("Authorization", String(adminToken));
 
     expect(response.statusCode).toBe(200);
+    expect(response.body[0].username).toBe("LeBron Raymone James Sr.");
   });
 
   /**
@@ -389,5 +340,343 @@ describe("products", () => {
       .get("/api/products")
       .set("Authorization", String(clientToken));
     expect(response.statusCode).toBe(200);
+  });
+
+  /**
+   * Test that insert a new product as admin.
+   */
+  it("insert a new product as admin", async () => {
+    const product = {
+      name: "Portatil HP ...",
+      description: "Un portatil muy bueno",
+      price: 600,
+      category: "Laptop",
+      url: "alguna",
+      stock: 10,
+    };
+
+    const response: Response = await request(app)
+      .post("/api/products")
+      .send(product)
+      .set("Accept", "application/json")
+      .set("Authorization", String(adminToken));
+    expect(response.statusCode).toBe(200);
+  });
+
+  /**
+   * Test that insert a new product without being admin.
+   */
+  it("insert a new product without being admin", async () => {
+    const product = {
+      name: "Portatil HP ...",
+      description: "Un portatil muy bueno",
+      price: 600,
+      category: "Laptop",
+      url: "alguna",
+      stock: 10,
+    };
+
+    const response: Response = await request(app)
+      .post("/api/products")
+      .send(product)
+      .set("Accept", "application/json")
+      .set("Authorization", String(clientToken));
+    expect(response.statusCode).toBe(403);
+  });
+
+  /**
+   * This test checks that a specific product category can be accessed without being a registered user by giving a 200.
+   */
+  it("search product category by unregistered user", async () => {
+    const response: Response = await request(app).get(
+      "/api/products/category/PC"
+    );
+    expect(response.statusCode).toBe(200);
+  });
+
+  /**
+   * This test checks that a specific product can be accessed without being a registered user by giving a 200.
+   */
+  it("search product by unregistered user", async () => {
+    const response: Response = await request(app).get(
+      "/api/products/name/Portatil HP ..."
+    );
+    expect(response.statusCode).toBe(200);
+    productId = response.body[0].id;
+  });
+
+  /**
+   * This test checks that you cannot list a product that does not exist.
+   */
+  it("search for a product that does not exist", async () => {
+    const response: Response = await request(app)
+      .get("/api/products/name/Pizza")
+      .set("Authorization", String(clientToken));
+    expect(response.statusCode).toBe(200);
+    expect(response.body[0]).toBe(undefined);
+  });
+
+  /**
+   * Tests that search by id for a products whose id exists
+   */
+  it("search by id for a products whose id exists", async () => {
+    const response: Response = await request(app)
+      .get("/api/products/" + productId)
+      .set("Accept", "application/json");
+    expect(response.statusCode).toBe(200);
+  });
+
+  /**
+   * Tests that update products as admin
+   */
+  it("update products as admin", async () => {
+    const product = {
+      name: "Portatil HP ...",
+      description: "Un portatil ya no tan bueno",
+      price: 500,
+      category: "Laptop",
+      url: "alguna",
+      stock: 10,
+    };
+
+    const response: Response = await request(app)
+      .put("/api/products/" + productId)
+      .send(product)
+      .set("Accept", "application/json")
+      .set("Authorization", String(adminToken));
+
+    expect(response.statusCode).toBe(200);
+  });
+
+  /**
+   * Tests that update products without admin
+   */
+  it("update products without admin", async () => {
+    const product = {
+      name: "Portatil HP ...",
+      description: "Un portatil ya no tan bueno",
+      price: 500,
+      category: "Laptop",
+      url: "alguna",
+      stock: 10,
+    };
+
+    const response: Response = await request(app)
+      .put("/api/products/" + productId)
+      .send(product)
+      .set("Accept", "application/json")
+      .set("Authorization", String(clientToken));
+
+    expect(response.statusCode).toBe(403);
+  });
+
+  /**
+   * Tests that update products without user
+   */
+  it("update products without user", async () => {
+    const product = {
+      name: "Portatil HP ...",
+      description: "Un portatil ya no tan bueno",
+      price: 500,
+      category: "Laptop",
+      url: "alguna",
+      stock: 10,
+    };
+
+    const response: Response = await request(app)
+      .put("/api/products/" + productId)
+      .send(product)
+      .set("Accept", "application/json");
+
+    expect(response.statusCode).toBe(403);
+  });
+
+  /**
+   * Tests that delete user without being admin
+   */
+  it("delete user without being admin", async () => {
+    const response: Response = await request(app)
+      .delete("/api/products/" + productId)
+      .set("Accept", "application/json")
+      .set("Authorization", String(clientToken));
+
+    expect(response.statusCode).toBe(403);
+  });
+
+  /**
+   * Tests that delete products as admin
+   */
+  it("delete products as admin", async () => {
+    const response: Response = await request(app)
+      .delete("/api/products/" + productId)
+      .set("Accept", "application/json")
+      .set("Authorization", String(adminToken));
+
+    expect(response.statusCode).toBe(200);
+  });
+
+  /**
+   * Tests that search by id for a user whose id does not exist
+   */
+  it("search by id for a product whose id does not exist", async () => {
+    const response: Response = await request(app)
+      .get("/api/products/123" + productId)
+      .set("Accept", "application/json");
+
+    expect(response.statusCode).toBe(404);
+  });
+});
+
+describe("orders", () => {
+  /**
+   * Test that we can list orders without any error.
+   */
+  it("can be listed orders", async () => {
+    const response: Response = await request(app)
+      .get("/api/orders")
+      .set("Authorization", String(clientToken));
+    expect(response.statusCode).toBe(200);
+  });
+
+  /**
+   * Test that we can list orders with a error.
+   */
+  it("can't be listed orders", async () => {
+    const response: Response = await request(app)
+      .get("/api/orders")
+      .set("Authorization", String(adminToken));
+    expect(response.statusCode).toBe(200);
+  });
+
+  /**
+   * Test that insert a new product as admin.
+   */
+  it("insert a new orders as admin", async () => {
+    const product = {
+      name: "Portatil HP ...",
+      description: "Un portatil muy bueno",
+      price: 600,
+      category: "Laptop",
+      url: "alguna",
+      stock: 10,
+    };
+
+    const response: Response = await request(app)
+      .post("/api/orders")
+      .send(product)
+      .set("Accept", "application/json")
+      .set("Authorization", String(adminToken));
+    expect(response.statusCode).toBe(200);
+  });
+
+  /**
+   * Tests that search by id for a orders whose id exists
+   
+  it("search by id for a orders whose id exists", async () => {
+    const response: Response = await request(app)
+      .get("/api/orders/" + orderId)
+      .set("Accept", "application/json")
+      .set("Authorization", String(adminToken));
+    expect(response.statusCode).toBe(200);
+  });
+
+  /**
+   * Tests that update orders as admin
+   */
+  it("update orders as admin", async () => {
+    const product = {
+      name: "Portatil HP ...",
+      description: "Un portatil ya no tan bueno",
+      price: 500,
+      category: "Laptop",
+      url: "alguna",
+      stock: 10,
+    };
+
+    const response: Response = await request(app)
+      .put("/api/orders/" + orderId)
+      .send(product)
+      .set("Accept", "application/json")
+      .set("Authorization", String(adminToken));
+
+    expect(response.statusCode).toBe(200);
+  });
+
+  /**
+   * Tests that update orders without admin
+   */
+  it("update orders without admin", async () => {
+    const product = {
+      name: "Portatil HP ...",
+      description: "Un portatil ya no tan bueno",
+      price: 500,
+      category: "Laptop",
+      url: "alguna",
+      stock: 10,
+    };
+
+    const response: Response = await request(app)
+      .put("/api/orders/" + orderId)
+      .send(product)
+      .set("Accept", "application/json")
+      .set("Authorization", String(clientToken));
+
+    expect(response.statusCode).toBe(403);
+  });
+
+  /**
+   * Tests that update orders without user
+   */
+  it("update orders without user", async () => {
+    const product = {
+      name: "Portatil HP ...",
+      description: "Un portatil ya no tan bueno",
+      price: 500,
+      category: "Laptop",
+      url: "alguna",
+      stock: 10,
+    };
+
+    const response: Response = await request(app)
+      .put("/api/orders/" + orderId)
+      .send(product)
+      .set("Accept", "application/json");
+
+    expect(response.statusCode).toBe(403);
+  });
+
+  /**
+   * Tests that delete orders without being admin
+   */
+  it("delete orders without being admin", async () => {
+    const response: Response = await request(app)
+      .delete("/api/orders/" + orderId)
+      .set("Accept", "application/json")
+      .set("Authorization", String(clientToken));
+
+    expect(response.statusCode).toBe(403);
+  });
+
+  /**
+   * Tests that delete orders as admin
+   */
+  it("delete orders as admin", async () => {
+    const response: Response = await request(app)
+      .delete("/api/orders/" + orderId)
+      .set("Accept", "application/json")
+      .set("Authorization", String(adminToken));
+
+    expect(response.statusCode).toBe(200);
+  });
+
+  /**
+   * Tests that search by id for a orders whose id does not exist
+   */
+  it("search by id for a orders whose id does not exist", async () => {
+    const response: Response = await request(app)
+      .get("/api/orders/123" + orderId)
+      .set("Accept", "application/json");
+
+    expect(response.statusCode).toBe(403);
   });
 });
