@@ -4,4 +4,4 @@ export interface UserPOD extends Document{
     postal_code: string;
     region: string;
     country_name: string;
-};
+}

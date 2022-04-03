@@ -143,65 +143,70 @@ export class UserController {
         SOLIDDataset,
         "https://" + username + ".inrupt.net/profile/card#me"
       );
-      const addressUserWebID =
-        Userprofile!.predicates["http://www.w3.org/2006/vcard/ns#hasAddress"][
-          "namedNodes"
-        ];
-      if (addressUserWebID) {
-        const idUserPodAddress = addressUserWebID[0].split("#")[1];
-        let userAddress = {} as UserPOD;
+      if (Userprofile) {
+        const addressUserWebID =
+          Userprofile.predicates["http://www.w3.org/2006/vcard/ns#hasAddress"][
+            "namedNodes"
+          ];
+        if (addressUserWebID) {
+          const idUserPodAddress = addressUserWebID[0].split("#")[1];
+          let userAddress = {} as UserPOD;
 
-        if (idUserPodAddress == null) {
-          res.status(500).json({ error: "Error, address could not be found" });
-        }
-
-        const getUserSOLIDAddress = getThing(
-          SOLIDDataset,
-          "https://" + username + ".inrupt.net/profile/card#" + idUserPodAddress
-        );
-
-        if (getUserSOLIDAddress) {
-          const postal_code = getStringNoLocale(
-            getUserSOLIDAddress,
-            VCARD.postal_code
-          );
-          userAddress.postal_code = String(postal_code);
-
-          const country_name = getStringNoLocale(
-            getUserSOLIDAddress!,
-            VCARD.country_name
-          );
-          userAddress.country_name = String(country_name);
-
-          const locality = getStringNoLocale(
-            getUserSOLIDAddress!,
-            VCARD.locality
-          );
-          userAddress.locality = String(locality);
-
-          const street_address = getStringNoLocale(
-            getUserSOLIDAddress!,
-            VCARD.street_address
-          );
-          userAddress.street_address = String(street_address);
-
-          const region = getStringNoLocale(getUserSOLIDAddress!, VCARD.region);
-          userAddress.region = String(region);
-          if (
-            country_name ||
-            region ||
-            locality ||
-            street_address ||
-            postal_code
-          ) {
-            res.status(200).json({ result: userAddress });
-          } else {
+          if (idUserPodAddress == null) {
             res
               .status(500)
-              .json({
+              .json({ error: "Error, address could not be found" });
+          }
+
+          const getUserSOLIDAddress = getThing(
+            SOLIDDataset,
+            "https://" +
+              username +
+              ".inrupt.net/profile/card#" +
+              idUserPodAddress
+          );
+
+          if (getUserSOLIDAddress) {
+            const postal_code = getStringNoLocale(
+              getUserSOLIDAddress,
+              VCARD.postal_code
+            );
+            userAddress.postal_code = String(postal_code);
+
+            const country_name = getStringNoLocale(
+              getUserSOLIDAddress,
+              VCARD.country_name
+            );
+            userAddress.country_name = String(country_name);
+
+            const locality = getStringNoLocale(
+              getUserSOLIDAddress,
+              VCARD.locality
+            );
+            userAddress.locality = String(locality);
+
+            const street_address = getStringNoLocale(
+              getUserSOLIDAddress,
+              VCARD.street_address
+            );
+            userAddress.street_address = String(street_address);
+
+            const region = getStringNoLocale(getUserSOLIDAddress, VCARD.region);
+            userAddress.region = String(region);
+            if (
+              country_name ||
+              region ||
+              locality ||
+              street_address ||
+              postal_code
+            ) {
+              res.status(200).json({ result: userAddress });
+            } else {
+              res.status(500).json({
                 error:
                   "Error, one of the address fields is null and does not exist",
               });
+            }
           }
         }
       }
