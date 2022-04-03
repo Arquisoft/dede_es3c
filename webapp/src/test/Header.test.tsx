@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { render, screen } from "@testing-library/react";
 import Header from '../components/Header';
 import LangState from '../lang';
