@@ -7,7 +7,6 @@ import { Navigate } from "react-router-dom";
 import { LangContext } from '../lang';
 
 interface HomePageProps {
-    translate: (key: string) => string
     setUser: (user: string) => void
 }
 
@@ -31,31 +30,54 @@ const HomePage: FC<HomePageProps> = (props: HomePageProps) => {
         )
     }
     else{
-        return (
-            <div>
-                <Header setUser={props.setUser} />
-                <Container component="main" maxWidth="sm">
-                    <Card className={"main"} elevation={10} style={{ display: "grid" }}>
-                        <CardContent style={{ display: "grid", margin: "auto", textAlign: "center" }}>
-                            <div>
-                                <img width={400} height={400} src={logo} />
-                            </div>
-                            <p>{translate('home.p1')}</p>
-                            <p>
-                                {translate('home.p2')}
-                                {translate('home.p3')}
-                            </p>
-                            <p>{translate('home.p4')}</p>
-                            <Button onClick={() => setPage('catalog')} type="submit" variant="contained" sx={{ my: 2 }}>{translate('home.catalog')}</Button>
-                            <Button onClick={() => setPage('signup')} variant="contained" sx={{ my: 2 }}>{translate('home.register')}</Button>
-                            <Button onClick={() => setPage('login')} variant="contained" sx={{ my: 2 }}>{translate('home.login')}</Button>
-                        </CardContent>
-                    </Card>
-                </Container>
-            </div>
-        )
+        if (localStorage.getItem("currentUser") !== "not logged"){
+            return (
+                <div>
+                    <Header setUser={props.setUser} />
+                    <Container component="main" maxWidth="sm">
+                        <Card className={"main"} elevation={10} style={{ display: "grid" }}>
+                            <CardContent style={{ display: "grid", margin: "auto", textAlign: "center" }}>
+                                <div>
+                                    <img alt="Logo" width={400} height={400} src={logo} />
+                                </div>
+                                <p>{translate('home.p1')}</p>
+                                <p>
+                                    {translate('home.p2')}
+                                    {translate('home.p3')}
+                                </p>
+                                <p>{translate('home.p4')}</p>
+                                <Button onClick={() => setPage('catalog')} type="submit" variant="contained" sx={{ my: 2 }}>{translate('home.catalog')}</Button>
+                            </CardContent>
+                        </Card>
+                    </Container>
+                </div>
+            )
+        }
+        else{
+            return (
+                <div>
+                    <Header setUser={props.setUser} />
+                    <Container component="main" maxWidth="sm">
+                        <Card className={"main"} elevation={10} style={{ display: "grid" }}>
+                            <CardContent style={{ display: "grid", margin: "auto", textAlign: "center" }}>
+                                <div>
+                                    <img alt="Logo" width={400} height={400} src={logo} />
+                                </div>
+                                <p>{translate('home.p1')}</p>
+                                <p>
+                                    {translate('home.p2')}
+                                    {translate('home.p3')}
+                                </p>
+                                <p>{translate('home.p4')}</p>
+                                <Button onClick={() => setPage('catalog')} type="submit" variant="contained" sx={{ my: 2 }}>{translate('home.catalog')}</Button>
+                                <Button onClick={() => setPage('signup')} variant="contained" sx={{ my: 2 }}>{translate('home.register')}</Button>
+                                <Button onClick={() => setPage('login')} variant="contained" sx={{ my: 2 }}>{translate('home.login')}</Button>
+                            </CardContent>
+                        </Card>
+                    </Container>
+                </div>
+            )
+        }
     }
-
-    
 }
 export default HomePage;

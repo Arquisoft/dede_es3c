@@ -7,7 +7,7 @@ enum LangActionType {
   SET_LANGUAGE = 'SET_LANGUAGE'
 }
 
-interface LangState {
+ interface LangState {
   language: string;
 }
 
@@ -22,14 +22,12 @@ interface SetLanguageAction {
 
 interface ContextProps {
   state: LangState;
-  dispatch: {
-    setLanguage: (lang: string) => void;
-    translate: (key: string) => string;
-  }
+  dispatch: { setLanguage: (lang: string) => void;
+              translate: (key: string) => string;}
 }
 
 const langReducer = (state: LangState, action: SetLanguageAction): LangState => {
-  if (action.type == LangActionType.SET_LANGUAGE){
+  if (action.type === LangActionType.SET_LANGUAGE){
     return {
       language: action.payload
     }
@@ -48,7 +46,6 @@ export const LangContext = createContext({} as ContextProps);
 
 const LangState_: FC<LangStateProps> = ({ children }) => {
   const [state, dispatch] = useReducer(langReducer, initialState);
-
   const setLanguage = (lang: string) => {
     localStorage.setItem('language', lang);
     dispatch({

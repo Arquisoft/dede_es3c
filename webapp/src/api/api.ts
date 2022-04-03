@@ -1,4 +1,4 @@
-import {User, Product} from '../shared/shareddtypes';
+import {User, Product, Order} from '../shared/shareddtypes';
 
 export async function addUser(user:User):Promise<boolean>{
     const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
@@ -16,12 +16,11 @@ export async function addUser(user:User):Promise<boolean>{
 export async function getUsers():Promise<User[]>{
     const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
     let response = await fetch(apiEndPoint+'/users/list');
-    //The objects returned by the api are directly convertible to User objects
     return response.json()
 }
 
 
-export async function checkUser(username: string, password: string): Promise<boolean> {
+export async function checkUser(username: string): Promise<boolean> {
   let response = await fetch("http://localhost:5000/api/users/username/" + username, {
     method: "GET",
     headers: { "Content-Type": "application/json" },
@@ -48,7 +47,7 @@ export async function signup(username:string ,password:string, email:string) {
   let response = await fetch(apiEndPoint+'/register', {
       method: 'POST',
       headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({'username': username, 'password': password, 'email':email})
+      body: JSON.stringify({'username': username, 'password': password, 'email':email, 'rol':"Client"})
     });
     return response.json();
 }
@@ -123,4 +122,22 @@ export async function deleteProduct(id: string): Promise<boolean> {
     return true;
   else
     return false;
+}
+
+export async function getOrders(): Promise<Order[]>{
+  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+  let response = await fetch(apiEndPoint + '/orders');
+  return response.json()
+}
+
+export async function getOrdersByEmail(email:string) {
+  const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+  let response = await fetch(apiEndPoint+'/orders/user/' + email);
+    return response.json();
+}
+
+export async function getAddress(webID:string) {
+  const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+  let response = await fetch(apiEndPoint+'/users/userpod/' + webID);
+    return response.json();
 }

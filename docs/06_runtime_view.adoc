@@ -8,19 +8,17 @@
 actor User
 entity WebApp
 entity RestApi
-database USER_POD
 database DataBase
 User-> WebApp : Register
 WebApp-> RestApi : send user data
-RestApi -> USER_POD : store user data
-USER_POD -> RestApi : return data location
-RestApi -> DataBase: store data location
+RestApi -> DataBase : store user data
+DataBase -> RestApi : return data location
 RestApi -> WebApp: Notify success
 WebApp-> User: Notify success
 @enduml
 ----
 
-This runtime view shows the process of registering a user, going through WebApp and ApiRest to the user POD and storing the location in the database.
+This runtime view shows the process of registering a user, going through WebApp and ApiRest to database, storing the data in the database.
 
 === Login User DataBase
 [plantuml,"LoginUserDataBase",png]
@@ -50,10 +48,9 @@ actor User
 entity WebApp
 entity RestApi
 database USER_POD
-database DataBase
 User-> WebApp : Login
 WebApp-> RestApi : send login data
-RestApi -> DataBase : find data location
+RestApi -> RestApi : find usser POD
 RestApi -> USER_POD : load login data
 USER_POD -> RestApi : send data
 RestApi -> RestApi : check login data

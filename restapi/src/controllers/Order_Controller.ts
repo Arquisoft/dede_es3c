@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { DeleteResult } from 'typeorm';
 import { Order } from '../entities/Order';
 import { OrderService } from '../services/Order_Service';
+import { ProductService } from '../services/Product_Service';
 
 
 export class OrderController {
@@ -15,6 +16,20 @@ export class OrderController {
     public async getOrders(req: Request, res: Response) {
         try {
             res.status(200).json(await OrderService.getOrders(req.app));
+        } catch (error) {
+            res.status(500).json({ error: "Error on get all Orders" });
+        }
+    }
+
+    /**
+     * Get all orders
+     * @param req Request
+     * @param res Response
+     * @returns All orders with status 200 or error 500
+     */
+     public async getOrdersByUserEmail(req: Request, res: Response) {
+        try {
+            res.status(200).json(await OrderService.getOrdersByUserEmail(req.app, String(req.params.email)));
         } catch (error) {
             res.status(500).json({ error: "Error on get all Orders" });
         }
@@ -74,6 +89,9 @@ export class OrderController {
     public async addOrder(req: Request, res: Response) {
         try {
             let orderBody = new Order(req.body.user,req.body.products);
+            for (var p of orderBody.products) {
+                ProductService.decrementProductStock(req.app, p.product.id, p.quantity);
+            }
             const order = await OrderService.addOrder(req.app, orderBody);
             order ? res.status(200).json(order) : res.status(500).json({ error: "Error add Order" });
         } catch (error) {
