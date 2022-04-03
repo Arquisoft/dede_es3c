@@ -36,8 +36,6 @@ const OrdersPage: FC<OrdersPageProps> = (props: OrdersPageProps) => {
     if (orders.length === 0){
         return (
         <div className="main">
-         
-          {console.log(localStorage.getItem("currentUser"))}
             <h1>{translate("orders.title")}</h1>
             <div className="mainEmptyContainer" style={{display: 'flex',justifyContent:'center', alignItems:'center', height: '100vh'}}>
             <h2>{translate("orders.empty")}</h2>
