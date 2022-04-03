@@ -7,13 +7,6 @@ import OrdersPage from "../pages/OrdersPage";
 import DisplayOrders from "../components/DisplayOrders";
 import { Order, Product, ProductInOrder } from "../shared/shareddtypes";
 
-beforeAll(async () => {
-});
-
-afterAll(async () => {
-
-});
-
 test('check orders page text renders properly when the user has no orders', async () => {
   localStorage.setItem("currentUser", "user");
     render(

@@ -3,14 +3,6 @@ import HomePage from '../pages/HomePage';
 import LangState from "../lang";
 import UserState from "../lang";
 import React from "react";
-
-beforeAll(async () => {
-});
-
-afterAll(async () => {
-
-});
-
 test('check home page text renders properly (english)', async () => {
     render(
         <React.StrictMode>
