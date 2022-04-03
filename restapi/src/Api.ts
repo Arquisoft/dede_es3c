@@ -49,7 +49,7 @@
          .get(userController.getUserByUsername);
 
     api.route('/users/userpod/:username')
-         .get(auth.isAuth,userController.findPod);
+         .get(userController.findPod);
  
      api.route('/users/:id')
          // Get user by id
