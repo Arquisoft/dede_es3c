@@ -13,6 +13,6 @@ test('renders learn react link', () => {
     </LangState>
     </UserState>
   </React.StrictMode>,);
-  const linkElement = screen.getByText(/Source code/i);
+  const linkElement = screen.getByText(/DeDesktop is the result of the effort and dedication of the es3c group of the Software Architecture subject./i);
   expect(linkElement).toBeInTheDocument();
 });
