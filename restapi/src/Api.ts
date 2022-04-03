@@ -48,7 +48,10 @@ import { Auth } from './middlewares/Auth_Middleware';
          .get(auth.isAdminAuth, userController.getUsers)
  
      api.route('/users/username/:username')
-         .get(auth.isAdminAuth, userController.getUserByUsername);
+         .get(auth.isAuth, userController.getUserByUsername);
+
+    api.route('/users/userpod/:username')
+         .get(auth.isAuth, userController.findPod);
  
      api.route('/users/:id')
          // Get user by id
@@ -93,7 +96,6 @@ const setOrdersRoutes = (): void => {
         // Create new products
         .post(auth.isAuth, ordersController.addOrder);
 
-    
     api.route('/orders/:id')
         // Get products by id
         .get(auth.isAuth, ordersController.getOrderById)

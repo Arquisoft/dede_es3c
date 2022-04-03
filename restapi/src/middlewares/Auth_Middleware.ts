@@ -12,8 +12,6 @@ const signOpts = {
 const userController: UserController = new UserController(); // User Routes Controller
 export class Auth {
 
-
-
     /**
      * Login user and return token
      * @param req Request
@@ -26,7 +24,7 @@ export class Auth {
             if(user){
                 const hash = crypto.pbkdf2Sync(req.body.password, user.salt, 1000, 64, `sha512`).toString(`hex`);
                 hash == user.hash ? 
-                    res.status(200).send(Auth.createToken(user.username, user.rol)) :
+                    res.status(200).json(Auth.createToken(user.username, user.rol)) :
                     res.status(403).json({error: "Error, la contraseña no coincide"});
             } else res.status(404).json({error: "El usuario no existe"});
         } catch (error) {
@@ -46,7 +44,7 @@ export class Auth {
                 let hash = crypto.pbkdf2Sync(req.body.password, salt, 1000, 64, `sha512`).toString(`hex`);
                 let userBody = new User(req.body.username, req.body.email, salt, hash, req.body.rol );
                 const user = await UserService.addUser(req.app, userBody);
-                res.status(200).send(Auth.createToken(user.username, user.rol));
+                res.status(200).json(Auth.createToken(user.username, user.rol));
             } catch (error) {
                 res.status(500).json({ error: "Error al intentar registrarse" });
             }
@@ -62,7 +60,6 @@ export class Auth {
     public isAuth(req: Request, res: Response, next: () => void) {
         try {
             jwt.verify(`${req.headers.authorization}`, secret, function(err, decoded) {
-                console.log(decoded)
                 if(err){
                     res.status(403).send("Invalid authorization: "+err);
                 }else{

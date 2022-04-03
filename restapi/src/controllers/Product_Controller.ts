@@ -14,7 +14,7 @@ export class ProductController {
     try {
       res.status(200).json(await ProductService.getProducts(req.app));
     } catch (error) {
-      res.status(500).json({ error: "Error on get all Products" });
+      res.status(500).json({ error: `Error on get all Products: ${error}` });
     }
   }
 
@@ -141,9 +141,9 @@ export class ProductController {
         req.app,
         String(req.params.id)
       );
-      product.stock >= req.body.stock
+      product.stock - req.body.stock >= 0
         ? res.status(200).json(product)
-        : res.status(404).json({ error: "Product not found" });
+        : res.status(500).json({ error: "The stock of the product is insufficient" });
       const productU = await ProductService.decrementProductStock(
         req.app,
         String(req.params.id),
