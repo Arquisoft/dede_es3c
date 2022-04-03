@@ -12,6 +12,7 @@ import Header from "../components/Header";
 import { Button } from "react-bootstrap";
 import { Navigate } from "react-router-dom";
 import { LangContext } from '../lang';
+import Swal from "sweetalert2";
 
 interface SignUpProps{
     setUser: (user:string) => void
@@ -43,7 +44,12 @@ const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
             rol:"Client"
         }
 
-        if (isBlank(user.username) || isBlank(user.password) || isBlank(user.email) || isBlank(repeatedPassword)){
+        if ((isBlank(user.username) || isBlank(user.password) || isBlank(user.email) || isBlank(repeatedPassword))){
+            Swal.fire({
+                title: "Error",
+                text: translate("login.singin.error"),
+                icon: "error",
+            });
         } else {
            const found = await checkUser(name);
            if (!found){
