@@ -8,12 +8,13 @@ import SignUpPage from './pages/SignUpPage';
 import HomePage from './pages/HomePage';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import CrudAddPage from './pages/CrudAddPage';
-import CrudEditPage from './pages/CrudEditPage';
+import CrudEditPage from './pages/CrudUpdatePage';
 import CrudDeletePage from './pages/CrudDeletePage';
-import Prueba from './pages/Catalog';
+import OrdersPage from './pages/OrdersPage';
+import ShippingPage from './pages/ShippingPage';
+import CatalogPage from './pages/CatalogPage';
 
 const App: FC = () => {
-  const { dispatch: {translate }} = useContext(LangContext);
   const { dispatch: {setUser}} = useContext(UserContext);
 
   return (
@@ -23,45 +24,57 @@ const App: FC = () => {
           path='/'
           element = 
           {
-            <HomePage setUser={setUser} translate={translate}/>
+            <HomePage setUser={setUser}/>
           }
         />
         <Route
-        path='login'
-        element = 
-        {
-          <LoginPage setUser={setUser} translate={translate} />
-        }
-        />
+          path='login'
+          element = 
+          {
+            <LoginPage setUser={setUser}/>
+          }
+          />
         <Route
-        path='signup'
-        element =
-        {
-          <SignUpPage setUser={setUser} translate={translate} />
-        }
-        />
+          path='signup'
+          element =
+          {
+            <SignUpPage setUser={setUser}/>
+          }
+          />
         <Route
           path='addProduct'
           element={
-            <CrudAddPage setUser={setUser} translate={translate}/>
+            <CrudAddPage setUser={setUser}/>
           }
           />
         <Route
           path='editProduct'
           element={
-            <CrudEditPage setUser={setUser} translate={translate} />
+            <CrudEditPage setUser={setUser} />
           }
         />
         <Route
           path='deleteProduct'
           element={
-            <CrudDeletePage setUser={setUser} translate={translate} />
+            <CrudDeletePage setUser={setUser}/>
           }
         />
         <Route
           path='catalog'
           element={
-            <Prueba setUser={setUser} translate={translate} />
+            <CatalogPage setUser={setUser}/>
+          }
+        />
+        <Route
+          path='orders'
+          element={
+            <OrdersPage setUser={setUser}/>
+          }
+        />
+        <Route
+          path='shipping'
+          element={
+            <ShippingPage setUser={setUser}/>
           }
         />
       </Routes>

@@ -8,10 +8,9 @@ import catalogIcon from '../img/catalog-icon.svg';
 import englishIcon from '../img/english-icon.svg';
 import loginIcon from '../img/login-icon.svg';
 import logoutIcon from '../img/logout-icon.svg';
-import shoppingCartIcon from '../img/shopping-cart-icon.svg';
 import spanishIcon from '../img/spanish-icon.svg';
 import registerIcon from '../img/register-icon.svg';
-import { Link } from 'react-router-dom';
+import ordersIcon from '../img/checkout-icon.svg';
 
 interface HeaderProps {
   setUser:(user:string) => void
@@ -43,9 +42,9 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
   }
 
   const logOut = () => {
+    localStorage.setItem("cart", "[]");
     localStorage.removeItem("token");
     props.setUser("not logged");
-    console.log(localStorage.getItem("currentUser"))
   }
 
   if (localStorage.getItem("currentUser") !== "not logged" && !(localStorage.getItem("currentUser")?.includes("admin"))) {
@@ -67,13 +66,13 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
                     <img alt="" src={catalogIcon} width="20" height="20" className="d-inline-block align-top" />
                     {translate('nav.catalog')}
                   </Link>
-                <Link to="/carrito" className="nav-link">
-                  <img alt="" src={shoppingCartIcon} width="20" height="20" className="d-inline-block align-top" />
-                  {translate('nav.shoppingcart')}
-                </Link>
                 <Link onClick={logOut} to="/login" className="nav-link">
                   <img alt="" src={logoutIcon} width="20" height="20" className="d-inline-block align-top" />
                   {translate('nav.logout')}
+                </Link>
+                <Link href="/orders">
+                  <img alt="" src={ordersIcon} width="25" height="25" className="d-inline-block align-top nav-link" />
+                  {translate("nav.orders")}
                 </Link>
                 <NavDropdown title={translate('nav.languaje')} id="idioma-dropdown" className="ms-auto">
                   <Dropdown.Item as="button" onClick={() => chooseLanguageHandler('ES')}>
@@ -109,10 +108,6 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
                   <Link to="/catalog" className="nav-link">
                     <img alt="" src={catalogIcon} width="20" height="20" className="d-inline-block align-top" />
                     {translate('nav.catalog')}
-                  </Link>
-                  <Link to="/carrito" className="nav-link">
-                    <img alt="" src={shoppingCartIcon} width="20" height="20" className="d-inline-block align-top" />
-                    {translate('nav.shoppingcart')}
                   </Link>
                   <NavDropdown title={translate('nav.admin')} id="productos-admin-dropdown">
                     <Dropdown.Item to="/addProduct">
@@ -163,10 +158,6 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
               <Link to="/catalog" className="nav-link">
                 <img alt="" src={catalogIcon} width="20" height="20" className="d-inline-block align-top" />
                 {translate('nav.catalog')}
-              </Link>
-              <Link to="/carrito" className="nav-link">
-                <img alt="" src={shoppingCartIcon} width="20" height="20" className="d-inline-block align-top" />
-                {translate('nav.shoppingcart')}
               </Link>
               <Link to="/signup" className="nav-link">
                 <img alt="" src={registerIcon} width="20" height="20" className="d-inline-block align-top" />

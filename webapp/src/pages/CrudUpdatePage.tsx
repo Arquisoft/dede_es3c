@@ -1,11 +1,11 @@
-import React, { Fragment, FC, useState, useContext } from "react";
+import { Fragment, FC, useState, useContext } from "react";
 import Header from "../components/Header";
 import { Container, Card, CardContent, FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import "bootswatch/dist/morph/bootstrap.min.css"
 import { Product } from "../shared/shareddtypes";
-import { addProduct } from "../api/api"
+import {updateProduct} from "../api/api";
 import { LangContext } from '../lang';
 import Home from '../pages/HomePage';
 
@@ -17,36 +17,48 @@ const isBlank = (text: string) => {
     return (text.length === 0);
 }
 
-const CrudAddPage: FC<CrudPageProps> = (props: CrudPageProps) => {
+const CrudEditPage: FC<CrudPageProps> = (props: CrudPageProps) => {
     const { dispatch: { translate } } = useContext(LangContext);
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
     const [category, setCategory] = useState('');
     const [urlPhoto, setUrlPhoto] = useState('');
+    const [id, setId] = useState('');
 
-    const addProductAux = async () => {
-        const product: Product = {name: name, description: description, price: Number(price), category: category, urlPhoto: urlPhoto, amount: 0}
+    const updateProductAux = async () => {
+        const product: Product = { name: name, description: description, price: Number(price), category: category, urlPhoto: urlPhoto, amount: 0 }
 
-        if (isBlank(product.name) || isBlank(product.description) || isBlank(product.category) || isBlank(product.urlPhoto)) {
+        if (isBlank(product.name) || isBlank(product.description) || isBlank(product.category) || isBlank(product.urlPhoto) || isBlank(id)) {
             //console.log("novalido");
         } else {
-            await addProduct(product);
+            await updateProduct(id, product);
         }
     }
-    if (!localStorage.getItem("currentUser")?.includes("admin")) {
-        return (<Home setUser={props.setUser} />)
+
+    if (!localStorage.getItem("currentUser")?.includes("admin")){
+        return (<Home setUser={props.setUser}/>)
     }
-    else {
+    else{
         return (
             <div>
                 <Header setUser={props.setUser} />
                 <Container component="main" maxWidth="sm">
                     <Card className={"main"} elevation={10} style={{ display: "grid" }}>
                         <CardContent style={{ display: "grid", margin: "auto", textAlign: "center" }}>
-                            <h3 aria-label="addProductTitle">{translate('crud.add')}</h3>
+                            <h3 aria-label="updateProductTitle">{translate('crud.update')}</h3>
                             <Fragment>
-                                <form id="add">
+                                <form id="edit" >
+                                    <TextField
+                                        required
+                                        size="small"
+                                        id="standard-helperText"
+                                        label={translate('crud.ID')}
+                                        variant="outlined"
+                                        sx={{ my: 2 }}
+                                        value={id}
+                                        onChange={e => setId(e.target.value)}
+                                    />
                                     <TextField
                                         required
                                         size="small"
@@ -105,7 +117,7 @@ const CrudAddPage: FC<CrudPageProps> = (props: CrudPageProps) => {
                                     </FormControl>
                                 </form>
                             </Fragment>
-                            <Button onClick={() => addProductAux()} variant="contained" type="submit" sx={{ my: 2 }} aria-label="addButton">{translate('crud.add')}</Button>
+                            <Button onClick={() => updateProductAux()} variant="contained" type="submit" sx={{ my: 2 }} aria-label="updateButton">{translate('crud.update')}</Button>
                         </CardContent>
                     </Card>
                 </Container>
@@ -113,4 +125,4 @@ const CrudAddPage: FC<CrudPageProps> = (props: CrudPageProps) => {
         )
     }
 }
-export default CrudAddPage;
+export default CrudEditPage;

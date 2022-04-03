@@ -10,7 +10,6 @@ import {
 } from "@inrupt/solid-client";
 
 import { VCARD } from "@inrupt/vocab-common-rdf";
-import { UserPOD } from "../entities/UserPOD";
 
 export class UserController {
   /**
@@ -129,81 +128,46 @@ export class UserController {
    * @param res Response
    * @returns Address with status 200 or error 500
    */
-  public async findPod(req: Request, res: Response) {
-    const username = req.params.username;
+    public async findPod(req: Request, res: Response) {
 
-    try {
-      const SOLIDDataset = await getSolidDataset(
-        "https://" + username + ".inrupt.net/profile/card",
-        {
-          fetch: fetch,
-        }
-      );
-      const Userprofile = getThing(
-        SOLIDDataset,
-        "https://" + username + ".inrupt.net/profile/card#me"
-      );
-      const addressUserWebID =
-        Userprofile!.predicates["http://www.w3.org/2006/vcard/ns#hasAddress"][
-          "namedNodes"
-        ];
-      const idUserPodAddress = addressUserWebID![0].split("#")[1];
-      let userAddress = {} as UserPOD;
+            const webID = req.params.username;
+        
+            try {
+                const myDataset = await getSolidDataset(
+                    "https://" + webID  + ".inrupt.net/profile/card", {
+                    fetch: fetch
+                });
+                
+                const user = getThing(myDataset, "https://" + webID + ".inrupt.net/profile/card#me")
+                const addressWebID = user!.predicates["http://www.w3.org/2006/vcard/ns#hasAddress"]["namedNodes"]
+                const userAddress = addressWebID![0].split('#')[1]             
+                if (userAddress === null){
+                    return res.status(400).json({msg: "Address not found"});
+                }
+        
+                const getAddress = getThing(myDataset, "https://" + webID + ".inrupt.net/profile/card#" + userAddress);    
+                const country = getStringNoLocale(getAddress!, VCARD.country_name);
+                const region = getStringNoLocale(getAddress!, VCARD.region);
+                const locality = getStringNoLocale(getAddress!, VCARD.locality);
+                const street = getStringNoLocale(getAddress!, VCARD.street_address);
+                const postalCode = getStringNoLocale(getAddress!, VCARD.postal_code);
+                if (country === null  ||region === null ||locality === null || street === null ||postalCode === null){
+                    return res.status(400).json({msg: "Error finding the Address requirements"});
+                } else {
+                    return res.status(200).json({
+                        country: country,
+                        region: region,
+                        locality: locality,
+                        street: street,
+                        postalCode: postalCode
 
-      if (idUserPodAddress == null) {
-        res.status(500).json({ error: "Error, address could not be found" });
-      }
-
-      const getUserSOLIDAddress = getThing(
-        SOLIDDataset,
-        "https://" + username + ".inrupt.net/profile/card#" + idUserPodAddress
-      );
-      if (getUserSOLIDAddress) {
-        const postal_code = getStringNoLocale(
-          getUserSOLIDAddress,
-          VCARD.postal_code
-        );
-        userAddress.postal_code = String(postal_code);
-
-        const country_name = getStringNoLocale(
-          getUserSOLIDAddress,
-          VCARD.country_name
-        );
-        userAddress.country_name = String(country_name);
-
-        const locality = getStringNoLocale(getUserSOLIDAddress, VCARD.locality);
-        userAddress.locality = String(locality);
-
-        const street_address = getStringNoLocale(
-          getUserSOLIDAddress,
-          VCARD.street_address
-        );
-        userAddress.street_address = String(street_address);
-
-        const region = getStringNoLocale(getUserSOLIDAddress, VCARD.region);
-        userAddress.region = String(region);
-
-        if (
-          country_name ||
-          region ||
-          locality ||
-          street_address ||
-          postal_code
-        ) {
-          res.status(200).json({ result: userAddress });
-        } else {
-          res.status(500).json({
-            error:
-              "Error, one of the address fields is null and does not exist",
-          });
-        }
-      }
-    } catch (error) {
-      res
-        .status(500)
-        .json({ error: "Error on find user POD by username: " + error });
+                    })
+                }
+            } catch (error) {
+                return res.status(400).json({msg: "POD not found"})
+            }
     }
-  }
+
 
   /**
    * Create user

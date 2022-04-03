@@ -2,32 +2,30 @@
  * REST API Routes with Express
  * @author: Sergio Arroni del Reigo - UO276341
  */
-import express, { Router } from 'express';
-import {check} from 'express-validator';
-import { ProductController } from './controllers/Product_Controller';
-import { UserController } from './controllers/User_Controller';
-import { OrderController } from './controllers/Order_Controller';
-import { Auth } from './middlewares/Auth_Middleware';
- 
- // =================================> Constants
- const api: Router = express.Router(); // Express router
- const auth: Auth = new Auth(); // Auth middleware
- const userController: UserController = new UserController(); // User Routes Controller
- const productsController: ProductController = new ProductController(); // Products Routes Controller
- const ordersController: OrderController = new OrderController(); // Orders Routes Controller
- 
- // =================================> Routes
- const setAuthRoutes = (): void => {
-     api.route('/login')
-         .post([
-             check('username').isLength({min: 1}),
-             check('password').isLength({min: 1}),
-             check('email').isEmail().normalizeEmail()
-         ], auth.login);
- };
-
-  // =================================> Routes
+ import express, { Router } from 'express';
+ import {check} from 'express-validator';
+ import { ProductController } from './controllers/Product_Controller';
+ import { UserController } from './controllers/User_Controller';
+ import { OrderController } from './controllers/Order_Controller';
+ import { Auth } from './middlewares/Auth_Middleware';
   
+  // =================================> Constants
+  const api: Router = express.Router(); // Express router
+  const auth: Auth = new Auth(); // Auth middleware
+  const userController: UserController = new UserController(); // User Routes Controller
+  const productsController: ProductController = new ProductController(); // Products Routes Controller
+  const ordersController: OrderController = new OrderController(); // Orders Routes Controller
+  // =================================> Routes
+  const setAuthRoutes = (): void => {
+      api.route('/login')
+          .post([
+              check('username').isLength({min: 1}),
+              check('password').isLength({min: 1}),
+              check('email').isEmail().normalizeEmail()
+          ], auth.login);
+  };
+ 
+   // =================================> Routes
   const setRegisterRoutes = (): void => {
     api.route('/register')
              // Create new user
@@ -45,13 +43,13 @@ import { Auth } from './middlewares/Auth_Middleware';
  
      api.route('/users')
          // Get all users
-         .get(auth.isAdminAuth, userController.getUsers)
+         .get(/*auth.isAdminAuth, */userController.getUsers)
  
      api.route('/users/username/:username')
-         .get(auth.isAuth, userController.getUserByUsername);
+         .get(/*auth.isAdminAuth, */userController.getUserByUsername);
 
     api.route('/users/userpod/:username')
-         .get(auth.isAuth, userController.findPod);
+         .get(/*auth.isAdminAuth, */userController.findPod);
  
      api.route('/users/:id')
          // Get user by id
@@ -91,25 +89,30 @@ import { Auth } from './middlewares/Auth_Middleware';
 const setOrdersRoutes = (): void => {
  
     api.route('/orders')
-        // Get all products
-        .get(auth.isAuth, ordersController.getOrders)
-        // Create new products
+        // Get all orders
+        .get(/*auth.isAuth,*/ ordersController.getOrders)
+        // Create new orders
         .post(auth.isAuth, ordersController.addOrder);
 
+
+    api.route('/orders/user/:email')
+        // Get orders by user email
+        .get(/*auth.isAuth,*/ ordersController.getOrdersByUserEmail)
+    
     api.route('/orders/:id')
-        // Get products by id
+        // Get orders by id
         .get(auth.isAuth, ordersController.getOrderById)
-        // Delete products by id
+        // Delete orders by id
         .delete(auth.isAdminAuth, ordersController.deleteOrder)
-        // Update products by id
+        // Update orders by id
         .put(auth.isAdminAuth, ordersController.updateOrder)
+
+    
 }
- 
- // =================================> Main
- setAuthRoutes();
- setUserRoutes();
- setProductsRoutes();
- setRegisterRoutes();
- setOrdersRoutes();
- 
- export default api;
+  setAuthRoutes();
+  setUserRoutes();
+  setProductsRoutes();
+  setRegisterRoutes();
+  setOrdersRoutes();
+  
+  export default api;

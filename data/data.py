@@ -183,3 +183,41 @@ print("Output from Python")
 print("First name: " + sys.argv[1]) 
 print("Last name: " + sys.argv[2]) 
 '''
+
+collection = db.productorder
+
+prodord1 = {
+		"id": str(uuid.uuid4()),
+		"product": prod1,
+		"quantity": 5
+		}
+prodord2 = {
+		"id": str(uuid.uuid4()),
+		"product": prod3,
+		"quantity": 2
+		}
+prodord3 = {
+		"id": str(uuid.uuid4()),
+		"product": prod9,
+		"quantity": 6
+		}
+# Insert Data
+rec_prodorder_id1=collection.insert_one(prodord1)
+rec_prodorder_id2=collection.insert_one(prodord2)
+rec_prodorder_id2=collection.insert_one(prodord3)
+
+collection = db.order
+
+ord1 = {
+		"id": str(uuid.uuid4()),
+		"user": "Thegoat@gmail.com",
+		"products": [prodord1,prodord2]
+		}
+ord2 = {
+		"id": str(uuid.uuid4()),
+		"user": "Chef@gmail.com",
+		"products": [prodord1,prodord2,prodord3]
+		}
+# Insert Data
+rec_order_id1=collection.insert_one(ord1)
+rec_order_id2=collection.insert_one(ord2)
