@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import CatalogPage from '../pages/CatalogPage';
+import CatalogPage from '../pages/Catalog';
 import LangState from '../lang';
 import UserState from '../User';
 

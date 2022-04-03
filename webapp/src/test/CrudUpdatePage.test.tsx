@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import LangState from "../lang";
 import UserState from "../User";
 import React from "react";
-import CrudUpdatePage from "../pages/CrudUpdatePage";
+import CrudUpdatePage from "../pages/CrudEditPage";
 
 test('Update product page renders properly as admin', async () => {
     localStorage.setItem('currentUser', "admin");

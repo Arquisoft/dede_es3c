@@ -7,7 +7,7 @@ import "bootswatch/dist/morph/bootstrap.min.css"
 import { Product } from "../shared/shareddtypes";
 import {updateProduct} from "../api/api";
 import { LangContext } from '../lang';
-import Home from '../pages/HomePage';
+import Home from './HomePage';
 
 interface CrudPageProps {
     setUser: (user: string) => void
