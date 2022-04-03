@@ -5,6 +5,7 @@ import { Button } from "react-bootstrap";
 import { Product } from "../shared/shareddtypes";
 import { getAddress } from "../api/api";
 import Swal from 'sweetalert2';
+import { Navigate } from "react-router-dom";
 
 interface ShippingPageProps {
     translate: (key: string) => string
@@ -57,6 +58,20 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
     });
 
     }
+  }
+
+  if (localStorage.getItem("currentUser") === "not logged"){
+    return <Navigate to={"/login"}/>
+  } else if (cartProducts.length === 0){
+    return (
+      <div>
+        <Header setUser={props.setUser}/>
+        <h1>{props.translate("shipping.title")}</h1>
+        <h2>{props.translate("shipping.nothing")}</h2>
+        <Button href="/catalog">{props.translate("orders.shopping")}</Button>
+      </div>    
+    );
+
   }
   return(
     <div>
