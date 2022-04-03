@@ -1,4 +1,4 @@
-import React, {FC, useState} from "react";
+import React, { FC, useState, useContext } from "react";
 import TextField from '@mui/material/TextField';
 import "bootswatch/dist/morph/bootstrap.min.css"
 import {Container, Card , CardContent} from "@mui/material";
@@ -12,13 +12,17 @@ import { User } from "../shared/shareddtypes";
 import Header from "../components/Header";
 import { Button } from "react-bootstrap";
 import { Navigate } from "react-router-dom";
+import { LangContext } from '../lang';
+import { UserContext } from '../User';
+import CatalogPage from '../pages/CatalogPage';
 
 interface SignUpProps{
-    translate: (key: string) => string
+    //translate: (key: string) => string
     setUser: (user:string) => void
 }
 
 const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
+    const { dispatch: { translate } } = useContext(LangContext);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -61,7 +65,8 @@ const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
     }
     }
     if (registered || localStorage.getItem("currentUser") !== "not logged"){
-        return (<Navigate to="/catalog" />);
+        //return (<Navigate to="/catalog" />);
+        return (<CatalogPage setUser={props.setUser} />);
     } else {
     return(
     <div>
@@ -72,8 +77,8 @@ const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
             <div>
             <img  alt="Logo" width={150} height = {150} src={logo} />
             </div>
-                <h1>{props.translate('signup.h1')}</h1>
-                <h2>{props.translate('signup.h2')}</h2>
+                <h1>{translate('signup.h1')}</h1>
+                <h2>{translate('signup.h2')}</h2>
                 <form>
                 <div>
                     <TextField
@@ -81,7 +86,7 @@ const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
                         required
                         size="small"
                         name="name"
-                        label= {props.translate ('signup.name')} 
+                        label= {translate ('signup.name')} 
                         InputProps={{
                             startAdornment: (
                               <InputAdornment position="start">
@@ -91,7 +96,7 @@ const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
                           }}
                         variant="outlined"
                         value={name}
-                        helperText= {props.translate('signup.name')}
+                        helperText= {translate('signup.name')}
                         onChange={e => setName(e.target.value)}
                         error = {exists === 2 || (pulsed && name.length === 0)}
                         sx={{ my: 2 }}
@@ -105,10 +110,10 @@ const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
                         name="email"
                         size="small"
                         value = {email}
-                        label= {props.translate ('signup.email')} 
+                        label= {translate ('signup.email')} 
                         variant="outlined"
                         onChange={e => setEmail(e.target.value)}
-                        helperText= {props.translate('signup.email')}
+                        helperText= {translate('signup.email')}
                         error = {(pulsed && email.length === 0)}
                         sx={{ my: 2 }}
                         /> 
@@ -120,10 +125,10 @@ const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
                         name="password"
                         type = "password"
                         size="small"
-                        label= {props.translate ('signup.pass')} 
+                        label= {translate ('signup.pass')} 
                         variant="outlined"
                         onChange={e => setPassword(e.target.value)}
-                        helperText= {props.translate('signup.pass')}
+                        helperText= {translate('signup.pass')}
                         error = {(pulsed && password.length === 0)}
                         sx={{ my: 2 }}
                         /> 
@@ -135,10 +140,10 @@ const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
                         name="rPassword"
                         type = "password"
                         size="small"
-                        label= {props.translate ('signup.passwd')} 
+                        label= {translate ('signup.passwd')} 
                         variant="outlined"
                         onChange={e => setRepeatedPassword(e.target.value)}
-                        helperText= {props.translate('signup.passwd')}
+                        helperText= {translate('signup.passwd')}
                         error = {(password !== repeatedPassword) || (pulsed && repeatedPassword.length === 0)}
                         sx={{ my: 2 }}
                         /> 
@@ -149,8 +154,8 @@ const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
                     variant="contained" 
                     type="submit"
                     color="primary"
-                     >{props.translate('signup.signup')}</Button>
-            <Link to="/login">{props.translate('signup.login')}</Link>
+                     >{translate('signup.signup')}</Button>
+            <Link to="/login">{translate('signup.login')}</Link>
             </CardContent>
             </Card>
         </Container>

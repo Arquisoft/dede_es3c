@@ -1,25 +1,17 @@
-import { render, screen } from "@testing-library/react";
-import HomePage from '../pages/HomePage';
-import React, { useContext } from "react";
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import App from '../App';
 import LangState from '../lang';
 import UserState from '../User';
 
-beforeAll(async () => {
-
-});
-
-afterAll(async () => {
-
-});
-
-test('Home renders properly without user logged', () => {
+test('App (Home) renders properly without user logged', () => {
   localStorage.setItem('currentUser', "not logged");
-
+  
   render(
     <React.StrictMode>
       <UserState>
         <LangState>
-          <HomePage setUser={() => "not Logged"} />
+          <App />
         </LangState>
       </UserState>
     </React.StrictMode>,
@@ -35,12 +27,12 @@ test('Home renders properly without user logged', () => {
   expect(linkElement).toBeInTheDocument();
 });
 
-test('Home renders properly with user logged', () => {
+test('App (Home) renders properly with user logged', () => {
   render(
     <React.StrictMode>
       <UserState>
         <LangState>
-          <HomePage setUser={() => "user"} />
+          <App />
         </LangState>
       </UserState>
     </React.StrictMode>,

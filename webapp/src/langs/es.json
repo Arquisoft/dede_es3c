@@ -12,7 +12,7 @@
     "login.validate": "Validar",
     "login.solid": "Inicia sesión con tu usuario y contraseña",
     "login.welcome":"Bienvenido, ",
-    "login.solidUser":"Usuario:",
+    "login.solidUser":"Usuario: ",
     "login.solidPass": "Contraseña: ",
 	"login.idButton":"Log in con id",
     "login.signup":"¿No tienes una cuenta? Regístrate",

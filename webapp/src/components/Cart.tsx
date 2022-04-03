@@ -36,7 +36,7 @@ const Cart: React.FC<CartProps> = ({ cartItems, addToCart, removeFromCart }) => 
 
     return (
         <div>
-            <h2>{translate('cart.title')}</h2>
+            <h2 aria-label="cartTitle">{translate('cart.title')}</h2>
             {cartItems.length === 0 ? <p>{translate('cart.empty')}</p> : null}
             {cartItems.map((item: CartProduct) =>
                 <CartItem

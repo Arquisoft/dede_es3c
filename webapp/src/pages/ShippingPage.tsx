@@ -1,17 +1,19 @@
-import React, {Fragment, FC, useState} from "react";
+import React, {Fragment, FC, useState, useContext} from "react";
 import Header from "../components/Header"
 import { Card, CardContent, Container, List, ListItem, ListItemButton, ListItemText, ListSubheader, TextField} from "@mui/material";
 import { Button } from "react-bootstrap";
 import { Product } from "../shared/shareddtypes";
 import { getAddress } from "../api/api";
 import Swal from 'sweetalert2';
+import { LangContext } from '../lang';
 
 interface ShippingPageProps {
-    translate: (key: string) => string
+    //translate: (key: string) => string
     setUser:(user:string) => void
 }
 
 const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
+  const { dispatch: { translate } } = useContext(LangContext);
   const [webID, setWebID] = useState("");
   const [countryName, setCountryName] = useState("");
   const [locality, setLocality] = useState("");
@@ -52,7 +54,7 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
     } else {
       Swal.fire({
         title: "Error",
-        text: props.translate("solid.error"),
+        text: translate("solid.error"),
         icon: "error",
     });
 
@@ -61,11 +63,11 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
   return(
     <div>
       <Header setUser={props.setUser}/>
-      <h1>{props.translate("shipping.title")}</h1> 
+      <h1 aria-label="selectedProductsTitle">{translate("shipping.title")}</h1> 
       <Container component="main" maxWidth="sm">
         <Card className={"main"} elevation={10} style={{display: "grid"}}>
         <CardContent style={{ display: "grid", margin: "auto", textAlign: "center" }}>
-                <h3>{props.translate('shipping.selectedProducts')}</h3>
+                <h3 aria-label="selectedProductsSubtitle">{translate('shipping.selectedProducts')}</h3>
                     <Fragment>
                     <List
                     style={{ display: "grid", margin: "auto", textAlign: "center" }}
@@ -81,7 +83,7 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                     >
                       <li key={'Productos'}>
                         <ul>
-                          <ListSubheader>{props.translate('shipping.selectedProducts')}</ListSubheader>
+                          <ListSubheader>{translate('shipping.selectedProducts')}</ListSubheader>
                           {cartProducts.map((item) => (
                           <ListItem key={item.name}>
                             <img alt="desc" src= {item.urlPhoto} width= '70' height='70'/>
@@ -91,27 +93,27 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                         </ul>
                         <ul>
                         <ListItem>
-                        <ListItemText primary={props.translate("shipping.withoutA") +finalPrice} />
+                          <ListItemText primary={translate("shipping.withoutA") + finalPrice.toFixed(2) + "$"}/>
                         </ListItem>
                         </ul>
                       </li>
                     </List>
                     </Fragment>
                     <Fragment>
-                      <h2>{props.translate("shipping.address")}</h2>
+                      <h2>{translate("shipping.address")}</h2>
                       <TextField
                         required
                         size="small"
                         name="username"
-                        label= {props.translate ('login.solidUser')} 
+                        label= {translate ('login.solidUser')} 
                         variant="outlined"
                         value={webID}
-                        helperText= {props.translate('login.input')}
+                        helperText= {translate('login.input')}
                         onChange={e => setWebID(e.target.value)}
                         sx={{ my: 2 }} >
                       </TextField>
                       <Button onClick={() => getAdd()}>
-                        {props.translate("login.validate")}
+                        {translate("login.validate")}
                       </Button>
                       <div>
                       <TextField
@@ -119,7 +121,7 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                         required
                         size="small"
                         name="country"
-                        label= {props.translate ('shipping.country')} 
+                        label= {translate ('shipping.country')} 
                         variant="outlined"
                         value={countryName}
                         sx={{ my: 2 }} 
@@ -130,7 +132,7 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                         required
                         size="small"
                         name="locality"
-                        label= {props.translate ('shipping.locality')} 
+                        label= {translate ('shipping.locality')} 
                         variant="outlined"
                         value={locality}
                         sx={{ my: 2 }} 
@@ -141,7 +143,7 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                         required
                         size="small"
                         name="postalCode"
-                        label= {props.translate ('shipping.postal')} 
+                        label= {translate ('shipping.postal')} 
                         variant="outlined"
                         value={postalCode}
                         sx={{ my: 2 }} 
@@ -152,7 +154,7 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                         required
                         size="small"
                         name="region"
-                        label= {props.translate ('shipping.region')} 
+                        label= {translate ('shipping.region')} 
                         variant="outlined"
                         value={region}
                         sx={{ my: 2 }} 
@@ -164,13 +166,13 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                         required
                         size="small"
                         name="street"
-                        label= {props.translate ('shipping.street')} 
+                        label= {translate ('shipping.street')} 
                         variant="outlined"
                         value={streetAddress}
                         sx={{ my: 2 }} 
                         >
                       </TextField>
-                      <Button variant="contained" type="submit">{props.translate('shipping.proceed')}</Button>
+                      <Button variant="contained" type="submit">{translate('shipping.proceed')}</Button>
                     </Fragment>
             </CardContent>
             </Card>

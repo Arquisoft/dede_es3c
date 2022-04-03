@@ -11,14 +11,15 @@ import Cart from '../components/Cart';
 import { AddShoppingCartSharp } from '@mui/icons-material';
 import { UserContext } from '../User';
 
-/*interface CatalogPageProps {
-    translate: (key: string) => string
+interface CatalogPageProps {
+    //translate: (key: string) => string
     setUser: (user: string) => void
-}*/
+    //productsAux: CartProduct[]
+}
 
-const Catalog = (/*props: CatalogPageProps*/) => {
+const Catalog = (props: CatalogPageProps) => {
     const { dispatch: { translate } } = useContext(LangContext);
-    const { dispatch: { setUser } } = useContext(UserContext);
+    //const { dispatch: {setUser } } = useContext(UserContext);
     const [products, setProducts] = useState<Product[]>([]);
     const [nameFilter, setNameFilter] = useState('');
     const [val, setVal] = useState('');
@@ -45,9 +46,13 @@ const Catalog = (/*props: CatalogPageProps*/) => {
     useEffect(() => {
         reloadItems();
         setCartItems(JSON.parse(localStorage.getItem("cart")!));
+
+        /*if (props.productsAux !== null) {
+            setProducts(props.productsAux);
+        }*/
     }, []);
 
-    const getTotalItems = (items: CartProduct[]) => items.reduce((ack: number, item) => ack + item.amount, 0);
+    //const getTotalItems = (items: CartProduct[]) => items.reduce((ack: number, item) => ack + item.amount, 0);
 
     const handleAddToCart = (clickedItem: CartProduct) => {
         let cartCopy = [...cartItems];
@@ -91,16 +96,15 @@ const Catalog = (/*props: CatalogPageProps*/) => {
 
     return (
         <div>
-            {/*<Header setUser={props.setUser} />*/}
-            <Header setUser={setUser} />
+            <Header setUser={props.setUser} />
 
             <Form>
                 <FormControl type="search" value={val} placeholder={translate('catalog.search')} className="me-2" aria-label="Search" onChange={e => {setNameFilter(e.target.value); setVal(e.target.value)}}/>
-                <Button onClick={() => {reloadItems(); setVal(""); setNameFilter("")}}>{translate('category.reset')}</Button>
+                {/*<Button onClick={() => {reloadItems(); setVal("")}}>{translate('category.reset')}</Button>*/}
                 <Button onClick={() => FilterByName(nameFilter)} >{translate('catalog.search')}</Button>
             </Form>
 
-            <Button onClick={() => reloadItems()}>{translate('category.reset')}</Button>
+            <Button onClick={() => {reloadItems(); setVal("")}}>{translate('category.reset')}</Button>
             <Button onClick={() => FilterByCategory("Monitors")}>{translate('category.monitors')}</Button>
             <Button onClick={() => FilterByCategory("Laptop")}>{translate('category.laptop')}</Button>
 
@@ -111,10 +115,11 @@ const Catalog = (/*props: CatalogPageProps*/) => {
                     removeFromCart={handleRemoveFromCart}
                 />
             </Drawer>
-            <Button onClick={() => setCartOpen(true)}>
-                <Badge badgeContent={getTotalItems(cartItems)} color="error">
+            <Button onClick={() => setCartOpen(true)} aria-label="cartIcon">
+                {/*<Badge badgeContent={getTotalItems(cartItems)} color="error">
                     <AddShoppingCartSharp />
-                </Badge>
+    </Badge>*/}
+                <AddShoppingCartSharp />
             </Button>
 
             <Grid container spacing={3}>

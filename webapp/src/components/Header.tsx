@@ -56,7 +56,7 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
             {
               <Fragment>
                 <Navbar.Brand>
-                  <img alt="" src={logo} width="30" height="30" className="d-inline-block align-top"/>
+                  <img alt="Logo" src={logo} width="30" height="30" className="d-inline-block align-top"/>
                   DeDesktop
                 </Navbar.Brand>
                 <Link to="/" className="float-left nav-link">
@@ -99,7 +99,7 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
               {
                 <Fragment>
                   <Navbar.Brand>
-                    <img alt="" src={logo} width="30" height="30" className="d-inline-block align-top" />
+                    <img alt="Logo" src={logo} width="30" height="30" className="d-inline-block align-top" />
                     DeDesktop
                   </Navbar.Brand>
                   <Link to="/" className="float-left nav-link">
@@ -153,7 +153,7 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
           {
             <Fragment>
               <Navbar.Brand>
-                <img alt="" src={logo} width="30" height="30" className="d-inline-block align-top"/>
+                  <img alt="Logo" src={logo} width="30" height="30" className="d-inline-block align-top"/>
                 DeDesktop
               </Navbar.Brand>
               <Link to="/" className="float-left nav-link">

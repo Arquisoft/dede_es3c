@@ -7,14 +7,14 @@ import { Navigate } from "react-router-dom";
 import { LangContext } from '../lang';
 import { UserContext } from '../User';
 
-/*interface HomePageProps {
-    translate: (key: string) => string
+interface HomePageProps {
+    //translate: (key: string) => string
     setUser: (user: string) => void
-}*/
+}
 
-const HomePage/*: FC<HomePageProps>*/ = (/*props: HomePageProps*/) => {
+const HomePage: FC<HomePageProps> = (props: HomePageProps) => {
     const { dispatch: { translate } } = useContext(LangContext);
-    const { dispatch: { setUser } } = useContext(UserContext);
+    //const { dispatch: { setUser } } = useContext(UserContext);
     const [page, setPage] = useState('');
 
     if(page === 'catalog'){
@@ -37,7 +37,7 @@ const HomePage/*: FC<HomePageProps>*/ = (/*props: HomePageProps*/) => {
             return (
                 <div>
                     {/*<Header setUser={props.setUser} />*/}
-                    <Header setUser={setUser} />
+                    <Header setUser={props.setUser} />
 
                     <Container component="main" maxWidth="sm">
                         <Card className={"main"} elevation={10} style={{ display: "grid" }}>
@@ -62,7 +62,7 @@ const HomePage/*: FC<HomePageProps>*/ = (/*props: HomePageProps*/) => {
             return (
                 <div>
                     {/*<Header setUser={props.setUser} />*/}
-                    <Header setUser={setUser} />
+                    <Header setUser={props.setUser} />
 
                     <Container component="main" maxWidth="sm">
                         <Card className={"main"} elevation={10} style={{ display: "grid" }}>
