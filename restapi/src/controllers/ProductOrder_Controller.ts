@@ -4,7 +4,7 @@ import { ProductInOrder } from '../entities/ProductInOrder';
 import { ProductOrderService } from '../services/ProductOrder_Service';
 
 
-export class ProductController {
+export class ProductOrderController {
 
     /**
      * Get all users

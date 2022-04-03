@@ -3,6 +3,7 @@ import { DeleteResult } from 'typeorm';
 import { Order } from '../entities/Order';
 import { OrderService } from '../services/Order_Service';
 import { ProductService } from '../services/Product_Service';
+import axios from 'axios';
 
 export class OrderController {
 
@@ -93,8 +94,21 @@ export class OrderController {
                 ProductService.decrementProductStock(req.app, p.product.id, p.quantity);
                 price+=p.product.price*p.quantity;
             }
-            var distance = calculateDistance("Avenida de la Constitución, 10, Gijón");
+            /*const instance = axios.create({
+                baseURL: 'https://maps.googleapis.com/maps/api/',
+                timeout: 1000
+            })
+            const request : Record<string,unknown> = {
+                url: 'distancematrix/json?destinations=AvenidadelaConstirucion,10,Gijon&origins=Calle Sahara,8,Gijon&key=AIzaSyANy46m-FN8Sa9aSpIiLpSWx3xl7M2oX3s',
+                method: 'GET'
+            }*/
+            var source = "Calle Valdés Salas, 11, 33007 Oviedo, Asturias";
+            var destination = "AvenidadelaConstitucion,10,Gijon"; //TODO: get address from user pod
+            var url = 'https://maps.googleapis.com/maps/api/distancematrix/json?destinations=AvenidadelaConstitucion,10,Gijon&origins=CalleSahara,8,Gijon&key=AIzaSyANy46m-FN8Sa9aSpIiLpSWx3xl7M2oX3s'
+            const response = await axios.get(url)
+            var distance = response.data.rows.elements.distance.value;
             price+=calculateShippingPrice(distance);
+            console.log(distance);
             const order = await OrderService.addOrder(req.app, orderBody, price);
             order ? res.status(200).json(order) : res.status(500).json({ error: "Error add Order" });
         } catch (error) {
@@ -102,73 +116,19 @@ export class OrderController {
         }
     }
 
-    
 
-}
-
-function calculateDistance(address: string):number{
-    var coords = getCoords({ address });
-    var lat = coords[0];
-    var lng = coords[1];
-    var distancia = getDistancia(lat,lng);
-    return 1;
-}
-
-// función que se ejecuta al pulsar el botón buscar dirección
-function getCoords({ address }: { address: string; }) : number[]
-{
- // Creamos el objeto geodecoder
-    var geocoder = new google.maps.Geocoder();
-
-    if(address!='')
-    {
-        // Llamamos a la función geodecode pasandole la dirección que hemos introducido en la caja de texto.
-        geocoder.geocode({ 'address': address}, function(results, status)
-        {
-            if (status == 'OK')
-            {
-                // Mostramos las coordenadas obtenidas en el p con id coordenadas
-                if (results != null) {
-                    var lat = results[0].geometry.location.lat();
-                    var lng = results[0].geometry.location.lng();
-                    var arr:number[] = [lat,lng];
-                    return arr;
-                }
-                
-
-            }
-        });
-    }
-    var arr: number[] = [];
-    return arr;
-}
-
-function getDistancia(lat2: number, lon2: number):number{
-    //Latitud y longitud de nuestro centro de distribución
-    var lat1 = 43.354828738048994;
-    var lon1 = -5.851265841341929;
-
-    const rad = function(x: number) {return x*Math.PI/180;}
-    var R     = 6378.137;                          //Radio de la tierra en km
-    var dLat  = rad( lat2 - lat1 );
-    var dLong = rad( lon2 - lon1 );
-
-    var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(rad(lat1)) * Math.cos(rad(lat2)) * Math.sin(dLong/2) * Math.sin(dLong/2);
-    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-    var d = R * c;
-
-    return d;
 }
 
 function calculateShippingPrice(distance:number):number {
     var shippingPrice = 0;
-    if (distance < 200) {
+    //distancia en metros
+    if (distance < 2000) {
         shippingPrice = 1;
-    } else if (distance < 500) {
+    } else if (distance < 20000) {
         shippingPrice = 3;
-    } else if (distance < 1000) {
+    } else if (distance < 100000) {
         shippingPrice = 5;
-    } else if (distance >= 1000) {
+    } else if (distance >= 100000) {
         shippingPrice = 10;
     }
 

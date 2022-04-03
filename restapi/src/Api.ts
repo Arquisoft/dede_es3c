@@ -7,6 +7,7 @@
  import { ProductController } from './controllers/Product_Controller';
  import { UserController } from './controllers/User_Controller';
  import { OrderController } from './controllers/Order_Controller';
+ import { ProductOrderController } from './controllers/ProductOrder_Controller';
  import { Auth } from './middlewares/Auth_Middleware';
   
   // =================================> Constants
@@ -15,6 +16,7 @@
   const userController: UserController = new UserController(); // User Routes Controller
   const productsController: ProductController = new ProductController(); // Products Routes Controller
   const ordersController: OrderController = new OrderController(); // Orders Routes Controller
+  const productordersController: ProductOrderController = new ProductOrderController();
   // =================================> Routes
   const setAuthRoutes = (): void => {
       api.route('/login')
@@ -106,10 +108,22 @@ const setOrdersRoutes = (): void => {
 
     
 }
+
+const setProductOrdersRoutes = (): void => {
+ 
+    api.route('/productorders')
+        // Get all orders
+        .get(/*auth.isAuth,*/ productordersController.getProducts)
+        // Create new orders
+        //.post(auth.isAuth, productordersController.addProductOrder);
+
+}
+
   setAuthRoutes();
   setUserRoutes();
   setProductsRoutes();
   setRegisterRoutes();
   setOrdersRoutes();
+  setProductOrdersRoutes();
   
   export default api;
