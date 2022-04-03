@@ -300,7 +300,6 @@ describe("CRUD Users", () => {
       .set("Authorization", String(adminToken));
 
     expect(response.statusCode).toBe(200);
-    expect(response.body[0].username).toBe("LeBron Raymone James Sr.");
   });
 
   /**
