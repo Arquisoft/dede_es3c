@@ -25,7 +25,7 @@ const App: FC = () => {
           path='/'
           element = 
           {
-            <HomePage setUser={setUser} translate={translate}/>
+            <HomePage setUser={setUser}/>
           }
         />
         <Route
@@ -63,7 +63,7 @@ const App: FC = () => {
         <Route
           path='catalog'
           element={
-            <CatalogPage setUser={setUser} translate={translate} />
+            <CatalogPage /*setUser={setUser} translate={translate}*/ />
           }
         />
         <Route

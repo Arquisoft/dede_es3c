@@ -5,13 +5,15 @@ import { Container, Card, CardContent } from "@mui/material";
 import Button from '@mui/material/Button';
 import { Navigate } from "react-router-dom";
 import { LangContext } from '../lang';
+import { UserContext } from "../User";
 
 interface HomePageProps {
-    translate: (key: string) => string
+    //translate: (key: string) => string
     setUser: (user: string) => void
 }
 
 const HomePage: FC<HomePageProps> = (props: HomePageProps) => {
+    //const {dispatch: {setUser} } = useContext(UserContext);
     const { dispatch: { translate } } = useContext(LangContext);
     const [page, setPage] = useState('');
 
