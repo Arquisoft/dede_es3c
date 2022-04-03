@@ -141,8 +141,8 @@ export class UserController {
                 const user = getThing(myDataset, "https://" + webID + ".inrupt.net/profile/card#me")
                 const addressWebID = user!.predicates["http://www.w3.org/2006/vcard/ns#hasAddress"]["namedNodes"]
                 const userAddress = addressWebID![0].split('#')[1]             
-                if (userAddress === null){
-                    return res.status(400).json({msg: "Address not found"});
+                if (userAddress){
+                    return res.status(500).json({msg: "Address not found"});
                 }
         
                 const getAddress = getThing(myDataset, "https://" + webID + ".inrupt.net/profile/card#" + userAddress);    
@@ -151,8 +151,8 @@ export class UserController {
                 const locality = getStringNoLocale(getAddress!, VCARD.locality);
                 const street = getStringNoLocale(getAddress!, VCARD.street_address);
                 const postalCode = getStringNoLocale(getAddress!, VCARD.postal_code);
-                if (country === null  ||region === null ||locality === null || street === null ||postalCode === null){
-                    return res.status(400).json({msg: "Error finding the Address requirements"});
+                if (country || region || locality || street || postalCode ){
+                    return res.status(500).json({msg: "Error finding the Address requirements"});
                 } else {
                     return res.status(200).json({
                         country: country,
@@ -164,7 +164,7 @@ export class UserController {
                     })
                 }
             } catch (error) {
-                return res.status(400).json({msg: "POD not found"})
+                return res.status(500).json({msg: "POD not found"})
             }
     }
 

@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import SignUpPage from '../pages/SignUpPage';
 import LangState from "../lang";
-import UserState from "../lang";
+import UserState from "../User";
 import React from "react";
 
 test('check signup page text renders properly (english)', async () => {

@@ -59,7 +59,7 @@ export class Auth {
      */
     public isAuth(req: Request, res: Response, next: () => void) {
         try {
-            jwt.verify(`${req.headers.authorization}`, secret, function(err, decoded) {
+            jwt.verify(`${req.headers.authorization}`, secret, function(err) {
                 if(err){
                     res.status(403).send("Invalid authorization: "+err);
                 }else{

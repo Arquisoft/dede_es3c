@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import LangState from "../lang";
-import UserState from "../lang";
+import UserState from "../User";
 import React from "react";
 import { CartProduct } from "../shared/shareddtypes";
 import Cart from "../components/Cart";

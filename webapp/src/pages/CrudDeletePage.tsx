@@ -21,8 +21,7 @@ const CrudDeletePage: FC<CrudPageProps> = (props: CrudPageProps) => {
     const [id, setId] = useState('');
 
     const deleteProductAux = async () => {
-        if (isBlank(id)) {
-        } else {
+        if (!isBlank(id)) {
             await deleteProduct(id);
         }
     }

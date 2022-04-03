@@ -1,6 +1,5 @@
 import { Entity, Column, ObjectIdColumn, PrimaryColumn, AfterLoad } from "typeorm";
 import {v4 as uuidv4} from 'uuid';
-import { User } from "./User";
 import { ProductInOrder } from "./ProductInOrder";
 
 @Entity()
@@ -53,19 +52,6 @@ export class Order {
     getPriceIVA(){
         this.priceIVA = this.price*1.21;
     }
-
-    @AfterLoad()
-    decrementStock(){
-        for (var pr of this.products) {
-            //Comprobar si tengo stock suficiente
-            //pr.product.stock-=pr.quantity;
-
-        }
-    }
-
-
-    
-
 
 
 }

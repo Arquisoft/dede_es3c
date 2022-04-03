@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import LoginPage from '../pages/LoginPage';
 import LangState from "../lang";
-import UserState from "../lang";
+import UserState from "../User";
 import React from "react";
 
 test('check login page text renders properly (english)', async () => {
