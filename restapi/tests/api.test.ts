@@ -5,7 +5,7 @@ import bp from "body-parser";
 import cors from "cors";
 import api from "../src/Api";
 import database from "../src/persistence/Database";
-import * as crypto from 'crypto';
+import * as crypto from "crypto";
 
 let app: Application;
 let server: http.Server;
@@ -51,7 +51,15 @@ beforeAll(async () => {
   const admin = {
     username: "Dios",
     email: "Dios@jaja.com",
-    password: crypto.pbkdf2Sync("123456",crypto.randomBytes(16).toString("hex"), 1000, 64, `sha512`).toString(`hex`),
+    password: crypto
+      .pbkdf2Sync(
+        "123456",
+        crypto.randomBytes(16).toString("hex"),
+        1000,
+        64,
+        `sha512`
+      )
+      .toString(`hex`),
     rol: "Admin",
   };
   const response: Response = await request(app)
@@ -66,7 +74,15 @@ beforeAll(async () => {
   const user = {
     username: "Cura",
     email: "Cura@jaja.com",
-        password: crypto.pbkdf2Sync("123456",crypto.randomBytes(16).toString("hex"), 1000, 64, `sha512`).toString(`hex`),
+    password: crypto
+      .pbkdf2Sync(
+        "123456",
+        crypto.randomBytes(16).toString("hex"),
+        1000,
+        64,
+        `sha512`
+      )
+      .toString(`hex`),
     rol: "Client",
   };
   const response2: Response = await request(app)
@@ -100,7 +116,15 @@ describe("CRUD Users", () => {
     const user = {
       username: "Jesucristo",
       email: "Jesucristo@jaja.com",
-          password: crypto.pbkdf2Sync("123456",crypto.randomBytes(16).toString("hex"), 1000, 64, `sha512`).toString(`hex`),
+      password: crypto
+        .pbkdf2Sync(
+          "123456",
+          crypto.randomBytes(16).toString("hex"),
+          1000,
+          64,
+          `sha512`
+        )
+        .toString(`hex`),
       rol: "Admin",
     };
     const response: Response = await request(app)
@@ -133,7 +157,15 @@ describe("CRUD Users", () => {
   it("login with an existing user", async () => {
     const user = {
       username: "Dios",
-          password: crypto.pbkdf2Sync("123456",crypto.randomBytes(16).toString("hex"), 1000, 64, `sha512`).toString(`hex`),
+      password: crypto
+        .pbkdf2Sync(
+          "123456",
+          crypto.randomBytes(16).toString("hex"),
+          1000,
+          64,
+          `sha512`
+        )
+        .toString(`hex`),
     };
     const response: Response = await request(app).post("/api/login").send(user);
     expect(response.statusCode).toBe(200);
@@ -145,7 +177,15 @@ describe("CRUD Users", () => {
   it("login with an existing user with a bad password", async () => {
     const user = {
       username: "Dios",
-      password: "LoCo",
+      password: crypto
+        .pbkdf2Sync(
+          "LoCo",
+          crypto.randomBytes(16).toString("hex"),
+          1000,
+          64,
+          `sha512`
+        )
+        .toString(`hex`),
     };
     const response: Response = await request(app).post("/api/login").send(user);
     expect(response.text).toBe('{"error":"Error, la contraseña no coincide"}');
@@ -158,7 +198,15 @@ describe("CRUD Users", () => {
   it("login with a user that does not exist", async () => {
     const user = {
       username: "Lucifer",
-          password: crypto.pbkdf2Sync("123456",crypto.randomBytes(16).toString("hex"), 1000, 64, `sha512`).toString(`hex`),
+      password: crypto
+        .pbkdf2Sync(
+          "123456",
+          crypto.randomBytes(16).toString("hex"),
+          1000,
+          64,
+          `sha512`
+        )
+        .toString(`hex`),
     };
     const response: Response = await request(app).post("/api/login").send(user);
     expect(response.statusCode).toBe(404);
@@ -223,7 +271,15 @@ describe("CRUD Users", () => {
     const user = {
       username: "Jesucristo",
       email: "ElRedentor@jaja.com",
-          password: crypto.pbkdf2Sync("123456",crypto.randomBytes(16).toString("hex"), 1000, 64, `sha512`).toString(`hex`),
+      password: crypto
+        .pbkdf2Sync(
+          "123456",
+          crypto.randomBytes(16).toString("hex"),
+          1000,
+          64,
+          `sha512`
+        )
+        .toString(`hex`),
       rol: "Admin",
     };
 
@@ -243,7 +299,15 @@ describe("CRUD Users", () => {
     const user = {
       username: "Jesucristo",
       email: "ElRedentor@jaja.com",
-          password: crypto.pbkdf2Sync("123456",crypto.randomBytes(16).toString("hex"), 1000, 64, `sha512`).toString(`hex`),
+      password: crypto
+        .pbkdf2Sync(
+          "123456",
+          crypto.randomBytes(16).toString("hex"),
+          1000,
+          64,
+          `sha512`
+        )
+        .toString(`hex`),
       rol: "Admin",
     };
 
@@ -295,16 +359,8 @@ describe("CRUD Users", () => {
    * Tests that get user as admin
    */
   it("get user as admin", async () => {
-    const user = {
-      username: "Jesucristo",
-      email: "ElRedentor@jaja.com",
-          password: crypto.pbkdf2Sync("123456",crypto.randomBytes(16).toString("hex"), 1000, 64, `sha512`).toString(`hex`),
-      rol: "Admin",
-    };
-
     const response: Response = await request(app)
       .get("/api/users")
-      .send(user)
       .set("Accept", "application/json")
       .set("Authorization", String(adminToken));
 
@@ -316,15 +372,8 @@ describe("CRUD Users", () => {
    * Tests that list users without being admin
    */
   it("list users without being admin", async () => {
-    const user = {
-      username: "Jesucristo",
-      email: "ElRedentor@jaja.com",
-          password: crypto.pbkdf2Sync("123456",crypto.randomBytes(16).toString("hex"), 1000, 64, `sha512`).toString(`hex`),
-      rol: "Admin",
-    };
     const response: Response = await request(app)
       .get("/api/users")
-      .send(user)
       .set("Accept", "application/json")
       .set("Authorization", String(clientToken));
 
