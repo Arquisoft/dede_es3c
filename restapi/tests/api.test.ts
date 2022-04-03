@@ -51,15 +51,7 @@ beforeAll(async () => {
   const admin = {
     username: "Dios",
     email: "Dios@jaja.com",
-    password: crypto
-      .pbkdf2Sync(
-        "123456",
-        crypto.randomBytes(16).toString("hex"),
-        1000,
-        64,
-        `sha512`
-      )
-      .toString(`hex`),
+    password: "123456",
     rol: "Admin",
   };
   const response: Response = await request(app)
@@ -157,15 +149,7 @@ describe("CRUD Users", () => {
   it("login with an existing user", async () => {
     const user = {
       username: "Dios",
-      password: crypto
-        .pbkdf2Sync(
-          "123456",
-          crypto.randomBytes(16).toString("hex"),
-          1000,
-          64,
-          `sha512`
-        )
-        .toString(`hex`),
+      password: "123456",
     };
     const response: Response = await request(app).post("/api/login").send(user);
     expect(response.statusCode).toBe(200);
@@ -177,15 +161,7 @@ describe("CRUD Users", () => {
   it("login with an existing user with a bad password", async () => {
     const user = {
       username: "Dios",
-      password: crypto
-        .pbkdf2Sync(
-          "LoCo",
-          crypto.randomBytes(16).toString("hex"),
-          1000,
-          64,
-          `sha512`
-        )
-        .toString(`hex`),
+      password : "LoCo",
     };
     const response: Response = await request(app).post("/api/login").send(user);
     expect(response.text).toBe('{"error":"Error, la contraseña no coincide"}');
@@ -198,15 +174,7 @@ describe("CRUD Users", () => {
   it("login with a user that does not exist", async () => {
     const user = {
       username: "Lucifer",
-      password: crypto
-        .pbkdf2Sync(
-          "123456",
-          crypto.randomBytes(16).toString("hex"),
-          1000,
-          64,
-          `sha512`
-        )
-        .toString(`hex`),
+      password : "123456",
     };
     const response: Response = await request(app).post("/api/login").send(user);
     expect(response.statusCode).toBe(404);
@@ -271,15 +239,7 @@ describe("CRUD Users", () => {
     const user = {
       username: "Jesucristo",
       email: "ElRedentor@jaja.com",
-      password: crypto
-        .pbkdf2Sync(
-          "123456",
-          crypto.randomBytes(16).toString("hex"),
-          1000,
-          64,
-          `sha512`
-        )
-        .toString(`hex`),
+      password : "123456",
       rol: "Admin",
     };
 
@@ -299,15 +259,7 @@ describe("CRUD Users", () => {
     const user = {
       username: "Jesucristo",
       email: "ElRedentor@jaja.com",
-      password: crypto
-        .pbkdf2Sync(
-          "123456",
-          crypto.randomBytes(16).toString("hex"),
-          1000,
-          64,
-          `sha512`
-        )
-        .toString(`hex`),
+      password : "123456",
       rol: "Admin",
     };
 
