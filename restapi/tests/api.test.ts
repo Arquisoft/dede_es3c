@@ -8,11 +8,11 @@ import database from "../src/persistence/Database";
 
 let app: Application;
 let server: http.Server;
-let adminToken: String;
-let clientToken: String;
-let userId: String;
-let productId: String;
-let orderId: String;
+let adminToken: string;
+let clientToken: string;
+let userId: string;
+let productId: string;
+let orderId: string;
 
 beforeAll(async () => {
   app = express();

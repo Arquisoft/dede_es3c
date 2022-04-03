@@ -2,7 +2,7 @@
   "name": "dedesktop",
   "version": "1.0.0",
   "scripts": {
-    "start": "cd restapi npm start cd ../webapp npm start"
+    "start": "docker-compose up -d --build"
   },
   "author": "SergioArroni"
 }
