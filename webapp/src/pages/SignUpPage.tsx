@@ -47,13 +47,10 @@ const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
         } else {
            const found = await checkUser(name, password);
            if (!found){
-                //console.log("entra a signup");
                 const token = await signup(name, password, email);
-                //console.log("sale de signup");
                 setRegistered(true);
                 props.setUser(name);
                 localStorage.setItem("token", token);
-                //console.log(localStorage.getItem("token"));
             } else {
                 setExists(2);
         } 
