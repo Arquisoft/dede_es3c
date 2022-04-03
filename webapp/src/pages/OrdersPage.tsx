@@ -22,7 +22,6 @@ const OrdersPage: FC<OrdersPageProps> = (props: OrdersPageProps) => {
         const username = localStorage.getItem("currentUser");
         if (username!== null){
           const user = await getUser(username);
-          //console.log(user);
           setOrders(await getOrdersByEmail(user.email));
         }
       } else if (localStorage.getItem("currentUser") !== null && localStorage.getItem("currentUser")?.includes("admin")){

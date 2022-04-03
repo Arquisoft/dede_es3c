@@ -4,14 +4,6 @@ import Header from '../components/Header';
 import LangState from '../lang';
 import UserState from '../User';
 
-beforeAll(async () => {
-
-});
-
-afterAll(async () => {
-
-});
-
 test('Header renders properly with client user logged', async () => {
 
     render(

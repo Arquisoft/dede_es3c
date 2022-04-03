@@ -1,17 +1,9 @@
 import { render, screen } from "@testing-library/react";
-import OrdersPage from '../pages/OrdersPage';
 import LangState from "../lang";
 import UserState from "../lang";
 import React from "react";
 import { CartProduct } from "../shared/shareddtypes";
 import Cart from "../components/Cart";
-
-beforeAll(async () => {
-});
-
-afterAll(async () => {
-
-});
 
 test('Cart without items renders properly', async () => {
     const products: CartProduct[] = [];

@@ -44,7 +44,6 @@ const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
         }
 
         if (isBlank(user.username) || isBlank(user.password) || isBlank(user.email) || isBlank(repeatedPassword)){
-            //console.log("novalido");
         } else {
            const found = await checkUser(name, password);
            if (!found){

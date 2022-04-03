@@ -4,13 +4,6 @@ import LangState from "../lang";
 import UserState from "../lang";
 import React from "react";
 
-beforeAll(async () => {
-});
-
-afterAll(async () => {
-
-});
-
 test('check signup page text renders properly (english)', async () => {
     localStorage.setItem('currentUser', "not logged");
     
