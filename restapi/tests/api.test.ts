@@ -2,7 +2,6 @@
  * Database Manager class
  * @author: Sergio Arroni del Riego - UO276341
  */
-import { createConnection, getConnectionOptions, Connection } from "typeorm";
 import request, {Response} from 'supertest';
 import express, { Application } from 'express';
 import * as http from 'http';

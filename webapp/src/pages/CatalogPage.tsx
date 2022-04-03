@@ -11,11 +11,7 @@ import Cart from '../components/Cart';
 import { AddShoppingCartSharp } from '@mui/icons-material';
 import { UserContext } from '../User';
 
-interface CatalogPageProps {
-    setUser: (user: string) => void
-}
-
-const Catalog = (props: CatalogPageProps) => {
+const Catalog = () => {
     const { dispatch: { translate } } = useContext(LangContext);
     const { dispatch: {setUser } } = useContext(UserContext);
     const [products, setProducts] = useState<Product[]>([]);

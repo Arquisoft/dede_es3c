@@ -1,6 +1,5 @@
-import React, {useContext } from 'react';
+import React from 'react';
 import { Order } from '../shared/shareddtypes';
-import { LangContext } from '../lang';
 import { TableCell, TableRow } from '@mui/material';
 
 type OrdersProps = {
