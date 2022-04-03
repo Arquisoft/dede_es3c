@@ -21,8 +21,8 @@ At the beginning there was a debate about whether it was better to use SQL or No
 
 _DeDe user interface is desinged to give every user an intuitive and familiar experience related using the React framework combined with TypeScript as constraints. We follow the usual standards of e-commerce online sites to make the navigation closer to what most of the people already know. Also, the interface is meant to pass the AAA validation so we make sure it's usable for almost everyone. In terms of dependencies, we worked with MUI for some of the components (buttons, tables...), bootstrap alongside with bootswatch to give the app a defined style and use some of it's components, and, sweetalert2 to throw modal windows at some points of the application._
 
-image:08_dede_login.png["Login"]
-image:08_dede_catalog.png["Catalogo"]
+image:08_dede_login.PNG["Login"]
+image:08_dede_catalog.PNG["Catalogo"]
 
 === Internazionalization
 
