@@ -13,9 +13,12 @@ RUN npm install -g typescript ts-node
 # RUN python src/data/data.py
 
 # Copia la Aplicación
-COPY . .
+COPY ./package.json ./package.json
 
+#Install the dependencies
 RUN npm install --quiet
+
+COPY . .
 
 EXPOSE 3000
 

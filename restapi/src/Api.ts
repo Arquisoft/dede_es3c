@@ -43,13 +43,13 @@
  
      api.route('/users')
          // Get all users
-         .get(/*auth.isAdminAuth, */userController.getUsers)
+         .get(auth.isAdminAuth,userController.getUsers)
  
      api.route('/users/username/:username')
-         .get(/*auth.isAdminAuth, */userController.getUserByUsername);
+         .get(userController.getUserByUsername);
 
     api.route('/users/userpod/:username')
-         .get(/*auth.isAdminAuth, */userController.findPod);
+         .get(userController.findPod);
  
      api.route('/users/:id')
          // Get user by id
@@ -90,14 +90,14 @@ const setOrdersRoutes = (): void => {
  
     api.route('/orders')
         // Get all orders
-        .get(/*auth.isAuth,*/ ordersController.getOrders)
+        .get(auth.isAuth, ordersController.getOrders)
         // Create new orders
         .post(auth.isAuth, ordersController.addOrder);
 
 
     api.route('/orders/user/:email')
         // Get orders by user email
-        .get(/*auth.isAuth,*/ ordersController.getOrdersByUserEmail)
+        .get(auth.isAuth, ordersController.getOrdersByUserEmail)
     
     api.route('/orders/:id')
         // Get orders by id

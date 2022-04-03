@@ -12,8 +12,6 @@ const signOpts = {
 const userController: UserController = new UserController(); // User Routes Controller
 export class Auth {
 
-
-
     /**
      * Login user and return token
      * @param req Request
