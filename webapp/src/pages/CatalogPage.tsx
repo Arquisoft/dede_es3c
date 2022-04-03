@@ -11,7 +11,11 @@ import Cart from '../components/Cart';
 import { AddShoppingCartSharp } from '@mui/icons-material';
 import { UserContext } from '../User';
 
-const Catalog = () => {
+interface CatalogPageProps {
+    setUser: (user: string) => void
+}
+
+const Catalog = (props: CatalogPageProps) => {
     const { dispatch: { translate } } = useContext(LangContext);
     const { dispatch: {setUser } } = useContext(UserContext);
     const [products, setProducts] = useState<Product[]>([]);
@@ -37,7 +41,7 @@ const Catalog = () => {
         setCartItems(JSON.parse(localStorage.getItem("cart")!));
     }, []);
 
-    const getTotalItems = (items: CartProduct[]) => items.reduce((ack: number, item) => ack + item.amount, 0);
+    //const getTotalItems = (items: CartProduct[]) => items.reduce((ack: number, item) => ack + item.amount, 0);
 
     const handleAddToCart = (clickedItem: CartProduct) => {
         let cartCopy = [...cartItems];
@@ -85,11 +89,11 @@ const Catalog = () => {
 
             <Form>
                 <FormControl type="search" value={val} placeholder={translate('catalog.search')} className="me-2" aria-label="Search" onChange={e => {setNameFilter(e.target.value); setVal(e.target.value)}}/>
-                <Button onClick={() => {reloadItems(); setVal("")}}>{translate('category.reset')}</Button>
+                {/*<Button onClick={() => {reloadItems(); setVal("")}}>{translate('category.reset')}</Button>*/}
                 <Button onClick={() => FilterByName(nameFilter)} >{translate('catalog.search')}</Button>
             </Form>
 
-            <Button onClick={() => reloadItems()}>{translate('category.reset')}</Button>
+            <Button onClick={() => { reloadItems(); setVal("") }}>{translate('category.reset')}</Button>
             <Button onClick={() => FilterByCategory("Monitors")}>{translate('category.monitors')}</Button>
             <Button onClick={() => FilterByCategory("Laptop")}>{translate('category.laptop')}</Button>
 
@@ -100,10 +104,11 @@ const Catalog = () => {
                     removeFromCart={handleRemoveFromCart}
                 />
             </Drawer>
-            <Button onClick={() => setCartOpen(true)}>
-                <Badge badgeContent={getTotalItems(cartItems)} color="error">
+            <Button onClick={() => setCartOpen(true)} aria-label="CartIcon">
+                {/*<Badge badgeContent={getTotalItems(cartItems)} color="error">
                     <AddShoppingCartSharp />
-                </Badge>
+    </Badge>*/}
+                <AddShoppingCartSharp />
             </Button>
 
             <Grid container spacing={3}>

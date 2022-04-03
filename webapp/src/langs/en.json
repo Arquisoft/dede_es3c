@@ -13,7 +13,7 @@
     "login.solid":"Log in",
     "login.welcome":"Welcome, ",
     "login.solidUser":"User: ",
-    "login.solidPass":"Password",
+    "login.solidPass":"Password: ",
     "login.idButton":"Log in with id",
     "login.signup" : "Don't have an account? Sign Up", 
     "login.input.error": "Required",

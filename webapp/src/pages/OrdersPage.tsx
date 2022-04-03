@@ -11,19 +11,18 @@ import { Paper, Table, TableContainer, TableHead } from "@mui/material";
 import { LangContext } from "../lang";
 
 interface OrdersPageProps {
-    //translate: (key: string) => string
     setUser:(user:string) => void
 }
 
 const OrdersPage: FC<OrdersPageProps> = (props: OrdersPageProps) => {
-  const { dispatch: { translate } } = useContext(LangContext);
+    const { dispatch: { translate } } = useContext(LangContext);
     const [orders, setOrders] = useState<Order[]>([]);
     const reloadItems = async () => {
       if (localStorage.getItem("currentUser") !== null && !localStorage.getItem("currentUser")?.includes("admin")){
         const username = localStorage.getItem("currentUser");
         if (username!== null){
           const user = await getUser(username);
-          console.log(user);
+          //console.log(user);
           setOrders(await getOrdersByEmail(user.email));
         }
       } else if (localStorage.getItem("currentUser") !== null && localStorage.getItem("currentUser")?.includes("admin")){

@@ -45,13 +45,13 @@ export async function loginB(username:string ,password:string) {
 
 export async function signup(username:string ,password:string, email:string) {
   const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
-  console.log("antes de la peticion");
+  //console.log("antes de la peticion");
   let response = await fetch(apiEndPoint+'/register', {
       method: 'POST',
       headers: {'Content-Type':'application/json'},
       body: JSON.stringify({'username': username, 'password': password, 'email':email, 'rol':"Client"})
     });
-    console.log("llega al return");
+    //console.log("llega al return");
     return response.json();
 }
 
