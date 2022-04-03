@@ -44,13 +44,15 @@ const LoginPage: FC<SignUpProps> = (props: SignUpProps) => {
             name: name,
             rol: "Client"
         }
-
+        console.log(user);
         if (isBlank(user.name) || isBlank(user.password) || isBlank(user.email) || isBlank(repeatedPassword)){
             console.log("novalido");
         } else {
            const found = await checkUser(name, password);
+           console.log(found);
            if (!found){
-               const token = await signup(name, password, email);
+                const token = await signup(name, password, email);
+                console.log(token);
                 setRegistered(true);
                 props.setUser(name);
                 localStorage.setItem("token", token);

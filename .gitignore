@@ -40,3 +40,5 @@ dist/
 /restapi/package.json
 /docker-compose.yml
 /data/data.py
+/restapi/ormconfig.json
+/restapi/package-lock.json
