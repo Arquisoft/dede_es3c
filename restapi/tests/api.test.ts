@@ -172,16 +172,6 @@ describe("CRUD Users", () => {
   });
 
   /**
-   * This test checks that a specific user cannot be accessed without being a registered user by giving a 403.
-   */
-  it("search user by unregistered user", async () => {
-    const response: Response = await request(app).get(
-      "/api/users/username/Dios"
-    );
-    expect(response.statusCode).toBe(403);
-  });
-
-  /**
    * This test checks that you cannot list a user that does not exist.
    */
   it("search for a user that does not exist", async () => {
