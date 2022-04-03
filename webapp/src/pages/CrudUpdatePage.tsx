@@ -17,7 +17,7 @@ const isBlank = (text: string) => {
     return (text.length === 0);
 }
 
-const CrudEditPage: FC<CrudPageProps> = (props: CrudPageProps) => {
+const CrudUpdatePage: FC<CrudPageProps> = (props: CrudPageProps) => {
     const { dispatch: { translate } } = useContext(LangContext);
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
@@ -30,7 +30,6 @@ const CrudEditPage: FC<CrudPageProps> = (props: CrudPageProps) => {
         const product: Product = { name: name, description: description, price: Number(price), category: category, urlPhoto: urlPhoto, amount: 0 }
 
         if (isBlank(product.name) || isBlank(product.description) || isBlank(product.category) || isBlank(product.urlPhoto) || isBlank(id)) {
-            //console.log("novalido");
         } else {
             await updateProduct(id, product);
         }
@@ -125,4 +124,4 @@ const CrudEditPage: FC<CrudPageProps> = (props: CrudPageProps) => {
         )
     }
 }
-export default CrudEditPage;
+export default CrudUpdatePage;

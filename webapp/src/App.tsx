@@ -1,6 +1,5 @@
 import React, { FC, useContext } from 'react';
 import './App.css';
-import { LangContext } from './lang';
 import { UserContext } from './User';
 import "bootswatch/dist/morph/bootstrap.min.css"
 import LoginPage from './pages/LoginPage';

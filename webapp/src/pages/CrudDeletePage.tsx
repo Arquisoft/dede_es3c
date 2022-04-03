@@ -22,7 +22,6 @@ const CrudDeletePage: FC<CrudPageProps> = (props: CrudPageProps) => {
 
     const deleteProductAux = async () => {
         if (isBlank(id)) {
-            //console.log("novalido");
         } else {
             await deleteProduct(id);
         }

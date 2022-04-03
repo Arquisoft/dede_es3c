@@ -43,9 +43,7 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
 
   async function getAdd() {
     const address = await getAddress(webID);
-    //console.log(address);
     if (address !== undefined){
-      //console.log(address);
       setCountryName(address['country']);
       setLocality(address['locality']);
       setPostalCode(address['postalCode']);

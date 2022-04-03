@@ -16,12 +16,11 @@ export async function addUser(user:User):Promise<boolean>{
 export async function getUsers():Promise<User[]>{
     const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
     let response = await fetch(apiEndPoint+'/users/list');
-    //The objects returned by the api are directly convertible to User objects
     return response.json()
 }
 
 
-export async function checkUser(username: string, password: string): Promise<boolean> {
+export async function checkUser(username: string): Promise<boolean> {
   let response = await fetch("http://localhost:5000/api/users/username/" + username, {
     method: "GET",
     headers: { "Content-Type": "application/json" },
@@ -45,13 +44,11 @@ export async function loginB(username:string ,password:string) {
 
 export async function signup(username:string ,password:string, email:string) {
   const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
-  //console.log("antes de la peticion");
   let response = await fetch(apiEndPoint+'/register', {
       method: 'POST',
       headers: {'Content-Type':'application/json'},
       body: JSON.stringify({'username': username, 'password': password, 'email':email, 'rol':"Client"})
     });
-    //console.log("llega al return");
     return response.json();
 }
 

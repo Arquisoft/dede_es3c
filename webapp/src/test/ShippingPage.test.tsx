@@ -1,18 +1,9 @@
 import { render, screen } from "@testing-library/react";
-import OrdersPage from '../pages/OrdersPage';
 import LangState from "../lang";
-import UserState from "../lang";
+import UserState from "../User";
 import React from "react";
 import { CartProduct } from "../shared/shareddtypes";
 import ShippingPage from "../pages/ShippingPage";
-
-beforeAll(async () => {
-});
-
-afterAll(async () => {
-
-});
-
 test('Cart without items renders properly', async () => {
     const products: CartProduct[] = [
         { name: "NombrePrueba1", description: "DescripcionPrueba1", price: 1, category: "CategoriaPrueba1", urlPhoto: "urlPrueba1", amount: 2 },

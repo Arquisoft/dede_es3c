@@ -1,16 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import HomePage from '../pages/HomePage';
-import React, { useContext } from "react";
+import React from "react";
 import LangState from '../lang';
 import UserState from '../User';
-
-beforeAll(async () => {
-
-});
-
-afterAll(async () => {
-
-});
 
 test('Home renders properly without user logged', () => {
   localStorage.setItem('currentUser', "not logged");
