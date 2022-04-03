@@ -7,6 +7,7 @@ import "bootswatch/dist/morph/bootstrap.min.css"
 import { deleteProduct } from "../api/api";
 import { LangContext } from '../lang';
 import Home from '../pages/HomePage';
+import Swal from "sweetalert2";
 
 interface CrudPageProps {
     setUser: (user: string) => void
@@ -22,6 +23,11 @@ const CrudDeletePage: FC<CrudPageProps> = (props: CrudPageProps) => {
 
     const deleteProductAux = async () => {
         if (isBlank(id)) {
+            Swal.fire({
+                title: "Error",
+                text: translate("crud.add.error"),
+                icon: "error",
+            });
         } else {
             await deleteProduct(id);
         }
