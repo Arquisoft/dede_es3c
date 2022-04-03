@@ -1,9 +1,8 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Button } from "react-bootstrap";
 import CartItem from "../components/CartItem";
 import { CartProduct } from '../shared/shareddtypes';
 import { Navigate } from "react-router-dom";
-import { useState } from "react";
 import { LangContext } from '../lang';
 
 type CartProps = {
@@ -21,11 +20,6 @@ const Cart: React.FC<CartProps> = ({ cartItems, addToCart, removeFromCart }) => 
             <Navigate to="/shipping" />
         )
     }
-
-    const redirect = () => {
-        console.log(localStorage.getItem("currentUser"))
-    }
-
     const calculateTotal = (items: CartProduct[]) => {
         return items.reduce((ack: number, item) => ack + (item.amount * item.price), 0)
     }

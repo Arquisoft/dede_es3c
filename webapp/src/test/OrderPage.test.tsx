@@ -1,7 +1,6 @@
 import { render, screen } from "@testing-library/react";
-import HomePage from '../pages/HomePage';
 import LangState from "../lang";
-import UserState from "../lang";
+import UserState from "../User";
 import React from "react";
 import OrdersPage from "../pages/OrdersPage";
 import DisplayOrders from "../components/DisplayOrders";

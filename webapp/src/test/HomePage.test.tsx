@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import HomePage from '../pages/HomePage';
 import LangState from "../lang";
-import UserState from "../lang";
+import UserState from "../User";
 import React from "react";
 test('check home page text renders properly (english)', async () => {
     render(

@@ -1,6 +1,6 @@
 import React, {Fragment, FC, useState} from "react";
 import Header from "../components/Header"
-import { Card, CardContent, Container, List, ListItem, ListItemButton, ListItemText, ListSubheader, TextField} from "@mui/material";
+import { Card, CardContent, Container, List, ListItem, ListItemText, ListSubheader, TextField} from "@mui/material";
 import { Button } from "react-bootstrap";
 import { Product } from "../shared/shareddtypes";
 import { getAddress } from "../api/api";

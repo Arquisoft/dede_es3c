@@ -11,7 +11,6 @@ import logoutIcon from '../img/logout-icon.svg';
 import spanishIcon from '../img/spanish-icon.svg';
 import registerIcon from '../img/register-icon.svg';
 import ordersIcon from '../img/checkout-icon.svg';
-import { Navigate } from "react-router-dom";
 
 interface HeaderProps {
   setUser:(user:string) => void

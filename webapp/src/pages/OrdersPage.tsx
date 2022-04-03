@@ -46,9 +46,7 @@ const OrdersPage: FC<OrdersPageProps> = (props: OrdersPageProps) => {
             </div>
         </div>
         );
-    } else {
-
-    }
+    } 
     return (
         <div className="mainContainer" style={{alignContent:"center", alignItems:"center", alignSelf:"center"}}>
             <Header setUser={props.setUser}/>
