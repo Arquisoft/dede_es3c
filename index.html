@@ -521,8 +521,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_technical_debts">11.2. Technical debts</a></li>
 </ul>
 </li>
-<li><a href="#_hexagonal_architecture">12. Hexagonal architecture</a></li>
-<li><a href="#_glossary">13. Glossary</a></li>
 </ul>
 </div>
 </div>
@@ -999,6 +997,12 @@ Users have control over who has their information, thus increasing privacy.</p>
 <li>
 <p>Postman: Postman is an open source software which offers us the necessary help to build, use and test APIs, making the steps easier.</p>
 </li>
+<li>
+<p>Jest: Jest is a delightful JavaScript Testing Framework with a focus on simplicity.</p>
+</li>
+<li>
+<p>Cloudinary: It is an API used to store images, we will save the URL of the images.</p>
+</li>
 </ul>
 </div>
 </div>
@@ -1092,11 +1096,11 @@ Users have control over who has their information, thus increasing privacy.</p>
 <h3 id="_register_user">6.1. Register User</h3>
 <div class="imageblock">
 <div class="content">
-<img src="./images/RegisterUser.png" alt="RegisterUser" width="496" height="404">
+<img src="./images/RegisterUser.png" alt="RegisterUser" width="411" height="374">
 </div>
 </div>
 <div class="paragraph">
-<p>This runtime view shows the process of registering a user, going through WebApp and ApiRest to the user POD and storing the location in the database.</p>
+<p>This runtime view shows the process of registering a user, going through WebApp and ApiRest to database, storing the data in the database.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1114,7 +1118,7 @@ Users have control over who has their information, thus increasing privacy.</p>
 <h3 id="_login_user_pod">6.3. Login User POD</h3>
 <div class="imageblock">
 <div class="content">
-<img src="./images/LoginUserPOD.png" alt="LoginUserPOD" width="472" height="448">
+<img src="./images/LoginUserPOD.png" alt="LoginUserPOD" width="394" height="461">
 </div>
 </div>
 <div class="paragraph">
@@ -1277,17 +1281,17 @@ As we can see in the following image, we are going to use Heroku to deploy the a
 <div class="sect2">
 <h3 id="_persistence">8.1. Persistence</h3>
 <div class="paragraph">
-<p>At the beginning there was a debate about whether it was better to use SQL or NoSQL for persistence. After some discussion it was concluded that the best option for this problem is NoSQL. To be more specific MongoDB, which is a NoSQL document database. We will use a NoSQL database as opposed to a SQL database, because our model encompasses many products. These products have several attributes which are very different. For example, a power supply differs in many ways from a graphics card. Because there are so many items, we believe it is best to use a NoSQL DB.</p>
+<p>At the beginning there was a debate about whether it was better to use SQL or NoSQL for persistence. After some discussion it was concluded that the best option for this problem is NoSQL. To be more specific MongoDB, which is a NoSQL document database. We will use a NoSQL database as opposed to a SQL database, because our model encompasses many products. These products have several attributes which are very different. For example, a power supply differs in many ways from a graphics card. Because there are so many items, we believe it is best to use a NoSQL DB. But, because of our hexagonal architecture, we can switch from NoSQL to SQL without needing to modify the code, or switch from MongoDB to Cassandra, the change doesn&#8217;t matter because the backend is not related to the persistence used</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_user_interface">8.2. User interface</h3>
 <div class="paragraph">
-<p><em>DeDe user interface is desinged to give every user an intuitive and familiar experience related using the React framework combined with TypeScript as constraints. We follow the usual standards of e-commerce online sites to make the navigation closer to what most of the people already know. Also, the interface is meant to pass the AAA validation so we make sure it&#8217;s usable for almost everyone</em></p>
+<p><em>DeDe user interface is desinged to give every user an intuitive and familiar experience related using the React framework combined with TypeScript as constraints. We follow the usual standards of e-commerce online sites to make the navigation closer to what most of the people already know. Also, the interface is meant to pass the AAA validation so we make sure it&#8217;s usable for almost everyone. In terms of dependencies, we worked with MUI for some of the components (buttons, tables&#8230;&#8203;), bootstrap alongside with bootswatch to give the app a defined style and use some of it&#8217;s components, and, sweetalert2 to throw modal windows at some points of the application.</em></p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="./images/08_UI-Homepage.png" alt="Homepage prototype"></span>
-<span class="image"><img src="./images/08_UI-OtherWindows.png" alt="Other Functionalities"></span></p>
+<p><span class="image"><img src="./images/08_dede_login.png" alt="Login"></span>
+<span class="image"><img src="./images/08_dede_catalog.png" alt="Catalogo"></span></p>
 </div>
 </div>
 <div class="sect2">
@@ -1302,13 +1306,66 @@ As we can see in the following image, we are going to use Heroku to deploy the a
 <div class="sect2">
 <h3 id="_security">8.4. Security</h3>
 <div class="paragraph">
-<p>Security is a key aspect of our software (and almost all) project. We will follow SOLID as recommendation to store our customers data and we will manage the data base to be always in a consistent state.</p>
+<p>For security we have used an asynchronous encryption algorithm called PBKDF2, which is one of the most famous KDF encryption algorithms. The user will put a password in plain text, which will be encrypted using a Hash function, a salt will be added to it, which is a random number added at the beginning of the password, all this string will be saved in the database, achieving a very high level of security.
+We have a role system, which defines if a user is an Administrator or a normal User, and depending on that he will have one or other options enabled, such as a CRUD of products or users, to avoid a scale of privileges we have made it impossible to be Admin, it always inserts users as User and we have a couple of Administrators created by default.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_additional_libraries">8.5. Additional libraries</h3>
 <div class="paragraph">
-<p>TODO</p>
+<p>Dependencies in the backend:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.npmjs.com/package/cloudinary"><em>"cloudinary"</em></a>: "^1.28.1"</p>
+</li>
+<li>
+<p><a href="https://www.npmjs.com/package/cors"><em>"cors"</em></a>: "^2.8.5"</p>
+</li>
+<li>
+<p><a href="https://www.npmjs.com/package/crypto-js"><em>"crypto"</em></a>: "^1.0.1"</p>
+</li>
+<li>
+<p><a href="https://www.npmjs.com/package/dotenv"><em>"dotenv"</em></a>: "^16.0.0"</p>
+</li>
+<li>
+<p><a href="https://www.npmjs.com/package/express"><em>"express"</em></a>: "^4.17.2"</p>
+</li>
+<li>
+<p><a href="https://www.npmjs.com/package/express-prom-bundle"><em>"express-prom-bundle"</em></a>:"^6.4.1"</p>
+</li>
+<li>
+<p><a href="https://www.npmjs.com/package/express-validator"><em>"express-validator"</em></a>: "^6.14.0"</p>
+</li>
+<li>
+<p><a href="https://www.npmjs.com/package/jsonwebtoken"><em>"jsonwebtoken"</em></a>: "^8.5.1"</p>
+</li>
+<li>
+<p><a href="https://www.npmjs.com/package/mongodb"><em>"mongodb"</em></a>: "^3.7.3"</p>
+</li>
+<li>
+<p><a href="https://www.npmjs.com/package/@inrupt/solid-client"><em>"@inrupt/solid-client"</em></a>: "^1.19.0"</p>
+</li>
+<li>
+<p><a href="https://www.npmjs.com/package/@inrupt/vocab-common-rdf"><em>"@inrupt/vocab-common-rdf"</em></a>: "^1.0.3"</p>
+</li>
+<li>
+<p><a href="https://www.npmjs.com/package/parcel-bundler"><em>"parcel-bundler"</em></a>: "^1.12.5"</p>
+</li>
+<li>
+<p><a href="https://www.npmjs.com/package/prom-client"><em>"prom-client"</em></a>: "^14.0.1"</p>
+</li>
+<li>
+<p><a href="https://www.npmjs.com/package/reflect-metadata"><em>"reflect-metadata"</em></a>: "^0.1.13"</p>
+</li>
+<li>
+<p><a href="https://www.npmjs.com/package/typeorm"><em>"typeorm"</em></a>: "^0.2.44"</p>
+</li>
+<li>
+<p><a href="https://www.npmjs.com/package/uuid"><em>"uuid"</em></a>: "^8.3.2"</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
@@ -1329,10 +1386,11 @@ As we can see in the following image, we are going to use Heroku to deploy the a
 <div class="sect2">
 <h3 id="_testability">8.8. Testability</h3>
 <div class="paragraph">
-<p>Applications should be strongly tested. We will use user histories to make acceptance tests and unit test to test the rest of the application components and states during running process.</p>
+<p>Applications should be strongly tested. We will use user histories to make acceptance tests and unit test to test the rest of the application components and states during running process.
+We think this is the best way to be sure the project works correctly.</p>
 </div>
 <div class="paragraph">
-<p>We think this is the best way to be sure the project works correctly.</p>
+<p>To test our code, Postman was used in the backend during the whole development of the work, to check if the requests were being carried out correctly. Later, once we had a more or less solid project, we added a series of unit tests, which use Jest technology, these tests try to include all the backend and frontend parts, but separately, without joining them. Once these tests passed successfully, integration tests were implemented, which test the union of frontend and backend, all these tests were done exhaustively and were performed by people who had not done that part of the code, with that we get that we do not test things that are known to work.</p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -1597,117 +1655,13 @@ As we can see in the following image, we are going to use Heroku to deploy the a
 <div class="sect2">
 <h3 id="_technical_debts">11.2. Technical debts</h3>
 <div style="page-break-after: always;"></div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_hexagonal_architecture">12. Hexagonal architecture</h2>
-<div class="sectionbody">
 <div class="paragraph">
-<p>We are using hexagonal architecture in our app. We took this decisin because it presents several advantadges.</p>
-</div>
-<div class="paragraph">
-<p>The hexagonal architecture is an architectural pattern used in software design. It divides a system into different layers or regions with their own responsibility. In this way, it manages to decouple layers of our application, allowing them to evolve in isolation. In addition, having the system separated by responsibilities will facilitate reuse. The components are loosely-coupled and interchangeable, such as the application core, the database, the user interface, test scripts and interfaces with other systems.</p>
-</div>
-<div class="paragraph">
-<p>Hexagonal architecture is an alternative to traditional layered architecture.</p>
+<p>Unresolved directive in index.adoc - include::12_hexagonal_architecture.adoc[]</p>
 </div>
 <div style="page-break-after: always;"></div>
+<div class="paragraph">
+<p>Unresolved directive in index.adoc - include::13_glossary.adoc[]</p>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_glossary">13. Glossary</h2>
-<div class="sectionbody">
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Term</th>
-<th class="tableblock halign-left valign-top">Definition</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>ACID</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Acronym that refers to the set of 4 key properties that define a transaction: Atomicity (The transaction can be commited or rollbacked), Consistency (the data must be coherent), Isolation (multiple transactions should be able to execute at the same time without interfering with each other) , and Durability (The changes must be persistent)</em></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>API</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Application Programming Interface. A set of routines and methods provided by a library for use by other software</em></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Backend</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Part of the application that implements the logical business and interacts with both the frontend and the database</em></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Continuous integration system</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>The practice of making automatic integrations to a project in order to detect errors prematurely</em></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Decentralised data warehouse (DeDe)</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Collection of centrally available data stores maintained by individual regions</em></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Efficiency</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Hability of working fast consuming the least amount of resources</em></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Frontend</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Part of the application that defines the user interface and is on charge of interacting with the user and send the information and petitions to the Backend</em></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Hosting service</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Service where Web pages are hosted</em></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Integrity</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>The hability of being in a consistent state</em></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Mobile application</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Tools that a user can use by accessing an application on a mobile device</em></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Modifiability</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>The hability of something to be modified easily</em></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Open Source</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Software development model based on open collaboration</em></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>POD</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Personal Online Datastore. Allows its users store every kind of personal data and manage the external access</em></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Privacy</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>The right of not sharing information if the user decides so</em></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>SOLID</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Web data decentralisation project</em></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Superset</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>A language that is a subset of another language, fully compatible with that language</em></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Testability</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Hability of something to be tested as an experiment and make decisions with the obtained results</em></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Usability</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>The hability of something to be easily used by the biggest part of users</em></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Web application</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Tools that a user can use by accessing a web server</em></p></td>
-</tr>
-</tbody>
-</table>
 <div style="page-break-after: always;"></div>
 <div class="paragraph">
 <p><strong>About arc42</strong></p>
@@ -1731,9 +1685,10 @@ Created by Dr. Peter Hruschka &amp; Dr. Gernot Starke.</p>
 </div>
 </div>
 </div>
+</div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-03-31 17:35:12 +0200
+Last updated 2022-04-03 19:30:46 +0200
 </div>
 </div>
 </body>
