@@ -95,7 +95,7 @@ export class OrderController {
                 price+=p.product.price*p.quantity;
             }
             
-            var source = "Calle Valdés Salas, 11, 33007 Oviedo, Asturias";
+            var source = "Calle Valdes Salas, 11, 33007 Oviedo, Asturias";
             var destination = "AvenidadelaConstitucion,10,Gijon"; //TODO: get address from user pod
             
             var url = 'https://maps.googleapis.com/maps/api/distancematrix/json?destinations='+destination+'&origins='+source+'&key=AIzaSyANy46m-FN8Sa9aSpIiLpSWx3xl7M2oX3s'
