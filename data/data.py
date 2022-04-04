@@ -221,3 +221,20 @@ ord2 = {
 # Insert Data
 rec_order_id1=collection.insert_one(ord1)
 rec_order_id2=collection.insert_one(ord2)
+
+
+
+collection = db.distributioncenter
+
+dc1 = {
+		"id": str(uuid.uuid4()),
+		"address": "Calle Valdes Salas, 11, 33007 Oviedo, Asturias"
+		}
+dc2 = {
+		"id": str(uuid.uuid4()),
+		"address": "Escuela Tecnica Superior de Ingeniería Informatica, Universidad de Sevilla, 41012 Sevilla"
+		}
+# Insert Data
+rec_distcenter_id1=collection.insert_one(dc1)
+rec_distcenter_id2=collection.insert_one(dc2)
+
