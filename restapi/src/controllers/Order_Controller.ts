@@ -102,8 +102,9 @@ export class OrderController {
             const response = await axios.get(url)
             var d = response.data.rows[0].elements[0].distance.value;
             price+=calculateShippingPrice(d);
-
             orderBody.price = price;
+            orderBody.priceBeforeIVA = price/1.21;
+
             const order = await OrderService.addOrder(req.app, orderBody);
             order ? res.status(200).json(order) : res.status(500).json({ error: "Error add Order" });
         } catch (error) {
