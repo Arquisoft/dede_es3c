@@ -3,7 +3,7 @@ import { DeleteResult } from 'typeorm';
 import { Order } from '../entities/Order';
 import { OrderService } from '../services/Order_Service';
 import { ProductService } from '../services/Product_Service';
-import axios from 'axios';
+//import axios from 'axios';
 
 export class OrderController {
 
@@ -104,11 +104,11 @@ export class OrderController {
             }*/
             var source = "Calle Valdés Salas, 11, 33007 Oviedo, Asturias";
             var destination = "AvenidadelaConstitucion,10,Gijon"; //TODO: get address from user pod
-            var url = 'https://maps.googleapis.com/maps/api/distancematrix/json?destinations=AvenidadelaConstitucion,10,Gijon&origins=CalleSahara,8,Gijon&key=AIzaSyANy46m-FN8Sa9aSpIiLpSWx3xl7M2oX3s'
+            /*var url = 'https://maps.googleapis.com/maps/api/distancematrix/json?destinations=AvenidadelaConstitucion,10,Gijon&origins=CalleSahara,8,Gijon&key=AIzaSyANy46m-FN8Sa9aSpIiLpSWx3xl7M2oX3s'
             const response = await axios.get(url)
             var distance = response.data.rows.elements.distance.value;
             price+=calculateShippingPrice(distance);
-            console.log(distance);
+            console.log(distance);*/
             const order = await OrderService.addOrder(req.app, orderBody, price);
             order ? res.status(200).json(order) : res.status(500).json({ error: "Error add Order" });
         } catch (error) {
