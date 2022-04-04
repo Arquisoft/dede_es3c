@@ -55,7 +55,7 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
             {
               <Fragment>
                 <Navbar.Brand>
-                  <img alt="" src={logo} width="30" height="30" className="d-inline-block align-top"/>
+                  <img alt="" src={logo} width="100" height="100" className="d-inline-block align-top"/>
                   DeDesktop
                 </Navbar.Brand>
                 <Nav.Link href="/" className="float-left">
