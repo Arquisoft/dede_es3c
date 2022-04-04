@@ -31,7 +31,7 @@ export class Order {
     @Column()
     priceIVA: number;
 
-    @AfterLoad()
+    /*@AfterLoad()
     getPrice() {
         var p = 0.0;
         for (var pr of this.products) {
@@ -51,7 +51,7 @@ export class Order {
 
     getPriceIVA(){
         this.priceIVA = this.price*1.21;
-    }
+    }*/
 
 
 }

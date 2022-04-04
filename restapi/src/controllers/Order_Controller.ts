@@ -3,7 +3,7 @@ import { DeleteResult } from 'typeorm';
 import { Order } from '../entities/Order';
 import { OrderService } from '../services/Order_Service';
 import { ProductService } from '../services/Product_Service';
-
+import axios from 'axios'
 
 export class OrderController {
 
@@ -89,9 +89,21 @@ export class OrderController {
     public async addOrder(req: Request, res: Response) {
         try {
             let orderBody = new Order(req.body.user,req.body.products);
+            var price = 0.0;
             for (var p of orderBody.products) {
                 ProductService.decrementProductStock(req.app, p.product.id, p.quantity);
+                price+=p.product.price*p.quantity;
             }
+            
+            var source = "Calle Valdés Salas, 11, 33007 Oviedo, Asturias";
+            var destination = "AvenidadelaConstitucion,10,Gijon"; //TODO: get address from user pod
+            
+            var url = 'https://maps.googleapis.com/maps/api/distancematrix/json?destinations='+destination+'&origins='+source+'&key=AIzaSyANy46m-FN8Sa9aSpIiLpSWx3xl7M2oX3s'
+            const response = await axios.get(url)
+            var d = response.data.rows[0].elements[0].distance.value;
+            price+=calculateShippingPrice(d);
+
+            orderBody.price = price;
             const order = await OrderService.addOrder(req.app, orderBody);
             order ? res.status(200).json(order) : res.status(500).json({ error: "Error add Order" });
         } catch (error) {
@@ -99,4 +111,19 @@ export class OrderController {
         }
     }
 
+}
+
+function calculateShippingPrice(distance:number):number {
+    var shippingPrice = 0;
+    if (distance < 20000) {
+        shippingPrice = 1;
+    } else if (distance < 50000) {
+        shippingPrice = 3;
+    } else if (distance < 100000) {
+        shippingPrice = 5;
+    } else if (distance >= 100000) {
+        shippingPrice = 10;
+    }
+
+    return shippingPrice;
 }
