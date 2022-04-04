@@ -92,9 +92,5 @@ include::11_technical_risks.adoc[]
 include::12_glossary.adoc[]
 
 <<<<
-// 13. Hexagonal architecture
-include::13_hexagonal_architecture.adoc[]
-
-<<<<
 // About
 include::about-arc42.adoc[]

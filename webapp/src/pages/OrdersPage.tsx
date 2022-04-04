@@ -35,7 +35,8 @@ const OrdersPage: FC<OrdersPageProps> = (props: OrdersPageProps) => {
     if (orders.length === 0){
         return (
         <div className="main">
-            <h1>{translate("orders.title")}</h1>
+            <Header setUser={props.setUser}/>
+            <h1 aria-label="myOrdersTitleWithout">{translate("orders.title")}</h1>
             <div className="mainEmptyContainer" style={{display: 'flex',justifyContent:'center', alignItems:'center', height: '100vh'}}>
             <h2>{translate("orders.empty")}</h2>
             <Button href="/catalog" >{translate("orders.shopping")}</Button>  
@@ -46,7 +47,7 @@ const OrdersPage: FC<OrdersPageProps> = (props: OrdersPageProps) => {
     return (
         <div className="mainContainer" style={{alignContent:"center", alignItems:"center", alignSelf:"center"}}>
             <Header setUser={props.setUser}/>
-            <h1>{translate("orders.title")}</h1>
+            <h1 aria-label="myOrdersTitleWith">{translate("orders.title")}</h1>
             <div style={{ alignContent:"center", alignItems:"center" }}>
               <TableContainer component={Paper} sx={{maxHeight: "440",maxWidth: "1000" , alignSelf:"center"}}>
               <Table stickyHeader aria-label="sticky table">
