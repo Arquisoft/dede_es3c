@@ -17,7 +17,7 @@ test('check orders page text renders properly when the user has no orders', asyn
         </UserState>
       </React.StrictMode>,
    )
-    const linkElement = screen.getByText(/My orders/i);
+    const linkElement = screen.getByLabelText(/myOrdersTitleWithout/i);
     const noOrders = screen.getByText(/Go Shopping/i);
     expect(linkElement).toBeInTheDocument();
     expect(noOrders).toBeInTheDocument();
