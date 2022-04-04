@@ -3,6 +3,7 @@ import { DeleteResult } from 'typeorm';
 import { Order } from '../entities/Order';
 import { OrderService } from '../services/Order_Service';
 import { ProductService } from '../services/Product_Service';
+import { DistributionCenterService } from '../services/DistributionCenter_Service';
 import axios from 'axios'
 
 export class OrderController {
@@ -95,13 +96,27 @@ export class OrderController {
                 price+=p.product.price*p.quantity;
             }
             
-            var source = "Calle Valdes Salas, 11, 33007 Oviedo, Asturias";
+            //var source = "Calle Valdes Salas, 11, 33007 Oviedo, Asturias";
+            var source;
             var destination = "AvenidadelaConstitucion,10,Gijon"; //TODO: get address from user pod
-            
-            var url = 'https://maps.googleapis.com/maps/api/distancematrix/json?destinations='+destination+'&origins='+source+'&key=AIzaSyANy46m-FN8Sa9aSpIiLpSWx3xl7M2oX3s'
-            const response = await axios.get(url)
-            var d = response.data.rows[0].elements[0].distance.value;
-            price+=calculateShippingPrice(d);
+            const distributioncenters = await DistributionCenterService.getDistributionCenters(req.app);
+            var addressNearbyDS;
+            var distanceToNearbyDS = 0;
+            var url;
+            var response;
+            var d;
+            for (var distributioncenter of distributioncenters) {
+                source = distributioncenter.address;
+                url = 'https://maps.googleapis.com/maps/api/distancematrix/json?destinations='+destination+'&origins='+source+'&key=AIzaSyANy46m-FN8Sa9aSpIiLpSWx3xl7M2oX3s'
+                response = await axios.get(url)
+                d = response.data.rows[0].elements[0].distance.value;
+                if (d<distanceToNearbyDS){
+                    distanceToNearbyDS = d
+                    addressNearbyDS = distributioncenter
+                }
+            }
+            //TODO: Falta comprobación si hay productos en ese centro
+            price+=calculateShippingPrice(distanceToNearbyDS);
             orderBody.price = price;
             orderBody.priceBeforeIVA = price/1.21;
 
