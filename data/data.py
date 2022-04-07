@@ -228,11 +228,13 @@ collection = db.distributioncenter
 
 dc1 = {
 		"id": str(uuid.uuid4()),
-		"address": "Calle Valdes Salas, 11, 33007 Oviedo, Asturias"
+		"address": "Calle Valdes Salas, 11, 33007 Oviedo, Asturias",
+		"store":{prod1:10,prod2:5}
 		}
 dc2 = {
 		"id": str(uuid.uuid4()),
-		"address": "Escuela Tecnica Superior de Ingeniería Informatica, Universidad de Sevilla, 41012 Sevilla"
+		"address": "Escuela Tecnica Superior de Ingeniería Informatica, Universidad de Sevilla, 41012 Sevilla",
+		"store":{prod1:2,prod2:15,prod3:10}
 		}
 # Insert Data
 rec_distcenter_id1=collection.insert_one(dc1)
