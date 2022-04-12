@@ -5,7 +5,7 @@ import Button from '@mui/material/Button';
 import { LangContext } from '../lang';
 import { Product, CartProduct } from '../shared/shareddtypes';
 import Item from '../components/Item';
-import { Drawer, Grid} from "@material-ui/core";
+import { Drawer, Grid, Badge } from "@material-ui/core";
 import Cart from '../components/Cart';
 import { AddShoppingCartSharp } from '@mui/icons-material';
 
@@ -35,8 +35,10 @@ const Catalog = (props: CatalogPageProps) => {
 
     useEffect(() => {
         reloadItems();
-        setCartItems(JSON.parse(localStorage.getItem("cart")!));
+        setCartItems(JSON.parse(localStorage.getItem("cart")!) || []);
     }, []);
+
+    const getTotalItems = (items: CartProduct[]) => items.reduce((ack: number, item) => ack + item.amount, 0);     
 
     const handleAddToCart = (clickedItem: CartProduct) => {
         let cartCopy = [...cartItems];
@@ -97,7 +99,9 @@ const Catalog = (props: CatalogPageProps) => {
                 />
             </Drawer>
             <Button onClick={() => setCartOpen(true)} aria-label="CartIcon">
-                <AddShoppingCartSharp />
+                <Badge badgeContent={getTotalItems(cartItems)} color="error">
+                    <AddShoppingCartSharp />
+                </Badge>
             </Button>
 
             <Grid container spacing={3}>
