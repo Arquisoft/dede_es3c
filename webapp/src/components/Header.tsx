@@ -49,8 +49,6 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
   }
 
   return (
-    <Nav>
-      {
         <Nav className="container-fluid">
           {
             <Fragment>
@@ -103,21 +101,15 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
 
               {(localStorage.getItem("currentUser") !== "not logged" && (localStorage.getItem("currentUser")?.includes("admin"))) &&
                 <NavDropdown title={translate('nav.admin')} id="productos-admin-dropdown">
-                  <Dropdown.Item>
                     <Link to="/addProduct" className="Dropdown-item">
                       {translate('crud.add')}
                     </Link>
-                  </Dropdown.Item>
-                  <Dropdown.Item>
                     <Link to="/editProduct" className="Dropdown-item">
                       {translate('crud.update')}
                     </Link>
-                  </Dropdown.Item>
-                  <Dropdown.Item>
                     <Link to="/editProduct" className="Dropdown-item">
                       {translate('crud.delete')}
                     </Link>
-                  </Dropdown.Item>
                 </NavDropdown>
               }
 
@@ -131,8 +123,6 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
             </Fragment>
           }
         </Nav>
-      }
-    </Nav>
   );
 }
 export default Header;

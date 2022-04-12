@@ -98,11 +98,15 @@ const Catalog = (props: CatalogPageProps) => {
                     removeFromCart={handleRemoveFromCart}
                 />
             </Drawer>
-            <Button onClick={() => setCartOpen(true)} aria-label="CartIcon">
-                <Badge badgeContent={getTotalItems(cartItems)} color="error">
-                    <AddShoppingCartSharp />
-                </Badge>
-            </Button>
+            {
+                (!localStorage.getItem("currentUser")?.includes("admin")) &&
+                <Button onClick={() => setCartOpen(true)} aria-label="CartIcon">
+                    <Badge badgeContent={getTotalItems(cartItems)} color="error">
+                        <AddShoppingCartSharp />
+                    </Badge>
+                </Button>
+            }
+            
 
             <Grid container spacing={3}>
                 {products?.map((item: CartProduct) => {

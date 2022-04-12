@@ -24,19 +24,12 @@ const Item: React.FC<Props> = ({ item, handleAddToCart }) => (
             </CardContent>
             <CardActions disableSpacing>
                 <IconButton aria-label="add to cart" disableFocusRipple size="small" onClick={() => handleAddToCart(item)}>
-                    <AddShoppingCartIcon />
+                    {
+                        (!localStorage.getItem("currentUser")?.includes("admin")) &&
+                        <AddShoppingCartIcon />
+                    }
                 </IconButton>
-                {/*<ExpandMore expand={expanded} onClick={() => handleExpandClick(i)} aria-expanded={expanded} aria-label="show more" size="small">
-                    <ExpandMoreIcon />
-</ExpandMore>*/}
             </CardActions>
-            {/*<Collapse in={expandedId === i} timeout="auto" unmountOnExit>
-                <CardContent>
-                    <Typography paragraph>
-                        {item.description}
-                    </Typography>
-                </CardContent>
-</Collapse>*/}
         </Card>
     </div>
 );
