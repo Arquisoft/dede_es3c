@@ -39,6 +39,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+      env:
+          API_URI: http://${{ secrets.DEPLOY_HOST }}:5000
+          SKIP_PREFLIGHT_CHECK: true
       with:
           name: arquisoft/dede_es3c/webapp
           username: ${{ github.actor }}
