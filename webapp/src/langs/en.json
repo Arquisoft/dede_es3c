@@ -85,5 +85,10 @@
     "cart.empty":"No items in cart",
     "cart.orderButton":"Proceed to checkout",
     "cartItem.price":"Price",
-    "cartItem.total":"Total (with IVA)"
+    "cartItem.total":"Total (with IVA)",
+    "clients.notAllowed":"Sorry, we couldn't find what you are looking for",
+    "clients.title":"DeDesktop's registered clients",
+    "clients.username":"Username",
+    "clients.email":"Email",
+    "clients.rol":"Rol"
 }

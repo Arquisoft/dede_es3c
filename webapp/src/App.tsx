@@ -12,6 +12,7 @@ import CrudDeletePage from './pages/CrudDeletePage';
 import OrdersPage from './pages/OrdersPage';
 import ShippingPage from './pages/ShippingPage';
 import CatalogPage from './pages/Catalog';
+import ClientView from './pages/ClientView';
 
 const App: FC = () => {
   const { dispatch: {setUser}} = useContext(UserContext);
@@ -74,6 +75,12 @@ const App: FC = () => {
           path='shipping'
           element={
             <ShippingPage setUser={setUser}/>
+          }
+        />
+        <Route
+          path='users'
+          element={
+            <ClientView setUser={setUser}/>
           }
         />
       </Routes>

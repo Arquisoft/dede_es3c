@@ -15,7 +15,7 @@ export async function addUser(user:User):Promise<boolean>{
 
 export async function getUsers():Promise<User[]>{
     const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
-    let response = await fetch(apiEndPoint+'/users/list');
+    let response = await fetch(apiEndPoint+'/users');
     return response.json()
 }
 

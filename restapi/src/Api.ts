@@ -43,7 +43,7 @@
  
      api.route('/users')
          // Get all users
-         .get(auth.isAdminAuth,userController.getUsers)
+         .get(userController.getUsers)
  
      api.route('/users/username/:username')
          .get(userController.getUserByUsername);
