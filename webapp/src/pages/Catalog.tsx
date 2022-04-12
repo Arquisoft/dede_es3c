@@ -1,6 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
 import { getProducts, getProductsByName, getProductsByCategory } from '../api/api';
-import Header from "../components/Header";
 import { Form, FormControl } from "react-bootstrap";
 import Button from '@mui/material/Button';
 import { LangContext } from '../lang';
@@ -81,8 +80,6 @@ const Catalog = (props: CatalogPageProps) => {
 
     return (
         <div>
-            <Header setUser={props.setUser} />
-
             <Form>
                 <FormControl type="search" value={val} placeholder={translate('catalog.search')} className="me-2" aria-label="Search" onChange={e => {setNameFilter(e.target.value); setVal(e.target.value)}}/>
                 <Button onClick={() => FilterByName(nameFilter)} >{translate('catalog.search')}</Button>

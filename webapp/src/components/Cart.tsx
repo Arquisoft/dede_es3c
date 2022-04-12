@@ -43,7 +43,7 @@ const Cart: React.FC<CartProps> = ({ cartItems, addToCart, removeFromCart }) => 
             )}
             <h2>Subtotal: $ {calculateSubTotal(cartItems).toFixed(2)}</h2>
             <h2>{translate('cartItem.total')}: $ {calculateTotal(cartItems).toFixed(2)}</h2>
-            <Button onClick={() => setPage("shipping")} disabled = {localStorage.getItem("currentUser") === "not logged"}>{translate('cart.orderButton')}</Button>
+            <Button onClick={() => setPage("shipping")} disabled={localStorage.getItem("currentUser") === "not logged"}>{translate('cart.orderButton')}</Button>
         </div>
     )
 }

@@ -64,7 +64,6 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
   } else if (cartProducts.length === 0){
     return (
       <div>
-        <Header setUser={props.setUser}/>
         <h1>{translate("shipping.title")}</h1>
         <h2>{translate("shipping.nothing")}</h2>
         <Button href="/catalog">{translate("orders.shopping")}</Button>
@@ -74,7 +73,6 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
   }
   return(
     <div>
-      <Header setUser={props.setUser}/>
       <h1 aria-label="selectedProductsTitle">{translate("shipping.title")}</h1> 
       <Container component="main" maxWidth="sm">
         <Card className={"main"} elevation={10} style={{display: "grid"}}>

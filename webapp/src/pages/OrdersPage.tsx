@@ -25,7 +25,7 @@ const OrdersPage: FC<OrdersPageProps> = (props: OrdersPageProps) => {
           setOrders(await getOrdersByEmail(user.email));
         }
       } else if (localStorage.getItem("currentUser") !== null && localStorage.getItem("currentUser")?.includes("admin")){
-        setOrders(await getOrders());
+          setOrders(await getOrders());
       }
   }
 
@@ -45,7 +45,6 @@ const OrdersPage: FC<OrdersPageProps> = (props: OrdersPageProps) => {
     } 
     return (
         <div className="mainContainer" style={{alignContent:"center", alignItems:"center", alignSelf:"center"}}>
-            <Header setUser={props.setUser}/>
             <h1>{translate("orders.title")}</h1>
             <div style={{ alignContent:"center", alignItems:"center" }}>
               <TableContainer component={Paper} sx={{maxHeight: "440",maxWidth: "1000" , alignSelf:"center"}}>

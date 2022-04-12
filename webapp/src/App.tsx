@@ -12,12 +12,14 @@ import CrudDeletePage from './pages/CrudDeletePage';
 import OrdersPage from './pages/OrdersPage';
 import ShippingPage from './pages/ShippingPage';
 import CatalogPage from './pages/Catalog';
+import Header from "./components/Header";
 
 const App: FC = () => {
   const { dispatch: {setUser}} = useContext(UserContext);
 
   return (
     <Router>
+      <Header setUser={setUser} />
       <Routes>
         <Route
           path='/'
