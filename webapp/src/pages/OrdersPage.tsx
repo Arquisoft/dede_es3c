@@ -1,5 +1,4 @@
 import React, {FC, useState, useEffect, useContext} from "react";
-import Header from "../components/Header"
 import { Order } from "../shared/shareddtypes";
 import { getOrders, getOrdersByEmail, getUser } from "../api/api";
 import DisplayOrders from "../components/DisplayOrders"

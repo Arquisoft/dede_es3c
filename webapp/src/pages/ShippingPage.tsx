@@ -1,5 +1,4 @@
 import React, {Fragment, FC, useState, useContext} from "react";
-import Header from "../components/Header"
 import { Card, CardContent, Container, List, ListItem, ListItemText, ListSubheader, TextField} from "@mui/material";
 import { Button } from "react-bootstrap";
 import { Product } from "../shared/shareddtypes";
@@ -95,9 +94,9 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                         <ul>
                           <ListSubheader>{translate('shipping.selectedProducts')}</ListSubheader>
                           {cartProducts.map((item) => (
-                          <ListItem key={item.name}>
+                            <ListItem key={item.name}>
                             <img alt="desc" src= {item.urlPhoto} width= '70' height='70'/>
-                            <ListItemText primary={"x" + item.amount + "\t"+item.name + "\:" + item.price + "$"} />
+                            <ListItemText primary={"x" + item.amount + "\t"+item.name + ":" + item.price + "$"} />
                             </ListItem>
                             ))}
                         </ul>

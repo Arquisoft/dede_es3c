@@ -1,5 +1,4 @@
 import { FC, useState, useContext } from "react";
-import Header from "../components/Header";
 import logo from '../img/logo-dede.svg';
 import { Container, Card, CardContent } from "@mui/material";
 import Button from '@mui/material/Button';

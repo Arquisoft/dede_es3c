@@ -5,7 +5,7 @@ import Button from '@mui/material/Button';
 import { LangContext } from '../lang';
 import { Product, CartProduct } from '../shared/shareddtypes';
 import Item from '../components/Item';
-import { Drawer, Grid, Badge } from "@material-ui/core";
+import { Drawer, Grid, Badge } from "@mui/material";
 import Cart from '../components/Cart';
 import { AddShoppingCartSharp } from '@mui/icons-material';
 

@@ -8,7 +8,6 @@ import Link from '@mui/material/Link';
 import logo from '../img/logo-dede.svg'
 import {checkUser, signup } from "../api/api";
 import { User } from "../shared/shareddtypes";
-import Header from "../components/Header";
 import { Button } from "react-bootstrap";
 import { Navigate } from "react-router-dom";
 import { LangContext } from '../lang';
