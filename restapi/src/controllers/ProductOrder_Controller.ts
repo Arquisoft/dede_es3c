@@ -1,9 +1,7 @@
 import { Request, Response } from 'express';
 import { DeleteResult} from 'typeorm';
 import { ProductInOrder } from '../entities/ProductInOrder';
-import { DistributionCenterService } from '../services/DistributionCenter_Service';
 import { ProductOrderService } from '../services/ProductOrder_Service';
-import { DistributionCenterController } from './DistributionCenter_Controller';
 
 
 export class ProductController {
