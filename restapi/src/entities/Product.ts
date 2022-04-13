@@ -2,7 +2,6 @@ import { Entity, Column, ObjectIdColumn, PrimaryColumn, Unique } from "typeorm";
 import {v4 as uuidv4} from 'uuid';
 
 @Entity()
-@Unique('unique_name', ['name'])
 export class Product {
 
     constructor(name: string, description: string, price: number, category: string, urlPhoto: string, stock: number) {
@@ -21,7 +20,7 @@ export class Product {
     @PrimaryColumn()
     id: string;
 
-    @Column({ unique: true })
+    @Column()
     name: string;
 
     @Column()

@@ -26,7 +26,7 @@ export class Auth {
                 hash == user.hash ? 
                     res.status(200).json(Auth.createToken(user.username, user.rol)) :
                     res.status(403).json({error: "Error, la contraseña no coincide"});
-            } else res.status(404).json({error: "El usuario no existe"});
+            } else res.status(402).json({error: "El usuario no existe"});
         } catch (error) {
             res.status(500).json({ error: "Error al intentar iniciar sesion" });
         }
@@ -40,11 +40,16 @@ export class Auth {
      */
     public async register(req: Request, res: Response) {
             try {
-                let salt = crypto.randomBytes(16).toString("hex");
-                let hash = crypto.pbkdf2Sync(req.body.password, salt, 1000, 64, `sha512`).toString(`hex`);
-                let userBody = new User(req.body.username, req.body.email, salt, hash, req.body.rol );
-                const user = await UserService.addUser(req.app, userBody);
-                res.status(200).json(Auth.createToken(user.username, user.rol));
+                const userLogin = await UserService.getUserByUsername(req.app , req.body.username);
+                if(userLogin){
+                    res.status(402).json({error: "El usuario ya existe"});
+                }else{
+                    let salt = crypto.randomBytes(16).toString("hex");
+                    let hash = crypto.pbkdf2Sync(req.body.password, salt, 1000, 64, `sha512`).toString(`hex`);
+                    let userBody = new User(req.body.username, req.body.email, salt, hash, req.body.rol );
+                    const user = await UserService.addUser(req.app, userBody);
+                    res.status(200).json(Auth.createToken(user.username, user.rol));
+                }
             } catch (error) {
                 res.status(500).json({ error: "Error al intentar registrarse" });
             }

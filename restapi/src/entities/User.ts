@@ -2,8 +2,6 @@ import { Entity, Column, ObjectIdColumn, PrimaryColumn, Unique } from "typeorm";
 import {v4 as uuidv4} from 'uuid';
 
 @Entity()
-@Unique('unique_username', ['username'])
-@Unique('unique_email', ['email'])
 export class User {
 
     constructor(username: string, email: string, salt: string,hash: string, rol: string) {
@@ -20,11 +18,10 @@ export class User {
   
     @PrimaryColumn()
     id: string;
-
-    @Column({ unique: true })
+    
+    @Column()
     username: string;
-
-    @Column({ unique: true })
+    @Column()
     email: string;
 
     @Column()
