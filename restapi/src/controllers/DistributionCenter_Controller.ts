@@ -1,6 +1,4 @@
 import { Request, Response } from 'express';
-import { DeleteResult } from 'typeorm';
-import { DistributionCenter } from '../entities/DistributionCenter';
 import { ProductInOrder } from '../entities/ProductInOrder';
 import { DistributionCenterService } from '../services/DistributionCenter_Service';
 
@@ -28,7 +26,7 @@ export class DistributionCenterController {
      */
      public async getDistributionCentersByAvailableProduct(req: Request, res: Response) {
         try {
-            var product = await new ProductInOrder(req.body.product, req.body.quantity, req.body.distributionCenter);
+            var product = new ProductInOrder(req.body.product, req.body.quantity, req.body.distributionCenter);
             var listOfDistributionCentersIds = [];
             for (var d of await DistributionCenterService.getDistributionCenters(req.app)) {
                 var stock = d.store.get(product.product)

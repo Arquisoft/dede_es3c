@@ -3,7 +3,6 @@ import { DeleteResult } from 'typeorm';
 import { Order } from '../entities/Order';
 import { OrderService } from '../services/Order_Service';
 import { ProductService } from '../services/Product_Service';
-import { DistributionCenterService } from '../services/DistributionCenter_Service';
 import axios from 'axios'
 import { ProductOrderService } from '../services/ProductOrder_Service';
 import { UserService } from '../services/User_Service';
@@ -99,7 +98,7 @@ export class OrderController {
             var url = 'http://localhost:5000/api/users/userpod/'+user.username;
             var response = await axios.get(url)
             //var destination = response.;
-            var destination = "AvenidadelaConstitucion,10,Gijon"; //TODO: get address from user pod
+            var destination = "AvenidadelaConstitucion,10,Gijon"; //get address from user pod
 
 
             var price = 0.0;
@@ -112,26 +111,11 @@ export class OrderController {
                 url = 'https://maps.googleapis.com/maps/api/distancematrix/json?destinations='+destination+'&origins='+source+'&key=AIzaSyANy46m-FN8Sa9aSpIiLpSWx3xl7M2oX3s'
                 response = await axios.get(url)
                 d = response.data.rows[0].elements[0].distance.value;
+                sp = calculateShippingPrice(d);
                 ProductOrderService.updateShippingPrice(req.app,p.id,sp);
                 price+=p.product.price*p.quantity + p.shippingPrice;
             }
             
-            //var source = "Calle Valdes Salas, 11, 33007 Oviedo, Asturias";
-            
-            //for (var p of )
-            /*for (var distributioncenter of distributioncenters) {
-                source = distributioncenter.address;
-                url = 'https://maps.googleapis.com/maps/api/distancematrix/json?destinations='+destination+'&origins='+source+'&key=AIzaSyANy46m-FN8Sa9aSpIiLpSWx3xl7M2oX3s'
-                response = await axios.get(url)
-                d = response.data.rows[0].elements[0].distance.value;
-                if (d<distanceToNearbyDC){
-                    distanceToNearbyDC = d
-                    addressNearbyDC = distributioncenter
-                }
-            }*/
-            //console.log(addressNearbyDC);
-            //TODO: Falta comprobación si hay productos en ese centro
-            //price+=calculateShippingPrice(distanceToNearbyDC);
             orderBody.price = price;
             orderBody.priceBeforeIVA = price/1.21;
 

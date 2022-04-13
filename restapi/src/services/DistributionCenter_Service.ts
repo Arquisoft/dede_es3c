@@ -1,7 +1,6 @@
-import { DeleteResult, UpdateResult, In } from "typeorm";
+import { In } from "typeorm";
 import { Application } from "express";
 import { DistributionCenter } from "../entities/DistributionCenter";
-import { ProductInOrder } from "../entities/ProductInOrder";
 
 export class DistributionCenterService {
 
