@@ -5,6 +5,8 @@ import { OrderService } from '../services/Order_Service';
 import { ProductService } from '../services/Product_Service';
 import { DistributionCenterService } from '../services/DistributionCenter_Service';
 import axios from 'axios'
+import { ProductOrderService } from '../services/ProductOrder_Service';
+import { UserService } from '../services/User_Service';
 
 export class OrderController {
 
@@ -90,33 +92,46 @@ export class OrderController {
     public async addOrder(req: Request, res: Response) {
         try {
             let orderBody = new Order(req.body.user,req.body.products);
+            var source;
+            
+            //Destination
+            let user = await UserService.getUserByEmail(req.app, orderBody.user)
+            var url = 'http://localhost:5000/api/users/userpod/'+user.username;
+            var response = await axios.get(url)
+            //var destination = response.;
+            var destination = "AvenidadelaConstitucion,10,Gijon"; //TODO: get address from user pod
+
+
             var price = 0.0;
+            //Source
+            var d;
             for (var p of orderBody.products) {
                 ProductService.decrementProductStock(req.app, p.product.id, p.quantity);
-                price+=p.product.price*p.quantity;
+                var sp = 0.0;
+                source = p.distributionCenter.address;
+                url = 'https://maps.googleapis.com/maps/api/distancematrix/json?destinations='+destination+'&origins='+source+'&key=AIzaSyANy46m-FN8Sa9aSpIiLpSWx3xl7M2oX3s'
+                response = await axios.get(url)
+                d = response.data.rows[0].elements[0].distance.value;
+                ProductOrderService.updateShippingPrice(req.app,p.id,sp);
+                price+=p.product.price*p.quantity + p.shippingPrice;
             }
             
             //var source = "Calle Valdes Salas, 11, 33007 Oviedo, Asturias";
-            var source;
-            var destination = "AvenidadelaConstitucion,10,Gijon"; //TODO: get address from user pod
-            const distributioncenters = await DistributionCenterService.getDistributionCenters(req.app);
-            var addressNearbyDS;
-            var distanceToNearbyDS = 0;
-            var url;
-            var response;
-            var d;
-            for (var distributioncenter of distributioncenters) {
+            
+            //for (var p of )
+            /*for (var distributioncenter of distributioncenters) {
                 source = distributioncenter.address;
                 url = 'https://maps.googleapis.com/maps/api/distancematrix/json?destinations='+destination+'&origins='+source+'&key=AIzaSyANy46m-FN8Sa9aSpIiLpSWx3xl7M2oX3s'
                 response = await axios.get(url)
                 d = response.data.rows[0].elements[0].distance.value;
-                if (d<distanceToNearbyDS){
-                    distanceToNearbyDS = d
-                    addressNearbyDS = distributioncenter
+                if (d<distanceToNearbyDC){
+                    distanceToNearbyDC = d
+                    addressNearbyDC = distributioncenter
                 }
-            }
+            }*/
+            //console.log(addressNearbyDC);
             //TODO: Falta comprobación si hay productos en ese centro
-            price+=calculateShippingPrice(distanceToNearbyDS);
+            //price+=calculateShippingPrice(distanceToNearbyDC);
             orderBody.price = price;
             orderBody.priceBeforeIVA = price/1.21;
 

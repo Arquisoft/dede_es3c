@@ -86,4 +86,15 @@ export class ProductOrderService {
         return app.get('db').getRepository(ProductInOrder).update({id: id}, product);
     }
 
+    /**
+     * Update shipping price
+     * @param app 
+     * @param id 
+     * @param shippingPrice 
+     * @returns 
+     */
+    public static updateShippingPrice(app: Application, id: string, shippingPrice: number): Promise<UpdateResult> {
+        return app.get('db').getRepository(ProductInOrder).updateOne({ id: id }, { $inc: { shippingPrice: shippingPrice } });
+    }
+
 }
