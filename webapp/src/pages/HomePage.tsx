@@ -1,10 +1,9 @@
-import { FC, useState, useContext } from "react";
+import { FC, useState, useContext, Fragment } from "react";
 import logo from '../img/logo-dede.svg';
 import { Container, Card, CardContent } from "@mui/material";
 import Button from '@mui/material/Button';
 import { Navigate } from "react-router-dom";
 import { LangContext } from '../lang';
-import React, { Fragment } from 'react';
 
 interface HomePageProps {
     setUser: (user: string) => void
