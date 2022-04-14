@@ -59,26 +59,6 @@ export class ProductController {
   }
 
   /**
-   * Exist User
-   * @param req Request
-   * @param res Response
-   * @returns product with status 200 or error 500
-   */
-     public async isLoged(req: Request, res: Response) {
-      try {
-        const product = await ProductService.getProductByName(
-          req.app,
-          req.params.name
-        );
-        product
-          ? res.status(200).json(product)
-          : res.status(404).json({ error: "Product not found" });
-      } catch (error) {
-        res.status(500).json({ error: "Error on get Product by name: " + error });
-      }
-    }
-
-  /**
    * Get product by name
    * @param req Request
    * @param res Response
