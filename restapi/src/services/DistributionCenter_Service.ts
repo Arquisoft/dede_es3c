@@ -19,10 +19,20 @@ export class DistributionCenterService {
      * @returns Promise<DistributionCenter[]>
      */
      public static getDistributionCentersByAvailableProduct(app: Application, list: string[]): Promise<DistributionCenter[]> {
-        return app.get('db').getRepository(DistributionCenter).find({
-            where: {
-                id: In(list)
-            }});
+        return app.get('db').getRepository(DistributionCenter)
+            .find({
+                where: { id: { $in:list } }
+            });
     }
+
+     /**
+   * Add new distribution center
+   * @param app Express application
+   * @param dc DistributionCenter object
+   * @returns Promise<DistributionCenter>
+   */
+  public static addDistributionCenter(app: Application,dc: DistributionCenter): Promise<DistributionCenter> {
+    return app.get("db").getRepository(DistributionCenter).save(dc);
+  }
 
 }

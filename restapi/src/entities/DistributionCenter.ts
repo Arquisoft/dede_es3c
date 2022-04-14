@@ -1,11 +1,10 @@
 import { Entity, Column, ObjectIdColumn, PrimaryColumn } from "typeorm";
 import {v4 as uuidv4} from 'uuid';
-import { Product } from "./Product";
 
 @Entity()
 export class DistributionCenter {
 
-    constructor(address: string, store: Map<Product,number>) {
+    constructor(address: string, store: Map<string,number>) {
         this.address = address;
         this.store = store;
         this.id = uuidv4();
@@ -21,7 +20,7 @@ export class DistributionCenter {
     address: string;
 
     @Column()
-    store: Map<Product,number>;
+    store: Map<string,number>;
 
     
 
