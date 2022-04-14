@@ -6,10 +6,9 @@ import Button from '@mui/material/Button';
 import { LangContext } from '../lang';
 import { Product, CartProduct } from '../shared/shareddtypes';
 import Item from '../components/Item';
-import { Drawer, Grid, Badge } from "@material-ui/core";
+import { Drawer, Grid} from "@material-ui/core";
 import Cart from '../components/Cart';
 import { AddShoppingCartSharp } from '@mui/icons-material';
-import { UserContext } from '../User';
 
 interface CatalogPageProps {
     setUser: (user: string) => void
@@ -17,7 +16,6 @@ interface CatalogPageProps {
 
 const Catalog = (props: CatalogPageProps) => {
     const { dispatch: { translate } } = useContext(LangContext);
-    const { dispatch: {setUser } } = useContext(UserContext);
     const [products, setProducts] = useState<Product[]>([]);
     const [nameFilter, setNameFilter] = useState('');
     const [val, setVal] = useState('');
@@ -40,8 +38,6 @@ const Catalog = (props: CatalogPageProps) => {
         reloadItems();
         setCartItems(JSON.parse(localStorage.getItem("cart")!));
     }, []);
-
-    //const getTotalItems = (items: CartProduct[]) => items.reduce((ack: number, item) => ack + item.amount, 0);
 
     const handleAddToCart = (clickedItem: CartProduct) => {
         let cartCopy = [...cartItems];
@@ -85,11 +81,10 @@ const Catalog = (props: CatalogPageProps) => {
 
     return (
         <div>
-            <Header setUser={setUser} />
+            <Header setUser={props.setUser} />
 
             <Form>
                 <FormControl type="search" value={val} placeholder={translate('catalog.search')} className="me-2" aria-label="Search" onChange={e => {setNameFilter(e.target.value); setVal(e.target.value)}}/>
-                {/*<Button onClick={() => {reloadItems(); setVal("")}}>{translate('category.reset')}</Button>*/}
                 <Button onClick={() => FilterByName(nameFilter)} >{translate('catalog.search')}</Button>
             </Form>
 
@@ -105,9 +100,6 @@ const Catalog = (props: CatalogPageProps) => {
                 />
             </Drawer>
             <Button onClick={() => setCartOpen(true)} aria-label="CartIcon">
-                {/*<Badge badgeContent={getTotalItems(cartItems)} color="error">
-                    <AddShoppingCartSharp />
-    </Badge>*/}
                 <AddShoppingCartSharp />
             </Button>
 

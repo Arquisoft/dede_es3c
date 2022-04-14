@@ -1,6 +1,5 @@
-import React, { FC, useContext } from 'react';
+import { FC, useContext } from 'react';
 import './App.css';
-import { LangContext } from './lang';
 import { UserContext } from './User';
 import "bootswatch/dist/morph/bootstrap.min.css"
 import LoginPage from './pages/LoginPage';
@@ -8,11 +7,11 @@ import SignUpPage from './pages/SignUpPage';
 import HomePage from './pages/HomePage';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import CrudAddPage from './pages/CrudAddPage';
-import CrudEditPage from './pages/CrudUpdatePage';
+import CrudEditPage from './pages/CrudEditPage';
 import CrudDeletePage from './pages/CrudDeletePage';
 import OrdersPage from './pages/OrdersPage';
 import ShippingPage from './pages/ShippingPage';
-import CatalogPage from './pages/CatalogPage';
+import CatalogPage from './pages/Catalog';
 
 const App: FC = () => {
   const { dispatch: {setUser}} = useContext(UserContext);

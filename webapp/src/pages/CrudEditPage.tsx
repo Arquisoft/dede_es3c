@@ -7,7 +7,7 @@ import "bootswatch/dist/morph/bootstrap.min.css"
 import { Product } from "../shared/shareddtypes";
 import {updateProduct} from "../api/api";
 import { LangContext } from '../lang';
-import Home from '../pages/HomePage';
+import Home from './HomePage';
 
 interface CrudPageProps {
     setUser: (user: string) => void
@@ -29,9 +29,7 @@ const CrudEditPage: FC<CrudPageProps> = (props: CrudPageProps) => {
     const updateProductAux = async () => {
         const product: Product = { name: name, description: description, price: Number(price), category: category, urlPhoto: urlPhoto, amount: 0 }
 
-        if (isBlank(product.name) || isBlank(product.description) || isBlank(product.category) || isBlank(product.urlPhoto) || isBlank(id)) {
-            //console.log("novalido");
-        } else {
+        if (!isBlank(product.name) || !isBlank(product.description) || !isBlank(product.category) || !isBlank(product.urlPhoto) || !isBlank(id)) {
             await updateProduct(id, product);
         }
     }

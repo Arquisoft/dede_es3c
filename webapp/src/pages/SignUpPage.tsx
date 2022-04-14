@@ -43,10 +43,8 @@ const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
             rol:"Client"
         }
 
-        if (isBlank(user.username) || isBlank(user.password) || isBlank(user.email) || isBlank(repeatedPassword)){
-            //console.log("novalido");
-        } else {
-           const found = await checkUser(name, password);
+        if (!isBlank(user.username) || !isBlank(user.password) || !isBlank(user.email) || !isBlank(repeatedPassword)){
+           const found = await checkUser(name);
            if (!found){
                 const token = await signup(name, password, email);
                 setRegistered(true);

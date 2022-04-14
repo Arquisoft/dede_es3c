@@ -1,20 +1,8 @@
-import React, { useContext } from "react";
+import React from "react";
 import { render, screen } from "@testing-library/react";
-import CatalogPage from '../pages/CatalogPage';
+import CatalogPage from '../pages/Catalog';
 import LangState from '../lang';
 import UserState from '../User';
-import { Product, CartProduct } from '../shared/shareddtypes';
-
-import en from '../langs/en.json';
-import HomePage from "../pages/HomePage";
-
-beforeAll(async () => {
-    
-});
-
-afterAll(async () => {
-    
-});
 
 test('Catalog renders properly', async () => {
   

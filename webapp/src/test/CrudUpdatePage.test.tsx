@@ -1,17 +1,8 @@
 import { render, screen } from "@testing-library/react";
-import OrdersPage from '../pages/OrdersPage';
 import LangState from "../lang";
-import UserState from "../lang";
+import UserState from "../User";
 import React from "react";
-import { CartProduct } from "../shared/shareddtypes";
-import CrudUpdatePage from "../pages/CrudUpdatePage";
-
-beforeAll(async () => {
-});
-
-afterAll(async () => {
-
-});
+import CrudUpdatePage from "../pages/CrudEditPage";
 
 test('Update product page renders properly as admin', async () => {
     localStorage.setItem('currentUser', "admin");
