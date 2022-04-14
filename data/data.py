@@ -229,18 +229,30 @@ collection = db.distributioncenter
 dc1 = {
 		"id": str(uuid.uuid4()),
 		"address": "Calle Valdes Salas, 11, 33007 Oviedo, Asturias",
-		"store":{
-        	"NiSuPu Monitor": 7,
-        	"NiSuPu Laptop": 2
-    	}
+		"store":[
+			{
+				"product": prod1,
+				"stock": 6
+			},
+			{
+				"product": prod2,
+				"stock": 7
+			}
+		]
 }
 dc2 = {
 		"id": str(uuid.uuid4()),
 		"address": "Escuela Tecnica Superior de Ingeniería Informatica, Universidad de Sevilla, 41012 Sevilla",
-		"store":{
-        	"NiSuPu Monitor": 2,
-        	"NiSuPu Laptop": 8
-    	}
+		"store":[
+			{
+				"product": prod1,
+				"stock": 2
+			},
+			{
+				"product": prod3,
+				"stock": 8
+			}
+		]
 }	
 # Insert Data
 rec_distcenter_id1=collection.insert_one(dc1)

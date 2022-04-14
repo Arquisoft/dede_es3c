@@ -32,16 +32,10 @@ export class DistributionCenterController {
             var distributionCenters: DistributionCenter[] = await DistributionCenterService.getDistributionCenters(req.app);
             for (var d of distributionCenters) {
                 
-                var stock = 0;
-                var aux = d.store.get(productname)
-
-                if (aux != undefined){
-                    stock = aux
-                }
-                
-                if (stock >= quantity) {
-                    listOfDistributionCentersIds.push(d.id);
-                    
+                for (var store of d.store) {
+                    if (store.product.name == productname && store.stock >= quantity) {
+                        listOfDistributionCentersIds.push(d.id);
+                    }
                 }
             }
             res.status(200).json(await DistributionCenterService.getDistributionCentersByAvailableProduct(req.app, listOfDistributionCentersIds));
