@@ -12,6 +12,12 @@ RUN npm install -g typescript ts-node
 
 # RUN python src/data/data.py
 
+#ARG PORT="5000"
+#ENV RESTAPI_PORT=$PORT
+
+#ARG WEBAPP_URI
+#ENV REACT_WEBAPP_URI=$URI
+
 # Copia la Aplicación
 COPY ./package.json ./package.json
 
