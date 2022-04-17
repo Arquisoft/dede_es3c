@@ -90,5 +90,8 @@
     "clients.title":"DeDesktop's registered clients",
     "clients.username":"Username",
     "clients.email":"Email",
-    "clients.rol":"Rol"
+    "clients.rol":"Rol",
+    "editPage.notLogged":"You are not logged",
+    "editPage.PersonalData":"Personal Data",
+    "update.pass.error":"The passwords are not the same. Please retype them"
 }

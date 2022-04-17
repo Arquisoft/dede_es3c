@@ -90,6 +90,9 @@
     "clients.title":"Clientes registrados en DeDesktop",
     "clients.username":"Nombre de usuario",
     "clients.email":"Correo electrónico",
-    "clients.rol":"Rol"
+    "clients.rol":"Rol",
+    "editPage.notLogged":"No has iniciado sesión",
+    "editPage.PersonalData":"Datos personales",
+    "update.pass.error":"Las contraseñas no coinciden. Por vafor, reescríbalas"
 
 }

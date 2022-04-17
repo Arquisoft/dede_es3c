@@ -13,6 +13,7 @@ import OrdersPage from './pages/OrdersPage';
 import ShippingPage from './pages/ShippingPage';
 import CatalogPage from './pages/Catalog';
 import ClientView from './pages/ClientView';
+import EditUserPage from './pages/EditUserPage';
 
 const App: FC = () => {
   const { dispatch: {setUser}} = useContext(UserContext);
@@ -81,6 +82,12 @@ const App: FC = () => {
           path='users'
           element={
             <ClientView setUser={setUser}/>
+          }
+        />
+        <Route
+          path='account'
+          element={
+            <EditUserPage setUser={setUser}/>
           }
         />
       </Routes>
