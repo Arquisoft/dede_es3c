@@ -93,5 +93,10 @@
     "clients.rol":"Rol",
     "editPage.notLogged":"You are not logged",
     "editPage.PersonalData":"Personal Data",
-    "update.pass.error":"The passwords are not the same. Please retype them"
+    "update.changeUsername":"Change username",
+    "update.changePassword":"Change password",
+    "update.goToCatalog":"Back to catalog",
+    "update.newPass":"Introduce your new password",
+    "update.newUser":"Introduce your new username",
+    "update.commit":"Commit changes"
 }

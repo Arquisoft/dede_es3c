@@ -93,6 +93,11 @@
     "clients.rol":"Rol",
     "editPage.notLogged":"No has iniciado sesión",
     "editPage.PersonalData":"Datos personales",
-    "update.pass.error":"Las contraseñas no coinciden. Por vafor, reescríbalas"
+    "update.changeUsername":"Cambiar nombre de usuario",
+    "update.changePassword":"Cambiar contraseña",
+    "update.goToCatalog":"Volver al catálogo",
+    "update.newPass":"Introduce la nueva contraseña",
+    "update.newUser":"Introduce el nuevo nombre de usuario",
+    "update.commit":"Guardar cambios"
 
 }

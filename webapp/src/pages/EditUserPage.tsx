@@ -121,12 +121,12 @@ const EditUserPage: FC<EditUserProps> = (props: EditUserProps) => {
                         helperText= "Rol">        
                         </TextField>
                     </Fragment>
-                    <Button  onClick={handleOpenUser} type="submit" variant="contained">Modificar Nombre de usuario</Button>
+                    <Button  onClick={handleOpenUser} type="submit" variant="contained">{translate("update.changeUsername")}</Button>
                     <Modal aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description"
                     open = {openUser}
                     onClose ={handleCloseUser}>
                     <Box sx={style}>
-                    <Typography id = "modal-modal-title" variant = "h6" component= "h2">Introduce your new username</Typography>
+                    <Typography id = "modal-modal-title" variant = "h6" component= "h2">{translate("update.newUser")}</Typography>
                     <Typography id = "modal-modal-title" variant = "h6" component= "h3">{userName}</Typography>
                     <Fragment>
                     <TextField 
@@ -137,16 +137,16 @@ const EditUserPage: FC<EditUserProps> = (props: EditUserProps) => {
                     variant="outlined"
                     label= {translate ('login.solidUser')}>
                     </TextField>
-                    <Button variant="contained" type="submit" aria-label="changeUserButton">Commit change</Button>
+                    <Button variant="contained" type="submit" aria-label="changeUserButton">{translate("update.commit")}</Button>
                     </Fragment>
                     </Box>
                     </Modal>
-                    <Button onClick={handleOpenPass}  type="submit" variant="contained">Modificar Contraseña</Button>
+                    <Button onClick={handleOpenPass}  type="submit" variant="contained">{translate("update.changePassword")}</Button>
                     <Modal aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description"
                     open = {openPass}
                     onClose ={handleClosePass}>
                     <Box sx={style}>
-                    <Typography id = "modal-modal-title" variant = "h6" component= "h2">Introduce your new password</Typography>
+                    <Typography id = "modal-modal-title" variant = "h6" component= "h2">{translate("update.newPass")}</Typography>
                     <Fragment>
                     <TextField 
                     size="small" 
@@ -166,11 +166,18 @@ const EditUserPage: FC<EditUserProps> = (props: EditUserProps) => {
                     variant="outlined"
                     label= {translate ('signup.passwd')}>
                     </TextField>
-                    <Button onClick={() => updatePassword()} variant="contained" type="submit" aria-label="changePasswordButton">Commit change</Button>
+                    <Button 
+                    onClick={() => updatePassword()} 
+                    variant="contained" 
+                    type="submit" 
+                    aria-label="changePasswordButton"
+                    disabled={(newPassword !== newPasswordConfirmation) || newPassword === ""}>
+                    {translate("update.commit")}
+                    </Button>
                     </Fragment>
                     </Box>
                     </Modal>
-                    <Button onClick={() => setPage("catalog")} type="submit" variant="contained">Volver al catalogo</Button>
+                    <Button onClick={() => setPage("catalog")} type="submit" variant="contained">{translate("update.goToCatalog")}</Button>
             </CardContent>
             </Card>
         </Container>
