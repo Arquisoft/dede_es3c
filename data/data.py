@@ -184,22 +184,55 @@ print("First name: " + sys.argv[1])
 print("Last name: " + sys.argv[2]) 
 '''
 
+collection = db.distributioncenter
+
+dc1 = {
+		"id": str(uuid.uuid4()),
+		"address": "Calle Valdes Salas, 11, 33007 Oviedo, Asturias",
+		"store":[
+			{
+				"product": prod1,
+				"stock": 6
+			}
+		]
+}
+dc2 = {
+		"id": str(uuid.uuid4()),
+		"address": "Escuela Tecnica Superior de Ingeniería Informatica, Universidad de Sevilla, 41012 Sevilla",
+		"store":[
+			{
+				"product": prod1,
+				"stock": 2
+			},
+			{
+				"product": prod3,
+				"stock": 8
+			}
+		]
+}	
+# Insert Data
+rec_distcenter_id1=collection.insert_one(dc1)
+rec_distcenter_id2=collection.insert_one(dc2)
+
 collection = db.productorder
 
 prodord1 = {
 		"id": str(uuid.uuid4()),
 		"product": prod1,
-		"quantity": 5
+		"quantity": 5,
+		"distributionCenter": dc1
 		}
 prodord2 = {
 		"id": str(uuid.uuid4()),
 		"product": prod3,
-		"quantity": 2
+		"quantity": 2,
+		"distributionCenter": dc1
 		}
 prodord3 = {
 		"id": str(uuid.uuid4()),
 		"product": prod9,
-		"quantity": 6
+		"quantity": 6,
+		"distributionCenter": dc1
 		}
 # Insert Data
 rec_prodorder_id1=collection.insert_one(prodord1)
@@ -221,39 +254,3 @@ ord2 = {
 # Insert Data
 rec_order_id1=collection.insert_one(ord1)
 rec_order_id2=collection.insert_one(ord2)
-
-
-
-collection = db.distributioncenter
-
-dc1 = {
-		"id": str(uuid.uuid4()),
-		"address": "Calle Valdes Salas, 11, 33007 Oviedo, Asturias",
-		"store":[
-			{
-				"product": prod1,
-				"stock": 6
-			},
-			{
-				"product": prod2,
-				"stock": 7
-			}
-		]
-}
-dc2 = {
-		"id": str(uuid.uuid4()),
-		"address": "Escuela Tecnica Superior de Ingeniería Informatica, Universidad de Sevilla, 41012 Sevilla",
-		"store":[
-			{
-				"product": prod1,
-				"stock": 2
-			},
-			{
-				"product": prod3,
-				"stock": 8
-			}
-		]
-}	
-# Insert Data
-rec_distcenter_id1=collection.insert_one(dc1)
-rec_distcenter_id2=collection.insert_one(dc2)

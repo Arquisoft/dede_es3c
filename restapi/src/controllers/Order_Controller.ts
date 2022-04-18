@@ -2,10 +2,11 @@ import { Request, Response } from 'express';
 import { DeleteResult } from 'typeorm';
 import { Order } from '../entities/Order';
 import { OrderService } from '../services/Order_Service';
-import { ProductService } from '../services/Product_Service';
 import axios from 'axios'
 import { ProductOrderService } from '../services/ProductOrder_Service';
 import { UserService } from '../services/User_Service';
+import { ProductStore } from '../entities/ProductStore';
+import { DistributionCenterService } from '../services/DistributionCenter_Service';
 
 export class OrderController {
 
@@ -94,9 +95,10 @@ export class OrderController {
             var source;
             
             //Destination
-            let user = await UserService.getUserByEmail(req.app, orderBody.user)
-            var url = 'http://localhost:5000/api/users/userpod/'+user.username;
-            var response = await axios.get(url)
+            let user; let url; var response;
+            //let user = await UserService.getUserByEmail(req.app, orderBody.user)
+            //var url = 'http://localhost:5000/api/users/userpod/'+user.username;
+            //var response = await axios.get(url)
             //var destination = response.;
             var destination = "AvenidadelaConstitucion,10,Gijon"; //get address from user pod
 
@@ -105,15 +107,15 @@ export class OrderController {
             //Source
             var d;
             for (var p of orderBody.products) {
-                ProductService.decrementProductStock(req.app, p.product.id, p.quantity);
+                //ProductService.decrementProductStock(req.app, p.product.id, p.quantity);
                 var sp = 0.0;
                 source = p.distributionCenter.address;
                 url = 'https://maps.googleapis.com/maps/api/distancematrix/json?destinations='+destination+'&origins='+source+'&key=AIzaSyANy46m-FN8Sa9aSpIiLpSWx3xl7M2oX3s'
                 response = await axios.get(url)
                 d = response.data.rows[0].elements[0].distance.value;
                 sp = calculateShippingPrice(d);
-                ProductOrderService.updateShippingPrice(req.app,p.id,sp);
-                price+=p.product.price*p.quantity + p.shippingPrice;
+                await ProductOrderService.updateShippingPrice(req.app,p.id,sp);
+                price+=p.product.price*p.quantity + sp;
             }
             
             orderBody.price = price;

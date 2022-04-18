@@ -1,6 +1,7 @@
-import { In } from "typeorm";
+import { UpdateResult } from "typeorm";
 import { Application } from "express";
 import { DistributionCenter } from "../entities/DistributionCenter";
+import { ProductStore } from "../entities/ProductStore";
 
 export class DistributionCenterService {
 
@@ -34,5 +35,25 @@ export class DistributionCenterService {
   public static addDistributionCenter(app: Application,dc: DistributionCenter): Promise<DistributionCenter> {
     return app.get("db").getRepository(DistributionCenter).save(dc);
   }
+
+  /**
+   * Update stock product by id
+   * @param app Express application
+   * @param id Product id
+   * @param product Product object
+   * @returns Promise<UpdateResult>
+   */
+   public static decrementProductStock(
+    app: Application,
+    id: string,
+    store: ProductStore
+  ): Promise<UpdateResult> {
+    return app
+      .get("db")
+      .getRepository(DistributionCenter)
+      .set({ store: store })
+      .where({ id: id})
+  }
+  
 
 }
