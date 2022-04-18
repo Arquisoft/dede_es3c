@@ -47,7 +47,6 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
     localStorage.removeItem("token");
     props.setUser("not logged");
   }
-
   return (
         <Nav className="container-fluid">
           {

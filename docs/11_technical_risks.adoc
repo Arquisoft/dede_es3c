@@ -46,3 +46,8 @@ This is the compilation of the identified risks ordered by priority that we must
 
 
 === Technical debts
+
+* There is some parts of the code with a very bad code (for example some unnecessary nested ifs) and some duplicated code. Until now we had no time to solve this.
+* There are some unsolved bugs. For this we were unable to solve them.
+* There is also some design decisions we could not develop yet.
+
