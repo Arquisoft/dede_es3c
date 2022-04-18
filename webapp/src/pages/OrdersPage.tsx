@@ -51,7 +51,7 @@ const OrdersPage: FC<OrdersPageProps> = (props: OrdersPageProps) => {
     else{
       return (
         <div className="mainContainer" style={{ alignContent: "center", alignItems: "center", alignSelf: "center" }}>
-          <h1>{translate("orders.title")}</h1>
+          <h1 aria-label="myOrdersTitleWithout">{translate("orders.title")}</h1>
           <div style={{ alignContent: "center", alignItems: "center" }}>
             <TableContainer component={Paper} sx={{ maxHeight: "440", maxWidth: "1000", alignSelf: "center" }}>
               <Table stickyHeader aria-label="sticky table">
