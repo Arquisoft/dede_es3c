@@ -184,7 +184,7 @@ print("First name: " + sys.argv[1])
 print("Last name: " + sys.argv[2]) 
 '''
 
-collection = db.distributioncenter
+collection = db.distribution_center
 
 dc1 = {
 		"id": str(uuid.uuid4()),
@@ -193,6 +193,18 @@ dc1 = {
 			{
 				"product": prod1,
 				"stock": 6
+			},
+			{
+				"product": prod2,
+				"stock": 10
+			},
+			{
+				"product": prod3,
+				"stock": 34
+			},
+			{
+				"product": prod4,
+				"stock": 22
 			}
 		]
 }
