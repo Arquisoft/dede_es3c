@@ -1,12 +1,11 @@
 import { useState, useEffect, useContext } from 'react';
 import { getProducts, getProductsByName, getProductsByCategory } from '../api/api';
-import Header from "../components/Header";
 import { Form, FormControl } from "react-bootstrap";
 import Button from '@mui/material/Button';
 import { LangContext } from '../lang';
 import { Product, CartProduct } from '../shared/shareddtypes';
 import Item from '../components/Item';
-import { Drawer, Grid} from "@material-ui/core";
+import { Drawer, Grid, Badge } from "@mui/material";
 import Cart from '../components/Cart';
 import { AddShoppingCartSharp } from '@mui/icons-material';
 
@@ -36,8 +35,10 @@ const Catalog = (props: CatalogPageProps) => {
 
     useEffect(() => {
         reloadItems();
-        setCartItems(JSON.parse(localStorage.getItem("cart")!));
+        setCartItems(JSON.parse(localStorage.getItem("cart")!) || []);
     }, []);
+
+    const getTotalItems = (items: CartProduct[]) => items.reduce((ack: number, item) => ack + item.amount, 0);     
 
     const handleAddToCart = (clickedItem: CartProduct) => {
         let cartCopy = [...cartItems];
@@ -81,8 +82,6 @@ const Catalog = (props: CatalogPageProps) => {
 
     return (
         <div>
-            <Header setUser={props.setUser} />
-
             <Form>
                 <FormControl type="search" value={val} placeholder={translate('catalog.search')} className="me-2" aria-label="Search" onChange={e => {setNameFilter(e.target.value); setVal(e.target.value)}}/>
                 <Button onClick={() => FilterByName(nameFilter)} >{translate('catalog.search')}</Button>
@@ -99,9 +98,15 @@ const Catalog = (props: CatalogPageProps) => {
                     removeFromCart={handleRemoveFromCart}
                 />
             </Drawer>
-            <Button onClick={() => setCartOpen(true)} aria-label="CartIcon">
-                <AddShoppingCartSharp />
-            </Button>
+            {
+                (!localStorage.getItem("currentUser")?.includes("admin")) &&
+                <Button onClick={() => setCartOpen(true)} aria-label="CartIcon">
+                    <Badge badgeContent={getTotalItems(cartItems)} color="error">
+                        <AddShoppingCartSharp />
+                    </Badge>
+                </Button>
+            }
+            
 
             <Grid container spacing={3}>
                 {products?.map((item: CartProduct) => {

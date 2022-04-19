@@ -8,11 +8,11 @@ import UserState from './User'
 
 ReactDOM.render(
   <React.StrictMode>
-    <UserState>
-    <LangState>
-      <App />
-    </LangState>
-    </UserState>
+      <UserState>
+        <LangState>
+          <App />
+        </LangState>
+      </UserState>
   </React.StrictMode>,
   document.getElementById('root')
 );

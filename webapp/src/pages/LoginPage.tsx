@@ -3,7 +3,6 @@ import TextField from '@mui/material/TextField';
 import {Container, Card , CardContent, Link} from "@mui/material";
 import logo from '../img/logo-dede.svg'
 import {checkUser, getUser, loginB } from "../api/api";
-import Header from "../components/Header";
 import "bootswatch/dist/morph/bootstrap.min.css"
 import { Button } from "react-bootstrap";
 import Swal from 'sweetalert2';
@@ -52,7 +51,6 @@ const LoginPage: FC<LoginPageProps> = (props: LoginPageProps) => {
 };
     return(
     <div>
-        <Header setUser={props.setUser}/>
         <Container component="main" maxWidth="sm">
         <Card className={"main"} elevation={10} style={{display: "grid"}}>
         <CardContent style={{ display: "grid", margin: "auto", textAlign: "center" }}>

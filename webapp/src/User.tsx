@@ -25,7 +25,7 @@ interface UserState  {
   }
 
   const userReducer = (state: UserState, action: SetUserAction): UserState => {
-      if (action.type == UserActionType.SET_USER){
+      if (action.type === UserActionType.SET_USER){
         return {
           user: action.payload
         }
