@@ -5,9 +5,8 @@ import { ProductStore } from "./ProductStore";
 @Entity()
 export class DistributionCenter {
 
-    constructor(address: string, store: ProductStore[]) {
+    constructor(address: string) {
         this.address = address;
-        this.store = store;
         this.id = uuidv4();
     }
 
@@ -19,9 +18,6 @@ export class DistributionCenter {
 
     @Column()
     address: string;
-
-    @Column()
-    store: ProductStore[];
 
     
 

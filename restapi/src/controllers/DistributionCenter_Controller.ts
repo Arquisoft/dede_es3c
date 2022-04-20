@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { DistributionCenter } from '../entities/DistributionCenter';
 import { DistributionCenterService } from '../services/DistributionCenter_Service';
+import { ProductStoreService } from '../services/ProductStore_Service';
 import { ProductService } from '../services/Product_Service';
 
 export class DistributionCenterController {
@@ -29,15 +30,18 @@ export class DistributionCenterController {
             var productname = req.params.productname
             var quantity = Number.parseInt(req.params.quantity)
             var listOfDistributionCentersIds:string[] = [];
-            var distributionCenters: DistributionCenter[] = await DistributionCenterService.getDistributionCenters(req.app);
-            for (var d of distributionCenters) {
-                
-                for (var store of d.store) {
-                    if (store.product.name == productname && store.stock >= quantity) {
-                        listOfDistributionCentersIds.push(d.id);
-                    }
+            
+            var product= await ProductService.getproductByName(req.app, productname)
+            var ps = await ProductStoreService.getProductStoresByProduct(req.app, product.id)
+            
+            for (var productStore of ps) {
+                if (productStore.stock >= quantity) {
+                    listOfDistributionCentersIds.push(productStore.distributioncenter_id)
                 }
             }
+            
+            //listOfDistributionCentersIds = ps.map(ps=>ps.distributioncenter_id)
+
             res.status(200).json(await DistributionCenterService.getDistributionCentersByAvailableProduct(req.app, listOfDistributionCentersIds));
         } catch (error) {
             res.status(500).json({ error: "Error on get all DistributionCenters by available product" });
@@ -53,8 +57,7 @@ export class DistributionCenterController {
   public async addDistributionCenter(req: Request, res: Response) {
     try {
       let dcBody = new DistributionCenter(
-        req.body.address,
-        req.body.store
+        req.body.address
       );
       const dc = await DistributionCenterService.addDistributionCenter(req.app, dcBody);
       dc

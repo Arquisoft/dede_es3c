@@ -57,6 +57,26 @@ export class ProductService {
    * @param name Product name
    * @returns Promise<Product>
    */
+   public static getproductByName(
+    app: Application,
+    name: string
+  ): Promise<Product> {
+    return app
+      .get("db")
+      .getRepository(Product)
+      .findOne({
+        where: {
+          name: name,
+        },
+      });
+  }
+
+  /**
+   * Return product by name
+   * @param app Express application
+   * @param name Product name
+   * @returns Promise<Product>
+   */
      public static getProductByPartialName(
       app: Application,
       name: string

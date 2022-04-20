@@ -13,11 +13,24 @@ except:
 # database
 db = conn.DeDesktop
 
+prod1_id = str(uuid.uuid4())
+prod2_id = str(uuid.uuid4())
+prod3_id = str(uuid.uuid4())
+prod4_id = str(uuid.uuid4())
+prod5_id = str(uuid.uuid4())
+prod6_id = str(uuid.uuid4())
+prod7_id = str(uuid.uuid4())
+prod8_id = str(uuid.uuid4())
+prod9_id = str(uuid.uuid4())
+prod10_id = str(uuid.uuid4())
+dc1_id = str(uuid.uuid4())
+dc2_id = str(uuid.uuid4())
+
 # Created or Switched to collection names: my_gfg_collection
 collection = db.product
 
 prod1 = {
-		"id": str(uuid.uuid4()),
+		"id": prod1_id,
 		"name":"NiSuPu Monitor",
 		"description":"It's a bad Monitor",
         "price":69.96,
@@ -26,7 +39,7 @@ prod1 = {
 		"stock":34
 		}
 prod2 = {
-		"id": str(uuid.uuid4()),
+		"id": prod2_id,
 		"name":"HP Monitor",
 		"description":"It's a good Monitor",
         "price":99.99,
@@ -35,7 +48,7 @@ prod2 = {
 		"stock":36
 		}
 prod3 = {
-		"id": str(uuid.uuid4()),
+		"id": prod3_id,
 		"name":"NiSuPu Laptop",
 		"description":"It's a bad Laptop",
         "price":56.5,
@@ -44,7 +57,7 @@ prod3 = {
 		"stock":58
 		}
 prod4 = {
-		"id": str(uuid.uuid4()),
+		"id": prod4_id,
 		"name":"HP Laptop",
 		"description":"It's a good Laptop",
         "price":345.99,
@@ -53,7 +66,7 @@ prod4 = {
 		"stock":95
 		}
 prod5 = {
-		"id": str(uuid.uuid4()),
+		"id": prod5_id,
 		"name":"God's Monitor",
 		"description":"It's a very good monitor",
         "price":842.99,
@@ -62,7 +75,7 @@ prod5 = {
 		"stock":23
 		}
 prod6 = {
-		"id": str(uuid.uuid4()),
+		"id": prod6_id,
 		"name":"NVIDIA 69 Supreme Titan Ultimate Pro",
 		"description":"It is so expensive because it has RGB",
         "price":8400.99,
@@ -71,7 +84,7 @@ prod6 = {
 		"stock":6
 		}
 prod7 = {
-		"id": str(uuid.uuid4()),
+		"id": prod7_id,
 		"name":"Cloud",
 		"description":"Sitting here is like being on a cloud",
         "price":485.99,
@@ -80,7 +93,7 @@ prod7 = {
 		"stock":10
 		}
 prod8 = {
-		"id": str(uuid.uuid4()),
+		"id": prod8_id,
 		"name":"RADEON AMD 666 Definitive edition",
 		"description":"This graph gets hotter than hell",
         "price":7823.65,
@@ -90,7 +103,7 @@ prod8 = {
 		
 		}
 prod9 = {
-		"id": str(uuid.uuid4()),
+		"id": prod9_id,
 		"name":"PC Master Race",
 		"description":"This computer programs only",
         "price":9999.54,
@@ -99,7 +112,7 @@ prod9 = {
 		"stock":40
 		}
 prod10 = {
-		"id": str(uuid.uuid4()),
+		"id": prod10_id,
 		"name":"The humble pc",
 		"description":"A good software architect will use this humble PC",
         "price":49.34,
@@ -184,47 +197,66 @@ print("First name: " + sys.argv[1])
 print("Last name: " + sys.argv[2]) 
 '''
 
+
+
 collection = db.distribution_center
 
 dc1 = {
-		"id": str(uuid.uuid4()),
-		"address": "Calle Valdes Salas, 11, 33007 Oviedo, Asturias",
-		"store":[
-			{
-				"product": prod1,
-				"stock": 6
-			},
-			{
-				"product": prod2,
-				"stock": 10
-			},
-			{
-				"product": prod3,
-				"stock": 34
-			},
-			{
-				"product": prod4,
-				"stock": 22
-			}
-		]
+		"id": dc1_id,
+		"address": "Calle Valdes Salas, 11, 33007 Oviedo, Asturias"
 }
 dc2 = {
-		"id": str(uuid.uuid4()),
+		"id": dc2_id,
 		"address": "Escuela Tecnica Superior de Ingeniería Informatica, Universidad de Sevilla, 41012 Sevilla",
-		"store":[
-			{
-				"product": prod1,
-				"stock": 2
-			},
-			{
-				"product": prod3,
-				"stock": 8
-			}
-		]
 }	
 # Insert Data
 rec_distcenter_id1=collection.insert_one(dc1)
 rec_distcenter_id2=collection.insert_one(dc2)
+
+collection = db.product_store
+
+ps1 = {
+	"id": str(uuid.uuid4()),
+	"distributioncenter_id": dc1_id,
+	"product_id": prod1_id,
+	"stock": 6
+}
+ps2 = {
+	"id": str(uuid.uuid4()),
+	"distributioncenter_id": dc1_id,
+	"product_id": prod2_id,
+	"stock": 10
+}
+ps3 = {
+	"id": str(uuid.uuid4()),
+	"distributioncenter_id": dc1_id,
+	"product_id": prod3_id,
+	"stock": 34
+}
+ps4 = {
+	"id": str(uuid.uuid4()),
+	"distributioncenter_id": dc1_id,
+	"product_id": prod4_id,
+	"stock": 22
+}
+ps5 = {
+	"id": str(uuid.uuid4()),
+	"distributioncenter_id": dc2_id,
+	"product_id": prod1_id,
+	"stock": 2
+}
+ps6 = {
+	"id": str(uuid.uuid4()),
+	"distributioncenter_id": dc2_id,
+	"product_id": prod3_id,
+	"stock": 8
+}
+collection.insert_one(ps1)
+collection.insert_one(ps2)
+collection.insert_one(ps3)
+collection.insert_one(ps4)
+collection.insert_one(ps5)
+collection.insert_one(ps6)
 
 collection = db.productorder
 

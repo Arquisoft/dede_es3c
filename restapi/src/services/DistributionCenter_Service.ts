@@ -46,13 +46,14 @@ export class DistributionCenterService {
    public static decrementProductStock(
     app: Application,
     id: string,
-    store: ProductStore
+    store: ProductStore[]
   ): Promise<UpdateResult> {
     return app
       .get("db")
       .getRepository(DistributionCenter)
-      .set({ store: store })
-      .where({ id: id})
+      .updateOne({ id: id }, 
+        { $set: { store: store } }
+        )
   }
   
 
