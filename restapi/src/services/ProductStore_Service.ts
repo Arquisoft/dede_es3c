@@ -1,4 +1,3 @@
-import { DeleteResult, UpdateResult } from 'typeorm';
 import { Application } from 'express';
 import { ProductStore } from '../entities/ProductStore';
 

@@ -4,7 +4,6 @@ import { Order } from '../entities/Order';
 import { OrderService } from '../services/Order_Service';
 import axios from 'axios'
 import { ProductOrderService } from '../services/ProductOrder_Service';
-import { DistributionCenterService } from '../services/DistributionCenter_Service';
 
 export class OrderController {
 
@@ -105,13 +104,7 @@ export class OrderController {
             //Source
             var d;
             for (var p of orderBody.products) {
-                //ProductService.decrementProductStock(req.app, p.product.id, p.quantity);
-                /*var newStore = p.distributionCenter.store
-                for (var store of newStore) {
-                    if (store.product.name == p.product.name) {
-                        store.stock -= p.quantity
-                    }
-                }*/
+                
                 
                 //await DistributionCenterService.decrementProductStock(req.app,p.distributionCenter.id,newStore)
                 var sp = 0.0;

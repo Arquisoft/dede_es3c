@@ -1,6 +1,5 @@
 import { Entity, Column, ObjectIdColumn, PrimaryColumn } from "typeorm";
 import {v4 as uuidv4} from 'uuid';
-import { ProductStore } from "./ProductStore";
 
 @Entity()
 export class DistributionCenter {
