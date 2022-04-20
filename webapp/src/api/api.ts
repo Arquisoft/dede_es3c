@@ -20,16 +20,18 @@ export async function getUsers():Promise<User[]>{
 }
 
 
-export async function checkUser(username: string): Promise<boolean> {
-  let response = await fetch("http://localhost:5000/api/users/username/" + username, {
-    method: "GET",
-    headers: { "Content-Type": "application/json" },
-  });
-  if (response.status === 200) {
-    return true;
-  } else {
-    return false;
-  }
+export async function checkUser(username: string, password:string): Promise<boolean> {
+  const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+  let response = await fetch(apiEndPoint+'/login', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({'username': username, 'password': password})
+    });
+    if (response.status === 200) {
+      return true;
+    } else {
+      return false;
+    }
 }
 
 export async function loginB(username:string ,password:string) {
@@ -39,7 +41,7 @@ export async function loginB(username:string ,password:string) {
       headers: {'Content-Type':'application/json'},
       body: JSON.stringify({'username': username, 'password': password})
     });
-    return response.json();
+      return response.json();
 }
 
 export async function signup(username:string ,password:string, email:string) {
