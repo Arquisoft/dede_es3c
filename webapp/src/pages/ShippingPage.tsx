@@ -1,5 +1,4 @@
 import React, {Fragment, FC, useState, useContext} from "react";
-import Header from "../components/Header"
 import { Card, CardContent, Container, List, ListItem, ListItemText, ListSubheader, TextField} from "@mui/material";
 import { Button } from "react-bootstrap";
 import { Product } from "../shared/shareddtypes";
@@ -80,7 +79,6 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
   } else if (cartProducts.length === 0){
     return (
       <div>
-        <Header setUser={props.setUser}/>
         <h1>{translate("shipping.title")}</h1>
         <h2>{translate("shipping.nothing")}</h2>
         <Button href="/catalog">{translate("orders.shopping")}</Button>
@@ -90,7 +88,6 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
   }
   return(
     <div>
-      <Header setUser={props.setUser}/>
       <h1 aria-label="selectedProductsTitle">{translate("shipping.title")}</h1> 
       <Container component="main" maxWidth="sm">
         <Card className={"main"} elevation={10} style={{display: "grid"}}>
@@ -113,9 +110,9 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                         <ul>
                           <ListSubheader>{translate('shipping.selectedProducts')}</ListSubheader>
                           {cartProducts.map((item) => (
-                          <ListItem key={item.name}>
+                            <ListItem key={item.name}>
                             <img alt="desc" src= {item.urlPhoto} width= '70' height='70'/>
-                            <ListItemText primary={"x" + item.amount + "\t"+item.name + "\:" + item.price + "$"} />
+                            <ListItemText primary={"x" + item.amount + "\t"+item.name + ":" + item.price + "$"} />
                             </ListItem>
                             ))}
                         </ul>

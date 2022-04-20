@@ -3,16 +3,19 @@ import { render, screen } from "@testing-library/react";
 import Header from '../components/Header';
 import LangState from '../lang';
 import UserState from '../User';
+import { BrowserRouter as Router } from "react-router-dom";
 
 test('Header renders properly with client user logged', async () => {
 
     render(
         <React.StrictMode>
-            <UserState>
-                <LangState>
-                    <Header setUser={() => "user"} />
-                </LangState>
-            </UserState>
+            <Router>
+                <UserState>
+                    <LangState>
+                        <Header setUser={() => "user"} />
+                    </LangState>
+                </UserState>
+            </Router>
         </React.StrictMode>,
     )
 
@@ -41,11 +44,13 @@ test('Header renders properly with admin user logged', async () => {
 
     render(
         <React.StrictMode>
-            <UserState>
-                <LangState>
-                    <Header setUser={() => "admin"} />
-                </LangState>
-            </UserState>
+            <Router>
+                <UserState>
+                    <LangState>
+                        <Header setUser={() => "user"} />
+                    </LangState>
+                </UserState>
+            </Router>
         </React.StrictMode>,
     )
 
@@ -74,11 +79,13 @@ test('Header renders properly without user logged', async () => {
 
     render(
         <React.StrictMode>
-            <UserState>
-                <LangState>
-                    <Header setUser={() => "not logged"} />
-                </LangState>
-            </UserState>
+            <Router>
+                <UserState>
+                    <LangState>
+                        <Header setUser={() => "user"} />
+                    </LangState>
+                </UserState>
+            </Router>
         </React.StrictMode>,
     )
 

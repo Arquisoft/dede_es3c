@@ -76,6 +76,8 @@
     api.route('/products/category/:category')
         .get(productsController.getProductByCategory);
 
+    api.route('/products/price/:min/:max')
+        .get(productsController.getProductByPrice);
 
     api.route('/products/:id')
         // Get products by id

@@ -20,6 +20,7 @@ const App: FC = () => {
 
   return (
     <Router>
+      <Header setUser={setUser} />
       <Routes>
         <Route
           path='/'
