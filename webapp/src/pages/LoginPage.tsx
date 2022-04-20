@@ -28,6 +28,7 @@ const LoginPage: FC<LoginPageProps> = (props: LoginPageProps) => {
           if (valid) {
             const user =await getUser(username)
               const token = await loginB(username, password);
+              console.log(token);
               if (user.rol === "Admin") {
                   const adminName = "admin " + user.username;
                 props.setUser(adminName);

@@ -104,30 +104,36 @@ const EditUserPage: FC<EditUserProps> = (props: EditUserProps) => {
         <Card className={"main"} elevation={10} style={{display: "grid"}}>
         <CardContent style={{ display: "grid", margin: "auto", textAlign: "center" }}>
                 <h3 aria-label="myAccountSubtitle">{translate('editPage.PersonalData')}</h3>
-                    <Fragment>
+                    <div>
                         <TextField
                         size="small"
                         value={userName}
-                        helperText= "Nombre de usuario">        
+                        label= "Nombre de usuario">        
                         </TextField>
+                    </div>
+
+                    <div>                    
                         <TextField
                         size="small"
                         value={email}
-                        helperText= "email">        
+                        label= "email">        
                         </TextField>
+                    </div>
+
+                    <div>
                         <TextField
                         size="small"
                         value={rol}
-                        helperText= "Rol">        
+                        label= "Rol">        
                         </TextField>
-                    </Fragment>
+                    </div>
                     <Button  onClick={handleOpenUser} type="submit" variant="contained">{translate("update.changeUsername")}</Button>
                     <Modal aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description"
                     open = {openUser}
                     onClose ={handleCloseUser}>
                     <Box sx={style}>
                     <Typography id = "modal-modal-title" variant = "h6" component= "h2">{translate("update.newUser")}</Typography>
-                    <Typography id = "modal-modal-title" variant = "h6" component= "h3">{userName}</Typography>
+                    <Typography id = "modal-modal-title" variant = "subtitle2" component= "text">{"Actual: " + userName}</Typography>
                     <Fragment>
                     <TextField 
                     size="small" 
@@ -137,7 +143,12 @@ const EditUserPage: FC<EditUserProps> = (props: EditUserProps) => {
                     variant="outlined"
                     label= {translate ('login.solidUser')}>
                     </TextField>
-                    <Button variant="contained" type="submit" aria-label="changeUserButton">{translate("update.commit")}</Button>
+                    <Button
+                     variant="contained" 
+                     type="submit" 
+                     aria-label="changeUserButton"
+                     disabled = {newUserName ===""}
+                     >{translate("update.commit")}</Button>
                     </Fragment>
                     </Box>
                     </Modal>
