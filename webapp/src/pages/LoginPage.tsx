@@ -20,34 +20,46 @@ const LoginPage: FC<LoginPageProps> = (props: LoginPageProps) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [pulsed, setPulsed] = useState(false);
+    const [token, setToken] = useState('')
+
+    const errorNotification = () => {
+      Swal.fire({
+        title: "Error",
+        text: translate("login.singin.error"),
+        icon: "error",
+    });
+    return;
+    }
 
     const checkLog = async () => {
         setPulsed(true);
-          const valid = await checkUser(username);
+          const valid = await checkUser(username, password);
           if (valid) {
-            const user =await getUser(username)
-              const token = await loginB(username, password);
+              const user = await getUser(username);
+              let res = await loginB(username, password)
+              setToken(res);
+              console.log("token: " + res);
               if (user.rol === "Admin") {
-                  const adminName = "admin " + user.username;
+                const adminName = "admin " + user.username;
                 props.setUser(adminName);
               } else {
                 props.setUser(user.username);
               }
               localStorage.setItem("currentEmail", user.email);
-              localStorage.setItem("token", token);
+              localStorage.setItem("token", res);
               Swal.fire({
                 title: translate("login.welcome") + user.username,
                 icon: "success"
             }).then(() => {
                 window.location.assign("/catalog");
             });
-          } else {
-            Swal.fire({
-                title: "Error",
-                text: translate("login.singin.error"),
-                icon: "error",
-            });
-          } 
+        } else {
+          Swal.fire({
+            title: "Error",
+            text: translate("login.singin.error"),
+            icon: "error",
+        });
+        }
 };
     return(
     <div>
