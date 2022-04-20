@@ -115,14 +115,14 @@ const setDistributionCentersRoutes = (): void => {
  
     api.route('/distributioncenters')
         // Get all distribution centers
-        .get(distributioncentersController.getDistributionCenters)
+        .get(auth.isAuth, distributioncentersController.getDistributionCenters)
         // Create new orders
-        .post(auth.isAuth, distributioncentersController.addDistributionCenter);
+        .post(auth.isAdminAuth, distributioncentersController.addDistributionCenter);
 
 
     api.route('/distributioncenters/:productname/:quantity')
         // Get distribution centers by available product
-        .get(distributioncentersController.getDistributionCentersByAvailableProduct)
+        .get(auth.isAuth, distributioncentersController.getDistributionCentersByAvailableProduct)
     
 }
 
