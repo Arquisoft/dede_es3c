@@ -1,15 +1,13 @@
-import React, {FC, useState, useEffect, useContext} from "react";
+import {FC, useState, useEffect, useContext} from "react";
 import { Order } from "../shared/shareddtypes";
 import { getOrders, getOrdersByEmail, getUser } from "../api/api";
 import DisplayOrders from "../components/DisplayOrders"
-import { Button} from "react-bootstrap";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
 import { Paper, Table, TableContainer, TableHead } from "@mui/material";
 import { LangContext } from "../lang";
-import { Navigate } from "react-router-dom";
-import { Link } from 'react-router-dom';
+import { Navigate, Link } from "react-router-dom";
 
 interface OrdersPageProps {
     setUser:(user:string) => void

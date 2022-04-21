@@ -1,18 +1,7 @@
-import React from 'react';
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardMedia from '@mui/material/CardMedia';
-import CardActions from '@mui/material/CardActions';
-import IconButton from '@mui/material/IconButton';
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import CardContent from '@mui/material/CardContent';
 import { Product } from '../shared/shareddtypes';
-import Button from '@mui/material/Button';
-import { Link } from 'react-router-dom';
-import { Drawer, Grid, Badge } from "@mui/material";
-import Item from '../components/Item';
-import { useState, useEffect, useContext } from 'react';
-import { getProductsByName, getProductsByCategory } from '../api/api';
+import { Grid } from "@mui/material";
+import { useState, useEffect } from 'react';
+import { getProductsByCategory } from '../api/api';
 import ItemDetails from '../components/ItemDetails';
 
 type Props = {

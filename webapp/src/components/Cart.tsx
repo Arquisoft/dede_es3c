@@ -1,8 +1,7 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { Button } from "react-bootstrap";
 import CartItem from "../components/CartItem";
 import { Product } from '../shared/shareddtypes';
-import { Navigate } from "react-router-dom";
 import { LangContext } from '../lang';
 
 type CartProps = {
@@ -13,8 +12,6 @@ type CartProps = {
 
 const Cart: React.FC<CartProps> = (props: CartProps) => {
     const { dispatch: { translate } } = useContext(LangContext);
-
-    //const cartItems: Product[] = JSON.parse(localStorage.getItem("cart")!);
 
     const calculateSubTotal = (items: Product[]) => {
         return items.reduce((ack: number, item) => ack + (item.amount * item.price), 0)

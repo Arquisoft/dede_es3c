@@ -4,9 +4,8 @@ import { Button } from "react-bootstrap";
 import { Product } from "../shared/shareddtypes";
 import { getAddress } from "../api/api";
 import Swal from 'sweetalert2';
-import { Navigate } from "react-router-dom";
+import { Navigate, Link } from "react-router-dom";
 import { LangContext } from '../lang';
-import { Link } from 'react-router-dom';
 
 interface ShippingPageProps {
     setUser:(user:string) => void
