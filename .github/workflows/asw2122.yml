@@ -71,7 +71,7 @@ jobs:
         user: ${{ secrets.DEPLOY_USER }}
         key: ${{ secrets.DEPLOY_KEY }}
         command: |
-          wget https://raw.githubusercontent.com/Arquisoft/dede_es3c/Sergio/docker-compose.yml -O docker-compose.yml
+          wget https://raw.githubusercontent.com/Arquisoft/dede_es3c/Developer/docker-compose.yml -O docker-compose.yml
           docker-compose stop
           docker-compose rm -f
           docker-compose pull   

@@ -8,7 +8,6 @@ import Link from '@mui/material/Link';
 import logo from '../img/logo-dede.svg'
 import {checkUser, signup } from "../api/api";
 import { User } from "../shared/shareddtypes";
-import Header from "../components/Header";
 import { Button } from "react-bootstrap";
 import { Navigate } from "react-router-dom";
 import { LangContext } from '../lang';
@@ -44,7 +43,7 @@ const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
         }
 
         if (!isBlank(user.username) || !isBlank(user.password) || !isBlank(user.email) || !isBlank(repeatedPassword)){
-           const found = await checkUser(name);
+           const found = await checkUser(name, password);
            if (!found){
                 const token = await signup(name, password, email);
                 setRegistered(true);
@@ -60,7 +59,6 @@ const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
     } else {
     return(
     <div>
-        <Header setUser={props.setUser}/>
         <Container component="main" maxWidth="sm">
         <Card className={"main"} elevation={10} style={{display: "grid"}}>
         <CardContent style={{ display: "grid", margin: "auto", textAlign: "center" }}>

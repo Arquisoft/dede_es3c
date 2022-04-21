@@ -58,7 +58,7 @@ export class ProductController {
      */
     public async updateProduct(req: Request, res: Response) {
         try {
-            let productServiceBody = new ProductInOrder(req.body.product, req.body.quantity);
+            let productServiceBody = new ProductInOrder(req.body.product, req.body.quantity, req.body.distributionCenter);
             const product = await ProductOrderService.updateProduct(req.app, String(req.params.id), productServiceBody);
             product ? res.status(200).json(product.raw) : res.status(404).json({ error: "Product not found" });
         } catch (error) {
@@ -89,7 +89,7 @@ export class ProductController {
      */
     public async addProduct(req: Request, res: Response) {
         try {
-            let productBody = new ProductInOrder(req.body.product, req.body.quantity);
+            let productBody = new ProductInOrder(req.body.product, req.body.quantity, req.body.distributionCenter);
             const product = await ProductOrderService.addProduct(req.app, productBody);
             product ? res.status(200).json(product) : res.status(500).json({ error: "Error add Product" });
         } catch (error) {

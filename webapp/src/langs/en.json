@@ -85,5 +85,18 @@
     "cart.empty":"No items in cart",
     "cart.orderButton":"Proceed to checkout",
     "cartItem.price":"Price",
-    "cartItem.total":"Total (with IVA)"
+    "cartItem.total":"Total (with IVA)",
+    "clients.notAllowed":"Sorry, we couldn't find what you are looking for",
+    "clients.title":"DeDesktop's registered clients",
+    "clients.username":"Username",
+    "clients.email":"Email",
+    "clients.rol":"Rol",
+    "editPage.notLogged":"You are not logged",
+    "editPage.PersonalData":"Personal Data",
+    "update.changeUsername":"Change username",
+    "update.changePassword":"Change password",
+    "update.goToCatalog":"Back to catalog",
+    "update.newPass":"Introduce your new password",
+    "update.newUser":"Introduce your new username",
+    "update.commit":"Commit changes"
 }

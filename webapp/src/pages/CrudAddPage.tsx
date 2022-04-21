@@ -1,5 +1,4 @@
 import React, { Fragment, FC, useState, useContext } from "react";
-import Header from "../components/Header";
 import { Container, Card, CardContent, FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -38,7 +37,6 @@ const CrudAddPage: FC<CrudPageProps> = (props: CrudPageProps) => {
     else {
         return (
             <div>
-                <Header setUser={props.setUser} />
                 <Container component="main" maxWidth="sm">
                     <Card className={"main"} elevation={10} style={{ display: "grid" }}>
                         <CardContent style={{ display: "grid", margin: "auto", textAlign: "center" }}>
