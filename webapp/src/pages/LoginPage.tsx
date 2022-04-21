@@ -1,12 +1,13 @@
 import React, {Fragment, FC, useState, useContext} from "react";
 import TextField from '@mui/material/TextField';
-import {Container, Card , CardContent, Link} from "@mui/material";
+import {Container, Card , CardContent } from "@mui/material";
 import logo from '../img/logo-dede.svg'
 import {checkUser, getUser, loginB } from "../api/api";
 import "bootswatch/dist/morph/bootstrap.min.css"
 import { Button } from "react-bootstrap";
 import Swal from 'sweetalert2';
 import { LangContext } from '../lang';
+import { Link } from 'react-router-dom';
 
 const checkParams = (text: string) => {
     return text === "" || text === null;
@@ -48,7 +49,8 @@ const LoginPage: FC<LoginPageProps> = (props: LoginPageProps) => {
                 icon: "error",
             });
           } 
-};
+    };
+    
     return(
     <div>
         <Container component="main" maxWidth="sm">
@@ -90,7 +92,7 @@ const LoginPage: FC<LoginPageProps> = (props: LoginPageProps) => {
                         </form>
                     </Fragment>
                     <Button onClick={() => checkLog()} variant="contained" type="submit" aria-label="loginButton">{translate('login.solid')}</Button>
-            <Link href="/signup">{translate('login.signup')}</Link>
+            <Link to="/signup">{translate('login.signup')}</Link>
             </CardContent>
             </Card>
         </Container>

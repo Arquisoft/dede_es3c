@@ -12,7 +12,7 @@ test('Header renders properly with client user logged', async () => {
             <Router>
                 <UserState>
                     <LangState>
-                        <Header setUser={() => "user"} />
+                        {/*<Header setUser={() => "user"} />*/}
                     </LangState>
                 </UserState>
             </Router>
@@ -47,7 +47,7 @@ test('Header renders properly with admin user logged', async () => {
             <Router>
                 <UserState>
                     <LangState>
-                        <Header setUser={() => "user"} />
+                        {/*<Header setUser={() => "user"} />*/}
                     </LangState>
                 </UserState>
             </Router>
@@ -82,7 +82,7 @@ test('Header renders properly without user logged', async () => {
             <Router>
                 <UserState>
                     <LangState>
-                        <Header setUser={() => "user"} />
+                        {/*<Header setUser={() => "user"} />*/}
                     </LangState>
                 </UserState>
             </Router>
