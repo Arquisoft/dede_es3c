@@ -17,6 +17,8 @@ import ProductDetailPage from './pages/ProductDetailPage';
 import Cart from './components/Cart';
 import { Drawer } from "@mui/material";
 import { OpenContext } from './OpenCart';
+import ClientView from './pages/ClientView';
+import EditUserPage from './pages/EditUserPage';
 
 const App: FC = () => {
   const { dispatch: {setUser}} = useContext(UserContext);
@@ -92,6 +94,18 @@ const App: FC = () => {
           path='products/name/:name'
           element={
             <ProductDetailPage setUser={setUser} setAmount={setAmount}/>
+          }
+        />
+        <Route
+          path='users'
+          element={
+            <ClientView setUser={setUser}/>
+          }
+        />
+        <Route
+          path='account'
+          element={
+            <EditUserPage setUser={setUser}/>
           }
         />
       </Routes>

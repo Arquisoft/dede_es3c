@@ -85,5 +85,19 @@
     "cart.empty": "Carrito vacío",
     "cart.orderButton": "Realiza tu pedido",
     "cartItem.price": "Precio",
-    "cartItem.total": "Total (con IVA)"
+    "cartItem.total": "Total (con IVA)",
+    "clients.notAllowed":"Lo sentimos, no conseguimos encontrar lo que buscas",
+    "clients.title":"Clientes registrados en DeDesktop",
+    "clients.username":"Nombre de usuario",
+    "clients.email":"Correo electrónico",
+    "clients.rol":"Rol",
+    "editPage.notLogged":"No has iniciado sesión",
+    "editPage.PersonalData":"Datos personales",
+    "update.changeUsername":"Cambiar nombre de usuario",
+    "update.changePassword":"Cambiar contraseña",
+    "update.goToCatalog":"Volver al catálogo",
+    "update.newPass":"Introduce la nueva contraseña",
+    "update.newUser":"Introduce el nuevo nombre de usuario",
+    "update.commit":"Guardar cambios"
+
 }

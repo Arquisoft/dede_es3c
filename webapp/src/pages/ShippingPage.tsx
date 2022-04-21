@@ -40,6 +40,18 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
     }
   }
 
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
+
   async function getAdd() {
     const address = await getAddress(webID);
     if (address !== undefined){
@@ -48,6 +60,10 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
       setPostalCode(address['postalCode']);
       setRegion(address['region']);
       setStreetAddress(address['street']);
+      Toast.fire({
+        icon: 'success',
+        title: '¡We got your addres! check it out'
+      })
     } else {
       Swal.fire({
         title: "Error",

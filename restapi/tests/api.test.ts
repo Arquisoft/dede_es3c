@@ -160,7 +160,7 @@ describe("CRUD Users", () => {
       password: "123456",
     };
     const response: Response = await request(app).post("/api/login").send(user);
-    expect(response.statusCode).toBe(404);
+    expect(response.statusCode).toBe(402);
   });
 
   /**
