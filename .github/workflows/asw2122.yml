@@ -15,7 +15,8 @@ jobs:
         node-version: 16
     - run: npm ci
     - run: npm test
-    - uses: codecov/codecov-action@v2
+    - name: Upload coverage reports to Codecov with GitHub Action
+      uses: codecov/codecov-action@v3
   unit-test-restapi:
     runs-on: ubuntu-latest
     defaults:
@@ -28,17 +29,18 @@ jobs:
       with:
         node-version: 16
         mongodb-version: '4.4'
-        mongodb-username: SergioArroni
-        mongodb-password: julio321
-        mongodb-db: DeDesktop
+        mongodb-username: ${{ secrets.mongoUsername }}
+        mongodb-password: ${{ secrets.mongoPassword }}
+        mongodb-db: ${{ secrets.mongoDB }}
     - run: npm ci
     - run: npm test
-    - uses: codecov/codecov-action@v2
+    - name: Upload coverage reports to Codecov with GitHub Action
+      uses: codecov/codecov-action@v3
   docker-push-webapp:
     name: Push webapp Docker Image to GitHub Packages
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
       env:
           API_URI: http://${{ secrets.DEPLOY_HOST }}:5000
           SKIP_PREFLIGHT_CHECK: true
@@ -52,7 +54,7 @@ jobs:
     name: Push restapi Docker Image to GitHub Packages
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
       with:
           name: arquisoft/dede_es3c/restapi
           username: ${{ github.actor }}
