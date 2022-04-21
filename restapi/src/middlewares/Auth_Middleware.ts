@@ -22,6 +22,7 @@ export class Auth {
         try {
             const user = await UserService.getUserByUsername(req.app , req.body.username);
             if(user){
+                console.log(user)
                 const hash = crypto.pbkdf2Sync(req.body.password, user.salt, 1000, 64, `sha512`).toString(`hex`);
                 hash == user.hash ? 
                     res.status(200).json(Auth.createToken(user.username, user.rol)) :
