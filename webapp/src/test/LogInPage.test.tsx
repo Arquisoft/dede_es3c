@@ -3,6 +3,7 @@ import LoginPage from '../pages/LoginPage';
 import LangState from "../lang";
 import UserState from "../User";
 import React from "react";
+import { MemoryRouter as Router } from 'react-router-dom';
 
 test('check login page text renders properly (english)', async () => {
     localStorage.setItem('currentUser', "not logged");
@@ -11,7 +12,9 @@ test('check login page text renders properly (english)', async () => {
         <React.StrictMode>
             <UserState>
                 <LangState>
-                    <LoginPage setUser={() => "not logged"} />
+                    <Router>
+                        <LoginPage setUser={() => "not logged"} />
+                    </Router>
                 </LangState>
             </UserState>
         </React.StrictMode>,

@@ -12,7 +12,7 @@ test('Cart without items renders properly', async () => {
         <React.StrictMode>
             <UserState>
                 <LangState>
-                    <Cart setOpen={() => undefined} setAmount={() => undefined}/*cartItems={products} addToCart={() => undefined}/* removeFromCart={() => undefined}*/ />
+                    <Cart setOpen={() => undefined} setAmount={() => undefined} cartItems={products} />
                 </LangState>
             </UserState>
         </React.StrictMode>,
@@ -42,7 +42,7 @@ test('Cart with items renders properly', async () => {
         <React.StrictMode>
             <UserState>
                 <LangState>
-                    <Cart setOpen={() => undefined} setAmount={() => undefined}/*cartItems={products} addToCart={() => undefined} /*removeFromCart={() => undefined}*/ />
+                    <Cart setOpen={() => undefined} setAmount={() => undefined} cartItems={products} />
                 </LangState>
             </UserState>
         </React.StrictMode>,

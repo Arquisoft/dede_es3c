@@ -1,12 +1,15 @@
 import { render, screen } from "@testing-library/react";
 import { Product } from "../shared/shareddtypes";
 import Item from "../components/Item";
+import { MemoryRouter as Router } from 'react-router-dom';
 
 test('Item renders properly', async () => {
     const product: Product = {name: "NombrePrueba", description: "DescripcionPrueba", price: 1, category: "CategoriaPrueba", urlPhoto: "urlPrueba", amount: 2};
     
     render(
-        <Item item={product} setAmount={() => undefined}/*handleAddToCart={() => undefined}*//>
+        <Router>
+            <Item item={product} setAmount={() => undefined} />
+        </Router>
     )
 
     let linkElement = screen.getByText(/NombrePrueba/i);

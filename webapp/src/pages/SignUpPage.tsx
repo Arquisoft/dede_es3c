@@ -17,6 +17,7 @@ interface SignUpProps{
 }
 
 const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
+
     const { dispatch: { translate } } = useContext(LangContext);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -58,7 +59,7 @@ const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
         return (<Navigate to="/catalog" />);
     } else {
     return(
-    <div>
+        <div>
         <Container component="main" maxWidth="sm">
         <Card className={"main"} elevation={10} style={{display: "grid"}}>
         <CardContent style={{ display: "grid", margin: "auto", textAlign: "center" }}>
@@ -143,12 +144,13 @@ const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
                     type="submit"
                     color="primary"
                      >{translate('signup.signup')}</Button>
-            <Link to="/login">{translate('signup.login')}</Link>
-            </CardContent>
+                <Link to="/login">{translate('signup.login')}</Link>
+                </CardContent>
             </Card>
         </Container>
     </div>
     );
   }
 }
+
   export default SignUpPage;

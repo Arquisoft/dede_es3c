@@ -30,7 +30,4 @@ test('Catalog renders properly', async () => {
 
   linkElement = screen.getByPlaceholderText(/Search/i);
   expect(linkElement).toBeInTheDocument();
-
-  linkElement = screen.getByLabelText(/CartIcon/i);
-  expect(linkElement).toBeInTheDocument();
 });

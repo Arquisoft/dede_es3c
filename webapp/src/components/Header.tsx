@@ -20,7 +20,6 @@ interface HeaderProps {
   setUser: (user: string) => void
   setOpen: (open: string) => void
   setAmount: (amount: string) => void
-  amount: string;
 }
 
 const Header: FC<HeaderProps> = (props: HeaderProps) => {

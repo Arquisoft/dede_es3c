@@ -12,7 +12,8 @@ interface ProductDetailProps {
 }
 
 const ProductDetailPage = (props: ProductDetailProps) => {
-    const productName = ((window.location.href.split("/"))[5]).replaceAll("\%20", " ");
+    //const productName = ((window.location.href.split("/"))[5]).replaceAll("\%20", " ");
+    const productName = "";
 
     const [product, setProduct] = useState<Product[]>([]);
     const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);

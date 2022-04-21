@@ -3,6 +3,8 @@ import SignUpPage from '../pages/SignUpPage';
 import LangState from "../lang";
 import UserState from "../User";
 import React from "react";
+import OpenState from '../OpenCart';
+import { MemoryRouter as Router } from 'react-router-dom';
 
 test('check signup page text renders properly (english)', async () => {
     localStorage.setItem('currentUser', "not logged");
@@ -11,7 +13,11 @@ test('check signup page text renders properly (english)', async () => {
         <React.StrictMode>
             <UserState>
                 <LangState>
-                    <SignUpPage setUser={() => "not logged"}/>
+                    <OpenState>
+                        <Router>
+                            <SignUpPage setUser={() => "not logged"} />
+                        </Router>
+                    </OpenState>
                 </LangState>
             </UserState>
         </React.StrictMode>,

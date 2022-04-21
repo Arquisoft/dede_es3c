@@ -6,6 +6,7 @@ import { getAddress } from "../api/api";
 import Swal from 'sweetalert2';
 import { Navigate } from "react-router-dom";
 import { LangContext } from '../lang';
+import { Link } from 'react-router-dom';
 
 interface ShippingPageProps {
     setUser:(user:string) => void
@@ -81,7 +82,7 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
       <div>
         <h1>{translate("shipping.title")}</h1>
         <h2>{translate("shipping.nothing")}</h2>
-        <Button href="/catalog">{translate("orders.shopping")}</Button>
+        <Link to="/catalog">{translate("orders.shopping")}</Link>
       </div>    
     );
 
