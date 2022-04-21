@@ -76,8 +76,3 @@ jobs:
           docker-compose rm -f
           docker-compose pull   
           docker-compose up -d
-  language: node_js
-  scripts:
-    - npm install codecov -g
-  after_success:
-    - codecov
