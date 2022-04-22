@@ -8,6 +8,7 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import CardContent from '@mui/material/CardContent';
 import { Product } from '../shared/shareddtypes';
 import handleAddToCart from '../components/HandleAddToCart';
+import { Grid } from "@mui/material";
 
 type Props = {
     item: Product;
@@ -15,7 +16,7 @@ type Props = {
 };
 
 const ItemDetails: React.FC<Props> = ({ item, setAmount }) => (
-    <div>
+    /*<div>
         <Card key={item.name}>
             <CardHeader title={item.name} />
             <CardMedia component="img" width="200" height="200" src={item.urlPhoto} alt={item.name} />
@@ -31,6 +32,20 @@ const ItemDetails: React.FC<Props> = ({ item, setAmount }) => (
                 </IconButton>
             </CardActions>
         </Card>
+    </div>*/
+
+    <div>
+        <h1>{item.name}</h1>
+        <Grid container  xs={12} sm={4}>
+            <img src={item.urlPhoto} width="500" height="500"/>
+            <p>{item.description}</p>
+            <IconButton aria-label="add to cart" disableFocusRipple size="small" onClick={() => handleAddToCart(item, setAmount)}>
+                {
+                    (!localStorage.getItem("currentUser")?.includes("admin")) &&
+                    <AddShoppingCartIcon />
+                }
+            </IconButton>
+        </Grid>
     </div>
 );
 
