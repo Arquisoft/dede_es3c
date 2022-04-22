@@ -1,0 +1,31 @@
+.sticky__wrapper {
+    position: relative;
+    height: 3rem; /* probably you need to set height value for wrapper */
+}
+
+.sticky .sticky--inner {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    background-color: rgb(207, 228, 241);
+    width: 100%;
+}
+
+.grid {
+    width: 100%;
+}
+
+.leftHeader {
+    float: left;
+    display: grid;
+    gap: 0.1rem;
+    grid-auto-flow: column;
+}
+
+.rightHeader {
+    float: right;
+    display: grid;
+    gap: 0.1rem;
+    grid-auto-flow: column;
+}
+
