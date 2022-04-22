@@ -1,5 +1,4 @@
 import React, {FC, useState, useEffect, useContext} from "react";
-import Header from "../components/Header"
 import { User } from "../shared/shareddtypes";
 import {getUsers } from "../api/api";
 import TableBody from "@mui/material/TableBody";

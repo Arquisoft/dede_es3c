@@ -1,5 +1,4 @@
 import React, {FC, useEffect, useContext, Fragment, useState} from "react";
-import Header from "../components/Header"
 import { User } from "../shared/shareddtypes";
 import {getUser } from "../api/api";
 import { LangContext } from "../lang";

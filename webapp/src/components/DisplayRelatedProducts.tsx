@@ -2,7 +2,6 @@ import { Product } from '../shared/shareddtypes';
 import { Grid } from "@mui/material";
 import { useState, useEffect } from 'react';
 import { getProductsByCategory } from '../api/api';
-import ItemDetails from '../components/ItemDetails';
 import RelatedProduct from '../components/RelatedProduct';
 
 type Props = {
@@ -19,9 +18,7 @@ const DisplayRelatedProducts = (props: Props) => {
 
     useEffect(() => {
         loadRelatedProducts();
-    }, []);
-
-    //<ItemDetails item={item} setAmount={props.setAmount}/>
+    });
 
     return (
         <div>
