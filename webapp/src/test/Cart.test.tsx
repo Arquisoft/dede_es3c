@@ -2,17 +2,17 @@ import { render, screen } from "@testing-library/react";
 import LangState from "../lang";
 import UserState from "../User";
 import React from "react";
-import { CartProduct } from "../shared/shareddtypes";
+import { Product } from "../shared/shareddtypes";
 import Cart from "../components/Cart";
 
 test('Cart without items renders properly', async () => {
-    const products: CartProduct[] = [];
+    const products: Product[] = [];
 
     render(
         <React.StrictMode>
             <UserState>
                 <LangState>
-                    <Cart cartItems={products} addToCart={() => undefined} removeFromCart={() => undefined} />
+                    <Cart setOpen={() => undefined} setAmount={() => undefined} cartItems={products} />
                 </LangState>
             </UserState>
         </React.StrictMode>,
@@ -33,7 +33,7 @@ test('Cart without items renders properly', async () => {
 });
 
 test('Cart with items renders properly', async () => {
-    const products: CartProduct[] = [
+    const products: Product[] = [
         { name: "NombrePrueba1", description: "DescripcionPrueba1", price: 1.00, category: "CategoriaPrueba1", urlPhoto: "urlPrueba1", amount: 2 },
         { name: "NombrePrueba2", description: "DescripcionPrueba2", price: 2.00, category: "CategoriaPrueba2", urlPhoto: "urlPrueba2", amount: 2 },
     ];
@@ -42,7 +42,7 @@ test('Cart with items renders properly', async () => {
         <React.StrictMode>
             <UserState>
                 <LangState>
-                    <Cart cartItems={products} addToCart={() => undefined} removeFromCart={() => undefined} />
+                    <Cart setOpen={() => undefined} setAmount={() => undefined} cartItems={products} />
                 </LangState>
             </UserState>
         </React.StrictMode>,

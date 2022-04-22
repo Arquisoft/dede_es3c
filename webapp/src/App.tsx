@@ -12,15 +12,26 @@ import CrudDeletePage from './pages/CrudDeletePage';
 import OrdersPage from './pages/OrdersPage';
 import ShippingPage from './pages/ShippingPage';
 import CatalogPage from './pages/Catalog';
+import Header from "./components/Header";
+import ProductDetailPage from './pages/ProductDetailPage';
+import Cart from './components/Cart';
+import { Drawer } from "@mui/material";
+import { OpenContext } from './OpenCart';
 import ClientView from './pages/ClientView';
 import EditUserPage from './pages/EditUserPage';
 
 const App: FC = () => {
   const { dispatch: {setUser}} = useContext(UserContext);
+  const { dispatch: { setOpen, setAmount } } = useContext(OpenContext);
 
   return (
     <Router>
-      <Header setUser={setUser} />
+      <Header setUser={setUser} setOpen={setOpen} setAmount={setAmount}/>
+
+      <Drawer anchor="right" open={Boolean(useContext(OpenContext).stateOpen.openCart)} onClose={() => setOpen("")}>
+        <Cart setOpen={setOpen} setAmount={setAmount} cartItems={JSON.parse(localStorage.getItem("cart")!)}/>
+      </Drawer>
+
       <Routes>
         <Route
           path='/'
@@ -64,7 +75,7 @@ const App: FC = () => {
         <Route
           path='catalog'
           element={
-            <CatalogPage setUser={setUser}/>
+            <CatalogPage setUser={setUser} setAmount={setAmount}/>
           }
         />
         <Route
@@ -77,6 +88,12 @@ const App: FC = () => {
           path='shipping'
           element={
             <ShippingPage setUser={setUser}/>
+          }
+        />
+        <Route
+          path='products/name/:name'
+          element={
+            <ProductDetailPage setUser={setUser} setAmount={setAmount}/>
           }
         />
         <Route
