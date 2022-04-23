@@ -75,8 +75,12 @@
     api.route('/products/name/:name')
         .get(productsController.getProductByPartialName);
     
+    api.route('/products/name/:name/:category')
+        .get(productsController.getProductByCategoryException);
+    
     api.route('/products/category/:category')
         .get(productsController.getProductByCategory);
+        
 
     api.route('/products/price/:min/:max')
         .get(productsController.getProductByPrice);
