@@ -26,7 +26,7 @@ const Catalog = (props: CatalogPageProps) => {
     const [sliderValue, setSliderValue] = useState<number[]>([100, 1000]);
 
     const handleSliderChange = (
-        event: Event,
+        _event: Event,
         newValue: number | number[],
         activeThumb: number,
     ) => {

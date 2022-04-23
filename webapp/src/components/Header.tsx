@@ -16,6 +16,8 @@ import Button from '@mui/material/Button';
 import { AddShoppingCartSharp } from '@mui/icons-material';
 import { Badge } from "@mui/material";
 import '../styles/Header.scss';
+import userListIcon from '../img/user-list-icon.svg';
+import userIcon from '../img/user-icon.svg';
 
 interface HeaderProps {
   setUser: (user: string) => void
@@ -150,6 +152,20 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
                 <Link to="/orders" className="nav-link">
                   <img alt="" src={ordersIcon} width="25" height="25" className="d-inline-block align-top" />
                   {translate("nav.orders")}
+                </Link>
+              }
+
+              {(localStorage.getItem("currentUser") !== "not logged" && !(localStorage.getItem("currentUser")?.includes("admin"))) &&
+                <Link to="/account" className="nav-link">
+                  <img alt="" src={userIcon} width="25" height="25" className="d-inline-block align-top" />
+                  Mi cuenta
+                </Link>
+              }
+
+              {(localStorage.getItem("currentUser") !== "not logged" && (localStorage.getItem("currentUser")?.includes("admin"))) &&
+                <Link to="/users" className="nav-link">
+                  <img alt="" src={userListIcon} width="25" height="25" className="d-inline-block align-top" />
+                  Usuarios
                 </Link>
               }
               </div>
