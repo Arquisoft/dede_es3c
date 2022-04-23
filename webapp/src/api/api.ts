@@ -147,3 +147,21 @@ export async function getAddress(webID:string) {
   let response = await fetch(apiEndPoint+'/users/userpod/' + webID);
     return response.json();
 }
+
+export async function getProductsByPrice(min: number, max: number): Promise<Product[]> {
+  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api/products'
+  let response = await fetch(apiEndPoint + '/price/' + min + '/' + max, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
+  return response.json();
+}
+
+export async function getRelatedProducts(name: string, category: string): Promise<Product[]> {
+  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api/products/name'
+  let response = await fetch(apiEndPoint + '/' + name + '/' + category, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
+  return response.json();
+}

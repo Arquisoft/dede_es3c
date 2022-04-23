@@ -5,12 +5,15 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import LangState from './lang';
 import UserState from './User'
+import OpenState from './OpenCart';
 
 ReactDOM.render(
   <React.StrictMode>
       <UserState>
         <LangState>
-          <App />
+          <OpenState>
+            <App />
+          </OpenState>
         </LangState>
       </UserState>
   </React.StrictMode>,

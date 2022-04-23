@@ -3,6 +3,7 @@ import { render, screen } from '@testing-library/react';
 import App from '../App';
 import LangState from '../lang';
 import UserState from '../User';
+import OpenState from '../OpenCart';
 
 test('App (Home) renders properly without user logged', () => {
   localStorage.setItem('currentUser', "not logged");
@@ -11,7 +12,9 @@ test('App (Home) renders properly without user logged', () => {
     <React.StrictMode>
       <UserState>
         <LangState>
-          <App />
+          <OpenState>
+            <App />
+          </OpenState>
         </LangState>
       </UserState>
     </React.StrictMode>,
@@ -32,7 +35,9 @@ test('App (Home) renders properly with user logged', () => {
     <React.StrictMode>
       <UserState>
         <LangState>
-          <App />
+          <OpenState>
+            <App />
+          </OpenState>
         </LangState>
       </UserState>
     </React.StrictMode>,

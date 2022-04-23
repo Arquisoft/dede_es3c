@@ -10,7 +10,7 @@ test('Catalog renders properly', async () => {
         <React.StrictMode>
         <UserState>
         <LangState>
-          <CatalogPage setUser={() => "user"} /*productsAux={productList}*//>
+          <CatalogPage setUser={() => "user"} setAmount={() => undefined} /*productsAux={productList}*//>
         </LangState>
         </UserState>
       </React.StrictMode>,
@@ -29,8 +29,5 @@ test('Catalog renders properly', async () => {
   expect(linkElement).toBeInTheDocument();
 
   linkElement = screen.getByPlaceholderText(/Search/i);
-  expect(linkElement).toBeInTheDocument();
-
-  linkElement = screen.getByLabelText(/CartIcon/i);
   expect(linkElement).toBeInTheDocument();
 });

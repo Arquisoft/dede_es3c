@@ -1,5 +1,4 @@
 import React, {FC, useEffect, useContext, Fragment, useState} from "react";
-import Header from "../components/Header"
 import { User } from "../shared/shareddtypes";
 import {getUser } from "../api/api";
 import { LangContext } from "../lang";
@@ -92,14 +91,12 @@ const EditUserPage: FC<EditUserProps> = (props: EditUserProps) => {
     || localStorage.getItem("currentUser") === "not logged" ){
         return (
         <div className="main">
-            <Header setUser={props.setUser}/>
             <h1 aria-label="EditPageLoggedOut">{translate("editPage.notLogged")}</h1>
         </div>
         );
     } 
     return (
         <div className="mainContainer" style={{alignContent:"center", alignItems:"center", alignSelf:"center"}}>
-            <Header setUser={props.setUser}/>
             <Container component="main" maxWidth="sm">
         <Card className={"main"} elevation={10} style={{display: "grid"}}>
         <CardContent style={{ display: "grid", margin: "auto", textAlign: "center" }}>

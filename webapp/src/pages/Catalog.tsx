@@ -1,25 +1,45 @@
 import { useState, useEffect, useContext } from 'react';
-import { getProducts, getProductsByName, getProductsByCategory } from '../api/api';
+import { getProducts, getProductsByName, getProductsByCategory, getProductsByPrice } from '../api/api';
 import { Form, FormControl } from "react-bootstrap";
 import Button from '@mui/material/Button';
 import { LangContext } from '../lang';
-import { Product, CartProduct } from '../shared/shareddtypes';
+import { Product } from '../shared/shareddtypes';
 import Item from '../components/Item';
-import { Drawer, Grid, Badge } from "@mui/material";
-import Cart from '../components/Cart';
-import { AddShoppingCartSharp } from '@mui/icons-material';
+import { Grid } from "@mui/material";
+import Slider from '@mui/material/Slider';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 
 interface CatalogPageProps {
     setUser: (user: string) => void
+    setAmount: (amount: string) => void
 }
+
+const minDistance = 10;
 
 const Catalog = (props: CatalogPageProps) => {
     const { dispatch: { translate } } = useContext(LangContext);
     const [products, setProducts] = useState<Product[]>([]);
     const [nameFilter, setNameFilter] = useState('');
     const [val, setVal] = useState('');
-    const [cartOpen, setCartOpen] = useState(false);
-    const [cartItems, setCartItems] = useState<CartProduct[]>([]);
+
+    const [sliderValue, setSliderValue] = useState<number[]>([100, 1000]);
+
+    const handleSliderChange = (
+        _event: Event,
+        newValue: number | number[],
+        activeThumb: number,
+    ) => {
+        if (!Array.isArray(newValue)) {
+            return;
+        }
+
+        if (activeThumb === 0) {
+            setSliderValue([Math.min(newValue[0], sliderValue[1] - minDistance), sliderValue[1]]);
+        } else {
+            setSliderValue([sliderValue[0], Math.max(newValue[1], sliderValue[0] + minDistance)]);
+        }
+    };
 
     const reloadItems = async () => {
         setProducts(await getProducts());
@@ -33,52 +53,13 @@ const Catalog = (props: CatalogPageProps) => {
         setProducts(await getProductsByCategory(category));
     }
 
+    async function FilterByPrice(min: number, max: number){
+        setProducts(await getProductsByPrice(min, max));
+    }
+
     useEffect(() => {
         reloadItems();
-        setCartItems(JSON.parse(localStorage.getItem("cart")!) || []);
     }, []);
-
-    const getTotalItems = (items: CartProduct[]) => items.reduce((ack: number, item) => ack + item.amount, 0);     
-
-    const handleAddToCart = (clickedItem: CartProduct) => {
-        let cartCopy = [...cartItems];
-
-        let { name } = clickedItem;
-
-        let existingItem = cartCopy.find(cartItem => cartItem.name === name);
-
-        if (existingItem) {
-            existingItem.amount = existingItem.amount + 1;
-        } else {
-            clickedItem.amount = 1;
-            cartCopy.push(clickedItem)
-        }
-
-        setCartItems(cartCopy)
-
-        let stringCart = JSON.stringify(cartCopy);
-        localStorage.setItem("cart", stringCart)
-    };
-
-    const handleRemoveFromCart = (name: string) => {
-        let cartCopy = [...cartItems]
-
-        let existingItem = cartCopy.find(cartItem => cartItem.name === name);
-
-        if (existingItem) {
-            if (existingItem.amount > 1){
-                existingItem.amount = existingItem.amount - 1;
-            } else{
-                cartCopy = cartCopy.filter(item => item.name !== name);
-            }
-            
-        }
-
-        setCartItems(cartCopy);
-
-        let cartString = JSON.stringify(cartCopy)
-        localStorage.setItem("cart", cartString)
-    };
 
     return (
         <div>
@@ -91,28 +72,26 @@ const Catalog = (props: CatalogPageProps) => {
             <Button onClick={() => FilterByCategory("Monitors")}>{translate('category.monitors')}</Button>
             <Button onClick={() => FilterByCategory("Laptop")}>{translate('category.laptop')}</Button>
 
-            <Drawer anchor="right" open={cartOpen} onClose={() => setCartOpen(false)}>
-                <Cart
-                    cartItems={cartItems}
-                    addToCart={handleAddToCart}
-                    removeFromCart={handleRemoveFromCart}
+            <Box sx={{ width: 300 }}>
+                <TextField id="outlined-basic" label="Min" variant="outlined" value={sliderValue[0] + "$"} size="small" />
+                <p>To</p>
+                <TextField id="outlined-basic" label="Max" variant="outlined" value={sliderValue[1] + "$"} size="small"/>
+                <Slider
+                    getAriaLabel={() => 'Minimum distance'}
+                    value={sliderValue}
+                    onChange={handleSliderChange}
+                    valueLabelDisplay="off"
+                    disableSwap
+                    max={10000}
                 />
-            </Drawer>
-            {
-                (!localStorage.getItem("currentUser")?.includes("admin")) &&
-                <Button onClick={() => setCartOpen(true)} aria-label="CartIcon">
-                    <Badge badgeContent={getTotalItems(cartItems)} color="error">
-                        <AddShoppingCartSharp />
-                    </Badge>
-                </Button>
-            }
-            
+                <Button onClick={() => FilterByPrice(sliderValue[0], sliderValue[1])}>Filtrar por precio</Button>
+            </Box>
 
             <Grid container spacing={3}>
-                {products?.map((item: CartProduct) => {
+                {products?.map((item: Product) => {
                     return (
                         <Grid item key={item.name} xs={12} sm={4}>
-                            <Item item={item} handleAddToCart={handleAddToCart} />
+                            <Item item={item} setAmount={props.setAmount}/>
                         </Grid>
                     );
                 })}

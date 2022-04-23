@@ -1,5 +1,4 @@
 import React, {FC, useState, useEffect, useContext} from "react";
-import Header from "../components/Header"
 import { User } from "../shared/shareddtypes";
 import {getUsers } from "../api/api";
 import TableBody from "@mui/material/TableBody";
@@ -35,7 +34,6 @@ const ClientView: FC<ClientViewProps> = (props: ClientViewProps) => {
     if (!localStorage.getItem("currentUser")?.includes("admin")){
         return (
         <div className="main">
-            <Header setUser={props.setUser}/>
             <div className="mainEmptyContainer" style={{display: 'flex',justifyContent:'center', alignItems:'center', height: '100vh'}}>
             <h2>{translate("clients.notAllowed")}</h2>
             <Button onClick={() => redirect()} >{translate("orders.shopping")}</Button>  
@@ -45,7 +43,6 @@ const ClientView: FC<ClientViewProps> = (props: ClientViewProps) => {
     } 
     return (
         <div className="mainContainer" style={{alignContent:"center", alignItems:"center", alignSelf:"center"}}>
-            <Header setUser={props.setUser}/>
             <h1 aria-label="clientsTitleWith">{translate("clients.title")}</h1>
             <div style={{ alignContent:"center", alignItems:"center" }}>
               <TableContainer component={Paper} sx={{maxHeight: "440",maxWidth: "1000" , alignSelf:"center"}}>
