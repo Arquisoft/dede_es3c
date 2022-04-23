@@ -10,7 +10,6 @@ import { Product } from '../shared/shareddtypes';
 import { Link } from 'react-router-dom';
 import handleAddToCart from '../components/HandleAddToCart';
 import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
@@ -18,6 +17,7 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 type Props = {
     item: Product;
     setAmount: (amount: string) => void
+    stock: number;
 };
 
 const Item = (props: Props) => {
@@ -40,16 +40,14 @@ const Item = (props: Props) => {
             </CardContent>
             
             <CardActions disableSpacing>
-                <Box sx={{ minWidth: 120 }}>
+                <Box sx={{ minWidth: 70 }}>
                     <FormControl fullWidth>
-                        <InputLabel id="demo-simple-select-label">Amount</InputLabel>
                         <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
                             value={itemAmount}
-                            label="Amount"
                             onChange={handleChange}
                             size="small"
+                            displayEmpty
+                            autoWidth
                         >
                             <MenuItem value={1}>1</MenuItem>
                             <MenuItem value={2}>2</MenuItem>
@@ -70,7 +68,7 @@ const Item = (props: Props) => {
                         <AddShoppingCartIcon />
                     }
                 </IconButton>
-                <p>Stock: 5</p>
+                <p>Stock: {props.stock}</p>
             </CardActions>
         </Card>
     </div>

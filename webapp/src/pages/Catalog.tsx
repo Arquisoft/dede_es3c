@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import { getProducts, getProductsByName, getProductsByCategory, getProductsByPrice } from '../api/api';
+import { getProducts, getProductsByName, getProductsByCategory, getProductsByPrice, getStockByProduct } from '../api/api';
 import { Form, FormControl } from "react-bootstrap";
 import Button from '@mui/material/Button';
 import { LangContext } from '../lang';
@@ -57,6 +57,18 @@ const Catalog = (props: CatalogPageProps) => {
         setProducts(await getProductsByPrice(min, max));
     }
 
+    let aux = 0;
+
+    const calculateStockAux = () => {
+        return aux++;
+    }
+
+    const [itemStock, setItemStock] = useState(0);
+
+    async function calculateStock(name: string) {
+        setItemStock(await getStockByProduct(name));
+    }
+
     useEffect(() => {
         reloadItems();
     }, []);
@@ -89,9 +101,11 @@ const Catalog = (props: CatalogPageProps) => {
 
             <Grid container spacing={3}>
                 {products?.map((item: Product) => {
+                    calculateStock(item.name)
+
                     return (
                         <Grid item key={item.name} xs={12} sm={4}>
-                            <Item item={item} setAmount={props.setAmount}/>
+                            <Item item={item} setAmount={props.setAmount} stock={itemStock}/>
                         </Grid>
                     );
                 })}

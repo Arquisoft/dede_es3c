@@ -8,7 +8,7 @@ test('Item renders properly', async () => {
     
     render(
         <Router>
-            <Item item={product} setAmount={() => undefined} />
+            <Item item={product} setAmount={() => undefined} stock={0}/>
         </Router>
     )
 
