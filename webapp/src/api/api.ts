@@ -22,6 +22,7 @@ export async function getUsers():Promise<User[]>{
 
 export async function checkUser(username: string, password:string): Promise<boolean> {
   const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+  
   let response = await fetch(apiEndPoint+'/login', {
       method: 'POST',
       headers: {'Content-Type':'application/json'},
