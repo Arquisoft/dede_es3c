@@ -112,6 +112,27 @@ export class ProductService {
   }
 
   /**
+   * Return product by price
+   * @param app Express application
+   * @param category Product category
+   * @returns Promise<Product>
+   */
+     public static getProductByPrice(
+      app: Application,
+      min: number,
+      max: number,
+    ): Promise<Product[]> {
+      return app
+        .get("db")
+        .getRepository(Product)
+        .find({
+          where: {
+            price: { '$gt': min, '$lt': max}
+          },
+        });
+    }
+
+  /**
    * Delete product by id
    * @param app Express application
    * @param id Product id

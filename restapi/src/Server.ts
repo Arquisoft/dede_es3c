@@ -5,19 +5,22 @@
  import express, { Application, RequestHandler } from "express";
  import * as dotenv from "dotenv";
  import "reflect-metadata";
- import cors from 'cors';
  import bp from 'body-parser';
  import promBundle from 'express-prom-bundle';
  import api from "./Api";
  import database from "./persistence/Database";
+import cors from "cors";
 
  // =================================> Constants
  const PORT = Number.parseInt(`${process.env.PORT}`) || 5000; // Port to listen, default 5000
  const app: Application = express(); // Express application
+ 
  app.disable("x-powered-by");
  const cors_options: cors.CorsOptions = {
      origin: ['http://localhost:3000']
  };
+ app.use(cors(cors_options));
+
  const metricsMiddleware:RequestHandler = promBundle({includeMethod: true}); // Prometheus middleware
  
  // =================================> Functions

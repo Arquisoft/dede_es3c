@@ -2,11 +2,11 @@ import { render, screen } from "@testing-library/react";
 import LangState from "../lang";
 import UserState from "../User";
 import React from "react";
-import { CartProduct } from "../shared/shareddtypes";
+import { Product } from "../shared/shareddtypes";
 import ShippingPage from "../pages/ShippingPage";
 
 test('Cart without items renders properly', async () => {
-    const products: CartProduct[] = [
+    const products: Product[] = [
         { name: "NombrePrueba1", description: "DescripcionPrueba1", price: 1, category: "CategoriaPrueba1", urlPhoto: "urlPrueba1", amount: 2 },
         { name: "NombrePrueba2", description: "DescripcionPrueba2", price: 2, category: "CategoriaPrueba2", urlPhoto: "urlPrueba2", amount: 2 },
     ];

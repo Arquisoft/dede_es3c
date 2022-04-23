@@ -18,10 +18,9 @@ export class User {
   
     @PrimaryColumn()
     id: string;
-
+    
     @Column()
     username: string;
-
     @Column()
     email: string;
 

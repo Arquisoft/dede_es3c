@@ -45,7 +45,7 @@
  
      api.route('/users')
          // Get all users
-         .get(auth.isAdminAuth,userController.getUsers)
+         .get(userController.getUsers)
  
      api.route('/users/username/:username')
          .get(userController.getUserByUsername);
@@ -78,6 +78,8 @@
     api.route('/products/category/:category')
         .get(productsController.getProductByCategory);
 
+    api.route('/products/price/:min/:max')
+        .get(productsController.getProductByPrice);
 
     api.route('/products/:id')
         // Get products by id

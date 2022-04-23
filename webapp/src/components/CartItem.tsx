@@ -1,17 +1,19 @@
-
-import { CartProduct } from '../shared/shareddtypes';
+import { Product } from '../shared/shareddtypes';
 import { useContext } from "react";
 import { LangContext } from '../lang';
 import { Button } from '@mui/material';
+import handleAddToCart from '../components/HandleAddToCart';
+import handleRemoveFromCart from '../components/HandleRemoveFromCart';
 
 type CartItemProps = {
-    item: CartProduct;
-    addToCart: (clickedItem: CartProduct) => void;
-    removeFromCart: (name: string) => void;
+    item: Product;
+    setAmount: (amount: string) => void
 };
 
-const CartItem: React.FC<CartItemProps> = ({ item, addToCart, removeFromCart }) => {
+const CartItem: React.FC<CartItemProps> = ({ item, setAmount}) => {
     const { dispatch: { translate } } = useContext(LangContext);
+    const addToCart = handleAddToCart;
+    const removeFromCart = handleRemoveFromCart;
 
     return(
     <div>
@@ -27,14 +29,14 @@ const CartItem: React.FC<CartItemProps> = ({ item, addToCart, removeFromCart }) 
                     size="small"
                     disableElevation
                     variant="contained"
-                    onClick={() => removeFromCart(item.name)}
+                    onClick={() => removeFromCart(item.name, setAmount)}
                 > - </Button>
                 <p>{item.amount}</p>
                 <Button
                     size="small"
                     disableElevation
                     variant="contained"
-                    onClick={() => addToCart(item)}
+                    onClick={() => addToCart(item, setAmount)}
                 > + </Button>
             </div>
         </div>

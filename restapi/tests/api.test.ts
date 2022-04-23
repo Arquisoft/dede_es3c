@@ -160,7 +160,7 @@ describe("CRUD Users", () => {
       password: "123456",
     };
     const response: Response = await request(app).post("/api/login").send(user);
-    expect(response.statusCode).toBe(404);
+    expect(response.statusCode).toBe(402);
   });
 
   /**
@@ -292,17 +292,6 @@ describe("CRUD Users", () => {
     expect(response.statusCode).toBe(200);
   });
 
-  /**
-   * Tests that list users without being admin
-   */
-  it("list users without being admin", async () => {
-    const response: Response = await request(app)
-      .get("/api/users")
-      .set("Accept", "application/json")
-      .set("Authorization", String(clientToken));
-
-    expect(response.statusCode).toBe(403);
-  });
 });
 
 describe("products", () => {
