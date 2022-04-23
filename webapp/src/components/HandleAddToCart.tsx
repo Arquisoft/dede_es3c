@@ -2,7 +2,7 @@ import { Product } from '../shared/shareddtypes';
 
 const getTotalItems = (items: Product[]) => items.reduce((ack: number, item) => ack + item.amount, 0);
 
-const handleAddToCart = (clickedItem: Product, setAmount: (amount: string) => void) => {
+const handleAddToCart = (clickedItem: Product, setAmount: (amount: string) => void, itemAmount: string) => {
     let cartItems = JSON.parse(localStorage.getItem("cart")!)
 
     let cartCopy = [...cartItems];
@@ -11,11 +11,15 @@ const handleAddToCart = (clickedItem: Product, setAmount: (amount: string) => vo
 
     let existingItem = cartCopy.find(cartItem => cartItem.name === name);
 
-    if (existingItem) {
-        existingItem.amount = existingItem.amount + 1;
-    } else {
-        clickedItem.amount = 1;
-        cartCopy.push(clickedItem)
+    if (Number(itemAmount) != NaN){
+            if (existingItem) {
+                for (let i = 0; i < parseInt(itemAmount); i++) {
+                    existingItem.amount = existingItem.amount + 1;
+                }
+            } else {
+                clickedItem.amount = parseInt(itemAmount);
+                cartCopy.push(clickedItem)
+            }
     }
 
     let stringCart = JSON.stringify(cartCopy);

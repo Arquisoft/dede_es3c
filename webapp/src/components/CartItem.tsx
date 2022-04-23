@@ -36,7 +36,7 @@ const CartItem: React.FC<CartItemProps> = ({ item, setAmount}) => {
                     size="small"
                     disableElevation
                     variant="contained"
-                    onClick={() => addToCart(item, setAmount)}
+                    onClick={() => addToCart(item, setAmount, '1')}
                 > + </Button>
             </div>
         </div>
