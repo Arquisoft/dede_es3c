@@ -11,15 +11,13 @@ const handleAddToCart = (clickedItem: Product, setAmount: (amount: string) => vo
 
     let existingItem = cartCopy.find(cartItem => cartItem.name === name);
 
-    if (Number(itemAmount) != NaN){
-            if (existingItem) {
-                for (let i = 0; i < parseInt(itemAmount); i++) {
-                    existingItem.amount = existingItem.amount + 1;
-                }
-            } else {
-                clickedItem.amount = parseInt(itemAmount);
-                cartCopy.push(clickedItem)
-            }
+    if (existingItem) {
+        for (let i = 0; i < parseInt(itemAmount); i++) {
+            existingItem.amount = existingItem.amount + 1;
+        }
+    } else {
+        clickedItem.amount = parseInt(itemAmount);
+        cartCopy.push(clickedItem)
     }
 
     let stringCart = JSON.stringify(cartCopy);

@@ -165,3 +165,12 @@ export async function getRelatedProducts(name: string, category: string): Promis
   });
   return response.json();
 }
+
+export async function getStockByProduct(name: string): Promise<number> {
+  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api/products/'
+  let response = await fetch(apiEndPoint + '/' + name, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
+  return response.json();
+}

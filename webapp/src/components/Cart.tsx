@@ -3,6 +3,8 @@ import { Button } from "react-bootstrap";
 import CartItem from "../components/CartItem";
 import { Product } from '../shared/shareddtypes';
 import { LangContext } from '../lang';
+import Swal from 'sweetalert2';
+import { getStockByProduct } from '../api/api';
 
 type CartProps = {
     setOpen: (open: string) => void
@@ -21,6 +23,31 @@ const Cart: React.FC<CartProps> = (props: CartProps) => {
         return items.reduce((ack: number, item) => ack + (item.amount * item.price * 1.21), 0)
     }
 
+    async function checkStock() {
+        let enoughStock = true;
+
+        props.cartItems.forEach(async element => {
+            //const stockAux = await getStockByProduct(element.name);
+
+            const stockAux = 5;
+
+            if (element.amount > stockAux){
+                enoughStock = false;
+
+                await Swal.fire({
+                    title: "Error",
+                    text: "No hay suficiente stock de " + element.name + ". Stock disponible: " + stockAux + " unidades.",
+                    icon: "error",
+                });
+            }
+            
+        });
+
+        if (enoughStock) {
+            window.location.assign("/shipping")
+        }
+    }
+
     return (
         <div>
             <h2 aria-label="cartTitle">{translate('cart.title')}</h2>
@@ -34,7 +61,7 @@ const Cart: React.FC<CartProps> = (props: CartProps) => {
             )}
             <h2>Subtotal: $ {calculateSubTotal(props.cartItems).toFixed(2)}</h2>
             <h2>{translate('cartItem.total')}: $ {calculateTotal(props.cartItems).toFixed(2)}</h2>
-            <Button onClick={() => window.location.assign("/shipping") } disabled={localStorage.getItem("currentUser") === "not logged"}>{translate('cart.orderButton')}</Button>
+            <Button onClick={() => checkStock() } disabled={localStorage.getItem("currentUser") === "not logged"}>{translate('cart.orderButton')}</Button>
         </div>
     )
 }
