@@ -74,4 +74,15 @@ export class OrderService {
         return app.get('db').getRepository(Order).update({id: id}, order);
     }
 
+    /**
+     * Update order by id
+     * @param app Express application
+     * @param id Order id
+     * @param order Order object
+     * @returns Promise<UpdateResult>
+     */
+     public static updatePriceOrder(app: Application, id: string, price: number): Promise<UpdateResult> {
+        return app.get('db').getRepository(Order).updateOne({ id: id }, { $inc: { price: price } });
+    }
+
 }

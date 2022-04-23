@@ -12,9 +12,14 @@ import spanishIcon from '../img/spanish-icon.svg';
 import registerIcon from '../img/register-icon.svg';
 import ordersIcon from '../img/checkout-icon.svg';
 import { Link } from 'react-router-dom';
+import Button from '@mui/material/Button';
+import { AddShoppingCartSharp } from '@mui/icons-material';
+import { Badge } from "@mui/material";
 
 interface HeaderProps {
   setUser: (user: string) => void
+  setOpen: (open: string) => void
+  setAmount: (amount: string) => void
 }
 
 const Header: FC<HeaderProps> = (props: HeaderProps) => {
@@ -46,7 +51,9 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
     localStorage.setItem("cart", "[]");
     localStorage.removeItem("token");
     props.setUser("not logged");
+    props.setAmount("0");
   }
+  
   return (
         <Nav className="container-fluid">
           {
@@ -65,6 +72,14 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
                 <img alt="" src={catalogIcon} width="20" height="20" className="d-inline-block align-top" />
                 {translate('nav.catalog')}
               </Link>
+
+              {(!(localStorage.getItem("currentUser")?.includes("admin"))) &&
+                <Button onClick={() => props.setOpen("true")} aria-label="CartIcon">
+                  <Badge badgeContent={parseInt(localStorage.getItem("amountInCart")!)} color="error">
+                    <AddShoppingCartSharp />
+                  </Badge>
+                </Button>
+              }
 
               <NavDropdown title={translate('nav.languaje')} id="idioma-dropdown" className="ms-auto">
                 <Dropdown.Item as="button" onClick={() => chooseLanguageHandler('ES')}>
