@@ -36,9 +36,30 @@ jobs:
     - run: npm test
     - name: Upload coverage reports to Codecov with GitHub Action
       uses: codecov/codecov-action@v3
+  e2e-tests:
+    needs: [unit-test-webapp, unit-test-restapi]
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+    - uses: supercharge/mongodb-github-action@1.7.0
+      with:
+        node-version: 16
+        mongodb-version: '4.4'
+        mongodb-username: ${{ secrets.mongoUsername }}
+        mongodb-password: ${{ secrets.mongoPassword }}
+        mongodb-db: ${{ secrets.mongoDB }}
+      with:
+        node-version: 16
+    - run: npm ci
+    - run: npm --prefix webapp install
+    - run: npm --prefix restapi install
+    - run: npm --prefix webapp run build
+    - run: npm --prefix webapp run test:e2e
   docker-push-webapp:
     name: Push webapp Docker Image to GitHub Packages
     runs-on: ubuntu-latest
+    needs: [e2e-tests]
     steps:
     - uses: actions/checkout@v3
       env:
@@ -53,6 +74,7 @@ jobs:
   docker-push-restapi:
     name: Push restapi Docker Image to GitHub Packages
     runs-on: ubuntu-latest
+    needs: [e2e-tests]
     steps:
     - uses: actions/checkout@v3
       with:
