@@ -19,6 +19,7 @@ import { OpenContext } from './OpenCart';
 import ClientView from './pages/ClientView';
 import EditUserPage from './pages/EditUserPage';
 import Button from '@mui/material/Button';
+import Header from './components/Header';
 
 const App: FC = () => {
   const { dispatch: {setUser}} = useContext(UserContext);

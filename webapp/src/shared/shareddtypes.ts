@@ -35,3 +35,7 @@ export type Address = {
   region: string;
   street_address: string; 
 }
+
+export type DistributionCenter = {
+  address: string;
+}

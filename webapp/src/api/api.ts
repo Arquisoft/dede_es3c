@@ -1,4 +1,4 @@
-import {User, Product, Order} from '../shared/shareddtypes';
+import {User, Product, Order, DistributionCenter} from '../shared/shareddtypes';
 
 export async function addUser(user:User):Promise<boolean>{
     const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
@@ -164,4 +164,13 @@ export async function getRelatedProducts(name: string, category: string): Promis
     headers: { "Content-Type": "application/json" },
   });
   return response.json();
+}
+
+export async function getDistributionCenters(product: Product): Promise<DistributionCenter[]>{
+  const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+  let response = await fetch(apiEndPoint+'/distributioncenters/'+ product.name + '/' + product.amount , {
+    method: 'GET',
+    headers: {  authorization: localStorage.getItem("token") +"" , 'Content-Type': 'application/json' }
+  });
+    return response.json();
 }

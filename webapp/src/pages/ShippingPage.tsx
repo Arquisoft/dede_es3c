@@ -1,8 +1,8 @@
 import React, {Fragment, FC, useState, useContext} from "react";
-import { Card, CardContent, Container, List, ListItem, ListItemText, ListSubheader, TextField} from "@mui/material";
-import { Button } from "react-bootstrap";
-import { Product } from "../shared/shareddtypes";
-import { getAddress } from "../api/api";
+import { Card, CardContent, Container, List, ListItem, ListItemText, ListSubheader, MenuItem, Select, SelectChangeEvent, TextField} from "@mui/material";
+import { Button} from "react-bootstrap";
+import { DistributionCenter, Product } from "../shared/shareddtypes";
+import { getAddress, getDistributionCenters } from "../api/api";
 import Swal from 'sweetalert2';
 import { Navigate, Link } from "react-router-dom";
 import { LangContext } from '../lang';
@@ -19,6 +19,8 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
   const [postalCode, setPostalCode] = useState("");
   const [region, setRegion] = useState("");
   const [streetAddress, setStreetAddress] = useState("");
+  const [distributionCenter, setDistributionCenter] = useState("");
+  var centers: DistributionCenter [] = [];
 
   const products = localStorage.getItem("cart");
   var size:number = 0;
@@ -52,6 +54,15 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
     }
   })
 
+  const handleChange = (event: SelectChangeEvent) => {
+    setDistributionCenter(event.target.value as string);
+    console.log(event.target.value as string);
+  };
+  const getCenters = async () => {
+    const centers = await getDistributionCenters(cartProducts[0]);
+    console.log(cartProducts[0]);
+  }
+  getCenters();
   async function getAdd() {
     const address = await getAddress(webID);
     if (address !== undefined){
@@ -113,6 +124,13 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                             <ListItem key={item.name}>
                             <img alt="desc" src= {item.urlPhoto} width= '70' height='70'/>
                             <ListItemText primary={"x" + item.amount + "\t"+item.name + ":" + item.price + "$"} />
+                            <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={"distribution center"}
+                            label="Distribution Center"
+                            onChange={handleChange}>
+                              </Select>
                             </ListItem>
                             ))}
                         </ul>
