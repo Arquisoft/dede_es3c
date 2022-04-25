@@ -52,6 +52,14 @@
 
     api.route('/users/userpod/:username')
          .get(userController.findPod);
+
+    // Update user by id
+    api.route('/users/email/:email/name/:name')
+        .put(auth.isAdminAuth, userController.updateUserByEmailName)
+
+    // Update user by id
+    api.route('/users/email/:email/password/:password')
+        .put(auth.isAdminAuth, userController.updateUserByEmailPassword)
  
      api.route('/users/:id')
          // Get user by id

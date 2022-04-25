@@ -110,8 +110,14 @@ export class ProductController {
       try {
         const product = await ProductService.getProductByCategory(
           req.app,
-          req.params.name
+          req.params.category
         );
+        for(let i= 0 ;i<product.length;i++){
+          if(product[i].name===(req.params.name)){
+            product.splice(i,1);
+            break;
+          }
+        }
         product
           ? res.status(200).json(product)
           : res.status(404).json({ error: "Product not found" });
