@@ -5,8 +5,6 @@ import bp from "body-parser";
 import cors from "cors";
 import api from "../src/Api";
 import database from "../src/persistence/Database";
-const dotenv = require('dotenv');
-dotenv.config();
 
 let app: Application;
 let server: http.Server;
@@ -15,7 +13,8 @@ let clientToken: string;
 let userId: string;
 let productId: string;
 let orderId: string;
-
+let pass1 = "123456";
+let pass2 = "LoCo";
 beforeAll(async () => {
   app = express();
   const port: number = 5000;
@@ -46,9 +45,7 @@ beforeAll(async () => {
       console.error("Error occured: " + error.message);
     });
 
-  console.log(process.env.APP_PASS1);
-  const pass1 = process.env.APP_PASS1;
-  const pass2 = process.env.APP_PASS2;
+
   console.log(pass1);
   console.log(pass2);
 
@@ -58,7 +55,7 @@ beforeAll(async () => {
   const admin = {
     username: "Dios",
     email: "Dios@jaja.com",
-    password: process.env.APP_PASS1,
+    password: pass1,
     rol: "Admin",
   };
   const response: Response = await request(app)
@@ -73,7 +70,7 @@ beforeAll(async () => {
   const user = {
     username: "Cura",
     email: "Cura@jaja.com",
-    password: process.env.APP_PASS1,
+    password: pass1,
     rol: "Client",
   };
   const response2: Response = await request(app)
@@ -107,7 +104,7 @@ describe("CRUD Users", () => {
     const user = {
       username: "Jesucristo",
       email: "Jesucristo@jaja.com",
-      password: process.env.APP_PASS1,
+      password: pass1,
       rol: "Admin",
     };
     const response: Response = await request(app)
@@ -140,7 +137,7 @@ describe("CRUD Users", () => {
   it("login with an existing user", async () => {
     const user = {
       username: "Dios",
-      password: process.env.APP_PASS1,
+      password: pass1,
     };
     const response: Response = await request(app).post("/api/login").send(user);
     expect(response.statusCode).toBe(200);
@@ -152,7 +149,7 @@ describe("CRUD Users", () => {
   it("login with an existing user with a bad password", async () => {
     const user = {
       username: "Dios",
-      password: process.env.APP_PASS2,
+      password: pass2,
     };
     const response: Response = await request(app).post("/api/login").send(user);
     expect(response.text).toBe('{"error":"Error, la contraseña no coincide"}');
@@ -165,7 +162,7 @@ describe("CRUD Users", () => {
   it("login with a user that does not exist", async () => {
     const user = {
       username: "Lucifer",
-      password: process.env.APP_PASS1,
+      password: pass1,
     };
     const response: Response = await request(app).post("/api/login").send(user);
     expect(response.statusCode).toBe(402);
@@ -220,7 +217,7 @@ describe("CRUD Users", () => {
     const user = {
       username: "Jesucristo",
       email: "ElRedentor@jaja.com",
-      password: process.env.APP_PASS1,
+      password: pass1,
       rol: "Admin",
     };
 
@@ -240,7 +237,7 @@ describe("CRUD Users", () => {
     const user = {
       username: "Jesucristo",
       email: "ElRedentor@jaja.com",
-      password: process.env.APP_PASS1,
+      password: pass1,
       rol: "Admin",
     };
 
