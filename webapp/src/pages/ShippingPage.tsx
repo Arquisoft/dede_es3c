@@ -197,7 +197,13 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                         sx={{ my: 2 }} 
                         >
                       </TextField>
-                      <Button variant="contained" type="submit">{translate('shipping.proceed')}</Button>
+                      <Button 
+                      variant="contained" 
+                      type="submit"
+                      disabled={locality === '' || countryName === ''}
+                      >
+                        {translate('shipping.proceed')}
+                        </Button>
                     </Fragment>
             </CardContent>
             </Card>

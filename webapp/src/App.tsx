@@ -12,7 +12,6 @@ import CrudDeletePage from './pages/CrudDeletePage';
 import OrdersPage from './pages/OrdersPage';
 import ShippingPage from './pages/ShippingPage';
 import CatalogPage from './pages/Catalog';
-import Header from "./components/Header";
 import ProductDetailPage from './pages/ProductDetailPage';
 import Cart from './components/Cart';
 import { Drawer } from "@mui/material";
