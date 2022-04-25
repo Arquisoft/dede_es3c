@@ -100,14 +100,12 @@ export class OrderController {
             //var destination = response.;
             var destination = "AvenidadelaConstitucion,10,Gijon"; //get address from user pod
 
-
             var price = 0.0;
             //Source
             var d;
             for (var p of orderBody.products) {
-                var productstore = await ProductStoreService.getProductStoresByProductAndDC(req.app,p.product.id, p.distributionCenter.id)
                 await ProductStoreService.decrementProductStock(req.app,p.product.id,p.distributionCenter.id,p.quantity)
-                //await DistributionCenterService.decrementProductStock(req.app,p.distributionCenter.id,newStore)
+
                 var sp = 0.0;
                 source = p.distributionCenter.address;
                 url = 'https://maps.googleapis.com/maps/api/distancematrix/json?destinations='+destination+'&origins='+source+'&key=AIzaSyANy46m-FN8Sa9aSpIiLpSWx3xl7M2oX3s'
