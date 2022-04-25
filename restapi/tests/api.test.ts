@@ -5,6 +5,7 @@ import bp from "body-parser";
 import cors from "cors";
 import api from "../src/Api";
 import database from "../src/persistence/Database";
+require('dotenv').config();
 
 let app: Application;
 let server: http.Server;
@@ -44,9 +45,11 @@ beforeAll(async () => {
       console.error("Error occured: " + error.message);
     });
 
-  console.log(`${process.env.APP_PASS1}`)
-  const a = process.env.APP_PASS1;
-  console.log(`${a}`)
+  console.log(process.env.APP_PASS1);
+  const pass1 = process.env.APP_PASS1;
+  const pass2 = process.env.APP_PASS2;
+  console.log(pass1);
+  console.log(pass2);
 
   /**
    * Inicializar token Admin
