@@ -51,7 +51,6 @@ jobs:
         mongodb-username: ${{ secrets.mongoUsername }}
         mongodb-password: ${{ secrets.mongoPassword }}
         mongodb-db: ${{ secrets.mongoDB }}
-    - run: npm ci
     - run: npm --prefix webapp install
     - run: npm --prefix restapi install
     - run: npm --prefix webapp run build
