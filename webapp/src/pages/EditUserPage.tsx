@@ -69,7 +69,6 @@ const EditUserPage: FC<EditUserProps> = (props: EditUserProps) => {
 
 
     const updatePassword = async () => {
-        console.log(newPassword === newPasswordConfirmation)
         if (newPassword !== newPasswordConfirmation){
             Swal.fire({
               title: "Error",
@@ -79,8 +78,20 @@ const EditUserPage: FC<EditUserProps> = (props: EditUserProps) => {
         } else {
             await updatePasswordByEmail(email, newPassword);
         }
-
     }
+
+    const updateUser = async () => {
+        getUser(newUserName).then(user => {
+            if (user !== null){
+                handleCloseUser();
+                Swal.fire({
+                    title: "Error, the user already exists",
+                    text: translate("update.pass.error"),
+                    icon: "error",
+                  });
+            }}, () => {updatePasswordByEmail(email, newPassword);})
+
+        }
 
 
     if(page === 'catalog'){
@@ -147,6 +158,7 @@ const EditUserPage: FC<EditUserProps> = (props: EditUserProps) => {
                      type="submit" 
                      aria-label="changeUserButton"
                      disabled = {newUserName ===""}
+                     onClick = {() => updateUser()}
                      >{translate("update.commit")}</Button>
                     </Fragment>
                     </Box>
