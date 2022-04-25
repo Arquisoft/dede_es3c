@@ -42,8 +42,6 @@ npm install
 npm start
 ```
 
-
-
 You should be able to access the application in [http://54.211.153.85:3000/](http://54.211.153.85:3000/).
 
 ## More information
