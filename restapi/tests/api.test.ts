@@ -45,6 +45,8 @@ beforeAll(async () => {
       console.error("Error occured: " + error.message);
     });
 
+  console.log(process.env.APP_PASS1)
+
   /**
    * Inicializar token Admin
    */

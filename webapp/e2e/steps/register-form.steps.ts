@@ -22,7 +22,9 @@ defineFeature(feature, test => {
   });
 
   test('The user is not registered in the site', ({given,when,then}) => {
-    
+    then('A confirmation message should be shown in the screen', async () => {
+      await expect(page).toMatch('DeDesktop es el resultado del esfuerzo y dedicación del grupo es3c de la asignatura Arquitectura del Software.')
+    });
   })
 
   afterAll(async ()=>{
