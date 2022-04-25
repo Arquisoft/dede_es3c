@@ -18,9 +18,9 @@ export class ProductStoreController {
             var product = await ProductService.getproductByName(req.app, productname);
             var productstore = await ProductStoreService.getMaxStockByProduct(req.app, product.id)
             var stock = 0
-            productstore
-                ? stock = productstore.stock
-                : stock = 0
+            stock = productstore
+                ? productstore.stock
+                : 0
 
             var quantity = Number.parseInt(req.params.quantity)
             if (stock>=quantity){
@@ -46,9 +46,9 @@ export class ProductStoreController {
             var product = await ProductService.getproductByName(req.app, productname);
             var productstore = await ProductStoreService.getMaxStockByProduct(req.app, product.id)
             var stock = 0
-            productstore
-                ? stock = productstore.stock
-                : stock = 0
+            stock = productstore
+                ? productstore.stock
+                : 0
             res.status(200).json(stock)
         } catch (error) {
             res.status(500).json({ error: "Error: no existe ningún producto con ese nombre" });
