@@ -4,5 +4,5 @@
   "scripts": {
     "start": "docker-compose up -d --build"
   },
-  "author": "SergioArroni",
+  "author": "SergioArroni"
 }
