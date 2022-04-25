@@ -5,7 +5,8 @@ import bp from "body-parser";
 import cors from "cors";
 import api from "../src/Api";
 import database from "../src/persistence/Database";
-require('dotenv').config();
+const dotenv = require('dotenv');
+dotenv.config();
 
 let app: Application;
 let server: http.Server;
