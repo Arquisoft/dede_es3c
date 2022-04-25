@@ -47,7 +47,7 @@ export class Auth {
                 }else{
                     let salt = crypto.randomBytes(16).toString("hex");
                     let hash = crypto.pbkdf2Sync(req.body.password, salt, 1000, 64, `sha512`).toString(`hex`);
-                    let userBody = new User(req.body.username, req.body.email, salt, hash, 'Client' );
+                    let userBody = new User(req.body.username, req.body.email, salt, hash, req.body.rol );
                     const user = await UserService.addUser(req.app, userBody);
                     res.status(200).json(Auth.createToken(user.username, user.rol));
                 }

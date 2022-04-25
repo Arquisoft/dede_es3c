@@ -43,11 +43,11 @@
   */
  const setUserRoutes = (): void => {
  
-     api.route('/users')
+    api.route('/users')
          // Get all users
          .get(userController.getUsers)
  
-     api.route('/users/username/:username')
+    api.route('/users/username/:username')
          .get(userController.getUserByUsername);
 
     api.route('/users/userpod/:username')
