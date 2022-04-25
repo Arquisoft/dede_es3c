@@ -2,9 +2,10 @@ import React, {FC, useEffect, useContext, Fragment, useState} from "react";
 import { User } from "../shared/shareddtypes";
 import {getUser, updatePasswordByEmail } from "../api/api";
 import { LangContext } from "../lang";
-import { Box, Button, Card, CardContent, Container, Modal, TextField, Typography } from "@mui/material";
+import { Box, Card, CardContent, Container, Modal, Stack, TextField, Typography } from "@mui/material";
 import { Navigate } from "react-router";
 import Swal from "sweetalert2";
+import { Button } from "react-bootstrap";
 
 const style = {
     position: 'absolute' as 'absolute',
@@ -113,6 +114,7 @@ const EditUserPage: FC<EditUserProps> = (props: EditUserProps) => {
             <Container component="main" maxWidth="sm">
         <Card className={"main"} elevation={10} style={{display: "grid"}}>
         <CardContent style={{ display: "grid", margin: "auto", textAlign: "center" }}>
+        <Stack direction= "column" spacing={2}>
                 <h3 aria-label="myAccountSubtitle">{translate('editPage.PersonalData')}</h3>
                     <div>
                         <TextField
@@ -143,8 +145,10 @@ const EditUserPage: FC<EditUserProps> = (props: EditUserProps) => {
                     onClose ={handleCloseUser}>
                     <Box sx={style}>
                     <Typography id = "modal-modal-title" variant = "h6" component= "h2">{translate("update.newUser")}</Typography>
+                    <div>
                     <Typography id = "modal-modal-title" variant = "subtitle2" component= "text">{"Actual: " + userName}</Typography>
-                    <Fragment>
+                    </div>                    
+                    <Fragment >
                     <TextField 
                     size="small" 
                     required= {true}
@@ -200,6 +204,7 @@ const EditUserPage: FC<EditUserProps> = (props: EditUserProps) => {
                     </Box>
                     </Modal>
                     <Button onClick={() => setPage("catalog")} type="submit" variant="contained">{translate("update.goToCatalog")}</Button>
+                    </Stack>
             </CardContent>
             </Card>
         </Container>
