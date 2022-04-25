@@ -41,3 +41,4 @@ dist/
 /restapi/ormconfig.json
 /restapi/package-lock.json
 /webapp/package-lock.json
+/a .env.staging
