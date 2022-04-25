@@ -42,6 +42,20 @@ export class UserService {
     }
 
     /**
+     * Return user by email
+     * @param app Express application
+     * @param email User email
+     * @returns Promise<User>
+     */
+     public static getUserByEmail(app: Application, email: string): Promise<User> {
+        return app.get('db').getRepository(User).findOne({
+            where: {
+                email: email
+            }
+        });
+    }
+
+    /**
      * Delete user by id
      * @param app Express application
      * @param id User id

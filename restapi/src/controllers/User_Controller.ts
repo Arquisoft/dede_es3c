@@ -128,11 +128,9 @@ export class UserController {
    * @param res Response
    * @returns Address with status 200 or error 500
    */
-    public async findPod(req: Request, res: Response) {
-
-            const webID = req.params.username;
-        
+    public async findPod(req: Request, res: Response) {     
             try {
+              const webID = req.params.username;
                 const myDataset = await getSolidDataset(
                     "https://" + webID  + ".inrupt.net/profile/card", {
                     fetch: fetch
@@ -141,7 +139,7 @@ export class UserController {
                 const user = getThing(myDataset, "https://" + webID + ".inrupt.net/profile/card#me")
                 const addressWebID = user!.predicates["http://www.w3.org/2006/vcard/ns#hasAddress"]["namedNodes"]
                 const userAddress = addressWebID![0].split('#')[1]             
-                if (userAddress){
+                if (userAddress == null){
                     return res.status(500).json({msg: "Address not found"});
                 }
         
@@ -151,7 +149,7 @@ export class UserController {
                 const locality = getStringNoLocale(getAddress!, VCARD.locality);
                 const street = getStringNoLocale(getAddress!, VCARD.street_address);
                 const postalCode = getStringNoLocale(getAddress!, VCARD.postal_code);
-                if (country || region || locality || street || postalCode ){
+                if (country == null || region==null || locality==null || street ==null || postalCode==null ){
                     return res.status(500).json({msg: "Error finding the Address requirements"});
                 } else {
                     return res.status(200).json({

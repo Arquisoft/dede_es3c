@@ -7,6 +7,7 @@
  import { ProductController } from './controllers/Product_Controller';
  import { UserController } from './controllers/User_Controller';
  import { OrderController } from './controllers/Order_Controller';
+ import { DistributionCenterController } from './controllers/DistributionCenter_Controller';
  import { Auth } from './middlewares/Auth_Middleware';
   
   // =================================> Constants
@@ -15,6 +16,7 @@
   const userController: UserController = new UserController(); // User Routes Controller
   const productsController: ProductController = new ProductController(); // Products Routes Controller
   const ordersController: OrderController = new OrderController(); // Orders Routes Controller
+  const distributioncentersController: DistributionCenterController = new DistributionCenterController(); // Distribution centers Routes Controller
   // =================================> Routes
   const setAuthRoutes = (): void => {
       api.route('/login')
@@ -43,7 +45,7 @@
  
      api.route('/users')
          // Get all users
-         .get(auth.isAdminAuth,userController.getUsers)
+         .get(userController.getUsers)
  
      api.route('/users/username/:username')
          .get(userController.getUserByUsername);
@@ -76,6 +78,8 @@
     api.route('/products/category/:category')
         .get(productsController.getProductByCategory);
 
+    api.route('/products/price/:min/:max')
+        .get(productsController.getProductByPrice);
 
     api.route('/products/:id')
         // Get products by id
@@ -107,12 +111,28 @@ const setOrdersRoutes = (): void => {
         // Update orders by id
         .put(auth.isAdminAuth, ordersController.updateOrder)
 
+}
+
+const setDistributionCentersRoutes = (): void => {
+ 
+    api.route('/distributioncenters')
+        // Get all distribution centers
+        .get(auth.isAuth, distributioncentersController.getDistributionCenters)
+        // Create new orders
+        .post(auth.isAdminAuth, distributioncentersController.addDistributionCenter);
+
+
+    api.route('/distributioncenters/:productname/:quantity')
+        // Get distribution centers by available product
+        .get(auth.isAuth, distributioncentersController.getDistributionCentersByAvailableProduct)
     
 }
+
   setAuthRoutes();
   setUserRoutes();
   setProductsRoutes();
   setRegisterRoutes();
   setOrdersRoutes();
+  setDistributionCentersRoutes();
   
   export default api;

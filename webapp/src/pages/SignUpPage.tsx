@@ -4,11 +4,10 @@ import "bootswatch/dist/morph/bootstrap.min.css"
 import {Container, Card , CardContent} from "@mui/material";
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import InputAdornment from '@mui/material/InputAdornment';
-import Link from '@mui/material/Link';
+import { Link } from 'react-router-dom';
 import logo from '../img/logo-dede.svg'
 import {checkUser, signup } from "../api/api";
 import { User } from "../shared/shareddtypes";
-import Header from "../components/Header";
 import { Button } from "react-bootstrap";
 import { Navigate } from "react-router-dom";
 import { LangContext } from '../lang';
@@ -18,6 +17,7 @@ interface SignUpProps{
 }
 
 const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
+
     const { dispatch: { translate } } = useContext(LangContext);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -44,7 +44,7 @@ const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
         }
 
         if (!isBlank(user.username) || !isBlank(user.password) || !isBlank(user.email) || !isBlank(repeatedPassword)){
-           const found = await checkUser(name);
+           const found = await checkUser(name, password);
            if (!found){
                 const token = await signup(name, password, email);
                 setRegistered(true);
@@ -59,8 +59,7 @@ const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
         return (<Navigate to="/catalog" />);
     } else {
     return(
-    <div>
-        <Header setUser={props.setUser}/>
+        <div>
         <Container component="main" maxWidth="sm">
         <Card className={"main"} elevation={10} style={{display: "grid"}}>
         <CardContent style={{ display: "grid", margin: "auto", textAlign: "center" }}>
@@ -145,12 +144,13 @@ const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
                     type="submit"
                     color="primary"
                      >{translate('signup.signup')}</Button>
-            <Link href="/login">{translate('signup.login')}</Link>
-            </CardContent>
+                <Link to="/login">{translate('signup.login')}</Link>
+                </CardContent>
             </Card>
         </Container>
     </div>
     );
   }
 }
+
   export default SignUpPage;

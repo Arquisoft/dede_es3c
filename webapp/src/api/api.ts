@@ -15,21 +15,24 @@ export async function addUser(user:User):Promise<boolean>{
 
 export async function getUsers():Promise<User[]>{
     const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
-    let response = await fetch(apiEndPoint+'/users/list');
+    let response = await fetch(apiEndPoint+'/users');
     return response.json()
 }
 
 
-export async function checkUser(username: string): Promise<boolean> {
-  let response = await fetch("http://localhost:5000/api/users/username/" + username, {
-    method: "GET",
-    headers: { "Content-Type": "application/json" },
-  });
-  if (response.status === 200) {
-    return true;
-  } else {
-    return false;
-  }
+export async function checkUser(username: string, password:string): Promise<boolean> {
+  const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+  
+  let response = await fetch(apiEndPoint+'/login', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({'username': username, 'password': password})
+    });
+    if (response.status === 200) {
+      return true;
+    } else {
+      return false;
+    }
 }
 
 export async function loginB(username:string ,password:string) {
@@ -39,7 +42,7 @@ export async function loginB(username:string ,password:string) {
       headers: {'Content-Type':'application/json'},
       body: JSON.stringify({'username': username, 'password': password})
     });
-    return response.json();
+      return response.json();
 }
 
 export async function signup(username:string ,password:string, email:string) {
@@ -132,7 +135,10 @@ export async function getOrders(): Promise<Order[]>{
 
 export async function getOrdersByEmail(email:string) {
   const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
-  let response = await fetch(apiEndPoint+'/orders/user/' + email);
+  let response = await fetch(apiEndPoint+'/orders/user/' + email , {
+    method: 'GET',
+    headers: {  authorization: localStorage.getItem("token") +"" , 'Content-Type': 'application/json' }
+  });
     return response.json();
 }
 
@@ -140,4 +146,22 @@ export async function getAddress(webID:string) {
   const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
   let response = await fetch(apiEndPoint+'/users/userpod/' + webID);
     return response.json();
+}
+
+export async function getProductsByPrice(min: number, max: number): Promise<Product[]> {
+  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api/products'
+  let response = await fetch(apiEndPoint + '/price/' + min + '/' + max, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
+  return response.json();
+}
+
+export async function getRelatedProducts(name: string, category: string): Promise<Product[]> {
+  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api/products/name'
+  let response = await fetch(apiEndPoint + '/' + name + '/' + category, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
+  return response.json();
 }

@@ -14,15 +14,6 @@ export type Product = {
   amount: number
 }
 
-export type CartProduct = {
-  name: string,
-  description: string,
-  price: number,
-  urlPhoto: string,
-  category: string,
-  amount: number
-}
-
 export type Order = {
   id:string
   user: string

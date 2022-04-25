@@ -5,6 +5,7 @@ import React from "react";
 import OrdersPage from "../pages/OrdersPage";
 import DisplayOrders from "../components/DisplayOrders";
 import { Order, Product, ProductInOrder } from "../shared/shareddtypes";
+import { MemoryRouter as Router } from 'react-router-dom';
 
 test('check orders page text renders properly when the user has no orders', async () => {
   localStorage.setItem("currentUser", "user");
@@ -12,7 +13,9 @@ test('check orders page text renders properly when the user has no orders', asyn
         <React.StrictMode>
         <UserState>
         <LangState>
-          <OrdersPage setUser={() => "user"}/>
+          <Router>
+              <OrdersPage setUser={() => "user"} />
+          </Router>
         </LangState>
         </UserState>
       </React.StrictMode>,
@@ -45,7 +48,9 @@ test('check orders page text renders properly when the user has orders', async (
         <React.StrictMode>
         <UserState>
         <LangState>
-          <DisplayOrders orders={orders}/>
+          <Router>
+              <DisplayOrders orders={orders} />
+          </Router>
         </LangState>
         </UserState>
       </React.StrictMode>,
