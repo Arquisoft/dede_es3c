@@ -20,6 +20,7 @@ If you want to execute the project you will need [git](https://git-scm.com/downl
 ```bash
 docker-compose up --build
 ```
+
 This will create two docker images as they don't exist in your system (the webapp and the restapi) and launch a mongo container database. It will also launch Prometheus and Grafana containers to monitor the webservice. You should be able to access everything from here:
  - [Webapp - http://localhost:3000](http://localhost:3000)
  - [RestApi example call - http://localhost:5000/api/users/list](http://localhost:5000/api/users/list)
