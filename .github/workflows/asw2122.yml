@@ -51,8 +51,8 @@ jobs:
         mongodb-username: ${{ secrets.mongoUsername }}
         mongodb-password: ${{ secrets.mongoPassword }}
         mongodb-db: ${{ secrets.mongoDB }}
-    - run: npm --prefix webapp install
     - run: npm --prefix restapi install
+    - run: npm --prefix webapp install
     - run: npm --prefix webapp run build
     - run: npm --prefix webapp run test:e2e
   docker-push-webapp:
@@ -64,6 +64,8 @@ jobs:
       env:
           API_URI: http://${{ secrets.DEPLOY_HOST }}:5000
           SKIP_PREFLIGHT_CHECK: true
+    - name: Publish to Registry
+      uses: elgohr/Publish-Docker-Github-Action@master
       with:
           name: arquisoft/dede_es3c/webapp
           username: ${{ github.actor }}
@@ -76,6 +78,8 @@ jobs:
     needs: [e2e-tests]
     steps:
     - uses: actions/checkout@v3
+    - name: Publish to Registry
+      uses: elgohr/Publish-Docker-Github-Action@master
       with:
           name: arquisoft/dede_es3c/restapi
           username: ${{ github.actor }}
