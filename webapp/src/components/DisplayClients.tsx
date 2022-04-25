@@ -1,5 +1,5 @@
 import React from 'react';
-import { Order, User } from '../shared/shareddtypes';
+import { User } from '../shared/shareddtypes';
 import { TableCell, TableRow } from '@mui/material';
 
 type ClientsProps = {

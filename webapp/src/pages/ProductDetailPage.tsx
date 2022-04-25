@@ -10,7 +10,7 @@ interface ProductDetailProps {
 }
 
 const ProductDetailPage = (props: ProductDetailProps) => {
-    const productName = ((window.location.href.split("/"))[5]).replaceAll("\%20", " ");
+    const productName = ((window.location.href.split("/"))[5]).replaceAll("%20", " ");
 
     const [product, setProduct] = useState<Product[]>([]);
 
@@ -20,7 +20,7 @@ const ProductDetailPage = (props: ProductDetailProps) => {
 
     useEffect(() => {
         loadProduct();
-    }, []);
+    });
     
     return(
         <div>

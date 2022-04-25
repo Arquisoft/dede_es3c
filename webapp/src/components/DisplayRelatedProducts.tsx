@@ -2,7 +2,7 @@ import { Product } from '../shared/shareddtypes';
 import { Grid } from "@mui/material";
 import { useState, useEffect } from 'react';
 import { getProductsByCategory } from '../api/api';
-import ItemDetails from '../components/ItemDetails';
+import RelatedProduct from '../components/RelatedProduct';
 
 type Props = {
     item: Product[];
@@ -18,15 +18,15 @@ const DisplayRelatedProducts = (props: Props) => {
 
     useEffect(() => {
         loadRelatedProducts();
-    }, []);
+    });
 
     return (
         <div>
             <Grid container spacing={3}>
                 {relatedProducts?.map((item: Product) => {
                     return (
-                        <Grid item key={item.name} xs={12} sm={4}>
-                            <ItemDetails item={item} setAmount={props.setAmount}/>
+                        <Grid item key={item.name} xs={12} sm={3}>
+                            <RelatedProduct item={item} />
                         </Grid>
                     );
                 })}
