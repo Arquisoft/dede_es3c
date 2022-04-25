@@ -13,6 +13,10 @@ let clientToken: string;
 let userId: string;
 let productId: string;
 let orderId: string;
+//let salt1 = "9b2b2d9c34db64db0d12c255ca57d69f";
+//let hash1 = "01c3a89e3d44fed920a456a36821f3234bc2ec9f1730dca89e4dc42161339f4bb36f1aec8512bd72d23b619d43f8a686ee7f0fb10e0caa63e33b3db9c67285ba";
+//let salt2 = "9b2b2d9c34db64db0d12c255ca57d69f";
+//let hash2 = "01c3a89e3d44fed920a456a36821f3234bc2ec9f1730dca89e4dc42161339f4bb36f1aec8512bd72d23b619d43f8a686ee7f0fb10e0caa63e33b3db9c67285ba";
 let pass1 = "123456";
 let pass2 = "LoCo";
 beforeAll(async () => {
