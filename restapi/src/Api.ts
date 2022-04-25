@@ -124,7 +124,7 @@ const setDistributionCentersRoutes = (): void => {
 
     api.route('/distributioncenters/:productname/:quantity')
         // Get distribution centers by available product
-        .get(distributioncentersController.getDistributionCentersByAvailableProduct)
+        .get(auth.isAuth, distributioncentersController.getDistributionCentersByAvailableProduct)
     
 }
 

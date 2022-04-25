@@ -1,6 +1,6 @@
 import React, {FC, useEffect, useContext, Fragment, useState} from "react";
 import { User } from "../shared/shareddtypes";
-import {getUser } from "../api/api";
+import {getUser, updatePasswordByEmail } from "../api/api";
 import { LangContext } from "../lang";
 import { Box, Button, Card, CardContent, Container, Modal, TextField, Typography } from "@mui/material";
 import { Navigate } from "react-router";
@@ -68,7 +68,7 @@ const EditUserPage: FC<EditUserProps> = (props: EditUserProps) => {
     }, []);
 
 
-    const updatePassword = () => {
+    const updatePassword = async () => {
         console.log(newPassword === newPasswordConfirmation)
         if (newPassword !== newPasswordConfirmation){
             Swal.fire({
@@ -76,6 +76,8 @@ const EditUserPage: FC<EditUserProps> = (props: EditUserProps) => {
               text: translate("update.pass.error"),
               icon: "error",
             });
+        } else {
+            await updatePasswordByEmail(email, newPassword);
         }
 
     }

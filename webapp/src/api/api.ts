@@ -174,3 +174,29 @@ export async function getDistributionCenters(product: Product): Promise<Distribu
   });
     return response.json();
 }
+
+export async function updatePasswordByEmail(email:String, password:String) {
+  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+  let response = await fetch(apiEndPoint + '/products/', {
+    method: 'PUT',
+    headers: { authorization: localStorage.getItem("token") + "", 'Content-Type': 'application/json' },
+    body: JSON.stringify({ 'email': email, 'password': password})
+  });
+  if (response.status === 200)
+    return true;
+  else
+    return false;
+}
+
+export async function updateUserByEmail(username:String, password:String) {
+  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+  let response = await fetch(apiEndPoint + '/products/', {
+    method: 'PUT',
+    headers: { authorization: localStorage.getItem("token") + "", 'Content-Type': 'application/json' },
+    body: JSON.stringify({ 'username': username, 'password': password})
+  });
+  if (response.status === 200)
+    return true;
+  else
+    return false;
+}
