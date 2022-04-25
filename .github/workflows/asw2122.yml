@@ -42,6 +42,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v2
+      with:
+        node-version: 16
     - uses: supercharge/mongodb-github-action@1.7.0
       with:
         node-version: 16
@@ -49,8 +51,6 @@ jobs:
         mongodb-username: ${{ secrets.mongoUsername }}
         mongodb-password: ${{ secrets.mongoPassword }}
         mongodb-db: ${{ secrets.mongoDB }}
-      with:
-        node-version: 16
     - run: npm ci
     - run: npm --prefix webapp install
     - run: npm --prefix restapi install
