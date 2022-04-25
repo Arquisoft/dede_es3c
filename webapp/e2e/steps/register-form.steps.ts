@@ -6,8 +6,41 @@ const feature = loadFeature('./features/register-form.feature');
 let page: puppeteer.Page;
 let browser: puppeteer.Browser;
 
+import express, { Application } from "express";
+import * as http from "http";
+import bp from "body-parser";
+import api from "../../../restapi/src/Api";
+import database from "../../../restapi/src/persistence/Database";
+
+let app: Application;
+let server: http.Server;
+
+beforeAll(async () => {
+  app = express();
+
+  const setDB = async (): Promise<boolean> => {
+    const databaseName: string = "test";
+    if (await database.setDB(databaseName)) {
+      console.log(`Database connection established to ${databaseName}`);
+      app.set("db", database.getDB());
+      return true;
+    } else {
+      console.log(`Error on database connection to ${databaseName}`);
+      return false;
+    }
+  };
+  app.use(bp.json());
+  await setDB();
+  app.use("/api", api);
+
+});
+
+afterAll(async () => {
+  server.close(); //close the server
+});
+
 defineFeature(feature, test => {
-  
+
   beforeAll(async () => {
     browser = process.env.GITHUB_ACTIONS
       ? await puppeteer.launch()

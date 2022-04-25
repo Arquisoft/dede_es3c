@@ -5,7 +5,4 @@
     "start": "docker-compose up -d --build"
   },
   "author": "SergioArroni",
-  "dependencies": {
-    "dotenv": "^16.0.0"
-  }
 }
