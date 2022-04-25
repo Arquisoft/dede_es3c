@@ -44,7 +44,9 @@ beforeAll(async () => {
       console.error("Error occured: " + error.message);
     });
 
-  console.log(process.env.APP_PASS1)
+  console.log(`${process.env.APP_PASS1}`)
+  const a = process.env.APP_PASS1;
+  console.log(`${a}`)
 
   /**
    * Inicializar token Admin
