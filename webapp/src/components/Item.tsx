@@ -28,13 +28,17 @@ const Item = (props: Props) => {
         setItemAmount(event.target.value as string);
     };
 
-    const calculateStock = async () => {
+    /*const calculateStock = async () => {
         setStock(await getStockByProduct(props.item.name));
-    }
+    }*/
 
     useEffect(() => {
+        const calculateStock = async () => {
+            setStock(await getStockByProduct(props.item.name));
+        }
+
         calculateStock();
-    }, []);
+    }, [props.item.name]);
 
     return (
 

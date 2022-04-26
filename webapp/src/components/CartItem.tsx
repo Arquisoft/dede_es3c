@@ -18,13 +18,13 @@ const CartItem: React.FC<CartItemProps> = ({ item, setAmount }) => {
     const removeFromCart = handleRemoveFromCart;
     const [stock, setStock] = useState<number>(0);
 
-    const calculateStock = async () => {
-        setStock(await getStockByProduct(item.name));
-    }
-
     useEffect(() => {
+        const calculateStock = async () => {
+            setStock(await getStockByProduct(item.name));
+        }
+
         calculateStock();
-    }, []);
+    }, [item.name]);
 
     return(
     <div>

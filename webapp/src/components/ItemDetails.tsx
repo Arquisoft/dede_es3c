@@ -17,20 +17,19 @@ type Props = {
 
 const ItemDetails: React.FC<Props> = ({ item, setAmount }) => {
     const [itemAmount, setItemAmount] = useState<string>('0');
-
     const [stock, setStock] = useState<number>(0);
 
     const handleChange = (event: SelectChangeEvent) => {
         setItemAmount(event.target.value as string);
     };
 
-    const calculateStock = async () => {
-        setStock(await getStockByProduct(item.name));
-    }
-
     useEffect(() => {
+        const calculateStock = async () => {
+            setStock(await getStockByProduct(item.name));
+        }
+
         calculateStock();
-    }, []);
+    }, [item.name]);
 
     return(
     <div>
