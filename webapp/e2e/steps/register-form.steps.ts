@@ -19,7 +19,7 @@ beforeAll(async () => {
   app = express();
 
   const setDB = async (): Promise<boolean> => {
-    const databaseName: string = "test";
+    const databaseName: string = "teste2e";
     if (await database.setDB(databaseName)) {
       console.log(`Database connection established to ${databaseName}`);
       app.set("db", database.getDB());
