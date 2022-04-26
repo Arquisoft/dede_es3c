@@ -24,15 +24,15 @@ const ProductDetailPage = (props: ProductDetailProps) => {
     
     return(
         <div>
-            {product?.map((item: Product) => {
+            {product?.map((item: Product, i) => {
                 return (
                     <div>
-                        <ItemDetails item={item} setAmount={props.setAmount}/>
+                        <ItemDetails item={item} setAmount={props.setAmount} key={item.name}/>
                         <h2>Productos relacionados:</h2>
-                        <DisplayRelatedProducts item={product} setAmount={props.setAmount}/>
+                        <DisplayRelatedProducts item={product} setAmount={props.setAmount} />
                     </div>
                 );
-            })};
+            })}
         </div>
     );
 };

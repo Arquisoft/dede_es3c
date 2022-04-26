@@ -1,11 +1,11 @@
 import { Product } from '../shared/shareddtypes';
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { LangContext } from '../lang';
 import { Button } from '@mui/material';
 import handleAddToCart from '../components/HandleAddToCart';
 import handleRemoveFromCart from '../components/HandleRemoveFromCart';
 import { useState } from "react";
-import { getStockByProduct } from '../api/api';
+import { getCanBuyProduct, getStockByProduct } from '../api/api';
 
 type CartItemProps = {
     item: Product;
@@ -16,17 +16,15 @@ const CartItem: React.FC<CartItemProps> = ({ item, setAmount }) => {
     const { dispatch: { translate } } = useContext(LangContext);
     const addToCart = handleAddToCart;
     const removeFromCart = handleRemoveFromCart;
-    const [stock, setStock] = useState<boolean>();
+    const [stock, setStock] = useState<number>(0);
 
-    async function calculateProductStock(name: string, amount: number) {
-        if (amount <= await getStockByProduct(name)) {
-            setStock(true);
-        }
-
-        setStock(false);
+    const calculateStock = async () => {
+        setStock(await getStockByProduct(item.name));
     }
 
-    calculateProductStock(item.name, item.amount);
+    useEffect(() => {
+        calculateStock();
+    }, []);
 
     return(
     <div>
@@ -49,16 +47,11 @@ const CartItem: React.FC<CartItemProps> = ({ item, setAmount }) => {
                     size="small"
                     disableElevation
                     variant="contained"
-                    onClick={() => addToCart(item, setAmount, '1')}
+                    onClick={() => addToCart(item, setAmount, '1', stock)}
                 > + </Button>
             </div>
         </div>
         <img src={item.urlPhoto} alt={item.name} width="200" height="200"/>
-
-        {(stock) &&
-            <p>No hay suficiente stock del producto</p>
-        }
-
     </div>
     )
     };

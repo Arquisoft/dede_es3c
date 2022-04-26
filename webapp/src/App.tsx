@@ -48,7 +48,7 @@ const App: FC = () => {
       <Header setUser={setUser} setOpen={setOpen} setAmount={setAmount}/>
 
       <Drawer anchor="right" open={Boolean(useContext(OpenContext).stateOpen.openCart)} onClose={() => setOpen("")}>
-        <Cart setOpen={setOpen} setAmount={setAmount} cartItems={JSON.parse(localStorage.getItem("cart")!)}/>
+        <Cart setOpen={setOpen} setAmount={setAmount} cartItems={JSON.parse(localStorage.getItem("cart")!)} />
       </Drawer>
 
       <Routes>

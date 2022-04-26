@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
@@ -13,19 +13,28 @@ import Box from '@mui/material/Box';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
+import { getStockByProduct } from '../api/api';
 
 type Props = {
     item: Product;
     setAmount: (amount: string) => void
-    stock: number;
 };
 
 const Item = (props: Props) => {
-    const [itemAmount, setItemAmount] = useState<string>('1');
+    const [itemAmount, setItemAmount] = useState<string>('0');
+    const [stock, setStock] = useState<number>(0);
 
     const handleChange = (event: SelectChangeEvent) => {
         setItemAmount(event.target.value as string);
     };
+
+    const calculateStock = async () => {
+        setStock(await getStockByProduct(props.item.name));
+    }
+
+    useEffect(() => {
+        calculateStock();
+    }, []);
 
     return (
 
@@ -40,6 +49,8 @@ const Item = (props: Props) => {
             </CardContent>
             
             <CardActions disableSpacing>
+                    {
+                        (!localStorage.getItem("currentUser")?.includes("admin")) &&
                 <Box sx={{ minWidth: 70 }}>
                     <FormControl fullWidth>
                         <Select
@@ -49,26 +60,19 @@ const Item = (props: Props) => {
                             displayEmpty
                             autoWidth
                         >
-                            <MenuItem value={1}>1</MenuItem>
-                            <MenuItem value={2}>2</MenuItem>
-                            <MenuItem value={3}>3</MenuItem>
-                            <MenuItem value={4}>4</MenuItem>
-                            <MenuItem value={5}>5</MenuItem>
-                            <MenuItem value={6}>6</MenuItem>
-                            <MenuItem value={7}>7</MenuItem>
-                            <MenuItem value={8}>8</MenuItem>
-                            <MenuItem value={9}>9</MenuItem>
-                            <MenuItem value={10}>10</MenuItem>
+                                {Array.from({ length: stock + 1 }, (_, i) => <MenuItem value={i} key={i}>{i}</MenuItem>)}
+                            
                         </Select>
                     </FormControl>
                 </Box>
-                <IconButton aria-label="add to cart" disableFocusRipple size="small" onClick={() => handleAddToCart(props.item, props.setAmount, itemAmount)}>
+}
+                <IconButton aria-label="add to cart" disableFocusRipple size="small" onClick={() => handleAddToCart(props.item, props.setAmount, itemAmount, stock)}>
                     {
                         (!localStorage.getItem("currentUser")?.includes("admin")) &&
                         <AddShoppingCartIcon />
                     }
                 </IconButton>
-                <p>Stock: {props.stock}</p>
+                <p>Stock: {stock}</p>
             </CardActions>
         </Card>
     </div>

@@ -23,9 +23,9 @@ const DisplayRelatedProducts = (props: Props) => {
     return (
         <div>
             <Grid container spacing={3}>
-                {relatedProducts?.map((item: Product) => {
+                {relatedProducts?.map((item: Product, i) => {
                     return (
-                        <Grid item key={item.name} xs={12} sm={3}>
+                        <Grid item key={i} xs={12} sm={3}>
                             <RelatedProduct item={item} />
                         </Grid>
                     );

@@ -167,8 +167,17 @@ export async function getRelatedProducts(name: string, category: string): Promis
 }
 
 export async function getStockByProduct(name: string): Promise<number> {
-  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api/products/'
-  let response = await fetch(apiEndPoint + '/' + name, {
+  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api/store/'
+  let response = await fetch(apiEndPoint + name, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
+  return response.json();
+}
+
+export async function getCanBuyProduct(name: string, amount: number): Promise<boolean> {
+  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api/store/'
+  let response = await fetch(apiEndPoint + name + '/' + amount, {
     method: "GET",
     headers: { "Content-Type": "application/json" },
   });

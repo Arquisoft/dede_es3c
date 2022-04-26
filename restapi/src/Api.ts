@@ -134,7 +134,7 @@ const setDistributionCentersRoutes = (): void => {
 const setProductStoreRoutes = (): void => {
 
     api.route('/store/:productname')
-        .get(auth.isAuth, productstoreController.getMaxStockByProduct)
+        .get(productstoreController.getMaxStockByProduct)
         
     api.route('/store/:productname/:quantity')
         .get(auth.isAuth, productstoreController.canBuy)

@@ -16,8 +16,13 @@ interface CatalogPageProps {
 }
 
 const minDistance = 10;
+let aux1: number[] = [];
 
 const Catalog = (props: CatalogPageProps) => {
+    useEffect(() => {
+        reloadItems();
+    }, []);
+
     const { dispatch: { translate } } = useContext(LangContext);
     const [products, setProducts] = useState<Product[]>([]);
     const [nameFilter, setNameFilter] = useState('');
@@ -57,22 +62,6 @@ const Catalog = (props: CatalogPageProps) => {
         setProducts(await getProductsByPrice(min, max));
     }
 
-    let aux = 0;
-
-    const calculateStockAux = () => {
-        return aux++;
-    }
-
-    const [itemStock, setItemStock] = useState(0);
-
-    async function calculateStock(name: string) {
-        setItemStock(await getStockByProduct(name));
-    }
-
-    useEffect(() => {
-        reloadItems();
-    }, []);
-
     return (
         <div>
             <Form>
@@ -101,11 +90,9 @@ const Catalog = (props: CatalogPageProps) => {
 
             <Grid container spacing={3}>
                 {products?.map((item: Product) => {
-                    calculateStock(item.name)
-
                     return (
                         <Grid item key={item.name} xs={12} sm={4}>
-                            <Item item={item} setAmount={props.setAmount} stock={itemStock}/>
+                            <Item item={item} setAmount={props.setAmount} />
                         </Grid>
                     );
                 })}

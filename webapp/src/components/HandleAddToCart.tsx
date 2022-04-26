@@ -1,8 +1,11 @@
 import { Product } from '../shared/shareddtypes';
+import Swal from 'sweetalert2';
 
 const getTotalItems = (items: Product[]) => items.reduce((ack: number, item) => ack + item.amount, 0);
 
-const handleAddToCart = (clickedItem: Product, setAmount: (amount: string) => void, itemAmount: string) => {
+const handleAddToCart = async (clickedItem: Product, setAmount: (amount: string) => void, itemAmount: string, stock: number) => {
+    let showError = false;
+
     let cartItems = JSON.parse(localStorage.getItem("cart")!)
 
     let cartCopy = [...cartItems];
@@ -13,7 +16,12 @@ const handleAddToCart = (clickedItem: Product, setAmount: (amount: string) => vo
 
     if (existingItem) {
         for (let i = 0; i < parseInt(itemAmount); i++) {
-            existingItem.amount = existingItem.amount + 1;
+            if ((existingItem.amount + 1) <= stock){
+                existingItem.amount = existingItem.amount + 1;
+            }
+            else{
+                showError = true;
+            }
         }
     } else {
         clickedItem.amount = parseInt(itemAmount);
@@ -26,6 +34,14 @@ const handleAddToCart = (clickedItem: Product, setAmount: (amount: string) => vo
     cartItems = JSON.parse(localStorage.getItem("cart")!);
     
     setAmount(getTotalItems(cartItems).toString());
+
+    if (showError){
+        await Swal.fire({
+            title: "Error",
+            text: "No se puede añadir " + clickedItem.name + " al carrito, no hay suficiente stock",
+            icon: "error",
+        });
+    }
 };
 
 export default handleAddToCart;
