@@ -13,7 +13,12 @@ let clientToken: string;
 let userId: string;
 let productId: string;
 let orderId: string;
-
+//let salt1 = "9b2b2d9c34db64db0d12c255ca57d69f";
+//let hash1 = "01c3a89e3d44fed920a456a36821f3234bc2ec9f1730dca89e4dc42161339f4bb36f1aec8512bd72d23b619d43f8a686ee7f0fb10e0caa63e33b3db9c67285ba";
+//let salt2 = "9b2b2d9c34db64db0d12c255ca57d69f";
+//let hash2 = "01c3a89e3d44fed920a456a36821f3234bc2ec9f1730dca89e4dc42161339f4bb36f1aec8512bd72d23b619d43f8a686ee7f0fb10e0caa63e33b3db9c67285ba";
+let pass1 = "123456";
+let pass2 = "LoCo";
 beforeAll(async () => {
   app = express();
   const port: number = 5000;
@@ -44,13 +49,17 @@ beforeAll(async () => {
       console.error("Error occured: " + error.message);
     });
 
+
+  console.log(pass1);
+  console.log(pass2);
+
   /**
    * Inicializar token Admin
    */
   const admin = {
     username: "Dios",
     email: "Dios@jaja.com",
-    password: "123456",
+    password: pass1,
     rol: "Admin",
   };
   const response: Response = await request(app)
@@ -65,7 +74,7 @@ beforeAll(async () => {
   const user = {
     username: "Cura",
     email: "Cura@jaja.com",
-    password: "123456",
+    password: pass1,
     rol: "Client",
   };
   const response2: Response = await request(app)
@@ -99,7 +108,7 @@ describe("CRUD Users", () => {
     const user = {
       username: "Jesucristo",
       email: "Jesucristo@jaja.com",
-      password: "123456",
+      password: pass1,
       rol: "Admin",
     };
     const response: Response = await request(app)
@@ -132,7 +141,7 @@ describe("CRUD Users", () => {
   it("login with an existing user", async () => {
     const user = {
       username: "Dios",
-      password: "123456",
+      password: pass1,
     };
     const response: Response = await request(app).post("/api/login").send(user);
     expect(response.statusCode).toBe(200);
@@ -144,7 +153,7 @@ describe("CRUD Users", () => {
   it("login with an existing user with a bad password", async () => {
     const user = {
       username: "Dios",
-      password: "LoCo",
+      password: pass2,
     };
     const response: Response = await request(app).post("/api/login").send(user);
     expect(response.text).toBe('{"error":"Error, la contraseña no coincide"}');
@@ -157,7 +166,7 @@ describe("CRUD Users", () => {
   it("login with a user that does not exist", async () => {
     const user = {
       username: "Lucifer",
-      password: "123456",
+      password: pass1,
     };
     const response: Response = await request(app).post("/api/login").send(user);
     expect(response.statusCode).toBe(402);
@@ -212,7 +221,7 @@ describe("CRUD Users", () => {
     const user = {
       username: "Jesucristo",
       email: "ElRedentor@jaja.com",
-      password: "123456",
+      password: pass1,
       rol: "Admin",
     };
 
@@ -232,7 +241,7 @@ describe("CRUD Users", () => {
     const user = {
       username: "Jesucristo",
       email: "ElRedentor@jaja.com",
-      password: "123456",
+      password: pass1,
       rol: "Admin",
     };
 

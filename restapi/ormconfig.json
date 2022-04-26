@@ -14,7 +14,7 @@
     {
         "name": "test",
         "type": "mongodb",
-        "url": "mongodb://SergioArroni:julio321@localhost:27017/DeDesktop?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false",
+        "url": "mongodb://SergioArroni:julio321@mongo:27017/DeDesktop?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false",
         "synchronize": true, 
         "logging": false,
         "entities": ["../src/entities/*.ts"],
