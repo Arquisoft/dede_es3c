@@ -23,7 +23,7 @@ const Cart: React.FC<CartProps> = (props: CartProps) => {
         return items.reduce((ack: number, item) => ack + (item.amount * item.price * 1.21), 0)
     }
 
-    async function checkStock() {
+    async function checkGlobalStock() {
         let enoughStock = true;
 
         props.cartItems.forEach(async element => {
@@ -36,7 +36,7 @@ const Cart: React.FC<CartProps> = (props: CartProps) => {
 
                 await Swal.fire({
                     title: "Error",
-                    text: "No hay suficiente stock de " + element.name + ". Stock disponible: " + stockAux + " unidades.",
+                    text: "No hay suficiente stock de algunos productos.",
                     icon: "error",
                 });
             }
@@ -46,6 +46,14 @@ const Cart: React.FC<CartProps> = (props: CartProps) => {
         if (enoughStock) {
             window.location.assign("/shipping")
         }
+    }
+
+    async function calculateProductStock(name: string, amount: number) {
+        if (amount <= await getStockByProduct(name)){
+            return true;
+        }
+        
+        return false;
     }
 
     return (
@@ -61,7 +69,7 @@ const Cart: React.FC<CartProps> = (props: CartProps) => {
             )}
             <h2>Subtotal: $ {calculateSubTotal(props.cartItems).toFixed(2)}</h2>
             <h2>{translate('cartItem.total')}: $ {calculateTotal(props.cartItems).toFixed(2)}</h2>
-            <Button onClick={() => checkStock() } disabled={localStorage.getItem("currentUser") === "not logged"}>{translate('cart.orderButton')}</Button>
+            <Button onClick={() => checkGlobalStock() } disabled={localStorage.getItem("currentUser") === "not logged"}>{translate('cart.orderButton')}</Button>
         </div>
     )
 }
