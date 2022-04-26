@@ -1,0 +1,136 @@
+import { defineFeature, loadFeature } from 'jest-cucumber';
+import puppeteer from "puppeteer";
+
+const feature = loadFeature('./features/register-form.feature');
+
+let page: puppeteer.Page;
+let browser: puppeteer.Browser;
+
+defineFeature(feature, test => {
+
+    beforeEach(async () => {
+        browser = process.env.GITHUB_ACTIONS
+            ? await puppeteer.launch()
+            : await puppeteer.launch({ headless: true });
+        page = await browser.newPage();
+
+        await page
+            .goto("http://localhost:3000/login", {
+                waitUntil: "networkidle0",
+            })
+            .catch(() => { });
+    });
+
+    test('An existing user tries to log in the app', ({ given, when, then }) => {
+
+        let username: string;
+        let password: string;
+
+        given('An existing user', () => {
+            username = "testUser"
+            password = "testPass"
+
+        });
+
+        when('Fill the form and click log in button', async () => {
+            await expect(page).toMatch('Log in DeDesktop')
+            await expect(page).toFillForm('form[name="login"]', {
+                textName: username,
+                textPassword: password,
+            })
+            await expect(page).toClick('button', { text: 'Log in' })
+        });
+
+        then('Welcome message is shown and is redirected to catalog page', async () => {
+            await expect(page).toMatch('Welcome, ' + username)
+            await expect(page).toClick('button', { text: 'OK' })
+            await expect(page).toMatch('Reset selection')
+        });
+    })
+
+    test('Non existing user tries to log in the app', ({ given, when, then }) => {
+
+        let username: string;
+        let password: string;
+
+        given('A non existing user', () => {
+            username = "nonValidUser"
+            password = "nonValidPass"
+
+        });
+
+        when('Fill the form and click log in button', async () => {
+            await expect(page).toMatch('Log in DeDesktop')
+            await expect(page).toFillForm('form[name="login"]', {
+                textName: username,
+                textPassword: password,
+            })
+            await expect(page).toClick('button', { text: 'Log in' })
+        });
+
+        then('Error message should be displayed', async () => {
+            await expect(page).toMatch('Error')
+        });
+    })
+
+    test('Existing user tries to login without filling name', ({ given, when, then }) => {
+
+        let password: string;
+
+        given('An existing password', () => {
+            password = "testPass"
+
+        });
+
+        when('Fill password field and click log in button', async () => {
+            await expect(page).toMatch('Log in DeDesktop')
+            await expect(page).toFillForm('form[name="login"]', {
+                textPassword: password,
+            })
+            await expect(page).toClick('button', { text: 'Log in' })
+        });
+
+        then('Error mesage should be displayed', async () => {
+            await expect(page).toMatch('Error')
+        });
+    })
+
+    test('Existing user tries to login without filling password', ({ given, when, then }) => {
+
+        let username: string;
+
+        given('An existing username', () => {
+            username = "testUser"
+
+        });
+
+        when('Fill username field and click log in button', async () => {
+            await expect(page).toMatch('Log in DeDesktop')
+            await expect(page).toFillForm('form[name="login"]', {
+                textName: username,
+            })
+            await expect(page).toClick('button', { text: 'Log in' })
+        });
+
+        then('Error message should be displayed', async () => {
+            await expect(page).toMatch('Error')
+        });
+    })
+
+    test('User tries to go to sign up page via link', ({ given, when, then }) => {
+
+        when('User clicks in go to register link', async () => {
+            await expect(page).toMatch('Log in DeDesktop')
+            await expect(page).toClick('button', { text: 'Dont\'t have an account? Sign up' })
+        });
+
+        then('Signup page should be displayed', async () => {
+            await expect(page).toMatch('Sign up in DeDesktop')
+        });
+    })
+
+    afterEach(async () => {
+        browser.close()
+    })
+
+});

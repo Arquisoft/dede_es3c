@@ -93,9 +93,10 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
               </Link>
 
               {(!(localStorage.getItem("currentUser")?.includes("admin"))) &&
-                <Button onClick={() => props.setOpen("true")} aria-label="CartIcon">
+                <Button onClick={() => props.setOpen("true")} aria-label="CartIcon" key="cartButton">
                   <Badge badgeContent={parseInt(localStorage.getItem("amountInCart")!)} color="error">
                     <AddShoppingCartSharp />
+                    Traducir - Cart
                   </Badge>
                 </Button>
               }
@@ -142,7 +143,7 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
                   <Link to="/editProduct" className="Dropdown-item">
                     {translate('crud.update')}
                   </Link>
-                  <Link to="/editProduct" className="Dropdown-item">
+                  <Link to="/deleteProduct" className="Dropdown-item">
                     {translate('crud.delete')}
                   </Link>
                 </NavDropdown>
@@ -158,14 +159,14 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
               {(localStorage.getItem("currentUser") !== "not logged" && !(localStorage.getItem("currentUser")?.includes("admin"))) &&
                 <Link to="/account" className="nav-link">
                   <img alt="" src={userIcon} width="25" height="25" className="d-inline-block align-top" />
-                  Mi cuenta
+                      {translate("nav.account")}
                 </Link>
               }
 
               {(localStorage.getItem("currentUser") !== "not logged" && (localStorage.getItem("currentUser")?.includes("admin"))) &&
                 <Link to="/users" className="nav-link">
                   <img alt="" src={userListIcon} width="25" height="25" className="d-inline-block align-top" />
-                  Usuarios
+                      {translate("nav.users")}
                 </Link>
               }
               </div>

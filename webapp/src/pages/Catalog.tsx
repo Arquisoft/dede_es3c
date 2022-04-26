@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import { getProducts, getProductsByName, getProductsByCategory, getProductsByPrice, getStockByProduct } from '../api/api';
+import { getProducts, getProductsByName, getProductsByCategory, getProductsByPrice } from '../api/api';
 import { Form, FormControl } from "react-bootstrap";
 import Button from '@mui/material/Button';
 import { LangContext } from '../lang';
@@ -16,7 +16,6 @@ interface CatalogPageProps {
 }
 
 const minDistance = 10;
-let aux1: number[] = [];
 
 const Catalog = (props: CatalogPageProps) => {
     useEffect(() => {

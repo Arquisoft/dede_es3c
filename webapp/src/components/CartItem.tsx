@@ -5,7 +5,7 @@ import { Button } from '@mui/material';
 import handleAddToCart from '../components/HandleAddToCart';
 import handleRemoveFromCart from '../components/HandleRemoveFromCart';
 import { useState } from "react";
-import { getCanBuyProduct, getStockByProduct } from '../api/api';
+import { getStockByProduct } from '../api/api';
 
 type CartItemProps = {
     item: Product;

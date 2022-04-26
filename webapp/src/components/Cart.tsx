@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { Button } from "react-bootstrap";
 import CartItem from "../components/CartItem";
 import { Product } from '../shared/shareddtypes';

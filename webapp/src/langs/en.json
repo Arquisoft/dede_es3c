@@ -39,6 +39,8 @@
     "nav.languaje":"Language",
     "nav.admin":"Edit products",
     "nav.orders":"My orders",
+    "nav.account":"My account",
+    "nav.users":"Users",
     "prodDisp.price":"Price",
     "catalog.search":"Search",
     "category.monitors":"Monitors",

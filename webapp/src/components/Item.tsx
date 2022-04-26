@@ -41,7 +41,7 @@ const Item = (props: Props) => {
     <div>
         <Card key={props.item.name}>
             <CardHeader title={props.item.name} />
-            <Link to={"/products/name/" + props.item.name} className="nav-link">
+                <Link to={"/products/name/" + props.item.name} className="nav-link" key={props.item.name}>
                 <CardMedia component="img" width="200" height="200" src={props.item.urlPhoto} alt={props.item.name} />
             </Link>
             <CardContent>
@@ -66,11 +66,12 @@ const Item = (props: Props) => {
                     </FormControl>
                 </Box>
 }
-                <IconButton aria-label="add to cart" disableFocusRipple size="small" onClick={() => handleAddToCart(props.item, props.setAmount, itemAmount, stock)}>
+                <IconButton aria-label={"add to cart" + props.item.name} disableFocusRipple size="small" onClick={() => handleAddToCart(props.item, props.setAmount, itemAmount, stock)}>
                     {
                         (!localStorage.getItem("currentUser")?.includes("admin")) &&
                         <AddShoppingCartIcon />
                     }
+                    Add to cart
                 </IconButton>
                 <p>Stock: {stock}</p>
             </CardActions>

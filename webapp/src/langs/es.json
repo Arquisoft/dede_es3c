@@ -39,6 +39,8 @@
     "nav.languaje":"Idioma",
     "nav.admin": "Editar productos",
     "nav.orders":"Mis pedidos",
+    "nav.account": "Mi cuenta",
+    "nav.users": "Usuarios",
     "prodDisp.price": "Precio",
     "catalog.search": "Buscar",
     "category.reset":"Eliminar selección",
