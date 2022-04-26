@@ -219,48 +219,118 @@ rec_distcenter_id2=collection.insert_one(dc2)
 
 collection = db.product_store
 
-ps1 = {
+ps1_1 = {
 	"id": str(uuid.uuid4()),
 	"distributioncenter_id": dc1_id,
 	"product_id": prod1_id,
 	"stock": 6
 }
-ps2 = {
+ps1_2 = {
 	"id": str(uuid.uuid4()),
 	"distributioncenter_id": dc1_id,
 	"product_id": prod2_id,
 	"stock": 10
 }
-ps3 = {
+ps1_3 = {
 	"id": str(uuid.uuid4()),
 	"distributioncenter_id": dc1_id,
 	"product_id": prod3_id,
 	"stock": 34
 }
-ps4 = {
+ps1_4 = {
 	"id": str(uuid.uuid4()),
 	"distributioncenter_id": dc1_id,
 	"product_id": prod4_id,
 	"stock": 22
 }
-ps5 = {
+ps1_5 = {
+	"id": str(uuid.uuid4()),
+	"distributioncenter_id": dc1_id,
+	"product_id": prod5_id,
+	"stock": 3
+}
+ps1_6 = {
+	"id": str(uuid.uuid4()),
+	"distributioncenter_id": dc1_id,
+	"product_id": prod6_id,
+	"stock": 40
+}
+ps1_7 = {
+	"id": str(uuid.uuid4()),
+	"distributioncenter_id": dc1_id,
+	"product_id": prod7_id,
+	"stock": 6
+}
+ps1_8 = {
+	"id": str(uuid.uuid4()),
+	"distributioncenter_id": dc1_id,
+	"product_id": prod8_id,
+	"stock": 8
+}
+ps1_9 = {
+	"id": str(uuid.uuid4()),
+	"distributioncenter_id": dc1_id,
+	"product_id": prod9_id,
+	"stock": 6
+}
+ps1_10 = {
+	"id": str(uuid.uuid4()),
+	"distributioncenter_id": dc1_id,
+	"product_id": prod10_id,
+	"stock": 12
+}
+ps2_1 = {
 	"id": str(uuid.uuid4()),
 	"distributioncenter_id": dc2_id,
 	"product_id": prod1_id,
 	"stock": 2
 }
-ps6 = {
+ps2_3 = {
 	"id": str(uuid.uuid4()),
 	"distributioncenter_id": dc2_id,
 	"product_id": prod3_id,
 	"stock": 8
 }
-collection.insert_one(ps1)
-collection.insert_one(ps2)
-collection.insert_one(ps3)
-collection.insert_one(ps4)
-collection.insert_one(ps5)
-collection.insert_one(ps6)
+ps2_4 = {
+	"id": str(uuid.uuid4()),
+	"distributioncenter_id": dc2_id,
+	"product_id": prod4_id,
+	"stock": 4
+}
+ps2_5 = {
+	"id": str(uuid.uuid4()),
+	"distributioncenter_id": dc2_id,
+	"product_id": prod5_id,
+	"stock": 10
+}
+ps2_8 = {
+	"id": str(uuid.uuid4()),
+	"distributioncenter_id": dc2_id,
+	"product_id": prod8_id,
+	"stock": 5
+}
+ps2_9 = {
+	"id": str(uuid.uuid4()),
+	"distributioncenter_id": dc2_id,
+	"product_id": prod9_id,
+	"stock": 14
+}
+collection.insert_one(ps1_1)
+collection.insert_one(ps1_2)
+collection.insert_one(ps1_3)
+collection.insert_one(ps1_4)
+collection.insert_one(ps1_5)
+collection.insert_one(ps1_6)
+collection.insert_one(ps1_7)
+collection.insert_one(ps1_8)
+collection.insert_one(ps1_9)
+collection.insert_one(ps1_10)
+collection.insert_one(ps2_1)
+collection.insert_one(ps2_3)
+collection.insert_one(ps2_4)
+collection.insert_one(ps2_5)
+collection.insert_one(ps2_8)
+collection.insert_one(ps2_9)
 
 collection = db.productorder
 
