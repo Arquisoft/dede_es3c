@@ -1,6 +1,6 @@
 import React, {FC, useEffect, useContext, Fragment, useState} from "react";
 import { User } from "../shared/shareddtypes";
-import {getUser, updatePasswordByEmail } from "../api/api";
+import {existUser, getUser, updatePasswordByEmail, updateUserByEmail } from "../api/api";
 import { LangContext } from "../lang";
 import { Box, Card, CardContent, Container, Modal, Stack, TextField, Typography } from "@mui/material";
 import { Navigate } from "react-router";
@@ -78,19 +78,38 @@ const EditUserPage: FC<EditUserProps> = (props: EditUserProps) => {
             });
         } else {
             await updatePasswordByEmail(email, newPassword);
+            handleClosePass();
+            Swal.fire({
+                title: "Success, the user already exists",
+                text: translate("update.pass.error"),
+                icon: "success",
+          });
         }
     }
 
     const updateUser = async () => {
-        getUser(newUserName).then(user => {
-            if (user !== null){
+        existUser(newUserName).then(user => {
+            if (user == true){
                 handleCloseUser();
                 Swal.fire({
                     title: "Error, the user already exists",
                     text: translate("update.pass.error"),
                     icon: "error",
                   });
-            }}, () => {updatePasswordByEmail(email, newPassword);})
+            } else {
+                updateUserByEmail(email, newUserName);
+                handleCloseUser();
+                Swal.fire({
+                    title: "Success, the user already exists",
+                    text: translate("update.pass.error"),
+                    icon: "success",
+              })
+            }}, () => {updatePasswordByEmail(email, newPassword);
+                        Swal.fire({
+                        title: "Success, the user already exists",
+                        text: translate("update.pass.error"),
+                        icon: "success",
+                  });})
 
         }
 
@@ -216,3 +235,4 @@ const EditUserPage: FC<EditUserProps> = (props: EditUserProps) => {
 }
 
 export default EditUserPage;
+

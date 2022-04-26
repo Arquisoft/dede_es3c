@@ -55,11 +55,11 @@
 
     // Update user by id
     api.route('/users/email/:email/name/:name')
-        .put(auth.isAdminAuth, userController.updateUserByEmailName)
+        .put(auth.isAuth, userController.updateUserByEmailName)
 
     // Update user by id
     api.route('/users/email/:email/password/:password')
-        .put(auth.isAdminAuth, userController.updateUserByEmailPassword)
+        .put(auth.isAuth, userController.updateUserByEmailPassword)
  
      api.route('/users/:id')
          // Get user by id

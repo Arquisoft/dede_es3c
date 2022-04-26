@@ -64,6 +64,19 @@ export async function getUser(username: string): Promise<User> {
   return response.json();
 }
 
+export async function existUser(username: string): Promise<Boolean> {
+  const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api/users';
+  let response = await fetch(apiEndPoint + "/username/" + username, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
+  if (response.status !== 404 && response.status !== 500){
+    return true;
+  } else {
+    return false;
+  }
+}
+
 export async function getProducts(): Promise<Product[]>{
   const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
   let response = await fetch(apiEndPoint + '/products');
@@ -177,7 +190,7 @@ export async function getDistributionCenters(product: Product): Promise<Distribu
 
 export async function updatePasswordByEmail(email:String, password:String) {
   const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
-  let response = await fetch(apiEndPoint + '/products/', {
+  let response = await fetch(apiEndPoint + '/users/email/' + email + '/password/' + password, {
     method: 'PUT',
     headers: { authorization: localStorage.getItem("token") + "", 'Content-Type': 'application/json' },
     body: JSON.stringify({ 'email': email, 'password': password})
@@ -188,12 +201,12 @@ export async function updatePasswordByEmail(email:String, password:String) {
     return false;
 }
 
-export async function updateUserByEmail(username:String, password:String) {
+export async function updateUserByEmail(email:String, username:String) {
   const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
-  let response = await fetch(apiEndPoint + '/products/', {
+  let response = await fetch(apiEndPoint + '/users/email/' + email + '/name/' + username, {
     method: 'PUT',
     headers: { authorization: localStorage.getItem("token") + "", 'Content-Type': 'application/json' },
-    body: JSON.stringify({ 'username': username, 'password': password})
+    body: JSON.stringify({ 'email':email, 'username/': username})
   });
   if (response.status === 200)
     return true;

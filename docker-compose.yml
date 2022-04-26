@@ -42,9 +42,9 @@ services:
     image: mongo
     restart: always
     environment:
-      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER}
-      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASS}
-      MONGO_INITDB_DATABASE: ${MONGO_DATA}
+      MONGO_INITDB_ROOT_USERNAME: SergioArroni
+      MONGO_INITDB_ROOT_PASSWORD: julio321
+      MONGO_INITDB_DATABASE: DeDesktop
     ports:
       - "27017:27017"
   python:
