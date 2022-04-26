@@ -51,6 +51,20 @@ export class ProductStoreService {
         return app.get('db').getRepository(ProductStore).save(product);
     }
 
+    /**
+     * Return all distribution centers
+     * @param app Express application
+     * @returns Promise<DistributionCenter[]>
+     */
+   public static getMaxStockByProduct(app: Application, productid: string): Promise<ProductStore> {
+    return app.get('db').getRepository(ProductStore)
+        .findOne({
+            where: { product_id: productid },
+            order: { stock: "DESC" },
+            take: 1
+        });
+}
+
     
 
 }
