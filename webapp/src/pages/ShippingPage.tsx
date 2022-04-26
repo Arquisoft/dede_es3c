@@ -1,11 +1,12 @@
 import React, {Fragment, FC, useState, useContext} from "react";
-import { Card, CardContent, Container, List, ListItem, ListItemText, ListSubheader, MenuItem, Select, SelectChangeEvent, TextField} from "@mui/material";
+import { Card, CardContent, Container, FormControl, InputLabel, List, ListItem, ListItemText, ListSubheader, MenuItem, Select, SelectChangeEvent, TextField} from "@mui/material";
 import { Button} from "react-bootstrap";
 import { DistributionCenter, Product } from "../shared/shareddtypes";
 import { getAddress, getDistributionCenters } from "../api/api";
 import Swal from 'sweetalert2';
 import { Navigate, Link } from "react-router-dom";
 import { LangContext } from '../lang';
+import DisplayDistributionCenters from "../components/DistributionCenterDisplay";
 
 interface ShippingPageProps {
     setUser:(user:string) => void
@@ -20,7 +21,7 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
   const [region, setRegion] = useState("");
   const [streetAddress, setStreetAddress] = useState("");
   const [distributionCenter, setDistributionCenter] = useState("");
-  var centers: DistributionCenter [] = [];
+  const [centers, setCenters] = useState<DistributionCenter[]>([]);
 
   const products = localStorage.getItem("cart");
   var size:number = 0;
@@ -54,13 +55,8 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
     }
   })
 
-  const handleChange = (event: SelectChangeEvent) => {
-    setDistributionCenter(event.target.value as string);
-    console.log(event.target.value as string);
-  };
-  const getCenters = async () => {
-    const centers = await getDistributionCenters(cartProducts[0]);
-    console.log(cartProducts[0]);
+  const getCenters = async (item:Product) => {
+    setCenters( await getDistributionCenters(item));
   }
 
   async function getAdd() {
@@ -84,6 +80,12 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
     });
   }
 
+  const handleChange = (event: SelectChangeEvent) => {
+    setDistributionCenter(event.target.value as string);
+    console.log(event.target.value as string);
+  };
+  
+
   if (localStorage.getItem("currentUser") === "not logged"){
     return <Navigate to={"/login"}/>
   } else if (cartProducts.length === 0){
@@ -94,12 +96,11 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
         <Link to="/catalog">{translate("orders.shopping")}</Link>
       </div>    
     );
-
   }
   return(
     <div>
       <h1 aria-label="selectedProductsTitle">{translate("shipping.title")}</h1> 
-      <Container component="main" maxWidth="sm">
+      <Container component="main"maxWidth="lg">
         <Card className={"main"} elevation={10} style={{display: "grid"}}>
         <CardContent style={{ display: "grid", margin: "auto", textAlign: "center" }}>
                 <h3 aria-label="selectedProductsSubtitle">{translate('shipping.selectedProducts')}</h3>
@@ -108,11 +109,11 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                     style={{ display: "grid", margin: "auto", textAlign: "center" }}
                     sx={{
                       width: '100%',
-                      maxWidth: 500,
+                      maxWidth: 700,
                       bgcolor: 'background.paper',
                       position: 'relative',
                       overflow: 'auto',
-                      maxHeight: 500,
+                      maxHeight: 700,
                       '& ul': { padding: 0 },
                     }}
                     >
@@ -123,13 +124,7 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                             <ListItem key={item.name}>
                             <img alt="desc" src= {item.urlPhoto} width= '70' height='70'/>
                             <ListItemText primary={"x" + item.amount + "\t"+item.name + ":" + item.price + "$"} />
-                            <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
-                            value={"distribution center"}
-                            label="Distribution Center"
-                            onChange={handleChange}>
-                              </Select>
+                            <DisplayDistributionCenters product={item}/>
                             </ListItem>
                             ))}
                         </ul>
