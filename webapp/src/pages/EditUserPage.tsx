@@ -98,6 +98,8 @@ const EditUserPage: FC<EditUserProps> = (props: EditUserProps) => {
                   });
             } else {
                 updateUserByEmail(email, newUserName);
+                localStorage.setItem("currentUser", newUserName);
+                setUserName(newUserName);
                 handleCloseUser();
                 Swal.fire({
                     title: "Success, the user already exists",
