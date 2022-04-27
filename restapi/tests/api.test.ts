@@ -497,44 +497,105 @@ describe("orders", () => {
   it("can be listed orders", async () => {
     const response: Response = await request(app)
       .get("/api/orders")
-      .set("Authorization", String(clientToken));
+      .set("Authorization", String(adminToken));
     expect(response.statusCode).toBe(200);
   });
 
   /**
    * Test that we can list orders with a error.
    */
-  it("can't be listed orders", async () => {
+  it("can be listed orders", async () => {
     const response: Response = await request(app)
       .get("/api/orders")
-      .set("Authorization", String(adminToken));
-    expect(response.statusCode).toBe(200);
+      .set("Authorization", String(clientToken));
+    expect(response.statusCode).toBe(403);
   });
 
   /**
-   * Test that insert a new product as admin.
-   
-  it("insert a new orders as admin", async () => {
-    const product = {
-      name: "Portatil HP ...",
-      description: "Un portatil muy bueno",
-      price: 600,
-      category: "Laptop",
-      url: "alguna",
-      stock: 10,
+   * Test that insert a new order as admin.
+   */
+  it("insert a new order as admin", async () => {
+    const order = {
+      user: "Chef@gmail.com",
+      "products": [
+        {
+            "product": {
+                "name": "NiSuPu Monitor",
+                "description": "It's a bad Monitor",
+                "price": 69.96,
+                "category": "Monitors",
+                "urlPhoto": "https://res.cloudinary.com/dedesktop/image/upload/v1646938754/samples/ecommerce/HP_l9kqjo.jpg",
+                "stock": 34
+            },
+            "quantity": 5,
+            "shippingPrice": 1,
+            "distributionCenter": {
+                "address": "Calle Valdes Salas, 11, 33007 Oviedo, Asturias"
+            },
+        },
+        {
+            "product": {
+                "name": "PC Master Race",
+                "description": "This computer programs only",
+                "price": 9999.54,
+                "category": "PC",
+                "urlPhoto": "https://res.cloudinary.com/dedesktop/image/upload/v1647193137/samples/ecommerce/PC_Master_dlbgig.webp",
+                "stock": 40
+            },
+            "quantity": 6,
+            "shippingPrice": 1,
+            "distributionCenter": {
+                "address": "Calle Valdes Salas, 11, 33007 Oviedo, Asturias"
+            }
+        }
+      ]
     };
 
     const response: Response = await request(app)
       .post("/api/orders")
-      .send(product)
+      .send(order)
       .set("Accept", "application/json")
       .set("Authorization", String(adminToken));
+    expect(response.statusCode).toBe(200);
+    orderId = response.body.id;
+  });
+
+  /**
+   * Test that insert a new order as client.
+   */
+   it("insert a new order as client", async () => {
+    const order = {
+      user: "Chef@gmail.com",
+      "products": [
+        {
+            "product": {
+                "name": "NiSuPu Monitor",
+                "description": "It's a bad Monitor",
+                "price": 69.96,
+                "category": "Monitors",
+                "urlPhoto": "https://res.cloudinary.com/dedesktop/image/upload/v1646938754/samples/ecommerce/HP_l9kqjo.jpg",
+                "stock": 34
+            },
+            "quantity": 5,
+            "shippingPrice": 1,
+            "distributionCenter": {
+                "address": "Calle Valdes Salas, 11, 33007 Oviedo, Asturias"
+            },
+        }
+      ]
+    };
+
+    const response: Response = await request(app)
+      .post("/api/orders")
+      .send(order)
+      .set("Accept", "application/json")
+      .set("Authorization", String(clientToken));
     expect(response.statusCode).toBe(200);
   });
 
   /**
    * Tests that search by id for a orders whose id exists
-   
+   */
   it("search by id for a orders whose id exists", async () => {
     const response: Response = await request(app)
       .get("/api/orders/" + orderId)
@@ -547,18 +608,13 @@ describe("orders", () => {
    * Tests that update orders as admin
    */
   it("update orders as admin", async () => {
-    const product = {
-      name: "Portatil HP ...",
-      description: "Un portatil ya no tan bueno",
-      price: 500,
-      category: "Laptop",
-      url: "alguna",
-      stock: 10,
+    const order = {
+      user: "prueba@gmail.com"
     };
 
     const response: Response = await request(app)
       .put("/api/orders/" + orderId)
-      .send(product)
+      .send(order)
       .set("Accept", "application/json")
       .set("Authorization", String(adminToken));
 
@@ -569,18 +625,13 @@ describe("orders", () => {
    * Tests that update orders without admin
    */
   it("update orders without admin", async () => {
-    const product = {
-      name: "Portatil HP ...",
-      description: "Un portatil ya no tan bueno",
-      price: 500,
-      category: "Laptop",
-      url: "alguna",
-      stock: 10,
+    const order = {
+      user: "prueba@gmail.com"
     };
 
     const response: Response = await request(app)
       .put("/api/orders/" + orderId)
-      .send(product)
+      .send(order)
       .set("Accept", "application/json")
       .set("Authorization", String(clientToken));
 
@@ -591,18 +642,13 @@ describe("orders", () => {
    * Tests that update orders without user
    */
   it("update orders without user", async () => {
-    const product = {
-      name: "Portatil HP ...",
-      description: "Un portatil ya no tan bueno",
-      price: 500,
-      category: "Laptop",
-      url: "alguna",
-      stock: 10,
+    const order = {
+      name: "prueba@gmail.com"
     };
 
     const response: Response = await request(app)
       .put("/api/orders/" + orderId)
-      .send(product)
+      .send(order)
       .set("Accept", "application/json");
 
     expect(response.statusCode).toBe(403);
@@ -631,15 +677,15 @@ describe("orders", () => {
 
     expect(response.statusCode).toBe(200);
   });
-
+  
   /**
    * Tests that search by id for a orders whose id does not exist
    */
-  it("search by id for a orders whose id does not exist", async () => {
+   it("search by id for a orders whose id does not exist", async () => {
     const response: Response = await request(app)
       .get("/api/orders/123" + orderId)
-      .set("Accept", "application/json");
-
-    expect(response.statusCode).toBe(403);
+      .set("Accept", "application/json")
+      .set("Authorization", String(adminToken));
+    expect(response.statusCode).toBe(404);
   });
 });
