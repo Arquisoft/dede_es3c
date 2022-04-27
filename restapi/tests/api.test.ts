@@ -166,7 +166,7 @@ describe("CRUD Users", () => {
   /**
    * Test that we can list users with a error.
    */
-  it("can't be listed, bad rout", async () => {
+  it("can't be listed, bad route", async () => {
     const response: Response = await request(app).get("/api/users/list");
     expect(response.statusCode).toBe(404);
   });
@@ -492,9 +492,9 @@ describe("products", () => {
 
 describe("orders", () => {
   /**
-   * Test that we can list orders without any error.
+   * Test that we can list orders as admin without any error.
    */
-  it("can be listed orders", async () => {
+  it("can be listed orders as admin", async () => {
     const response: Response = await request(app)
       .get("/api/orders")
       .set("Authorization", String(adminToken));
@@ -502,12 +502,21 @@ describe("orders", () => {
   });
 
   /**
-   * Test that we can list orders with a error.
+   * Test that we can list orders as client without any error.
    */
-  it("can be listed orders", async () => {
+   it("can be listed orders as client", async () => {
     const response: Response = await request(app)
       .get("/api/orders")
       .set("Authorization", String(clientToken));
+    expect(response.statusCode).toBe(200);
+  });
+
+  /**
+   * Test that we can list orders with a error. User no authenticated
+   */
+  it("can't be listed orders", async () => {
+    const response: Response = await request(app)
+      .get("/api/orders")
     expect(response.statusCode).toBe(403);
   });
 
@@ -677,7 +686,7 @@ describe("orders", () => {
 
     expect(response.statusCode).toBe(200);
   });
-  
+
   /**
    * Tests that search by id for a orders whose id does not exist
    */
