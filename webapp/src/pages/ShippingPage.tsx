@@ -95,19 +95,21 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
       }
       productOrders[index] = oP;    
     }
+    console.log(productOrders);
+    generateOrder(productOrders);
     return productOrders;
   }
 
-  const generateOrder = async () => {
+  const generateOrder = async (prods: OrderProduct[]) => {
     var email = "";
     var user = localStorage.getItem("currentUser");
     if (user !== null){
       email = (await getUser(user)).email
     }
-    console.log(email);
-    setProductsOrder(generateOrderProduct());
-    if (productsOder.length > 0){
-       await addOrder(email, productsOder)
+    if (prods.length > 0){
+       await addOrder(email, prods)
+    } else{
+      console.log(productsOder)
     }
   }
 
@@ -259,10 +261,9 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                       <Button 
                       variant="contained" 
                       type="submit"
-                      disabled={locality === '' || countryName === ''}
-                      onClick={() => generateOrder()}
+                      disabled={addressFields()}
+                      onClick={() => generateOrderProduct()}
                       >
-                        {console.log(productsOder)}
                         {translate('shipping.proceed')}
                       </Button>
 
