@@ -80,6 +80,14 @@
     "shipping.locality":"Locality",
     "shipping.region":"Region",
     "shipping.street":"Street",
+    "shipping.resume":"Order Resume",
+    "shipping.priceInitial":"Price without shipping",
+    "shipping.priceFinal":"Final Price: ",
+    "shipping.card":"Credit Card: ",
+    "shipping.end":"Finish payment process",
+    "shipping.confirmation":"Sucess! Thank you for shopping in DeDesktop",
+    "shipping.creditCard":"Introduce your Credit Card to confirm the payment",
+    "shipping.shipping":"Shipping: ",
     "solid.error":"Address not found, please try again",
     "shipping.postal":"Postal Code",
     "cart.empty":"No items in cart",
@@ -98,5 +106,6 @@
     "update.goToCatalog":"Back to catalog",
     "update.newPass":"Introduce your new password",
     "update.newUser":"Introduce your new username",
-    "update.commit":"Commit changes"
+    "update.commit":"Commit changes",
+    "centers.center":"Distribution center"
 }

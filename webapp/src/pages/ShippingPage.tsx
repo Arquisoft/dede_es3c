@@ -1,17 +1,14 @@
 import React, {Fragment, FC, useState, useContext} from "react";
-import {Card, CardContent, Container, List, ListItem, ListItemText, ListSubheader, TextField} from "@mui/material";
+import {Box, Card, CardContent, Container, List, ListItem, ListItemText, ListSubheader, Modal, TextField, Typography} from "@mui/material";
 import { Button} from "react-bootstrap";
-import {Product, OrderProduct, ProductInOrder } from "../shared/shareddtypes";
+import {Product, OrderProduct } from "../shared/shareddtypes";
 import { addOrder, getAddress, getUser } from "../api/api";
 import Swal from 'sweetalert2';
 import { Navigate, Link } from "react-router-dom";
 import { LangContext } from '../lang';
 import DisplayDistributionCenters from "../components/DistributionCenterDisplay";
-
-
-interface ShippingPageProps {
-    setUser:(user:string) => void
-}
+import Item from "../components/Item";
+import { CreditCard } from "@mui/icons-material";
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -19,12 +16,17 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 400,
-  height: 240,
+  height: 350,
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
 };
+
+
+interface ShippingPageProps {
+    setUser:(user:string) => void
+}
 
 const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
   const { dispatch: { translate } } = useContext(LangContext);
@@ -34,7 +36,16 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
   const [postalCode, setPostalCode] = useState("");
   const [region, setRegion] = useState("");
   const [streetAddress, setStreetAddress] = useState("");
+  const [card, setCard] = useState("");
   const [productsOder, setProductsOrder] = useState<OrderProduct[]>([]);
+  const [openPrice, setOpenPrice] = useState(false);
+
+  const handleOpenPrice = () => {
+    setOpenPrice(true);
+  };
+  const handleClosePrice = () => {
+    setOpenPrice(false);
+  };
  
   const addressFields = () => {
     if (countryName === '' || locality === '' || postalCode === '' || region === '' || streetAddress === ''){
@@ -42,9 +53,6 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
     }
     return false
   }
-
-
-
 
   const products = localStorage.getItem("cart");
   var size:number = 0;
@@ -78,6 +86,13 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
     }
   })
 
+  const showConfirmation = () => {
+    Swal.fire({
+      title: "Success",
+      text: translate("shipping.confirmation"),
+      icon: "success",
+    }).then(() => window.location.assign("/catalog"));
+  }
   const generateOrderProduct = () => {
     var productOrders:  OrderProduct[] = [];
     for (let index = 0; index < cartProducts.length; index++) {
@@ -97,6 +112,8 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
     }
     console.log(productOrders);
     generateOrder(productOrders);
+    handleClosePrice();
+    showConfirmation();
     return productOrders;
   }
 
@@ -262,11 +279,41 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                       variant="contained" 
                       type="submit"
                       disabled={addressFields()}
-                      onClick={() => generateOrderProduct()}
+                      onClick={() => handleOpenPrice()}
                       >
                         {translate('shipping.proceed')}
                       </Button>
-
+                      <Modal aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description"
+                    open = {openPrice}
+                    onClose ={handleClosePrice}
+                    >
+                    <Box sx={style}>
+                    <Typography id = "modal-modal-title" variant = "h6" component= "h2">{translate("shipping.resume")}</Typography>
+                    <div>
+                    <Typography id = "modal-modal-subtitle2" variant = "subtitle2" component= "text">{translate("shipping.priceFinal") + ": " + finalPrice.toFixed(2) + "$"}</Typography>
+                    </div>
+                    <div>
+                    <Typography id = "modal-modal-subtitle2" variant = "subtitle2" component= "text">{translate("shipping.creditCard")}</Typography>
+                    </div>
+                    <TextField
+                     required
+                     size="medium"
+                     name="username"
+                     label= {translate ('shipping.card')} 
+                     variant="outlined"
+                     value={card}
+                     helperText= {translate('shipping.card')}
+                     onChange={e => setCard(e.target.value)}
+                     sx={{ my: 2 }} >       
+                    </TextField> 
+                    <Button 
+                    disabled= {card === '' || card.length < 8}
+                    onClick={() => generateOrderProduct()}>
+                    {translate("shipping.end")}</Button>      
+                    <Fragment >
+                    </Fragment>
+                    </Box>
+                    </Modal>
                     </Fragment>
             </CardContent>
             </Card>

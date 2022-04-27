@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { DistributionCenter, Product } from '../shared/shareddtypes';
 import { FormControl, InputLabel, MenuItem, OutlinedInput, Select, SelectChangeEvent, Theme } from '@mui/material';
 import { getDistributionCenters } from '../api/api';
+import { LangContext } from '../lang';
 
 type DistributionCenterProps = {
     product: Product;
 }
 
 const DisplayDistributionCenters = (props: DistributionCenterProps) => {
+    const { dispatch: { translate } } = useContext(LangContext);
     const [centers, setCenters] = useState<DistributionCenter[]>([]);
     const [distributionCenter, setDistributionCenter] = useState("");
     const getCenters = async () => {
@@ -24,7 +26,7 @@ const DisplayDistributionCenters = (props: DistributionCenterProps) => {
     return ( 
         <div>
         <FormControl sx={{ m: 1, minWidth: 80 }}>
-          <InputLabel id="demo-simple-select-autowidth-label">Center</InputLabel>
+          <InputLabel id="demo-simple-select-autowidth-label">{translate("centers.center")}</InputLabel>
           <Select
           labelId="demo-simple-select-autowidth-label"
           id="demo-simple-select-autowidth"
