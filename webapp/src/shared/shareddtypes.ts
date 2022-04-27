@@ -29,7 +29,6 @@ export type ProductInOrder = {
 }
 
 export type OrderProduct = {
-  id:string
   product: Product
   quantity: number,
   shippingPrice: number;

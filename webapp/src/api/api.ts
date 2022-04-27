@@ -1,4 +1,4 @@
-import {User, Product, Order, DistributionCenter, ProductInOrder} from '../shared/shareddtypes';
+import {User, Product, Order, DistributionCenter, ProductInOrder, OrderProduct} from '../shared/shareddtypes';
 
 export async function addUser(user:User):Promise<boolean>{
     const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
@@ -214,11 +214,11 @@ export async function updateUserByEmail(email:String, username:String) {
     return false;
 }
 
-export async function addOrder(email:String, products: ProductInOrder[]) {
+export async function addOrder(email:String, products: OrderProduct[]) {
   const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
   let response = await fetch(apiEndPoint + '/orders', {
     method: 'POST',
     headers: { authorization: localStorage.getItem("token") + "", 'Content-Type': 'application/json' },
-    body: JSON.stringify({ 'email':email, 'products': products})
+    body: JSON.stringify({ 'user':email, 'products': products})
   });
 }

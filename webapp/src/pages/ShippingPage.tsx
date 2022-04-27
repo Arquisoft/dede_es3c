@@ -1,7 +1,7 @@
 import React, {Fragment, FC, useState, useContext} from "react";
 import {Card, CardContent, Container, List, ListItem, ListItemText, ListSubheader, TextField} from "@mui/material";
 import { Button} from "react-bootstrap";
-import {Product, OrderProduct } from "../shared/shareddtypes";
+import {Product, OrderProduct, ProductInOrder } from "../shared/shareddtypes";
 import { addOrder, getAddress, getUser } from "../api/api";
 import Swal from 'sweetalert2';
 import { Navigate, Link } from "react-router-dom";
@@ -35,12 +35,6 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
   const [region, setRegion] = useState("");
   const [streetAddress, setStreetAddress] = useState("");
   const [productsOder, setProductsOrder] = useState<OrderProduct[]>([]);
-  const [Price, setPrice] = useState(false);
-
-  const calculateFinalPrice = () => {
-
-  }
- 
  
   const addressFields = () => {
     if (countryName === '' || locality === '' || postalCode === '' || region === '' || streetAddress === ''){
@@ -94,7 +88,6 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
       }
       var oP: OrderProduct  = 
       {
-        id: index + " ",
         product: cartProducts[index],
         quantity: cartProducts[index].amount,
         shippingPrice: 1,
@@ -102,8 +95,7 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
       }
       productOrders[index] = oP;    
     }
-    setProductsOrder(productOrders);
-    generateOrder();
+    return productOrders;
   }
 
   const generateOrder = async () => {
@@ -112,7 +104,11 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
     if (user !== null){
       email = (await getUser(user)).email
     }
-    await addOrder(email, productsOder)
+    console.log(email);
+    setProductsOrder(generateOrderProduct());
+    if (productsOder.length > 0){
+       await addOrder(email, productsOder)
+    }
   }
 
   async function getAdd() {
@@ -264,7 +260,7 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                       variant="contained" 
                       type="submit"
                       disabled={locality === '' || countryName === ''}
-                      onClick={() => generateOrderProduct()}
+                      onClick={() => generateOrder()}
                       >
                         {console.log(productsOder)}
                         {translate('shipping.proceed')}

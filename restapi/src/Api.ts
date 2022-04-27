@@ -109,7 +109,7 @@ const setOrdersRoutes = (): void => {
  
     api.route('/orders')
         // Get all orders
-        .get(auth.isAuth, ordersController.getOrders)
+        .get( ordersController.getOrders)
         // Create new orders
         .post(auth.isAuth, ordersController.addOrder);
 
