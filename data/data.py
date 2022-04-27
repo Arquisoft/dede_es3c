@@ -338,18 +338,21 @@ prodord1 = {
 		"id": str(uuid.uuid4()),
 		"product": prod1,
 		"quantity": 5,
+		"shippingPrice": 1,
 		"distributionCenter": dc1
 		}
 prodord2 = {
 		"id": str(uuid.uuid4()),
 		"product": prod3,
 		"quantity": 2,
+		"shippingPrice": 3,
 		"distributionCenter": dc1
 		}
 prodord3 = {
 		"id": str(uuid.uuid4()),
 		"product": prod9,
 		"quantity": 6,
+		"shippingPrice": 1.5,
 		"distributionCenter": dc1
 		}
 # Insert Data
