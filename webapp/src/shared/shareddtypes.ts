@@ -28,6 +28,14 @@ export type ProductInOrder = {
   quantity: number,
 }
 
+export type OrderProduct = {
+  id:string
+  product: Product
+  quantity: number,
+  shippingPrice: number;
+  distributionCenter: DistributionCenter;
+}
+
 export type Address = {
   country_name: string;
   locality: string;

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { DistributionCenter, Product } from '../shared/shareddtypes';
 import { FormControl, InputLabel, MenuItem, OutlinedInput, Select, SelectChangeEvent, Theme } from '@mui/material';
 import { getDistributionCenters } from '../api/api';
-import { CenterFocusStrong, Menu } from '@mui/icons-material';
 
 type DistributionCenterProps = {
     product: Product;
@@ -18,8 +17,10 @@ const DisplayDistributionCenters = (props: DistributionCenterProps) => {
             setDistributionCenter(event.target.value as string);
             console.log(event.target.value as string);
           };
-          
-    getCenters();
+    if (centers.length == 0){
+        getCenters();
+        console.log(centers);
+    }   
     return ( 
         <div>
         <FormControl sx={{ m: 1, minWidth: 80 }}>
@@ -31,7 +32,8 @@ const DisplayDistributionCenters = (props: DistributionCenterProps) => {
           onChange={handleChange}
           autoWidth
           label="Center">
-         {centers.map ((center) => {
+         {centers.map ((center, i ) => {
+             {localStorage.setItem("Center"+i, center.address)}
              return (
                 <MenuItem value={center.address}>{center.address}</MenuItem>
              );

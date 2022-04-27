@@ -1,16 +1,30 @@
 import React, {Fragment, FC, useState, useContext} from "react";
-import { Card, CardContent, Container, FormControl, InputLabel, List, ListItem, ListItemText, ListSubheader, MenuItem, Select, SelectChangeEvent, TextField} from "@mui/material";
+import {Card, CardContent, Container, List, ListItem, ListItemText, ListSubheader, TextField} from "@mui/material";
 import { Button} from "react-bootstrap";
-import { DistributionCenter, Product } from "../shared/shareddtypes";
-import { getAddress, getDistributionCenters } from "../api/api";
+import {Product, OrderProduct } from "../shared/shareddtypes";
+import { addOrder, getAddress, getUser } from "../api/api";
 import Swal from 'sweetalert2';
 import { Navigate, Link } from "react-router-dom";
 import { LangContext } from '../lang';
 import DisplayDistributionCenters from "../components/DistributionCenterDisplay";
 
+
 interface ShippingPageProps {
     setUser:(user:string) => void
 }
+
+const style = {
+  position: 'absolute' as 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  height: 240,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
 
 const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
   const { dispatch: { translate } } = useContext(LangContext);
@@ -20,8 +34,23 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
   const [postalCode, setPostalCode] = useState("");
   const [region, setRegion] = useState("");
   const [streetAddress, setStreetAddress] = useState("");
-  const [distributionCenter, setDistributionCenter] = useState("");
-  const [centers, setCenters] = useState<DistributionCenter[]>([]);
+  const [productsOder, setProductsOrder] = useState<OrderProduct[]>([]);
+  const [Price, setPrice] = useState(false);
+
+  const calculateFinalPrice = () => {
+
+  }
+ 
+ 
+  const addressFields = () => {
+    if (countryName === '' || locality === '' || postalCode === '' || region === '' || streetAddress === ''){
+      return true;
+    }
+    return false
+  }
+
+
+
 
   const products = localStorage.getItem("cart");
   var size:number = 0;
@@ -55,8 +84,35 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
     }
   })
 
-  const getCenters = async (item:Product) => {
-    setCenters( await getDistributionCenters(item));
+  const generateOrderProduct = () => {
+    var productOrders:  OrderProduct[] = [];
+    for (let index = 0; index < cartProducts.length; index++) {
+      var center = localStorage.getItem("Center"+index);
+      var centerName = "";
+      if (center !== null){
+        centerName = center;
+      }
+      var oP: OrderProduct  = 
+      {
+        id: index + " ",
+        product: cartProducts[index],
+        quantity: cartProducts[index].amount,
+        shippingPrice: 1,
+        distributionCenter: {address: centerName}
+      }
+      productOrders[index] = oP;    
+    }
+    setProductsOrder(productOrders);
+    generateOrder();
+  }
+
+  const generateOrder = async () => {
+    var email = "";
+    var user = localStorage.getItem("currentUser");
+    if (user !== null){
+      email = (await getUser(user)).email
+    }
+    await addOrder(email, productsOder)
   }
 
   async function getAdd() {
@@ -79,11 +135,6 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
       title: 'We could not get your address'});
     });
   }
-
-  const handleChange = (event: SelectChangeEvent) => {
-    setDistributionCenter(event.target.value as string);
-    console.log(event.target.value as string);
-  };
   
 
   if (localStorage.getItem("currentUser") === "not logged"){
@@ -121,7 +172,7 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                         <ul>
                           <ListSubheader>{translate('shipping.selectedProducts')}</ListSubheader>
                           {cartProducts.map((item) => (
-                            <ListItem key={item.name}>
+                            <ListItem key={item.name} alignItems="center">
                             <img alt="desc" src= {item.urlPhoto} width= '70' height='70'/>
                             <ListItemText primary={"x" + item.amount + "\t"+item.name + ":" + item.price + "$"} />
                             <DisplayDistributionCenters product={item}/>
@@ -213,9 +264,12 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                       variant="contained" 
                       type="submit"
                       disabled={locality === '' || countryName === ''}
+                      onClick={() => generateOrderProduct()}
                       >
+                        {console.log(productsOder)}
                         {translate('shipping.proceed')}
-                        </Button>
+                      </Button>
+
                     </Fragment>
             </CardContent>
             </Card>
