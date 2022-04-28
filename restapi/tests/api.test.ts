@@ -314,8 +314,7 @@ describe("products", () => {
       description: "Un portatil muy bueno",
       price: 600,
       category: "Laptop",
-      url: "alguna",
-      stock: 10,
+      url: "alguna"
     };
 
     const response: Response = await request(app)
@@ -335,8 +334,7 @@ describe("products", () => {
       description: "Un portatil muy bueno",
       price: 600,
       category: "Laptop",
-      url: "alguna",
-      stock: 10,
+      url: "alguna"
     };
 
     const response: Response = await request(app)
@@ -398,8 +396,7 @@ describe("products", () => {
       description: "Un portatil ya no tan bueno",
       price: 500,
       category: "Laptop",
-      url: "alguna",
-      stock: 10,
+      url: "alguna"
     };
 
     const response: Response = await request(app)
@@ -420,8 +417,7 @@ describe("products", () => {
       description: "Un portatil ya no tan bueno",
       price: 500,
       category: "Laptop",
-      url: "alguna",
-      stock: 10,
+      url: "alguna"
     };
 
     const response: Response = await request(app)
@@ -442,8 +438,7 @@ describe("products", () => {
       description: "Un portatil ya no tan bueno",
       price: 500,
       category: "Laptop",
-      url: "alguna",
-      stock: 10,
+      url: "alguna"
     };
 
     const response: Response = await request(app)
@@ -533,8 +528,7 @@ describe("orders", () => {
                 "description": "It's a bad Monitor",
                 "price": 69.96,
                 "category": "Monitors",
-                "urlPhoto": "https://res.cloudinary.com/dedesktop/image/upload/v1646938754/samples/ecommerce/HP_l9kqjo.jpg",
-                "stock": 34
+                "urlPhoto": "https://res.cloudinary.com/dedesktop/image/upload/v1646938754/samples/ecommerce/HP_l9kqjo.jpg"
             },
             "quantity": 5,
             "shippingPrice": 1,
@@ -548,8 +542,7 @@ describe("orders", () => {
                 "description": "This computer programs only",
                 "price": 9999.54,
                 "category": "PC",
-                "urlPhoto": "https://res.cloudinary.com/dedesktop/image/upload/v1647193137/samples/ecommerce/PC_Master_dlbgig.webp",
-                "stock": 40
+                "urlPhoto": "https://res.cloudinary.com/dedesktop/image/upload/v1647193137/samples/ecommerce/PC_Master_dlbgig.webp"
             },
             "quantity": 6,
             "shippingPrice": 1,
@@ -582,8 +575,7 @@ describe("orders", () => {
                 "description": "It's a bad Monitor",
                 "price": 69.96,
                 "category": "Monitors",
-                "urlPhoto": "https://res.cloudinary.com/dedesktop/image/upload/v1646938754/samples/ecommerce/HP_l9kqjo.jpg",
-                "stock": 34
+                "urlPhoto": "https://res.cloudinary.com/dedesktop/image/upload/v1646938754/samples/ecommerce/HP_l9kqjo.jpg"
             },
             "quantity": 5,
             "shippingPrice": 1,
