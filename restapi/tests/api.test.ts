@@ -13,6 +13,7 @@ let clientToken: string;
 let userId: string;
 let productId: string;
 let orderId: string;
+let distributioncenterId: string;
 
 beforeAll(async () => {
   app = express();
@@ -450,9 +451,9 @@ describe("products", () => {
   });
 
   /**
-   * Tests that delete user without being admin
+   * Tests that delete product without being admin
    */
-  it("delete user without being admin", async () => {
+  it("delete product without being admin", async () => {
     const response: Response = await request(app)
       .delete("/api/products/" + productId)
       .set("Accept", "application/json")
@@ -474,7 +475,7 @@ describe("products", () => {
   });
 
   /**
-   * Tests that search by id for a user whose id does not exist
+   * Tests that search by id for a product whose id does not exist
    */
   it("search by id for a product whose id does not exist", async () => {
     const response: Response = await request(app)
@@ -689,4 +690,102 @@ describe("orders", () => {
       .set("Authorization", String(adminToken));
     expect(response.statusCode).toBe(404);
   });
+});
+describe("distribution centers", () => {
+  /**
+   * Test that we can list distribution centers as client without any error.
+   */
+  it("can be listed distribution centers as client", async () => {
+    const response: Response = await request(app)
+      .get("/api/distributioncenters")
+      .set("Authorization", String(clientToken));
+    expect(response.statusCode).toBe(200);
+  });
+
+  /**
+   * Test that we can list distribution centers as admin without any error.
+   */
+   it("can be listed distribution centers as admin", async () => {
+    const response: Response = await request(app)
+      .get("/api/distributioncenters")
+      .set("Authorization", String(adminToken));
+    expect(response.statusCode).toBe(200);
+  });
+
+  /**
+   * Test that we can list distribution centers by product and quantity.
+   */
+   it("can be listed distribution centers with enought quantity of a product", async () => {
+    const response: Response = await request(app)
+      .get("/api/distributioncenters/HP Monitor/5")
+      .set("Authorization", String(clientToken));
+    expect(response.statusCode).toBe(200);
+  });
+
+  /**
+   * Test that we can't list distribution centers by product and quantity if product doesn't exist.
+   */
+   it("can't be listed distribution centers with enought quantity of a product doesn't exist", async () => {
+    const response: Response = await request(app)
+      .get("/api/distributioncenters/NoExiste/5")
+      .set("Authorization", String(clientToken));
+    expect(response.statusCode).toBe(500);
+  });
+
+  /**
+   * Test that insert a new disribution center as admin.
+   */
+  it("insert a new distribution center as admin", async () => {
+    const distributioncenter = {
+      address: "Calle Ejemplo numero 8"
+    };
+
+    const response: Response = await request(app)
+      .post("/api/distributioncenters")
+      .send(distributioncenter)
+      .set("Accept", "application/json")
+      .set("Authorization", String(adminToken));
+    expect(response.statusCode).toBe(200);
+  });
+
+  /**
+   * Test that insert a new product without being admin.
+   */
+  it("insert a new product without being admin", async () => {
+    const distributioncenter = {
+      address: "Calle Ejemplo numero 8"
+    };
+
+    const response: Response = await request(app)
+      .post("/api/distributioncenters")
+      .send(distributioncenter)
+      .set("Accept", "application/json")
+      .set("Authorization", String(clientToken));
+    expect(response.statusCode).toBe(403);
+  });
+});
+
+describe("product store", () => {
+  /**
+   * Test that we can get de max quantity can be bought of a product.
+   */
+  it("get de max quantity can be bought of a product", async () => {
+    const response: Response = await request(app)
+      .get("/api/store/HP Monitor")
+      .set("Authorization", String(clientToken));
+    expect(response.statusCode).toBe(200);
+  });
+  /**
+   * Test if we can buy a determined quantity of a product.
+   */
+   it("can buy a determined quantity of a product", async () => {
+    const response: Response = await request(app)
+      .get("/api/store/HP Monitor/5")
+      .set("Authorization", String(clientToken));
+    expect(response.statusCode).toBe(200);
+  });
+
+  
+
+
 });
