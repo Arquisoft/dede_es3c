@@ -717,7 +717,7 @@ describe("distribution centers", () => {
    */
    it("can be listed distribution centers with enought quantity of a product", async () => {
     const response: Response = await request(app)
-      .get("/api/distributioncenters/HP Monitor/5")
+      .get("/api/distributioncenters/Portatil HP .../5")
       .set("Authorization", String(clientToken));
     expect(response.statusCode).toBe(200);
   });
@@ -771,7 +771,7 @@ describe("product store", () => {
    */
   it("get de max quantity can be bought of a product", async () => {
     const response: Response = await request(app)
-      .get("/api/store/HP Monitor")
+      .get("/api/store/Portatil HP ...")
       .set("Authorization", String(clientToken));
     expect(response.statusCode).toBe(200);
   });
@@ -780,7 +780,7 @@ describe("product store", () => {
    */
    it("can buy a determined quantity of a product", async () => {
     const response: Response = await request(app)
-      .get("/api/store/HP Monitor/5")
+      .get("/api/store/Portatil HP .../5")
       .set("Authorization", String(clientToken));
     expect(response.statusCode).toBe(200);
   });
