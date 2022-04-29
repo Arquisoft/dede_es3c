@@ -70,12 +70,28 @@ export async function getProducts(): Promise<Product[]>{
   return response.json()
 }
 
+export async function pruebaApi(name: string): Promise<Product> {
+  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api/products'
+  let response = await fetch(apiEndPoint + '/name/' + name);
+  return response.json()
+}
+
 export async function getProductsByName(name: string): Promise<Product[]> {
+  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api/products'
+  let response = await fetch(apiEndPoint + '/namepartial/' + name, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
+  return response.json()
+}
+
+export async function getProductByName(name: string): Promise<Product> {
   const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api/products'
   let response = await fetch(apiEndPoint + '/name/' + name, {
     method: "GET",
     headers: { "Content-Type": "application/json" },
   });
+
   return response.json()
 }
 

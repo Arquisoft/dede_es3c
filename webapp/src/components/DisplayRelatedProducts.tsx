@@ -5,7 +5,7 @@ import { getProductsByCategory } from '../api/api';
 import RelatedProduct from '../components/RelatedProduct';
 
 type Props = {
-    item: Product[];
+    item: Product;
     setAmount: (amount: string) => void
 };
 
@@ -13,7 +13,7 @@ const DisplayRelatedProducts = (props: Props) => {
     const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
 
     const loadRelatedProducts = async () => {
-        setRelatedProducts(await getProductsByCategory(props.item[0].category));
+        setRelatedProducts(await getProductsByCategory(props.item.category));
     }
 
     useEffect(() => {

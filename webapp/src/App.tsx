@@ -20,6 +20,7 @@ import { OpenContext } from './OpenCart';
 import ClientView from './pages/ClientView';
 import EditUserPage from './pages/EditUserPage';
 import Button from '@mui/material/Button';
+import AboutPage from './pages/AboutPage';
 
 const App: FC = () => {
   const { dispatch: {setUser}} = useContext(UserContext);
@@ -125,6 +126,12 @@ const App: FC = () => {
           path='account'
           element={
             <EditUserPage setUser={setUser}/>
+          }
+        />
+        <Route
+          path = '/about'
+          element = {
+            <AboutPage setUser={setUser} />
           }
         />
       </Routes>

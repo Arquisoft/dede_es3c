@@ -29,7 +29,7 @@ const ProductDetailPage = (props: ProductDetailProps) => {
                     <div>
                         <ItemDetails item={item} setAmount={props.setAmount} key={item.name}/>
                         <h2>Productos relacionados:</h2>
-                        <DisplayRelatedProducts item={product} setAmount={props.setAmount} />
+                        <DisplayRelatedProducts item={product[0]} setAmount={props.setAmount} />
                     </div>
                 );
             })}
