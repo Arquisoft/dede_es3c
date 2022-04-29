@@ -610,13 +610,13 @@ describe("orders", () => {
    * Tests that update orders without user
    */
   it("update orders without user", async () => {
-    const order = {
+    const order3 = {
       user: "ejemplo@gmail.com"
     };
 
     const response: Response = await request(app)
       .put("/api/orders/" + orderId)
-      .send(order)
+      .send(order3)
       .set("Accept", "application/json");
 
     expect(response.statusCode).toBe(403);
