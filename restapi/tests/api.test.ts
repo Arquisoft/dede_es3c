@@ -49,10 +49,6 @@ beforeAll(async () => {
       console.error("Error occured: " + error.message);
     });
 
-
-  console.log(pass1);
-  console.log(pass2);
-
   /**
    * Inicializar token Admin
    */

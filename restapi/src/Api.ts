@@ -80,8 +80,11 @@
             check('name').isLength({ min: 1 }).trim().escape()
         ], productsController.addProduct);
 
-    api.route('/products/name/:name')
+    api.route('/products/namepartial/:name')
         .get(productsController.getProductByPartialName);
+
+    api.route('/products/name/:name')
+        .get(productsController.getProductByName);
     
     api.route('/products/name/:name/:category')
         .get(productsController.getProductByCategoryException);
@@ -89,7 +92,6 @@
     api.route('/products/category/:category')
         .get(productsController.getProductByCategory);
         
-
     api.route('/products/price/:min/:max')
         .get(productsController.getProductByPrice);
 

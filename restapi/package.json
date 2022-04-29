@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "start": "ts-node-dev ./src/Server.ts ",
+    "e2e": "ts-node-dev ./tests/tests_e2e.ts ",
     "data": "python ./dist/src/data/data.py",
     "build": "tsc",
     "prod": "npm run build && node ./dist/src/Server.js",

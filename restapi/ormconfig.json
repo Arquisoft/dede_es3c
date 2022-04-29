@@ -12,6 +12,17 @@
         "moduleResolution": "node"
     },
     {
+        "name": "local",
+        "type": "mongodb",
+        "url": "mongodb://SergioArroni:julio321@localhost:27017/DeDesktop?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false",
+        "synchronize": true, 
+        "logging": false,
+        "entities": ["src/entities/*.ts"],
+        "useUnifiedTopology": true,
+        "useNewUrlParser": true,
+        "moduleResolution": "node"
+    },
+    {
         "name": "test",
         "type": "mongodb",
         "url": "mongodb://SergioArroni:julio321@localhost:27017/DeDesktop?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false",
@@ -23,12 +34,12 @@
         "moduleResolution": "node"
     },
     {
-        "name": "teste2e",
+        "name": "test_e2e",
         "type": "mongodb",
-        "url": "mongodb://SergioArroni:julio321@mongo:27017/DeDesktop?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false",
+        "url": "mongodb://SergioArroni:julio321@localhost:27017/DeDesktop?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false",
         "synchronize": true, 
         "logging": false,
-        "entities": ["../src/entities/*.ts"],
+        "entities": ["src/entities/*.ts"],
         "useUnifiedTopology": true,
         "useNewUrlParser": true,
         "moduleResolution": "node"

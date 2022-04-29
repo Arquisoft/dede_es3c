@@ -46,7 +46,7 @@ export class ProductController {
    */
   public async getProductByName(req: Request, res: Response) {
     try {
-      const product = await ProductService.getProductByName(
+      const product = await ProductService.getproductByName(
         req.app,
         req.params.name
       );
