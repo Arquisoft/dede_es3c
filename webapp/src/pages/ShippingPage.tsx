@@ -117,9 +117,18 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
     return productOrders;
   }
 
+  const parseAddress = () => {
+    var street = streetAddress.split(" ");
+
+    return street[0] + street[1] + "," + street[2] + "," + locality;
+  }
+
+
   const generateOrder = async (prods: OrderProduct[]) => {
     var email = "";
     var user = localStorage.getItem("currentUser");
+    var parsedAddress:string = parseAddress();
+    console.log(parsedAddress)
     if (user !== null){
       email = (await getUser(user)).email
     }
