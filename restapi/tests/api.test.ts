@@ -349,11 +349,11 @@ describe("products", () => {
    */
   it("insert a new product without being admin", async () => {
     const product = {
-      name: "Portatil HP ...",
-      description: "Un portatil muy bueno",
-      price: 600,
-      category: "Laptop",
-      url: "alguna"
+      name: "PC normal",
+      description: "Un PC normal",
+      price: 400,
+      category: "PC",
+      url: "url"
     };
 
     const response: Response = await request(app)
