@@ -1,0 +1,25 @@
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    text-align: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.photo {
+    object-fit: contain;
+}
+
+.text {
+    position: relative;
+    top: 35%;
+    left: 12.5%;
+    width: 75%;
+}
+
+.logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+}
