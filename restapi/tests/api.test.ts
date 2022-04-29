@@ -13,7 +13,7 @@ let clientToken: string;
 let userId: string;
 let productId: string;
 let orderId: string;
-let distributioncenterId: string;
+let order: object;
 
 beforeAll(async () => {
   app = express();
@@ -520,7 +520,7 @@ describe("orders", () => {
    * Test that insert a new order as admin.
    */
   it("insert a new order as admin", async () => {
-    const order = {
+    order = {
       user: "Chef@gmail.com",
       "products": [
         {
@@ -553,7 +553,6 @@ describe("orders", () => {
         }
       ]
     };
-
     const response: Response = await request(app)
       .post("/api/orders")
       .send(order)
@@ -566,26 +565,7 @@ describe("orders", () => {
   /**
    * Test that insert a new order as client.
    */
-   it("insert a new order as client", async () => {
-    const order = {
-      user: "Chef@gmail.com",
-      "products": [
-        {
-            "product": {
-                "name": "NiSuPu Monitor",
-                "description": "It's a bad Monitor",
-                "price": 69.96,
-                "category": "Monitors",
-                "urlPhoto": "https://res.cloudinary.com/dedesktop/image/upload/v1646938754/samples/ecommerce/HP_l9kqjo.jpg"
-            },
-            "quantity": 5,
-            "shippingPrice": 1,
-            "distributionCenter": {
-                "address": "Calle Valdes Salas, 11, 33007 Oviedo, Asturias"
-            },
-        }
-      ]
-    };
+   it("insert a new order as client", async () => {    
 
     const response: Response = await request(app)
       .post("/api/orders")
@@ -628,7 +608,7 @@ describe("orders", () => {
    */
   it("update orders without admin", async () => {
     const order = {
-      user: "prueba@gmail.com"
+      user: "usuario@gmail.com"
     };
 
     const response: Response = await request(app)
@@ -645,7 +625,7 @@ describe("orders", () => {
    */
   it("update orders without user", async () => {
     const order = {
-      name: "prueba@gmail.com"
+      user: "ejemplo@gmail.com"
     };
 
     const response: Response = await request(app)
@@ -733,7 +713,7 @@ describe("distribution centers", () => {
   });
 
   /**
-   * Test that insert a new disribution center as admin.
+   * Test that insert a new distribution center as admin.
    */
   it("insert a new distribution center as admin", async () => {
     const distributioncenter = {
@@ -749,7 +729,7 @@ describe("distribution centers", () => {
   });
 
   /**
-   * Test that insert a new product without being admin.
+   * Test that insert a new distribution center without being admin.
    */
   it("insert a new product without being admin", async () => {
     const distributioncenter = {
