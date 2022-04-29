@@ -79,7 +79,7 @@ beforeAll(async () => {
   adminToken = response.body.toString();
 
   /**
-   * Inicializar token Admin
+   * Inicializar token Client
    */
   const user = {
     username: "Cura",
@@ -413,7 +413,7 @@ describe("products", () => {
     const product = {
       name: "Portatil HP ...",
       description: "Un portatil ya no tan bueno",
-      price: 500,
+      price: 350,
       category: "Laptop",
       url: "alguna"
     };
@@ -455,7 +455,7 @@ describe("products", () => {
     const product = {
       name: "Portatil HP ...",
       description: "Un portatil ya no tan bueno",
-      price: 500,
+      price: 400,
       category: "Laptop",
       url: "alguna"
     };
