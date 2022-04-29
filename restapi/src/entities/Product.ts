@@ -7,10 +7,10 @@ export class Product {
     constructor(name: string, description: string, price: number, category: string, urlPhoto: string, stock: number) {
         this.name = name;
         this.description = description;
+        this.stock =  stock;
         this.price = price;
         this.category = category;
         this.urlPhoto = urlPhoto;
-        this.stock =  stock;
         this.id = uuidv4();
     }
 
@@ -34,8 +34,7 @@ export class Product {
 
     @Column()
     urlPhoto: string;
-
+    
     @Column()
     stock: number;
-
 }

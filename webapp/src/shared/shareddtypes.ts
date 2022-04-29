@@ -11,7 +11,15 @@ export type Product = {
   price: number,
   category: string,
   urlPhoto: string,
-  amount: number
+  amount:number
+}
+
+export type ProductToAdd = {
+  name: string,
+  description: string,
+  price: number,
+  category: string,
+  urlPhoto: string
 }
 
 export type Order = {
@@ -29,7 +37,7 @@ export type ProductInOrder = {
 }
 
 export type OrderProduct = {
-  product: Product
+  product: ProductToAdd
   quantity: number,
   shippingPrice: number;
   distributionCenter: DistributionCenter;

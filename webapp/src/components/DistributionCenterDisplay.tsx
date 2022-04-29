@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { DistributionCenter, Product } from '../shared/shareddtypes';
-import { FormControl, InputLabel, MenuItem, OutlinedInput, Select, SelectChangeEvent, Theme } from '@mui/material';
+import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 import { getDistributionCenters } from '../api/api';
 import { LangContext } from '../lang';
 
@@ -34,14 +34,14 @@ const DisplayDistributionCenters = (props: DistributionCenterProps) => {
           onChange={handleChange}
           autoWidth
           label="Center">
-         {centers.map ((center, i ) => {
-             {localStorage.setItem("Center"+i, center.address)}
+         {centers.map ((center) => {
              return (
                 <MenuItem value={center.address}>{center.address}</MenuItem>
              );
          } )}
           </Select>
         </FormControl>
+        {localStorage.setItem("Center " + props.product.name, distributionCenter)}
     </div>
     );
 }

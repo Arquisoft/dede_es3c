@@ -96,7 +96,7 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
   const generateOrderProduct = () => {
     var productOrders:  OrderProduct[] = [];
     for (let index = 0; index < cartProducts.length; index++) {
-      var center = localStorage.getItem("Center"+index);
+      var center = localStorage.getItem("Center " + cartProducts[index].name);
       var centerName = "";
       if (center !== null){
         centerName = center;
