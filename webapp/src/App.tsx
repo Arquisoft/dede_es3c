@@ -21,6 +21,7 @@ import ClientView from './pages/ClientView';
 import EditUserPage from './pages/EditUserPage';
 import Button from '@mui/material/Button';
 import AboutPage from './pages/AboutPage';
+import Footer from './components/Footer';
 
 const App: FC = () => {
   const { dispatch: {setUser}} = useContext(UserContext);
@@ -142,8 +143,8 @@ const App: FC = () => {
         </Button>
       )}
 
+      <Footer />
     </Router>
-    
 );
 }
 export default App;
