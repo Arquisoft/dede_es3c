@@ -13,7 +13,25 @@ let clientToken: string;
 let userId: string;
 let productId: string;
 let orderId: string;
-let order: object;
+const order = {
+  user: "Chef@gmail.com",
+  "products": [
+    {
+        "product": {
+            "name": "NiSuPu Monitor",
+            "description": "It's a bad Monitor",
+            "price": 69.96,
+            "category": "Monitors",
+            "urlPhoto": "https://res.cloudinary.com/dedesktop/image/upload/v1646938754/samples/ecommerce/HP_l9kqjo.jpg"
+        },
+        "quantity": 5,
+        "shippingPrice": 1,
+        "distributionCenter": {
+            "address": "Calle Valdes Salas, 11, 33007 Oviedo, Asturias"
+        },
+    }
+  ]
+};
 
 beforeAll(async () => {
   app = express();
@@ -520,39 +538,7 @@ describe("orders", () => {
    * Test that insert a new order as admin.
    */
   it("insert a new order as admin", async () => {
-    order = {
-      user: "Chef@gmail.com",
-      "products": [
-        {
-            "product": {
-                "name": "NiSuPu Monitor",
-                "description": "It's a bad Monitor",
-                "price": 69.96,
-                "category": "Monitors",
-                "urlPhoto": "https://res.cloudinary.com/dedesktop/image/upload/v1646938754/samples/ecommerce/HP_l9kqjo.jpg"
-            },
-            "quantity": 5,
-            "shippingPrice": 1,
-            "distributionCenter": {
-                "address": "Calle Valdes Salas, 11, 33007 Oviedo, Asturias"
-            },
-        },
-        {
-            "product": {
-                "name": "PC Master Race",
-                "description": "This computer programs only",
-                "price": 9999.54,
-                "category": "PC",
-                "urlPhoto": "https://res.cloudinary.com/dedesktop/image/upload/v1647193137/samples/ecommerce/PC_Master_dlbgig.webp"
-            },
-            "quantity": 6,
-            "shippingPrice": 1,
-            "distributionCenter": {
-                "address": "Calle Valdes Salas, 11, 33007 Oviedo, Asturias"
-            }
-        }
-      ]
-    };
+    
     const response: Response = await request(app)
       .post("/api/orders")
       .send(order)
@@ -590,13 +576,13 @@ describe("orders", () => {
    * Tests that update orders as admin
    */
   it("update orders as admin", async () => {
-    const order = {
+    const order1 = {
       user: "prueba@gmail.com"
     };
 
     const response: Response = await request(app)
       .put("/api/orders/" + orderId)
-      .send(order)
+      .send(order1)
       .set("Accept", "application/json")
       .set("Authorization", String(adminToken));
 
@@ -607,13 +593,13 @@ describe("orders", () => {
    * Tests that update orders without admin
    */
   it("update orders without admin", async () => {
-    const order = {
+    const order2 = {
       user: "usuario@gmail.com"
     };
 
     const response: Response = await request(app)
       .put("/api/orders/" + orderId)
-      .send(order)
+      .send(order2)
       .set("Accept", "application/json")
       .set("Authorization", String(clientToken));
 
@@ -731,9 +717,9 @@ describe("distribution centers", () => {
   /**
    * Test that insert a new distribution center without being admin.
    */
-  it("insert a new product without being admin", async () => {
+  it("insert a new distribution center without being admin", async () => {
     const distributioncenter = {
-      address: "Calle Ejemplo numero 8"
+      address: "Calle Piedra numero 8"
     };
 
     const response: Response = await request(app)
