@@ -1,4 +1,4 @@
-.container {
+.containerAbout2 {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     text-align: center;
@@ -6,20 +6,30 @@
     height: 100vh;
 }
 
-.photo {
+.containerAbout {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(100px, 1fr));
+    text-align: center;
+}
+
+.photoAbout {
     object-fit: contain;
 }
 
-.text {
+.textAbout {
     position: relative;
     top: 35%;
     left: 12.5%;
     width: 75%;
 }
 
-.logo {
+.logoAbout {
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: 25%;
+}
+
+.photoGitAbout {
+    width: 90%;
 }

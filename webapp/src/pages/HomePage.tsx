@@ -39,15 +39,15 @@ var items = [
 function Item(props: { item: { name: string; description: string; imageURL1: string; imageURL2: string; buttonName: string; buttonURL: string } }) {
     return (
         <Paper>
-            <div className="container">
+            <div className="containerHome">
                 <div>
-                    <img alt={props.item.name + "1"} src={props.item.imageURL1} className="photo" />
+                    <img alt={props.item.name + "1"} src={props.item.imageURL1} className="photoHome" />
                 </div >
                     <div>
-                    <img alt={props.item.name + "2"} src={props.item.imageURL2} className="photo" />
+                    <img alt={props.item.name + "2"} src={props.item.imageURL2} className="photoHome" />
                 </div>
-                <div className="column">
-                    <h3>{props.item.description}</h3>
+                <div className="columnHome">
+                    <h3 className="textHome">{props.item.description}</h3>
 
                     <Button
                         style={{
@@ -58,12 +58,13 @@ function Item(props: { item: { name: string; description: string; imageURL1: str
                         }}
                         variant="contained"
                         onClick={() => window.location.assign(props.item.buttonURL)}
+                        className="buttonHome"
                     >
                         {props.item.buttonName}
                     </Button>
 
-                    {(props.item.buttonName === "REGÍSTRATE") &&
-                        <h3>Ya eres miembro?</h3>
+                    {/*{(props.item.buttonName === "REGÍSTRATE") &&
+                        <h3 className="textHome">Ya eres miembro?</h3>
                     }
                     {(props.item.buttonName === "REGÍSTRATE") &&
                         <Button 
@@ -75,10 +76,11 @@ function Item(props: { item: { name: string; description: string; imageURL1: str
                             }}
                             variant="contained"
                             onClick={() => window.location.assign(props.item.buttonURL)}
+                            className="buttonHome"
                         >
                             LOGIN
                         </Button>
-                    }
+                    }*/}
                 </div>
             </div>
         </Paper>
@@ -106,8 +108,8 @@ const HomePage: FC<HomePageProps> = (props: HomePageProps) => {
     }
     else{
         return (
-            <div className="homeDiv">
-                <Carousel className="carousel">
+            <div className="divHome">
+                <Carousel className="carouselHome">
                     {
                         items.map((item, i) => <Item key={i} item={item} />)
                     }
