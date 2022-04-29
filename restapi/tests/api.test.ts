@@ -455,7 +455,7 @@ describe("products", () => {
     const product = {
       name: "Portatil HP ...",
       description: "Un portatil ya no tan bueno",
-      price: 400,
+      price: 450,
       category: "Laptop",
       url: "alguna"
     };
