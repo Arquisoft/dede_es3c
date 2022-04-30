@@ -40,7 +40,7 @@ This is the compilation of the identified risks ordered by priority that we must
 |Risk|How to avoid or minimize
 |Not knowing the technologies|We seek information and practice using them.
 |Posibility of a team member leaving|We will have good communication and help each other.
-|Being only 4 members| We have to do a hard work to develop tha application.
+|Being only 4 members| We have to do a hard work to develop the application.
 |===
 
 
