@@ -13,6 +13,7 @@ import '../styles/Catalog.scss';
 import GoToTopButton from '../components/GoToTopButton';
 import HorizontalSeparator from '../components/HorizontalSeparator';
 import Footer from '../components/Footer';
+import ProductDetailPage from './ProductDetailPage';
 
 interface CatalogPageProps {
     setUser: (user: string) => void
@@ -108,7 +109,7 @@ const Catalog = (props: CatalogPageProps) => {
                         </div>
                     </Form>
                 </div>
-                
+
                 <div className='filtrosCategoriaCatalog'>
                     <div>
                         <Button onClick={() => FilterByCategory("Monitors")} style={buttonStyle.buttonStyle1}>{translate('category.monitors')}</Button>
@@ -161,7 +162,7 @@ const Catalog = (props: CatalogPageProps) => {
             </div>
 
             <HorizontalSeparator />
-            
+
             <Grid className="gridCatalog">
                 {products?.map((item: Product) => {
                     return (
@@ -171,11 +172,13 @@ const Catalog = (props: CatalogPageProps) => {
                     );
                 })}
             </Grid>
-            
+
             <GoToTopButton />
-            
+
             <Footer />
         </div>
     );
+
+    
 };
 export default Catalog;

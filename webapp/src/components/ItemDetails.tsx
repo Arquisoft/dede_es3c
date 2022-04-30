@@ -9,6 +9,7 @@ import { getStockByProduct } from '../api/api';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Button from '@mui/material/Button'; 
 
 type Props = {
     item: Product;
@@ -34,6 +35,9 @@ const ItemDetails: React.FC<Props> = ({ item, setAmount }) => {
     return(
     <div>
         <h1>{item.name}</h1>
+        <Button onClick={() => localStorage.setItem("inDetail", "false")}>
+            <p>patata</p>
+        </Button>
         <Grid container>
             <img alt={item.name} src={item.urlPhoto} width="500" height="500"/>
             <p>{item.description}</p>

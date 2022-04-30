@@ -69,34 +69,14 @@ function Item(props: { item: { name: string; description: string; imageURL1: str
 }
 
 const HomePage: FC<HomePageProps> = (props: HomePageProps) => {
-    const { dispatch: { translate } } = useContext(LangContext);
-    const [page, setPage] = useState('');
-
-    if(page === 'catalog'){
-        return(
-            <Navigate to="/catalog" />
-        )
-    }
-    else if (page === 'login'){
-        return (
-            <Navigate to="/login" />
-        )
-    }
-    else if (page === 'signup'){
-        return (
-            <Navigate to="/signup" />
-        )
-    }
-    else{
-        return (
-            <div className="divHome">
-                <Carousel className="carouselHome">
-                    {
-                        items.map((item, i) => <Item key={i} item={item} />)
-                    }
-                </Carousel>
-            </div>
-        )
-    }
+    return (
+        <div className="divHome">
+            <Carousel className="carouselHome">
+                {
+                    items.map((item, i) => <Item key={i} item={item} />)
+                }
+            </Carousel>
+        </div>
+    )
 }
 export default HomePage;
