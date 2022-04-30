@@ -139,7 +139,12 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
   async function getAdd() {
     await getAddress(webID).then(address => {
       console.log(address)
-      if (address !== null){
+      if (address.msg === "POD not found" || address.msg === "Address not found") {
+        Toast.fire({
+          icon: 'error',
+          title: 'We could not get your address'});
+      }
+      else if (address !== null){
         setCountryName(address['country']);
         setLocality(address['locality']);
         setPostalCode(address['postalCode']);
@@ -149,10 +154,6 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
           icon: 'success',
           title: '¡We got your addres! check it out'
         })
-      } else {
-        Toast.fire({
-          icon: 'error',
-          title: 'We could not get your address'});
       }
   }, () => {
     Toast.fire({
