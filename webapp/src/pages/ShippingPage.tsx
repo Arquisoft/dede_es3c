@@ -7,8 +7,6 @@ import Swal from 'sweetalert2';
 import { Navigate, Link } from "react-router-dom";
 import { LangContext } from '../lang';
 import DisplayDistributionCenters from "../components/DistributionCenterDisplay";
-import Item from "../components/Item";
-import { CreditCard } from "@mui/icons-material";
 
 const style = {
   position: 'absolute' as 'absolute',

@@ -4,6 +4,7 @@ import { Order } from '../entities/Order';
 import { OrderService } from '../services/Order_Service';
 import axios from 'axios'
 import { ProductOrderService } from '../services/ProductOrder_Service';
+import { ProductStoreService } from '../services/ProductStore_Service';
 
 export class OrderController {
 
@@ -102,18 +103,16 @@ export class OrderController {
             var price = 0.0;
             //Source
             var d; 
-            for ( var i = 0;  i< orderBody.products.length; i++) {       
-                //await DistributionCenterService.decrementProductStock(req.app,p.distributionCenter.id,newStore)
+            for (var p of orderBody.products) {
+                //await ProductStoreService.decrementProductStock(req.app,p.product.id,p.distributionCenter.id,p.quantity)
                 var sp = 0.0;
-                source = orderBody.products[i].distributionCenter.address;
-                console.log(source);
+                source = p.distributionCenter.address;
                 url = 'https://maps.googleapis.com/maps/api/distancematrix/json?destinations='+destination+'&origins='+source+'&key=AIzaSyANy46m-FN8Sa9aSpIiLpSWx3xl7M2oX3s'
-                console.log("lo que me interesa");
                 response = await axios.get(url)
                 d = response.data.rows[0].elements[0].distance.value;
                 sp = calculateShippingPrice(d);
-                await ProductOrderService.updateShippingPrice(req.app,orderBody.products[i].id,sp);
-                price+=orderBody.products[i].product.price*orderBody.products[i].quantity + sp;
+                await ProductOrderService.updateShippingPrice(req.app,p.id,sp);
+                price+=p.product.price*p.quantity + sp;
             }
             orderBody.price = price;
             orderBody.priceBeforeIVA = price/1.21;
