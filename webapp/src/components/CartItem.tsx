@@ -6,6 +6,7 @@ import handleAddToCart from '../components/HandleAddToCart';
 import handleRemoveFromCart from '../components/HandleRemoveFromCart';
 import { useState } from "react";
 import { getStockByProduct } from '../api/api';
+import '../styles/Cart.scss';
 
 type CartItemProps = {
     item: Product;
@@ -27,33 +28,50 @@ const CartItem: React.FC<CartItemProps> = ({ item, setAmount }) => {
     }, [item.name]);
 
     return(
-    <div>
         <div>
-            <h3>{item.name}</h3>
-            <div className="information">
-                <p>{translate('cartItem.price')}: $ {item.price}</p>
-                <p>Subtotal: $ {(item.price * item.amount).toFixed(2)}</p>
-                <p>{translate('cartItem.total')}: $ {(item.price * item.amount * 1.21).toFixed(2)}</p>
-            </div>
-            <div className="buttons">
-                <Button
-                    size="small"
-                    disableElevation
-                    variant="contained"
-                    onClick={() => removeFromCart(item.name, setAmount)}
-                > - </Button>
-                <p>{item.amount}</p>
-                <Button
-                    size="small"
-                    disableElevation
-                    variant="contained"
-                    onClick={() => addToCart(item, setAmount, '1', stock)}
-                > + </Button>
+            <div className='cartItem'>
+                <div className='cartItemDetails'>
+                        <h3 className='cartItemItemName'>{item.name}</h3>
+                        <div className="information">
+                            <p>{translate('cartItem.price')}: $ {item.price}</p>
+                            <p>Subtotal: $ {(item.price * item.amount).toFixed(2)}</p>
+                            <p>{translate('cartItem.total')}: $ {(item.price * item.amount * 1.21).toFixed(2)}</p>
+                        </div>
+                </div>
+                
+                <div className='cartItemContainer'>
+                    <img src={item.urlPhoto} alt={item.name} width="200" height="200" className='cartItemImage' />
+
+                    <div className='cartItemButtons'>
+                        <Button
+                            size="small"
+                            disableElevation
+                            variant="contained"
+                            onClick={() => removeFromCart(item.name, setAmount)}
+                            className="cartItemLeftButton"
+                            style={{
+                                borderRadius: 15,
+                                padding: "5px 10px",
+                                fontSize: "15px",
+                            }}
+                        > - </Button>
+                        <p className="cartItemAmount">{item.amount}</p>
+                        <Button
+                            size="small"
+                            disableElevation
+                            variant="contained"
+                            onClick={() => addToCart(item, setAmount, '1', stock)}
+                            style={{
+                                borderRadius: 15,
+                                padding: "5px 10px",
+                                fontSize: "15px",
+                            }}
+                        > + </Button>
+                    </div>
+                </div>
             </div>
         </div>
-        <img src={item.urlPhoto} alt={item.name} width="200" height="200"/>
-    </div>
     )
-    };
+};
 
 export default CartItem;

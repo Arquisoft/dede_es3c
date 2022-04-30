@@ -101,14 +101,14 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
                       </Badge>
                     </Button>
                   }
-
+                </div>
+              
+                <div className='rightHeader'>
                   <Link to="/about" className="nav-link">
                     <img alt="" src={aboutIcon} width="20" height="20" className="d-inline-block align-top" />
                     Sobre nosotros
                   </Link>
-                </div>
-              
-                <div className='rightHeader'>
+
                   <NavDropdown title={translate('nav.languaje')} id="idioma-dropdown" className="ms-auto">
                     <Dropdown.Item as="button" onClick={() => chooseLanguageHandler('ES')}>
                       <img alt="" src={spanishIcon} width="20" height="20" className="d-inline-block align-top" />
