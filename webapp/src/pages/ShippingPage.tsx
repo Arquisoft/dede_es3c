@@ -83,7 +83,6 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
       toast.addEventListener('mouseleave', Swal.resumeTimer)
     }
   })
-
   const showConfirmation = () => {
     Swal.fire({
       title: "Success",
@@ -150,6 +149,10 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
           icon: 'success',
           title: '¡We got your addres! check it out'
         })
+      } else {
+        Toast.fire({
+          icon: 'error',
+          title: 'We could not get your address'});
       }
   }, () => {
     Toast.fire({
