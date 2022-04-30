@@ -9,6 +9,8 @@ import { Paper, Table, TableContainer, TableHead } from "@mui/material";
 import { LangContext } from "../lang";
 import { Navigate, Link } from "react-router-dom";
 import GoToTopButton from '../components/GoToTopButton';
+import '../styles/Orders.scss';
+import { Button } from '@mui/material'
 
 interface OrdersPageProps {
     setUser:(user:string) => void
@@ -40,7 +42,7 @@ const OrdersPage: FC<OrdersPageProps> = (props: OrdersPageProps) => {
     if (orders.length === 0) {
       return (
         <div className="main">
-          <h1 aria-label="myOrdersTitleWithout">{translate("orders.title")}</h1>
+          <h1 aria-label="myOrdersTitleWithout">T-Pedidos realizados</h1>
           <div className="mainEmptyContainer" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
             <h2>{translate("orders.empty")}</h2>
             <Link to="/catalog" >{translate("orders.shopping")}</Link>
@@ -51,7 +53,7 @@ const OrdersPage: FC<OrdersPageProps> = (props: OrdersPageProps) => {
     else{
       return (
         <div className="mainContainer" style={{ alignContent: "center", alignItems: "center", alignSelf: "center" }}>
-          <h1>{translate("orders.title")}</h1>
+          <h1>T-Pedidos realizados</h1>
           <div style={{ alignContent: "center", alignItems: "center" }}>
             <TableContainer component={Paper} sx={{ maxHeight: "440", maxWidth: "1000", alignSelf: "center" }}>
               <Table stickyHeader aria-label="sticky table">
@@ -80,9 +82,18 @@ const OrdersPage: FC<OrdersPageProps> = (props: OrdersPageProps) => {
               </Table>
             </TableContainer>
           </div>
-          <div style={{ alignContent: "center" }}>
-            <Link to="/catalog">{translate("orders.shopping")}</Link>
+          <div className="goToCatalogButtonOrders">
+            <Button
+              onClick={() => window.location.assign("/catalog")}
+              style={{
+                borderRadius: 15,
+                backgroundColor: "#e8e8e8",
+                padding: "15px 30px",
+                fontSize: "13px"
+              }}
+            >{translate('orders.shopping')}</Button>
           </div>
+          
           <GoToTopButton />
         </div>
       );
