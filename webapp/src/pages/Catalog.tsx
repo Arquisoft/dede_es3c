@@ -9,6 +9,7 @@ import { Grid } from "@mui/material";
 import Slider from '@mui/material/Slider';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import '../styles/Catalog.scss';
 
 interface CatalogPageProps {
     setUser: (user: string) => void
@@ -73,9 +74,9 @@ const Catalog = (props: CatalogPageProps) => {
             <Button onClick={() => FilterByCategory("Laptop")}>{translate('category.laptop')}</Button>
 
             <Box sx={{ width: 300 }}>
-                <TextField id="outlined-basic" label="Min" variant="outlined" value={sliderValue[0] + "$"} size="small" />
+                <TextField id="outlined-basic" variant="outlined" value={sliderValue[0] + "$"} size="small" />
                 <p>To</p>
-                <TextField id="outlined-basic" label="Max" variant="outlined" value={sliderValue[1] + "$"} size="small"/>
+                <TextField id="outlined-basic" variant="outlined" value={sliderValue[1] + "$"} size="small"/>
                 <Slider
                     getAriaLabel={() => 'Minimum distance'}
                     value={sliderValue}
@@ -87,12 +88,12 @@ const Catalog = (props: CatalogPageProps) => {
                 <Button onClick={() => FilterByPrice(sliderValue[0], sliderValue[1])}>Filtrar por precio</Button>
             </Box>
 
-            <Grid container spacing={3}>
+            <Grid className="gridCatalog">
                 {products?.map((item: Product) => {
                     return (
-                        <Grid item key={item.name} xs={12} sm={4}>
+                        <div>
                             <Item item={item} setAmount={props.setAmount} />
-                        </Grid>
+                        </div>
                     );
                 })}
             </Grid>

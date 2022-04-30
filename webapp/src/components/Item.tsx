@@ -14,6 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { getStockByProduct } from '../api/api';
+import '../styles/ItemCatalog.scss';
 
 type Props = {
     item: Product;
@@ -42,43 +43,48 @@ const Item = (props: Props) => {
 
     return (
 
-    <div>
-        <Card key={props.item.name}>
-            <CardHeader title={props.item.name} />
-                <Link to={"/products/name/" + props.item.name} className="nav-link" key={props.item.name}>
-                <CardMedia component="img" width="200" height="200" src={props.item.urlPhoto} alt={props.item.name} />
+        <div>
+        <Card key={props.item.name} >
+            <Link to={"/products/name/" + props.item.name} key={props.item.name} className="nav-link" >
+                <CardMedia component="img" image={props.item.urlPhoto} alt={props.item.name} className="imageItemCatalog"/>
             </Link>
-            <CardContent>
-                $ {props.item.price}
-            </CardContent>
+            <CardHeader title={props.item.name} titleTypographyProps={{ variant: 'h6' }} className="titleItemCatalog" />
+
+            <div className='addToCart'>
+                    <CardContent className="priceItemCatalog">
+                        $ {props.item.price}
+                    </CardContent>
+
+                    <CardActions disableSpacing>
+                        {
+                            (!localStorage.getItem("currentUser")?.includes("admin")) &&
+                            <div>
+                                <Box sx={{ minWidth: 70 }}>
+                                    <FormControl fullWidth>
+                                        <Select
+                                            value={itemAmount}
+                                            onChange={handleChange}
+                                            size="small"
+                                            displayEmpty
+                                            autoWidth
+                                        >
+
+                                            {Array.from({ length: stock + 1 }, (_, i) => <MenuItem value={i} key={i}>{i}</MenuItem>)}
+                                        </Select>
+                                    </FormControl>
+                                </Box>
+
+                                <IconButton aria-label={"add to cart" + props.item.name} disableFocusRipple size="small" onClick={() => handleAddToCart(props.item, props.setAmount, itemAmount, stock)}>
+                                    <AddShoppingCartIcon />
+                                    Add to cart
+                                </IconButton>
+                            </div>
+                        }
+                    </CardActions>
+            </div>
             
-            <CardActions disableSpacing>
-                    {
-                        (!localStorage.getItem("currentUser")?.includes("admin")) &&
-                <Box sx={{ minWidth: 70 }}>
-                    <FormControl fullWidth>
-                        <Select
-                            value={itemAmount}
-                            onChange={handleChange}
-                            size="small"
-                            displayEmpty
-                            autoWidth
-                        >
-                                {Array.from({ length: stock + 1 }, (_, i) => <MenuItem value={i} key={i}>{i}</MenuItem>)}
-                            
-                        </Select>
-                    </FormControl>
-                </Box>
-}
-                <IconButton aria-label={"add to cart" + props.item.name} disableFocusRipple size="small" onClick={() => handleAddToCart(props.item, props.setAmount, itemAmount, stock)}>
-                    {
-                        (!localStorage.getItem("currentUser")?.includes("admin")) &&
-                        <AddShoppingCartIcon />
-                    }
-                    Add to cart
-                </IconButton>
                 <p>Stock: {stock}</p>
-            </CardActions>
+            
         </Card>
     </div>
 

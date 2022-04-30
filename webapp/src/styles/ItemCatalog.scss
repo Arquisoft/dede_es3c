@@ -1,0 +1,17 @@
+.imageItemCatalog {
+    height: 300px;
+    width: 300px;
+    object-fit: contain;
+    margin: auto;
+}
+
+.priceItemCatalog {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.titleItemCatalog {
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}

@@ -1,0 +1,8 @@
+.gridCatalog {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(200px,1fr));
+    column-gap: 10px;
+    row-gap: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
