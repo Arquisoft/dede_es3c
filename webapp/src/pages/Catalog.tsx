@@ -12,6 +12,7 @@ import TextField from '@mui/material/TextField';
 import '../styles/Catalog.scss';
 import GoToTopButton from '../components/GoToTopButton';
 import HorizontalSeparator from '../components/HorizontalSeparator';
+import Footer from '../components/Footer';
 
 interface CatalogPageProps {
     setUser: (user: string) => void
@@ -170,10 +171,10 @@ const Catalog = (props: CatalogPageProps) => {
                     );
                 })}
             </Grid>
+            
             <GoToTopButton />
             
-            <HorizontalSeparator />
-            
+            <Footer />
         </div>
     );
 };

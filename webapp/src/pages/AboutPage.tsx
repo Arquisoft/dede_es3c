@@ -2,6 +2,8 @@ import { FC, useContext } from "react";
 import logo from '../img/logo-dede.svg';
 import { LangContext } from '../lang';
 import '../styles/About.scss';
+import HorizontalSeparator from '../components/HorizontalSeparator';
+import Footer from '../components/Footer';
 
 interface HomePageProps {
     setUser: (user: string) => void
@@ -15,6 +17,8 @@ const HomePage: FC<HomePageProps> = (props: HomePageProps) => {
             <div>
                 <img alt="Logo" src={logo} className="logoAbout" />
             </div>
+
+            <HorizontalSeparator />
 
             <div className="containerAbout">
                 <div>
@@ -45,6 +49,11 @@ const HomePage: FC<HomePageProps> = (props: HomePageProps) => {
                     <br></br>
                     <a href="https://arquisoft.github.io/dede_es3c/">Documentación del proyecto en GitHub</a>
                 </div>
+
+            </div>
+
+            <div className="footerPositionAbout">
+                <Footer />
             </div>
         </>
     )

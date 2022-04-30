@@ -8,6 +8,8 @@ import { Button } from "react-bootstrap";
 import Swal from 'sweetalert2';
 import { LangContext } from '../lang';
 import { Link } from 'react-router-dom';
+import '../styles/Login.scss';
+import Footer from '../components/Footer';
 
 const checkParams = (text: string) => {
     return text === "" || text === null;
@@ -108,6 +110,10 @@ const LoginPage: FC<LoginPageProps> = (props: LoginPageProps) => {
               </CardContent>
             </Card>
         </Container>
+
+        <div className="footerPositionLogin">
+          <Footer />
+        </div>
     </div>
     );
 } 

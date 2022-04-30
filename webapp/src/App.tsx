@@ -117,8 +117,6 @@ const App: FC = () => {
           }
         />
       </Routes>
-
-      <Footer />
     </Router>
 );
 }

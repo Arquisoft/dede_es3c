@@ -51,7 +51,7 @@ function Item(props: { item: { name: string; description: string; imageURL1: str
 
                     <Button
                         style={{
-                            borderRadius: 35,
+                            borderRadius: 15,
                             backgroundColor: "#e8e8e8",
                             padding: "18px 36px",
                             fontSize: "18px"

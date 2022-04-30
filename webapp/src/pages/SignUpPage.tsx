@@ -11,6 +11,8 @@ import { User } from "../shared/shareddtypes";
 import { Button } from "react-bootstrap";
 import { Navigate } from "react-router-dom";
 import { LangContext } from '../lang';
+import '../styles/Signup.scss';
+import Footer from '../components/Footer';
 
 interface SignUpProps{
     setUser: (user:string) => void
@@ -148,6 +150,10 @@ const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
                 </CardContent>
             </Card>
         </Container>
+
+        <div className="footerPositionSignup">
+            <Footer />
+        </div>
     </div>
     );
   }
