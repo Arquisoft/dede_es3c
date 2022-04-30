@@ -14,7 +14,7 @@ let userId: string;
 let productId: string;
 let orderId: string;
 const order = {
-  user: "Chef@gmail.com",
+  "user": "Cura@jaja.com",
   "products": [
     {
         "product": {
@@ -30,7 +30,8 @@ const order = {
             "address": "Calle Valdes Salas, 11, 33007 Oviedo, Asturias"
         },
     }
-  ]
+  ],
+  "address": "Calle Uria numero 10"
 };
 
 beforeAll(async () => {
