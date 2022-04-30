@@ -50,40 +50,45 @@ const Item = (props: Props) => {
             </Link>
             <CardHeader title={props.item.name} titleTypographyProps={{ variant: 'h6' }} className="titleItemCatalog" />
 
-            <div className='addToCart'>
-                    <CardContent className="priceItemCatalog">
-                        $ {props.item.price}
-                    </CardContent>
-
-                    <CardActions disableSpacing>
-                        {
-                            (!localStorage.getItem("currentUser")?.includes("admin")) &&
-                            <div>
-                                <Box sx={{ minWidth: 70 }}>
-                                    <FormControl fullWidth>
-                                        <Select
-                                            value={itemAmount}
-                                            onChange={handleChange}
-                                            size="small"
-                                            displayEmpty
-                                            autoWidth
-                                        >
-
-                                            {Array.from({ length: stock + 1 }, (_, i) => <MenuItem value={i} key={i}>{i}</MenuItem>)}
-                                        </Select>
-                                    </FormControl>
-                                </Box>
-
-                                <IconButton aria-label={"add to cart" + props.item.name} disableFocusRipple size="small" onClick={() => handleAddToCart(props.item, props.setAmount, itemAmount, stock)}>
-                                    <AddShoppingCartIcon />
-                                    Add to cart
-                                </IconButton>
-                            </div>
-                        }
-                    </CardActions>
-            </div>
             
-                <p>Stock: {stock}</p>
+                <CardContent className="priceItemCatalog">
+                    $ {props.item.price}
+                </CardContent>
+
+                
+                    <CardActions disableSpacing className='addToCartZone'>
+                    <div className='stockItemCatalog'>
+                        <p>Stock: {stock}</p>
+                        </div>
+                        
+                    {
+                        (!localStorage.getItem("currentUser")?.includes("admin")) &&
+                        <div className='addToCartSelectorButton'>
+                            <Box className="selectorItemCatalog">
+                                <FormControl fullWidth>
+                                    <Select
+                                        value={itemAmount}
+                                        onChange={handleChange}
+                                        size="small"
+                                        displayEmpty
+                                        autoWidth
+                                    >
+
+                                        {Array.from({ length: stock + 1 }, (_, i) => <MenuItem value={i} key={i}>{i}</MenuItem>)}
+                                    </Select>
+                                </FormControl>
+                            </Box>
+
+                            <IconButton aria-label={"add to cart" + props.item.name} disableFocusRipple size="small" onClick={() => handleAddToCart(props.item, props.setAmount, itemAmount, stock)} className="buttonItemCatalog" >
+                                <AddShoppingCartIcon />
+                                Add to cart
+                            </IconButton>
+                        </div>
+                    }
+                </CardActions>
+            
+            
+                
             
         </Card>
     </div>
