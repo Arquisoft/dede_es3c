@@ -44,7 +44,7 @@
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
-        "test": "react-scripts test --coverage --watchAll",
+        "test": "react-scripts test --coverage",
         "test:e2e": "cd e2e && jest",
         "eject": "react-scripts eject",
         "prod": "ts-node-dev ./server.ts"
@@ -85,9 +85,6 @@
         "ts-jest": "^27.1.2",
         "ts-node-dev": "^1.1.8"
     },
-    "jest": {
-        "collectCoverageFrom":["./pages/*.tsx"]
-      },
     "description": "In this case we are using React with Typescript for the webapp. Lets create the app in the directory webapp with the following command (make sure you have npm installed in your system):\r ```console\r npx create-react-app my-app --template typescript\r ```\r At this point we can already run the app with:\r ```console\r cd webapp\r npm start\r ```\r The app will launch and it will be listening in port 3000. At this point this app is a Hello World app in React.",
     "main": "index.js",
     "author": "",
