@@ -35,8 +35,7 @@ prod1 = {
 		"description":"It's a bad Monitor",
         "price":69.96,
 		"category":"Monitors",
-		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1646938754/samples/ecommerce/HP_l9kqjo.jpg",
-		"stock":34
+		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1646938754/samples/ecommerce/HP_l9kqjo.jpg"
 		}
 prod2 = {
 		"id": prod2_id,
@@ -44,8 +43,7 @@ prod2 = {
 		"description":"It's a good Monitor",
         "price":99.99,
 		"category":"Monitors",
-		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1646938754/samples/ecommerce/NiSiPu_dfue3n.jpg",
-		"stock":36
+		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1646938754/samples/ecommerce/NiSiPu_dfue3n.jpg"
 		}
 prod3 = {
 		"id": prod3_id,
@@ -53,8 +51,7 @@ prod3 = {
 		"description":"It's a bad Laptop",
         "price":56.5,
 		"category":"Laptop",
-		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1647193157/samples/ecommerce/Portatil_Malo_so3bll.jpg",
-		"stock":58
+		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1647193157/samples/ecommerce/Portatil_Malo_so3bll.jpg"
 		}
 prod4 = {
 		"id": prod4_id,
@@ -62,8 +59,7 @@ prod4 = {
 		"description":"It's a good Laptop",
         "price":345.99,
 		"category":"Laptop",
-		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1647193012/samples/ecommerce/Portatil_bueno.jpg",
-		"stock":95
+		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1647193012/samples/ecommerce/Portatil_bueno.jpg"
 		}
 prod5 = {
 		"id": prod5_id,
@@ -71,8 +67,7 @@ prod5 = {
 		"description":"It's a very good monitor",
         "price":842.99,
 		"category":"Monitors",
-		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1647193343/samples/ecommerce/Deus_Monitor_awrfqo.jpg",
-		"stock":23
+		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1647193343/samples/ecommerce/Deus_Monitor_awrfqo.jpg"
 		}
 prod6 = {
 		"id": prod6_id,
@@ -80,8 +75,7 @@ prod6 = {
 		"description":"It is so expensive because it has RGB",
         "price":8400.99,
 		"category":"Graphic_card",
-		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1647193197/samples/ecommerce/Grafica_NVIDIA_olazl1.jpg",
-		"stock":6
+		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1647193197/samples/ecommerce/Grafica_NVIDIA_olazl1.jpg"
 		}
 prod7 = {
 		"id": prod7_id,
@@ -89,8 +83,7 @@ prod7 = {
 		"description":"Sitting here is like being on a cloud",
         "price":485.99,
 		"category":"Chair",
-		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1647193125/samples/ecommerce/Cloud_h9hgsc.png",
-		"stock":10
+		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1647193125/samples/ecommerce/Cloud_h9hgsc.png"
 		}
 prod8 = {
 		"id": prod8_id,
@@ -98,8 +91,7 @@ prod8 = {
 		"description":"This graph gets hotter than hell",
         "price":7823.65,
 		"category":"Graphic_card",
-		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1647193186/samples/ecommerce/Grafica_AMD_mwbknw.jpg",
-		"stock":18
+		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1647193186/samples/ecommerce/Grafica_AMD_mwbknw.jpg"
 		
 		}
 prod9 = {
@@ -108,8 +100,7 @@ prod9 = {
 		"description":"This computer programs only",
         "price":9999.54,
 		"category":"PC",
-		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1647193137/samples/ecommerce/PC_Master_dlbgig.webp",
-		"stock":40
+		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1647193137/samples/ecommerce/PC_Master_dlbgig.webp"
 		}
 prod10 = {
 		"id": prod10_id,
@@ -117,8 +108,7 @@ prod10 = {
 		"description":"A good software architect will use this humble PC",
         "price":49.34,
 		"category":"PC",
-		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1647193512/samples/ecommerce/ElHumildePC_sp9ovk.webp",
-		"stock":4
+		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1647193512/samples/ecommerce/ElHumildePC_sp9ovk.webp"
 		}
 
 
@@ -211,7 +201,7 @@ dc1 = {
 }
 dc2 = {
 		"id": dc2_id,
-		"address": "Escuela Tecnica Superior de Ingeniería Informatica, Universidad de Sevilla, 41012 Sevilla",
+		"address": "Escuela Tecnica Superior de Ingenieria Informatica, Universidad de Sevilla, 41012 Sevilla",
 }	
 # Insert Data
 rec_distcenter_id1=collection.insert_one(dc1)
@@ -338,18 +328,21 @@ prodord1 = {
 		"id": str(uuid.uuid4()),
 		"product": prod1,
 		"quantity": 5,
+		"shippingPrice": 1,
 		"distributionCenter": dc1
 		}
 prodord2 = {
 		"id": str(uuid.uuid4()),
 		"product": prod3,
 		"quantity": 2,
+		"shippingPrice": 3,
 		"distributionCenter": dc1
 		}
 prodord3 = {
 		"id": str(uuid.uuid4()),
 		"product": prod9,
 		"quantity": 6,
+		"shippingPrice": 1.5,
 		"distributionCenter": dc1
 		}
 # Insert Data

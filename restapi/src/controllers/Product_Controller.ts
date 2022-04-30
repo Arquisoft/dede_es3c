@@ -141,8 +141,7 @@ export class ProductController {
         req.body.description,
         req.body.price,
         req.body.category,
-        req.body.urlPhoto,
-        req.body.stock
+        req.body.urlPhoto
       );
       const product = await ProductService.updateProduct(
         req.app,
@@ -163,7 +162,7 @@ export class ProductController {
    * @param res Response
    * @returns product with status 200 or error 500
    */
-  public async decrementProductStock(req: Request, res: Response) {
+ /* public async decrementProductStock(req: Request, res: Response) {
     try {
       const product = await ProductService.getProductById(
         req.app,
@@ -191,7 +190,7 @@ export class ProductController {
    * @param res Response
    * @returns product with status 200 or error 500
    */
-  public async increaseProductStock(req: Request, res: Response) {
+  /*public async increaseProductStock(req: Request, res: Response) {
     try {
       const product = await ProductService.getProductById(
         req.app,
@@ -211,7 +210,7 @@ export class ProductController {
     } catch (error) {
       res.status(500).json({ error: "Error on update Product: " + error });
     }
-  }
+  }*/
 
   /**
    * Delete product
@@ -248,8 +247,7 @@ export class ProductController {
         req.body.description,
         req.body.price,
         req.body.category,
-        req.body.urlPhoto,
-        req.body.stock
+        req.body.urlPhoto
       );
       const product = await ProductService.addProduct(req.app, productBody);
       product
