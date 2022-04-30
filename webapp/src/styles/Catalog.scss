@@ -6,3 +6,59 @@
     margin-left: 10px;
     margin-right: 10px;
 }
+
+.sliderBoxes {
+    display: grid;
+    grid-template-columns: 1fr 0.1fr 1fr;
+}
+
+.filtroPrecioCatalog {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    width: 300px;
+    margin-left: auto;
+    margin-right: 30px;
+}
+
+.sliderIzq {
+    margin-right: 5px;
+}
+
+.toLabelCatalog {
+    position: relative;
+    top: 6px;
+}
+
+.sliderDer {
+    margin-left: 5px;
+}
+
+.segundaFilaFiltroPrecio {
+    display: grid;
+    grid-template-columns: 1fr 0.5fr;
+    position: relative;
+    left: 20px;
+}
+
+.filtrosCatalog {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    position: relative;
+    left: 15px;
+}
+
+.filtroTextoCatalog {
+    display: grid;
+    grid-template-columns: 1fr 0.2fr;
+}
+
+.sliderBarCatalog {
+    position: relative;
+    right: 10px;
+}
+
+.sliderFilterButton {
+    position: relative;
+    left: 12px;
+    top: 2px;
+}

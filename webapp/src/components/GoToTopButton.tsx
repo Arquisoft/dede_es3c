@@ -5,6 +5,7 @@ import '../styles/GoToTopButton.scss';
 import { Grid } from "@mui/material";
 
 const GoToTopButton = () => {
+    const [showButton, setShowButton] = useState(true);
 
     const [isSticky, setSticky] = useState(false);
     const ref = useRef<HTMLInputElement>(null);
@@ -26,9 +27,17 @@ const GoToTopButton = () => {
             document.removeEventListener('click', handleClickOutside);
             window.removeEventListener('scroll', () => handleScroll);
         }
-
-
     }, [handleClickOutside]);
+
+    useEffect(() => {
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 300) {
+                setShowButton(true);
+            } else {
+                setShowButton(false);
+            }
+        });
+    }, []);
 
     const handleScroll = () => {
         if (ref && ref.current && ref.current.getBoundingClientRect()) {
@@ -60,5 +69,13 @@ const GoToTopButton = () => {
         </div>
     );
 }
+
+{/*showButton && (
+        <Button onClick={scrollToTop} className="back-to-top">
+          &#8679;
+        </Button>
+      )*/}
+
+{/*<GoToTopButton />*/ }
 
 export default GoToTopButton;

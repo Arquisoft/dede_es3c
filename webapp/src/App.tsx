@@ -19,32 +19,12 @@ import { Drawer } from "@mui/material";
 import { OpenContext } from './OpenCart';
 import ClientView from './pages/ClientView';
 import EditUserPage from './pages/EditUserPage';
-import Button from '@mui/material/Button';
 import AboutPage from './pages/AboutPage';
 import Footer from './components/Footer';
-import GoToTopButton from './components/GoToTopButton';
 
 const App: FC = () => {
   const { dispatch: {setUser}} = useContext(UserContext);
   const { dispatch: { setOpen, setAmount } } = useContext(OpenContext);
-  const [showButton, setShowButton] = useState(true);
-
-  useEffect(() => {
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 300) {
-        setShowButton(true);
-      } else {
-        setShowButton(false);
-      }
-    });
-  }, []);
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  };
 
   return (
     <Router>
@@ -137,14 +117,6 @@ const App: FC = () => {
           }
         />
       </Routes>
-
-      {/*showButton && (
-        <Button onClick={scrollToTop} className="back-to-top">
-          &#8679;
-        </Button>
-      )*/}
-
-      {/*<GoToTopButton />*/}
 
       <Footer />
     </Router>

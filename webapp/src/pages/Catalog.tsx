@@ -65,30 +65,59 @@ const Catalog = (props: CatalogPageProps) => {
 
     return (
         <div>
-            <Form>
-                <FormControl type="search" value={val} placeholder={translate('catalog.search')} className="me-2" aria-label="Search" onChange={e => {setNameFilter(e.target.value); setVal(e.target.value)}}/>
-                <Button onClick={() => FilterByName(nameFilter)} >{translate('catalog.search')}</Button>
-            </Form>
+            <div className='filtrosCatalog'>
+                <div>
+                    <Form className='filtroTextoCatalog'>
+                        <div>
+                            <FormControl type="search" value={val} placeholder={translate('catalog.search')} className="me-2" aria-label="Search" onChange={e => { setNameFilter(e.target.value); setVal(e.target.value) }} />
+                        </div>
+                        <div className="botonFiltroTexto">
+                            <Button onClick={() => FilterByName(nameFilter)} >{translate('catalog.search')}</Button>
+                        </div>
+                    </Form>
+                </div>
+                
+                <div className='filtrosCategoriaCatalog'>
+                    <Button onClick={() => FilterByCategory("Monitors")}>{translate('category.monitors')}</Button>
+                    <Button onClick={() => FilterByCategory("Laptop")}>{translate('category.laptop')}</Button>
+                </div>
 
-            <Button onClick={() => { reloadItems(); setVal("") }}>{translate('category.reset')}</Button>
-            <Button onClick={() => FilterByCategory("Monitors")}>{translate('category.monitors')}</Button>
-            <Button onClick={() => FilterByCategory("Laptop")}>{translate('category.laptop')}</Button>
+                <div>
+                    <Box sx={{ width: 300 }} className='filtroPrecioCatalog'>
+                        <div className='sliderBoxes'>
+                            <div className="sliderIzq">
+                                <TextField id="outlined-basic" variant="outlined" value={sliderValue[0] + "$"} size="small" />
+                            </div>
+                            <div className="toLabelCatalog">
+                                <p>To</p>
+                            </div>
+                            <div className="sliderDer">
+                                <TextField id="outlined-basic" variant="outlined" value={sliderValue[1] + "$"} size="small" />
+                            </div>
+                        </div>
+                        <div className="segundaFilaFiltroPrecio">
+                            <div className="sliderBarCatalog">
+                                <Slider
+                                    getAriaLabel={() => 'Minimum distance'}
+                                    value={sliderValue}
+                                    onChange={handleSliderChange}
+                                    valueLabelDisplay="off"
+                                    disableSwap
+                                    max={10000}
+                                />
+                            </div>
+                            <div className="sliderFilterButton">
+                                <Button onClick={() => FilterByPrice(sliderValue[0], sliderValue[1])}>Filtrar</Button>
+                            </div>
+                        </div>
+                    </Box>
+                </div>
 
-            <Box sx={{ width: 300 }}>
-                <TextField id="outlined-basic" variant="outlined" value={sliderValue[0] + "$"} size="small" />
-                <p>To</p>
-                <TextField id="outlined-basic" variant="outlined" value={sliderValue[1] + "$"} size="small"/>
-                <Slider
-                    getAriaLabel={() => 'Minimum distance'}
-                    value={sliderValue}
-                    onChange={handleSliderChange}
-                    valueLabelDisplay="off"
-                    disableSwap
-                    max={10000}
-                />
-                <Button onClick={() => FilterByPrice(sliderValue[0], sliderValue[1])}>Filtrar por precio</Button>
-            </Box>
-
+                <div className='resetFiltrosCatalog'>
+                    <Button onClick={() => { reloadItems(); setVal("") }}>{translate('category.reset')}</Button>
+                </div>
+            </div>
+            
             <Grid className="gridCatalog">
                 {products?.map((item: Product) => {
                     return (
@@ -99,6 +128,8 @@ const Catalog = (props: CatalogPageProps) => {
                 })}
             </Grid>
             <GoToTopButton />
+            
+            
         </div>
     );
 };
