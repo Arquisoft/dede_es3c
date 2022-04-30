@@ -82,5 +82,6 @@ jobs:
           wget https://raw.githubusercontent.com/Arquisoft/dede_es3c/Developer/docker-compose.yml -O docker-compose.yml
           docker-compose stop
           docker-compose rm -f
-          docker-compose pull   
+          docker-compose pull
+          docker-compose down
           docker-compose up -d
