@@ -39,6 +39,8 @@ We have a role system, which defines if a user is an Administrator or a normal U
 === Additional libraries
 Dependencies in the backend:
 
+- https://www.npmjs.com/package/axios[_"axios"_]: "^0.26.1"
+
 - https://www.npmjs.com/package/cloudinary[_"cloudinary"_]: "^1.28.1"
 
 - https://www.npmjs.com/package/cors[_"cors"_]: "^2.8.5"
