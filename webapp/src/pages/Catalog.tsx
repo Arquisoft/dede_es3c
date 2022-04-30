@@ -10,6 +10,7 @@ import Slider from '@mui/material/Slider';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import '../styles/Catalog.scss';
+import GoToTopButton from '../components/GoToTopButton';
 
 interface CatalogPageProps {
     setUser: (user: string) => void
@@ -97,6 +98,7 @@ const Catalog = (props: CatalogPageProps) => {
                     );
                 })}
             </Grid>
+            <GoToTopButton />
         </div>
     );
 };

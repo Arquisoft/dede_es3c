@@ -22,6 +22,7 @@ import EditUserPage from './pages/EditUserPage';
 import Button from '@mui/material/Button';
 import AboutPage from './pages/AboutPage';
 import Footer from './components/Footer';
+import GoToTopButton from './components/GoToTopButton';
 
 const App: FC = () => {
   const { dispatch: {setUser}} = useContext(UserContext);
@@ -137,11 +138,13 @@ const App: FC = () => {
         />
       </Routes>
 
-      {showButton && (
+      {/*showButton && (
         <Button onClick={scrollToTop} className="back-to-top">
           &#8679;
         </Button>
-      )}
+      )*/}
+
+      {/*<GoToTopButton />*/}
 
       <Footer />
     </Router>

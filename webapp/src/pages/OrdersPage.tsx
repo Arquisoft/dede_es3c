@@ -8,6 +8,7 @@ import TableRow from "@mui/material/TableRow";
 import { Paper, Table, TableContainer, TableHead } from "@mui/material";
 import { LangContext } from "../lang";
 import { Navigate, Link } from "react-router-dom";
+import GoToTopButton from '../components/GoToTopButton';
 
 interface OrdersPageProps {
     setUser:(user:string) => void
@@ -82,6 +83,7 @@ const OrdersPage: FC<OrdersPageProps> = (props: OrdersPageProps) => {
           <div style={{ alignContent: "center" }}>
             <Link to="/catalog">{translate("orders.shopping")}</Link>
           </div>
+          <GoToTopButton />
         </div>
       );
     }

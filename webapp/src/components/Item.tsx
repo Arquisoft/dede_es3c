@@ -29,10 +29,6 @@ const Item = (props: Props) => {
         setItemAmount(event.target.value as string);
     };
 
-    /*const calculateStock = async () => {
-        setStock(await getStockByProduct(props.item.name));
-    }*/
-
     useEffect(() => {
         const calculateStock = async () => {
             setStock(await getStockByProduct(props.item.name));
@@ -59,37 +55,36 @@ const Item = (props: Props) => {
                     <CardActions disableSpacing className='addToCartZone'>
                     <div className='stockItemCatalog'>
                         <p>Stock: {stock}</p>
-                        </div>
+                    </div>
                         
                     {
                         (!localStorage.getItem("currentUser")?.includes("admin")) &&
                         <div className='addToCartSelectorButton'>
-                            <Box className="selectorItemCatalog">
-                                <FormControl fullWidth>
-                                    <Select
-                                        value={itemAmount}
-                                        onChange={handleChange}
-                                        size="small"
-                                        displayEmpty
-                                        autoWidth
-                                    >
+                            <div>
+                                <Box className="selectorItemCatalog">
+                                    <FormControl fullWidth>
+                                        <Select
+                                            value={itemAmount}
+                                            onChange={handleChange}
+                                            size="small"
+                                            displayEmpty
+                                            autoWidth
+                                        >
 
-                                        {Array.from({ length: stock + 1 }, (_, i) => <MenuItem value={i} key={i}>{i}</MenuItem>)}
-                                    </Select>
-                                </FormControl>
-                            </Box>
-
-                            <IconButton aria-label={"add to cart" + props.item.name} disableFocusRipple size="small" onClick={() => handleAddToCart(props.item, props.setAmount, itemAmount, stock)} className="buttonItemCatalog" >
-                                <AddShoppingCartIcon />
-                                Add to cart
-                            </IconButton>
+                                            {Array.from({ length: stock + 1 }, (_, i) => <MenuItem value={i} key={i}>{i}</MenuItem>)}
+                                        </Select>
+                                    </FormControl>
+                                </Box>
+                            </div>
+                            <div>
+                                <IconButton aria-label={"add to cart" + props.item.name} disableFocusRipple size="small" onClick={() => handleAddToCart(props.item, props.setAmount, itemAmount, stock)} className="buttonItemCatalog" disableRipple={true} >
+                                    <AddShoppingCartIcon />
+                                    Add to cart
+                                </IconButton>
+                            </div>
                         </div>
                     }
                 </CardActions>
-            
-            
-                
-            
         </Card>
     </div>
 
