@@ -93,12 +93,8 @@ export class OrderController {
             var source;
             
             //Destination
-            let user; let url; var response;
-            //let user = await UserService.getUserByEmail(req.app, orderBody.user)
-            //var url = 'http://localhost:5000/api/users/userpod/'+user.username;
-            //var response = await axios.get(url)
-            //var destination = response.;
-            var destination = "AvenidadelaConstitucion,10,Gijon"; //get address from user pod
+            let url; var response;
+            var destination = req.body.address;
 
             var price = 0.0;
             //Source
