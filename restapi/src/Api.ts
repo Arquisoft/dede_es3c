@@ -8,6 +8,7 @@
  import { UserController } from './controllers/User_Controller';
  import { OrderController } from './controllers/Order_Controller';
  import { DistributionCenterController } from './controllers/DistributionCenter_Controller';
+ import { ProductStoreController } from './controllers/ProductStore_Controller';
  import { Auth } from './middlewares/Auth_Middleware';
   
   // =================================> Constants
@@ -17,6 +18,8 @@
   const productsController: ProductController = new ProductController(); // Products Routes Controller
   const ordersController: OrderController = new OrderController(); // Orders Routes Controller
   const distributioncentersController: DistributionCenterController = new DistributionCenterController(); // Distribution centers Routes Controller
+  const productstoreController: ProductStoreController = new ProductStoreController();
+  
   // =================================> Routes
   const setAuthRoutes = (): void => {
       api.route('/login')
@@ -55,11 +58,11 @@
 
     // Update user by id
     api.route('/users/email/:email/name/:name')
-        .put(auth.isAdminAuth, userController.updateUserByEmailName)
+        .put(auth.isAuth, userController.updateUserByEmailName)
 
     // Update user by id
     api.route('/users/email/:email/password/:password')
-        .put(auth.isAdminAuth, userController.updateUserByEmailPassword)
+        .put(auth.isAuth, userController.updateUserByEmailPassword)
  
      api.route('/users/:id')
          // Get user by id
@@ -108,7 +111,7 @@ const setOrdersRoutes = (): void => {
  
     api.route('/orders')
         // Get all orders
-        .get(auth.isAuth, ordersController.getOrders)
+        .get( ordersController.getOrders)
         // Create new orders
         .post(auth.isAuth, ordersController.addOrder);
 
@@ -142,11 +145,23 @@ const setDistributionCentersRoutes = (): void => {
     
 }
 
+const setProductStoreRoutes = (): void => {
+
+    api.route('/store/:productname')
+        .get(auth.isAuth, productstoreController.getMaxStockByProduct)
+        
+    api.route('/store/:productname/:quantity')
+        .get(auth.isAuth, productstoreController.canBuy)
+
+
+}
+
   setAuthRoutes();
   setUserRoutes();
   setProductsRoutes();
   setRegisterRoutes();
   setOrdersRoutes();
   setDistributionCentersRoutes();
+  setProductStoreRoutes();
   
   export default api;
