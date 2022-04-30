@@ -62,25 +62,6 @@ function Item(props: { item: { name: string; description: string; imageURL1: str
                     >
                         {props.item.buttonName}
                     </Button>
-
-                    {/*{(props.item.buttonName === "REGÍSTRATE") &&
-                        <h3 className="textHome">Ya eres miembro?</h3>
-                    }
-                    {(props.item.buttonName === "REGÍSTRATE") &&
-                        <Button 
-                            style={{
-                                borderRadius: 35,
-                                backgroundColor: "#e8e8e8",
-                                padding: "18px 36px",
-                                fontSize: "18px"
-                            }}
-                            variant="contained"
-                            onClick={() => window.location.assign(props.item.buttonURL)}
-                            className="buttonHome"
-                        >
-                            LOGIN
-                        </Button>
-                    }*/}
                 </div>
             </div>
         </Paper>

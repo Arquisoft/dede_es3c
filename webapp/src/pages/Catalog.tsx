@@ -11,6 +11,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import '../styles/Catalog.scss';
 import GoToTopButton from '../components/GoToTopButton';
+import HorizontalSeparator from '../components/HorizontalSeparator';
 
 interface CatalogPageProps {
     setUser: (user: string) => void
@@ -63,6 +64,36 @@ const Catalog = (props: CatalogPageProps) => {
         setProducts(await getProductsByPrice(min, max));
     }
 
+    const buttonStyle = ({
+        buttonStyle1: {
+            borderRadius: 15,
+            backgroundColor: "#e8e8e8",
+            padding: "15px 20px",
+            fontSize: "13px"
+        },
+
+        buttonStyle2: {
+            borderRadius: 15,
+            backgroundColor: "#e8e8e8",
+            padding: "5px 8px",
+            fontSize: "15px"
+        },
+
+        buttonStyle3: {
+            borderRadius: 15,
+            backgroundColor: "#e8e8e8",
+            padding: "12px 20px",
+            fontSize: "13px"
+        },
+
+        buttonStyle4: {
+            borderRadius: 15,
+            backgroundColor: "#e8e8e8",
+            padding: "5px 8px",
+            fontSize: "15px"
+        },
+    })
+
     return (
         <div>
             <div className='filtrosCatalog'>
@@ -72,14 +103,24 @@ const Catalog = (props: CatalogPageProps) => {
                             <FormControl type="search" value={val} placeholder={translate('catalog.search')} className="me-2" aria-label="Search" onChange={e => { setNameFilter(e.target.value); setVal(e.target.value) }} />
                         </div>
                         <div className="botonFiltroTexto">
-                            <Button onClick={() => FilterByName(nameFilter)} >{translate('catalog.search')}</Button>
+                            <Button onClick={() => FilterByName(nameFilter)} style={buttonStyle.buttonStyle4}>{translate('catalog.search')}</Button>
                         </div>
                     </Form>
                 </div>
                 
                 <div className='filtrosCategoriaCatalog'>
-                    <Button onClick={() => FilterByCategory("Monitors")}>{translate('category.monitors')}</Button>
-                    <Button onClick={() => FilterByCategory("Laptop")}>{translate('category.laptop')}</Button>
+                    <div>
+                        <Button onClick={() => FilterByCategory("Monitors")} style={buttonStyle.buttonStyle1}>{translate('category.monitors')}</Button>
+                    </div>
+                    <div>
+                        <Button onClick={() => FilterByCategory("Laptop")} style={buttonStyle.buttonStyle1}>{translate('category.laptop')}</Button>
+                    </div>
+                    <div>
+                        <Button onClick={() => FilterByCategory("Chairs")} style={buttonStyle.buttonStyle1}>T-Sillas</Button>
+                    </div>
+                    <div>
+                        <Button onClick={() => FilterByCategory("Keyboards")} style={buttonStyle.buttonStyle1}>T-Teclados</Button>
+                    </div>
                 </div>
 
                 <div>
@@ -107,16 +148,18 @@ const Catalog = (props: CatalogPageProps) => {
                                 />
                             </div>
                             <div className="sliderFilterButton">
-                                <Button onClick={() => FilterByPrice(sliderValue[0], sliderValue[1])}>Filtrar</Button>
+                                <Button onClick={() => FilterByPrice(sliderValue[0], sliderValue[1])} style={buttonStyle.buttonStyle2}>Filtrar</Button>
                             </div>
                         </div>
                     </Box>
                 </div>
 
                 <div className='resetFiltrosCatalog'>
-                    <Button onClick={() => { reloadItems(); setVal("") }}>{translate('category.reset')}</Button>
+                    <Button onClick={() => { reloadItems(); setVal("") }} style={buttonStyle.buttonStyle3}>{translate('category.reset')}</Button>
                 </div>
             </div>
+
+            <HorizontalSeparator />
             
             <Grid className="gridCatalog">
                 {products?.map((item: Product) => {
@@ -129,6 +172,7 @@ const Catalog = (props: CatalogPageProps) => {
             </Grid>
             <GoToTopButton />
             
+            <HorizontalSeparator />
             
         </div>
     );
