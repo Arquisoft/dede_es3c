@@ -105,8 +105,19 @@ const LoginPage: FC<LoginPageProps> = (props: LoginPageProps) => {
                         /> 
                         </form>
                     </Fragment>
-                    <Button onClick={() => checkLog()} variant="contained" type="submit" aria-label="loginButton">{translate('login.solid')}</Button>
-                <Link to="/signup">{translate('login.signup')}</Link>
+                    <Button
+                      onClick={() => checkLog()}
+                      variant="contained"
+                      type="submit"
+                      aria-label="loginButton"
+                      style={{
+                        borderRadius: 15,
+                        backgroundColor: "#e8e8e8",
+                        padding: "18px 36px",
+                        fontSize: "16px"
+                    }}
+                      >{translate('login.solid')}</Button>
+                <Link to="/signup" className="goToSignupLogin">{translate('login.signup')}</Link>
               </CardContent>
             </Card>
         </Container>

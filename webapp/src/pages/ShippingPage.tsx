@@ -137,7 +137,13 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                         onChange={e => setWebID(e.target.value)}
                         sx={{ my: 2 }} >
                       </TextField>
-                      <Button onClick={() => getAdd()}>
+                      <Button onClick={() => getAdd()}
+                style={{
+                  borderRadius: 15,
+                  backgroundColor: "#e8e8e8",
+                  padding: "18px 36px",
+                  fontSize: "18px"
+                }}>
                         {translate("login.validate")}
                       </Button>
                       <div>
@@ -197,7 +203,13 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                         sx={{ my: 2 }} 
                         >
                       </TextField>
-                      <Button variant="contained" type="submit">{translate('shipping.proceed')}</Button>
+                      <Button variant="contained" type="submit"
+                style={{
+                  borderRadius: 15,
+                  backgroundColor: "#e8e8e8",
+                  padding: "18px 36px",
+                  fontSize: "18px"
+                }}>{translate('shipping.proceed')}</Button>
                     </Fragment>
             </CardContent>
             </Card>

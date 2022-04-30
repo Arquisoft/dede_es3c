@@ -29,3 +29,7 @@
     grid-auto-flow: column;
 }
 
+.editProductsHeader {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+}
