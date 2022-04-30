@@ -12,7 +12,6 @@ import CrudDeletePage from './pages/CrudDeletePage';
 import OrdersPage from './pages/OrdersPage';
 import ShippingPage from './pages/ShippingPage';
 import CatalogPage from './pages/Catalog';
-import Header from "./components/Header";
 import ProductDetailPage from './pages/ProductDetailPage';
 import Cart from './components/Cart';
 import { Drawer } from "@mui/material";
@@ -20,6 +19,7 @@ import { OpenContext } from './OpenCart';
 import ClientView from './pages/ClientView';
 import EditUserPage from './pages/EditUserPage';
 import Button from '@mui/material/Button';
+import Header from './components/Header';
 
 const App: FC = () => {
   const { dispatch: {setUser}} = useContext(UserContext);

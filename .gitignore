@@ -37,7 +37,10 @@ dist/
 /.env
 /process.env
 /restapi/src/Solid.ts
-/docker-compose.yml
 /restapi/ormconfig.json
 /restapi/package-lock.json
 /webapp/package-lock.json
+/webapp/e2e/start-restapi.ts
+/webapp/e2e/global-teardown.ts
+/webapp/e2e/global-setup.ts
+/restapi/tests/api.test.ts

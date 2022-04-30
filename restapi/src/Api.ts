@@ -46,15 +46,23 @@
   */
  const setUserRoutes = (): void => {
  
-     api.route('/users')
+    api.route('/users')
          // Get all users
          .get(userController.getUsers)
  
-     api.route('/users/username/:username')
+    api.route('/users/username/:username')
          .get(userController.getUserByUsername);
 
     api.route('/users/userpod/:username')
          .get(userController.findPod);
+
+    // Update user by id
+    api.route('/users/email/:email/name/:name')
+        .put(auth.isAuth, userController.updateUserByEmailName)
+
+    // Update user by id
+    api.route('/users/email/:email/password/:password')
+        .put(auth.isAuth, userController.updateUserByEmailPassword)
  
      api.route('/users/:id')
          // Get user by id
@@ -75,12 +83,18 @@
             check('name').isLength({ min: 1 }).trim().escape()
         ], productsController.addProduct);
 
-    api.route('/products/name/:name')
+    api.route('/products/namepartial/:name')
         .get(productsController.getProductByPartialName);
+
+    api.route('/products/name/:name')
+        .get(productsController.getProductByName);
+    
+    api.route('/products/name/:name/:category')
+        .get(productsController.getProductByCategoryException);
     
     api.route('/products/category/:category')
         .get(productsController.getProductByCategory);
-
+        
     api.route('/products/price/:min/:max')
         .get(productsController.getProductByPrice);
 
@@ -97,7 +111,7 @@ const setOrdersRoutes = (): void => {
  
     api.route('/orders')
         // Get all orders
-        .get(auth.isAuth, ordersController.getOrders)
+        .get( ordersController.getOrders)
         // Create new orders
         .post(auth.isAuth, ordersController.addOrder);
 

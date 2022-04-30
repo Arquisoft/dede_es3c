@@ -54,10 +54,12 @@ export class UserController {
    */
   public async getUserByUsername(req: Request, res: Response) {
     try {
+      console.log(req.params.username);
       const user = await UserService.getUserByUsername(
         req.app,
         req.params.username
       );
+      console.log(user);
       user
         ? res.status(200).json(user)
         : res.status(404).json({ error: "User not found" });
@@ -99,6 +101,68 @@ export class UserController {
       res.status(500).json({ error: "Error on update user: " + error });
     }
   }
+
+  /**
+   * Update name by email
+   * @param req Request
+   * @param res Response
+   * @returns User with status 200 or error 500
+   */
+     public async updateUserByEmailName(req: Request, res: Response) {
+      try {
+        const userEmail =  await UserService.getUserByEmail(req.app, req.params.email);
+        let userBody = new User(
+          req.params.name,
+          req.params.email,
+          userEmail.salt,
+          userEmail.hash,
+          userEmail.rol
+        );
+        const user = await UserService.updateUser(
+          req.app,
+          String(userEmail.id),
+          userBody
+        );
+        user
+          ? res.status(200).json(user.raw)
+          : res.status(404).json({ error: "User not found" });
+      } catch (error) {
+        res.status(500).json({ error: "Error on update user: " + error });
+      }
+    }
+
+  /**
+   * Update password by email
+   * @param req Request
+   * @param res Response
+   * @returns User with status 200 or error 500
+   */
+         public async updateUserByEmailPassword(req: Request, res: Response) {
+          try {
+            const userEmail =  await UserService.getUserByEmail(req.app, req.params.email);
+            let salt = crypto.randomBytes(16).toString("hex");
+            let hash = crypto
+              .pbkdf2Sync(req.params.password, salt, 1000, 64, `sha512`)
+              .toString(`hex`);
+            let userBody = new User(
+              userEmail.username,
+              req.params.email,
+              salt,
+              hash,
+              userEmail.rol
+            );
+            const user = await UserService.updateUser(
+              req.app,
+              String(userEmail.id),
+              userBody
+            );
+            user
+              ? res.status(200).json(user.raw)
+              : res.status(404).json({ error: "User not found" });
+          } catch (error) {
+            res.status(500).json({ error: "Error on update user: " + error });
+          }
+        }
 
   /**
    * Delete user

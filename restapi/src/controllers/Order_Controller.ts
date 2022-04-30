@@ -91,17 +91,15 @@ export class OrderController {
         try {
             let orderBody = new Order(req.body.user,req.body.products);
             var source;
-            
             //Destination
             let url; var response;
             var destination = req.body.address;
 
             var price = 0.0;
             //Source
-            var d;
+            var d; 
             for (var p of orderBody.products) {
                 await ProductStoreService.decrementProductStock(req.app,p.product.id,p.distributionCenter.id,p.quantity)
-
                 var sp = 0.0;
                 source = p.distributionCenter.address;
                 url = 'https://maps.googleapis.com/maps/api/distancematrix/json?destinations='+destination+'&origins='+source+'&key=AIzaSyANy46m-FN8Sa9aSpIiLpSWx3xl7M2oX3s'
@@ -111,10 +109,8 @@ export class OrderController {
                 await ProductOrderService.updateShippingPrice(req.app,p.id,sp);
                 price+=p.product.price*p.quantity + sp;
             }
-            
             orderBody.price = price;
             orderBody.priceBeforeIVA = price/1.21;
-
             const order = await OrderService.addOrder(req.app, orderBody);
             order ? res.status(200).json(order) : res.status(500).json({ error: "Error add Order" });
         } catch (error) {
