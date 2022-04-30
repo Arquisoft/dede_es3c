@@ -42,7 +42,6 @@ const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
             email:email,
             rol:"Client"
         }
-
         if (!isBlank(user.username) || !isBlank(user.password) || !isBlank(user.email) || !isBlank(repeatedPassword)){
            let response = await checkUserAndLogin(name, password);
            if (!(response.status === 200)){

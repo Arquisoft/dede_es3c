@@ -90,7 +90,6 @@ export class OrderController {
         try {
             let orderBody = new Order(req.body.user,req.body.products);
             var source;
-            
             //Destination
             let user; let url; var response;
             //let user = await UserService.getUserByEmail(req.app, orderBody.user)
@@ -102,24 +101,22 @@ export class OrderController {
 
             var price = 0.0;
             //Source
-            var d;
-            for (var p of orderBody.products) {
-                
-                
+            var d; 
+            for ( var i = 0;  i< orderBody.products.length; i++) {       
                 //await DistributionCenterService.decrementProductStock(req.app,p.distributionCenter.id,newStore)
                 var sp = 0.0;
-                source = p.distributionCenter.address;
+                source = orderBody.products[i].distributionCenter.address;
+                console.log(source);
                 url = 'https://maps.googleapis.com/maps/api/distancematrix/json?destinations='+destination+'&origins='+source+'&key=AIzaSyANy46m-FN8Sa9aSpIiLpSWx3xl7M2oX3s'
+                console.log("lo que me interesa");
                 response = await axios.get(url)
                 d = response.data.rows[0].elements[0].distance.value;
                 sp = calculateShippingPrice(d);
-                await ProductOrderService.updateShippingPrice(req.app,p.id,sp);
-                price+=p.product.price*p.quantity + sp;
+                await ProductOrderService.updateShippingPrice(req.app,orderBody.products[i].id,sp);
+                price+=orderBody.products[i].product.price*orderBody.products[i].quantity + sp;
             }
-            
             orderBody.price = price;
             orderBody.priceBeforeIVA = price/1.21;
-
             const order = await OrderService.addOrder(req.app, orderBody);
             order ? res.status(200).json(order) : res.status(500).json({ error: "Error add Order" });
         } catch (error) {
