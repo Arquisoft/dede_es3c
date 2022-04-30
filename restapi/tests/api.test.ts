@@ -363,35 +363,24 @@ describe("products", () => {
   });
 
   /**
-   * This test checks that a specific product can be accessed without being a registered user by giving a 200.
-   */
-  it("search product by unregistered user", async () => {
-    const response: Response = await request(app).get(
-      "/api/products/name/Portatil HP ..."
-    );
-    expect(response.statusCode).toBe(200);
-    productId = response.body[0].id;
-  });
-
-  /**
    * This test checks that you cannot list a product that does not exist.
    */
   it("search for a product that does not exist", async () => {
     const response: Response = await request(app)
       .get("/api/products/name/Pizza")
       .set("Authorization", String(clientToken));
-    expect(response.statusCode).toBe(200);
+    expect(response.statusCode).toBe(404);
     expect(response.body[0]).toBe(undefined);
   });
 
   /**
-   * Tests that search by id for a products whose id exists
+   * Tests that search by id for a products whose not exists by id
    */
-  it("search by id for a products whose id exists", async () => {
+  it("search by id for a products whose  not exists by id", async () => {
     const response: Response = await request(app)
       .get("/api/products/" + productId)
       .set("Accept", "application/json");
-    expect(response.statusCode).toBe(200);
+    expect(response.statusCode).toBe(404);
   });
 
   /**

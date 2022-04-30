@@ -54,10 +54,12 @@ export class UserController {
    */
   public async getUserByUsername(req: Request, res: Response) {
     try {
+      console.log(req.params.username);
       const user = await UserService.getUserByUsername(
         req.app,
         req.params.username
       );
+      console.log(user);
       user
         ? res.status(200).json(user)
         : res.status(404).json({ error: "User not found" });

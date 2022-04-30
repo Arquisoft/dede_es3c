@@ -6,7 +6,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import InputAdornment from '@mui/material/InputAdornment';
 import { Link } from 'react-router-dom';
 import logo from '../img/logo-dede.svg'
-import {checkUser, signup } from "../api/api";
+import {checkUserAndLogin, signup } from "../api/api";
 import { User } from "../shared/shareddtypes";
 import { Button } from "react-bootstrap";
 import { Navigate } from "react-router-dom";
@@ -44,8 +44,8 @@ const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
         }
 
         if (!isBlank(user.username) || !isBlank(user.password) || !isBlank(user.email) || !isBlank(repeatedPassword)){
-           const found = await checkUser(name, password);
-           if (!found){
+           let response = await checkUserAndLogin(name, password);
+           if (!(response.status === 200)){
                 const token = await signup(name, password, email);
                 setRegistered(true);
                 props.setUser(name);
