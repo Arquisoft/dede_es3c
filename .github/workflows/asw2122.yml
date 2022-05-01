@@ -99,7 +99,7 @@ jobs:
         mongodb-password: ${{ secrets.mongoPassword }}
         mongodb-db: ${{ secrets.mongoDB }}
     - name: Deploy over SSH
-      uses: fifsky/ssh-action@Sergio
+      uses: fifsky/ssh-action@master
       with:
         host: ${{ secrets.DEPLOY_HOST }}
         user: ${{ secrets.DEPLOY_USER }}
