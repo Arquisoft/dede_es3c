@@ -21,16 +21,7 @@ const LoginPage: FC<LoginPageProps> = (props: LoginPageProps) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [pulsed, setPulsed] = useState(false);
-    const [token, setToken] = useState('')
-
-    const errorNotification = () => {
-      Swal.fire({
-        title: "Error",
-        text: translate("login.singin.error"),
-        icon: "error",
-    });
-    return;
-    }
+    const [, setToken] = useState('')
 
     const checkLog = async () => {
         setPulsed(true);
