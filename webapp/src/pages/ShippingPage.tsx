@@ -92,20 +92,6 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
     }
   })
 
-  const parseWebId = () => {
-    var webId= [];
-    var solidUser = []
-    var id = ";"
-    var url = localStorage.getItem("solidID");
-    if (url !== null && url !== undefined){
-      webId = url.split("//");
-      solidUser = webId[1].split(".");
-      id = solidUser[0];
-      console.log(id);
-    }
-    return id;
-  }
-
   const showConfirmation = () => {
     Swal.fire({
       title: "Success",
@@ -160,7 +146,6 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
   }
 
   async function getAdd() {
-    setWebID(parseWebId());
     await getAddress(webID).then(address => {
       console.log(address)
       if (address.msg === "POD not found" || address.msg === "Address not found") {
@@ -253,13 +238,15 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                       <Fragment>
                       </Fragment>
                       <TextField
-                        required
-                        name="username"
-                        label= {translate ('login.solidUser')} 
-                        variant="outlined"
-                        value={parseWebId()}
-                        helperText= {translate('login.input')}
-                        sx={{ my: 2 }} >
+                       required
+                       size="small"
+                       name="username"
+                       label= {translate ('login.solidUser')} 
+                       variant="outlined"
+                       value={webID}
+                       helperText= {translate('login.input')}
+                       onChange={e => setWebID(e.target.value)}
+                       sx={{ my: 2 }} >
                       </TextField>
                       {console.log(webID)}
                       <Button onClick={() => getAdd()}>
