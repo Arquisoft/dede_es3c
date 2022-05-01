@@ -28,7 +28,11 @@ const ItemDetails: React.FC<Props> = ({ item, setAmount }) => {
 
     useEffect(() => {
         const calculateStock = async () => {
-            setStock(await getStockByProduct(item.name));
+            try {
+                setStock(await getStockByProduct(item.name));
+            } catch (error) {
+                console.log("Error al recuperar el stock de un producto");
+            }
         }
 
         calculateStock();

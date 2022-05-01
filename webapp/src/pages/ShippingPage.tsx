@@ -61,24 +61,28 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
   })
 
   async function getAdd() {
-    const address = await getAddress(webID);
-    if (address !== undefined){
-      setCountryName(address['country']);
-      setLocality(address['locality']);
-      setPostalCode(address['postalCode']);
-      setRegion(address['region']);
-      setStreetAddress(address['street']);
-      Toast.fire({
-        icon: 'success',
-        title: '¡We got your addres! check it out'
-      })
-    } else {
-      Swal.fire({
-        title: "Error",
-        text: translate("solid.error"),
-        icon: "error",
-    });
+    try{
+      const address = await getAddress(webID);
+      if (address !== undefined) {
+        setCountryName(address['country']);
+        setLocality(address['locality']);
+        setPostalCode(address['postalCode']);
+        setRegion(address['region']);
+        setStreetAddress(address['street']);
+        Toast.fire({
+          icon: 'success',
+          title: '¡We got your addres! check it out'
+        })
+      } else {
+        Swal.fire({
+          title: "Error",
+          text: translate("solid.error"),
+          icon: "error",
+        });
 
+      }
+    } catch (error){
+      console.log("Error al recuperar la dirección");
     }
   }
 

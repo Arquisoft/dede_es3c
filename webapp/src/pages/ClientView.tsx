@@ -20,7 +20,11 @@ const ClientView: FC<ClientViewProps> = (props: ClientViewProps) => {
     const [users, setUsers] = useState<User[]>([]);
     const reloadItems = async () => {
         if (localStorage.getItem("currentUser")?.includes("admin")){
+          try {
             setUsers(await getUsers());
+          } catch (error) {
+            console.log("Error al recuperar los usuarios");
+          }
         }
   }
 

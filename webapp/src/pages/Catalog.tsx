@@ -50,19 +50,35 @@ const Catalog = (props: CatalogPageProps) => {
     };
 
     const reloadItems = async () => {
-        setProducts(await getProducts());
+        try{
+            setProducts(await getProducts());
+        } catch(error) {
+            console.log("Error en la carga de productos");
+        }
     }
 
     async function FilterByName(name: string){
-        setProducts(await getProductsByName(name));
+        try {
+            setProducts(await getProductsByName(name));    
+        } catch (error) {
+            console.log("Error en el filtrado por nombre");
+        }
     }
 
     async function FilterByCategory(category: string) {
-        setProducts(await getProductsByCategory(category));
+        try{
+            setProducts(await getProductsByCategory(category));
+        } catch (error) {
+            console.log("Error en el filtrado por categoria");
+        }
     }
 
     async function FilterByPrice(min: number, max: number){
-        setProducts(await getProductsByPrice(min, max));
+        try{
+            setProducts(await getProductsByPrice(min, max));
+        } catch (error) {
+            console.log("Error en el filtrado por precio");
+        }
     }
 
     const buttonStyle = ({

@@ -21,7 +21,11 @@ const CartItem: React.FC<CartItemProps> = ({ item, setAmount }) => {
 
     useEffect(() => {
         const calculateStock = async () => {
-            setStock(await getStockByProduct(item.name));
+            try{
+                setStock(await getStockByProduct(item.name));
+            } catch (error) {
+                console.log("Error al recuperar el stock del producto " + item.name);
+            }
         }
 
         calculateStock();

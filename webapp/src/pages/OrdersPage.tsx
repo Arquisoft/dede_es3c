@@ -20,15 +20,19 @@ const OrdersPage: FC<OrdersPageProps> = (props: OrdersPageProps) => {
     const { dispatch: { translate } } = useContext(LangContext);
     const [orders, setOrders] = useState<Order[]>([]);
     const reloadItems = async () => {
-      if (localStorage.getItem("currentUser") !== null && !localStorage.getItem("currentUser")?.includes("admin")){
-        const username = localStorage.getItem("currentUser");
-        if (username!== null){
-          const user = await getUser(username);
-          console.log(user);
-          setOrders(await getOrdersByEmail(user.email));
-        }
-      } else if (localStorage.getItem("currentUser") !== null && localStorage.getItem("currentUser")?.includes("admin")){
+      try{
+        if (localStorage.getItem("currentUser") !== null && !localStorage.getItem("currentUser")?.includes("admin")) {
+          const username = localStorage.getItem("currentUser");
+          if (username !== null) {
+            const user = await getUser(username);
+            console.log(user);
+            setOrders(await getOrdersByEmail(user.email));
+          }
+        } else if (localStorage.getItem("currentUser") !== null && localStorage.getItem("currentUser")?.includes("admin")) {
           setOrders(await getOrders());
+        }
+      } catch (error) {
+        console.log("Error al cargar los pedidos");
       }
   }
 

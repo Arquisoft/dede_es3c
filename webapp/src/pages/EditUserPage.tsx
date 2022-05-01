@@ -56,11 +56,15 @@ const EditUserPage: FC<EditUserProps> = (props: EditUserProps) => {
       && localStorage.getItem("currentUser") !== "not logged"){
         const username = localStorage.getItem("currentUser");
         if (username!== null){
-            user = await getUser(username);
-            console.log(user);
-            setEmail(user.email);
-            setRol(user.rol);
-            setUserName(user.username);
+            try{
+                user = await getUser(username);
+                console.log(user);
+                setEmail(user!.email);
+                setRol(user!.rol);
+                setUserName(user!.username);
+            } catch (error) {
+                console.log("Error al recuperar el usuario");
+            }
         }
       }
   }

@@ -13,7 +13,11 @@ const DisplayRelatedProducts = (props: Props) => {
     const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
 
     const loadRelatedProducts = async () => {
-        setRelatedProducts(await getRelatedProducts(props.item.name, props.item.category));
+        try {
+            setRelatedProducts(await getRelatedProducts(props.item.name, props.item.category));
+        } catch (error) {
+            console.log("Error al cargar los productos relacionados");
+        }
     }
 
     useEffect(() => {

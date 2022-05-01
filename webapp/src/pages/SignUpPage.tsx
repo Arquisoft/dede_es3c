@@ -46,15 +46,19 @@ const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
         }
 
         if (!isBlank(user.username) || !isBlank(user.password) || !isBlank(user.email) || !isBlank(repeatedPassword)){
-           const found = await checkUser(name, password);
-           if (!found){
-                const token = await signup(name, password, email);
-                setRegistered(true);
-                props.setUser(name);
-                localStorage.setItem("token", token);
-            } else {
-                setExists(2);
-        } 
+            try{
+                const found = await checkUser(name, password);
+                if (!found) {
+                    const token = await signup(name, password, email);
+                    setRegistered(true);
+                    props.setUser(name);
+                    localStorage.setItem("token", token);
+                } else {
+                    setExists(2);
+                } 
+            } catch (error){
+                console.log("Error al registrarse");
+            }
     }
     }
     if (registered || localStorage.getItem("currentUser") !== "not logged"){

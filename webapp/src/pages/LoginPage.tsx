@@ -36,33 +36,37 @@ const LoginPage: FC<LoginPageProps> = (props: LoginPageProps) => {
 
     const checkLog = async () => {
         setPulsed(true);
+        try{
           const valid = await checkUser(username, password);
           if (valid) {
-              const user = await getUser(username);
-              let res = await loginB(username, password)
-              setToken(res);
-              console.log("token: " + res);
-              if (user.rol === "Admin") {
-                const adminName = "admin " + user.username;
-                props.setUser(adminName);
-              } else {
-                props.setUser(user.username);
-              }
-              localStorage.setItem("currentEmail", user.email);
-              localStorage.setItem("token", res);
-              Swal.fire({
-                title: translate("login.welcome") + user.username,
-                icon: "success"
+            const user = await getUser(username);
+            let res = await loginB(username, password)
+            setToken(res);
+            console.log("token: " + res);
+            if (user.rol === "Admin") {
+              const adminName = "admin " + user.username;
+              props.setUser(adminName);
+            } else {
+              props.setUser(user.username);
+            }
+            localStorage.setItem("currentEmail", user.email);
+            localStorage.setItem("token", res);
+            Swal.fire({
+              title: translate("login.welcome") + user.username,
+              icon: "success"
             }).then(() => {
-                window.location.assign("/catalog");
+              window.location.assign("/catalog");
             });
-        } else {
-          Swal.fire({
-            title: "Error",
-            text: translate("login.singin.error"),
-            icon: "error",
-        });
-        }
+          } else {
+            Swal.fire({
+              title: "Error",
+              text: translate("login.singin.error"),
+              icon: "error",
+            });
+          } 
+        } catch (error) {
+          console.log("Error al hacer login");
+        } 
 };
 
     return(

@@ -35,7 +35,11 @@ const Item = (props: Props) => {
 
     useEffect(() => {
         const calculateStock = async () => {
-            setStock(await getStockByProduct(props.item.name));
+            try {
+                setStock(await getStockByProduct(props.item.name));
+            } catch (error) {
+                console.log("Error al recuperar el stock de un producto");
+            }
         }
 
         calculateStock();
