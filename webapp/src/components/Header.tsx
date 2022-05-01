@@ -88,11 +88,6 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
                     {translate('nav.home')}
                   </Link>
 
-                  {/*<Button onClick={() => window.location.assign("/catalog")} className="float-left nav-link">
-                    <img alt="" src={catalogIcon} width="20" height="20" className="d-inline-block align-top" />
-                    {translate('nav.catalog')}
-                  </Button>*/}
-
                   <Link to="/catalog" className="nav-link">
                     <img alt="" src={catalogIcon} width="20" height="20" className="d-inline-block align-top" />
                     {translate('nav.catalog')}
@@ -102,7 +97,7 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
                     <Button onClick={() => props.setOpen("true")} aria-label="CartIcon" key="cartButton">
                       <Badge badgeContent={parseInt(localStorage.getItem("amountInCart")!)} color="error">
                         <AddShoppingCartSharp />
-                        Traducir - Cart
+                        {translate("header.cart")}
                       </Badge>
                     </Button>
                   }
@@ -111,7 +106,7 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
                 <div className='rightHeader'>
                   <Link to="/about" className="nav-link">
                     <img alt="" src={aboutIcon} width="20" height="20" className="d-inline-block align-top" />
-                    Sobre nosotros
+                    {translate("header.about")}
                   </Link>
 
                   <NavDropdown title={translate('nav.languaje')} id="idioma-dropdown" className="ms-auto">

@@ -117,10 +117,10 @@ const Catalog = (props: CatalogPageProps) => {
                         <Button onClick={() => FilterByCategory("Laptop")} style={buttonStyle.buttonStyle1}>{translate('category.laptop')}</Button>
                     </div>
                     <div>
-                        <Button onClick={() => FilterByCategory("Chair")} style={buttonStyle.buttonStyle1}>T-Sillas</Button>
+                        <Button onClick={() => FilterByCategory("Chair")} style={buttonStyle.buttonStyle1}>{translate('category.chairs')}</Button>
                     </div>
                     <div>
-                        <Button onClick={() => FilterByCategory("Keyboard")} style={buttonStyle.buttonStyle1}>T-Teclados</Button>
+                        <Button onClick={() => FilterByCategory("Keyboard")} style={buttonStyle.buttonStyle1}>{translate('category.keyboards')}</Button>
                     </div>
                 </div>
 
@@ -131,7 +131,7 @@ const Catalog = (props: CatalogPageProps) => {
                                 <TextField id="outlined-basic" variant="outlined" value={sliderValue[0] + "$"} size="small" />
                             </div>
                             <div className="toLabelCatalog">
-                                <p>To</p>
+                                {translate("catalog.separator")}
                             </div>
                             <div className="sliderDer">
                                 <TextField id="outlined-basic" variant="outlined" value={sliderValue[1] + "$"} size="small" />
@@ -149,7 +149,7 @@ const Catalog = (props: CatalogPageProps) => {
                                 />
                             </div>
                             <div className="sliderFilterButton">
-                                <Button onClick={() => FilterByPrice(sliderValue[0], sliderValue[1])} style={buttonStyle.buttonStyle2}>Filtrar</Button>
+                                <Button onClick={() => FilterByPrice(sliderValue[0], sliderValue[1])} style={buttonStyle.buttonStyle2}>{translate('catalog.price')}</Button>
                             </div>
                         </div>
                     </Box>

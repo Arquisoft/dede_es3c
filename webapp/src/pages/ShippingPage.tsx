@@ -20,6 +20,14 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
   const [region, setRegion] = useState("");
   const [streetAddress, setStreetAddress] = useState("");
 
+  const cleanFields = () => {
+    setCountryName("");
+    setLocality("");
+    setPostalCode("");
+    setRegion("");
+    setStreetAddress("");
+  }
+
   const products = localStorage.getItem("cart");
   var size:number = 0;
   var cartProducts: Product[] = [];
@@ -137,7 +145,7 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                         onChange={e => setWebID(e.target.value)}
                         sx={{ my: 2 }} >
                       </TextField>
-                      <Button onClick={() => getAdd()}
+                      <Button onClick={() => { cleanFields(); getAdd()}}
                 style={{
                   borderRadius: 15,
                   backgroundColor: "#e8e8e8",
@@ -148,7 +156,6 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                       </Button>
                       <div>
                       <TextField
-                        disabled
                         required
                         size="small"
                         name="country"
@@ -159,7 +166,6 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                         >
                       </TextField>
                       <TextField
-                        disabled
                         required
                         size="small"
                         name="locality"
@@ -170,7 +176,6 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                         >
                       </TextField>
                       <TextField
-                        disabled
                         required
                         size="small"
                         name="postalCode"
@@ -181,7 +186,6 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                         >
                       </TextField>
                       <TextField
-                        disabled
                         required
                         size="small"
                         name="region"
@@ -193,7 +197,6 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                       </TextField>        
                       </div>
                       <TextField
-                        disabled
                         required
                         size="small"
                         name="street"
@@ -203,7 +206,7 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                         sx={{ my: 2 }} 
                         >
                       </TextField>
-                      <Button variant="contained" type="submit"
+              <Button variant="contained" type="submit" onClick={() => cleanFields()}
                 style={{
                   borderRadius: 15,
                   backgroundColor: "#e8e8e8",

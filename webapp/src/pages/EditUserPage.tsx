@@ -105,7 +105,7 @@ const EditUserPage: FC<EditUserProps> = (props: EditUserProps) => {
                                 <TextField
                                     size="small"
                                     value={userName}
-                                    label="Nombre de usuario">
+                                    label={translate("edit.user.username.label")}>
                                 </TextField>
                             </div>
 

@@ -1,7 +1,8 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 import Carousel from 'react-material-ui-carousel'
 import { Paper, Button } from '@mui/material'
 import '../styles/Home.scss';
+import { LangContext } from '../lang';
 
 interface HomePageProps {
     setUser: (user: string) => void
@@ -9,34 +10,34 @@ interface HomePageProps {
 
 var items = [
     {
-        name: "Conoce nuestros productos",
-        description: "Conoce nuestros productos",
+        name: "Catalogo",
+        description: "home.text.catalog",
         imageURL1: 'https://res.cloudinary.com/dg9za4xcz/image/upload/v1651250805/home2_iitglp.jpg',
         imageURL2: 'https://res.cloudinary.com/dg9za4xcz/image/upload/v1651250805/home1_fqvmg3.jpg',
-        buttonName: "CATÁLOGO",
+        buttonName: "home.button.catalog",
         buttonURL: "/catalog"
     },
     {
         name: "Registrate",
-        description: "Aún no te has registrado?",
+        description: "home.text.register",
         imageURL1: 'https://res.cloudinary.com/dg9za4xcz/image/upload/v1651256624/fondo-seguridad-cibernetica-internet-coputer-ilustracion-vector-delito-cibernetico-ilustracion-vector-bloqueo-digital-eps-10_518816-259_lyoleo.webp',
         imageURL2: 'https://res.cloudinary.com/dg9za4xcz/image/upload/v1651256624/subscribe-registration-signup-software_dqvfbc.jpg',
-        buttonName: "REGÍSTRATE",
+        buttonName: "home.button.register",
         buttonURL: "/signup"
     },
     {
-        name: "Sobre nosotros",
-        description: "Conoce más acerca de nosotros",
+        name: "About",
+        description: "home.text.about",
         imageURL1: "https://res.cloudinary.com/dg9za4xcz/image/upload/v1651256351/image_gallery_hree0f.jpg",
         imageURL2: "https://res.cloudinary.com/dg9za4xcz/image/upload/v1651256288/homeLogo_c3i79b.jpg",
-        buttonName: "Sobre nosotros",
+        buttonName: "home.button.about",
         buttonURL: "/about"
     }
 ]
 
-
-
 function Item(props: { item: { name: string; description: string; imageURL1: string; imageURL2: string; buttonName: string; buttonURL: string } }) {
+
+    const { dispatch: { translate } } = useContext(LangContext);
 
     return (
         <Paper>
@@ -48,7 +49,7 @@ function Item(props: { item: { name: string; description: string; imageURL1: str
                     <img alt={props.item.name + "2"} src={props.item.imageURL2} className="photoHome" />
                 </div>
                 <div className="columnHome">
-                    <h3 className="textHome">{props.item.description}</h3>
+                    <h3 className="textHome">{translate(props.item.description)}</h3>
 
                     <Button
                         style={{
@@ -61,7 +62,7 @@ function Item(props: { item: { name: string; description: string; imageURL1: str
                         onClick={() => window.location.assign(props.item.buttonURL)}
                         className="buttonHome"
                     >
-                        {props.item.buttonName}
+                        {translate(props.item.buttonName)}
                     </Button>
                 </div>
             </div>
