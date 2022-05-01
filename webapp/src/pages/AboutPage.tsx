@@ -4,6 +4,7 @@ import { LangContext } from '../lang';
 import '../styles/About.scss';
 import HorizontalSeparator from '../components/HorizontalSeparator';
 import Footer from '../components/Footer';
+import { Link } from "react-router-dom";
 
 interface HomePageProps {
     setUser: (user: string) => void
@@ -42,9 +43,9 @@ const HomePage: FC<HomePageProps> = (props: HomePageProps) => {
                 <div className="textAbout">
                     <h3>{translate("about.info.title")}</h3>
                     <p>{translate("about.info.text")}</p>
-                    <a href="https://github.com/Arquisoft/dede_es3c">{translate("about.info.link1")}</a>
+                    <Link to="https://github.com/Arquisoft/dede_es3c">{translate("about.info.link1")}</Link>
                     <br></br>
-                    <a href="https://arquisoft.github.io/dede_es3c/">{translate("about.info.link2")}</a>
+                    <Link to="https://arquisoft.github.io/dede_es3c/">{translate("about.info.link2")}</Link>
                 </div>
 
             </div>

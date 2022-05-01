@@ -79,7 +79,7 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
               <Fragment>
                 <div className='leftHeader'>
                   <Navbar.Brand>
-                    <img alt="" src={logo} width="30" height="30" className="d-inline-block align-top" />
+                    <img alt="logoHeader" src={logo} width="30" height="30" className="d-inline-block align-top" aria-label='logoHeader'/>
                     DeDesktop
                   </Navbar.Brand>
 

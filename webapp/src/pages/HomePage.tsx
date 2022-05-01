@@ -43,10 +43,10 @@ function Item(props: { item: { name: string; description: string; imageURL1: str
         <Paper>
             <div className="containerHome">
                 <div>
-                    <img alt={props.item.name + "1"} src={props.item.imageURL1} className="photoHome" />
+                    <img alt={props.item.name + "1"} src={props.item.imageURL1} className="photoHome" aria-label="carouselImage1"/>
                 </div >
-                    <div>
-                    <img alt={props.item.name + "2"} src={props.item.imageURL2} className="photoHome" />
+                <div>
+                    <img alt={props.item.name + "2"} src={props.item.imageURL2} className="photoHome" aria-label="carouselImage2"/>
                 </div>
                 <div className="columnHome">
                     <h3 className="textHome">{translate(props.item.description)}</h3>

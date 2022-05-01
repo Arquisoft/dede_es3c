@@ -38,8 +38,10 @@ test('Add product page renders properly as client', async () => {
         </React.StrictMode>,
     )
 
-    let linkElement = screen.getByText(/DeDesktop is the result of the effort and dedication of the es3c group of the Software Architecture subject./i);
+    let linkElement = screen.getByLabelText(/carouselImage1/i);
     expect(linkElement).toBeInTheDocument();
-    linkElement = screen.getByText(/See all our products in our catalog/i);
+    linkElement = screen.getByLabelText(/carouselImage2/i);
+    expect(linkElement).toBeInTheDocument();
+    linkElement = screen.getByText(/Catalog/i);
     expect(linkElement).toBeInTheDocument();
 });

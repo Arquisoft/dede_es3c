@@ -120,7 +120,6 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                     >
                       <li key={'Productos'}>
                         <ul>
-                          <ListSubheader>{translate('shipping.selectedProducts')}</ListSubheader>
                           {cartProducts.map((item) => (
                             <ListItem key={item.name}>
                             <img alt="desc" src= {item.urlPhoto} width= '70' height='70'/>

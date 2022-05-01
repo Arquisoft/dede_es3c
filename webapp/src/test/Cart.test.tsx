@@ -24,7 +24,7 @@ test('Cart without items renders properly', async () => {
     expect(linkElement).toBeInTheDocument();
     linkElement = screen.getByText(/Subtotal: \$/i);
     expect(linkElement).toBeInTheDocument();
-    linkElement = screen.getByText(/Total: \$/i);
+    linkElement = screen.getByText(/Total /i);
     expect(linkElement).toBeInTheDocument();
     let linkElements = screen.getAllByText(/0.00/i);
     expect(linkElements.length).toEqual(2);

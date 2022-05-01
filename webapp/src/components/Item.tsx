@@ -72,7 +72,7 @@ const Item = (props: Props) => {
                     {
                         (!localStorage.getItem("currentUser")?.includes("admin")) &&
                         <div className='addToCartSelectorButton'>
-                            <div>
+                            <div aria-label='selector'>
                                 <Box className="selectorItemCatalog">
                                     <FormControl fullWidth>
                                         <Select

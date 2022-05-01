@@ -143,18 +143,18 @@ const Catalog = (props: CatalogPageProps) => {
                 <div>
                     <Box sx={{ width: 300 }} className='filtroPrecioCatalog'>
                         <div className='sliderBoxes'>
-                            <div className="sliderIzq">
+                            <div className="sliderIzq" aria-label='leftPrice'>
                                 <TextField id="outlined-basic" variant="outlined" value={sliderValue[0] + "$"} size="small" />
                             </div>
                             <div className="toLabelCatalog">
                                 {translate("catalog.separator")}
                             </div>
-                            <div className="sliderDer">
+                            <div className="sliderDer" aria-label='rightPrice'>
                                 <TextField id="outlined-basic" variant="outlined" value={sliderValue[1] + "$"} size="small" />
                             </div>
                         </div>
                         <div className="segundaFilaFiltroPrecio">
-                            <div className="sliderBarCatalog">
+                            <div className="sliderBarCatalog" aria-label="slider">
                                 <Slider
                                     getAriaLabel={() => 'Minimum distance'}
                                     value={sliderValue}
@@ -165,7 +165,7 @@ const Catalog = (props: CatalogPageProps) => {
                                 />
                             </div>
                             <div className="sliderFilterButton">
-                                <Button onClick={() => FilterByPrice(sliderValue[0], sliderValue[1])} style={buttonStyle.buttonStyle2}>{translate('catalog.price')}</Button>
+                                <Button onClick={() => FilterByPrice(sliderValue[0], sliderValue[1])} style={buttonStyle.buttonStyle2} aria-label="priceFilterButton">{translate('catalog.price')}</Button>
                             </div>
                         </div>
                     </Box>
