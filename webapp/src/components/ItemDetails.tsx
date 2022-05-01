@@ -35,9 +35,6 @@ const ItemDetails: React.FC<Props> = ({ item, setAmount }) => {
     return(
     <div>
         <h1>{item.name}</h1>
-        <Button onClick={() => localStorage.setItem("inDetail", "false")}>
-            <p>patata</p>
-        </Button>
         <Grid container>
             <img alt={item.name} src={item.urlPhoto} width="500" height="500"/>
             <p>{item.description}</p>

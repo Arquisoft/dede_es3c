@@ -10,14 +10,14 @@
 
 .cartItemAmount {
     position: relative;
-    left: 4px;
+    left: 3px;
     right: 3px;
     top: 8px;
 }
 
 .cartItem {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 0.5fr;
 }
 
 .cartItemDetails {

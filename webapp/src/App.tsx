@@ -92,12 +92,12 @@ const App: FC = () => {
             <ShippingPage setUser={setUser}/>
           }
         />
-        {/*<Route
+        <Route
           path='products/name/:name'
           element={
             <ProductDetailPage setUser={setUser} setAmount={setAmount}/>
           }
-        />*/}
+        />
         <Route
           path='users'
           element={
