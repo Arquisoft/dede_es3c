@@ -19,6 +19,28 @@ let orderId: string;
 //let hash2 = "01c3a89e3d44fed920a456a36821f3234bc2ec9f1730dca89e4dc42161339f4bb36f1aec8512bd72d23b619d43f8a686ee7f0fb10e0caa63e33b3db9c67285ba";
 let pass1 = "123456";
 let pass2 = "LoCo";
+
+const order = {
+  "user": "Cura@jaja.com",
+  "products": [
+    {
+        "product": {
+            "name": "NiSuPu Monitor",
+            "description": "It's a bad Monitor",
+            "price": 69.96,
+            "category": "Monitors",
+            "urlPhoto": "https://res.cloudinary.com/dedesktop/image/upload/v1646938754/samples/ecommerce/HP_l9kqjo.jpg"
+        },
+        "quantity": 5,
+        "shippingPrice": 1,
+        "distributionCenter": {
+            "address": "Calle Valdes Salas, 11, 33007 Oviedo, Asturias"
+        },
+    }
+  ],
+  "address": "Calle Uria numero 10"
+};
+
 beforeAll(async () => {
   app = express();
   const port: number = 5000;
@@ -65,7 +87,7 @@ beforeAll(async () => {
   adminToken = response.body.toString();
 
   /**
-   * Inicializar token Admin
+   * Inicializar token Client
    */
   const user = {
     username: "Cura",
@@ -171,7 +193,7 @@ describe("CRUD Users", () => {
   /**
    * Test that we can list users with a error.
    */
-  it("can't be listed, bad rout", async () => {
+  it("can't be listed, bad route", async () => {
     const response: Response = await request(app).get("/api/users/list");
     expect(response.statusCode).toBe(404);
   });
@@ -319,8 +341,7 @@ describe("products", () => {
       description: "Un portatil muy bueno",
       price: 600,
       category: "Laptop",
-      url: "alguna",
-      stock: 10,
+      url: "alguna"
     };
 
     const response: Response = await request(app)
@@ -336,12 +357,11 @@ describe("products", () => {
    */
   it("insert a new product without being admin", async () => {
     const product = {
-      name: "Portatil HP ...",
-      description: "Un portatil muy bueno",
-      price: 600,
-      category: "Laptop",
-      url: "alguna",
-      stock: 10,
+      name: "PC normal",
+      description: "Un PC normal",
+      price: 400,
+      category: "PC",
+      url: "url"
     };
 
     const response: Response = await request(app)
@@ -390,10 +410,9 @@ describe("products", () => {
     const product = {
       name: "Portatil HP ...",
       description: "Un portatil ya no tan bueno",
-      price: 500,
+      price: 350,
       category: "Laptop",
-      url: "alguna",
-      stock: 10,
+      url: "alguna"
     };
 
     const response: Response = await request(app)
@@ -414,8 +433,7 @@ describe("products", () => {
       description: "Un portatil ya no tan bueno",
       price: 500,
       category: "Laptop",
-      url: "alguna",
-      stock: 10,
+      url: "alguna"
     };
 
     const response: Response = await request(app)
@@ -434,10 +452,9 @@ describe("products", () => {
     const product = {
       name: "Portatil HP ...",
       description: "Un portatil ya no tan bueno",
-      price: 500,
+      price: 450,
       category: "Laptop",
-      url: "alguna",
-      stock: 10,
+      url: "alguna"
     };
 
     const response: Response = await request(app)
@@ -449,9 +466,9 @@ describe("products", () => {
   });
 
   /**
-   * Tests that delete user without being admin
+   * Tests that delete product without being admin
    */
-  it("delete user without being admin", async () => {
+  it("delete product without being admin", async () => {
     const response: Response = await request(app)
       .delete("/api/products/" + productId)
       .set("Accept", "application/json")
@@ -473,7 +490,7 @@ describe("products", () => {
   });
 
   /**
-   * Tests that search by id for a user whose id does not exist
+   * Tests that search by id for a product whose id does not exist
    */
   it("search by id for a product whose id does not exist", async () => {
     const response: Response = await request(app)
@@ -486,9 +503,19 @@ describe("products", () => {
 
 describe("orders", () => {
   /**
-   * Test that we can list orders without any error.
+   * Test that we can list orders as admin without any error.
    */
-  it("can be listed orders", async () => {
+  it("can be listed orders as admin", async () => {
+    const response: Response = await request(app)
+      .get("/api/orders")
+      .set("Authorization", String(adminToken));
+    expect(response.statusCode).toBe(200);
+  });
+
+  /**
+   * Test that we can list orders as client without any error.
+   */
+   it("can be listed orders as client", async () => {
     const response: Response = await request(app)
       .get("/api/orders")
       .set("Authorization", String(clientToken));
@@ -496,39 +523,44 @@ describe("orders", () => {
   });
 
   /**
-   * Test that we can list orders with a error.
+   * Test that we can list orders with a error. User no authenticated
    */
   it("can't be listed orders", async () => {
     const response: Response = await request(app)
       .get("/api/orders")
-      .set("Authorization", String(adminToken));
-    expect(response.statusCode).toBe(200);
+    expect(response.statusCode).toBe(403);
   });
 
   /**
-   * Test that insert a new product as admin.
-   
-  it("insert a new orders as admin", async () => {
-    const product = {
-      name: "Portatil HP ...",
-      description: "Un portatil muy bueno",
-      price: 600,
-      category: "Laptop",
-      url: "alguna",
-      stock: 10,
-    };
+   * Test that insert a new order as admin.
+   */
+  it("insert a new order as admin", async () => {
+    
+    const response: Response = await request(app)
+      .post("/api/orders")
+      .send(order)
+      .set("Accept", "application/json")
+      .set("Authorization", String(adminToken));
+    expect(response.statusCode).toBe(200);
+    orderId = response.body.id;
+  });
+
+  /**
+   * Test that insert a new order as client.
+   */
+   it("insert a new order as client", async () => {    
 
     const response: Response = await request(app)
       .post("/api/orders")
-      .send(product)
+      .send(order)
       .set("Accept", "application/json")
-      .set("Authorization", String(adminToken));
+      .set("Authorization", String(clientToken));
     expect(response.statusCode).toBe(200);
   });
 
   /**
    * Tests that search by id for a orders whose id exists
-   
+   */
   it("search by id for a orders whose id exists", async () => {
     const response: Response = await request(app)
       .get("/api/orders/" + orderId)
@@ -541,18 +573,13 @@ describe("orders", () => {
    * Tests that update orders as admin
    */
   it("update orders as admin", async () => {
-    const product = {
-      name: "Portatil HP ...",
-      description: "Un portatil ya no tan bueno",
-      price: 500,
-      category: "Laptop",
-      url: "alguna",
-      stock: 10,
+    const order1 = {
+      user: "prueba@gmail.com"
     };
 
     const response: Response = await request(app)
       .put("/api/orders/" + orderId)
-      .send(product)
+      .send(order1)
       .set("Accept", "application/json")
       .set("Authorization", String(adminToken));
 
@@ -563,18 +590,13 @@ describe("orders", () => {
    * Tests that update orders without admin
    */
   it("update orders without admin", async () => {
-    const product = {
-      name: "Portatil HP ...",
-      description: "Un portatil ya no tan bueno",
-      price: 500,
-      category: "Laptop",
-      url: "alguna",
-      stock: 10,
+    const order2 = {
+      user: "usuario@gmail.com"
     };
 
     const response: Response = await request(app)
       .put("/api/orders/" + orderId)
-      .send(product)
+      .send(order2)
       .set("Accept", "application/json")
       .set("Authorization", String(clientToken));
 
@@ -585,18 +607,13 @@ describe("orders", () => {
    * Tests that update orders without user
    */
   it("update orders without user", async () => {
-    const product = {
-      name: "Portatil HP ...",
-      description: "Un portatil ya no tan bueno",
-      price: 500,
-      category: "Laptop",
-      url: "alguna",
-      stock: 10,
+    const order3 = {
+      user: "ejemplo@gmail.com"
     };
 
     const response: Response = await request(app)
       .put("/api/orders/" + orderId)
-      .send(product)
+      .send(order3)
       .set("Accept", "application/json");
 
     expect(response.statusCode).toBe(403);
@@ -629,11 +646,109 @@ describe("orders", () => {
   /**
    * Tests that search by id for a orders whose id does not exist
    */
-  it("search by id for a orders whose id does not exist", async () => {
+   it("search by id for a orders whose id does not exist", async () => {
     const response: Response = await request(app)
       .get("/api/orders/123" + orderId)
-      .set("Accept", "application/json");
+      .set("Accept", "application/json")
+      .set("Authorization", String(adminToken));
+    expect(response.statusCode).toBe(404);
+  });
+});
+describe("distribution centers", () => {
+  /**
+   * Test that we can list distribution centers as client without any error.
+   */
+  it("can be listed distribution centers as client", async () => {
+    const response: Response = await request(app)
+      .get("/api/distributioncenters")
+      .set("Authorization", String(clientToken));
+    expect(response.statusCode).toBe(200);
+  });
 
+  /**
+   * Test that we can list distribution centers as admin without any error.
+   */
+   it("can be listed distribution centers as admin", async () => {
+    const response: Response = await request(app)
+      .get("/api/distributioncenters")
+      .set("Authorization", String(adminToken));
+    expect(response.statusCode).toBe(200);
+  });
+
+  /**
+   * Test that we can list distribution centers by product and quantity.
+   */
+   it("can be listed distribution centers with enought quantity of a product", async () => {
+    const response: Response = await request(app)
+      .get("/api/distributioncenters/Portatil HP .../5")
+      .set("Authorization", String(clientToken));
+    expect(response.statusCode).toBe(200);
+  });
+
+  /**
+   * Test that we can't list distribution centers by product and quantity if product doesn't exist.
+   */
+   it("can't be listed distribution centers with enought quantity of a product doesn't exist", async () => {
+    const response: Response = await request(app)
+      .get("/api/distributioncenters/NoExiste/5")
+      .set("Authorization", String(clientToken));
+    expect(response.statusCode).toBe(500);
+  });
+
+  /**
+   * Test that insert a new distribution center as admin.
+   */
+  it("insert a new distribution center as admin", async () => {
+    const distributioncenter = {
+      address: "Calle Ejemplo numero 8"
+    };
+
+    const response: Response = await request(app)
+      .post("/api/distributioncenters")
+      .send(distributioncenter)
+      .set("Accept", "application/json")
+      .set("Authorization", String(adminToken));
+    expect(response.statusCode).toBe(200);
+  });
+
+  /**
+   * Test that insert a new distribution center without being admin.
+   */
+  it("insert a new distribution center without being admin", async () => {
+    const distributioncenter = {
+      address: "Calle Piedra numero 8"
+    };
+
+    const response: Response = await request(app)
+      .post("/api/distributioncenters")
+      .send(distributioncenter)
+      .set("Accept", "application/json")
+      .set("Authorization", String(clientToken));
     expect(response.statusCode).toBe(403);
   });
+});
+
+describe("product store", () => {
+  /**
+   * Test that we can get de max quantity can be bought of a product.
+   */
+  it("get de max quantity can be bought of a product", async () => {
+    const response: Response = await request(app)
+      .get("/api/store/Portatil HP ...")
+      .set("Authorization", String(clientToken));
+    expect(response.statusCode).toBe(200);
+  });
+  /**
+   * Test if we can buy a determined quantity of a product.
+   */
+   it("can buy a determined quantity of a product", async () => {
+    const response: Response = await request(app)
+      .get("/api/store/Portatil HP .../5")
+      .set("Authorization", String(clientToken));
+    expect(response.statusCode).toBe(200);
+  });
+
+  
+
+
 });
