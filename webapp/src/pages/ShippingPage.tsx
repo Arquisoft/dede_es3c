@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 import { Navigate, Link } from "react-router-dom";
 import { LangContext } from '../lang';
 import DisplayDistributionCenters from "../components/DistributionCenterDisplay";
-
+import Authenticator from "../components/LoginSolid";
 const style = {
   position: 'absolute' as 'absolute',
   top: '50%',
@@ -37,12 +37,20 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
   const [card, setCard] = useState("");
   const [productsOder, setProductsOrder] = useState<OrderProduct[]>([]);
   const [openPrice, setOpenPrice] = useState(false);
+  const [openPod, setOpenPod] = useState(false);
 
   const handleOpenPrice = () => {
     setOpenPrice(true);
   };
   const handleClosePrice = () => {
     setOpenPrice(false);
+  };
+
+  const handleOpenPod = () => {
+    setOpenPod(true);
+  };
+  const handleClosePod = () => {
+    setOpenPod(false);
   };
  
   const addressFields = () => {
@@ -190,7 +198,7 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                       bgcolor: 'background.paper',
                       position: 'relative',
                       overflow: 'auto',
-                      maxHeight: 700,
+                      maxHeight: 1000,
                       '& ul': { padding: 0 },
                     }}
                     >
@@ -215,9 +223,21 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                     </Fragment>
                     <Fragment>
                       <h2>{translate("shipping.address")}</h2>
+                      <Button onClick={() => handleOpenPod()}>
+                        If your address is private, click here to Log in your solid POD
+                      </Button>
+                      <Modal aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description"
+                    open = {openPod}
+                    onClose ={handleClosePod}
+                    >
+                    <Box sx={style}>
+                    <Authenticator/>
+                    </Box>
+                    </Modal>
+                      <Fragment>
+                      </Fragment>
                       <TextField
                         required
-                        size="small"
                         name="username"
                         label= {translate ('login.solidUser')} 
                         variant="outlined"
