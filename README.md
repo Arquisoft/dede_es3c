@@ -42,7 +42,7 @@ npm install
 npm start
 ```
 
-You should be able to access the application in [http://54.211.153.85:3000/](http://54.211.153.85:3000/).
+You should be able to access the application in [DeDesktop](http://54.211.153.85:3000/).
 
 ## More information
 You can get more information about the respository in the other README files:
