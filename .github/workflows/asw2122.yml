@@ -37,7 +37,7 @@ jobs:
     - name: Upload coverage reports to Codecov with GitHub Action
       uses: codecov/codecov-action@v3
       ignore:
-    - "webapp/e2e/**" 
+        "webapp/e2e/**" 
 
   e2e-tests:
     needs: [unit-test-webapp, unit-test-restapi]
