@@ -21,7 +21,7 @@ defineFeature(feature, test => {
       .catch(() => {});
   });
 
-  test('The user is not registered in the site', ({given,when,then}) => {
+  test('The user can Logout', ({given,when,then}) => {
     
     let email: string;
     let username: string;

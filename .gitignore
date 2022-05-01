@@ -44,4 +44,3 @@ dist/
 /webapp/e2e/global-teardown.ts
 /webapp/e2e/global-setup.ts
 /restapi/tests/api.test.ts
-/webapp/e2e/steps
