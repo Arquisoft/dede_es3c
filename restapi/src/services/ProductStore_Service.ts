@@ -1,3 +1,4 @@
+import { UpdateResult } from "typeorm";
 import { Application } from 'express';
 import { ProductStore } from '../entities/ProductStore';
 
@@ -50,6 +51,38 @@ export class ProductStoreService {
     public static addProduct(app: Application, product: ProductStore): Promise<ProductStore> {
         return app.get('db').getRepository(ProductStore).save(product);
     }
+
+    /**
+     * Return all distribution centers
+     * @param app Express application
+     * @returns Promise<DistributionCenter[]>
+     */
+   public static getMaxStockByProduct(app: Application, productid: string): Promise<ProductStore> {
+    return app.get('db').getRepository(ProductStore)
+        .findOne({
+            where: { product_id: productid },
+            order: { stock: "DESC" },
+            take: 1
+        });
+}
+
+   /**
+   * Update stock product by id
+   * @param app Express application
+   * @param id Product id
+   * @param product Product object
+   * @returns Promise<UpdateResult>
+   */
+  public static decrementProductStock(app: Application,product_id: string,distributioncenter_id: string,stock: number)
+    : Promise<UpdateResult> {
+    return app
+      .get("db")
+      .getRepository(ProductStore)
+      .updateOne({ 
+          product_id: product_id,
+          distributioncenter_id: distributioncenter_id }, 
+          { $inc: { stock: -stock } });
+  }
 
     
 
