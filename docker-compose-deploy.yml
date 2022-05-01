@@ -1,19 +1,17 @@
 version: '3.5'
 services:
   restapi:
-    build: ./restapi
+    image: ghcr.io/Arquisoft/dede_es3c/restapi:latest
     ports:
       - "5000:5000"
-    depends_on: 
-      - mongo
   webapp:
-    build: ./webapp
+    image: ghcr.io/Arquisoft/dede_es3c/webapp:latest
     ports:
       - "3000:3000"
-    depends_on:
+    depends_on: 
       - restapi
   mongo:
-    image: mongo
+    image: ghcr.io/Arquisoft/dede_es3c/mongo:latest
     restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: SergioArroni
@@ -22,7 +20,7 @@ services:
     ports:
       - "27017:27017"
   python:
-    build: ./data
+    build: ghcr.io/Arquisoft/dede_es3c/python:latest
     image: python
     ports:
       - "8000:8000"
