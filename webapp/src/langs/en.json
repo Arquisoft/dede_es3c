@@ -112,5 +112,6 @@
     "update.password.updated":"Password updated",
     "update.repeated":"Error, the username is already being used",
     "update.user.changed":"The username has been updated",
-    "centers.center":"Distribution center"
+    "centers.center":"Distribution center",
+    "blank.fields":"Please, fill all the requirements"
 }

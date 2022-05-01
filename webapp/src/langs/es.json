@@ -112,6 +112,7 @@
     "update.password.updated":"Contraseña actualizada",
     "update.repeated":"Error, ya hay un usuario con ese nombre de usuario",
     "update.user.changed":"Se ha modificado el nombre de usuario",
-    "centers.center":"Centro de distribucion"
+    "centers.center":"Centro de distribucion",
+    "blank.fields":"Por favor, cubra todos los campos"
 
 }
