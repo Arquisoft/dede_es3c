@@ -5,9 +5,6 @@ import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import { Product } from '../shared/shareddtypes';
 import Button from '@mui/material/Button';
-import { Box, Modal, Typography } from '@mui/material';
-import ItemDetails from './ItemDetails';
-import DisplayRelatedProducts from './DisplayRelatedProducts';
 import ProductDetailModal from './ProductDetailModal';
 
 type Props = {
@@ -18,7 +15,6 @@ type Props = {
 const RelatedProduct = (props: Props) => {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
 
     return (
         <div>
@@ -32,7 +28,7 @@ const RelatedProduct = (props: Props) => {
                 <CardHeader title={props.item.name} />
 
                 <Button onClick={handleOpen}>
-                    <CardMedia component="img" width="200" height="200" src={props.item.urlPhoto} alt={props.item.name} />
+                    <CardMedia component="img" src={props.item.urlPhoto} alt={props.item.name} className="relatedProductImage"/>
                 </Button>
 
                 <CardContent>

@@ -15,9 +15,6 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { getStockByProduct } from '../api/api';
 import '../styles/ItemCatalog.scss';
 import Button from '@mui/material/Button';
-import ItemDetails from '../components/ItemDetails';
-import { Modal, Typography } from '@mui/material';
-import DisplayRelatedProducts from '../components/DisplayRelatedProducts'
 import ProductDetailModal from '../components/ProductDetailModal';
 
 type Props = {
@@ -31,7 +28,6 @@ const Item = (props: Props) => {
 
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
 
     const handleChange = (event: SelectChangeEvent) => {
         setItemAmount(event.target.value as string);

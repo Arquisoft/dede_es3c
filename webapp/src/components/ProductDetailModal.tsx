@@ -16,6 +16,8 @@ const style = {
     border: '2px solid #000',
     boxShadow: 24,
     p: 4,
+    overflow: "scroll",
+    height: "90%"
 };
 
 type Props = {
@@ -26,8 +28,6 @@ type Props = {
 };
 
 const ProductDetailModal = (props: Props) => {
-    const [open, setOpen] = React.useState(false);
-    const handleOpen = () => props.setOpen(true);
     const handleClose = () => props.setOpen(false);
 
     return (

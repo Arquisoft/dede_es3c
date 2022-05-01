@@ -13,14 +13,12 @@ import OrdersPage from './pages/OrdersPage';
 import ShippingPage from './pages/ShippingPage';
 import CatalogPage from './pages/Catalog';
 import Header from "./components/Header";
-import ProductDetailPage from './pages/ProductDetailPage';
 import Cart from './components/Cart';
 import { Drawer } from "@mui/material";
 import { OpenContext } from './OpenCart';
 import ClientView from './pages/ClientView';
 import EditUserPage from './pages/EditUserPage';
 import AboutPage from './pages/AboutPage';
-import Footer from './components/Footer';
 
 const App: FC = () => {
   const { dispatch: {setUser}} = useContext(UserContext);
@@ -90,12 +88,6 @@ const App: FC = () => {
           path='shipping'
           element={
             <ShippingPage setUser={setUser}/>
-          }
-        />
-        <Route
-          path='products/name/:name'
-          element={
-            <ProductDetailPage setUser={setUser} setAmount={setAmount}/>
           }
         />
         <Route

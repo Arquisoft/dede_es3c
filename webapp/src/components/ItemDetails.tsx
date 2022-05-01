@@ -3,19 +3,20 @@ import IconButton from '@mui/material/IconButton';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { Product } from '../shared/shareddtypes';
 import handleAddToCart from '../components/HandleAddToCart';
-import { Grid, Typography } from "@mui/material";
+import { Grid, List, ListItem, ListItemText, Typography } from "@mui/material";
 import Box from '@mui/material/Box';
 import { getStockByProduct } from '../api/api';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import Button from '@mui/material/Button';
 import '../styles/ItemDetails.scss';
 
 type Props = {
     item: Product;
     setAmount: (amount: string) => void
 };
+
+let auxDescription: string[];
 
 const ItemDetails: React.FC<Props> = ({ item, setAmount }) => {
     const [itemAmount, setItemAmount] = useState<string>('0');
@@ -31,6 +32,9 @@ const ItemDetails: React.FC<Props> = ({ item, setAmount }) => {
         }
 
         calculateStock();
+
+        auxDescription = item.description.split("\n");
+        console.log(auxDescription);
     }, [item.name]);
 
     return(
@@ -41,14 +45,25 @@ const ItemDetails: React.FC<Props> = ({ item, setAmount }) => {
         <div className='itemDetailsRight'>
                 <div className='itemDetailsInfo'>
                     <Typography id="modal-modal-title" variant="h5" component="h1" color="black">
-                        <p>{item.name}</p>
+                        {item.name}
                     </Typography>
                     <Typography id="modal-modal-title" variant="h4" component="h1" fontWeight="bold" color="black">
-                        <p>$ {item.price}</p>
+                        $ {item.price}
                     </Typography>
-                    <Typography id="modal-modal-title" component="p" color="black">
-                        <p>{item.description}</p>
-                    </Typography>
+
+                    <List dense={false}>
+                        {
+                            auxDescription?.map((linea: string) => {
+                                return (
+                                    <ListItem>
+                                        <Typography id="modal-modal-title" component="p" color="black">
+                                            {linea}
+                                        </Typography>
+                                    </ListItem>
+                                );
+                            })
+                        }
+                    </List>
                 </div>
                 <div className='itemDetailsBuyControls'>
                     <div>

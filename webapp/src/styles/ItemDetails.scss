@@ -12,7 +12,6 @@
 .itemDetailsRight {
     position: relative;
     left: 15px;
-    top: 40px
 }
 
 .itemDetailsBuyControls {
@@ -33,4 +32,8 @@
     color: black;
     position: relative;
     top: 10px;
+}
+
+.relatedProductImage {
+    object-fit: contain;
 }

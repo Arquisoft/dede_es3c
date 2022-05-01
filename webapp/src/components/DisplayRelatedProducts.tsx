@@ -34,7 +34,7 @@ const DisplayRelatedProducts = (props: Props) => {
 
                 {relatedProducts?.map((item: Product, i) => {
                     return (
-                        <Grid item key={i} xs={12} sm={3}>
+                        <Grid item key={i} xs={12} sm={3} >
                             <RelatedProduct item={item} setAmount={props.setAmount} />
                         </Grid>
                     );

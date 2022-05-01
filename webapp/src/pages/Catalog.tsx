@@ -13,7 +13,6 @@ import '../styles/Catalog.scss';
 import GoToTopButton from '../components/GoToTopButton';
 import HorizontalSeparator from '../components/HorizontalSeparator';
 import Footer from '../components/Footer';
-import ProductDetailPage from './ProductDetailPage';
 
 interface CatalogPageProps {
     setUser: (user: string) => void
@@ -112,16 +111,16 @@ const Catalog = (props: CatalogPageProps) => {
 
                 <div className='filtrosCategoriaCatalog'>
                     <div>
-                        <Button onClick={() => FilterByCategory("Monitors")} style={buttonStyle.buttonStyle1}>{translate('category.monitors')}</Button>
+                        <Button onClick={() => FilterByCategory("Monitor")} style={buttonStyle.buttonStyle1}>{translate('category.monitors')}</Button>
                     </div>
                     <div>
                         <Button onClick={() => FilterByCategory("Laptop")} style={buttonStyle.buttonStyle1}>{translate('category.laptop')}</Button>
                     </div>
                     <div>
-                        <Button onClick={() => FilterByCategory("Chairs")} style={buttonStyle.buttonStyle1}>T-Sillas</Button>
+                        <Button onClick={() => FilterByCategory("Chair")} style={buttonStyle.buttonStyle1}>T-Sillas</Button>
                     </div>
                     <div>
-                        <Button onClick={() => FilterByCategory("Keyboards")} style={buttonStyle.buttonStyle1}>T-Teclados</Button>
+                        <Button onClick={() => FilterByCategory("Keyboard")} style={buttonStyle.buttonStyle1}>T-Teclados</Button>
                     </div>
                 </div>
 
