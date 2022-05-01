@@ -1,7 +1,7 @@
 import { Product } from '../shared/shareddtypes';
 import { Grid } from "@mui/material";
 import { useState, useEffect } from 'react';
-import { getProductsByCategory } from '../api/api';
+import { getRelatedProducts } from '../api/api';
 import RelatedProduct from '../components/RelatedProduct';
 
 type Props = {
@@ -13,7 +13,7 @@ const DisplayRelatedProducts = (props: Props) => {
     const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
 
     const loadRelatedProducts = async () => {
-        setRelatedProducts(await getProductsByCategory(props.item.category));
+        setRelatedProducts(await getRelatedProducts(props.item.name, props.item.category));
     }
 
     useEffect(() => {
@@ -23,6 +23,11 @@ const DisplayRelatedProducts = (props: Props) => {
     return (
         <div>
             <Grid container spacing={3}>
+                {
+                    (relatedProducts === undefined) &&
+                    <p>No hay productos relacionados</p>
+                }
+
                 {relatedProducts?.map((item: Product, i) => {
                     return (
                         <Grid item key={i} xs={12} sm={3}>
