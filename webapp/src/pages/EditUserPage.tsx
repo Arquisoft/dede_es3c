@@ -80,8 +80,8 @@ const EditUserPage: FC<EditUserProps> = (props: EditUserProps) => {
             await updatePasswordByEmail(email, newPassword);
             handleClosePass();
             Swal.fire({
-                title: "Success, the user already exists",
-                text: translate("update.pass.error"),
+                title: translate("update.password.updated"),
+                text: translate("updade.pass.success"),
                 icon: "success",
           });
         }
@@ -92,8 +92,7 @@ const EditUserPage: FC<EditUserProps> = (props: EditUserProps) => {
             if (user == true){
                 handleCloseUser();
                 Swal.fire({
-                    title: "Error, the user already exists",
-                    text: translate("update.pass.error"),
+                    title: translate("update.repeated"),
                     icon: "error",
                   });
             } else {
@@ -102,8 +101,7 @@ const EditUserPage: FC<EditUserProps> = (props: EditUserProps) => {
                 setUserName(newUserName);
                 handleCloseUser();
                 Swal.fire({
-                    title: "Success, the user already exists",
-                    text: translate("update.pass.error"),
+                    title:  translate("update.user.changed"),
                     icon: "success",
               })
             }}, () => {updatePasswordByEmail(email, newPassword);

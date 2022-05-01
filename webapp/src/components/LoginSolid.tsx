@@ -1,7 +1,7 @@
 import { useState } from "react";
-import LoginForm from "./LoginProvider"
-import ProfileViewer from "./LoggedView"
 import { SessionProvider, useSession } from "@inrupt/solid-ui-react";
+import LoginProvider from "./LoginProvider";
+import LoggedView from "./LoggedView";
 
   const LoginSolid: React.FC= () =>
  {
@@ -20,7 +20,7 @@ import { SessionProvider, useSession } from "@inrupt/solid-ui-react";
     return (
         <>
             <SessionProvider sessionId="login">
-                {(!isLoggedIn) ? <LoginForm /> : <ProfileViewer/>}
+                {(!isLoggedIn) ? <LoginProvider /> : <LoggedView/>}
             </SessionProvider>
         </>
     );

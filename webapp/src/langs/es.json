@@ -107,6 +107,11 @@
     "update.newPass":"Introduce la nueva contraseña",
     "update.newUser":"Introduce el nuevo nombre de usuario",
     "update.commit":"Guardar cambios",
+    "update.pass.error":"Error, Las contraseñas no coinciden",
+    "updade.pass.success":"Ya puedes iniciar sesión con tu nueva contraseña",
+    "update.password.updated":"Contraseña actualizada",
+    "update.repeated":"Error, ya hay un usuario con ese nombre de usuario",
+    "update.user.changed":"Se ha modificado el nombre de usuario",
     "centers.center":"Centro de distribucion"
 
 }

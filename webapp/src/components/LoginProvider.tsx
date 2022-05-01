@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { LoginButton } from "@inrupt/solid-ui-react";
 import { Button, TextField, FormGroup, Container } from "@material-ui/core";
+import { LangContext } from "../lang";
 
 
-function LoginForm(): JSX.Element {
-
+function LoginProvider(): JSX.Element {
+    const { dispatch: { translate } } = useContext(LangContext);
     const [idp, setIdp] = useState("https://inrupt.net");
     const [currentUrl, setCurrentUrl] = useState("https://localhost:3000");
   
@@ -14,19 +15,19 @@ function LoginForm(): JSX.Element {
     
     return (
         <>
-            <Container fixed>
-      <FormGroup>
-        <TextField
-          label="Identity Provider"
-          placeholder="Identity Provider"
-          type="url"
-          value={idp}
-          onChange={(e) => setIdp(e.target.value)}
-          InputProps={{
-            endAdornment: (
+        <Container fixed>
+          <FormGroup>
+            <TextField
+            label="Identity Provider"
+            placeholder="Identity Provider"
+            type="url"
+            value={idp}
+            onChange={(e) => setIdp(e.target.value)}
+            InputProps={{
+              endAdornment: (
               <LoginButton oidcIssuer={idp} redirectUrl={currentUrl}>
                 <Button variant="contained" color="primary">
-                  Login
+                  {translate("navbar.login")}
                   </Button>
               </LoginButton>
             ),
@@ -38,4 +39,4 @@ function LoginForm(): JSX.Element {
     );
 }
 
-export default LoginForm;
+export default LoginProvider;

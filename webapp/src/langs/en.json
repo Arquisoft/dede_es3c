@@ -107,5 +107,10 @@
     "update.newPass":"Introduce your new password",
     "update.newUser":"Introduce your new username",
     "update.commit":"Commit changes",
+    "update.pass.error":"Error, the passwords doesn't match",
+    "updade.pass.success":"You can login with your new password",
+    "update.password.updated":"Password updated",
+    "update.repeated":"Error, the username is already being used",
+    "update.user.changed":"The username has been updated",
     "centers.center":"Distribution center"
 }

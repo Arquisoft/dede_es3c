@@ -1,10 +1,12 @@
 import { useSession, CombinedDataProvider, LogoutButton, Text  } from "@inrupt/solid-ui-react";
 import { Button, Card, CardContent, Container, Typography } from "@material-ui/core";
 import { FOAF } from "@inrupt/lit-generated-vocab-common";
-import React from "react";
+import React, { useContext } from "react";
+import { LangContext } from "../lang";
 
 
-const ProfileViewer: React.FC= () =>{
+const LoggedView: React.FC= () =>{
+  const { dispatch: { translate } } = useContext(LangContext);
   const { session } = useSession();
   if (session.info.webId !== undefined ){
     localStorage.setItem("solidID", session.info.webId)
@@ -30,7 +32,7 @@ const ProfileViewer: React.FC= () =>{
 
       <LogoutButton >
         <Button style={{ marginTop: 20 }} variant="contained" color="primary">
-          Logout
+          {translate("navbar.logout")}
         </Button>
       </LogoutButton>
 
@@ -39,4 +41,4 @@ const ProfileViewer: React.FC= () =>{
   );
 }
 
-export default ProfileViewer
+export default LoggedView
