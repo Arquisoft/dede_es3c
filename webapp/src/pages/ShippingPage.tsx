@@ -123,10 +123,13 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
     return productOrders;
   }
 
+  const removeAccents = (str:string) => {
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  } 
+
   const parseAddress = () => {
     var street = streetAddress.split(" ");
-
-    return street[0] + street[1] + "," + street[2] + "," + locality;
+    return removeAccents(street[0] + street[1] + "," + street[2] + "," + locality);
   }
 
 
@@ -139,7 +142,7 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
       email = (await getUser(user)).email
     }
     if (prods.length > 0){
-       await addOrder(email, prods)
+       await addOrder(email, prods, parsedAddress)
     } else{
       console.log(productsOder)
     }

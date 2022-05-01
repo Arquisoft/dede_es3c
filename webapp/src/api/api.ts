@@ -154,12 +154,12 @@ export async function getRelatedProducts(name: string, category: string): Promis
   return response.json();
 }
 
-export async function addOrder(email:string, products: OrderProduct[]) {
+export async function addOrder(email:string, products: OrderProduct[], address:string) {
   const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
   let response = await fetch(apiEndPoint + '/orders', {
     method: 'POST',
     headers: { authorization: localStorage.getItem("token") + "", 'Content-Type': 'application/json' },
-    body: JSON.stringify({ 'user':email, 'products': products})
+    body: JSON.stringify({ 'user':email, 'products': products, 'address':address})
   });
 }
 export async function getDistributionCenters(product: Product): Promise<DistributionCenter[]>{
