@@ -46,7 +46,9 @@ const ItemDetails: React.FC<Props> = ({ item, setAmount }) => {
                     <Typography id="modal-modal-title" variant="h4" component="h1" fontWeight="bold" color="black">
                         <p>$ {item.price}</p>
                     </Typography>
-                    <p className='itemDetailsColor'>{item.description}</p>
+                    <Typography id="modal-modal-title" component="p" color="black">
+                        <p>{item.description}</p>
+                    </Typography>
                 </div>
                 <div className='itemDetailsBuyControls'>
                     <div>

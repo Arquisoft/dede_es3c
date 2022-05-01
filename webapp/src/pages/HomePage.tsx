@@ -1,6 +1,4 @@
-import { FC, useState, useContext, Fragment } from "react";
-import { Navigate } from "react-router-dom";
-import { LangContext } from '../lang';
+import { FC } from "react";
 import Carousel from 'react-material-ui-carousel'
 import { Paper, Button } from '@mui/material'
 import '../styles/Home.scss';

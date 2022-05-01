@@ -9,8 +9,10 @@
     object-fit: contain;
 }
 
-.itemDetailsColor {
-    color: black;
+.itemDetailsRight {
+    position: relative;
+    left: 15px;
+    top: 40px
 }
 
 .itemDetailsBuyControls {

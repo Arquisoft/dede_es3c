@@ -88,6 +88,11 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
                     {translate('nav.home')}
                   </Link>
 
+                  {/*<Button onClick={() => window.location.assign("/catalog")} className="float-left nav-link">
+                    <img alt="" src={catalogIcon} width="20" height="20" className="d-inline-block align-top" />
+                    {translate('nav.catalog')}
+                  </Button>*/}
+
                   <Link to="/catalog" className="nav-link">
                     <img alt="" src={catalogIcon} width="20" height="20" className="d-inline-block align-top" />
                     {translate('nav.catalog')}

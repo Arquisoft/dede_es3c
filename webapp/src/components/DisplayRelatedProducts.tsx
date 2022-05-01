@@ -1,5 +1,5 @@
 import { Product } from '../shared/shareddtypes';
-import { Grid } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import { useState, useEffect } from 'react';
 import { getRelatedProducts } from '../api/api';
 import RelatedProduct from '../components/RelatedProduct';
@@ -25,7 +25,11 @@ const DisplayRelatedProducts = (props: Props) => {
             <Grid container spacing={3}>
                 {
                     (relatedProducts.length === 0) &&
-                    <p>No hay productos relacionados</p>
+
+                    <Typography width="100%" id="modal-modal-title" variant="h5" component="h1" color="red" textAlign="center">
+                        <p>No hay productos relacionados</p>
+                    </Typography>
+                    
                 }
 
                 {relatedProducts?.map((item: Product, i) => {
