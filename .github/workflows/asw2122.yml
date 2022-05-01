@@ -90,7 +90,7 @@ jobs:
   docker-push-python:
     name: Push python Docker Image to GitHub Packages
     needs: [e2e-tests]
-    runs-on: python
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
     - name: Publish to Registry
