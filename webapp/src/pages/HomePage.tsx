@@ -34,7 +34,10 @@ var items = [
     }
 ]
 
+
+
 function Item(props: { item: { name: string; description: string; imageURL1: string; imageURL2: string; buttonName: string; buttonURL: string } }) {
+
     return (
         <Paper>
             <div className="containerHome">

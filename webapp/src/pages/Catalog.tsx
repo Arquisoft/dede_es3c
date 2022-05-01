@@ -145,7 +145,7 @@ const Catalog = (props: CatalogPageProps) => {
                                     onChange={handleSliderChange}
                                     valueLabelDisplay="off"
                                     disableSwap
-                                    max={10000}
+                                    max={2500}
                                 />
                             </div>
                             <div className="sliderFilterButton">
@@ -165,8 +165,8 @@ const Catalog = (props: CatalogPageProps) => {
             <Grid className="gridCatalog">
                 {products?.map((item: Product) => {
                     return (
-                        <div>
-                            <Item item={item} setAmount={props.setAmount} />
+                        <div key={item.name}>
+                            <Item item={item} setAmount={props.setAmount}/>
                         </div>
                     );
                 })}
