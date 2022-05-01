@@ -115,5 +115,8 @@
     "about.info.link2": "Project documentation on GitHub",
     "header.about": "About us",
     "header.cart": "Cart",
-    "edit.user.username.label": "Username"
+    "edit.user.username.label": "Username",
+    "footer.who": "Who are we?",
+    "footer.about": "About us",
+    "footer.contact": "Contact us"
 }

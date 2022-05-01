@@ -4,6 +4,7 @@ import UserState from "../User";
 import React from "react";
 import { Product } from "../shared/shareddtypes";
 import ShippingPage from "../pages/ShippingPage";
+import { MemoryRouter as Router } from 'react-router-dom';
 
 test('Cart without items renders properly', async () => {
     const products: Product[] = [
@@ -16,7 +17,9 @@ test('Cart without items renders properly', async () => {
         <React.StrictMode>
             <UserState>
                 <LangState>
-                    <ShippingPage setUser={() => "user"} />
+                    <Router>
+                        <ShippingPage setUser={() => "user"} />
+                    </Router>
                 </LangState>
             </UserState>
         </React.StrictMode>,

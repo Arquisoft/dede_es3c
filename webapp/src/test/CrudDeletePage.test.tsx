@@ -3,17 +3,20 @@ import LangState from "../lang";
 import UserState from "../User";
 import React from "react";
 import CrudDeletePage from "../pages/CrudDeletePage";
+import { MemoryRouter as Router } from 'react-router-dom';
 
 test('Delete product page renders properly as admin', async () => {
     localStorage.setItem('currentUser', "admin");
 
     render(
         <React.StrictMode>
+            <Router>
             <UserState>
                 <LangState>
                     <CrudDeletePage setUser={() => "admin"} />
                 </LangState>
             </UserState>
+            </Router>
         </React.StrictMode>,
     )
 
@@ -30,11 +33,13 @@ test('Add product page renders properly as client', async () => {
 
     render(
         <React.StrictMode>
+            <Router>
             <UserState>
                 <LangState>
                     <CrudDeletePage setUser={() => "admin"} />
                 </LangState>
             </UserState>
+            </Router>
         </React.StrictMode>,
     )
 

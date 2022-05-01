@@ -16,14 +16,14 @@ const HomePage: FC<HomePageProps> = (props: HomePageProps) => {
     return (
         <>
             <div>
-                <img alt="Logo" src={logo} className="logoAbout" />
+                <img alt="Logo" src={logo} className="logoAbout" aria-label="logoDeDesktop"/>
             </div>
 
             <HorizontalSeparator />
 
             <div className="containerAbout">
                 <div>
-                    <img src="https://res.cloudinary.com/dg9za4xcz/image/upload/v1651256351/image_gallery_hree0f.jpg" className="photoAbout" />
+                    <img src="https://res.cloudinary.com/dg9za4xcz/image/upload/v1651256351/image_gallery_hree0f.jpg" alt="imagenFacultad" className="photoAbout" />
                 </div>
                 <div className="textAbout">
                     <h3>{translate("about.what.title")}</h3>
@@ -35,10 +35,10 @@ const HomePage: FC<HomePageProps> = (props: HomePageProps) => {
                     <p>{translate("about.expect.text")}</p>
                 </div>
                 <div>
-                    <img src="https://res.cloudinary.com/dg9za4xcz/image/upload/v1651266989/Logo-color_nbmsey.gif" className="photoAbout" />
+                    <img src="https://res.cloudinary.com/dg9za4xcz/image/upload/v1651266989/Logo-color_nbmsey.gif" alt="imagenArquisoft" className="photoAbout" />
                 </div>
                 <div>
-                    <img src="https://res.cloudinary.com/dg9za4xcz/image/upload/v1651266997/github-cover_sevavn.jpg" className="photoGitAbout" />
+                    <img src="https://res.cloudinary.com/dg9za4xcz/image/upload/v1651266997/github-cover_sevavn.jpg" alt="imagenGit" className="photoGitAbout" />
                 </div>
                 <div className="textAbout">
                     <h3>{translate("about.info.title")}</h3>
