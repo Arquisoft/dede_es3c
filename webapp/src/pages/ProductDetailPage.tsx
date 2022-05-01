@@ -49,7 +49,7 @@ const ProductDetailPage = (props: ProductDetailProps) => {
         <div>
             <ItemDetails item={product!} setAmount={props.setAmount} key={product!.name} />
             <h2>Productos relacionados:</h2>
-            <DisplayRelatedProducts item={product!} setAmount={props.setAmount} />
+            {/*<DisplayRelatedProducts item={product!} setAmount={props.setAmount} />*/}
         </div>
 
     );

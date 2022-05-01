@@ -3,13 +3,14 @@ import IconButton from '@mui/material/IconButton';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { Product } from '../shared/shareddtypes';
 import handleAddToCart from '../components/HandleAddToCart';
-import { Grid } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import Box from '@mui/material/Box';
 import { getStockByProduct } from '../api/api';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import Button from '@mui/material/Button'; 
+import Button from '@mui/material/Button';
+import '../styles/ItemDetails.scss';
 
 type Props = {
     item: Product;
@@ -33,36 +34,49 @@ const ItemDetails: React.FC<Props> = ({ item, setAmount }) => {
     }, [item.name]);
 
     return(
-    <div>
-        <h1>{item.name}</h1>
-        <Grid container>
-            <img alt={item.name} src={item.urlPhoto} width="500" height="500"/>
-            <p>{item.description}</p>
-                {
-                    (!localStorage.getItem("currentUser")?.includes("admin")) &&
-                <Box sx={{ minWidth: 70 }}>
-                    <FormControl fullWidth>
-                        <Select
-                            value={itemAmount}
-                            onChange={handleChange}
-                            size="small"
-                            displayEmpty
-                            autoWidth
-                        >
-                            {Array.from({ length: stock + 1 }, (_, i) => <MenuItem value={i} key={i}>{i}</MenuItem>)}
+    <div className='itemDetailsContainer'>
+        <div >
+                <img alt={item.name} src={item.urlPhoto} className='itemDetailsImage'/>
+        </div>
+        <div className='itemDetailsRight'>
+                <div className='itemDetailsInfo'>
+                    <Typography id="modal-modal-title" variant="h5" component="h1" color="black">
+                        <p>{item.name}</p>
+                    </Typography>
+                    <Typography id="modal-modal-title" variant="h4" component="h1" fontWeight="bold" color="black">
+                        <p>$ {item.price}</p>
+                    </Typography>
+                    <p className='itemDetailsColor'>{item.description}</p>
+                </div>
+                <div className='itemDetailsBuyControls'>
+                    <div>
+                        <p className='itemDetailsStock'>Stock: {stock}</p>
+                    </div>
+                    {
+                        (!localStorage.getItem("currentUser")?.includes("admin")) &&
+                        <div className="itemDetailsAddToCart">
+                            <Box sx={{ minWidth: 70 }} className="itemDetailsAmountSelector">
+                                <FormControl fullWidth>
+                                    <Select
+                                        value={itemAmount}
+                                        onChange={handleChange}
+                                        size="small"
+                                        displayEmpty
+                                        autoWidth
+                                    >
+                                        {Array.from({ length: stock + 1 }, (_, i) => <MenuItem value={i} key={i}>{i}</MenuItem>)}
+                                    </Select>
+                                </FormControl>
+                            </Box>
 
-                        </Select>
-                    </FormControl>
-                </Box>
-}
-            <IconButton aria-label="add to cart" disableFocusRipple size="small" onClick={() => handleAddToCart(item, setAmount, itemAmount, stock)}>
-                {
-                    (!localStorage.getItem("currentUser")?.includes("admin")) &&
-                    <AddShoppingCartIcon />
-                }
-            </IconButton>
-                <p>Stock: {stock}</p>
-        </Grid>
+                            <IconButton className='itemDetailsAddButton' aria-label="add to cart" disableFocusRipple size="small" onClick={() => handleAddToCart(item, setAmount, itemAmount, stock)} disableRipple={true}>
+                                <AddShoppingCartIcon />
+                                T-Add to cart
+                            </IconButton>
+                        </div>
+                    }
+                </div> 
+        </div>
     </div>
     );
 };

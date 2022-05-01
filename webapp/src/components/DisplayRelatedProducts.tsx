@@ -24,14 +24,14 @@ const DisplayRelatedProducts = (props: Props) => {
         <div>
             <Grid container spacing={3}>
                 {
-                    (relatedProducts === undefined) &&
+                    (relatedProducts.length === 0) &&
                     <p>No hay productos relacionados</p>
                 }
 
                 {relatedProducts?.map((item: Product, i) => {
                     return (
                         <Grid item key={i} xs={12} sm={3}>
-                            <RelatedProduct item={item} />
+                            <RelatedProduct item={item} setAmount={props.setAmount} />
                         </Grid>
                     );
                 })}

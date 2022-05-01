@@ -72,27 +72,22 @@ const Item = (props: Props) => {
                             {props.item.name}
                         </Typography>
                         <ItemDetails item={props.item} setAmount={props.setAmount} />
-                        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-                        </Typography>
                             <h2>Productos relacionados:</h2>
                         <DisplayRelatedProducts item={props.item} setAmount={props.setAmount} />
                     </Box>
-                </Modal> 
+                </Modal>
             }
 
             <Card key={props.item.name} >
-                <Button onClick={handleOpen}>
+                <Button onClick={handleOpen} className="buttonImageItemCatalog">
                     <CardMedia component="img" image={props.item.urlPhoto} alt={props.item.name} className="imageItemCatalog" />
                 </Button>
 
                 <CardHeader title={props.item.name} titleTypographyProps={{ variant: 'h6' }} className="titleItemCatalog" />
 
-
                 <CardContent className="priceItemCatalog">
                     $ {props.item.price}
                 </CardContent>
-
 
                 <CardActions disableSpacing className='addToCartZone'>
                     <div className='stockItemCatalog'>
