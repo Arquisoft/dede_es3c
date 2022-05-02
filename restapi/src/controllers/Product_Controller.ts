@@ -64,19 +64,19 @@ export class ProductController {
    * @param res Response
    * @returns product with status 200 or error 500
    */
-     public async getProductByPartialName(req: Request, res: Response) {
-      try {
-        const product = await ProductService.getProductByPartialName(
-          req.app,
-          req.params.name
-        );
-        product
-          ? res.status(200).json(product)
-          : res.status(404).json({ error: "Product not found" });
-      } catch (error) {
-        res.status(500).json({ error: "Error on get Product by name: " + error });
-      }
+  public async getProductByPartialName(req: Request, res: Response) {
+    try {
+      const product = await ProductService.getProductByPartialName(
+        req.app,
+        req.params.name
+      );
+      product
+        ? res.status(200).json(product)
+        : res.status(404).json({ error: "Product not found" });
+    } catch (error) {
+      res.status(500).json({ error: "Error on get Product by name: " + error });
     }
+  }
 
   /**
    * Get product by category
@@ -134,27 +134,27 @@ export class ProductController {
    * @param res Response
    * @returns product with status 200 or error 500
    */
-     public async getProductByPrice(req: Request, res: Response) {
-      try {
+  public async getProductByPrice(req: Request, res: Response) {
+    try {
 
-        if(+req.params.min > +req.params.max || +req.params.min < 0){
-          res.status(500).json({ error: "Error on get Product by price " });
-        }
-
-        const product = await ProductService.getProductByPrice(
-          req.app,
-          +req.params.min,
-          +req.params.max
-        );
-        product
-          ? res.status(200).json(product)
-          : res.status(404).json({ error: "Product not found" });
-      } catch (error) {
-        res
-          .status(500)
-          .json({ error: "Error on get Product by price: " + error });
+      if (+req.params.min > +req.params.max || +req.params.min < 0) {
+        res.status(500).json({ error: "Error on get Product by price " });
       }
+
+      const product = await ProductService.getProductByPrice(
+        req.app,
+        +req.params.min,
+        +req.params.max
+      );
+      product
+        ? res.status(200).json(product)
+        : res.status(404).json({ error: "Product not found" });
+    } catch (error) {
+      res
+        .status(500)
+        .json({ error: "Error on get Product by price: " + error });
     }
+  }
 
   /**
    * Update product

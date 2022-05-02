@@ -11,6 +11,7 @@ import logoutIcon from '../img/logout-icon.svg';
 import spanishIcon from '../img/spanish-icon.svg';
 import registerIcon from '../img/register-icon.svg';
 import ordersIcon from '../img/checkout-icon.svg';
+import aboutIcon from '../img/about-icon.svg';
 import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import { AddShoppingCartSharp } from '@mui/icons-material';
@@ -75,102 +76,114 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
         <Nav className="container-fluid">
           {
             <div className='grid'>
-            <Fragment>
+              <Fragment>
                 <div className='leftHeader'>
-              <Navbar.Brand>
-                <img alt="" src={logo} width="30" height="30" className="d-inline-block align-top" />
-                DeDesktop
-              </Navbar.Brand>
+                  <Navbar.Brand>
+                    <img alt="logoHeader" src={logo} width="30" height="30" className="d-inline-block align-top" aria-label='logoHeader'/>
+                    DeDesktop
+                  </Navbar.Brand>
 
-              <Link to="/" className="float-left nav-link">
-                <img alt="" src={homeIcon} width="20" height="20" className="d-inline-block align-top" />
-                {translate('nav.home')}
-              </Link>
+                  <Link to="/" className="float-left nav-link">
+                    <img alt="" src={homeIcon} width="20" height="20" className="d-inline-block align-top" />
+                    {translate('nav.home')}
+                  </Link>
 
-              <Link to="/catalog" className="nav-link">
-                <img alt="" src={catalogIcon} width="20" height="20" className="d-inline-block align-top" />
-                {translate('nav.catalog')}
-              </Link>
+                  <Link to="/catalog" className="nav-link">
+                    <img alt="" src={catalogIcon} width="20" height="20" className="d-inline-block align-top" />
+                    {translate('nav.catalog')}
+                  </Link>
 
-              {(!(localStorage.getItem("currentUser")?.includes("admin"))) &&
-                <Button onClick={() => props.setOpen("true")} aria-label="CartIcon">
-                  <Badge badgeContent={parseInt(localStorage.getItem("amountInCart")!)} color="error">
-                    <AddShoppingCartSharp />
-                  </Badge>
-                </Button>
-              }
-              </div>
+                  {(!(localStorage.getItem("currentUser")?.includes("admin"))) &&
+                    <Button onClick={() => props.setOpen("true")} aria-label="CartIcon" key="cartButton">
+                      <Badge badgeContent={parseInt(localStorage.getItem("amountInCart")!)} color="error">
+                        <AddShoppingCartSharp />
+                        {translate("header.cart")}
+                      </Badge>
+                    </Button>
+                  }
+                </div>
               
-              <div className='rightHeader'>
-              <NavDropdown title={translate('nav.languaje')} id="idioma-dropdown" className="ms-auto">
-                <Dropdown.Item as="button" onClick={() => chooseLanguageHandler('ES')}>
-                  <img alt="" src={spanishIcon} width="20" height="20" className="d-inline-block align-top" />
-                  Español
-                </Dropdown.Item>
-                <Dropdown.Item as="button" onClick={() => chooseLanguageHandler('EN')}>
-                  <img alt="" src={englishIcon} width="20" height="20" className="d-inline-block align-top" />
-                  English
-                </Dropdown.Item>
-              </NavDropdown>
-
-              {(localStorage.getItem("currentUser") === "not logged") &&
-                <Link to="/signup" className="nav-link">
-                  <img alt="" src={registerIcon} width="20" height="20" className="d-inline-block align-top" />
-                  {translate('nav.register')}
-                </Link>
-              }
-
-              {(localStorage.getItem("currentUser") === "not logged") &&
-                <Link to="/login" className="nav-link">
-                  <img alt="" src={loginIcon} width="20" height="20" className="d-inline-block align-top" />
-                  {translate('nav.login')}
-                </Link>
-              }
-
-              {(localStorage.getItem("currentUser") !== "not logged") &&
-                <Link onClick={logOut} to="/login" className="nav-link">
-                  <img alt="" src={logoutIcon} width="20" height="20" className="d-inline-block align-top" />
-                  {translate('nav.logout')}
-                </Link>
-              }
-
-              {(localStorage.getItem("currentUser") !== "not logged" && (localStorage.getItem("currentUser")?.includes("admin"))) &&
-                <NavDropdown title={translate('nav.admin')} id="productos-admin-dropdown">
-                  <Link to="/addProduct" className="Dropdown-item">
-                    {translate('crud.add')}
+                <div className='rightHeader'>
+                  <Link to="/about" className="nav-link">
+                    <img alt="" src={aboutIcon} width="20" height="20" className="d-inline-block align-top" />
+                    {translate("header.about")}
                   </Link>
-                  <Link to="/editProduct" className="Dropdown-item">
-                    {translate('crud.update')}
-                  </Link>
-                  <Link to="/editProduct" className="Dropdown-item">
-                    {translate('crud.delete')}
-                  </Link>
-                </NavDropdown>
-              }
 
-              {(localStorage.getItem("currentUser") !== "not logged" && !(localStorage.getItem("currentUser")?.includes("admin"))) &&
-                <Link to="/orders" className="nav-link">
-                  <img alt="" src={ordersIcon} width="25" height="25" className="d-inline-block align-top" />
-                  {translate("nav.orders")}
-                </Link>
-              }
+                  <NavDropdown title={translate('nav.languaje')} id="idioma-dropdown" className="ms-auto">
+                    <Dropdown.Item as="button" onClick={() => chooseLanguageHandler('ES')}>
+                      <img alt="" src={spanishIcon} width="20" height="20" className="d-inline-block align-top" />
+                      Español
+                    </Dropdown.Item>
+                    <Dropdown.Item as="button" onClick={() => chooseLanguageHandler('EN')}>
+                      <img alt="" src={englishIcon} width="20" height="20" className="d-inline-block align-top" />
+                      English
+                    </Dropdown.Item>
+                  </NavDropdown>
 
-              {(localStorage.getItem("currentUser") !== "not logged" && !(localStorage.getItem("currentUser")?.includes("admin"))) &&
-                <Link to="/account" className="nav-link">
-                  <img alt="" src={userIcon} width="25" height="25" className="d-inline-block align-top" />
-                  Mi cuenta
-                </Link>
-              }
+                  {(localStorage.getItem("currentUser") === "not logged") &&
+                    <Link to="/signup" className="nav-link">
+                      <img alt="" src={registerIcon} width="20" height="20" className="d-inline-block align-top" />
+                      {translate('nav.register')}
+                    </Link>
+                  }
 
-              {(localStorage.getItem("currentUser") !== "not logged" && (localStorage.getItem("currentUser")?.includes("admin"))) &&
-                <Link to="/users" className="nav-link">
-                  <img alt="" src={userListIcon} width="25" height="25" className="d-inline-block align-top" />
-                  Usuarios
-                </Link>
-              }
-              </div>
+                  {(localStorage.getItem("currentUser") === "not logged") &&
+                    <Link to="/login" className="nav-link">
+                      <img alt="" src={loginIcon} width="20" height="20" className="d-inline-block align-top" />
+                      {translate('nav.login')}
+                    </Link>
+                  }
 
-            </Fragment>
+                  {(localStorage.getItem("currentUser") !== "not logged") &&
+                    <Link onClick={logOut} to="/login" className="nav-link">
+                      <img alt="" src={logoutIcon} width="20" height="20" className="d-inline-block align-top" />
+                      {translate('nav.logout')}
+                    </Link>
+                  }
+
+                  {(localStorage.getItem("currentUser") !== "not logged" && (localStorage.getItem("currentUser")?.includes("admin"))) &&
+                      <NavDropdown title={translate('nav.admin')} id="productos-admin-dropdown" className='editProductsHeader'>
+                        <div>
+                        <Link to="/addProduct" className="Dropdown-item">
+                          {translate('crud.add')}
+                        </Link>
+                        </div>
+                        <div>
+                        <Link to="/editProduct" className="Dropdown-item">
+                          {translate('crud.update')}
+                        </Link>
+                        </div>
+                        <div>
+                        <Link to="/deleteProduct" className="Dropdown-item">
+                          {translate('crud.delete')}
+                        </Link>
+                        </div>
+                      </NavDropdown>
+                  }
+
+                  {(localStorage.getItem("currentUser") !== "not logged" && !(localStorage.getItem("currentUser")?.includes("admin"))) &&
+                    <Link to="/orders" className="nav-link">
+                      <img alt="" src={ordersIcon} width="25" height="25" className="d-inline-block align-top" />
+                      {translate("nav.orders")}
+                    </Link>
+                  }
+
+                  {(localStorage.getItem("currentUser") !== "not logged" && !(localStorage.getItem("currentUser")?.includes("admin"))) &&
+                    <Link to="/account" className="nav-link">
+                      <img alt="" src={userIcon} width="25" height="25" className="d-inline-block align-top" />
+                          {translate("nav.account")}
+                    </Link>
+                  }
+
+                  {(localStorage.getItem("currentUser") !== "not logged" && (localStorage.getItem("currentUser")?.includes("admin"))) &&
+                    <Link to="/users" className="nav-link">
+                      <img alt="" src={userListIcon} width="25" height="25" className="d-inline-block align-top" />
+                          {translate("nav.users")}
+                    </Link>
+                  }
+                </div>
+
+              </Fragment>
             </div>
           }
         </Nav>

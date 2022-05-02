@@ -9,6 +9,7 @@ import { LangContext } from "../lang";
 import { Button } from "react-bootstrap";
 import { Navigate } from "react-router";
 import DisplayClients from "../components/DisplayClients";
+import GoToTopButton from '../components/GoToTopButton';
 
 interface ClientViewProps {
     setUser:(user:string) => void
@@ -19,7 +20,11 @@ const ClientView: FC<ClientViewProps> = (props: ClientViewProps) => {
     const [users, setUsers] = useState<User[]>([]);
     const reloadItems = async () => {
         if (localStorage.getItem("currentUser")?.includes("admin")){
+          try {
             setUsers(await getUsers());
+          } catch (error) {
+            console.log("Error al recuperar los usuarios");
+          }
         }
   }
 
@@ -66,6 +71,7 @@ const ClientView: FC<ClientViewProps> = (props: ClientViewProps) => {
               </Table>
             </TableContainer>
             </div>
+          <GoToTopButton />
         </div>
         
     );

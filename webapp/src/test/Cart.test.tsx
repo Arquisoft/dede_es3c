@@ -4,17 +4,20 @@ import UserState from "../User";
 import React from "react";
 import { Product } from "../shared/shareddtypes";
 import Cart from "../components/Cart";
+import { MemoryRouter as Router } from 'react-router-dom';
 
 test('Cart without items renders properly', async () => {
     const products: Product[] = [];
 
     render(
         <React.StrictMode>
+            <Router>
             <UserState>
                 <LangState>
                     <Cart setOpen={() => undefined} setAmount={() => undefined} cartItems={products} />
                 </LangState>
             </UserState>
+            </Router>
         </React.StrictMode>,
     )
 
@@ -24,7 +27,7 @@ test('Cart without items renders properly', async () => {
     expect(linkElement).toBeInTheDocument();
     linkElement = screen.getByText(/Subtotal: \$/i);
     expect(linkElement).toBeInTheDocument();
-    linkElement = screen.getByText(/Total: \$/i);
+    linkElement = screen.getByText(/Total /i);
     expect(linkElement).toBeInTheDocument();
     let linkElements = screen.getAllByText(/0.00/i);
     expect(linkElements.length).toEqual(2);
@@ -40,11 +43,13 @@ test('Cart with items renders properly', async () => {
 
     render(
         <React.StrictMode>
+            <Router>
             <UserState>
                 <LangState>
                     <Cart setOpen={() => undefined} setAmount={() => undefined} cartItems={products} />
                 </LangState>
             </UserState>
+            </Router>
         </React.StrictMode>,
     )
 

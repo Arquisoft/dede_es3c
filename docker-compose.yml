@@ -9,12 +9,6 @@ services:
       - "5000:5000"
     depends_on: 
       - mongo
-  webapp:
-    build: ./webapp
-    ports:
-      - "3000:3000"
-    depends_on:
-      - restapi
   prometheus:
     image: prom/prometheus
     volumes:

@@ -6,6 +6,7 @@ import UserState from '../User';
 import { BrowserRouter as Router } from "react-router-dom";
 
 test('Header renders properly with client user logged', async () => {
+    localStorage.setItem('currentUser', "user");
 
     render(
         <React.StrictMode>
@@ -19,7 +20,10 @@ test('Header renders properly with client user logged', async () => {
         </React.StrictMode>,
     )
 
-    let linkElement = screen.getByText(/DeDesktop/i);
+    let linkElement = screen.getByLabelText(/logoHeader/i);
+    expect(linkElement).toBeInTheDocument();
+
+    linkElement = screen.getByText(/DeDesktop/i);
     expect(linkElement).toBeInTheDocument();
 
     linkElement = screen.getByText(/Home/i);
@@ -28,13 +32,22 @@ test('Header renders properly with client user logged', async () => {
     linkElement = screen.getByText(/Catalog/i);
     expect(linkElement).toBeInTheDocument();
 
+    linkElement = screen.getByText(/Cart/i);
+    expect(linkElement).toBeInTheDocument();
+
+    linkElement = screen.getByText(/About us/i);
+    expect(linkElement).toBeInTheDocument();
+
+    linkElement = screen.getByText(/Language/i);
+    expect(linkElement).toBeInTheDocument();
+
     linkElement = screen.getByText(/Logout/i);
     expect(linkElement).toBeInTheDocument();
 
     linkElement = screen.getByText(/My orders/i);
     expect(linkElement).toBeInTheDocument();
 
-    linkElement = screen.getByText(/Language/i);
+    linkElement = screen.getByText(/My account/i);
     expect(linkElement).toBeInTheDocument();
 
 });
@@ -54,7 +67,10 @@ test('Header renders properly with admin user logged', async () => {
         </React.StrictMode>,
     )
 
-    let linkElement = screen.getByText(/DeDesktop/i);
+    let linkElement = screen.getByLabelText(/logoHeader/i);
+    expect(linkElement).toBeInTheDocument();
+
+    linkElement = screen.getByText(/DeDesktop/i);
     expect(linkElement).toBeInTheDocument();
 
     linkElement = screen.getByText(/Home/i);
@@ -63,13 +79,19 @@ test('Header renders properly with admin user logged', async () => {
     linkElement = screen.getByText(/Catalog/i);
     expect(linkElement).toBeInTheDocument();
 
+    linkElement = screen.getByText(/About us/i);
+    expect(linkElement).toBeInTheDocument();
+
+    linkElement = screen.getByText(/Language/i);
+    expect(linkElement).toBeInTheDocument();
+
     linkElement = screen.getByText(/Logout/i);
     expect(linkElement).toBeInTheDocument();
 
     linkElement = screen.getByText(/Edit products/i);
     expect(linkElement).toBeInTheDocument();
 
-    linkElement = screen.getByText(/Language/i);
+    linkElement = screen.getByText(/Users/i);
     expect(linkElement).toBeInTheDocument();
 
 });
@@ -89,7 +111,10 @@ test('Header renders properly without user logged', async () => {
         </React.StrictMode>,
     )
 
-    let linkElement = screen.getByText(/DeDesktop/i);
+    let linkElement = screen.getByAltText(/logoHeader/i);
+    expect(linkElement).toBeInTheDocument();
+
+    linkElement = screen.getByText(/DeDesktop/i);
     expect(linkElement).toBeInTheDocument();
 
     linkElement = screen.getByText(/Home/i);
@@ -98,13 +123,19 @@ test('Header renders properly without user logged', async () => {
     linkElement = screen.getByText(/Catalog/i);
     expect(linkElement).toBeInTheDocument();
 
+    linkElement = screen.getByText(/Cart/i);
+    expect(linkElement).toBeInTheDocument();
+
+    linkElement = screen.getByText(/About us/i);
+    expect(linkElement).toBeInTheDocument();
+
+    linkElement = screen.getByText(/Language/i);
+    expect(linkElement).toBeInTheDocument();
+
     linkElement = screen.getByText(/Register/i);
     expect(linkElement).toBeInTheDocument();
 
     linkElement = screen.getByText(/Login/i);
-    expect(linkElement).toBeInTheDocument();
-
-    linkElement = screen.getByText(/Language/i);
     expect(linkElement).toBeInTheDocument();
 
 });

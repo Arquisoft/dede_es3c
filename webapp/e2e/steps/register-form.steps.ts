@@ -8,14 +8,14 @@ let browser: puppeteer.Browser;
 
 defineFeature(feature, test => {
   
-  beforeAll(async () => {
+  beforeEach(async () => {
     browser = process.env.GITHUB_ACTIONS
       ? await puppeteer.launch()
    //   : await puppeteer.launch({ headless: true });
       : await puppeteer.launch({ headless: false , slowMo: 0});
     page = await browser.newPage();
     await page
-      .goto("http://localhost:3000", {
+      .goto("http://localhost:3000/signup", {
         waitUntil: "networkidle0",
       })
       .catch(() => {});
@@ -50,7 +50,54 @@ defineFeature(feature, test => {
     });
   })
 
-  afterAll(async ()=>{
+  afterEach(() => {
+    browser.close();
+  })
+
+  test('The user is already registered in the site', ({ given, when, then }) => {
+
+    let email: string;
+    let username: string;
+    let password: string;
+    let confirmPass: string;
+
+    given('A registered user', () => {
+      username = "testuser"
+      email = "testuser@test.com"
+      password = "testpass"
+      confirmPass = "testpass"
+
+    });
+
+    when('I fill the data in the form and press sign up', async () => {
+      await expect(page).toMatch('Sign up in DeDesktop')
+      await expect(page).toFillForm('form[name="register"]', {
+        textName: username,
+        textEmail: email,
+        textPassword: password,
+        textRepeatPassword: confirmPass
+      })
+      await expect(page).toClick('button', { text: 'Sign up' })
+    });
+
+    then('An error message should be shown in the screen', async () => {
+      await expect(page).toMatch('Error')
+    });
+  })
+
+  test('The user tries to go to login page via link', ({ when, then }) => {
+
+    when('I click the go to login button', async () => {
+      await expect(page).toMatch('Sign up in DeDesktop')
+      await expect(page).toClick('button', { text: '¿Have an account already? Log in' })
+    });
+
+    then('Login page should be displayed', async () => {
+      await expect(page).toMatch('Sign up in DeDesktop')
+    });
+  })
+
+  afterAll(async () => {
     browser.close()
   })
 

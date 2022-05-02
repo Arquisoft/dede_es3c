@@ -11,7 +11,7 @@ export type Product = {
   price: number,
   category: string,
   urlPhoto: string,
-  amount: number
+  amount: number,
 }
 
 export type Order = {

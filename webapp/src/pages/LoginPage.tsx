@@ -8,6 +8,8 @@ import { Button } from "react-bootstrap";
 import Swal from 'sweetalert2';
 import { LangContext } from '../lang';
 import { Link } from 'react-router-dom';
+import '../styles/Login.scss';
+import Footer from '../components/Footer';
 
 const checkParams = (text: string) => {
     return text === "" || text === null;
@@ -43,15 +45,18 @@ const LoginPage: FC<LoginPageProps> = (props: LoginPageProps) => {
                 title: translate("login.welcome") + user.username,
                 icon: "success"
             }).then(() => {
-                window.location.assign("/catalog");
+              window.location.assign("/catalog");
             });
-        } else {
-          Swal.fire({
-            title: "Error",
-            text: translate("login.singin.error"),
-            icon: "error",
-        });
-        }
+          } else {
+            Swal.fire({
+              title: "Error",
+              text: translate("login.singin.error"),
+              icon: "error",
+            });
+          } 
+        } catch (error) {
+          console.log("Error al hacer login");
+        } 
 };
 
     return(
@@ -94,11 +99,26 @@ const LoginPage: FC<LoginPageProps> = (props: LoginPageProps) => {
                         /> 
                         </form>
                     </Fragment>
-                    <Button onClick={() => checkLog()} variant="contained" type="submit" aria-label="loginButton">{translate('login.solid')}</Button>
-                <Link to="/signup">{translate('login.signup')}</Link>
+                    <Button
+                      onClick={() => checkLog()}
+                      variant="contained"
+                      type="submit"
+                      aria-label="loginButton"
+                      style={{
+                        borderRadius: 15,
+                        backgroundColor: "#e8e8e8",
+                        padding: "18px 36px",
+                        fontSize: "16px"
+                    }}
+                      >{translate('login.solid')}</Button>
+                <Link to="/signup" className="goToSignupLogin">{translate('login.signup')}</Link>
               </CardContent>
             </Card>
         </Container>
+
+        <div className="footerPositionLogin">
+          <Footer />
+        </div>
     </div>
     );
 } 
