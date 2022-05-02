@@ -11,9 +11,9 @@ defineFeature(feature, test => {
   beforeEach(async () => {
     browser = process.env.GITHUB_ACTIONS
       ? await puppeteer.launch()
-      : await puppeteer.launch({ headless: true });
+   //   : await puppeteer.launch({ headless: true });
+      : await puppeteer.launch({ headless: false , slowMo: 0});
     page = await browser.newPage();
-
     await page
       .goto("http://localhost:3000/signup", {
         waitUntil: "networkidle0",
@@ -21,7 +21,7 @@ defineFeature(feature, test => {
       .catch(() => {});
   });
 
-  test('The user is not registered in the site', ({given,when,then}) => {
+  test('The user can Logout', ({given,when,then}) => {
     
     let email: string;
     let username: string;
@@ -37,18 +37,16 @@ defineFeature(feature, test => {
     });
 
     when('I fill the data in the form and press sign up', async () => {
-      await expect(page).toMatch('Sign up in DeDesktop')
-      await expect(page).toFillForm('form[name="register"]', {
-        textName: username,
-        textEmail: email,
-        textPassword: password,
-        textRepeatPassword: confirmPass
-      })
-      await expect(page).toClick('button', { text: 'Sign up' })
+      function timeout(ms: any) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+      await timeout(1);
+      await expect(page).toMatchElement('a', { text: 'Logout' })
+      await expect(page).toClick('a', { text: 'Logout' })
     });
 
     then('A confirmation message should be shown in the screen', async () => {
-      await expect(page).toMatch('Welcome, ' + username)
+      await expect(page).toMatchElement('h1', { text: 'Log in' })
     });
   })
 
@@ -104,4 +102,3 @@ defineFeature(feature, test => {
   })
 
 });
-

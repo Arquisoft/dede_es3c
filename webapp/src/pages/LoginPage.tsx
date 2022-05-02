@@ -2,7 +2,7 @@ import React, {Fragment, FC, useState, useContext} from "react";
 import TextField from '@mui/material/TextField';
 import {Container, Card , CardContent } from "@mui/material";
 import logo from '../img/logo-dede.svg'
-import {checkUser, getUser, loginB } from "../api/api";
+import {checkUserAndLogin, getUser } from "../api/api";
 import "bootswatch/dist/morph/bootstrap.min.css"
 import { Button } from "react-bootstrap";
 import Swal from 'sweetalert2';
@@ -37,10 +37,10 @@ const LoginPage: FC<LoginPageProps> = (props: LoginPageProps) => {
     const checkLog = async () => {
         setPulsed(true);
         try{
-          const valid = await checkUser(username, password);
-          if (valid) {
+          let response = await checkUserAndLogin(username, password);
+          let res = await response.json();
+          if (response.status === 200) {
             const user = await getUser(username);
-            let res = await loginB(username, password)
             setToken(res);
             console.log("token: " + res);
             if (user.rol === "Admin") {
