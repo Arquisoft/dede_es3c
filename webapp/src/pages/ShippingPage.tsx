@@ -326,7 +326,7 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                       variant="contained" 
                       type="submit"
                       disabled={addressFields()}
-                      onClick={() => { cleanFields(); handleOpenPrice()}}
+                      onClick={() => {handleOpenPrice()}}
                       >
                         {translate('shipping.proceed')}
                       </Button>
