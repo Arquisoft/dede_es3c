@@ -151,7 +151,7 @@ export async function getRelatedProducts(name: string, category: string): Promis
     method: "GET",
     headers: { "Content-Type": "application/json" },
   });
-  return response.json();
+  return response.json();  
 }
 
 export async function addOrder(email:string, products: OrderProduct[], address:string) {
