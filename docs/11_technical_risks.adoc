@@ -47,7 +47,12 @@ This is the compilation of the identified risks ordered by priority that we must
 
 === Technical debts
 
-* There is some parts of the code with a very bad code (for example some unnecessary nested ifs) and some duplicated code. Until now we had no time to solve this.
-* There are some unsolved bugs. For this we were unable to solve them.
-* There is also some design decisions we could not develop yet.
+* Even if the app is internationalized, we could't find a way of automatic translation because of the time and complication of the task. A lot of APIs aren't free and require a laborious configuration that could pottentialy give us some problems we hadn't time to resolve. 
+* The SOLID Login is implementated and made. But because of our deployment choice we had problems with the https certificate. We had no time to fix it before the last release. Instead, we decided to use the public address on the VCARD od the SOLID POD.
+* We had intention to complete some optional exercises (pick up points, delivery stimation, and delivery services) but we had no time to do them before the last release.
+* We could not add checkboxes on the shopping cart because we were busy doing other mandatory tasks. at the end we could not complete it
+* We wanted to incorporate a drag and drop component so the admin could update a picture of a new product by dragging it to the field but, again, we were concenrated in completing the mandatory tasks
+* Removing the articles from the cart after buying something. We had problems trying to connect the two components and at the end, we had no time to fix this issue
+
+
 
