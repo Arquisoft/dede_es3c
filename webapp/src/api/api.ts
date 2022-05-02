@@ -179,6 +179,17 @@ export async function addOrder(email:string, products: OrderProduct[], address:s
     body: JSON.stringify({ 'user':email, 'products': products, 'address':address})
   });
 }
+
+export async function getShippingPrice(products: OrderProduct[], address:string): Promise<number> {
+  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+  let response = await fetch(apiEndPoint + '/orders/shippingprice', {
+    method: 'PUT',
+    headers: { authorization: localStorage.getItem("token") + "", 'Content-Type': 'application/json' },
+    body: JSON.stringify({'products': products, 'address':address})
+  });
+  return response.json();
+}
+
 export async function getDistributionCenters(product: Product): Promise<DistributionCenter[]>{
   const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
   let response = await fetch(apiEndPoint+'/distributioncenters/'+ product.name + '/' + product.amount , {
