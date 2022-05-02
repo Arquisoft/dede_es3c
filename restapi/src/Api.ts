@@ -111,7 +111,7 @@ const setOrdersRoutes = (): void => {
  
     api.route('/orders')
         // Get all orders
-        .get( ordersController.getOrders)
+        .get(auth.isAuth, ordersController.getOrders)
         // Create new orders
         .post(auth.isAuth, ordersController.addOrder);
 
@@ -121,8 +121,8 @@ const setOrdersRoutes = (): void => {
         .get(auth.isAuth, ordersController.getOrdersByUserEmail)
 
     api.route('/orders/shippingprice')
-        .post(ordersController.calculateShippingPrice)
-    
+        .post(auth.isAuth, ordersController.calculateShippingPrice)
+
     api.route('/orders/:id')
         // Get orders by id
         .get(auth.isAuth, ordersController.getOrderById)
