@@ -104,7 +104,7 @@
     "blank.fields":"Please, fill all the requirements",
     "card.number":"Credit card number",
     "card.expire":"expire date",
-    "card.cvv":"CVV"
+    "card.cvv":"CVV",
     "home.button.catalog": "Catalog",
     "home.button.register": "Signup",
     "home.button.about": "About us",

@@ -1,8 +1,8 @@
 import React, {Fragment, FC, useState, useContext} from "react";
-import { Card, CardContent, Container, List, ListItem, ListItemText, ListSubheader, TextField} from "@mui/material";
+import { Box, Card, CardContent, Container, List, ListItem, ListItemText, ListSubheader, Modal, TextField, Typography} from "@mui/material";
 import { Button } from "react-bootstrap";
-import { Product } from "../shared/shareddtypes";
-import { getAddress } from "../api/api";
+import { Product, OrderProduct } from "../shared/shareddtypes";
+import { addOrder, getAddress, getUser } from "../api/api";
 import Swal from 'sweetalert2';
 import { Navigate, Link } from "react-router-dom";
 import { LangContext } from '../lang';
@@ -60,6 +60,7 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
       return true;
     }
     return false
+  }
 
   const cleanFields = () => {
     setCountryName("");

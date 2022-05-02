@@ -1,6 +1,6 @@
 import React, {FC, useEffect, useContext, Fragment, useState} from "react";
 import { User } from "../shared/shareddtypes";
-import {getUser } from "../api/api";
+import {existUser, getUser, updatePasswordByEmail, updateUserByEmail } from "../api/api";
 import { LangContext } from "../lang";
 import { Box, Button, Card, CardContent, Container, Modal, TextField, Typography } from "@mui/material";
 import { Navigate } from "react-router";
@@ -72,7 +72,7 @@ const EditUserPage: FC<EditUserProps> = (props: EditUserProps) => {
       reloadItems();
     }, []);
 
-    const updatePassword = () => {
+    const updatePassword = async () => {
         console.log(newPassword === newPasswordConfirmation)
         if (newPassword !== newPasswordConfirmation){
             Swal.fire({
@@ -116,7 +116,7 @@ const EditUserPage: FC<EditUserProps> = (props: EditUserProps) => {
                   });})
         }
 
-    }
+    
 
     if(page === 'catalog'){
         return(
