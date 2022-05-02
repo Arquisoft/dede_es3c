@@ -429,6 +429,78 @@ ps1_10 = {
 	"product_id": prod10_id,
 	"stock": 12
 }
+ps1_11 = {
+	"id": str(uuid.uuid4()),
+	"distributioncenter_id": dc1_id,
+	"product_id": prod11_id,
+	"stock": 20
+}
+ps1_12 = {
+	"id": str(uuid.uuid4()),
+	"distributioncenter_id": dc1_id,
+	"product_id": prod12_id,
+	"stock": 15
+}
+ps1_13 = {
+	"id": str(uuid.uuid4()),
+	"distributioncenter_id": dc1_id,
+	"product_id": prod13_id,
+	"stock": 11
+}
+ps1_14 = {
+	"id": str(uuid.uuid4()),
+	"distributioncenter_id": dc1_id,
+	"product_id": prod14_id,
+	"stock": 7
+}
+ps1_15 = {
+	"id": str(uuid.uuid4()),
+	"distributioncenter_id": dc1_id,
+	"product_id": prod15_id,
+	"stock": 8
+}
+ps1_16 = {
+	"id": str(uuid.uuid4()),
+	"distributioncenter_id": dc1_id,
+	"product_id": prod16_id,
+	"stock": 10
+}
+ps1_17 = {
+	"id": str(uuid.uuid4()),
+	"distributioncenter_id": dc1_id,
+	"product_id": prod17_id,
+	"stock": 4
+}
+ps1_18 = {
+	"id": str(uuid.uuid4()),
+	"distributioncenter_id": dc1_id,
+	"product_id": prod17_id,
+	"stock": 6
+}
+ps1_23 = {
+	"id": str(uuid.uuid4()),
+	"distributioncenter_id": dc1_id,
+	"product_id": prod23_id,
+	"stock": 23
+}
+ps1_24 = {
+	"id": str(uuid.uuid4()),
+	"distributioncenter_id": dc1_id,
+	"product_id": prod24_id,
+	"stock": 21
+}
+ps1_25 = {
+	"id": str(uuid.uuid4()),
+	"distributioncenter_id": dc1_id,
+	"product_id": prod25_id,
+	"stock": 17
+}
+ps1_26 = {
+	"id": str(uuid.uuid4()),
+	"distributioncenter_id": dc1_id,
+	"product_id": prod26_id,
+	"stock": 15
+}
 ps2_1 = {
 	"id": str(uuid.uuid4()),
 	"distributioncenter_id": dc2_id,
@@ -465,6 +537,48 @@ ps2_9 = {
 	"product_id": prod9_id,
 	"stock": 14
 }
+ps2_17 = {
+	"id": str(uuid.uuid4()),
+	"distributioncenter_id": dc2_id,
+	"product_id": prod17_id,
+	"stock": 14
+}
+ps2_19 = {
+	"id": str(uuid.uuid4()),
+	"distributioncenter_id": dc2_id,
+	"product_id": prod17_id,
+	"stock": 20
+}
+ps2_20 = {
+	"id": str(uuid.uuid4()),
+	"distributioncenter_id": dc2_id,
+	"product_id": prod17_id,
+	"stock": 10
+}
+ps2_21 = {
+	"id": str(uuid.uuid4()),
+	"distributioncenter_id": dc2_id,
+	"product_id": prod17_id,
+	"stock": 14
+}
+ps2_22 = {
+	"id": str(uuid.uuid4()),
+	"distributioncenter_id": dc2_id,
+	"product_id": prod17_id,
+	"stock": 14
+}
+ps2_23 = {
+	"id": str(uuid.uuid4()),
+	"distributioncenter_id": dc2_id,
+	"product_id": prod17_id,
+	"stock": 14
+}
+ps2_25 = {
+	"id": str(uuid.uuid4()),
+	"distributioncenter_id": dc2_id,
+	"product_id": prod25_id,
+	"stock": 22
+}
 collection.insert_one(ps1_1)
 collection.insert_one(ps1_2)
 collection.insert_one(ps1_3)
@@ -475,12 +589,31 @@ collection.insert_one(ps1_7)
 collection.insert_one(ps1_8)
 collection.insert_one(ps1_9)
 collection.insert_one(ps1_10)
+collection.insert_one(ps1_11)
+collection.insert_one(ps1_12)
+collection.insert_one(ps1_13)
+collection.insert_one(ps1_14)
+collection.insert_one(ps1_15)
+collection.insert_one(ps1_16)
+collection.insert_one(ps1_17)
+collection.insert_one(ps1_18)
+collection.insert_one(ps1_23)
+collection.insert_one(ps1_24)
+collection.insert_one(ps1_25)
+collection.insert_one(ps1_26)
 collection.insert_one(ps2_1)
 collection.insert_one(ps2_3)
 collection.insert_one(ps2_4)
 collection.insert_one(ps2_5)
 collection.insert_one(ps2_8)
 collection.insert_one(ps2_9)
+collection.insert_one(ps2_17)
+collection.insert_one(ps2_19)
+collection.insert_one(ps2_20)
+collection.insert_one(ps2_21)
+collection.insert_one(ps2_22)
+collection.insert_one(ps2_23)
+collection.insert_one(ps2_25)
 
 collection = db.productorder
 
