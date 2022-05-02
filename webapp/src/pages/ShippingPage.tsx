@@ -14,7 +14,7 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 400,
-  height: 400,
+  height: 420,
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
@@ -329,7 +329,10 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                     <Box sx={style}>
                     <Typography id = "modal-modal-title" variant = "h6" component= "h2">{translate("shipping.resume")}</Typography>
                     <div>
-                    <Typography id = "modal-modal-subtitle2" variant = "subtitle2" component= "text">{translate("shipping.priceFinal") + ": " + finalPrice.toFixed(2) + "$"}</Typography>
+                    <Typography id = "modal-modal-subtitle2" variant = "subtitle2" component= "text">{translate("shipping.price") + " " + 10.0 + "$"}</Typography>
+                    </div>
+                    <div>
+                    <Typography id = "modal-modal-subtitle2" variant = "subtitle2" component= "text">{translate("shipping.priceFinal") + " " + (finalPrice + 10.0).toFixed(2) + "$"}</Typography>
                     </div>
                     <div>
                     <Typography id = "modal-modal-subtitle2" variant = "subtitle2" component= "text">{translate("shipping.creditCard")}</Typography>

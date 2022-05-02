@@ -38,6 +38,7 @@
     "nav.shoppingcart": "Cart",
     "nav.languaje":"Language",
     "nav.admin":"Edit products",
+    "shipping.price":"Shipping:",
     "nav.orders":"My orders",
     "prodDisp.price":"Price",
     "catalog.search":"Search",
