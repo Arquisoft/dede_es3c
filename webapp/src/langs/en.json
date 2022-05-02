@@ -113,5 +113,8 @@
     "update.repeated":"Error, the username is already being used",
     "update.user.changed":"The username has been updated",
     "centers.center":"Distribution center",
-    "blank.fields":"Please, fill all the requirements"
+    "blank.fields":"Please, fill all the requirements",
+    "card.number":"Credit card number",
+    "card.expire":"expire date",
+    "card.cvv":"CVV"
 }

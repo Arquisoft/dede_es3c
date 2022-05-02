@@ -14,7 +14,7 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 400,
-  height: 350,
+  height: 400,
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
@@ -34,7 +34,9 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
   const [postalCode, setPostalCode] = useState("");
   const [region, setRegion] = useState("");
   const [streetAddress, setStreetAddress] = useState("");
-  const [card, setCard] = useState("");
+  const [cardNumber, setCardNumber] = useState("");
+  const [expireDate, setExpireDate] = useState("");
+  const [CVV, setCVV] = useState("");
   const [productsOder, setProductsOrder] = useState<OrderProduct[]>([]);
   const [openPrice, setOpenPrice] = useState(false);
   const [openPod, setOpenPod] = useState(false);
@@ -332,19 +334,43 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                     <div>
                     <Typography id = "modal-modal-subtitle2" variant = "subtitle2" component= "text">{translate("shipping.creditCard")}</Typography>
                     </div>
-                    <TextField
-                     required
-                     size="medium"
-                     name="username"
-                     label= {translate ('shipping.card')} 
-                     variant="outlined"
-                     value={card}
-                     helperText= {translate('shipping.card')}
-                     onChange={e => setCard(e.target.value)}
-                     sx={{ my: 2 }} >       
-                    </TextField> 
+                    <Fragment>
+            <TextField
+             required
+             size="small"
+             name="country"
+             label= {translate ('card.number')} 
+             variant="outlined"
+             value={cardNumber}
+             onChange={e => setCardNumber(e.target.value)}
+             sx={{ my: 2 }}>
+            </TextField>
+
+            <TextField
+             required
+             size="small"
+             name="country"
+             label= {translate ('card.expire')} 
+             variant="outlined"
+             value={expireDate}
+             onChange={e => setExpireDate(e.target.value)}
+             sx={{ my: 2 }}>
+            </TextField>
+
+            <TextField
+             required
+             size="small"
+             name="country"
+             label= {translate ('card.cvv')} 
+             variant="outlined"
+             value={CVV}
+             onChange={e => setCVV(e.target.value)}
+             sx={{ my: 2 }}>
+            </TextField>
+
+        </Fragment>
                     <Button 
-                    disabled= {card === '' || card.length < 8}
+                    disabled= {(CVV === '' || CVV.length !== 3) || (cardNumber ==='' || cardNumber.length < 12) || (expireDate === '')}
                     onClick={() => generateOrderProduct()}>
                     {translate("shipping.end")}</Button>      
                     <Fragment >
