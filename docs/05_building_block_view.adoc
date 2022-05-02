@@ -19,3 +19,6 @@ The application is represented as a whitebox. Inside of it we can see the three 
 |View|Receives data from Model layer to represent it on the device. Is the layer wich interacts with actors (users and administrator)
 |Controller|Receives inputs and manage the interactions between View layer and Model layer
 |===
+
+=== Building block view - Level 2
+image:05_2_Building_Block_View_Level_2.png["Building block view - Level 2"]
