@@ -1,7 +1,7 @@
 import { defineFeature, loadFeature } from 'jest-cucumber';
 import puppeteer from "puppeteer";
 
-const feature = loadFeature('./features/register-form.feature');
+const feature = loadFeature('./features/home.feature');
 
 let page: puppeteer.Page;
 let browser: puppeteer.Browser;
@@ -24,12 +24,12 @@ defineFeature(feature, test => {
     test('User tries to go to catalog', ({ when, then }) => {
 
         when('User clicks on go to catalog link at home', async () => {
-            await expect(page).toMatch('DeDesktop is the result of the effort and dedication')
-            await expect(page).toClick('button', { text: 'See all our product in our catalog' })
+            await expect(page).toMatch('Check our products')
+            await expect(page).toClick('button', { text: 'Catalog' })
         });
 
         then('Catalog page is displayed', async () => {
-            await expect(page).toMatch('Reset selection')
+            await expect(page).toMatch('Reset filters')
         });
     })
 
@@ -45,14 +45,14 @@ defineFeature(feature, test => {
         });
     })
 
-    test('User tries to go to log in', ({ when, then }) => {
+    test('User tries to go to about us', ({ when, then }) => {
 
-        when('User clicks on go to log in link at home', async () => {
+        when('User clicks on go to about link at home', async () => {
             await expect(page).toMatch('DeDesktop is the result of the effort and dedication')
             await expect(page).toClick('button', { text: 'Already have an account? Login' })
         });
 
-        then('Log in page is displayed', async () => {
+        then('About us page is displayed', async () => {
             await expect(page).toMatch('Log in DeDesktop')
         });
     })

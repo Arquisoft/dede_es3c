@@ -8,6 +8,6 @@ Scenario: User tries to go to sign up
     When User clicks on go to sign up link at home
     Then Sign up page is displayed
 
-Scenario: User tries to go to log in
-    When User clicks on go to log in link at home
-    Then Log in page is displayed
+Scenario: User tries to go to about us
+    When User clicks on go to about link at home
+    Then About us page is displayed
