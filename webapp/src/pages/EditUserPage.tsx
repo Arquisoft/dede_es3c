@@ -73,7 +73,6 @@ const EditUserPage: FC<EditUserProps> = (props: EditUserProps) => {
     }, []);
 
     const updatePassword = async () => {
-        console.log(newPassword === newPasswordConfirmation)
         if (newPassword !== newPasswordConfirmation){
             Swal.fire({
               title: "Error",
@@ -154,14 +153,6 @@ const EditUserPage: FC<EditUserProps> = (props: EditUserProps) => {
                                     label="email">
                                 </TextField>
                             </div>
-
-                            <div>
-                                <TextField
-                                    size="small"
-                                    value={rol}
-                                    label="Rol">
-                                </TextField>
-                            </div>
                     </div>
                     
                     <div>
@@ -186,6 +177,7 @@ const EditUserPage: FC<EditUserProps> = (props: EditUserProps) => {
                                             type="submit"
                                             aria-label="changeUserButton"
                                             disabled={newUserName === ""}
+                                            onClick={() => updateUser()}
                                         >{translate("update.commit")}</Button>
                                     </Fragment>
                                 </Box>
