@@ -1,0 +1,13 @@
+Feature: User tries to use home links
+
+Scenario: User tries to go to catalog
+    When User clicks on go to catalog link at home
+    Then Catalog page is displayed
+
+Scenario: User tries to go to sign up
+    When User clicks on go to sign up link at home
+    Then Sign up page is displayed
+
+Scenario: User tries to go to log in
+    When User clicks on go to log in link at home
+    Then Log in page is displayed

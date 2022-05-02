@@ -1,0 +1,39 @@
+.itemDetailsContainer {
+    display: grid;
+    grid-template-columns: 0.3fr 1fr;
+}
+
+.itemDetailsImage {
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
+}
+
+.itemDetailsRight {
+    position: relative;
+    left: 15px;
+}
+
+.itemDetailsBuyControls {
+    display: grid;
+    grid-template-columns: 2fr 0.5fr;
+}
+
+.itemDetailsAddToCart {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.itemDetailsAddButton {
+    width: 150px;
+}
+
+.itemDetailsStock {
+    color: black;
+    position: relative;
+    top: 10px;
+}
+
+.relatedProductImage {
+    object-fit: contain;
+}

@@ -3,17 +3,20 @@ import LangState from "../lang";
 import UserState from "../User";
 import React from "react";
 import CrudUpdatePage from "../pages/CrudEditPage";
+import { MemoryRouter as Router } from 'react-router-dom';
 
 test('Update product page renders properly as admin', async () => {
     localStorage.setItem('currentUser', "admin");
 
     render(
         <React.StrictMode>
+            <Router>
             <UserState>
                 <LangState>
                     <CrudUpdatePage setUser={() => "admin"} />
                 </LangState>
             </UserState>
+            </Router>
         </React.StrictMode>,
     )
 
@@ -38,16 +41,18 @@ test('Add product page renders properly as client', async () => {
 
     render(
         <React.StrictMode>
+            <Router>
             <UserState>
                 <LangState>
                     <CrudUpdatePage setUser={() => "admin"} />
                 </LangState>
             </UserState>
+            </Router>
         </React.StrictMode>,
     )
 
-    let linkElement = screen.getByText(/DeDesktop is the result of the effort and dedication of the es3c group of the Software Architecture subject./i);
-    expect(linkElement).toBeInTheDocument();
-    linkElement = screen.getByText(/See all our products in our catalog/i);
-    expect(linkElement).toBeInTheDocument();
+    let linkElements = screen.getAllByText(/carouselImage1/i);
+    expect(linkElements[0]).toBeInTheDocument();
+    linkElements = screen.getAllByText(/carouselImage2/i);
+    expect(linkElements[0]).toBeInTheDocument();
 });

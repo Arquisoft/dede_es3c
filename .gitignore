@@ -36,8 +36,5 @@ dist/
 
 /.env
 /process.env
-/restapi/src/Solid.ts
-/docker-compose.yml
 /restapi/ormconfig.json
 /restapi/package-lock.json
-/webapp/package-lock.json
