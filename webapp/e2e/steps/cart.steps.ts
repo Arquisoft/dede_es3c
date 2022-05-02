@@ -1,7 +1,7 @@
 import { defineFeature, loadFeature } from 'jest-cucumber';
 import puppeteer from "puppeteer";
 
-const feature = loadFeature('./features/register-form.feature');
+const feature = loadFeature('./features/cart.feature');
 
 let page: puppeteer.Page;
 let browser: puppeteer.Browser;
@@ -11,11 +11,12 @@ defineFeature(feature, test => {
     beforeAll(async () => {
         browser = process.env.GITHUB_ACTIONS
             ? await puppeteer.launch()
-            : await puppeteer.launch({ headless: true });
+            //: await puppeteer.launch({ headless: true });
+            : await puppeteer.launch({ headless: false, slowMo: 0, args: ["--window-size=1300,2000"] });
         page = await browser.newPage();
 
         await page
-            .goto("http://localhost:3000/login", {
+            .goto("http://localhost:3000/catalog", {
                 waitUntil: "networkidle0",
             })
             .catch(() => { });
@@ -23,27 +24,27 @@ defineFeature(feature, test => {
 
     test('User opens cart', ({ given, when, then }) => {
 
-        let username: string;
-        let password: string;
+        let usernameTest: string;
+        let passwordTest: string;
 
         given('A registered client user', () => {
-            username = "testUser"
-            password = "testPass"
+            usernameTest = "Wardell Stephen Curry II"
+            passwordTest = "123456"
 
         });
 
         when('Clicks on cart button', async () => {
-            await expect(page).toMatch('Log in DeDesktop')
-            await expect(page).toFillForm('form[name="login"]', {
-                textName: username,
-                textPassword: password,
-            })
-            await expect(page).toClick('button', { text: 'Log in' })
-            await expect(page).toMatch('Reset selection')
+
+            await expect(page).toClick('a', { text: 'Logout' })
+
+            await expect(page).toMatch('Reset filters')
+
+
             await expect(page).toClick('button', { text: 'Cart' })
         });
 
         then('Cart is displayed', async () => {
+            await expect(page).toMatch('Your shopping cart')
             await expect(page).toMatch('No items in cart')
         });
     })
