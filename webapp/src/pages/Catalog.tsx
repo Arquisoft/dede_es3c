@@ -9,6 +9,10 @@ import { Grid } from "@mui/material";
 import Slider from '@mui/material/Slider';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import '../styles/Catalog.scss';
+import GoToTopButton from '../components/GoToTopButton';
+import HorizontalSeparator from '../components/HorizontalSeparator';
+import Footer from '../components/Footer';
 
 interface CatalogPageProps {
     setUser: (user: string) => void
@@ -18,6 +22,10 @@ interface CatalogPageProps {
 const minDistance = 10;
 
 const Catalog = (props: CatalogPageProps) => {
+    useEffect(() => {
+        reloadItems();
+    }, []);
+
     const { dispatch: { translate } } = useContext(LangContext);
     const [products, setProducts] = useState<Product[]>([]);
     const [nameFilter, setNameFilter] = useState('');
@@ -42,61 +50,150 @@ const Catalog = (props: CatalogPageProps) => {
     };
 
     const reloadItems = async () => {
-        setProducts(await getProducts());
+        try{
+            setProducts(await getProducts());
+        } catch(error) {
+            console.log("Error en la carga de productos");
+        }
     }
 
     async function FilterByName(name: string){
-        setProducts(await getProductsByName(name));
+        try {
+            setProducts(await getProductsByName(name));    
+        } catch (error) {
+            console.log("Error en el filtrado por nombre");
+        }
     }
 
     async function FilterByCategory(category: string) {
-        setProducts(await getProductsByCategory(category));
+        try{
+            setProducts(await getProductsByCategory(category));
+        } catch (error) {
+            console.log("Error en el filtrado por categoria");
+        }
     }
 
     async function FilterByPrice(min: number, max: number){
-        setProducts(await getProductsByPrice(min, max));
+        try{
+            setProducts(await getProductsByPrice(min, max));
+        } catch (error) {
+            console.log("Error en el filtrado por precio");
+        }
     }
 
-    useEffect(() => {
-        reloadItems();
-    }, []);
+    const buttonStyle = ({
+        buttonStyle1: {
+            borderRadius: 15,
+            backgroundColor: "#e8e8e8",
+            padding: "15px 20px",
+            fontSize: "13px"
+        },
+
+        buttonStyle2: {
+            borderRadius: 15,
+            backgroundColor: "#e8e8e8",
+            padding: "5px 8px",
+            fontSize: "15px"
+        },
+
+        buttonStyle3: {
+            borderRadius: 15,
+            backgroundColor: "#e8e8e8",
+            padding: "12px 20px",
+            fontSize: "13px"
+        },
+
+        buttonStyle4: {
+            borderRadius: 15,
+            backgroundColor: "#e8e8e8",
+            padding: "5px 8px",
+            fontSize: "15px"
+        },
+    })
 
     return (
         <div>
-            <Form>
-                <FormControl type="search" value={val} placeholder={translate('catalog.search')} className="me-2" aria-label="Search" onChange={e => {setNameFilter(e.target.value); setVal(e.target.value)}}/>
-                <Button onClick={() => FilterByName(nameFilter)} >{translate('catalog.search')}</Button>
-            </Form>
+            <div className='filtrosCatalog'>
+                <div>
+                    <Form className='filtroTextoCatalog'>
+                        <div>
+                            <FormControl type="search" value={val} placeholder={translate('catalog.search')} className="me-2" aria-label="Search" onChange={e => { setNameFilter(e.target.value); setVal(e.target.value) }} />
+                        </div>
+                        <div className="botonFiltroTexto">
+                            <Button onClick={() => FilterByName(nameFilter)} style={buttonStyle.buttonStyle4}>{translate('catalog.search')}</Button>
+                        </div>
+                    </Form>
+                </div>
 
-            <Button onClick={() => { reloadItems(); setVal("") }}>{translate('category.reset')}</Button>
-            <Button onClick={() => FilterByCategory("Monitors")}>{translate('category.monitors')}</Button>
-            <Button onClick={() => FilterByCategory("Laptop")}>{translate('category.laptop')}</Button>
+                <div className='filtrosCategoriaCatalog'>
+                    <div>
+                        <Button onClick={() => FilterByCategory("Monitor")} style={buttonStyle.buttonStyle1}>{translate('category.monitors')}</Button>
+                    </div>
+                    <div>
+                        <Button onClick={() => FilterByCategory("Laptop")} style={buttonStyle.buttonStyle1}>{translate('category.laptop')}</Button>
+                    </div>
+                    <div>
+                        <Button onClick={() => FilterByCategory("Chair")} style={buttonStyle.buttonStyle1}>{translate('category.chairs')}</Button>
+                    </div>
+                    <div>
+                        <Button onClick={() => FilterByCategory("Keyboard")} style={buttonStyle.buttonStyle1}>{translate('category.keyboards')}</Button>
+                    </div>
+                </div>
 
-            <Box sx={{ width: 300 }}>
-                <TextField id="outlined-basic" label="Min" variant="outlined" value={sliderValue[0] + "$"} size="small" />
-                <p>To</p>
-                <TextField id="outlined-basic" label="Max" variant="outlined" value={sliderValue[1] + "$"} size="small"/>
-                <Slider
-                    getAriaLabel={() => 'Minimum distance'}
-                    value={sliderValue}
-                    onChange={handleSliderChange}
-                    valueLabelDisplay="off"
-                    disableSwap
-                    max={10000}
-                />
-                <Button onClick={() => FilterByPrice(sliderValue[0], sliderValue[1])}>Filtrar por precio</Button>
-            </Box>
+                <div>
+                    <Box sx={{ width: 300 }} className='filtroPrecioCatalog'>
+                        <div className='sliderBoxes'>
+                            <div className="sliderIzq" aria-label='leftPrice'>
+                                <TextField id="outlined-basic" variant="outlined" value={sliderValue[0] + "$"} size="small" />
+                            </div>
+                            <div className="toLabelCatalog">
+                                {translate("catalog.separator")}
+                            </div>
+                            <div className="sliderDer" aria-label='rightPrice'>
+                                <TextField id="outlined-basic" variant="outlined" value={sliderValue[1] + "$"} size="small" />
+                            </div>
+                        </div>
+                        <div className="segundaFilaFiltroPrecio">
+                            <div className="sliderBarCatalog" aria-label="slider">
+                                <Slider
+                                    getAriaLabel={() => 'Minimum distance'}
+                                    value={sliderValue}
+                                    onChange={handleSliderChange}
+                                    valueLabelDisplay="off"
+                                    disableSwap
+                                    max={2500}
+                                />
+                            </div>
+                            <div className="sliderFilterButton">
+                                <Button onClick={() => FilterByPrice(sliderValue[0], sliderValue[1])} style={buttonStyle.buttonStyle2} aria-label="priceFilterButton">{translate('catalog.price')}</Button>
+                            </div>
+                        </div>
+                    </Box>
+                </div>
 
-            <Grid container spacing={3}>
+                <div className='resetFiltrosCatalog'>
+                    <Button onClick={() => { reloadItems(); setVal("") }} style={buttonStyle.buttonStyle3}>{translate('category.reset')}</Button>
+                </div>
+            </div>
+
+            <HorizontalSeparator />
+
+            <Grid className="gridCatalog">
                 {products?.map((item: Product) => {
                     return (
-                        <Grid item key={item.name} xs={12} sm={4}>
+                        <div key={item.name}>
                             <Item item={item} setAmount={props.setAmount}/>
-                        </Grid>
+                        </div>
                     );
                 })}
             </Grid>
+
+            <GoToTopButton />
+
+            <Footer />
         </div>
     );
+
+    
 };
 export default Catalog;

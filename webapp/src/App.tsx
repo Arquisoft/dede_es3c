@@ -12,43 +12,24 @@ import CrudDeletePage from './pages/CrudDeletePage';
 import OrdersPage from './pages/OrdersPage';
 import ShippingPage from './pages/ShippingPage';
 import CatalogPage from './pages/Catalog';
-import ProductDetailPage from './pages/ProductDetailPage';
+import Header from "./components/Header";
 import Cart from './components/Cart';
 import { Drawer } from "@mui/material";
 import { OpenContext } from './OpenCart';
 import ClientView from './pages/ClientView';
 import EditUserPage from './pages/EditUserPage';
-import Button from '@mui/material/Button';
-import Header from './components/Header';
+import AboutPage from './pages/AboutPage';
 
 const App: FC = () => {
   const { dispatch: {setUser}} = useContext(UserContext);
   const { dispatch: { setOpen, setAmount } } = useContext(OpenContext);
-  const [showButton, setShowButton] = useState(true);
-
-  useEffect(() => {
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 300) {
-        setShowButton(true);
-      } else {
-        setShowButton(false);
-      }
-    });
-  }, []);
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  };
 
   return (
     <Router>
       <Header setUser={setUser} setOpen={setOpen} setAmount={setAmount}/>
 
       <Drawer anchor="right" open={Boolean(useContext(OpenContext).stateOpen.openCart)} onClose={() => setOpen("")}>
-        <Cart setOpen={setOpen} setAmount={setAmount} cartItems={JSON.parse(localStorage.getItem("cart")!)}/>
+        <Cart setOpen={setOpen} setAmount={setAmount} cartItems={JSON.parse(localStorage.getItem("cart")!)} />
       </Drawer>
 
       <Routes>
@@ -110,12 +91,6 @@ const App: FC = () => {
           }
         />
         <Route
-          path='products/name/:name'
-          element={
-            <ProductDetailPage setUser={setUser} setAmount={setAmount}/>
-          }
-        />
-        <Route
           path='users'
           element={
             <ClientView setUser={setUser}/>
@@ -127,16 +102,14 @@ const App: FC = () => {
             <EditUserPage setUser={setUser}/>
           }
         />
+        <Route
+          path = '/about'
+          element = {
+            <AboutPage />
+          }
+        />
       </Routes>
-
-      {showButton && (
-        <Button onClick={scrollToTop} className="back-to-top">
-          &#8679;
-        </Button>
-      )}
-
     </Router>
-    
 );
 }
 export default App;

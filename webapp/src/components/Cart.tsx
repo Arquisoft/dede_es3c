@@ -3,6 +3,8 @@ import { Button } from "react-bootstrap";
 import CartItem from "../components/CartItem";
 import { Product } from '../shared/shareddtypes';
 import { LangContext } from '../lang';
+import HorizontalSeparator from "./HorizontalSeparator";
+import '../styles/Cart.scss';
 
 type CartProps = {
     setOpen: (open: string) => void
@@ -22,19 +24,36 @@ const Cart: React.FC<CartProps> = (props: CartProps) => {
     }
 
     return (
-        <div>
+        <div className="cartContainer">
             <h2 aria-label="cartTitle">{translate('cart.title')}</h2>
+
+            <HorizontalSeparator />
+
             {props.cartItems.length === 0 ? <p>{translate('cart.empty')}</p> : null}
             {props.cartItems.map((item: Product) =>
-                <CartItem
-                    key={item.name}
-                    item={item}
-                    setAmount={props.setAmount}
-                />
+                <div>
+                    <CartItem
+                        key={item.name}
+                        item={item}
+                        setAmount={props.setAmount}
+                    />
+                    <HorizontalSeparator />
+                </div>
             )}
+
             <h2>Subtotal: $ {calculateSubTotal(props.cartItems).toFixed(2)}</h2>
             <h2>{translate('cartItem.total')}: $ {calculateTotal(props.cartItems).toFixed(2)}</h2>
-            <Button onClick={() => window.location.assign("/shipping") } disabled={localStorage.getItem("currentUser") === "not logged"}>{translate('cart.orderButton')}</Button>
+            <Button
+                style={{
+                    borderRadius: 15,
+                    backgroundColor: "#e8e8e8",
+                    padding: "18px 36px",
+                    fontSize: "18px"
+                }}
+                className="confirmButton"
+                onClick={() => window.location.assign("/shipping") }
+                disabled={localStorage.getItem("currentUser") === "not logged"}
+            >{translate('cart.orderButton')}</Button>
         </div>
     )
 }

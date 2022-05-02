@@ -1,26 +1,11 @@
 import React, {Fragment, FC, useState, useContext} from "react";
-import {Box, Card, CardContent, Container, List, ListItem, ListItemText, ListSubheader, Modal, TextField, Typography} from "@mui/material";
-import { Button} from "react-bootstrap";
-import {Product, OrderProduct } from "../shared/shareddtypes";
-import { addOrder, getAddress, getUser } from "../api/api";
+import { Card, CardContent, Container, List, ListItem, ListItemText, ListSubheader, TextField} from "@mui/material";
+import { Button } from "react-bootstrap";
+import { Product } from "../shared/shareddtypes";
+import { getAddress } from "../api/api";
 import Swal from 'sweetalert2';
 import { Navigate, Link } from "react-router-dom";
 import { LangContext } from '../lang';
-import DisplayDistributionCenters from "../components/DistributionCenterDisplay";
-
-const style = {
-  position: 'absolute' as 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  height: 350,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
-
 
 interface ShippingPageProps {
     setUser:(user:string) => void
@@ -34,22 +19,13 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
   const [postalCode, setPostalCode] = useState("");
   const [region, setRegion] = useState("");
   const [streetAddress, setStreetAddress] = useState("");
-  const [card, setCard] = useState("");
-  const [productsOder, setProductsOrder] = useState<OrderProduct[]>([]);
-  const [openPrice, setOpenPrice] = useState(false);
 
-  const handleOpenPrice = () => {
-    setOpenPrice(true);
-  };
-  const handleClosePrice = () => {
-    setOpenPrice(false);
-  };
- 
-  const addressFields = () => {
-    if (countryName === '' || locality === '' || postalCode === '' || region === '' || streetAddress === ''){
-      return true;
-    }
-    return false
+  const cleanFields = () => {
+    setCountryName("");
+    setLocality("");
+    setPostalCode("");
+    setRegion("");
+    setStreetAddress("");
   }
 
   const products = localStorage.getItem("cart");
@@ -84,63 +60,10 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
     }
   })
 
-  const showConfirmation = () => {
-    Swal.fire({
-      title: "Success",
-      text: translate("shipping.confirmation"),
-      icon: "success",
-    }).then(() => window.location.assign("/catalog"));
-  }
-  const generateOrderProduct = () => {
-    var productOrders:  OrderProduct[] = [];
-    for (let index = 0; index < cartProducts.length; index++) {
-      var center = localStorage.getItem("Center " + cartProducts[index].name);
-      var centerName = "";
-      if (center !== null){
-        centerName = center;
-      }
-      var oP: OrderProduct  = 
-      {
-        product: cartProducts[index],
-        quantity: cartProducts[index].amount,
-        shippingPrice: 1,
-        distributionCenter: {address: centerName}
-      }
-      productOrders[index] = oP;    
-    }
-    console.log(productOrders);
-    generateOrder(productOrders);
-    handleClosePrice();
-    showConfirmation();
-    return productOrders;
-  }
-
-  const parseAddress = () => {
-    var street = streetAddress.split(" ");
-
-    return street[0] + street[1] + "," + street[2] + "," + locality;
-  }
-
-
-  const generateOrder = async (prods: OrderProduct[]) => {
-    var email = "";
-    var user = localStorage.getItem("currentUser");
-    var parsedAddress:string = parseAddress();
-    console.log(parsedAddress)
-    if (user !== null){
-      email = (await getUser(user)).email
-    }
-    if (prods.length > 0){
-       await addOrder(email, prods)
-    } else{
-      console.log(productsOder)
-    }
-  }
-
   async function getAdd() {
-    await getAddress(webID).then(address => {
-      console.log(address)
-      if (address !== null){
+    try{
+      const address = await getAddress(webID);
+      if (address !== undefined) {
         setCountryName(address['country']);
         setLocality(address['locality']);
         setPostalCode(address['postalCode']);
@@ -150,14 +73,18 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
           icon: 'success',
           title: '¡We got your addres! check it out'
         })
+      } else {
+        Swal.fire({
+          title: "Error",
+          text: translate("solid.error"),
+          icon: "error",
+        });
+
       }
-  }, () => {
-    Toast.fire({
-      icon: 'error',
-      title: 'We could not get your address'});
-    });
+    } catch (error){
+      console.log("Error al recuperar la dirección");
+    }
   }
-  
 
   if (localStorage.getItem("currentUser") === "not logged"){
     return <Navigate to={"/login"}/>
@@ -169,11 +96,12 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
         <Link to="/catalog">{translate("orders.shopping")}</Link>
       </div>    
     );
+
   }
   return(
     <div>
       <h1 aria-label="selectedProductsTitle">{translate("shipping.title")}</h1> 
-      <Container component="main"maxWidth="lg">
+      <Container component="main" maxWidth="sm">
         <Card className={"main"} elevation={10} style={{display: "grid"}}>
         <CardContent style={{ display: "grid", margin: "auto", textAlign: "center" }}>
                 <h3 aria-label="selectedProductsSubtitle">{translate('shipping.selectedProducts')}</h3>
@@ -182,22 +110,20 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                     style={{ display: "grid", margin: "auto", textAlign: "center" }}
                     sx={{
                       width: '100%',
-                      maxWidth: 700,
+                      maxWidth: 500,
                       bgcolor: 'background.paper',
                       position: 'relative',
                       overflow: 'auto',
-                      maxHeight: 700,
+                      maxHeight: 500,
                       '& ul': { padding: 0 },
                     }}
                     >
                       <li key={'Productos'}>
                         <ul>
-                          <ListSubheader>{translate('shipping.selectedProducts')}</ListSubheader>
                           {cartProducts.map((item) => (
-                            <ListItem key={item.name} alignItems="center">
+                            <ListItem key={item.name}>
                             <img alt="desc" src= {item.urlPhoto} width= '70' height='70'/>
                             <ListItemText primary={"x" + item.amount + "\t"+item.name + ":" + item.price + "$"} />
-                            <DisplayDistributionCenters product={item}/>
                             </ListItem>
                             ))}
                         </ul>
@@ -222,12 +148,17 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                         onChange={e => setWebID(e.target.value)}
                         sx={{ my: 2 }} >
                       </TextField>
-                      <Button onClick={() => getAdd()}>
+                      <Button onClick={() => { cleanFields(); getAdd()}}
+                style={{
+                  borderRadius: 15,
+                  backgroundColor: "#e8e8e8",
+                  padding: "18px 36px",
+                  fontSize: "18px"
+                }}>
                         {translate("login.validate")}
                       </Button>
                       <div>
                       <TextField
-                        disabled
                         required
                         size="small"
                         name="country"
@@ -238,7 +169,6 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                         >
                       </TextField>
                       <TextField
-                        disabled
                         required
                         size="small"
                         name="locality"
@@ -249,7 +179,6 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                         >
                       </TextField>
                       <TextField
-                        disabled
                         required
                         size="small"
                         name="postalCode"
@@ -260,7 +189,6 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                         >
                       </TextField>
                       <TextField
-                        disabled
                         required
                         size="small"
                         name="region"
@@ -272,7 +200,6 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                       </TextField>        
                       </div>
                       <TextField
-                        disabled
                         required
                         size="small"
                         name="street"
@@ -282,45 +209,13 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                         sx={{ my: 2 }} 
                         >
                       </TextField>
-                      <Button 
-                      variant="contained" 
-                      type="submit"
-                      disabled={addressFields()}
-                      onClick={() => handleOpenPrice()}
-                      >
-                        {translate('shipping.proceed')}
-                      </Button>
-                      <Modal aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description"
-                    open = {openPrice}
-                    onClose ={handleClosePrice}
-                    >
-                    <Box sx={style}>
-                    <Typography id = "modal-modal-title" variant = "h6" component= "h2">{translate("shipping.resume")}</Typography>
-                    <div>
-                    <Typography id = "modal-modal-subtitle2" variant = "subtitle2" component= "text">{translate("shipping.priceFinal") + ": " + finalPrice.toFixed(2) + "$"}</Typography>
-                    </div>
-                    <div>
-                    <Typography id = "modal-modal-subtitle2" variant = "subtitle2" component= "text">{translate("shipping.creditCard")}</Typography>
-                    </div>
-                    <TextField
-                     required
-                     size="medium"
-                     name="username"
-                     label= {translate ('shipping.card')} 
-                     variant="outlined"
-                     value={card}
-                     helperText= {translate('shipping.card')}
-                     onChange={e => setCard(e.target.value)}
-                     sx={{ my: 2 }} >       
-                    </TextField> 
-                    <Button 
-                    disabled= {card === '' || card.length < 8}
-                    onClick={() => generateOrderProduct()}>
-                    {translate("shipping.end")}</Button>      
-                    <Fragment >
-                    </Fragment>
-                    </Box>
-                    </Modal>
+              <Button variant="contained" type="submit" onClick={() => cleanFields()}
+                style={{
+                  borderRadius: 15,
+                  backgroundColor: "#e8e8e8",
+                  padding: "18px 36px",
+                  fontSize: "18px"
+                }}>{translate('shipping.proceed')}</Button>
                     </Fragment>
             </CardContent>
             </Card>

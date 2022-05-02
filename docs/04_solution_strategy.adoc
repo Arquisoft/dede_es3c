@@ -16,7 +16,7 @@ The technologies we have decided to use for the development of the app are:
 
 - MongoDB: MongoDB is open source software, which is a NoSQL document database, we use NoSQL as it gives us the ability to work with many different data without spending so much time modeling these elements.
 
-- Heroku: Heroku is a cloud server which we will use to deploy our App. Heroku makes it easy to deploy and scale Node.js applications. Run any recent version of Node.js. Deploy apps in seconds using dependency caching.
+- AWS: AWS is a cloud server which we will use to deploy our App. AWS makes it easy to deploy and scale Node.js applications. Run any recent version of Node.js. Deploy apps in seconds using dependency caching.
 
 - Docker: We will use it to launch the application in a container of the technologies we need to carry out the DeDe. 
 
