@@ -1,8 +1,8 @@
 import React, {Fragment, FC, useState, useContext} from "react";
 import {Box, Card, CardContent, Container, List, ListItem, ListItemText, ListSubheader, Modal, TextField, Typography} from "@mui/material";
 import { Button} from "react-bootstrap";
-import {Product, OrderProduct } from "../shared/shareddtypes";
-import { addOrder, getAddress, getUser } from "../api/api";
+import {Product, OrderProduct, Order } from "../shared/shareddtypes";
+import { addOrder, getAddress, getShippingPrice, getUser } from "../api/api";
 import Swal from 'sweetalert2';
 import { Navigate, Link } from "react-router-dom";
 import { LangContext } from '../lang';
@@ -40,6 +40,7 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
   const [productsOder, setProductsOrder] = useState<OrderProduct[]>([]);
   const [openPrice, setOpenPrice] = useState(false);
   const [openPod, setOpenPod] = useState(false);
+  const[shipping, setShipping] = useState(0);
 
   const cleanFields = () => {
     setCountryName("");
@@ -102,6 +103,15 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
     }
   })
 
+const checkCenters = (centers: OrderProduct[]) => {
+  for (let index = 0; index < centers.length; index++) {
+    if (centers[index].distributionCenter.address === ""){
+      return true;
+    }
+  }
+  return false
+}
+
   const showConfirmation = () => {
     Swal.fire({
       title: "Success",
@@ -126,11 +136,25 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
       }
       productOrders[index] = oP;    
     }
-    console.log(productOrders);
-    generateOrder(productOrders);
-    handleClosePrice();
-    showConfirmation();
+    if (checkCenters(productOrders)){
+      Swal.fire({
+        title: "Error",
+        text: translate("shipping.nocenter"),
+        icon: "error",
+      })
+    } else{
+      handleOpenPrice()
+      console.log(productOrders);
+      setProductsOrder(productOrders);
+      shippingPrice(productOrders);
+    }   
     return productOrders;
+  }
+
+  const shippingPrice = async (products: OrderProduct[]) => {
+    getShippingPrice(products, parseAddress()).then ((ship) => {
+      setShipping(ship);
+    });
   }
 
   const removeAccents = (str:string) => {
@@ -153,6 +177,8 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
     }
     if (prods.length > 0){
        await addOrder(email, prods, parsedAddress)
+       handleClosePrice();
+       showConfirmation();
     } else{
       console.log(productsOder)
     }
@@ -162,7 +188,8 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
     try{
       await getAddress(webID).then(address => {
         console.log(address)
-        if (address.msg === "POD not found" || address.msg === "Address not found") {
+        if (address.msg === "POD not found" || address.msg === "Address not found" || webID === "") {
+          cleanFields();
           Toast.fire({
             icon: 'error',
             title: 'We could not get your address'
@@ -326,7 +353,7 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                       variant="contained" 
                       type="submit"
                       disabled={addressFields()}
-                      onClick={() => {handleOpenPrice()}}
+                      onClick={() => {generateOrderProduct()}}
                       >
                         {translate('shipping.proceed')}
                       </Button>
@@ -337,7 +364,7 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                     <Box sx={style}>
                     <Typography id = "modal-modal-title" variant = "h6" component= "h2">{translate("shipping.resume")}</Typography>
                     <div>
-                    <Typography id = "modal-modal-subtitle2" variant = "subtitle2" component= "text">{translate("shipping.price") + " " + 10.0 + "$"}</Typography>
+                    <Typography id = "modal-modal-subtitle2" variant = "subtitle2" component= "text">{translate("shipping.price") + " " + shipping + "$"}</Typography>
                     </div>
                     <div>
                     <Typography id = "modal-modal-subtitle2" variant = "subtitle2" component= "text">{translate("shipping.priceFinal") + " " + (finalPrice + 10.0).toFixed(2) + "$"}</Typography>
@@ -381,8 +408,9 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
 
         </Fragment>
                     <Button 
-                    disabled= {(CVV === '' || CVV.length !== 3) || (cardNumber ==='' || cardNumber.length < 12) || (expireDate === '')}
-                    onClick={() => {cleanFields(); generateOrderProduct()}}>
+                    disabled= {(CVV === '' || CVV.length !== 3) || (cardNumber ==='' || cardNumber.length < 12) || (expireDate === '')
+                    }
+                    onClick={() => {cleanFields(); generateOrder(productsOder)}}>
                     {translate("shipping.end")}</Button>      
                     <Fragment >
                     </Fragment>
