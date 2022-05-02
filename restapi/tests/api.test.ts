@@ -528,7 +528,7 @@ describe("orders", () => {
   it("can't be listed orders", async () => {
     const response: Response = await request(app)
       .get("/api/orders")
-    expect(response.statusCode).toBe(200);
+    expect(response.statusCode).toBe(403);
   });
 
   /**
