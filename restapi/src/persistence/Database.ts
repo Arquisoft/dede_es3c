@@ -28,7 +28,9 @@
              this.db = await createConnection(options);
              result = true;
          } catch (error) {
-             console.log(`Error on create connection: ${error}`);
+            if (error instanceof Error) {
+                console.log(`Error on create connection: ${error.message}`);
+              }
          }
          return result;
      }
