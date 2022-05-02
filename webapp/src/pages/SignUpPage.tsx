@@ -78,7 +78,7 @@ const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
             </div>
                 <h1>{translate('signup.h1')}</h1>
                 <h2>{translate('signup.h2')}</h2>
-                <form>
+                <form id = "register" name="register">
                 <div>
                     <TextField
                         id = "textName"
