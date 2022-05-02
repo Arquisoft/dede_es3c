@@ -1,4 +1,4 @@
-import { FC, useContext } from "react";
+import { useContext } from "react";
 import logo from '../img/logo-dede.svg';
 import { LangContext } from '../lang';
 import '../styles/About.scss';
