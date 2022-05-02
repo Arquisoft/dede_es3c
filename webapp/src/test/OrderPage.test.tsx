@@ -55,7 +55,7 @@ test('check orders page text renders properly when the user has orders', async (
         </UserState>
       </React.StrictMode>,
    )
-    const linkElement = screen.getByText(/123/i);
+    let linkElement = screen.getByText(/123/i);
     const noOrders = screen.getByText(/product-test/i);
     expect(linkElement).toBeInTheDocument();
     expect(noOrders).toBeInTheDocument();

@@ -8,7 +8,7 @@ test('Item renders properly', async () => {
     
     render(
         <Router>
-            <Item item={product} setAmount={() => undefined} />
+            <Item item={product} setAmount={() => undefined}/>
         </Router>
     )
 
@@ -18,6 +18,10 @@ test('Item renders properly', async () => {
     expect(linkElement).toBeInTheDocument();
     linkElement = screen.getByText(/\$ 1/i);
     expect(linkElement).toBeInTheDocument();
-    linkElement = screen.getByLabelText(/add to cart/i);
+    linkElement = screen.getByText(/Stock: 0/i);
+    expect(linkElement).toBeInTheDocument();
+    linkElement = screen.getByLabelText(/selector/i);
+    expect(linkElement).toBeInTheDocument();
+    linkElement = screen.getByLabelText(/Add to cart/i);
     expect(linkElement).toBeInTheDocument();
 });

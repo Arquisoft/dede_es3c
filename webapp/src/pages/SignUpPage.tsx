@@ -12,6 +12,9 @@ import { Button } from "react-bootstrap";
 import { Navigate } from "react-router-dom";
 import { LangContext } from '../lang';
 import Swal from "sweetalert2";
+import '../styles/Signup.scss';
+import Footer from '../components/Footer';
+
 
 interface SignUpProps{
     setUser: (user:string) => void
@@ -71,7 +74,7 @@ const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
         <Card className={"main"} elevation={10} style={{display: "grid"}}>
         <CardContent style={{ display: "grid", margin: "auto", textAlign: "center" }}>
             <div>
-            <img  alt="Logo" width={150} height = {150} src={logo} />
+                <img  alt="Logo" width={200} height={200} src={logo} />
             </div>
                 <h1>{translate('signup.h1')}</h1>
                 <h2>{translate('signup.h2')}</h2>
@@ -150,11 +153,21 @@ const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
                     variant="contained" 
                     type="submit"
                     color="primary"
+                    style={{
+                        borderRadius: 15,
+                        backgroundColor: "#e8e8e8",
+                        padding: "18px 36px",
+                        fontSize: "16px"
+                    }}
                      >{translate('signup.signup')}</Button>
-                <Link to="/login">{translate('signup.login')}</Link>
+                <Link to="/login" className="goToLoginSignup">{translate('signup.login')}</Link>
                 </CardContent>
             </Card>
         </Container>
+
+        <div className="footerPositionSignup">
+            <Footer />
+        </div>
     </div>
     );
   }

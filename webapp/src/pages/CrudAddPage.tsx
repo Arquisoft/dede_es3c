@@ -28,7 +28,11 @@ const CrudAddPage: FC<CrudPageProps> = (props: CrudPageProps) => {
         const product: Product = {name: name, description: description, price: Number(price), category: category, urlPhoto: urlPhoto, amount: 0}
 
         if (!isBlank(product.name) || !isBlank(product.description) || !isBlank(product.category) || !isBlank(product.urlPhoto)) {
-            await addProduct(product);
+            try {
+                await addProduct(product);
+            } catch (error) {
+                console.log("Error al añadir un producto");
+            }
         }
     }
     if (!localStorage.getItem("currentUser")?.includes("admin")) {
