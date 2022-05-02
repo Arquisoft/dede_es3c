@@ -4,6 +4,7 @@ import { Order } from '../entities/Order';
 import { OrderService } from '../services/Order_Service';
 import axios from 'axios'
 import { ProductOrderService } from '../services/ProductOrder_Service';
+import { ProductStoreService } from '../services/ProductStore_Service';
 
 export class OrderController {
 
@@ -92,21 +93,15 @@ export class OrderController {
             var source;
             
             //Destination
-            let user; let url; var response;
-            //let user = await UserService.getUserByEmail(req.app, orderBody.user)
-            //var url = 'http://localhost:5000/api/users/userpod/'+user.username;
-            //var response = await axios.get(url)
-            //var destination = response.;
-            var destination = "AvenidadelaConstitucion,10,Gijon"; //get address from user pod
-
+            let url; var response;
+            var destination = req.body.address;
 
             var price = 0.0;
             //Source
             var d;
             for (var p of orderBody.products) {
-                
-                
-                //await DistributionCenterService.decrementProductStock(req.app,p.distributionCenter.id,newStore)
+                await ProductStoreService.decrementProductStock(req.app,p.product.id,p.distributionCenter.id,p.quantity)
+
                 var sp = 0.0;
                 source = p.distributionCenter.address;
                 url = 'https://maps.googleapis.com/maps/api/distancematrix/json?destinations='+destination+'&origins='+source+'&key=AIzaSyANy46m-FN8Sa9aSpIiLpSWx3xl7M2oX3s'

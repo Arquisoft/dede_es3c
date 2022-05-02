@@ -49,10 +49,9 @@ prod1 = {
 		"id": prod1_id,
 		"name":"Samsung Galaxy Book2",
 		"description":"Características:\n\nImpulsado por la plataforma Intel® Evo™ más avanzada: Galaxy Book2 Pro maneja con facilidad las cargas intensas de trabajo informático gracias a un procesador Intel® Core™ de 12ª generación, construido sobre la nueva arquitectura de núcleo híbrido. Junto con un SSD rápido, una solución de mejora LPDDR5 y un avanzado sistema de refrigeración, puede hasta con las cargas de trabajo más intensas.\n\nMantente seguro: El Galaxy Book2 Pro está diseñado para proteger tu privacidad, manteniendo la información crítica en secreto hasta el nivel del firmware, con características basadas en el hardware. Controla tu información personal sin preocupaciones con Galaxy Book2 Pro.\n\nAcelera con Wi-Fi 6E: Acelera tus datos con la conectividad WiFi 6E. Experimentarás velocidades de datos ultrarrápidas con la banda adicional de 6GHz y la latencia superbaja que necesitas para un rendimiento increíble.\n\nEspecificaciones\n- Procesador/ Chipset Intel 12th Gen (Intel EVO™) i7 1260P\n- Pantalla 15.6” FHD AMOLED\n- Almacenamiento 512GB NVMe SSD\n- Gráficos Intel® Iris® X\n-Wi-Fi 6E (Gig+)\n- Batería 63Wh, carga USB-C 65W\n- Dimensiones (ancho x profundidad x alto) 355.4×225.8×11.7mm\n- Peso 1.05kg",
-        "price":1548,
+    "price":1548,
 		"category":"Laptop",
 		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1651412131/Productos/1719-samsung-galaxy-book2-pro-intel-core-i7-1260p-16gb-512gb-ssd-156_eravyk.webp",
-		"stock":10
 		}
 prod2 = {
 		"id": prod2_id,
@@ -61,16 +60,14 @@ prod2 = {
         "price":538.99,
 		"category":"Laptop",
 		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1651418687/Productos/1211-lenovo-v14-g2-itl-intel-core-i5-1135g7-8-gb-256gb-ssd-14_ygf2ti.webp",
-		"stock":10
 		}
 prod3 = {
 		"id": prod3_id,
 		"name":"MSI GF63 Thin",
 		"description":"Características\n\nEquipa el último procesador Intel® Core ™ i7 de undécima generación, aumenta el rendimiento hasta en un 40./. con respecto a la generación anterior. Consiga una mayor potencia con este procesador de 8 núcleos que admite una frecuencia de doble núcleo de hasta 4,6 GHz para maximizar la eficiencia en el juego, el trabajo multitarea y la productividad.\n\nEspecificaciones\n- Procesador Intel Core Tiger Lake i7-11800H+HM570\n- Memoria RAM DDR IV 8GB*2 (3200MHz)\n- Almacenamiento 512GB NVMe PCIe Gen3x4 SSD (new)\n- Unidad óptica No dispone\n- Display 15.6” FHD (1920*1080), 144Hz 72%NTSC IPS-Level\n- Controlador gráfico RTX3050 Ti Max-Q, GDDR6 4GB\n- Webcam HD (30fps a 720p)\n- Micrófono Sí\n- Batería 51 Wh\n- Teclado Retroiluminado en rojo\n- Dimensiones (Ancho x Profundidad x Altura) 359 x 254 x 21.7 mm\n- Peso 1,86 kg\n- Color Negro",
-        "price":1249,
+    "price":1249,
 		"category":"Laptop",
 		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1651416806/Productos/1390-msi-gf63-thin-11ud-271xes-intel-core-i7-11800h-16-gb-512gb-ssd-rtx-3050ti-156_hycr54.webp",
-		"stock":10
 		}
 prod4 = {
 		"id": prod4_id,
@@ -79,7 +76,6 @@ prod4 = {
         "price":550.94,
 		"category":"Laptop",
 		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1651416991/Productos/1417-lenovo-thinkbook-14-g2-itl-intel-core-i3-1115g4-8gb-256gb-ssd-14_miacgn.webp",
-		"stock":10
 		}
 prod5 = {
 		"id": prod5_id,
@@ -88,7 +84,6 @@ prod5 = {
         "price":749,
 		"category":"Laptop",
 		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1651417185/Productos/1464-asus-tuf-gaming-f15-fx506lh-hn042-intel-core-i5-10300h-16gb-512gb-ssd-gtx-1650-156_xjlhrq.webp",
-		"stock":10
 		}
 prod6 = {
 		"id": prod6_id,
@@ -97,7 +92,6 @@ prod6 = {
         "price":849,
 		"category":"Laptop",
 		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1651417316/Productos/1646-hp-victus-16-e0000ns-amd-ryzen-7-5800h-16gb-512gb-ssd-rtx-3050-161_gufttp.webp",
-		"stock":10
 		}
 prod7 = {
 		"id": prod7_id,
@@ -106,7 +100,6 @@ prod7 = {
         "price":195,
 		"category":"Laptop",
 		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1651417456/Productos/155-hp-chromebook-14a-na0004ns-intel-celeron-n4020-4gb-64gb-emmc-14_pvwfnk.webp",
-		"stock":10
 		}
 prod8 = {
 		"id": prod8_id,
@@ -115,7 +108,6 @@ prod8 = {
         "price":2319,
 		"category":"Laptop",
 		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1651417584/Productos/1738-microsoft-surface-pro-8-intel-core-i7-1185g7-16gb-1tb-ssd-13-tactil-platino-microsoft-365-personal-12-meses_exeqtn.webp",
-		"stock":10
 		}
 prod9 = {
 		"id": prod9_id,
@@ -124,7 +116,6 @@ prod9 = {
         "price":448,
 		"category":"Laptop",
 		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1651417909/Productos/1100-hp-15s-fq2159ns-intel-core-i3-1115g4-8gb-256gb-ssd-156_zi7ibf.webp",
-		"stock":10
 		}
 prod10 = {
 		"id": prod10_id,
@@ -133,7 +124,6 @@ prod10 = {
         "price":479,
 		"category":"Laptop",
 		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1651417942/Productos/1748-lenovo-ideapad-3-15itl6-intel-core-i5-1135g7-8gb-512gb-ssd-156_xgljyj.webp",
-		"stock":10
 		}
 prod11 = {
 		"id": prod11_id,
@@ -142,7 +132,6 @@ prod11 = {
         "price":261.70,
 		"category":"Monitor",
 		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1651418864/Productos/1720-hp-omen-25i-245-led-ips-fullhd-165hz-g-sync_h79el0.webp",
-		"stock":10
 		}
 prod12 = {
 		"id": prod12_id,
@@ -151,7 +140,6 @@ prod12 = {
         "price":229,
 		"category":"Monitor",
 		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1651419074/Productos/1606-pccom-discovery-236-led-fullhd-165hz-freesync-curvo_cdausf.webp",
-		"stock":10
 		}
 prod13 = {
 		"id": prod13_id,
@@ -160,7 +148,6 @@ prod13 = {
         "price":269.99,
 		"category":"Monitor",
 		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1651419263/Productos/1657-newskill-icarus-rgb-ic27qrc-27-led-quadhd-165hz-g-sync-compatible_ukbiib.webp",
-		"stock":10
 		}
 prod14 = {
 		"id": prod14_id,
@@ -169,7 +156,6 @@ prod14 = {
         "price":247.88,
 		"category":"Monitor",
 		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1651419458/Productos/1713-msi-optix-g27c7-27-led-fullhd-165hz-freesync-premium-curva_khz0qi.webp",
-		"stock":10
 		}
 prod15 = {
 		"id": prod15_id,
@@ -178,7 +164,6 @@ prod15 = {
         "price":269,
 		"category":"Monitor",
 		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1651419674/Productos/msi-optix-g27cq4-27-led-wide-quadhd-165hz-freesync-curvo_ksb4n7.webp",
-		"stock":10
 		}
 prod16 = {
 		"id": prod16_id,
@@ -187,7 +172,6 @@ prod16 = {
         "price":179.99,
 		"category":"Monitor",
 		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1651419807/Productos/1515-viewsonic-vx-series-vx2468-pc-mhd-24-led-fullhd-165hz-freesync-premium-pro-curva_z1u11y.webp",
-		"stock":10
 		}
 prod17 = {
 		"id": prod17_id,
@@ -196,7 +180,6 @@ prod17 = {
         "price":299,
 		"category":"Chair",
 		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1651420181/Productos/1668-forgeon-acrux-leather-silla-gaming-negra-comprar_cdu1na.webp",
-		"stock":10
 		}
 prod18 = {
 		"id": prod18_id,
@@ -205,7 +188,6 @@ prod18 = {
         "price":109.99,
 		"category":"Chair",
 		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1651420238/Productos/1514-tempest-f36-2-silla-gaming-con-reposapies-negra-gris-review_xqi2xn.webp",
-		"stock":10
 		}
 prod19 = {
 		"id": prod19_id,
@@ -214,7 +196,6 @@ prod19 = {
         "price":158.62,
 		"category":"Chair",
 		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1651420271/Productos/dpp-26492_szyaaq.webp",
-		"stock":10
 		}
 prod20 = {
 		"id": prod20_id,
@@ -223,7 +204,6 @@ prod20 = {
         "price":51.99,
 		"category":"Chair",
 		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1651420329/Productos/1620-owlotech-columbia-v2-silla-oficina_opg2ar.webp",
-		"stock":10
 		}
 prod21 = {
 		"id": prod21_id,
@@ -232,7 +212,6 @@ prod21 = {
         "price":179,
 		"category":"Keyboard",
 		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1651420529/Productos/1276-hp-omen-spacer-tkl-teclado-mecanico-gaming-inalambrico-cherry-mx-brown_deeawv.webp",
-		"stock":10
 		}
 prod22 = {
 		"id": prod22_id,
@@ -241,7 +220,6 @@ prod22 = {
         "price":42.96,
 		"category":"Keyboard",
 		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1651420668/Productos/1475-newskill-serike-tkl-ivory-red-teclado-mecanico-gaming-full-rgb-switch-red_m1bano.webp",
-		"stock":10
 		}
 prod23 = {
 		"id": prod23_id,
@@ -250,7 +228,6 @@ prod23 = {
         "price":149.99,
 		"category":"Keyboard",
 		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1651420766/Productos/huntsman-te-2019-render-05-top-down-intl-us-layout_s11jzf.webp",
-		"stock":10
 		}
 prod24 = {
 		"id": prod24_id,
@@ -259,7 +236,6 @@ prod24 = {
         "price":189.99,
 		"category":"Keyboard",
 		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1651420862/Productos/190-razer-blackwidow-v3-mini-hyperspeed-teclado-gaming-retroiluminado-yellow-switch_gbe20r.webp",
-		"stock":10
 		}
 prod25 = {
 		"id": prod25_id,
@@ -268,7 +244,6 @@ prod25 = {
         "price":128.02,
 		"category":"Keyboard",
 		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1651420964/Productos/1493-corsair-k65-rgb-mini-60-teclado-mecanico-gaming-rgb-led-cherry-mx-red_asegxl.webp",
-		"stock":10
 		}
 prod26 = {
 		"id": prod26_id,
@@ -277,7 +252,6 @@ prod26 = {
         "price":217.95,
 		"category":"Keyboard",
 		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1651421071/Productos/1103-corsair-k70-rgb-pro-teclado-mecanico-gaming-switch-cherry-mx-speed-silver-negro_qxawc2.webp",
-		"stock":10
 		}
 
 
@@ -386,7 +360,7 @@ dc1 = {
 }
 dc2 = {
 		"id": dc2_id,
-		"address": "Escuela Tecnica Superior de Ingeniería Informatica, Universidad de Sevilla, 41012 Sevilla",
+		"address": "Escuela Tecnica Superior de Ingenieria Informatica, Universidad de Sevilla, 41012 Sevilla",
 }	
 # Insert Data
 rec_distcenter_id1=collection.insert_one(dc1)
@@ -513,18 +487,21 @@ prodord1 = {
 		"id": str(uuid.uuid4()),
 		"product": prod1,
 		"quantity": 5,
+		"shippingPrice": 1,
 		"distributionCenter": dc1
 		}
 prodord2 = {
 		"id": str(uuid.uuid4()),
 		"product": prod3,
 		"quantity": 2,
+		"shippingPrice": 3,
 		"distributionCenter": dc1
 		}
 prodord3 = {
 		"id": str(uuid.uuid4()),
 		"product": prod9,
 		"quantity": 6,
+		"shippingPrice": 1.5,
 		"distributionCenter": dc1
 		}
 # Insert Data
