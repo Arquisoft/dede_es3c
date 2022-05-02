@@ -1,6 +1,10 @@
 Feature: Registering a new user
 
-Scenario: The user is not registered in the site
-  Given An unregistered user
-  When I fill the data in the form and press submit
+Scenario: Register user on the website
+  Given A registered user
+  When I fill the data in the form and press sign up
   Then A confirmation message should be shown in the screen
+Scenario: Register exist user on the website
+  Given A registered user
+  When I fill the data in the form and press sign up
+  Then An error message should be shown in the screen

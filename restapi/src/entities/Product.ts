@@ -4,13 +4,12 @@ import {v4 as uuidv4} from 'uuid';
 @Entity()
 export class Product {
 
-    constructor(name: string, description: string, price: number, category: string, urlPhoto: string, stock: number) {
+    constructor(name: string, description: string, price: number, category: string, urlPhoto: string) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.category = category;
         this.urlPhoto = urlPhoto;
-        this.stock =  stock;
         this.id = uuidv4();
     }
 
@@ -34,8 +33,4 @@ export class Product {
 
     @Column()
     urlPhoto: string;
-
-    @Column()
-    stock: number;
-
 }

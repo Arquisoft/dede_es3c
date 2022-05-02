@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "start": "ts-node-dev ./src/Server.ts ",
+    "e2e": "ts-node-dev ./tests/tests_e2e.ts ",
     "data": "python ./dist/src/data/data.py",
     "build": "tsc",
     "prod": "npm run build && node ./dist/src/Server.js",
@@ -14,10 +15,12 @@
   "dependencies": {
     "@inrupt/solid-client": "^1.19.0",
     "@inrupt/vocab-common-rdf": "^1.0.3",
+    "all": "^0.0.0",
     "axios": "^0.26.1",
     "cloudinary": "^1.28.1",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
+    "custom-env": "^2.0.1",
     "dotenv": "^16.0.0",
     "express": "^4.17.2",
     "express-prom-bundle": "^6.4.1",
@@ -39,6 +42,7 @@
     "@types/node": "^17.0.2",
     "@types/supertest": "^2.0.11",
     "@types/uuid": "^8.3.4",
+    "dotenv": "^16.0.0",
     "jest": "^27.4.7",
     "nodemon": "^2.0.15",
     "prettier": "2.6.0",

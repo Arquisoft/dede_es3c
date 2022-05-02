@@ -2,7 +2,7 @@ import React, { useReducer, FC, ReactNode, createContext } from 'react';
 
 enum ActionType {
     SET_OPEN = 'SET_OPEN',
-    SET_AMOUNT = 'SET_AMOUNT'
+    SET_AMOUNT = 'SET_AMOUNT',
 }
 
 interface OpenState {
@@ -62,7 +62,7 @@ const localStorageOpen = localStorage.getItem('openCart');
 const localStorageAmount = localStorage.getItem('amountInCart');
 const initialState = {
     openCart: localStorageOpen ? localStorageOpen : '',
-    amountInCart: localStorageAmount ? localStorageAmount : '0'
+    amountInCart: localStorageAmount ? localStorageAmount : '0',
 }
 
 export const OpenContext = createContext({} as ContextProps);

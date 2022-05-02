@@ -6,11 +6,15 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import InputAdornment from '@mui/material/InputAdornment';
 import { Link } from 'react-router-dom';
 import logo from '../img/logo-dede.svg'
-import {checkUser, signup } from "../api/api";
+import {checkUserAndLogin, signup } from "../api/api";
 import { User } from "../shared/shareddtypes";
 import { Button } from "react-bootstrap";
 import { Navigate } from "react-router-dom";
 import { LangContext } from '../lang';
+import Swal from "sweetalert2";
+import '../styles/Signup.scss';
+import Footer from '../components/Footer';
+
 
 interface SignUpProps{
     setUser: (user:string) => void
@@ -42,10 +46,16 @@ const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
             email:email,
             rol:"Client"
         }
-
-        if (!isBlank(user.username) || !isBlank(user.password) || !isBlank(user.email) || !isBlank(repeatedPassword)){
-           const found = await checkUser(name, password);
-           if (!found){
+        if (isBlank(user.username) || isBlank(user.password) || isBlank(user.email) || isBlank(repeatedPassword)){
+            Swal.fire({
+                title: "Error",
+                text: translate("blank.fields"),
+                icon: "error",
+            });
+        }
+        else if (!isBlank(user.username) && !isBlank(user.password) && !isBlank(user.email) && !isBlank(repeatedPassword)){
+           let response = await checkUserAndLogin(name, password);
+           if (!(response.status === 200)){
                 const token = await signup(name, password, email);
                 setRegistered(true);
                 props.setUser(name);
@@ -64,11 +74,11 @@ const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
         <Card className={"main"} elevation={10} style={{display: "grid"}}>
         <CardContent style={{ display: "grid", margin: "auto", textAlign: "center" }}>
             <div>
-            <img  alt="Logo" width={150} height = {150} src={logo} />
+                <img  alt="Logo" width={200} height={200} src={logo} />
             </div>
                 <h1>{translate('signup.h1')}</h1>
                 <h2>{translate('signup.h2')}</h2>
-                <form>
+                <form id = "register" name="register">
                 <div>
                     <TextField
                         id = "textName"
@@ -89,7 +99,6 @@ const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
                         onChange={e => setName(e.target.value)}
                         error = {exists === 2 || (pulsed && name.length === 0)}
                         sx={{ my: 2 }}
-                        
                         /> 
                     </div>
                     <div>
@@ -142,12 +151,24 @@ const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
                     onClick={ () => register()} 
                     variant="contained" 
                     type="submit"
+                    name = "Signup"
+                    id = "Signup"
                     color="primary"
+                    style={{
+                        borderRadius: 15,
+                        backgroundColor: "#e8e8e8",
+                        padding: "18px 36px",
+                        fontSize: "16px"
+                    }}
                      >{translate('signup.signup')}</Button>
-                <Link to="/login">{translate('signup.login')}</Link>
+                <Link to="/login" className="goToLoginSignup">{translate('signup.login')}</Link>
                 </CardContent>
             </Card>
         </Container>
+
+        <div className="footerPositionSignup">
+            <Footer />
+        </div>
     </div>
     );
   }
