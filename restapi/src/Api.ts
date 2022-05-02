@@ -105,6 +105,9 @@ const setOrdersRoutes = (): void => {
     api.route('/orders/user/:email')
         // Get orders by user email
         .get(auth.isAuth, ordersController.getOrdersByUserEmail)
+
+    api.route('/orders/shippingprice')
+        .get(auth.isAuth, ordersController.calculateShippingPrice)
     
     api.route('/orders/:id')
         // Get orders by id
@@ -113,6 +116,8 @@ const setOrdersRoutes = (): void => {
         .delete(auth.isAdminAuth, ordersController.deleteOrder)
         // Update orders by id
         .put(auth.isAdminAuth, ordersController.updateOrder)
+
+    
 
 }
 

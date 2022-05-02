@@ -104,10 +104,12 @@ export class OrderController {
 
                 var sp = 0.0;
                 source = p.distributionCenter.address;
+                //Distance
                 url = 'https://maps.googleapis.com/maps/api/distancematrix/json?destinations='+destination+'&origins='+source+'&key=AIzaSyANy46m-FN8Sa9aSpIiLpSWx3xl7M2oX3s'
                 response = await axios.get(url)
                 d = response.data.rows[0].elements[0].distance.value;
-                sp = calculateShippingPrice(d);
+
+                sp = calculatePriceFromDistance(d);
                 await ProductOrderService.updateShippingPrice(req.app,p.id,sp);
                 price+=p.product.price*p.quantity + sp;
             }
@@ -122,9 +124,35 @@ export class OrderController {
         }
     }
 
+    public async calculateShippingPrice(req: Request, res: Response) {
+        try {
+            var products = req.body.products
+            var source
+            var destination = req.body.address
+            var d
+            var shippingPrice = 0.0
+            let url; var response;
+            for (var p of products) {
+                var sp = 0.0;
+                source = p.distributionCenter.address;
+
+                //Distance
+                url = 'https://maps.googleapis.com/maps/api/distancematrix/json?destinations='+destination+'&origins='+source+'&key=AIzaSyANy46m-FN8Sa9aSpIiLpSWx3xl7M2oX3s'
+                response = await axios.get(url)
+                d = response.data.rows[0].elements[0].distance.value;
+                
+                sp = calculatePriceFromDistance(d);
+                shippingPrice += sp
+            }
+            res.status(200).json(shippingPrice)
+        } catch (error) {
+            res.status(500).json({ error: "Error calculate shipping price: " + error})
+        }
+    }
+
 }
 
-function calculateShippingPrice(distance:number):number {
+function calculatePriceFromDistance(distance:number):number {
     var shippingPrice = 0;
     if (distance < 20000) {
         shippingPrice = 1;
