@@ -78,7 +78,7 @@ const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
             </div>
                 <h1>{translate('signup.h1')}</h1>
                 <h2>{translate('signup.h2')}</h2>
-                <form>
+                <form id = "register" name="register">
                 <div>
                     <TextField
                         id = "textName"
@@ -99,7 +99,6 @@ const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
                         onChange={e => setName(e.target.value)}
                         error = {exists === 2 || (pulsed && name.length === 0)}
                         sx={{ my: 2 }}
-                        
                         /> 
                     </div>
                     <div>
@@ -152,6 +151,8 @@ const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
                     onClick={ () => register()} 
                     variant="contained" 
                     type="submit"
+                    name = "Signup"
+                    id = "Signup"
                     color="primary"
                     style={{
                         borderRadius: 15,
