@@ -96,7 +96,7 @@
         .get(productsController.getProductByCategory);
         
     api.route('/products/price/:min/:max')
-        .get(productsController.getProductByPrice);
+        .put(productsController.getProductByPrice);
 
     api.route('/products/:id')
         // Get products by id
@@ -121,7 +121,7 @@ const setOrdersRoutes = (): void => {
         .get(auth.isAuth, ordersController.getOrdersByUserEmail)
 
     api.route('/orders/shippingprice')
-        .get(auth.isAuth, ordersController.calculateShippingPrice)
+        .post(ordersController.calculateShippingPrice)
     
     api.route('/orders/:id')
         // Get orders by id

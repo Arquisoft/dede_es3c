@@ -79,6 +79,7 @@
     "solid.error":"Address not found, please try again",
     "shipping.postal":"Postal Code",
     "shipping.priceFinal": "Final price: ",
+    "shipping.nocenter":"Please, select a distribution center for every product",
     "cart.empty":"No items in cart",
     "cart.orderButton":"Proceed to checkout",
     "cartItem.price":"Price",
