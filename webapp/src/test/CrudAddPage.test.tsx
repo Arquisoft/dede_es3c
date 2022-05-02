@@ -49,10 +49,8 @@ test('Add product page renders properly as client', async () => {
         </React.StrictMode>,
     )
 
-    let linkElement = screen.getByLabelText(/carouselImage1/i);
+    let linkElement = screen.getAllByLabelText(/carouselImage1/i);
     expect(linkElement).toBeInTheDocument();
-    linkElement = screen.getByLabelText(/carouselImage2/i);
-    expect(linkElement).toBeInTheDocument();
-    linkElement = screen.getByText(/Catalog/i);
+    linkElement = screen.getAllByLabelText(/carouselImage2/i);
     expect(linkElement).toBeInTheDocument();
 });

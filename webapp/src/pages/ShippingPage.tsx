@@ -41,6 +41,14 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
   const [openPrice, setOpenPrice] = useState(false);
   const [openPod, setOpenPod] = useState(false);
 
+  const cleanFields = () => {
+    setCountryName("");
+    setLocality("");
+    setPostalCode("");
+    setRegion("");
+    setStreetAddress("");
+  }
+
   const handleOpenPrice = () => {
     setOpenPrice(true);
   };
@@ -151,31 +159,36 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
   }
 
   async function getAdd() {
-    await getAddress(webID).then(address => {
-      console.log(address)
-      if (address.msg === "POD not found" || address.msg === "Address not found") {
+    try{
+      await getAddress(webID).then(address => {
+        console.log(address)
+        if (address.msg === "POD not found" || address.msg === "Address not found") {
+          Toast.fire({
+            icon: 'error',
+            title: 'We could not get your address'
+          });
+        }
+        else if (address !== null) {
+          setCountryName(address['country']);
+          setLocality(address['locality']);
+          setPostalCode(address['postalCode']);
+          setRegion(address['region']);
+          setStreetAddress(address['street']);
+          Toast.fire({
+            icon: 'success',
+            title: '¡We got your addres! check it out'
+          })
+        }
+      }, () => {
         Toast.fire({
           icon: 'error',
-          title: 'We could not get your address'});
-      }
-      else if (address !== null){
-        setCountryName(address['country']);
-        setLocality(address['locality']);
-        setPostalCode(address['postalCode']);
-        setRegion(address['region']);
-        setStreetAddress(address['street']);
-        Toast.fire({
-          icon: 'success',
-          title: '¡We got your addres! check it out'
-        })
-      }
-  }, () => {
-    Toast.fire({
-      icon: 'error',
-      title: 'We could not get your address'});
-    });
+          title: 'We could not get your address'
+        });
+      });
+    } catch (error) {
+      console.log("Error al recuperar la dirección");
+    }
   }
-  
 
   if (localStorage.getItem("currentUser") === "not logged"){
     return <Navigate to={"/login"}/>
@@ -259,7 +272,6 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                       </Button>
                       <div>
                       <TextField
-                        disabled
                         required
                         size="small"
                         name="country"
@@ -270,7 +282,6 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                         >
                       </TextField>
                       <TextField
-                        disabled
                         required
                         size="small"
                         name="locality"
@@ -281,7 +292,6 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                         >
                       </TextField>
                       <TextField
-                        disabled
                         required
                         size="small"
                         name="postalCode"
@@ -292,7 +302,6 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                         >
                       </TextField>
                       <TextField
-                        disabled
                         required
                         size="small"
                         name="region"
@@ -304,7 +313,6 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                       </TextField>        
                       </div>
                       <TextField
-                        disabled
                         required
                         size="small"
                         name="street"
@@ -318,7 +326,7 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                       variant="contained" 
                       type="submit"
                       disabled={addressFields()}
-                      onClick={() => handleOpenPrice()}
+                      onClick={() => { cleanFields(); handleOpenPrice()}}
                       >
                         {translate('shipping.proceed')}
                       </Button>
@@ -374,7 +382,7 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
         </Fragment>
                     <Button 
                     disabled= {(CVV === '' || CVV.length !== 3) || (cardNumber ==='' || cardNumber.length < 12) || (expireDate === '')}
-                    onClick={() => generateOrderProduct()}>
+                    onClick={() => {cleanFields(); generateOrderProduct()}}>
                     {translate("shipping.end")}</Button>      
                     <Fragment >
                     </Fragment>
