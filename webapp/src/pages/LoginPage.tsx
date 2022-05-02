@@ -23,27 +23,37 @@ const LoginPage: FC<LoginPageProps> = (props: LoginPageProps) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [pulsed, setPulsed] = useState(false);
-    const [, setToken] = useState('')
+    const [token, setToken] = useState('')
+
+    const errorNotification = () => {
+      Swal.fire({
+        title: "Error",
+        text: translate("login.singin.error"),
+        icon: "error",
+    });
+    return;
+    }
 
     const checkLog = async () => {
         setPulsed(true);
+        try{
           let response = await checkUserAndLogin(username, password);
           let res = await response.json();
           if (response.status === 200) {
-              const user = await getUser(username);
-              setToken(res);
-              console.log("token: " + res);
-              if (user.rol === "Admin") {
-                const adminName = "admin " + user.username;
-                props.setUser(adminName);
-              } else {
-                props.setUser(user.username);
-              }
-              localStorage.setItem("currentEmail", user.email);
-              localStorage.setItem("token", res);
-              Swal.fire({
-                title: translate("login.welcome") + user.username,
-                icon: "success"
+            const user = await getUser(username);
+            setToken(res);
+            console.log("token: " + res);
+            if (user.rol === "Admin") {
+              const adminName = "admin " + user.username;
+              props.setUser(adminName);
+            } else {
+              props.setUser(user.username);
+            }
+            localStorage.setItem("currentEmail", user.email);
+            localStorage.setItem("token", res);
+            Swal.fire({
+              title: translate("login.welcome") + user.username,
+              icon: "success"
             }).then(() => {
               window.location.assign("/catalog");
             });
