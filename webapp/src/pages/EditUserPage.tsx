@@ -1,6 +1,6 @@
 import React, {FC, useEffect, useContext, Fragment, useState} from "react";
 import { User } from "../shared/shareddtypes";
-import {getUser } from "../api/api";
+import {existUser, getUser, updatePasswordByEmail, updateUserByEmail } from "../api/api";
 import { LangContext } from "../lang";
 import { Box, Button, Card, CardContent, Container, Modal, TextField, Typography } from "@mui/material";
 import { Navigate } from "react-router";
@@ -72,17 +72,50 @@ const EditUserPage: FC<EditUserProps> = (props: EditUserProps) => {
       reloadItems();
     }, []);
 
-    const updatePassword = () => {
-        console.log(newPassword === newPasswordConfirmation)
+    const updatePassword = async () => {
         if (newPassword !== newPasswordConfirmation){
             Swal.fire({
               title: "Error",
               text: translate("update.pass.error"),
               icon: "error",
             });
+        } else {
+            await updatePasswordByEmail(email, newPassword);
+            handleClosePass();
+            Swal.fire({
+                title: translate("update.password.updated"),
+                text: translate("updade.pass.success"),
+                icon: "success",
+          });
+        }
+    }
+
+    const updateUser = async () => {
+        existUser(newUserName).then(user => {
+            if (user == true){
+                handleCloseUser();
+                Swal.fire({
+                    title: translate("update.repeated"),
+                    icon: "error",
+                  });
+            } else {
+                updateUserByEmail(email, newUserName);
+                localStorage.setItem("currentUser", newUserName);
+                setUserName(newUserName);
+                handleCloseUser();
+                Swal.fire({
+                    title:  translate("update.user.changed"),
+                    icon: "success",
+              })
+            }}, () => {updatePasswordByEmail(email, newPassword);
+                        Swal.fire({
+                        title: "Success, the user already exists",
+                        text: translate("update.pass.error"),
+                        icon: "success",
+                  });})
         }
 
-    }
+    
 
     if(page === 'catalog'){
         return(
@@ -120,14 +153,6 @@ const EditUserPage: FC<EditUserProps> = (props: EditUserProps) => {
                                     label="email">
                                 </TextField>
                             </div>
-
-                            <div>
-                                <TextField
-                                    size="small"
-                                    value={rol}
-                                    label="Rol">
-                                </TextField>
-                            </div>
                     </div>
                     
                     <div>
@@ -152,6 +177,7 @@ const EditUserPage: FC<EditUserProps> = (props: EditUserProps) => {
                                             type="submit"
                                             aria-label="changeUserButton"
                                             disabled={newUserName === ""}
+                                            onClick={() => updateUser()}
                                         >{translate("update.commit")}</Button>
                                     </Fragment>
                                 </Box>

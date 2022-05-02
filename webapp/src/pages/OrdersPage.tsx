@@ -18,6 +18,7 @@ interface OrdersPageProps {
 const OrdersPage: FC<OrdersPageProps> = (props: OrdersPageProps) => {
     const { dispatch: { translate } } = useContext(LangContext);
     const [orders, setOrders] = useState<Order[]>([]);
+    
     const reloadItems = async () => {
       try{
         if (localStorage.getItem("currentUser") !== null && !localStorage.getItem("currentUser")?.includes("admin")) {

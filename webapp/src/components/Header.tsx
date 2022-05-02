@@ -142,7 +142,7 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
                   }
 
                   {(localStorage.getItem("currentUser") !== "not logged" && (localStorage.getItem("currentUser")?.includes("admin"))) &&
-                      <NavDropdown title={translate('nav.admin')} id="productos-admin-dropdown" className='editProductsHeader'>
+                      <NavDropdown title={translate('nav.admin')} id="productos-admin-dropdown">
                         <div>
                         <Link to="/addProduct" className="Dropdown-item">
                           {translate('crud.add')}

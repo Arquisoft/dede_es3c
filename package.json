@@ -4,5 +4,8 @@
   "scripts": {
     "start": "docker-compose up -d --build"
   },
-  "author": "SergioArroni"
+  "author": "SergioArroni",
+  "dependencies": {
+    "@inrupt/solid-ui-react": "^2.7.0"
+  }
 }

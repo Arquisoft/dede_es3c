@@ -58,11 +58,11 @@
 
     // Update user by id
     api.route('/users/email/:email/name/:name')
-        .put(auth.isAdminAuth, userController.updateUserByEmailName)
+        .put(auth.isAuth, userController.updateUserByEmailName)
 
     // Update user by id
     api.route('/users/email/:email/password/:password')
-        .put(auth.isAdminAuth, userController.updateUserByEmailPassword)
+        .put(auth.isAuth, userController.updateUserByEmailPassword)
  
      api.route('/users/:id')
          // Get user by id
@@ -111,7 +111,7 @@ const setOrdersRoutes = (): void => {
  
     api.route('/orders')
         // Get all orders
-        .get(auth.isAuth, ordersController.getOrders)
+        .get( ordersController.getOrders)
         // Create new orders
         .post(auth.isAuth, ordersController.addOrder);
 
@@ -119,6 +119,9 @@ const setOrdersRoutes = (): void => {
     api.route('/orders/user/:email')
         // Get orders by user email
         .get(auth.isAuth, ordersController.getOrdersByUserEmail)
+
+    api.route('/orders/shippingprice')
+        .get(auth.isAuth, ordersController.calculateShippingPrice)
     
     api.route('/orders/:id')
         // Get orders by id
@@ -127,6 +130,8 @@ const setOrdersRoutes = (): void => {
         .delete(auth.isAdminAuth, ordersController.deleteOrder)
         // Update orders by id
         .put(auth.isAdminAuth, ordersController.updateOrder)
+
+    
 
 }
 

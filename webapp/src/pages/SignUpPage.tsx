@@ -11,8 +11,10 @@ import { User } from "../shared/shareddtypes";
 import { Button } from "react-bootstrap";
 import { Navigate } from "react-router-dom";
 import { LangContext } from '../lang';
+import Swal from "sweetalert2";
 import '../styles/Signup.scss';
 import Footer from '../components/Footer';
+
 
 interface SignUpProps{
     setUser: (user:string) => void
@@ -44,8 +46,14 @@ const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
             email:email,
             rol:"Client"
         }
-
-        if (!isBlank(user.username) || !isBlank(user.password) || !isBlank(user.email) || !isBlank(repeatedPassword)){
+        if (isBlank(user.username) || isBlank(user.password) || isBlank(user.email) || isBlank(repeatedPassword)){
+            Swal.fire({
+                title: "Error",
+                text: translate("blank.fields"),
+                icon: "error",
+            });
+        }
+        else if (!isBlank(user.username) && !isBlank(user.password) && !isBlank(user.email) && !isBlank(repeatedPassword)){
            let response = await checkUserAndLogin(name, password);
            if (!(response.status === 200)){
                 const token = await signup(name, password, email);
