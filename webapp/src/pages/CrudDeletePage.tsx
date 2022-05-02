@@ -21,7 +21,11 @@ const CrudDeletePage: FC<CrudPageProps> = (props: CrudPageProps) => {
 
     const deleteProductAux = async () => {
         if (!isBlank(id)) {
-            await deleteProduct(id);
+            try {
+                await deleteProduct(id);
+            } catch (error) {
+                console.log("Error al eliminar un producto");
+            }
         }
     }
 

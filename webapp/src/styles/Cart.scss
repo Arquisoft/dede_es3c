@@ -1,0 +1,46 @@
+.cartItemContainer {
+    display: grid;
+    grid-template-rows: 1fr 0.2fr;
+}
+
+.cartItemButtons {
+    display: grid;
+    grid-template-columns: 1fr 0.2fr 1fr;
+}
+
+.cartItemAmount {
+    position: relative;
+    left: 3px;
+    right: 3px;
+    top: 8px;
+}
+
+.cartItem {
+    display: grid;
+    grid-template-columns: 1fr 0.5fr;
+}
+
+.cartItemDetails {
+    position: relative;
+    top: 50px;
+}
+
+.cartItemImage {
+    object-fit: contain;
+}
+
+.confirmButton {
+    position: relative;
+    left: 25%;
+}
+
+.cartItemItemName {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.cartContainer {
+    margin-left: 25px;
+    margin-right: 25px;
+}

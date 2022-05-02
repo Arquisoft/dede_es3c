@@ -5,9 +5,11 @@ import DisplayOrders from "../components/DisplayOrders"
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
-import { Paper, Table, TableContainer, TableHead } from "@mui/material";
+import { Paper, Table, TableContainer, TableHead, Button } from "@mui/material";
 import { LangContext } from "../lang";
 import { Navigate, Link } from "react-router-dom";
+import GoToTopButton from '../components/GoToTopButton';
+import '../styles/Orders.scss';
 
 interface OrdersPageProps {
     setUser:(user:string) => void
@@ -17,15 +19,19 @@ const OrdersPage: FC<OrdersPageProps> = (props: OrdersPageProps) => {
     const { dispatch: { translate } } = useContext(LangContext);
     const [orders, setOrders] = useState<Order[]>([]);
     const reloadItems = async () => {
-      if (localStorage.getItem("currentUser") !== null && !localStorage.getItem("currentUser")?.includes("admin")){
-        const username = localStorage.getItem("currentUser");
-        if (username!== null){
-          const user = await getUser(username);
-          console.log(user);
-          setOrders(await getOrdersByEmail(user.email));
-        }
-      } else if (localStorage.getItem("currentUser") !== null && localStorage.getItem("currentUser")?.includes("admin")){
+      try{
+        if (localStorage.getItem("currentUser") !== null && !localStorage.getItem("currentUser")?.includes("admin")) {
+          const username = localStorage.getItem("currentUser");
+          if (username !== null) {
+            const user = await getUser(username);
+            console.log(user);
+            setOrders(await getOrdersByEmail(user.email));
+          }
+        } else if (localStorage.getItem("currentUser") !== null && localStorage.getItem("currentUser")?.includes("admin")) {
           setOrders(await getOrders());
+        }
+      } catch (error) {
+        console.log("Error al cargar los pedidos");
       }
   }
 
@@ -40,7 +46,7 @@ const OrdersPage: FC<OrdersPageProps> = (props: OrdersPageProps) => {
       return (
         <div className="main">
           <h1 aria-label="myOrdersTitleWithout">{translate("orders.title")}</h1>
-          <div className="mainEmptyContainer" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+          <div className="mainEmptyContainer" style={{ display: 'grid', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
             <h2>{translate("orders.empty")}</h2>
             <Link to="/catalog" >{translate("orders.shopping")}</Link>
           </div>
@@ -79,9 +85,19 @@ const OrdersPage: FC<OrdersPageProps> = (props: OrdersPageProps) => {
               </Table>
             </TableContainer>
           </div>
-          <div style={{ alignContent: "center" }}>
-            <Link to="/catalog">{translate("orders.shopping")}</Link>
+          <div className="goToCatalogButtonOrders">
+            <Button
+              onClick={() => window.location.assign("/catalog")}
+              style={{
+                borderRadius: 15,
+                backgroundColor: "#e8e8e8",
+                padding: "15px 30px",
+                fontSize: "13px"
+              }}
+            >{translate('orders.shopping')}</Button>
           </div>
+          
+          <GoToTopButton />
         </div>
       );
     }

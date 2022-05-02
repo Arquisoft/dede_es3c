@@ -1,0 +1,40 @@
+.containerAbout2 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    text-align: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.containerAbout {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(100px, 1fr));
+    text-align: center;
+}
+
+.photoAbout {
+    object-fit: contain;
+}
+
+.textAbout {
+    position: relative;
+    top: 35%;
+    left: 12.5%;
+    width: 75%;
+}
+
+.logoAbout {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+}
+
+.photoGitAbout {
+    width: 90%;
+}
+
+.footerPositionAbout {
+    position: relative;
+    top: 50px;
+}

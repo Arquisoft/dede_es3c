@@ -1,0 +1,85 @@
+.gridCatalog {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(200px,1fr));
+    column-gap: 10px;
+    row-gap: 10px;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.filtrosCatalog {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 0.5fr;
+    position: relative;
+    left: 15px;
+}
+
+.filtroTextoCatalog {
+    display: grid;
+    grid-template-columns: 1fr 0.2fr;
+    position: relative;
+    top: 25px;
+
+    .botonFiltroTexto {
+        position: relative;
+        top: 15px;
+        left: 5px;
+    }
+}
+
+.filtrosCategoriaCatalog {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 1fr;
+    row-gap: 10px;
+}
+
+.filtroPrecioCatalog {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    width: 300px;
+    position: relative;
+    top: 20px;
+
+    .sliderBoxes {
+        display: grid;
+        grid-template-columns: 1fr 0.1fr 1fr;
+    }
+
+    .sliderIzq {
+        margin-right: 5px;
+    }
+
+    .toLabelCatalog {
+        position: relative;
+        top: 6px;
+    }
+
+    .sliderDer {
+        margin-left: 5px;
+    }
+
+    .segundaFilaFiltroPrecio {
+        display: grid;
+        grid-template-columns: 1fr 0.5fr;
+        position: relative;
+        left: 20px;
+        top: 5px;
+    }
+
+    .sliderFilterButton {
+        position: relative;
+        left: 5px;
+    }
+
+    .sliderBarCatalog {
+        position: relative;
+        right: 10px;
+    }
+}
+
+.resetFiltrosCatalog {
+    position: relative;
+    top: 35px;
+    right: 25px;
+}

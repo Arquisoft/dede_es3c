@@ -1,0 +1,43 @@
+.carouselHome {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.divHome {
+    background-image: url("https://res.cloudinary.com/dg9za4xcz/image/upload/v1651252650/home3_g6la72.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+}
+
+.photoHome {
+    width: 100%;
+    height: 100%;
+}
+
+.containerHome {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    text-align: center;
+}
+
+.columnHome {
+    background-color: rgb(207, 228, 241);
+}
+
+.textHome {
+    position: relative;
+    top: 35%;
+    left: 12.5%;
+    width: 75%;
+}
+
+.buttonHome {
+    position: relative;
+    top: 35%;
+    width: 75%;
+}

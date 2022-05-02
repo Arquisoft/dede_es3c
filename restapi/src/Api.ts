@@ -75,8 +75,14 @@
             check('name').isLength({ min: 1 }).trim().escape()
         ], productsController.addProduct);
 
-    api.route('/products/name/:name')
-        .get(productsController.getProductByPartialName);
+     api.route('/products/namepartial/:name')
+         .get(productsController.getProductByPartialName);
+
+     api.route('/products/name/:name')
+         .get(productsController.getProductByName);
+
+     api.route('/products/name/:name/:category')
+         .get(productsController.getProductByCategoryException);
     
     api.route('/products/category/:category')
         .get(productsController.getProductByCategory);
@@ -134,7 +140,7 @@ const setDistributionCentersRoutes = (): void => {
 const setProductStoreRoutes = (): void => {
 
     api.route('/store/:productname')
-        .get(auth.isAuth, productstoreController.getMaxStockByProduct)
+        .get(productstoreController.getMaxStockByProduct)
         
     api.route('/store/:productname/:quantity')
         .get(auth.isAuth, productstoreController.canBuy)

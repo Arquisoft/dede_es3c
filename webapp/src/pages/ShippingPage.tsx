@@ -20,6 +20,14 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
   const [region, setRegion] = useState("");
   const [streetAddress, setStreetAddress] = useState("");
 
+  const cleanFields = () => {
+    setCountryName("");
+    setLocality("");
+    setPostalCode("");
+    setRegion("");
+    setStreetAddress("");
+  }
+
   const products = localStorage.getItem("cart");
   var size:number = 0;
   var cartProducts: Product[] = [];
@@ -53,24 +61,28 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
   })
 
   async function getAdd() {
-    const address = await getAddress(webID);
-    if (address !== undefined){
-      setCountryName(address['country']);
-      setLocality(address['locality']);
-      setPostalCode(address['postalCode']);
-      setRegion(address['region']);
-      setStreetAddress(address['street']);
-      Toast.fire({
-        icon: 'success',
-        title: '¡We got your addres! check it out'
-      })
-    } else {
-      Swal.fire({
-        title: "Error",
-        text: translate("solid.error"),
-        icon: "error",
-    });
+    try{
+      const address = await getAddress(webID);
+      if (address !== undefined) {
+        setCountryName(address['country']);
+        setLocality(address['locality']);
+        setPostalCode(address['postalCode']);
+        setRegion(address['region']);
+        setStreetAddress(address['street']);
+        Toast.fire({
+          icon: 'success',
+          title: '¡We got your addres! check it out'
+        })
+      } else {
+        Swal.fire({
+          title: "Error",
+          text: translate("solid.error"),
+          icon: "error",
+        });
 
+      }
+    } catch (error){
+      console.log("Error al recuperar la dirección");
     }
   }
 
@@ -108,7 +120,6 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                     >
                       <li key={'Productos'}>
                         <ul>
-                          <ListSubheader>{translate('shipping.selectedProducts')}</ListSubheader>
                           {cartProducts.map((item) => (
                             <ListItem key={item.name}>
                             <img alt="desc" src= {item.urlPhoto} width= '70' height='70'/>
@@ -137,12 +148,17 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                         onChange={e => setWebID(e.target.value)}
                         sx={{ my: 2 }} >
                       </TextField>
-                      <Button onClick={() => getAdd()}>
+                      <Button onClick={() => { cleanFields(); getAdd()}}
+                style={{
+                  borderRadius: 15,
+                  backgroundColor: "#e8e8e8",
+                  padding: "18px 36px",
+                  fontSize: "18px"
+                }}>
                         {translate("login.validate")}
                       </Button>
                       <div>
                       <TextField
-                        disabled
                         required
                         size="small"
                         name="country"
@@ -153,7 +169,6 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                         >
                       </TextField>
                       <TextField
-                        disabled
                         required
                         size="small"
                         name="locality"
@@ -164,7 +179,6 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                         >
                       </TextField>
                       <TextField
-                        disabled
                         required
                         size="small"
                         name="postalCode"
@@ -175,7 +189,6 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                         >
                       </TextField>
                       <TextField
-                        disabled
                         required
                         size="small"
                         name="region"
@@ -187,7 +200,6 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                       </TextField>        
                       </div>
                       <TextField
-                        disabled
                         required
                         size="small"
                         name="street"
@@ -197,7 +209,13 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                         sx={{ my: 2 }} 
                         >
                       </TextField>
-                      <Button variant="contained" type="submit">{translate('shipping.proceed')}</Button>
+              <Button variant="contained" type="submit" onClick={() => cleanFields()}
+                style={{
+                  borderRadius: 15,
+                  backgroundColor: "#e8e8e8",
+                  padding: "18px 36px",
+                  fontSize: "18px"
+                }}>{translate('shipping.proceed')}</Button>
                     </Fragment>
             </CardContent>
             </Card>

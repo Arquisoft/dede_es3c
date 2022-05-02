@@ -46,7 +46,7 @@ export class ProductController {
    */
   public async getProductByName(req: Request, res: Response) {
     try {
-      const product = await ProductService.getProductByName(
+      const product = await ProductService.getproductByName(
         req.app,
         req.params.name
       );
@@ -64,19 +64,19 @@ export class ProductController {
    * @param res Response
    * @returns product with status 200 or error 500
    */
-     public async getProductByPartialName(req: Request, res: Response) {
-      try {
-        const product = await ProductService.getProductByPartialName(
-          req.app,
-          req.params.name
-        );
-        product
-          ? res.status(200).json(product)
-          : res.status(404).json({ error: "Product not found" });
-      } catch (error) {
-        res.status(500).json({ error: "Error on get Product by name: " + error });
-      }
+  public async getProductByPartialName(req: Request, res: Response) {
+    try {
+      const product = await ProductService.getProductByPartialName(
+        req.app,
+        req.params.name
+      );
+      product
+        ? res.status(200).json(product)
+        : res.status(404).json({ error: "Product not found" });
+    } catch (error) {
+      res.status(500).json({ error: "Error on get Product by name: " + error });
     }
+  }
 
   /**
    * Get product by category
@@ -101,32 +101,60 @@ export class ProductController {
   }
 
   /**
+   * Get product by category without one product
+   * @param req Request
+   * @param res Response
+   * @returns product with status 200 or error 500
+   */
+  public async getProductByCategoryException(req: Request, res: Response) {
+    try {
+      const product = await ProductService.getProductByCategory(
+        req.app,
+        req.params.category
+      );
+      for (let i = 0; i < product.length; i++) {
+        if (product[i].name === (req.params.name)) {
+          product.splice(i, 1);
+          break;
+        }
+      }
+      product
+        ? res.status(200).json(product)
+        : res.status(404).json({ error: "Product not found" });
+    } catch (error) {
+      res
+        .status(500)
+        .json({ error: "Error on get Product by category: " + error });
+    }
+  }
+
+  /**
    * Get product by price
    * @param req Request
    * @param res Response
    * @returns product with status 200 or error 500
    */
-     public async getProductByPrice(req: Request, res: Response) {
-      try {
+  public async getProductByPrice(req: Request, res: Response) {
+    try {
 
-        if(+req.params.min > +req.params.max || +req.params.min < 0){
-          res.status(500).json({ error: "Error on get Product by price " });
-        }
-
-        const product = await ProductService.getProductByPrice(
-          req.app,
-          +req.params.min,
-          +req.params.max
-        );
-        product
-          ? res.status(200).json(product)
-          : res.status(404).json({ error: "Product not found" });
-      } catch (error) {
-        res
-          .status(500)
-          .json({ error: "Error on get Product by price: " + error });
+      if (+req.params.min > +req.params.max || +req.params.min < 0) {
+        res.status(500).json({ error: "Error on get Product by price " });
       }
+
+      const product = await ProductService.getProductByPrice(
+        req.app,
+        +req.params.min,
+        +req.params.max
+      );
+      product
+        ? res.status(200).json(product)
+        : res.status(404).json({ error: "Product not found" });
+    } catch (error) {
+      res
+        .status(500)
+        .json({ error: "Error on get Product by price: " + error });
     }
+  }
 
   /**
    * Update product

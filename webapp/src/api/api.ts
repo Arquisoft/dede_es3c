@@ -70,12 +70,28 @@ export async function getProducts(): Promise<Product[]>{
   return response.json()
 }
 
+export async function pruebaApi(name: string): Promise<Product> {
+  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api/products'
+  let response = await fetch(apiEndPoint + '/name/' + name);
+  return response.json()
+}
+
 export async function getProductsByName(name: string): Promise<Product[]> {
+  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api/products'
+  let response = await fetch(apiEndPoint + '/namepartial/' + name, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
+  return response.json()
+}
+
+export async function getProductByName(name: string): Promise<Product> {
   const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api/products'
   let response = await fetch(apiEndPoint + '/name/' + name, {
     method: "GET",
     headers: { "Content-Type": "application/json" },
   });
+
   return response.json()
 }
 
@@ -160,6 +176,24 @@ export async function getProductsByPrice(min: number, max: number): Promise<Prod
 export async function getRelatedProducts(name: string, category: string): Promise<Product[]> {
   const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api/products/name'
   let response = await fetch(apiEndPoint + '/' + name + '/' + category, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
+  return response.json();
+}
+
+export async function getStockByProduct(name: string): Promise<number> {
+  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api/store/'
+  let response = await fetch(apiEndPoint + name, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
+  return response.json();
+}
+
+export async function getCanBuyProduct(name: string, amount: number): Promise<boolean> {
+  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api/store/'
+  let response = await fetch(apiEndPoint + name + '/' + amount, {
     method: "GET",
     headers: { "Content-Type": "application/json" },
   });
