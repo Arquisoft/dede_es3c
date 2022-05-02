@@ -1,0 +1,51 @@
+.imageItemCatalog {
+    object-fit: contain;
+    margin: auto;
+}
+
+.priceItemCatalog {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.titleItemCatalog {
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.stockItemCatalog {
+    width: 100px;
+    position: relative;
+    top: 8px;
+}
+
+.selectorItemCatalog {
+    width: 70px;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.buttonItemCatalog {
+    width: 150px;
+}
+
+.addToCartZone {
+    display: grid;
+    grid-template-columns: 2fr 0.5fr;
+    width: 100%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.addToCartSelectorButton {
+    margin-left: auto;
+    margin-right: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.buttonImageItemCatalog {
+    width: 100%;
+}

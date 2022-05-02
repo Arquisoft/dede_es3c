@@ -5,25 +5,38 @@ import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import { Product } from '../shared/shareddtypes';
 import Button from '@mui/material/Button';
+import ProductDetailModal from './ProductDetailModal';
 
 type Props = {
     item: Product;
+    setAmount: (amount: string) => void
 };
 
-const Item: React.FC<Props> = ({ item }) => (
-    <div>
-        <Card key={item.name}>
-            <CardHeader title={item.name} />
-            
-            <Button onClick={() => window.location.assign("/products/name/" + item.name) }>
-                <CardMedia component="img" width="200" height="200" src={item.urlPhoto} alt={item.name} />
-            </Button>
-            
-            <CardContent>
-                $ {item.price}
-            </CardContent>
-        </Card>
-    </div>
-);
+const RelatedProduct = (props: Props) => {
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
 
-export default Item;
+    return (
+        <div>
+            {
+                (open) &&
+
+                <ProductDetailModal item={props.item} setAmount={props.setAmount} setOpen={setOpen} open={open}/>
+            }
+
+            <Card key={props.item.name}>
+                <CardHeader title={props.item.name} />
+
+                <Button onClick={handleOpen}>
+                    <CardMedia component="img" src={props.item.urlPhoto} alt={props.item.name} className="relatedProductImage"/>
+                </Button>
+
+                <CardContent>
+                    $ {props.item.price}
+                </CardContent>
+            </Card>
+        </div>
+    );
+};
+
+export default RelatedProduct;

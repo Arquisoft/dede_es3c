@@ -1,3 +1,4 @@
+import { UpdateResult } from "typeorm";
 import { Application } from 'express';
 import { ProductStore } from '../entities/ProductStore';
 
@@ -64,6 +65,24 @@ export class ProductStoreService {
             take: 1
         });
 }
+
+   /**
+   * Update stock product by id
+   * @param app Express application
+   * @param id Product id
+   * @param product Product object
+   * @returns Promise<UpdateResult>
+   */
+  public static decrementProductStock(app: Application,product_id: string,distributioncenter_id: string,stock: number)
+    : Promise<UpdateResult> {
+    return app
+      .get("db")
+      .getRepository(ProductStore)
+      .updateOne({ 
+          product_id: product_id,
+          distributioncenter_id: distributioncenter_id }, 
+          { $inc: { stock: -stock } });
+  }
 
     
 
