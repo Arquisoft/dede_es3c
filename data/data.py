@@ -316,6 +316,7 @@ user3 = {
 user4 = {
 		"id": str(uuid.uuid4()),
 		"username":"Dwyane Tyrone Wade, Jr.",
+		"email":"Dwyane@gmail.com",
         "salt": "37028d151dd80a66e0228630712fd781",
         "hash": "81d2ab8889ecb3c4841a14f4cb2e45364f622405be31a1593f4f9ae373d62b376e64ab5392bbbbb6061f5cbe1f682562369d78720fab687959b45dcd7465b5b6",
 		"rol":"Client"
