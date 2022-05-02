@@ -5,12 +5,11 @@ import DisplayOrders from "../components/DisplayOrders"
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
-import { Paper, Table, TableContainer, TableHead } from "@mui/material";
+import { Paper, Table, TableContainer, TableHead, Button } from "@mui/material";
 import { LangContext } from "../lang";
 import { Navigate, Link } from "react-router-dom";
 import GoToTopButton from '../components/GoToTopButton';
 import '../styles/Orders.scss';
-import { Button } from '@mui/material'
 
 interface OrdersPageProps {
     setUser:(user:string) => void

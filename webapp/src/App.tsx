@@ -105,7 +105,7 @@ const App: FC = () => {
         <Route
           path = '/about'
           element = {
-            <AboutPage setUser={setUser} />
+            <AboutPage />
           }
         />
       </Routes>

@@ -12,7 +12,7 @@ test('Catalog renders properly', async () => {
             <Router>
                 <UserState>
                     <LangState>
-                        <AboutPage setUser={() => undefined} />
+                        <AboutPage />
                     </LangState>
                 </UserState>
             </Router>

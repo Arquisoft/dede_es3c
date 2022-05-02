@@ -117,7 +117,7 @@ defineFeature(feature, test => {
         });
     })
 
-    test('User tries to go to sign up page via link', ({ given, when, then }) => {
+    test('User tries to go to sign up page via link', ({ when, then }) => {
 
         when('User clicks in go to register link', async () => {
             await expect(page).toMatch('Log in DeDesktop')

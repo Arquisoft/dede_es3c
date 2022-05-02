@@ -3,7 +3,7 @@ import IconButton from '@mui/material/IconButton';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { Product } from '../shared/shareddtypes';
 import handleAddToCart from '../components/HandleAddToCart';
-import { Grid, List, ListItem, ListItemText, Typography } from "@mui/material";
+import { List, ListItem, Typography } from "@mui/material";
 import Box from '@mui/material/Box';
 import { getStockByProduct } from '../api/api';
 import MenuItem from '@mui/material/MenuItem';

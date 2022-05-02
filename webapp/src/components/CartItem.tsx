@@ -1,10 +1,9 @@
 import { Product } from '../shared/shareddtypes';
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { LangContext } from '../lang';
 import { Button } from '@mui/material';
 import handleAddToCart from '../components/HandleAddToCart';
 import handleRemoveFromCart from '../components/HandleRemoveFromCart';
-import { useState } from "react";
 import { getStockByProduct } from '../api/api';
 import '../styles/Cart.scss';
 

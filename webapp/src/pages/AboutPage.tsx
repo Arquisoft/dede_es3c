@@ -6,11 +6,7 @@ import HorizontalSeparator from '../components/HorizontalSeparator';
 import Footer from '../components/Footer';
 import { Link } from "react-router-dom";
 
-interface HomePageProps {
-    setUser: (user: string) => void
-}
-
-const HomePage: FC<HomePageProps> = (props: HomePageProps) => {
+const HomePage = () => {
     const { dispatch: { translate } } = useContext(LangContext);
  
     return (

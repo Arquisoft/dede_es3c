@@ -4,6 +4,7 @@ import LangState from '../lang';
 import UserState from '../User';
 import { MemoryRouter as Router } from 'react-router-dom';
 import AboutPage from "../pages/AboutPage";
+import Footer from "../components/Footer";
 
 test('Catalog renders properly', async () => {
 
@@ -12,7 +13,7 @@ test('Catalog renders properly', async () => {
             <Router>
                 <UserState>
                     <LangState>
-                        <AboutPage setUser={() => undefined} />
+                        <Footer />
                     </LangState>
                 </UserState>
             </Router>

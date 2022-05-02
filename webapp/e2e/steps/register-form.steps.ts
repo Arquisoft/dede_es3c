@@ -52,7 +52,7 @@ defineFeature(feature, test => {
     });
   })
 
-  afterEach(async => {
+  afterEach(() => {
     browser.close();
   })
 
@@ -87,7 +87,7 @@ defineFeature(feature, test => {
     });
   })
 
-  test('The user tries to go to login page via link', ({ given, when, then }) => {
+  test('The user tries to go to login page via link', ({ when, then }) => {
 
     when('I click the go to login button', async () => {
       await expect(page).toMatch('Sign up in DeDesktop')
