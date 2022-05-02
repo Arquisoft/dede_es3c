@@ -11,7 +11,7 @@ services:
     depends_on: 
       - restapi
   mongo:
-    image: ghcr.io/Arquisoft/dede_es3c/mongo:latest
+    image: mongo
     restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: SergioArroni
