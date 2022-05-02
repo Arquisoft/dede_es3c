@@ -24,12 +24,7 @@ defineFeature(feature, test => {
 
     test('User opens cart', ({ given, when, then }) => {
 
-        let usernameTest: string;
-        let passwordTest: string;
-
         given('A registered client user', () => {
-            usernameTest = "Wardell Stephen Curry II"
-            passwordTest = "123456"
 
         });
 
