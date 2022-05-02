@@ -1,4 +1,4 @@
-import {User, Product, Order} from '../shared/shareddtypes';
+import {User, Product, Order, OrderProduct, DistributionCenter} from '../shared/shareddtypes';
 
 export async function addUser(user:User):Promise<boolean>{
     const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
@@ -170,6 +170,62 @@ export async function getRelatedProducts(name: string, category: string): Promis
   return response.json();
 }
 
+
+export async function addOrder(email:string, products: OrderProduct[], address:string) {
+  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+  let response = await fetch(apiEndPoint + '/orders', {
+    method: 'POST',
+    headers: { authorization: localStorage.getItem("token") + "", 'Content-Type': 'application/json' },
+    body: JSON.stringify({ 'user':email, 'products': products, 'address':address})
+  });
+}
+export async function getDistributionCenters(product: Product): Promise<DistributionCenter[]>{
+  const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+  let response = await fetch(apiEndPoint+'/distributioncenters/'+ product.name + '/' + product.amount , {
+    method: 'GET',
+    headers: {  authorization: localStorage.getItem("token") +"" , 'Content-Type': 'application/json' }
+  });
+  return response.json();
+}
+
+export async function updatePasswordByEmail(email:String, password:String) {
+  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+  let response = await fetch(apiEndPoint + '/users/email/' + email + '/password/' + password, {
+    method: 'PUT',
+    headers: { authorization: localStorage.getItem("token") + "", 'Content-Type': 'application/json' },
+    body: JSON.stringify({ 'email': email, 'password': password})
+  });
+  if (response.status === 200)
+    return true;
+  else
+    return false;
+}
+
+export async function updateUserByEmail(email:String, username:String) {
+  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+  let response = await fetch(apiEndPoint + '/users/email/' + email + '/name/' + username, {
+    method: 'PUT',
+    headers: { authorization: localStorage.getItem("token") + "", 'Content-Type': 'application/json' },
+    body: JSON.stringify({ 'email':email, 'username/': username})
+  });
+  if (response.status === 200)
+    return true;
+  else
+    return false;
+}
+export async function existUser(username: string): Promise<Boolean> {
+  const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api/users';
+  let response = await fetch(apiEndPoint + "/username/" + username, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
+  if (response.status !== 404 && response.status !== 500){
+    return true;
+  } else {
+    return false;
+  }
+}
+
 export async function getStockByProduct(name: string): Promise<number> {
   const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
   let response = await fetch(apiEndPoint +"/store/" +name, {
@@ -187,3 +243,4 @@ export async function getCanBuyProduct(name: string, amount: number): Promise<bo
   });
   return response.json();
 }
+

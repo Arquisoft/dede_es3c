@@ -80,6 +80,40 @@ const EditUserPage: FC<EditUserProps> = (props: EditUserProps) => {
               text: translate("update.pass.error"),
               icon: "error",
             });
+        } else {
+            await updatePasswordByEmail(email, newPassword);
+            handleClosePass();
+            Swal.fire({
+                title: translate("update.password.updated"),
+                text: translate("updade.pass.success"),
+                icon: "success",
+          });
+        }
+    }
+
+    const updateUser = async () => {
+        existUser(newUserName).then(user => {
+            if (user == true){
+                handleCloseUser();
+                Swal.fire({
+                    title: translate("update.repeated"),
+                    icon: "error",
+                  });
+            } else {
+                updateUserByEmail(email, newUserName);
+                localStorage.setItem("currentUser", newUserName);
+                setUserName(newUserName);
+                handleCloseUser();
+                Swal.fire({
+                    title:  translate("update.user.changed"),
+                    icon: "success",
+              })
+            }}, () => {updatePasswordByEmail(email, newPassword);
+                        Swal.fire({
+                        title: "Success, the user already exists",
+                        text: translate("update.pass.error"),
+                        icon: "success",
+                  });})
         }
 
     }
