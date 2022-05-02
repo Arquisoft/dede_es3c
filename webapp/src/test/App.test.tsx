@@ -20,8 +20,8 @@ test('App (Home) renders properly', () => {
     </React.StrictMode>,
   );
 
-  let linkElement = screen.getAllByLabelText(/carouselImage1/i);
-  expect(linkElement).toBeInTheDocument();
-  linkElement = screen.getAllByLabelText(/carouselImage2/i);
-  expect(linkElement).toBeInTheDocument();
+  let linkElements = screen.getAllByText(/carouselImage1/i);
+  expect(linkElements[0]).toBeInTheDocument();
+  linkElements = screen.getAllByText(/carouselImage2/i);
+  expect(linkElements[0]).toBeInTheDocument();
 });
