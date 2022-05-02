@@ -474,6 +474,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel2">
 <li><a href="#_whitebox_overall_system">5.1. Whitebox Overall System</a></li>
 <li><a href="#_black_box_descriptions_of_overall_system">5.2. Black Box descriptions of Overall System</a></li>
+<li><a href="#_building_block_view_level_2">5.3. Building block view - Level 2</a></li>
 </ul>
 </li>
 <li><a href="#_runtime_view">6. Runtime View</a>
@@ -506,7 +507,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_archiutecture_and_design_patterns">8.6. Archiutecture and design patterns</a></li>
 <li><a href="#_code_quality_standards">8.7. Code Quality standards</a></li>
 <li><a href="#_testability">8.8. Testability</a></li>
-<li><a href="#_hexagonal_architecture">8.9. Hexagonal architecture</a></li>
 </ul>
 </li>
 <li><a href="#_design_decisions">9. Design Decisions</a></li>
@@ -895,11 +895,11 @@ For documentation of your own system you use better the <em>plain</em> version.<
 <div class="sect2">
 <h3 id="_technical_context">3.2. Technical Context</h3>
 <div class="paragraph">
-<p>Our goal is to have an online sales system called DeDe (Decentralized Delivery), that respects customer privacy by following SOLID principles.
-SOLID principles tell us that each user&#8217;s personal information must be decentralised, and for this we use SOLID PODs.
-SOLID PODs are stores of information outside our system.
-In our system we only store the accesses to the PODs, in order to speed up the reading processes.
-Users have control over who has their information, thus increasing privacy.</p>
+<p>Our application is divided in frontend(webapp), backend (restapi), testing (e2e and test) fields.
+In backend, we use an hexagonal architecture improving security and the website performance.
+The system is made with the microservices idea in mind, using docker containers to contain the FrontEnd, backend and the databases used in both project and testing.
+We also used SOLID PODs in the Inrupt provider to give a descentralized experience in props of getting the user address. We connect to the public user&#8217;s VCARD storaged in it&#8217;s POD so we, in our databases, have no personal information aside the email.
+Now, in frontend, we used the framework React accompanied by bootstrap and MUI components, bootswatch styles, SweetAlert2 alerts and carousel library to make an interactive HomePage.</p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="./images/03-Technical-Context.png" alt="Technical Context diagram"></span></p>
@@ -918,31 +918,72 @@ Users have control over who has their information, thus increasing privacy.</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>MongoDB</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>We will use it to store the location of the SOLID POD</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>We use it to store the location of the SOLID POD. In our architecture, we have two databases, one is used for testing, and the other one is used in the website as main database. Both of them are contained in dockers to get closer to the microservices concept and improve the website performances.</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>React</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>It is a library to help us carry out the project</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Is a technical constraint. We use it to develop the website in frontend</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>TypeScript</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>It is used for program</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Is the programming language used for the development. It is also a technical constraint</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>Grafana and Prometeus</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>This is used to monitor</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>They are services used for monitoring our system and verifiying the petitions made in our charge tests.</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>Postman</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>It is used for testing</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>It is used for testing the backend functionlity due to it&#8217;s popularity and previous tips given by older students</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>Docker</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Possibility of DeDe to be deployed and launched</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>I&#8217;ts one of our main ideas. We use Docker to divide the application in multiple services (containers) based in the microservices idea. We have a container for each service (Grafana, Prometheus, Main database, test database, webapp, and mongo)</em></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Heroku</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Possibility of DeDe to be deployed and launched</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Amazon Web Services</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Is the platform used for the system deployment. Chosen because after trying to deploy our app in another services like Heroku (we had problems because of our Docker architecture. The free version only allows to deply one container and we had 2) and Azure we couldn&#8217;t get a proper result so we decided to try with this one</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>In the project, we use the following libraries, APIs and dependencies</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Used Libraries</th>
+<th class="tableblock halign-left valign-top">Explication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>MUI</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Library used because of its predefined components that makes the developing process a lot easier and efficient. Some of tihs kind of components can be really helpful when developing some specific things</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Bootstrap</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Same as MUI, but this components can be a little less limited in functionalities than the MUI ones. We use them basically because they are more easily customizable and they are compatible with bootswatch.</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Bootswatch</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Bootswatch gives our app a harmonized style, giving us some things such as a background and styling on the bootstrap components.</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>SweetAlert2</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>It&#8217;s a dependence that gives the possibility of launching dialogs, modals and alerts in an easy way. Plus, this alerts are animated and give dynamism to the user experience.</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Distance Matrix API</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>This is a Google Maps API used in backend to get the distance between two different points in the world. It&#8217;s simple,  efficient and quick.</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>react-material-ui-carousel</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Used in fontend to give dynamism to the homepage. It&#8217;s very customizable and easy to use and it gives a little information about the website before entering the catalog or the website technology</em></p></td>
 </tr>
 </tbody>
 </table>
@@ -979,7 +1020,7 @@ Users have control over who has their information, thus increasing privacy.</p>
 <p>MongoDB: MongoDB is open source software, which is a NoSQL document database, we use NoSQL as it gives us the ability to work with many different data without spending so much time modeling these elements.</p>
 </li>
 <li>
-<p>Heroku: Heroku is a cloud server which we will use to deploy our App. Heroku makes it easy to deploy and scale Node.js applications. Run any recent version of Node.js. Deploy apps in seconds using dependency caching.</p>
+<p>AWS: AWS is a cloud server which we will use to deploy our App. AWS makes it easy to deploy and scale Node.js applications. Run any recent version of Node.js. Deploy apps in seconds using dependency caching.</p>
 </li>
 <li>
 <p>Docker: We will use it to launch the application in a container of the technologies we need to carry out the DeDe.</p>
@@ -1087,6 +1128,12 @@ Users have control over who has their information, thus increasing privacy.</p>
 </tr>
 </tbody>
 </table>
+</div>
+<div class="sect2">
+<h3 id="_building_block_view_level_2">5.3. Building block view - Level 2</h3>
+<div class="paragraph">
+<p><span class="image"><img src="./images/05_2_Building_Block_View_Level_2.png" alt="Building block view - Level 2"></span></p>
+</div>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
@@ -1320,6 +1367,9 @@ We have a role system, which defines if a user is an Administrator or a normal U
 <div class="ulist">
 <ul>
 <li>
+<p><a href="https://www.npmjs.com/package/axios"><em>"axios"</em></a>: "^0.26.1"</p>
+</li>
+<li>
 <p><a href="https://www.npmjs.com/package/cloudinary"><em>"cloudinary"</em></a>: "^1.28.1"</p>
 </li>
 <li>
@@ -1372,8 +1422,17 @@ We have a role system, which defines if a user is an Administrator or a normal U
 </div>
 <div class="sect2">
 <h3 id="_archiutecture_and_design_patterns">8.6. Archiutecture and design patterns</h3>
+<div class="sect3">
+<h4 id="_hexagonal_architecture">8.6.1. Hexagonal architecture</h4>
 <div class="paragraph">
-<p>TODO</p>
+<p>We are using hexagonal architecture in our app. We took this decision because it presents several advantadges.</p>
+</div>
+<div class="paragraph">
+<p>The hexagonal architecture is an architectural pattern used in software design. It divides a system into different layers or regions with their own responsibility. In this way, it manages to decouple layers of our application, allowing them to evolve in isolation. In addition, having the system separated by responsibilities will facilitate reuse. The components are loosely-coupled and interchangeable, such as the application core, the database, the user interface, test scripts and interfaces with other systems.</p>
+</div>
+<div class="paragraph">
+<p>Hexagonal architecture is an alternative to traditional layered architecture.</p>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -1393,18 +1452,6 @@ We think this is the best way to be sure the project works correctly.</p>
 </div>
 <div class="paragraph">
 <p>To test our code, Postman was used in the backend during the whole development of the work, to check if the requests were being carried out correctly. Later, once we had a more or less solid project, we added a series of unit tests, which use Jest technology, these tests try to include all the backend and frontend parts, but separately, without joining them. Once these tests passed successfully, integration tests were implemented, which test the union of frontend and backend, all these tests were done exhaustively and were performed by people who had not done that part of the code, with that we get that we do not test things that are known to work.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_hexagonal_architecture">8.9. Hexagonal architecture</h3>
-<div class="paragraph">
-<p>We are using hexagonal architecture in our app. We took this decision because it presents several advantadges.</p>
-</div>
-<div class="paragraph">
-<p>The hexagonal architecture is an architectural pattern used in software design. It divides a system into different layers or regions with their own responsibility. In this way, it manages to decouple layers of our application, allowing them to evolve in isolation. In addition, having the system separated by responsibilities will facilitate reuse. The components are loosely-coupled and interchangeable, such as the application core, the database, the user interface, test scripts and interfaces with other systems.</p>
-</div>
-<div class="paragraph">
-<p>Hexagonal architecture is an alternative to traditional layered architecture.</p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="./images/13_Hexagonal.png" alt="Hexagonal architecture"></span></p>
@@ -1440,11 +1487,11 @@ We think this is the best way to be sure the project works correctly.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Design architecture</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">We will use MVC as architectural pattern for backend and Redux for frontend</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">With MVC we have better usability and a very organized and understable code. Redux helps us with data synchrony</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">MVC: We need to structure the code perfectly to comply with the convention. Redux: We never used it</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MVC: We need to structure the code perfectly to comply with the convention. Redux: We never used it. Instead we decided to use React Hooks like CreateContext or UseContext</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Frameworks</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">We will choose Redux framework to develop application frontend</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We used the React Hooks and functionalities in frontend, taking advantage of it&#8217;s utilities because it is intuitive</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">We can use it to facilitate the implementation</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Is a new technology to us so we need to improve our knowledge about it</p></td>
 </tr>
@@ -1453,6 +1500,78 @@ We think this is the best way to be sure the project works correctly.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">We choosed MongoDB to store all the information</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MongoDB allows us to make an easier implementation</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Is a new technology to us so we need to improbe our kownledge about it</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Save images</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We have decided to store all images related to the product catalogue in an external API called Cloudiary</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">With this we manage to decentralise the images of the project, the favourable implications are many, from increasing security, such as lightening the weight of the project by not having to save the images, also highlighting the ease of displaying them as it works through a URL saved in the product</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The disadvantages are having to configure the entire API, the fact that the products have to save a URL increases its complexity, we depend on this external API for the correct functioning of the application</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hexagonal architecture</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">At the beginning of the project we decided that the backend would be governed by a hexagonal architecture, this is due to the recommendation given by Professor Jose Emilio Labra Gayo in theory and because we had already worked with this</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">One of the advantages we found is that this project is for the subject of Software Architecture, so adding a hexagonal architecture to the project gives it more strength. Also, we have the intrinsic advantages of a hexagonal architecture, which are to decouple ourselves from the database, since the project does not care about the implementation of this, to focus more on the application domain, to decouple the layers of the backend, this leads to the fact that it was easier for us to perform unit tests and added modifications</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">As disadvantages, I would say that the main ones were that a large part of the project had to be redone, given by the teachers, and that not all the members knew how the architecture worked</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Docker Database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The decision to use a docker for the database was taken at the beginning of the project, this decision seemed natural to all of us at the beginning because if we had a docker for the frontend, another one for the backend, it made sense to make another one for the database. Although at the beginning we tried MongoAtlas to host our database, we didn&#8217;t like to depend on an external service</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This decision has many advantages in terms of architecture; we manage to reduce dependence on external services by taking care of the maintenance of the database as well as its deployment and configuration. The advantages of using microservices instead of using services provided by large companies have been widely discussed in class. We base ourselves on the recommendations given in theory on the use of microservices, as these manage to lower the coupling of the project, the use of individualised docker for each service gives us a freedom that we would not have in SOA, and also gives us greater speed when it comes to deployment</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">As disadvantages the most notable of all has been the complete lack of knowledge that we have of the use of microservices, we have generated quite a few headaches because not having the same approach as the rest of the groups we could not help each other, but we looked for a lot of information in forums and other websites, to get everything to work</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Seeding the database in Docker</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Since we had the database in a separate docker, we decided to create another one to seed the database, it was decided to do it in python as it seemed the fastest to do, due to the simplicity of python</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">By having the database seeding isolated from the rest of the project, we make inserting data into it as easy as adding a line to the file, it is also good because we could use external python datasets to populate our model, this makes our project highly modifiable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">One drawback we saw is that if you don&#8217;t control in the database that there can be unique items by name (see controlling that no two products are the same), then you could not run the docker-compose several times as it would repeat data. It also complicates the task of getting it up on the web</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">API lasod to calculate delivery price</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Various databases</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It was decided to create separate databases, one for backend unit tests, one for e2e unit tests, one for docker deployment and one for local deployment</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">With this we get low the level of coupling of the project, since each part of the project that needs the database, has a dedicated database for it, for example if in the unit tests we put a new user to register, this is not registered in the production database, nor in the unit tests, nor in the local tests. This was easier for us thanks to the hexagonal architecture, as we only had to touch on one file to create as many databases as we needed</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">There were not many problems with this decision, but if this were a large-scale project I suspect that having 4 databases instead of one would be more costly and difficult to maintain, but at our scale it only brought benefits</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MUI &amp; Bootstrap</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We used both libraries. MUI because of the facilities given by some of its components and bootstrap because of the easy way to style them any way we want</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Both resources are compatible and easy to use and syncronize</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">When used both components at the sae time, sometimes they are not same-styled</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ASW</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The decision to use ASW was practically not a decision, but a necessary decision given our resources and focus. By having 3 distinct dockers, we can no longer deploy for free on Heroku, as it is a cloud computing platform as a service that only allows 2 containers simultaneously for free. In Azure we had no credit, so we were left with ASW</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A big advantage was the free credit and the good guidance of pglez82 which we followed step by step</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We had a hard time getting our whole project to work on ASW, but I think we would have had the same problems on any other platform</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PBKDF2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We decided to increase the security of the project by using an asynchronous encryption algorithm such as PBKDF2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We decided on this one because we have taught it in another subject and we know how it works inside. Thanks to it we have managed to save our passwords encrypted, which considerably increases the security of the application</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Changes had to be made in many parts of the project, especially in the backend, as the user entity had to be changed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Login to SOLID POD</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">At the meridian of the project development, the decision was taken to use only the address of the user&#8217;s SOLID PODs and not to do the whole login with SOLID. It should be noted that we do have a SOLID login, but this is optional, as we have seen that SOLID does not work as well as we would like, so we leave it up to the user to decide whether to log in to SOLID or just enter their SOLID username and we just take out the address</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The main advantages are that we give the user more freedom when buying in our shop, we do not restrict the user to only have SOLID, also by having both options, if one of these does not work we have the other, thus increasing the solidity of the project</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Doing the two options functions entailed double the work required for this part</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bootswatch</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We used bootswatch to give the bootsrap components a uniform style and also make the website style in a harmony where all components and colours match</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">I&#8217;ts super easy to use and makes you save a lot of work in CSS style sheets</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MUI components are not affected so we had to style them manually</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SweetAlert2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We used this library to give the user intuitive and animated alerts while using the website</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">I&#8217;ts easy to use and comes with predeterminated settings that makes the programming experience a lot easier</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">I&#8217;ts another dependecy we had to take care of and make sure it doesn&#8217;t overlap with anything else ceating bugs</p></td>
 </tr>
 </tbody>
 </table>
@@ -1663,7 +1782,7 @@ We think this is the best way to be sure the project works correctly.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Being only 4 members</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">We have to do a hard work to develop tha application.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We have to do a hard work to develop the application.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1674,13 +1793,22 @@ We think this is the best way to be sure the project works correctly.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>There is some parts of the code with a very bad code (for example some unnecessary nested ifs) and some duplicated code. Until now we had no time to solve this.</p>
+<p>Even if the app is internationalized, we could&#8217;t find a way of automatic translation because of the time and complication of the task. A lot of APIs aren&#8217;t free and require a laborious configuration that could pottentialy give us some problems we hadn&#8217;t time to resolve.</p>
 </li>
 <li>
-<p>There are some unsolved bugs. For this we were unable to solve them.</p>
+<p>The SOLID Login is implementated and made. But because of our deployment choice we had problems with the https certificate. We had no time to fix it before the last release. Instead, we decided to use the public address on the VCARD od the SOLID POD.</p>
 </li>
 <li>
-<p>There is also some design decisions we could not develop yet.</p>
+<p>We had intention to complete some optional exercises (pick up points, delivery stimation, and delivery services) but we had no time to do them before the last release.</p>
+</li>
+<li>
+<p>We could not add checkboxes on the shopping cart because we were busy doing other mandatory tasks. at the end we could not complete it</p>
+</li>
+<li>
+<p>We wanted to incorporate a drag and drop component so the admin could update a picture of a new product by dragging it to the field but, again, we were concenrated in completing the mandatory tasks</p>
+</li>
+<li>
+<p>Removing the articles from the cart after buying something. We had problems trying to connect the two components and at the end, we had no time to fix this issue</p>
 </li>
 </ul>
 </div>
@@ -1716,6 +1844,14 @@ We think this is the best way to be sure the project works correctly.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>Part of the application that implements the logical business and interacts with both the frontend and the database</em></p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Bootstrap</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Front-end open source toolkit</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Bootswatch</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Styles for bootstrap components library</em></p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>Continuous integration system</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>The practice of making automatic integrations to a project in order to detect errors prematurely</em></p></td>
 </tr>
@@ -1748,6 +1884,10 @@ We think this is the best way to be sure the project works correctly.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>The hability of something to be modified easily</em></p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>MUI</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>React component library</em></p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>Open Source</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>Software development model based on open collaboration</em></p></td>
 </tr>
@@ -1768,6 +1908,10 @@ We think this is the best way to be sure the project works correctly.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>A language that is a subset of another language, fully compatible with that language</em></p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>SweetAlert2</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Animated alerts library</em></p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>Testability</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>Hability of something to be tested as an experiment and make decisions with the obtained results</em></p></td>
 </tr>
@@ -1778,22 +1922,6 @@ We think this is the best way to be sure the project works correctly.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>Web application</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>Tools that a user can use by accessing a web server</em></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>MUI</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>React component library</em></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Bootstrap</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Front-end open source toolkit</em></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Bootswatch</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Styles for bootstrap components library</em></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>SweetAlert2</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Animated alerts library</em></p></td>
 </tr>
 </tbody>
 </table>
@@ -1822,7 +1950,7 @@ Created by Dr. Peter Hruschka &amp; Dr. Gernot Starke.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-04-04 09:40:21 +0200
+Last updated 2022-05-02 20:16:08 +0200
 </div>
 </div>
 </body>
