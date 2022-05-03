@@ -158,6 +158,7 @@ export async function addOrder(email:string, products: OrderProduct[], address:s
     headers: { authorization: localStorage.getItem("token") + "", 'Content-Type': 'application/json' },
     body: JSON.stringify({ 'user':email, 'products': products, 'address':address})
   });
+  return response.json();
 }
 
 export async function getDistributionCenters(product: Product): Promise<DistributionCenter[]>{

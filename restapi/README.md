@@ -1,6 +1,7 @@
 ## Restapi
 The objective for this part is to make a rest API using Express and Node.js using TypeScript. We will implement only two functions, one push petition, for registering a new user and a get petition, to list all the users in the system. The webservice will be deployed using docker.
 
+
 Lets analyze the main packages used in this part (file package.json):
 - express: this is the main dependency for building the API. Express is a NodeJS web framework very useful for building API endpoints though it has other applications as well.
 - cors: Cross-Origin Resource Sharing, is useful for allowing petitions only from certain domains, in this case, we will allow only petitions from localhost.
