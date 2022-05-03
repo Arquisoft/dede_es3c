@@ -24,6 +24,11 @@ const App: FC = () => {
   const { dispatch: {setUser}} = useContext(UserContext);
   const { dispatch: { setOpen, setAmount } } = useContext(OpenContext);
 
+  if (localStorage.getItem("currentUser") === null){
+    localStorage.setItem("currentUser", "not logged");
+    localStorage.setItem("cart", "[]");
+  }
+
   return (
     <Router>
       <Header setUser={setUser} setOpen={setOpen} setAmount={setAmount}/>

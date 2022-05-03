@@ -69,6 +69,17 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
     props.setUser("not logged");
     props.setAmount("0");
   }
+
+  const getAmount = () => {
+    let aux = parseInt(localStorage.getItem("amountInCart")!);
+
+    if (isNaN(aux)){
+      return 0;
+    }
+    else{
+      return aux;
+    }
+  }
   
   return (
     <div className={`sticky__wrapper ${isSticky && 'sticky'}`} ref={ref}>
@@ -95,7 +106,7 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
 
                   {(!(localStorage.getItem("currentUser")?.includes("admin"))) &&
                     <Button onClick={() => props.setOpen("true")} aria-label="CartIcon" key="cartButton">
-                      <Badge badgeContent={parseInt(localStorage.getItem("amountInCart")!)} color="error">
+                      <Badge badgeContent={getAmount()} color="error">
                         <AddShoppingCartSharp />
                         {translate("header.cart")}
                       </Badge>
