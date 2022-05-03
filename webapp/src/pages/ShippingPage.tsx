@@ -1,8 +1,8 @@
 import React, {Fragment, FC, useState, useContext} from "react";
 import {Box, Card, CardContent, Container, List, ListItem, ListItemText, ListSubheader, Modal, TextField, Typography} from "@mui/material";
 import { Button} from "react-bootstrap";
-import {Product, OrderProduct } from "../shared/shareddtypes";
-import { addOrder, getAddress, getUser } from "../api/api";
+import {Product, OrderProduct, Order } from "../shared/shareddtypes";
+import { addOrder, getAddress, getShippingPrice, getUser } from "../api/api";
 import Swal from 'sweetalert2';
 import { Navigate, Link } from "react-router-dom";
 import { LangContext } from '../lang';
@@ -40,6 +40,7 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
   const [productsOder, setProductsOrder] = useState<OrderProduct[]>([]);
   const [openPrice, setOpenPrice] = useState(false);
   const [openPod, setOpenPod] = useState(false);
+  const[shipping, setShipping] = useState(0);
 
   const cleanFields = () => {
     setCountryName("");
@@ -102,6 +103,15 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
     }
   })
 
+const checkCenters = (centers: OrderProduct[]) => {
+  for (let index = 0; index < centers.length; index++) {
+    if (centers[index].distributionCenter.address === ""){
+      return true;
+    }
+  }
+  return false
+}
+
   const showConfirmation = () => {
     Swal.fire({
       title: "Success",
@@ -126,12 +136,44 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
       }
       productOrders[index] = oP;    
     }
-    console.log(productOrders);
-    generateOrder(productOrders);
-    handleClosePrice();
-    showConfirmation();
+    if (checkCenters(productOrders)){
+      Swal.fire({
+        title: "Error",
+        text: translate("shipping.nocenter"),
+        icon: "error",
+      })
+    } else{
+      handleOpenPrice()
+      console.log(productOrders);
+      setProductsOrder(productOrders);
+      shippingPrice(productOrders);
+    }   
     return productOrders;
   }
+
+  const shippingPrice = async (products: OrderProduct[]) => {
+    getShippingPrice(products, parseAddress()).then ((ship) => {
+      setShipping(ship);
+    });
+  }
+
+  const checkCardFields = (expire:string , cvv:string, number:string) => {
+    if(expire[2] !== '-' || expire.length < 7 || expire.length > 7 || isNaN(Number(expire[0])) || isNaN(Number(expire[1])) || isNaN(Number(expire[3]))
+    || isNaN(Number(expire[4])) || isNaN(Number(expire[5])) || isNaN(Number(expire[6]))){
+      return true;  
+    } else {
+    var mes = expire[0] + expire[1]; 
+    var año = expire[3] + expire[4] + expire[5] + expire[6];
+    console.log(año)
+    console.log(mes)
+    if(isNaN(Number(cvv)) || cvv.length !== 3 || number.length < 16 || isNaN(Number(number))  || (Number.parseInt(mes) < new Date().getMonth() && 
+    Number.parseInt(año) === new Date().getFullYear())  || Number.parseInt(año) < new Date().getFullYear() || Number.parseInt(mes) > 12 || Number.parseInt(mes) <= 0){
+      return true;
+} else {
+  return false;
+}
+    }
+}
 
   const removeAccents = (str:string) => {
     return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
@@ -154,6 +196,8 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
     if (prods.length > 0){
        await addOrder(email, prods, parsedAddress)
       localStorage.setItem("cart", "[]");
+       handleClosePrice();
+       showConfirmation();
     } else{
       console.log(productsOder)
     }
@@ -163,7 +207,8 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
     try{
       await getAddress(webID).then(address => {
         console.log(address)
-        if (address.msg === "POD not found" || address.msg === "Address not found") {
+        if (address.msg === "POD not found" || address.msg === "Address not found" || webID === "") {
+          cleanFields();
           Toast.fire({
             icon: 'error',
             title: 'We could not get your address'
@@ -327,7 +372,7 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                       variant="contained" 
                       type="submit"
                       disabled={addressFields()}
-                      onClick={() => { cleanFields(); handleOpenPrice()}}
+                      onClick={() => {generateOrderProduct()}}
                       >
                         {translate('shipping.proceed')}
                       </Button>
@@ -338,7 +383,7 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
                     <Box sx={style}>
                     <Typography id = "modal-modal-title" variant = "h6" component= "h2">{translate("shipping.resume")}</Typography>
                     <div>
-                    <Typography id = "modal-modal-subtitle2" variant = "subtitle2" component= "text">{translate("shipping.price") + " " + 10.0 + "$"}</Typography>
+                    <Typography id = "modal-modal-subtitle2" variant = "subtitle2" component= "text">{translate("shipping.price") + " " + shipping + "$"}</Typography>
                     </div>
                     <div>
                     <Typography id = "modal-modal-subtitle2" variant = "subtitle2" component= "text">{translate("shipping.priceFinal") + " " + (finalPrice + 10.0).toFixed(2) + "$"}</Typography>
@@ -350,21 +395,22 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
             <TextField
              required
              size="small"
-             name="country"
+             name="cardNumber"
+             helperText={translate('card.number')}
              label= {translate ('card.number')} 
              variant="outlined"
              value={cardNumber}
              onChange={e => setCardNumber(e.target.value)}
              sx={{ my: 2 }}>
             </TextField>
-
             <TextField
              required
              size="small"
-             name="country"
-             label= {translate ('card.expire')} 
+             name="Expire Date"
+             label= {translate ('card.format')} 
              variant="outlined"
              value={expireDate}
+             helperText={translate('card.expire')}
              onChange={e => setExpireDate(e.target.value)}
              sx={{ my: 2 }}>
             </TextField>
@@ -372,7 +418,7 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
             <TextField
              required
              size="small"
-             name="country"
+             name="CVV"
              label= {translate ('card.cvv')} 
              variant="outlined"
              value={CVV}
@@ -381,9 +427,10 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
             </TextField>
 
         </Fragment>
+        {console.log(checkCardFields(expireDate, CVV, cardNumber))}
                     <Button 
-                    disabled= {(CVV === '' || CVV.length !== 3) || (cardNumber ==='' || cardNumber.length < 12) || (expireDate === '')}
-                    onClick={() => {cleanFields(); generateOrderProduct()}}>
+                    disabled= {checkCardFields(expireDate, CVV, cardNumber)}
+                    onClick={() => { generateOrder(productsOder); cleanFields();}}>
                     {translate("shipping.end")}</Button>      
                     <Fragment >
                     </Fragment>

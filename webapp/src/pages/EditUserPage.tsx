@@ -99,15 +99,22 @@ const EditUserPage: FC<EditUserProps> = (props: EditUserProps) => {
                     icon: "error",
                   });
             } else {
+                if (newUserName.includes("admin")){
+                    handleCloseUser();
+                    Swal.fire({
+                        title: translate("user.invalid"),
+                        icon: "error",
+                });
+            } else {
                 updateUserByEmail(email, newUserName);
                 localStorage.setItem("currentUser", newUserName);
                 setUserName(newUserName);
                 handleCloseUser();
                 Swal.fire({
                     title:  translate("update.user.changed"),
-                    icon: "success",
+                    icon: "success"
               })
-            }}, () => {updatePasswordByEmail(email, newPassword);
+            }}}, () => {updatePasswordByEmail(email, newPassword);
                         Swal.fire({
                         title: "Success, the user already exists",
                         text: translate("update.pass.error"),

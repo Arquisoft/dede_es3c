@@ -523,12 +523,12 @@ describe("orders", () => {
   });
 
   /**
-   * Test that we can list orders with a error. User no authenticated
+   * Test that we can't list orders with a error. User no authenticated
    */
   it("can't be listed orders", async () => {
     const response: Response = await request(app)
       .get("/api/orders")
-    expect(response.statusCode).toBe(200);
+    expect(response.statusCode).toBe(403);
   });
 
   /**

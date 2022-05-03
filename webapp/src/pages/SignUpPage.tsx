@@ -53,6 +53,15 @@ const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
                 icon: "error",
             });
         }
+
+        if (user.username.includes("admin")){
+            Swal.fire({
+                title: "Error",
+                text: translate("user.invalid"),
+                icon: "error",
+            });
+        }
+
         else if (!isBlank(user.username) && !isBlank(user.password) && !isBlank(user.email) && !isBlank(repeatedPassword)){
            let response = await checkUserAndLogin(name, password);
            if (!(response.status === 200)){
@@ -78,7 +87,7 @@ const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
             </div>
                 <h1>{translate('signup.h1')}</h1>
                 <h2>{translate('signup.h2')}</h2>
-                <form>
+                <form id = "register" name="register">
                 <div>
                     <TextField
                         id = "textName"
@@ -99,7 +108,6 @@ const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
                         onChange={e => setName(e.target.value)}
                         error = {exists === 2 || (pulsed && name.length === 0)}
                         sx={{ my: 2 }}
-                        
                         /> 
                     </div>
                     <div>
@@ -152,6 +160,8 @@ const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
                     onClick={ () => register()} 
                     variant="contained" 
                     type="submit"
+                    name = "Signup"
+                    id = "Signup"
                     color="primary"
                     style={{
                         borderRadius: 15,

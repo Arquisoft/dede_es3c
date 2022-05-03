@@ -81,6 +81,7 @@
     "shipping.priceFinal":"Precio final: ",
     "shipping.card":"Tarjeta: ",
     "shipping.end":"Tramitar el pago",
+    "shipping.nocenter":"Por favor, seleccione un centro de distribución para cada producto",
     "shipping.price":"Precio de envío",
     "shipping.creditCard":"Introduzca su tarjeta de crédito para confirmar el pago",
    "shipping.confirmation":"Pedido realizado! Gracias por comprar en DeDesktop",
@@ -137,5 +138,7 @@
     "edit.user.username.label": "Nombre de usuario",
     "footer.who": "¿Quienes somos?",
     "footer.about": "Sobre nosotros",
-    "footer.contact": "Contactanos"
+    "footer.contact": "Contactanos",
+    "user.invalid":"El nombre de usuario contiene la palabra reservada admin",
+    "card.format":"mm-aaaa"
 }
