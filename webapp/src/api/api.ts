@@ -4,7 +4,7 @@ export async function addUser(user:User):Promise<boolean>{
     const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
     let response = await fetch(apiEndPoint+'/users', {
         method: 'POST',
-        headers: {'Content-Type':'application/json'},
+        headers: {'Content-Type':'application/json', 'Access-Control-Allow-Origin':'*'},
         body: JSON.stringify({'username':user.username, 'password': user.password, 'rol': user.rol, 'email':user.email})
       });
     if (response.status===200)
@@ -25,7 +25,7 @@ export async function checkUserAndLogin(username: string, password:string) {
   
   let response = await fetch(apiEndPoint+'/login', {
       method: 'POST',
-      headers: {'Content-Type':'application/json'},
+      headers: {'Content-Type':'application/json', 'Access-Control-Allow-Origin':'*'},
       body: JSON.stringify({'username': username, 'password': password})
     });
 
@@ -37,7 +37,7 @@ export async function signup(username:string ,password:string, email:string) {
   const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
   let response = await fetch(apiEndPoint+'/register', {
       method: 'POST',
-      headers: {'Content-Type':'application/json'},
+      headers: {'Content-Type':'application/json', 'Access-Control-Allow-Origin':'*'},
       body: JSON.stringify({'username': username, 'password': password, 'email':email, 'rol':"Client"})
     });
     return response.json();
@@ -47,7 +47,7 @@ export async function getUser(username: string): Promise<User> {
   const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api';
   let response = await fetch(apiEndPoint + "/users/username/" + username, {
     method: "GET",
-    headers: { "Content-Type": "application/json" },
+    headers: {'Content-Type':'application/json', 'Access-Control-Allow-Origin':'*'},
   });
   return response.json();
 }
