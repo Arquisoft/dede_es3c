@@ -132,5 +132,6 @@
     "edit.user.username.label": "Username",
     "footer.who": "Who are we?",
     "footer.about": "About us",
-    "footer.contact": "Contact us"
+    "footer.contact": "Contact us",
+    "user.invalid":"The username contains the reserved word admin"
 }

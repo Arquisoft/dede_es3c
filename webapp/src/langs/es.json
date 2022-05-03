@@ -138,5 +138,6 @@
     "edit.user.username.label": "Nombre de usuario",
     "footer.who": "¿Quienes somos?",
     "footer.about": "Sobre nosotros",
-    "footer.contact": "Contactanos"
+    "footer.contact": "Contactanos",
+    "user.invalid":"El nombre de usuario contiene la palabra reservada admin"
 }
