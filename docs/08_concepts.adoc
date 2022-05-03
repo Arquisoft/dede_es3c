@@ -139,6 +139,9 @@ The hexagonal architecture is an architectural pattern used in software design. 
 
 Hexagonal architecture is an alternative to traditional layered architecture.
 
+image:08_Hexagonal.png["Hexagonal architecture"]
+=======
+
 ==== Microservices
 
 
@@ -151,8 +154,36 @@ To achieve this we will use all tools programs give us and make correct decision
 
 === Testability
 
-Applications should be strongly tested. We will use user histories to make acceptance tests and unit test to test the rest of the application components and states during running process.
+Applications should be strongly tested. We use user stories to make acceptance tests and unit test to test the rest of the application components and states during running process.
 We think this is the best way to be sure the project works correctly.
 
-To test our code, Postman was used in the backend during the whole development of the work, to check if the requests were being carried out correctly. Later, once we had a more or less solid project, we added a series of unit tests, which use Jest technology, these tests try to include all the backend and frontend parts, but separately, without joining them. Once these tests passed successfully, integration tests were implemented, which test the union of frontend and backend, all these tests were done exhaustively and were performed by people who had not done that part of the code, with that we get that we do not test things that are known to work. 
+==== Postman
+To test our code, Postman was used in the backend during the whole development of the work, to check if the requests were being carried out correctly. Postman is an application in which we can test requests and obtain a successfully respond if everything is ok. 
+
+==== Unit tests
+Later, once we had a more or less solid project, we added a series of unit tests, which use Jest technology, these tests try to include all the backend and frontend parts, but separately, without joining them. 
+
+==== Integration tests
+Once unit tests passed successfully, integration tests were implemented, which test the union of frontend and backend, all these tests were done exhaustively and were performed by people who had not done that part of the code, with that we get that we do not test things that are known to work.
+
+==== Load tests
+We have load tests to check our application under real-life load conditions, it gives us an idea of the respond time having a determined users load.
+
+===== Get products (catalog)
+3 users in 15 seconds
+image:08_loadtests_getproducts3-15.png["Load test - Catalog 1"]
+15 users in 30 seconds
+image:08_loadtests_getproducts15-30.png["Load test - Catalog 2"]
+
+===== Login
+15 users in 60 seconds
+image:08_loadtests_login15-60.png["Load test - Login 1"]
+5000 users in 60 seconds. We can check that 5000 users in 1 minute is too much and some petitions fail. Most of the responds are slower but don't fail.
+image:08_loadtests_login5000-60.png["Load test - Login 2"]
+
+
+===== Get users list
+This load test implicates a login as admin before listing users.
+image:08_loadtests_getuserslist3-15.png["Load test - Get users 1"]
+
 
