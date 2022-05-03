@@ -245,15 +245,6 @@ export async function getCanBuyProduct(name: string, amount: number): Promise<bo
   return response.json();
 }
 
-export async function getAllDistributionCenters(): Promise<DistributionCenter[]> {
-  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
-  let response = await fetch(apiEndPoint + '/distributioncenters/', {
-    method: 'GET',
-    headers: { authorization: localStorage.getItem("token") + "", 'Content-Type': 'application/json' }
-  });
-  return response.json();
-}
-
 export async function addProductToDistributionCenter(distCenterID: string, productId: string, amount: number): Promise<boolean> {
   const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
   let response = await fetch(apiEndPoint + '/distributioncenters/', {

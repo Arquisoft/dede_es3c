@@ -56,7 +56,7 @@ const CrudDeletePage: FC<CrudPageProps> = (props: CrudPageProps) => {
                                         required
                                         size="small"
                                         id="standard-helperText"
-                                        label={translate('crud.ID')}
+                                        label="deleteProduct"
                                         variant="outlined"
                                         sx={{ my: 2 }}
                                         value={id}
@@ -70,7 +70,7 @@ const CrudDeletePage: FC<CrudPageProps> = (props: CrudPageProps) => {
 
                     <Card className={"main"} elevation={10} style={{ display: "grid" }}>
                         <CardContent style={{ display: "grid", margin: "auto", textAlign: "center" }}>
-                            <h3 aria-label="addProductTitle">T-Delete product in dist center</h3>
+                            <h3 aria-label="deleteProductCenterTitle">T-Delete product in dist center</h3>
                             <Fragment>
                                 <form id="deleteInCenter">
                                     <TextField
