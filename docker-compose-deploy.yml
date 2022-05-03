@@ -19,10 +19,3 @@ services:
       MONGO_INITDB_DATABASE: DeDesktop
     ports:
       - "27017:27017"
-  python:
-    build: ./restapi/data
-    image: python
-    ports:
-      - "8000:8000"
-    depends_on: 
-      - restapi

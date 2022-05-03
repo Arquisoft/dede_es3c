@@ -1,4 +1,4 @@
-import { FC, useContext, useState, useEffect } from 'react';
+import { FC, useContext } from 'react';
 import './App.css';
 import { UserContext } from './User';
 import "bootswatch/dist/morph/bootstrap.min.css"

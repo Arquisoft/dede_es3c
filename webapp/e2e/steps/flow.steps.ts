@@ -1,40 +1,37 @@
 import { defineFeature, loadFeature } from 'jest-cucumber';
 import puppeteer from "puppeteer";
 
-const feature = loadFeature('./features/home.feature');
+const feature = loadFeature('./features/flow.feature');
 
 let page: puppeteer.Page;
 let browser: puppeteer.Browser;
 
 defineFeature(feature, test => {
 
-    beforeEach(async () => {
+    beforeAll(async () => {
         browser = process.env.GITHUB_ACTIONS
             ? await puppeteer.launch()
             : await puppeteer.launch({ headless: true });
         page = await browser.newPage();
 
         await page
-            .goto("http://localhost:3000/", {
+            .goto("http://localhost:3000/login", {
                 waitUntil: "networkidle0",
             })
             .catch(() => { });
     });
 
-    test('User tries to go to catalog', ({ when, then }) => {
-
-        when('User clicks on go to catalog link at home', async () => {
-            await expect(page).toMatch('Check our products')
-            await expect(page).toClick('button', { text: 'Catalog' })
+    test('Logged client user is at home and tries to go to catalog', ({ when, then }) => {
+        when('User clicks in catalog header option', async () => {
+            await expect(page).toClick('a[href="/catalog"]')
         });
 
-        then('Catalog page is displayed', async () => {
-            await page.waitForNavigation();
+        then('User goes to catalog page', async () => {
             await expect(page).toMatch('Reset filters')
         });
-    })
+    });
 
-    afterEach(async () => {
+    afterAll(async () => {
         browser.close()
     })
 

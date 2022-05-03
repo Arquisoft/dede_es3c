@@ -1,7 +1,7 @@
 import React, {Fragment, FC, useState, useContext} from "react";
 import {Box, Card, CardContent, Container, List, ListItem, ListItemText, ListSubheader, Modal, TextField, Typography} from "@mui/material";
 import { Button} from "react-bootstrap";
-import {Product, OrderProduct, Order } from "../shared/shareddtypes";
+import {Product, OrderProduct } from "../shared/shareddtypes";
 import { addOrder, getAddress, getShippingPrice, getUser } from "../api/api";
 import Swal from 'sweetalert2';
 import { Navigate, Link } from "react-router-dom";

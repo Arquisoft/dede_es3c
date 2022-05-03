@@ -1,5 +1,5 @@
 import {User, Product, Order, OrderProduct, DistributionCenter} from '../shared/shareddtypes';
-const apiEndPoint= 'http://44.203.162.55:5000/api' || process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
 
 export async function addUser(user:User):Promise<boolean>{
     let response = await fetch(apiEndPoint+'/users', {
@@ -85,7 +85,7 @@ export async function getProductsByCategory(category: string): Promise<Product[]
 export async function addProduct(product: Product): Promise<boolean>{
   let response = await fetch(apiEndPoint + '/products', {
     method: 'POST',
-    headers: {authorization: localStorage.getItem("token") + "", 'Content-Type': 'application/json' },
+    headers: { authorization: localStorage.getItem("token") + "", 'Content-Type': 'application/json' },
     body: JSON.stringify({ 'name': product.name, 'description': product.description, 'price': product.price, 'category': product.category, 'urlPhoto': product.urlPhoto })
   });
   if (response.status === 200)
@@ -97,7 +97,7 @@ export async function addProduct(product: Product): Promise<boolean>{
 export async function updateProduct(id: string, product: Product): Promise<boolean> {
   let response = await fetch(apiEndPoint + '/products/' + id, {
     method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { authorization: localStorage.getItem("token") + "", 'Content-Type': 'application/json' },
     body: JSON.stringify({ 'name': product.name, 'description': product.description, 'price': product.price, 'category': product.category, 'urlPhoto': product.urlPhoto })
   });
   if (response.status === 200)
@@ -109,8 +109,7 @@ export async function updateProduct(id: string, product: Product): Promise<boole
 export async function deleteProduct(id: string): Promise<boolean> {
   let response = await fetch(apiEndPoint + '/products/' + id, {
     method: 'DELETE',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ 'id': id })
+    headers: { authorization: localStorage.getItem("token") + "", 'Content-Type': 'application/json' },
   });
   if (response.status === 200)
     return true;
@@ -159,6 +158,7 @@ export async function addOrder(email:string, products: OrderProduct[], address:s
     headers: { authorization: localStorage.getItem("token") + "", 'Content-Type': 'application/json' },
     body: JSON.stringify({ 'user':email, 'products': products, 'address':address})
   });
+  return response.json();
 }
 
 export async function getDistributionCenters(product: Product): Promise<DistributionCenter[]>{

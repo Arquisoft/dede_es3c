@@ -339,18 +339,6 @@ rec_user_id5 = collection.insert_one(user5)
 
 # print("Data inserted with record ids",rec_user_id1," ",rec_user_id2)
 
-'''
-# Printing the data inserted
-cursor = collection.find()
-for record in cursor:
-	print(record)
-import sys 
-print("Output from Python") 
-print("First name: " + sys.argv[1]) 
-print("Last name: " + sys.argv[2]) 
-'''
-
-
 
 collection = db.distribution_center
 
@@ -360,7 +348,7 @@ dc1 = {
 }
 dc2 = {
 		"id": dc2_id,
-		"address": "Escuela Tecnica Superior de Ingenieria Informatica, Universidad de Sevilla, 41012 Sevilla",
+		"address": "Plaza de la Independencia, 7, 28001 Madrid"
 }	
 # Insert Data
 rec_distcenter_id1=collection.insert_one(dc1)
@@ -545,31 +533,31 @@ ps2_17 = {
 ps2_19 = {
 	"id": str(uuid.uuid4()),
 	"distributioncenter_id": dc2_id,
-	"product_id": prod17_id,
+	"product_id": prod19_id,
 	"stock": 20
 }
 ps2_20 = {
 	"id": str(uuid.uuid4()),
 	"distributioncenter_id": dc2_id,
-	"product_id": prod17_id,
+	"product_id": prod20_id,
 	"stock": 10
 }
 ps2_21 = {
 	"id": str(uuid.uuid4()),
 	"distributioncenter_id": dc2_id,
-	"product_id": prod17_id,
+	"product_id": prod21_id,
 	"stock": 14
 }
 ps2_22 = {
 	"id": str(uuid.uuid4()),
 	"distributioncenter_id": dc2_id,
-	"product_id": prod17_id,
+	"product_id": prod22_id,
 	"stock": 14
 }
 ps2_23 = {
 	"id": str(uuid.uuid4()),
 	"distributioncenter_id": dc2_id,
-	"product_id": prod17_id,
+	"product_id": prod23_id,
 	"stock": 14
 }
 ps2_25 = {

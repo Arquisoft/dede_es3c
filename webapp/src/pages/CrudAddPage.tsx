@@ -114,10 +114,10 @@ const CrudAddPage: FC<CrudPageProps> = (props: CrudPageProps) => {
                                             size="small"
                                             sx={{ my: 2 }}
                                         >
-                                            <MenuItem value="Laptops">{translate('category.laptop')}</MenuItem>
-                                            <MenuItem value="Monitors">{translate('category.monitors')}</MenuItem>
-                                            <MenuItem value="Chairs">T-Chairs</MenuItem>
-                                            <MenuItem value="Keyboards">T-Keyboards</MenuItem>
+                                            <MenuItem value="Laptop">{translate('category.laptop')}</MenuItem>
+                                            <MenuItem value="Monitor">{translate('category.monitors')}</MenuItem>
+                                            <MenuItem value="Chair">Chairs</MenuItem>
+                                            <MenuItem value="Keyboard">Keyboards</MenuItem>
                                         </Select>
                                     </FormControl>
                                 </form>
@@ -128,7 +128,7 @@ const CrudAddPage: FC<CrudPageProps> = (props: CrudPageProps) => {
 
                     <Card className={"main"} elevation={10} style={{ display: "grid" }}>
                         <CardContent style={{ display: "grid", margin: "auto", textAlign: "center" }}>
-                            <h3 aria-label="addToCenterTitle">T-Add productg to dist center</h3>
+                            <h3 aria-label="addToCenterTitle">Add product to distridbution center</h3>
                             <Fragment>
                                 <form id="addDistributioncenter">
                                     <TextField
@@ -163,7 +163,7 @@ const CrudAddPage: FC<CrudPageProps> = (props: CrudPageProps) => {
                                     />
                                 </form>
                             </Fragment>
-                            <Button onClick={() => addProductToDistCenter()} variant="contained" type="submit" sx={{ my: 2 }} aria-label="addCenterButton">T-Add product to distribution center</Button>
+                            <Button onClick={() => addProductToDistCenter()} variant="contained" type="submit" sx={{ my: 2 }} aria-label="addCenterButton">Add product to distribution center</Button>
                         </CardContent>
                     </Card>
                 </Container>
