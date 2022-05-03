@@ -1,5 +1,5 @@
 # dede_es3c
-[![Actions Status](https://github.com/arquisoft/dede_es3c/workflows/pages-build-deployment/badge.svg)](https://github.com/Arquisoft/dede_es3c/actions)
+
 [![Actions Status](https://github.com/arquisoft/dede_es3c/workflows/CI%20for%20ASW2122/badge.svg)](https://github.com/Arquisoft/dede_es3c/actions)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Arquisoft_dede_es3c&metric=alert_status)](https://sonarcloud.io/project/overview?id=Arquisoft_dede_es3c)
 [![codecov](https://codecov.io/gh/Arquisoft/dede_es3c/branch/master/graph/badge.svg)](https://app.codecov.io/gh/Arquisoft/dede_es3c)
