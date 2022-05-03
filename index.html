@@ -523,6 +523,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </ul>
 </li>
 <li><a href="#_glossary">12. Glossary</a></li>
+<li><a href="#_annexes">13. Annexes</a>
+<ul class="sectlevel2">
+<li><a href="#_usability_survey">13.1. Usability survey</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -944,6 +949,10 @@ Now, in frontend, we used the framework React accompanied by bootstrap and MUI c
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>Amazon Web Services</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>Is the platform used for the system deployment. Chosen because after trying to deploy our app in another services like Heroku (we had problems because of our Docker architecture. The free version only allows to deply one container and we had 2) and Azure we couldn&#8217;t get a proper result so we decided to try with this one</em></p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>CSS</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>CSS is a language to set styles and positions of our components in the application. We used it because of our familiarity with it.</em></p></td>
+</tr>
 </tbody>
 </table>
 <div class="paragraph">
@@ -1357,10 +1366,10 @@ As we can see in the following image, we are going to use AWS to deploy the appl
 <p>Prototype version of DeDesktop:</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="./images/08_UI-Homepage.PNG" alt="Catalog initial prototype"></span></p>
+<p><span class="image"><img src="./images/08_UI-Homepage.png" alt="Catalog initial prototype"></span></p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="./images/08_UI-OtherWindows.PNG" alt="Other Windows initial prototype"></span></p>
+<p><span class="image"><img src="./images/08_UI-OtherWindows.png" alt="Other Windows initial prototype"></span></p>
 </div>
 <div class="paragraph">
 <p>Middle Version of DeDesktop</p>
@@ -1586,10 +1595,15 @@ We have a role system, which defines if a user is an Administrator or a normal U
 <div class="paragraph">
 <p>Hexagonal architecture is an alternative to traditional layered architecture.</p>
 </div>
+<div class="paragraph">
+<p><span class="image"><img src="./images/13_Hexagonal.png" alt="Hexagonal"></span></p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_microservices">8.6.2. Microservices</h4>
-
+<div class="paragraph">
+<p>In our application we decided to use microservices to divide the application into webapp, restapi, database and data. With this we achieve a low coupling in these layers, a better control over them and an improvement in the quality of the software. To achieve this decoupling, we use docker, to build the images of each service.</p>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -1604,13 +1618,59 @@ We have a role system, which defines if a user is an Administrator or a normal U
 <div class="sect2">
 <h3 id="_testability">8.8. Testability</h3>
 <div class="paragraph">
-<p>Applications should be strongly tested. We will use user histories to make acceptance tests and unit test to test the rest of the application components and states during running process.
+<p>Applications should be strongly tested. We use user stories to make acceptance tests and unit test to test the rest of the application components and states during running process.
 We think this is the best way to be sure the project works correctly.</p>
 </div>
+<div class="sect3">
+<h4 id="_postman">8.8.1. Postman</h4>
 <div class="paragraph">
-<p>To test our code, Postman was used in the backend during the whole development of the work, to check if the requests were being carried out correctly. Later, once we had a more or less solid project, we added a series of unit tests, which use Jest technology, these tests try to include all the backend and frontend parts, but separately, without joining them. Once these tests passed successfully, integration tests were implemented, which test the union of frontend and backend, all these tests were done exhaustively and were performed by people who had not done that part of the code, with that we get that we do not test things that are known to work.</p>
+<p>To test our code, Postman was used in the backend during the whole development of the work, to check if the requests were being carried out correctly. Postman is an application in which we can test requests and obtain a successfully respond if everything is ok.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_unit_tests">8.8.2. Unit tests</h4>
+<div class="paragraph">
+<p>Later, once we had a more or less solid project, we added a series of unit tests, which use Jest technology, these tests try to include all the backend and frontend parts, but separately, without joining them.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_integration_tests">8.8.3. Integration tests</h4>
+<div class="paragraph">
+<p>Once unit tests passed successfully, integration tests were implemented, which test the union of frontend and backend, all these tests were done exhaustively and were performed by people who had not done that part of the code, with that we get that we do not test things that are known to work.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_load_tests">8.8.4. Load tests</h4>
+<div class="paragraph">
+<p>We have load tests to check our application under real-life load conditions, it gives us an idea of the respond time having a determined users load.</p>
+</div>
+<div class="sect4">
+<h5 id="_get_products_catalog">Get products (catalog)</h5>
+<div class="paragraph">
+<p>3 users in 15 seconds
+<span class="image"><img src="./images/08_loadtests_getproducts3-15.png" alt="Load test - Catalog 1"></span>
+15 users in 30 seconds
+<span class="image"><img src="./images/08_loadtests_getproducts15-30.png" alt="Load test - Catalog 2"></span></p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_login">Login</h5>
+<div class="paragraph">
+<p>15 users in 60 seconds
+<span class="image"><img src="./images/08_loadtests_login15-60.png" alt="Load test - Login 1"></span>
+5000 users in 60 seconds. We can check that 5000 users in 1 minute is too much and some petitions fail. Most of the responds are slower but don&#8217;t fail.
+<span class="image"><img src="./images/08_loadtests_login5000-60.png" alt="Load test - Login 2"></span></p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_get_users_list">Get users list</h5>
+<div class="paragraph">
+<p>This load test implicates a login as admin before listing users.
+<span class="image"><img src="./images/08_loadtests_getuserslist3-15.png" alt="Load test - Get users 1"></span></p>
 </div>
 <div style="page-break-after: always;"></div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1726,6 +1786,24 @@ We think this is the best way to be sure the project works correctly.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">We used this library to give the user intuitive and animated alerts while using the website</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">I&#8217;ts easy to use and comes with predeterminated settings that makes the programming experience a lot easier</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">I&#8217;ts another dependecy we had to take care of and make sure it doesn&#8217;t overlap with anything else ceating bugs</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Work</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">One of the decisions taken was to prioritise the necessary functionalities and polish them, rather than make new ones optional</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We were able to polish the functionalities we had, although we would have liked to polish them further</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">In the end we didn&#8217;t manage to polish them at all and lost the option to make them optional</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">react-material-ui-carousel</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This library is used to make our home page a little bit more dynamic and beautiful. This is a library created with @mui components.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Very configurable and easy to use. It gives a very good result with little configuration.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Is another dependency that makes our proyect heavier and more dependent on external libraries. It also makes us to hardcode some code as images URLs and some texts.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CSS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Used to make our application more beautiful and to make all pages elements stay in its positions.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Is a known language for some of our team members, so we can use it properly.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It makes you write more code and sometimes is difficult to make the styles in the proper way.</p></td>
 </tr>
 </tbody>
 </table>
@@ -2080,6 +2158,57 @@ We think this is the best way to be sure the project works correctly.</p>
 </tbody>
 </table>
 <div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_annexes">13. Annexes</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_usability_survey">13.1. Usability survey</h3>
+<div class="paragraph">
+<p>To test our application and try to see how users use it, we made a survey with some of our friends and parents.</p>
+</div>
+<div class="paragraph">
+<p>We tried to test our web with two age groups. The first one is between 20 and 30 years old. All this group is considered as medium-high technology knowledge. The second one, between 45 and 55 years old, is a group with a low knowledges in techonolgy uses.</p>
+</div>
+<div class="paragraph">
+<p>First of all we made them login and signup in our web. Only one person had problems in this part, due to the little custom of carrying out this type of actions.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./images/annex11.png" alt="log in problems"></span></p>
+</div>
+<div class="paragraph">
+<p>One of the most important aspects when developing our application has been its usability. For this reason, we have asked the interviewees to tell us what problems they have encountered when browsing the application.
+The majority have not had problems, but there have been two cases in which there have been slight confusions, due to the language of the store. For these users, since the home store is in English, it could be a bit confusing when changing the language and without it, they could not navigate. There has also been a user who has detected that the header with the links, on small screens, is dislodged to be able to enter.
+The biggest navigability problem is that almost all those interviewed have found a bug in which one of the images on the home page was loaded incorrectly and was cut off.</p>
+</div>
+<div class="paragraph">
+<p>In addition, they have been asked to give a numerical score for usability.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./images/annex12.png" alt="web usability"></span></p>
+</div>
+<div class="paragraph">
+<p>As for the aesthetics of the application, there have been very good opinions and it has seemed attractive to users.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./images/annex13.png" alt="beauty votation"></span></p>
+</div>
+<div class="paragraph">
+<p>They have also been asked to simulate a purchase. Everyone has been able to add to cart easily. However, there have been a couple of problems in this regard.
+Some users wanted to know detailed information about the products to decide which one to buy. However, they were not very clear about how they could do it, since some did not see the signaling that appears when the mouse is placed over a product, indicating that it is a button.
+The filtering of products has been carried out correctly in general, except for one case in which, due to the resolution of its screen, some buttons were slightly pressed and made their use inappropriate.
+They have also been asked to pay for the purchase. This is the aspect in which there have been problems. Using a slightly different technology than usual, just over half have had trouble uploading their POD data to our app.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./images/annex14.png" alt="satisfaction with the application"></span></p>
+</div>
+<div class="paragraph">
+<p>None of the interviewees had a POD and in many cases it has even been necessary to help them create one in order to use it.
+Finally, they have been asked about the response of the application and the load times. In general terms, users are satisfied.
+As a conclusion of this study, the general opinion is good, although it is clouded by the use of PODs since it is something that has been difficult for them to understand how to use and that most of them do not see as necessary, preferring the traditional method.</p>
+</div>
+<div style="page-break-after: always;"></div>
 <div class="paragraph">
 <p><strong>About arc42</strong></p>
 </div>
@@ -2102,9 +2231,10 @@ Created by Dr. Peter Hruschka &amp; Dr. Gernot Starke.</p>
 </div>
 </div>
 </div>
+</div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-05-03 10:51:59 +0200
+Last updated 2022-05-04 01:57:33 +0200
 </div>
 </div>
 </body>
