@@ -153,6 +153,7 @@ const ShippingPage: FC<ShippingPageProps> = (props: ShippingPageProps) => {
     }
     if (prods.length > 0){
        await addOrder(email, prods, parsedAddress)
+      localStorage.setItem("cart", "[]");
     } else{
       console.log(productsOder)
     }
