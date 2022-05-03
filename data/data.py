@@ -348,7 +348,7 @@ dc1 = {
 }
 dc2 = {
 		"id": dc2_id,
-		"address": "Escuela Tecnica Superior de Ingenieria Informatica, Universidad de Sevilla, 41012 Sevilla",
+		"address": "Plaza de la Independencia, 7, 28001 Madrid"
 }	
 # Insert Data
 rec_distcenter_id1=collection.insert_one(dc1)
