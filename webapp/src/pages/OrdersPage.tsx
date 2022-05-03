@@ -93,7 +93,8 @@ const OrdersPage: FC<OrdersPageProps> = (props: OrdersPageProps) => {
                 borderRadius: 15,
                 backgroundColor: "#e8e8e8",
                 padding: "15px 30px",
-                fontSize: "13px"
+                fontSize: "13px",
+                color: "black"
               }}
             >{translate('orders.shopping')}</Button>
           </div>

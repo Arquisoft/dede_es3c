@@ -39,6 +39,8 @@ function Item(props: { item: { name: string; description: string; imageURL1: str
 
     const { dispatch: { translate } } = useContext(LangContext);
 
+    console.log(localStorage.getItem("currentUser"));
+
     return (
         <Paper>
             <div className="containerHome">
@@ -56,7 +58,8 @@ function Item(props: { item: { name: string; description: string; imageURL1: str
                             borderRadius: 15,
                             backgroundColor: "#e8e8e8",
                             padding: "18px 36px",
-                            fontSize: "18px"
+                            fontSize: "18px",
+                            color: "black"
                         }}
                         variant="contained"
                         onClick={() => window.location.assign(props.item.buttonURL)}

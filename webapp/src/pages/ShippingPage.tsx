@@ -195,6 +195,7 @@ const checkCenters = (centers: OrderProduct[]) => {
     }
     if (prods.length > 0){
        await addOrder(email, prods, parsedAddress)
+      localStorage.setItem("cart", "[]");
        handleClosePrice();
        showConfirmation();
     } else{
