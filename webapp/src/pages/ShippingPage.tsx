@@ -157,6 +157,24 @@ const checkCenters = (centers: OrderProduct[]) => {
     });
   }
 
+  const checkCardFields = (expire:string , cvv:string, number:string) => {
+    if(expire[2] !== '-' || expire.length < 7 || expire.length > 7 || isNaN(Number(expire[0])) || isNaN(Number(expire[1])) || isNaN(Number(expire[3]))
+    || isNaN(Number(expire[4])) || isNaN(Number(expire[5])) || isNaN(Number(expire[6]))){
+      return true;  
+    } else {
+    var mes = expire[0] + expire[1]; 
+    var año = expire[3] + expire[4] + expire[5] + expire[6];
+    console.log(año)
+    console.log(mes)
+    if(isNaN(Number(cvv)) || cvv.length !== 3 || number.length < 16 || isNaN(Number(number))  || (Number.parseInt(mes) < new Date().getMonth() && 
+    Number.parseInt(año) === new Date().getFullYear())  || Number.parseInt(año) < new Date().getFullYear() || Number.parseInt(mes) > 12 || Number.parseInt(mes) <= 0){
+      return true;
+} else {
+  return false;
+}
+    }
+}
+
   const removeAccents = (str:string) => {
     return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
   } 
@@ -177,6 +195,7 @@ const checkCenters = (centers: OrderProduct[]) => {
     }
     if (prods.length > 0){
        await addOrder(email, prods, parsedAddress)
+      localStorage.setItem("cart", "[]");
        handleClosePrice();
        showConfirmation();
     } else{
@@ -376,21 +395,22 @@ const checkCenters = (centers: OrderProduct[]) => {
             <TextField
              required
              size="small"
-             name="country"
+             name="cardNumber"
+             helperText={translate('card.number')}
              label= {translate ('card.number')} 
              variant="outlined"
              value={cardNumber}
              onChange={e => setCardNumber(e.target.value)}
              sx={{ my: 2 }}>
             </TextField>
-
             <TextField
              required
              size="small"
-             name="country"
-             label= {translate ('card.expire')} 
+             name="Expire Date"
+             label= {translate ('card.format')} 
              variant="outlined"
              value={expireDate}
+             helperText={translate('card.expire')}
              onChange={e => setExpireDate(e.target.value)}
              sx={{ my: 2 }}>
             </TextField>
@@ -398,7 +418,7 @@ const checkCenters = (centers: OrderProduct[]) => {
             <TextField
              required
              size="small"
-             name="country"
+             name="CVV"
              label= {translate ('card.cvv')} 
              variant="outlined"
              value={CVV}
@@ -407,10 +427,10 @@ const checkCenters = (centers: OrderProduct[]) => {
             </TextField>
 
         </Fragment>
+        {console.log(checkCardFields(expireDate, CVV, cardNumber))}
                     <Button 
-                    disabled= {(CVV === '' || CVV.length !== 3) || (cardNumber ==='' || cardNumber.length < 12) || (expireDate === '')
-                    }
-                    onClick={() => {cleanFields(); generateOrder(productsOder)}}>
+                    disabled= {checkCardFields(expireDate, CVV, cardNumber)}
+                    onClick={() => { generateOrder(productsOder); cleanFields();}}>
                     {translate("shipping.end")}</Button>      
                     <Fragment >
                     </Fragment>

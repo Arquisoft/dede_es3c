@@ -185,62 +185,6 @@ export class ProductController {
   }
 
   /**
-   * Update Stock product
-   * @param req Request
-   * @param res Response
-   * @returns product with status 200 or error 500
-   */
- /* public async decrementProductStock(req: Request, res: Response) {
-    try {
-      const product = await ProductService.getProductById(
-        req.app,
-        String(req.params.id)
-      );
-      product.stock - req.body.stock >= 0
-        ? res.status(200).json(product)
-        : res.status(500).json({ error: "The stock of the product is insufficient" });
-      const productU = await ProductService.decrementProductStock(
-        req.app,
-        String(req.params.id),
-        req.body.stock
-      );
-      productU
-        ? res.status(200).json(productU.raw)
-        : res.status(404).json({ error: "Product not found" });
-    } catch (error) {
-      res.status(500).json({ error: "Error on update Product: " + error });
-    }
-  }
-
-  /**
-   * Update Stock product
-   * @param req Request
-   * @param res Response
-   * @returns product with status 200 or error 500
-   */
-  /*public async increaseProductStock(req: Request, res: Response) {
-    try {
-      const product = await ProductService.getProductById(
-        req.app,
-        String(req.params.id)
-      );
-      product.stock >= req.body.stock
-        ? res.status(200).json(product)
-        : res.status(404).json({ error: "Product not found" });
-      const productU = await ProductService.increaseProductStock(
-        req.app,
-        String(req.params.id),
-        req.body.stock
-      );
-      productU
-        ? res.status(200).json(productU.raw)
-        : res.status(404).json({ error: "Product not found" });
-    } catch (error) {
-      res.status(500).json({ error: "Error on update Product: " + error });
-    }
-  }*/
-
-  /**
    * Delete product
    * @param req Request
    * @param res Response

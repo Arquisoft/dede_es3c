@@ -3,7 +3,7 @@ import { Container, Card, CardContent } from "@mui/material";
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import "bootswatch/dist/morph/bootstrap.min.css"
-import { deleteProduct } from "../api/api";
+import { deleteProduct, deleteProductInDistributionCenter } from "../api/api";
 import { LangContext } from '../lang';
 import Home from '../pages/HomePage';
 
@@ -29,6 +29,17 @@ const CrudDeletePage: FC<CrudPageProps> = (props: CrudPageProps) => {
         }
     }
 
+    const [centerId, setCenterId] = useState<string>("");
+    const [productId, setProductId] = useState("");
+
+    const addProductToDistCenter = async () => {
+        try {
+            await deleteProductInDistributionCenter(centerId, productId);
+        } catch (error) {
+            console.log("Error al añadir el producto al centro de distribución");
+        }
+    }
+
     if (!localStorage.getItem("currentUser")?.includes("admin")) {
         return (<Home setUser={props.setUser} />)
     }
@@ -45,7 +56,7 @@ const CrudDeletePage: FC<CrudPageProps> = (props: CrudPageProps) => {
                                         required
                                         size="small"
                                         id="standard-helperText"
-                                        label={translate('crud.ID')}
+                                        label="deleteProduct"
                                         variant="outlined"
                                         sx={{ my: 2 }}
                                         value={id}
@@ -56,6 +67,38 @@ const CrudDeletePage: FC<CrudPageProps> = (props: CrudPageProps) => {
                             <Button onClick={() => deleteProductAux()} variant="contained" type="submit" sx={{ my: 2 }} aria-label="deleteButton">{translate('crud.delete')}</Button>
                         </CardContent>
                     </Card>
+
+                    <Card className={"main"} elevation={10} style={{ display: "grid" }}>
+                        <CardContent style={{ display: "grid", margin: "auto", textAlign: "center" }}>
+                            <h3 aria-label="deleteProductCenterTitle">T-Delete product in dist center</h3>
+                            <Fragment>
+                                <form id="deleteInCenter">
+                                    <TextField
+                                        required
+                                        size="small"
+                                        id="distcentid"
+                                        label="T-Dist cent ID"
+                                        variant="outlined"
+                                        sx={{ my: 2 }}
+                                        value={centerId}
+                                        onChange={e => setCenterId(e.target.value)}
+                                    />
+                                    <TextField
+                                        required
+                                        size="small"
+                                        id="distcentproduct"
+                                        label="T-Product ID"
+                                        variant="outlined"
+                                        sx={{ my: 2 }}
+                                        value={productId}
+                                        onChange={e => setProductId(e.target.value)}
+                                    />
+                                </form>
+                            </Fragment>
+                            <Button onClick={() => addProductToDistCenter()} variant="contained" type="submit" sx={{ my: 2 }} aria-label="deleteCenterButton">T-Delete product in distribution center</Button>
+                        </CardContent>
+                    </Card>
+
                 </Container>
             </div>
         )

@@ -43,8 +43,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
       env:
-          API_URI: http://${{ secrets.DEPLOY_HOST }}:5000
-          SKIP_PREFLIGHT_CHECK: true
+          API_URI: http://${{ secrets.DEPLOY_HOST }}:5000/api
     - name: Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
@@ -53,6 +52,7 @@ jobs:
           password: ${{ secrets.DOCKER_PUSH_TOKEN }}
           registry: ghcr.io
           workdir: webapp
+          buildargs: API_URI
   docker-push-restapi:
     name: Push restapi Docker Image to GitHub Packages
     needs: [unit-test-restapi]
