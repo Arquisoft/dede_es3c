@@ -546,31 +546,31 @@ ps2_17 = {
 ps2_19 = {
 	"id": str(uuid.uuid4()),
 	"distributioncenter_id": dc2_id,
-	"product_id": prod17_id,
+	"product_id": prod19_id,
 	"stock": 20
 }
 ps2_20 = {
 	"id": str(uuid.uuid4()),
 	"distributioncenter_id": dc2_id,
-	"product_id": prod17_id,
+	"product_id": prod20_id,
 	"stock": 10
 }
 ps2_21 = {
 	"id": str(uuid.uuid4()),
 	"distributioncenter_id": dc2_id,
-	"product_id": prod17_id,
+	"product_id": prod21_id,
 	"stock": 14
 }
 ps2_22 = {
 	"id": str(uuid.uuid4()),
 	"distributioncenter_id": dc2_id,
-	"product_id": prod17_id,
+	"product_id": prod22_id,
 	"stock": 14
 }
 ps2_23 = {
 	"id": str(uuid.uuid4()),
 	"distributioncenter_id": dc2_id,
-	"product_id": prod17_id,
+	"product_id": prod23_id,
 	"stock": 14
 }
 ps2_25 = {
