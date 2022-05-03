@@ -2,7 +2,6 @@ import { Request, Response } from 'express';
 import { ProductService } from '../services/Product_Service';
 import { ProductStoreService } from '../services/ProductStore_Service';
 import { ProductStore } from '../entities/ProductStore'
-import { DistributionCenterService } from '../services/DistributionCenter_Service';
 import { DeleteResult } from 'typeorm';
 
 
@@ -42,7 +41,6 @@ export class ProductStoreController {
       let productId = req.body.productId
       let distCenterId = req.body.distCenterID
       
-      let productstore = await ProductStoreService.getProductStoresByProductAndDC(req.app, productId, distCenterId)
       const product = await ProductStoreService.updateProductStore(
         req.app,
         productId,
