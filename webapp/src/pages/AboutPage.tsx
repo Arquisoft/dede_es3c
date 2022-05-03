@@ -39,9 +39,9 @@ const HomePage = () => {
                 <div className="textAbout">
                     <h3>{translate("about.info.title")}</h3>
                     <p>{translate("about.info.text")}</p>
-                    <Link to="https://github.com/Arquisoft/dede_es3c">{translate("about.info.link1")}</Link>
+                    <a href="https://github.com/Arquisoft/dede_es3c">{translate("about.info.link1")}</a>
                     <br></br>
-                    <Link to="https://arquisoft.github.io/dede_es3c/">{translate("about.info.link2")}</Link>
+                    <a href="https://arquisoft.github.io/dede_es3c/">{translate("about.info.link2")}</a>
                 </div>
 
             </div>
