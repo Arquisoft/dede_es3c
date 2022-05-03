@@ -128,7 +128,7 @@ const CrudAddPage: FC<CrudPageProps> = (props: CrudPageProps) => {
 
                     <Card className={"main"} elevation={10} style={{ display: "grid" }}>
                         <CardContent style={{ display: "grid", margin: "auto", textAlign: "center" }}>
-                            <h3 aria-label="addProductTitle">T-Add productg to dist center</h3>
+                            <h3 aria-label="addToCenterTitle">T-Add productg to dist center</h3>
                             <Fragment>
                                 <form id="addDistributioncenter">
                                     <TextField
@@ -163,7 +163,7 @@ const CrudAddPage: FC<CrudPageProps> = (props: CrudPageProps) => {
                                     />
                                 </form>
                             </Fragment>
-                            <Button onClick={() => addProductToDistCenter()} variant="contained" type="submit" sx={{ my: 2 }} aria-label="addButton">T-Add product to distribution center</Button>
+                            <Button onClick={() => addProductToDistCenter()} variant="contained" type="submit" sx={{ my: 2 }} aria-label="addCenterButton">T-Add product to distribution center</Button>
                         </CardContent>
                     </Card>
                 </Container>

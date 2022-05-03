@@ -72,7 +72,7 @@ const CrudDeletePage: FC<CrudPageProps> = (props: CrudPageProps) => {
                         <CardContent style={{ display: "grid", margin: "auto", textAlign: "center" }}>
                             <h3 aria-label="addProductTitle">T-Delete product in dist center</h3>
                             <Fragment>
-                                <form id="addDistributioncenter">
+                                <form id="deleteInCenter">
                                     <TextField
                                         required
                                         size="small"
@@ -95,7 +95,7 @@ const CrudDeletePage: FC<CrudPageProps> = (props: CrudPageProps) => {
                                     />
                                 </form>
                             </Fragment>
-                            <Button onClick={() => addProductToDistCenter()} variant="contained" type="submit" sx={{ my: 2 }} aria-label="addButton">T-Delete product in distribution center</Button>
+                            <Button onClick={() => addProductToDistCenter()} variant="contained" type="submit" sx={{ my: 2 }} aria-label="deleteCenterButton">T-Delete product in distribution center</Button>
                         </CardContent>
                     </Card>
 
