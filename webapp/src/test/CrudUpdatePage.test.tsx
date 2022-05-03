@@ -22,8 +22,6 @@ test('Update product page renders properly as admin', async () => {
 
     let linkElement = screen.getByLabelText(/updateProductTitle/i);
     expect(linkElement).toBeInTheDocument();
-    linkElement = screen.getByLabelText(/ID */i);
-    expect(linkElement).toBeInTheDocument();
     linkElement = screen.getByLabelText(/Name */i);
     expect(linkElement).toBeInTheDocument();
     linkElement = screen.getByLabelText(/Description */i);

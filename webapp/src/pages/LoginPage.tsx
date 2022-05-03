@@ -119,7 +119,8 @@ const LoginPage: FC<LoginPageProps> = (props: LoginPageProps) => {
                         borderRadius: 15,
                         backgroundColor: "#e8e8e8",
                         padding: "18px 36px",
-                        fontSize: "16px"
+                        fontSize: "16px",
+                        color: "black"
                     }}
                       >{translate('login.solid')}</Button>
                 <Link to="/signup" className="goToSignupLogin">{translate('login.signup')}</Link>
