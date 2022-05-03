@@ -24,9 +24,9 @@ _DeDe user interface is desinged to give every user an intuitive and familiar ex
 
 Prototype version of DeDesktop:
 
-image:08_UI-Homepage.PNG["Catalog initial prototype"]
+image:08_UI-Homepage.png["Catalog initial prototype"]
 
-image:08_UI-OtherWindows.PNG["Other Windows initial prototype"]
+image:08_UI-OtherWindows.png["Other Windows initial prototype"]
 
 Middle Version of DeDesktop
 
