@@ -133,5 +133,6 @@
     "footer.who": "Who are we?",
     "footer.about": "About us",
     "footer.contact": "Contact us",
-    "user.invalid":"The username contains the reserved word admin"
+    "user.invalid":"The username contains the reserved word admin",
+    "card.format":"mm-yyyy"
 }

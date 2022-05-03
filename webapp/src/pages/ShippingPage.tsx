@@ -395,6 +395,7 @@ const checkCenters = (centers: OrderProduct[]) => {
              required
              size="small"
              name="cardNumber"
+             helperText={translate('card.number')}
              label= {translate ('card.number')} 
              variant="outlined"
              value={cardNumber}
@@ -405,9 +406,10 @@ const checkCenters = (centers: OrderProduct[]) => {
              required
              size="small"
              name="Expire Date"
-             label= {translate ('card.expire')} 
+             label= {translate ('card.format')} 
              variant="outlined"
              value={expireDate}
+             helperText={translate('card.expire')}
              onChange={e => setExpireDate(e.target.value)}
              sx={{ my: 2 }}>
             </TextField>

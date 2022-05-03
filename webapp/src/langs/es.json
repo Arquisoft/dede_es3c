@@ -139,5 +139,6 @@
     "footer.who": "¿Quienes somos?",
     "footer.about": "Sobre nosotros",
     "footer.contact": "Contactanos",
-    "user.invalid":"El nombre de usuario contiene la palabra reservada admin"
+    "user.invalid":"El nombre de usuario contiene la palabra reservada admin",
+    "card.format":"mm-aaaa"
 }
