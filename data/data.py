@@ -254,7 +254,6 @@ prod26 = {
 		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1651421071/Productos/1103-corsair-k70-rgb-pro-teclado-mecanico-gaming-switch-cherry-mx-speed-silver-negro_qxawc2.webp",
 		}
 
-
 # Insert Data
 rec_prod_id1 = collection.insert_one(prod1)
 rec_prod_id2 = collection.insert_one(prod2)
