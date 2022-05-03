@@ -89,7 +89,7 @@ We are using hexagonal architecture in our app. We took this decision because it
 The hexagonal architecture is an architectural pattern used in software design. It divides a system into different layers or regions with their own responsibility. In this way, it manages to decouple layers of our application, allowing them to evolve in isolation. In addition, having the system separated by responsibilities will facilitate reuse. The components are loosely-coupled and interchangeable, such as the application core, the database, the user interface, test scripts and interfaces with other systems.
 
 Hexagonal architecture is an alternative to traditional layered architecture.
-
+image:08_Hexagonal.png["Hexagonal architecture"]
 
 === Code Quality standards
 
@@ -99,10 +99,35 @@ To achieve this we will use all tools programs give us and make correct decision
 
 === Testability
 
-Applications should be strongly tested. We will use user histories to make acceptance tests and unit test to test the rest of the application components and states during running process.
+Applications should be strongly tested. We use user stories to make acceptance tests and unit test to test the rest of the application components and states during running process.
 We think this is the best way to be sure the project works correctly.
 
-To test our code, Postman was used in the backend during the whole development of the work, to check if the requests were being carried out correctly. Later, once we had a more or less solid project, we added a series of unit tests, which use Jest technology, these tests try to include all the backend and frontend parts, but separately, without joining them. Once these tests passed successfully, integration tests were implemented, which test the union of frontend and backend, all these tests were done exhaustively and were performed by people who had not done that part of the code, with that we get that we do not test things that are known to work. 
+==== Postman
+To test our code, Postman was used in the backend during the whole development of the work, to check if the requests were being carried out correctly. Postman is an application in which we can test requests and obtain a successfully respond if everything is ok. 
+
+==== Unit tests
+Later, once we had a more or less solid project, we added a series of unit tests, which use Jest technology, these tests try to include all the backend and frontend parts, but separately, without joining them. 
+
+==== Integration tests
+Once unit tests passed successfully, integration tests were implemented, which test the union of frontend and backend, all these tests were done exhaustively and were performed by people who had not done that part of the code, with that we get that we do not test things that are known to work.
+
+==== Load tests
+We have load tests to check our application under real-life load conditions, it gives us an idea of the respond time having a determined users load.
+
+===== Get products (catalog)
+3 usuarios en 15 segundos
+image:08_loadtests_getproducts3-15.png["Load test - Catalog 1"]
+15 usuarios en 30 segundos
+image:08_loadtests_getproducts15-30.png["Load test - Catalog 2"]
+
+===== Login
+15 usuarios en 60 segundos
+image:08_loadtests_login15-60.png["Load test - Login 1"]
 
 
-image:13_Hexagonal.png["Hexagonal architecture"]
+===== Get users list
+This load test implicates a login as admin before listing the users.
+
+image:08_loadtests_getuserslist3-15.png["Load test - Get users 1"]
+
+
