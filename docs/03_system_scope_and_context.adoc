@@ -15,23 +15,36 @@ image:03-Business_Context.png["Business Context diagram"]
 
 === Technical Context
 
-Our goal is to have an online sales system called DeDe (Decentralized Delivery), that respects customer privacy by following SOLID principles.
-SOLID principles tell us that each user's personal information must be decentralised, and for this we use SOLID PODs.
-SOLID PODs are stores of information outside our system.
-In our system we only store the accesses to the PODs, in order to speed up the reading processes.
-Users have control over who has their information, thus increasing privacy. 
+Our application is divided in frontend(webapp), backend (restapi), testing (e2e and test) fields. 
+In backend, we use an hexagonal architecture improving security and the website performance. 
+The system is made with the microservices idea in mind, using docker containers to contain the FrontEnd, backend and the databases used in both project and testing. 
+We also used SOLID PODs in the Inrupt provider to give a descentralized experience in props of getting the user address. We connect to the public user's VCARD storaged in it's POD so we, in our databases, have no personal information aside the email.
+Now, in frontend, we used the framework React accompanied by bootstrap and MUI components, bootswatch styles, SweetAlert2 alerts and carousel library to make an interactive HomePage.
 
 image:03-Technical-Context.png["Technical Context diagram"]
 
 [options = "header",cols="1,1"]
 |===
 | Technology | Explication 
-| _MongoDB_ | _We will use it to store the location of the SOLID POD_ 
-| _React_ | _It is a library to help us carry out the project_ 
-| _TypeScript_ | _It is used for program_ 
-| _Grafana and Prometeus_ | _This is used to monitor_
-| _Postman_ | _It is used for testing_
-| _Docker_ |  _Possibility of DeDe to be deployed and launched_
-| _Heroku_ |  _Possibility of DeDe to be deployed and launched_
+| _MongoDB_ | _We use it to store the location of the SOLID POD. In our architecture, we have two databases, one is used for testing, and the other one is used in the website as main database. Both of them are contained in dockers to get closer to the microservices concept and improve the website performances._ 
+| _React_ | _Is a technical constraint. We use it to develop the website in frontend_ 
+| _TypeScript_ | _Is the programming language used for the development. It is also a technical constraint_ 
+| _Grafana and Prometeus_ | _They are services used for monitoring our system and verifiying the petitions made in our charge tests._
+| _Postman_ | _It is used for testing the backend functionlity due to it's popularity and previous tips given by older students_
+| _Docker_ |  _I'ts one of our main ideas. We use Docker to divide the application in multiple services (containers) based in the microservices idea. We have a container for each service (Grafana, Prometheus, Main database, test database, webapp, and mongo)_
+| _Amazon Web Services_ |  _Is the platform used for the system deployment. Chosen because after trying to deploy our app in another services like Heroku (we had problems because of our Docker architecture. The free version only allows to deply one container and we had 2) and Azure we couldn't get a proper result so we decided to try with this one_
+|===
+In the project, we use the following libraries, APIs and dependencies
+[options = "header",cols="1,1"]
+|===
+| Used Libraries | Explication 
+| _MUI_ | _Library used because of its predefined components that makes the developing process a lot easier and efficient. Some of tihs kind of components can be really helpful when developing some specific things_ 
+| _Bootstrap_ | _Same as MUI, but this components can be a little less limited in functionalities than the MUI ones. We use them basically because they are more easily customizable and they are compatible with bootswatch._ 
+| _Bootswatch_ | _Bootswatch gives our app a harmonized style, giving us some things such as a background and styling on the bootstrap components._ 
+| _SweetAlert2_ | _It's a dependence that gives the possibility of launching dialogs, modals and alerts in an easy way. Plus, this alerts are animated and give dynamism to the user experience._
+| _Distance Matrix API_ | _This is a Google Maps API used in backend to get the distance between two different points in the world. It's simple,  efficient and quick._
+| _react-material-ui-carousel_ |  _Used in fontend to give dynamism to the homepage. It's very customizable and easy to use and it gives a little information about the website before entering the catalog or the website technology_
+|_Cloudinary_ | _Used in Backend to storage the product images in props to save space and increment the website performance. It also makes it easier for the Admin at the moment of adding products so the system does not have to download the photo_
+|
 |===
 

@@ -1,7 +1,7 @@
 import { defineFeature, loadFeature } from 'jest-cucumber';
 import puppeteer from "puppeteer";
 
-const feature = loadFeature('./features/register-form.feature');
+const feature = loadFeature('./features/catalog.feature');
 
 let page: puppeteer.Page;
 let browser: puppeteer.Browser;
@@ -11,7 +11,8 @@ defineFeature(feature, test => {
     beforeAll(async () => {
         browser = process.env.GITHUB_ACTIONS
             ? await puppeteer.launch()
-            : await puppeteer.launch({ headless: true });
+            //: await puppeteer.launch({ headless: true });
+            : await puppeteer.launch({ headless: false, slowMo: 0 });
         page = await browser.newPage();
 
         await page
@@ -25,7 +26,7 @@ defineFeature(feature, test => {
 
         when('When User clicks on item', async () => {
             await expect(page).toMatch('Reset selection')
-            await expect(page).toClick('link[key=Producto prueba]')
+            await expect(page).toClick('button', 'link[key=Producto prueba]')
         });
 
         then('Then Detail view of that item displays', async () => {

@@ -80,7 +80,7 @@ const LoginPage: FC<LoginPageProps> = (props: LoginPageProps) => {
                 <h1>{translate('login.h1')}</h1>
                 <h3>{translate('login.h2')}</h3>
                     <Fragment>
-                        <form>
+                        <form id="loginForm">
                             <TextField
                         id = "textUser"
                         required
@@ -96,6 +96,7 @@ const LoginPage: FC<LoginPageProps> = (props: LoginPageProps) => {
                         /> 
 
                         <TextField
+                        id="userPass"
                         required
                         name="password"
                         type={"password"}

@@ -1,7 +1,7 @@
 import { defineFeature, loadFeature } from 'jest-cucumber';
 import puppeteer from "puppeteer";
 
-const feature = loadFeature('./features/register-form.feature');
+const feature = loadFeature('./features/login-form.feature');
 
 let page: puppeteer.Page;
 let browser: puppeteer.Browser;
@@ -12,6 +12,7 @@ defineFeature(feature, test => {
         browser = process.env.GITHUB_ACTIONS
             ? await puppeteer.launch()
             : await puppeteer.launch({ headless: true });
+            //: await puppeteer.launch({ headless: false, slowMo: 0 });
         page = await browser.newPage();
 
         await page
@@ -22,48 +23,52 @@ defineFeature(feature, test => {
     });
 
     test('An existing user tries to log in the app', ({ given, when, then }) => {
-
-        let username: string;
-        let password: string;
+        let usernameTest: string;
+        let passwordTest: string;
 
         given('An existing user', () => {
-            username = "testUser"
-            password = "testPass"
+            usernameTest = "Wardell Stephen Curry II"
+            passwordTest = "123456"
 
         });
 
         when('Fill the form and click log in button', async () => {
+            function timeout(ms: any) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
+            await timeout(1);
+           
+            await expect(page).toClick('a', { text: 'Logout' })
             await expect(page).toMatch('Log in DeDesktop')
-            await expect(page).toFillForm('form[name="login"]', {
-                textName: username,
-                textPassword: password,
+            await expect(page).toFillForm('form[id="loginForm"]', {
+                username: usernameTest,
+                password: passwordTest,
             })
             await expect(page).toClick('button', { text: 'Log in' })
         });
 
         then('Welcome message is shown and is redirected to catalog page', async () => {
-            await expect(page).toMatch('Welcome, ' + username)
-            await expect(page).toClick('button', { text: 'OK' })
-            await expect(page).toMatch('Reset selection')
+            await expect(page).toMatch('Welcome, ' + usernameTest)
         });
     })
 
     test('Non existing user tries to log in the app', ({ given, when, then }) => {
 
-        let username: string;
-        let password: string;
+        let usernameTest: string;
+        let passwordTest: string;
 
         given('A non existing user', () => {
-            username = "nonValidUser"
-            password = "nonValidPass"
+            usernameTest = "nonValidUser"
+            passwordTest = "nonValidPass"
 
         });
 
         when('Fill the form and click log in button', async () => {
+            await expect(page).toClick('a', { text: 'Logout' })
             await expect(page).toMatch('Log in DeDesktop')
-            await expect(page).toFillForm('form[name="login"]', {
-                textName: username,
-                textPassword: password,
+            await expect(page).toFillForm('form[id="loginForm"]', {
+                username: usernameTest,
+                password: passwordTest,
             })
             await expect(page).toClick('button', { text: 'Log in' })
         });
@@ -75,17 +80,18 @@ defineFeature(feature, test => {
 
     test('Existing user tries to login without filling name', ({ given, when, then }) => {
 
-        let password: string;
+        let passwordTest: string;
 
         given('An existing password', () => {
-            password = "testPass"
+            passwordTest = "testPass"
 
         });
 
         when('Fill password field and click log in button', async () => {
+            await expect(page).toClick('a', { text: 'Logout' })
             await expect(page).toMatch('Log in DeDesktop')
-            await expect(page).toFillForm('form[name="login"]', {
-                textPassword: password,
+            await expect(page).toFillForm('form[id="loginForm"]', {
+                password: passwordTest,
             })
             await expect(page).toClick('button', { text: 'Log in' })
         });
@@ -97,17 +103,18 @@ defineFeature(feature, test => {
 
     test('Existing user tries to login without filling password', ({ given, when, then }) => {
 
-        let username: string;
+        let usernameTest: string;
 
         given('An existing username', () => {
-            username = "testUser"
+            usernameTest = "testUser"
 
         });
 
         when('Fill username field and click log in button', async () => {
+            await expect(page).toClick('a', { text: 'Logout' })
             await expect(page).toMatch('Log in DeDesktop')
-            await expect(page).toFillForm('form[name="login"]', {
-                textName: username,
+            await expect(page).toFillForm('form[id="loginForm"]', {
+                username: usernameTest,
             })
             await expect(page).toClick('button', { text: 'Log in' })
         });
@@ -120,8 +127,9 @@ defineFeature(feature, test => {
     test('User tries to go to sign up page via link', ({ when, then }) => {
 
         when('User clicks in go to register link', async () => {
+            await expect(page).toClick('a', { text: 'Logout' })
             await expect(page).toMatch('Log in DeDesktop')
-            await expect(page).toClick('button', { text: 'Dont\'t have an account? Sign up' })
+            await expect(page).toClick('a', { text: "Don't have an account? Sign Up" })
         });
 
         then('Signup page should be displayed', async () => {
