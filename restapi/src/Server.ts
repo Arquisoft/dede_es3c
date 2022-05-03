@@ -29,7 +29,7 @@ import cors from "cors";
   * Set Database connection
   */
  const setDB = async (): Promise<boolean> => { 
-     const databaseName: string = process.env.DATABASE_NAME || 'local';
+     const databaseName: string = process.env.DATABASE_NAME || 'default';
      if ( await database.setDB(databaseName) ) {
          console.log(`Database connection established to ${databaseName}`);
          await database.getDB().synchronize();
