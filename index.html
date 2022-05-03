@@ -486,8 +486,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_delete_a_product_from_the_shopping_chart">6.5. Delete a product from the shopping chart</a></li>
 <li><a href="#_add_products_to_the_shopping_cart">6.6. Add products to the shopping cart</a></li>
 <li><a href="#_paying_process">6.7. Paying process</a></li>
-<li><a href="#_admin_delete_user">6.8. (Admin) Delete User</a></li>
-<li><a href="#_admin_view_item_statistics">6.9. (Admin) View Item Statistics</a></li>
+<li><a href="#_admin_show_users">6.8. (Admin) Show users</a></li>
+<li><a href="#_admin_add_item">6.9. (Admin) Add Item</a></li>
 <li><a href="#_admin_monitor_order_status">6.10. (Admin) Monitor Order Status</a></li>
 </ul>
 </li>
@@ -501,12 +501,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel2">
 <li><a href="#_persistence">8.1. Persistence</a></li>
 <li><a href="#_user_interface">8.2. User interface</a></li>
-<li><a href="#_internazionalization">8.3. Internazionalization</a></li>
-<li><a href="#_security">8.4. Security</a></li>
-<li><a href="#_additional_libraries">8.5. Additional libraries</a></li>
-<li><a href="#_archiutecture_and_design_patterns">8.6. Archiutecture and design patterns</a></li>
-<li><a href="#_code_quality_standards">8.7. Code Quality standards</a></li>
-<li><a href="#_testability">8.8. Testability</a></li>
+<li><a href="#_security">8.3. Security</a></li>
+<li><a href="#_additional_libraries">8.4. Additional libraries</a></li>
+<li><a href="#_archiutecture_and_design_patterns">8.5. Archiutecture and design patterns</a></li>
+<li><a href="#_code_quality_standards">8.6. Code Quality standards</a></li>
+<li><a href="#_testability">8.7. Testability</a></li>
 </ul>
 </li>
 <li><a href="#_design_decisions">9. Design Decisions</a></li>
@@ -985,6 +984,10 @@ Now, in frontend, we used the framework React accompanied by bootstrap and MUI c
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>react-material-ui-carousel</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>Used in fontend to give dynamism to the homepage. It&#8217;s very customizable and easy to use and it gives a little information about the website before entering the catalog or the website technology</em></p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Cloudinary</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Used in Backend to storage the product images in props to save space and increment the website performance. It also makes it easier for the Admin at the moment of adding products so the system does not have to download the photo</em></p></td>
+</tr>
 </tbody>
 </table>
 <div style="page-break-after: always;"></div>
@@ -1145,7 +1148,7 @@ Now, in frontend, we used the framework React accompanied by bootstrap and MUI c
 <h3 id="_register_user">6.1. Register User</h3>
 <div class="imageblock">
 <div class="content">
-<img src="./images/RegisterUser.png" alt="RegisterUser" width="411" height="374">
+<img src="./images/RegisterUser.png" alt="RegisterUser" width="475" height="343">
 </div>
 </div>
 <div class="paragraph">
@@ -1167,7 +1170,7 @@ Now, in frontend, we used the framework React accompanied by bootstrap and MUI c
 <h3 id="_login_user_pod">6.3. Login User POD</h3>
 <div class="imageblock">
 <div class="content">
-<img src="./images/LoginUserPOD.png" alt="LoginUserPOD" width="394" height="461">
+<img src="./images/LoginUserPOD.png" alt="LoginUserPOD" width="441" height="374">
 </div>
 </div>
 <div class="paragraph">
@@ -1178,7 +1181,7 @@ Now, in frontend, we used the framework React accompanied by bootstrap and MUI c
 <h3 id="_visualize_orders_done">6.4. Visualize orders done</h3>
 <div class="imageblock">
 <div class="content">
-<img src="./images/VisualizeOrdersDone.png" alt="VisualizeOrdersDone" width="618" height="435">
+<img src="./images/VisualizeOrdersDone.png" alt="VisualizeOrdersDone" width="581" height="374">
 </div>
 </div>
 <div class="paragraph">
@@ -1190,7 +1193,7 @@ User pod returns the client&#8217;s orders to the RestApi, and the RestApi sends
 <h3 id="_delete_a_product_from_the_shopping_chart">6.5. Delete a product from the shopping chart</h3>
 <div class="imageblock">
 <div class="content">
-<img src="./images/DeleteProductFromTheShoppingCart.png" alt="DeleteProductFromTheShoppingCart" width="405" height="374">
+<img src="./images/DeleteProductFromTheShoppingCart.png" alt="DeleteProductFromTheShoppingCart" width="397" height="265">
 </div>
 </div>
 <div class="paragraph">
@@ -1201,7 +1204,7 @@ User pod returns the client&#8217;s orders to the RestApi, and the RestApi sends
 <h3 id="_add_products_to_the_shopping_cart">6.6. Add products to the shopping cart</h3>
 <div class="imageblock">
 <div class="content">
-<img src="./images/AddProductsToTheShoppingCart.png" alt="AddProductsToTheShoppingCart" width="782" height="465">
+<img src="./images/AddProductsToTheShoppingCart.png" alt="AddProductsToTheShoppingCart" width="982" height="478">
 </div>
 </div>
 <div class="paragraph">
@@ -1212,7 +1215,7 @@ User pod returns the client&#8217;s orders to the RestApi, and the RestApi sends
 <h3 id="_paying_process">6.7. Paying process</h3>
 <div class="imageblock">
 <div class="content">
-<img src="./images/PayingProcess.png" alt="PayingProcess" width="958" height="643">
+<img src="./images/PayingProcess.png" alt="PayingProcess" width="960" height="764">
 </div>
 </div>
 <div class="paragraph">
@@ -1220,18 +1223,18 @@ User pod returns the client&#8217;s orders to the RestApi, and the RestApi sends
 </div>
 </div>
 <div class="sect2">
-<h3 id="_admin_delete_user">6.8. (Admin) Delete User</h3>
+<h3 id="_admin_show_users">6.8. (Admin) Show users</h3>
 <div class="imageblock">
 <div class="content">
-<img src="./images/AdminDeleteUser.png" alt="AdminDeleteUser" width="706" height="539">
+<img src="./images/AdminShowUsers.png" alt="AdminShowUsers" width="456" height="343">
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_admin_view_item_statistics">6.9. (Admin) View Item Statistics</h3>
+<h3 id="_admin_add_item">6.9. (Admin) Add Item</h3>
 <div class="imageblock">
 <div class="content">
-<img src="./images/AdminViewItemStatistics.png" alt="AdminViewItemStatistics" width="691" height="586">
+<img src="./images/AdminAddItem.png" alt="AdminAddItem" width="751" height="430">
 </div>
 </div>
 </div>
@@ -1239,7 +1242,7 @@ User pod returns the client&#8217;s orders to the RestApi, and the RestApi sends
 <h3 id="_admin_monitor_order_status">6.10. (Admin) Monitor Order Status</h3>
 <div class="imageblock">
 <div class="content">
-<img src="./images/AdminMonitorOrderStatus.png" alt="AdminMonitorOrderStatus" width="574" height="647">
+<img src="./images/AdminMonitorOrderStatus.png" alt="AdminMonitorOrderStatus" width="892" height="374">
 </div>
 </div>
 <div style="page-break-after: always;"></div>
@@ -1278,7 +1281,7 @@ This second diagram details the launching of the layers that we have to do ourse
 </li>
 <li>
 <p>Quality and/or Performance Features:
-As we can see in the following image, we are going to use Heroku to deploy the application, serving as a remote server. We will also use Docker to launch each part of the system.</p>
+As we can see in the following image, we are going to use AWS to deploy the application, serving as a remote server. We will also use Docker to launch each part of the system.</p>
 </li>
 <li>
 <p>Mapping of Building Blocks to Infrastructure:
@@ -1339,12 +1342,17 @@ As we can see in the following image, we are going to use Heroku to deploy the a
 <p><em>DeDe user interface is desinged to give every user an intuitive and familiar experience related using the React framework combined with TypeScript as constraints. We follow the usual standards of e-commerce online sites to make the navigation closer to what most of the people already know. Also, the interface is meant to pass the AAA validation so we make sure it&#8217;s usable for almost everyone. In terms of dependencies, we worked with MUI for some of the components (buttons, tables&#8230;&#8203;), bootstrap alongside with bootswatch to give the app a defined style and use some of it&#8217;s components, and, sweetalert2 to throw modal windows at some points of the application.</em></p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="./images/08_dede_login.PNG" alt="Login"></span>
-<span class="image"><img src="./images/08_dede_catalog.PNG" alt="Catalogo"></span></p>
+<p>Prototype version of DeDesktop:
+<span class="image"><img src="./images/08_UI-Homepage.PNG" alt="Catalog initial prototype"></span>
+<span class="image"><img src="./images/08_UI-OtherWindows.PNG" alt="Other Windows initial prototype"></span>
+Middle Version of DeDesktop
+<span class="image"><img src="./images/08_dede_login.PNG" alt="Login"></span>
+<span class="image"><img src="./images/08_dede_catalog.PNG" alt="Catalogo"></span>
+Final Version of DeDesktop
+<span class="image"><img src="./images/08_Homepage-final.PNG" alt="Login"></span>
+<span class="image"><img src="./images/08_Login-final.PNG" alt="Catalogo"></span>
+=== Internazionalization</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_internazionalization">8.3. Internazionalization</h3>
 <div class="paragraph">
 <p>The application will potentially deal with various locations and people, so make a multi-language application looks like the best decision. This decision must be done since the begining of the desing (lately will cost a lot of resources).</p>
 </div>
@@ -1353,14 +1361,14 @@ As we can see in the following image, we are going to use Heroku to deploy the a
 </div>
 </div>
 <div class="sect2">
-<h3 id="_security">8.4. Security</h3>
+<h3 id="_security">8.3. Security</h3>
 <div class="paragraph">
 <p>For security we have used an asynchronous encryption algorithm called PBKDF2, which is one of the most famous KDF encryption algorithms. The user will put a password in plain text, which will be encrypted using a Hash function, a salt will be added to it, which is a random number added at the beginning of the password, all this string will be saved in the database, achieving a very high level of security.
 We have a role system, which defines if a user is an Administrator or a normal User, and depending on that he will have one or other options enabled, such as a CRUD of products or users, to avoid a scale of privileges we have made it impossible to be Admin, it always inserts users as User and we have a couple of Administrators created by default.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_additional_libraries">8.5. Additional libraries</h3>
+<h3 id="_additional_libraries">8.4. Additional libraries</h3>
 <div class="paragraph">
 <p>Dependencies in the backend:</p>
 </div>
@@ -1421,9 +1429,9 @@ We have a role system, which defines if a user is an Administrator or a normal U
 </div>
 </div>
 <div class="sect2">
-<h3 id="_archiutecture_and_design_patterns">8.6. Archiutecture and design patterns</h3>
+<h3 id="_archiutecture_and_design_patterns">8.5. Archiutecture and design patterns</h3>
 <div class="sect3">
-<h4 id="_hexagonal_architecture">8.6.1. Hexagonal architecture</h4>
+<h4 id="_hexagonal_architecture">8.5.1. Hexagonal architecture</h4>
 <div class="paragraph">
 <p>We are using hexagonal architecture in our app. We took this decision because it presents several advantadges.</p>
 </div>
@@ -1434,9 +1442,13 @@ We have a role system, which defines if a user is an Administrator or a normal U
 <p>Hexagonal architecture is an alternative to traditional layered architecture.</p>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_microservices">8.5.2. Microservices</h4>
+
+</div>
 </div>
 <div class="sect2">
-<h3 id="_code_quality_standards">8.7. Code Quality standards</h3>
+<h3 id="_code_quality_standards">8.6. Code Quality standards</h3>
 <div class="paragraph">
 <p>Code quality standars allows us to make an understable, maintainable and reusable code for future revisions and changes. Code should always have a correct structure to be easily understandable.</p>
 </div>
@@ -1445,16 +1457,13 @@ We have a role system, which defines if a user is an Administrator or a normal U
 </div>
 </div>
 <div class="sect2">
-<h3 id="_testability">8.8. Testability</h3>
+<h3 id="_testability">8.7. Testability</h3>
 <div class="paragraph">
 <p>Applications should be strongly tested. We will use user histories to make acceptance tests and unit test to test the rest of the application components and states during running process.
 We think this is the best way to be sure the project works correctly.</p>
 </div>
 <div class="paragraph">
 <p>To test our code, Postman was used in the backend during the whole development of the work, to check if the requests were being carried out correctly. Later, once we had a more or less solid project, we added a series of unit tests, which use Jest technology, these tests try to include all the backend and frontend parts, but separately, without joining them. Once these tests passed successfully, integration tests were implemented, which test the union of frontend and backend, all these tests were done exhaustively and were performed by people who had not done that part of the code, with that we get that we do not test things that are known to work.</p>
-</div>
-<div class="paragraph">
-<p><span class="image"><img src="./images/13_Hexagonal.png" alt="Hexagonal architecture"></span></p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
