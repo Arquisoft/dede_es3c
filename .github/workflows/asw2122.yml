@@ -51,6 +51,9 @@ jobs:
         mongodb-username: ${{ secrets.mongoUsername }}
         mongodb-password: ${{ secrets.mongoPassword }}
         mongodb-db: ${{ secrets.mongoDB }}
+    - run: npm --prefix restapi install
+    - run: npm --prefix webapp install
+    - run: npm --prefix webapp run build
     - uses: actions/setup-python@v2
       with:
         python-version: '3.9'
@@ -59,9 +62,6 @@ jobs:
           cd ./data
           pip -r install requirements.txt
           python -r data.py
-    - run: npm --prefix restapi install
-    - run: npm --prefix webapp install
-    - run: npm --prefix webapp run build
     - run: npm --prefix webapp run test:e2e
   docker-push-webapp:
     name: Push webapp Docker Image to GitHub Packages
