@@ -31,7 +31,7 @@ const EditUserPage: FC<EditUserProps> = (props: EditUserProps) => {
     const [newPassword, setNewPassword] = useState("");
     const [newPasswordConfirmation, setNewPasswordConfirmation] = useState("");
     const [email, setEmail] = useState("");
-    const [rol, setRol] = useState("");
+    const [, setRol] = useState("");
     const [page, setPage] = useState("");
     const [openUser, setOpenUser] = useState(false);
     const [openPass, setOpenPass] = useState(false);
@@ -92,7 +92,7 @@ const EditUserPage: FC<EditUserProps> = (props: EditUserProps) => {
 
     const updateUser = async () => {
         existUser(newUserName).then(user => {
-            if (user == true){
+            if (user === true){
                 handleCloseUser();
                 Swal.fire({
                     title: translate("update.repeated"),

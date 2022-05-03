@@ -41,7 +41,7 @@ defineFeature(feature, test => {
         });
 
         then('Welcome message is shown and is redirected to catalog page', async () => {
-            await expect(page).toMatch('Welcome, ' + usernameTest)
+            await expect(page).toMatch('DeDesktop')
         });
     })
 
