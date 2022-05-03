@@ -21,32 +21,6 @@ defineFeature(feature, test => {
             .catch(() => { });
     });
 
-    test('Logged client user is at catalog page and tries to go to home', ({ given, when, then }) => {
-        let usernameTest: string;
-        let passwordTest: string;
-        
-        given('A valid client user', () => {
-            usernameTest = "Wardell Stephen Curry II"
-            passwordTest = "123456"
-        });
-
-        when('User clicks in home header option', async () => {
-            await expect(page).toMatch('Log in DeDesktop')
-            await expect(page).toFillForm('form[id="loginForm"]', {
-                username: usernameTest,
-                password: passwordTest,
-            })
-            await expect(page).toClick('button', { text: 'Log in' })
-            await expect(page).toClick('button', { text: 'OK' })
-            await page.waitForNavigation();
-            await expect(page).toClick('a[href="/"]')
-        });
-
-        then('User goes to home page', async () => {
-            await expect(page).toMatch('Check our products')
-        });
-    });
-
     test('Logged client user is at home and tries to go to catalog', ({ when, then }) => {
         when('User clicks in catalog header option', async () => {
             await expect(page).toClick('a[href="/catalog"]')
