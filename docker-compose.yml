@@ -48,7 +48,7 @@ services:
     ports:
       - "27017:27017"
   python:
-    build: ./data
+    build: ./restapi/data
     image: python
     ports:
       - "8000:8000"
