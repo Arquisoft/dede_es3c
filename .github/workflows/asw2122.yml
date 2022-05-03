@@ -53,6 +53,8 @@ jobs:
         mongodb-db: ${{ secrets.mongoDB }}
     - run: npm --prefix restapi install
     - run: npm --prefix webapp install
+    - run: pip --prefix data -r install requirements.txt
+    - run: python3 --prefix data -r data.py
     - run: npm --prefix webapp run build
     - run: npm --prefix webapp run test:e2e
   docker-push-webapp:
@@ -86,6 +88,20 @@ jobs:
           password: ${{ secrets.DOCKER_PUSH_TOKEN }}
           registry: ghcr.io
           workdir: restapi
+  docker-push-python:
+    name: Push restapi Docker Image to GitHub Packages
+    needs: [e2e-tests]
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Publish to Registry
+      uses: elgohr/Publish-Docker-Github-Action@master
+      with:
+          name: arquisoft/dede_es3c/python
+          username: ${{ github.actor }}
+          password: ${{ secrets.DOCKER_PUSH_TOKEN }}
+          registry: ghcr.io
+          workdir: data
   deploy:
     name: Deploy over SSH
     runs-on: ubuntu-latest
