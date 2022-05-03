@@ -501,11 +501,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel2">
 <li><a href="#_persistence">8.1. Persistence</a></li>
 <li><a href="#_user_interface">8.2. User interface</a></li>
-<li><a href="#_security">8.3. Security</a></li>
-<li><a href="#_additional_libraries">8.4. Additional libraries</a></li>
-<li><a href="#_archiutecture_and_design_patterns">8.5. Archiutecture and design patterns</a></li>
-<li><a href="#_code_quality_standards">8.6. Code Quality standards</a></li>
-<li><a href="#_testability">8.7. Testability</a></li>
+<li><a href="#_internazionalization">8.3. Internazionalization</a></li>
+<li><a href="#_security">8.4. Security</a></li>
+<li><a href="#_additional_libraries">8.5. Additional libraries</a></li>
+<li><a href="#_archiutecture_and_design_patterns">8.6. Archiutecture and design patterns</a></li>
+<li><a href="#_code_quality_standards">8.7. Code Quality standards</a></li>
+<li><a href="#_testability">8.8. Testability</a></li>
 </ul>
 </li>
 <li><a href="#_design_decisions">9. Design Decisions</a></li>
@@ -1298,32 +1299,43 @@ As we can see in the following image, we are going to use AWS to deploy the appl
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 20%;">
-<col style="width: 40%;">
-<col style="width: 40%;">
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Name</th>
 <th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Client</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">User who choose and buy products</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Client</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User who choose and buy products.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">POD</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">User&#8217;s information</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User&#8217;s information.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Order</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Keep a list of the products that the customer has ordered.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Product</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Product</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Contains information about a product, such as name and price.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ProductInOrder</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Product associated with an order, saves the quantity that the customer wants of the product.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DistributionCenter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Place from where the products are distributed, contains the address of the distribution center.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ProductStore</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Entity which join Product with Distribution Center. It has the stock.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1342,17 +1354,35 @@ As we can see in the following image, we are going to use AWS to deploy the appl
 <p><em>DeDe user interface is desinged to give every user an intuitive and familiar experience related using the React framework combined with TypeScript as constraints. We follow the usual standards of e-commerce online sites to make the navigation closer to what most of the people already know. Also, the interface is meant to pass the AAA validation so we make sure it&#8217;s usable for almost everyone. In terms of dependencies, we worked with MUI for some of the components (buttons, tables&#8230;&#8203;), bootstrap alongside with bootswatch to give the app a defined style and use some of it&#8217;s components, and, sweetalert2 to throw modal windows at some points of the application.</em></p>
 </div>
 <div class="paragraph">
-<p>Prototype version of DeDesktop:
-<span class="image"><img src="./images/08_UI-Homepage.PNG" alt="Catalog initial prototype"></span>
-<span class="image"><img src="./images/08_UI-OtherWindows.PNG" alt="Other Windows initial prototype"></span>
-Middle Version of DeDesktop
-<span class="image"><img src="./images/08_dede_login.PNG" alt="Login"></span>
-<span class="image"><img src="./images/08_dede_catalog.PNG" alt="Catalogo"></span>
-Final Version of DeDesktop
-<span class="image"><img src="./images/08_Homepage-final.PNG" alt="Login"></span>
-<span class="image"><img src="./images/08_Login-final.PNG" alt="Catalogo"></span>
-=== Internazionalization</p>
+<p>Prototype version of DeDesktop:</p>
 </div>
+<div class="paragraph">
+<p><span class="image"><img src="./images/08_UI-Homepage.PNG" alt="Catalog initial prototype"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./images/08_UI-OtherWindows.PNG" alt="Other Windows initial prototype"></span></p>
+</div>
+<div class="paragraph">
+<p>Middle Version of DeDesktop</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./images/08_dede_login.PNG" alt="Login"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./images/08_dede_catalog.PNG" alt="Catalogo"></span></p>
+</div>
+<div class="paragraph">
+<p>Final Version of DeDesktop</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./images/08_Homepage-final.PNG" alt="Login"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./images/08_Login-final.PNG" alt="Catalogo"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_internazionalization">8.3. Internazionalization</h3>
 <div class="paragraph">
 <p>The application will potentially deal with various locations and people, so make a multi-language application looks like the best decision. This decision must be done since the begining of the desing (lately will cost a lot of resources).</p>
 </div>
@@ -1361,14 +1391,14 @@ Final Version of DeDesktop
 </div>
 </div>
 <div class="sect2">
-<h3 id="_security">8.3. Security</h3>
+<h3 id="_security">8.4. Security</h3>
 <div class="paragraph">
 <p>For security we have used an asynchronous encryption algorithm called PBKDF2, which is one of the most famous KDF encryption algorithms. The user will put a password in plain text, which will be encrypted using a Hash function, a salt will be added to it, which is a random number added at the beginning of the password, all this string will be saved in the database, achieving a very high level of security.
 We have a role system, which defines if a user is an Administrator or a normal User, and depending on that he will have one or other options enabled, such as a CRUD of products or users, to avoid a scale of privileges we have made it impossible to be Admin, it always inserts users as User and we have a couple of Administrators created by default.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_additional_libraries">8.4. Additional libraries</h3>
+<h3 id="_additional_libraries">8.5. Additional libraries</h3>
 <div class="paragraph">
 <p>Dependencies in the backend:</p>
 </div>
@@ -1427,11 +1457,126 @@ We have a role system, which defines if a user is an Administrator or a normal U
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>Dependencies in FrontEnd</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>@emotion/react: ^11.7.1,</p>
+</li>
+<li>
+<p>@emotion/styled: ^11.6.0</p>
+</li>
+<li>
+<p>@inrupt/lit-generated-vocab-common: ^0.3.11</p>
+</li>
+<li>
+<p>@inrupt/solid-client": ^1.19.0</p>
+</li>
+<li>
+<p>@inrupt/solid-client-authn-browser: ^1.11.6</p>
+</li>
+<li>
+<p>@inrupt/solid-ui-react: ^2.7.0</p>
+</li>
+<li>
+<p>@inrupt/vocab-common-rdf": ^1.0.3</p>
+</li>
+<li>
+<p>@material-ui/icons: ^4.11.2</p>
+</li>
+<li>
+<p>@material-ui/lab: ^4.0.0-alpha.58</p>
+</li>
+<li>
+<p>"@material-ui/styles: ^4.11.4</p>
+</li>
+<li>
+<p>@mui/core: ^5.0.0-alpha.54</p>
+</li>
+<li>
+<p>@mui/icons-material: ^5.2.5</p>
+</li>
+<li>
+<p>@mui/material: ^5.2.5</p>
+</li>
+<li>
+<p>@testing-library/jest-dom: ^5.16.1</p>
+</li>
+<li>
+<p>@testing-library/react: ^12.1.2</p>
+</li>
+<li>
+<p>@testing-library/user-event: ^13.5.0,</p>
+</li>
+<li>
+<p>@types/node": ^16.11.14,</p>
+</li>
+<li>
+<p>@types/react": ^17.0.37,</p>
+</li>
+<li>
+<p>@types/react-dom: ^17.0.11,</p>
+</li>
+<li>
+<p>bootstrap: ^5.1.3,</p>
+</li>
+<li>
+<p>bootswatch: ^5.1.3,</p>
+</li>
+<li>
+<p>cors: ^2.8.5,</p>
+</li>
+<li>
+<p>express: ^4.17.2,</p>
+</li>
+<li>
+<p>jsonwebtoken: ^8.5.1,</p>
+</li>
+<li>
+<p>node-sass: ^7.0.1,</p>
+</li>
+<li>
+<p>react: ^17.0.2,</p>
+</li>
+<li>
+<p>react-bootstrap: ^2.2.0,</p>
+</li>
+<li>
+<p>react-dom: ^17.0.2</p>
+</li>
+<li>
+<p>react-material-ui-carousel: ^3.3.3</p>
+</li>
+<li>
+<p>react-router: ^6.2.2,</p>
+</li>
+<li>
+<p>react-router-dom: ^6.2.2</p>
+</li>
+<li>
+<p>sass: ^1.50.1,</p>
+</li>
+<li>
+<p>serve": ^13.0.2,</p>
+</li>
+<li>
+<p>sweetalert2: ^11.4.8,</p>
+</li>
+<li>
+<p>typescript: ^4.5.4</p>
+</li>
+<li>
+<p>web-vitals: ^2.1.2</p>
+</li>
+</ul>
+</div>
 </div>
 <div class="sect2">
-<h3 id="_archiutecture_and_design_patterns">8.5. Archiutecture and design patterns</h3>
+<h3 id="_archiutecture_and_design_patterns">8.6. Archiutecture and design patterns</h3>
 <div class="sect3">
-<h4 id="_hexagonal_architecture">8.5.1. Hexagonal architecture</h4>
+<h4 id="_hexagonal_architecture">8.6.1. Hexagonal architecture</h4>
 <div class="paragraph">
 <p>We are using hexagonal architecture in our app. We took this decision because it presents several advantadges.</p>
 </div>
@@ -1443,12 +1588,12 @@ We have a role system, which defines if a user is an Administrator or a normal U
 </div>
 </div>
 <div class="sect3">
-<h4 id="_microservices">8.5.2. Microservices</h4>
+<h4 id="_microservices">8.6.2. Microservices</h4>
 
 </div>
 </div>
 <div class="sect2">
-<h3 id="_code_quality_standards">8.6. Code Quality standards</h3>
+<h3 id="_code_quality_standards">8.7. Code Quality standards</h3>
 <div class="paragraph">
 <p>Code quality standars allows us to make an understable, maintainable and reusable code for future revisions and changes. Code should always have a correct structure to be easily understandable.</p>
 </div>
@@ -1457,7 +1602,7 @@ We have a role system, which defines if a user is an Administrator or a normal U
 </div>
 </div>
 <div class="sect2">
-<h3 id="_testability">8.7. Testability</h3>
+<h3 id="_testability">8.8. Testability</h3>
 <div class="paragraph">
 <p>Applications should be strongly tested. We will use user histories to make acceptance tests and unit test to test the rest of the application components and states during running process.
 We think this is the best way to be sure the project works correctly.</p>
@@ -1535,10 +1680,10 @@ We think this is the best way to be sure the project works correctly.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">One drawback we saw is that if you don&#8217;t control in the database that there can be unique items by name (see controlling that no two products are the same), then you could not run the docker-compose several times as it would repeat data. It also complicates the task of getting it up on the web</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">API lasod to calculate delivery price</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Distance Matrix API to calculate distances</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We decided to use Distance Matrix API to calculate the distance between 2 streets</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It gives us the distance by passing 2 addresses in string format</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It doesn&#8217;t give us the shipping price directly. We have to calculate it manually from the distance.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Various databases</p></td>
