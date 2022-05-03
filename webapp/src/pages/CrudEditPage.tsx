@@ -4,7 +4,7 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import "bootswatch/dist/morph/bootstrap.min.css"
 import { Product } from "../shared/shareddtypes";
-import {updateProduct} from "../api/api";
+import {addProductToDistributionCenter, updateProduct} from "../api/api";
 import { LangContext } from '../lang';
 import Home from './HomePage';
 
@@ -33,6 +33,20 @@ const CrudEditPage: FC<CrudPageProps> = (props: CrudPageProps) => {
                 await updateProduct(id, product);
             } catch (error) {
                 console.log("Error al editar un producto");
+            }
+        }
+    }
+
+    const [centerId, setCenterId] = useState<string>("");
+    const [productId, setProductId] = useState("");
+    const [productAmount, setProductAmount] = useState("");
+
+    const editProductInDistCenter = async () => {
+        if (isNaN(Number(productAmount))) {
+            try {
+                await addProductToDistributionCenter(centerId, productId, parseInt(productAmount));
+            } catch (error) {
+                console.log("Error al añadir el producto al centro de distribución");
             }
         }
     }
@@ -120,6 +134,48 @@ const CrudEditPage: FC<CrudPageProps> = (props: CrudPageProps) => {
                             <Button onClick={() => updateProductAux()} variant="contained" type="submit" sx={{ my: 2 }} aria-label="updateButton">{translate('crud.update')}</Button>
                         </CardContent>
                     </Card>
+
+                    <Card className={"main"} elevation={10} style={{ display: "grid" }}>
+                        <CardContent style={{ display: "grid", margin: "auto", textAlign: "center" }}>
+                            <h3 aria-label="addProductTitle">Edit product in distribution center</h3>
+                            <Fragment>
+                                <form id="editProductCenter">
+                                    <TextField
+                                        required
+                                        size="small"
+                                        id="distcentid"
+                                        label="T-Dist cent ID"
+                                        variant="outlined"
+                                        sx={{ my: 2 }}
+                                        value={centerId}
+                                        onChange={e => setCenterId(e.target.value)}
+                                    />
+                                    <TextField
+                                        required
+                                        size="small"
+                                        id="distcentproduct"
+                                        label="T-Product ID"
+                                        variant="outlined"
+                                        sx={{ my: 2 }}
+                                        value={productId}
+                                        onChange={e => setProductId(e.target.value)}
+                                    />
+                                    <TextField
+                                        required
+                                        size="small"
+                                        id="distcentamount"
+                                        label="T-Amount"
+                                        variant="outlined"
+                                        sx={{ my: 2 }}
+                                        value={productAmount}
+                                        onChange={e => setProductAmount(e.target.value)}
+                                    />
+                                </form>
+                            </Fragment>
+                            <Button onClick={() => editProductInDistCenter()} variant="contained" type="submit" sx={{ my: 2 }} aria-label="editCenterButton">Edit product in distribution center</Button>
+                        </CardContent>
+                    </Card>
+                    
                 </Container>
             </div>
         )

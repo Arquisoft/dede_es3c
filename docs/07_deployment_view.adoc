@@ -18,7 +18,7 @@
  This second diagram details the launching of the layers that we have to do ourselves, see WebApp and RestApi. 
 
 * Quality and/or Performance Features:
- As we can see in the following image, we are going to use Heroku to deploy the application, serving as a remote server. We will also use Docker to launch each part of the system. 
+ As we can see in the following image, we are going to use AWS to deploy the application, serving as a remote server. We will also use Docker to launch each part of the system. 
  
 * Mapping of Building Blocks to Infrastructure:
  image:07-Diagrama_de_despliege_T2.png["Deployment View Level 2"]

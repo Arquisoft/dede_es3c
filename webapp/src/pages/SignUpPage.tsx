@@ -160,14 +160,13 @@ const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
                     onClick={ () => register()} 
                     variant="contained" 
                     type="submit"
-                    name = "Signup"
-                    id = "Signup"
-                    color="primary"
+                    aria-label="signupButton"
                     style={{
                         borderRadius: 15,
                         backgroundColor: "#e8e8e8",
                         padding: "18px 36px",
-                        fontSize: "16px"
+                        fontSize: "16px",
+                        color: "black"
                     }}
                      >{translate('signup.signup')}</Button>
                 <Link to="/login" className="goToLoginSignup">{translate('signup.login')}</Link>

@@ -22,8 +22,6 @@ test('Delete product page renders properly as admin', async () => {
 
     let linkElement = screen.getByLabelText(/deleteProductTitle/i);
     expect(linkElement).toBeInTheDocument();
-    linkElement = screen.getByLabelText(/ID */i);
-    expect(linkElement).toBeInTheDocument();
     linkElement = screen.getByLabelText(/deleteButton/i);
     expect(linkElement).toBeInTheDocument();
 });

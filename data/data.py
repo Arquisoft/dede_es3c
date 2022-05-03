@@ -49,7 +49,7 @@ prod1 = {
 		"id": prod1_id,
 		"name":"Samsung Galaxy Book2",
 		"description":"Características:\n\nImpulsado por la plataforma Intel® Evo™ más avanzada: Galaxy Book2 Pro maneja con facilidad las cargas intensas de trabajo informático gracias a un procesador Intel® Core™ de 12ª generación, construido sobre la nueva arquitectura de núcleo híbrido. Junto con un SSD rápido, una solución de mejora LPDDR5 y un avanzado sistema de refrigeración, puede hasta con las cargas de trabajo más intensas.\n\nMantente seguro: El Galaxy Book2 Pro está diseñado para proteger tu privacidad, manteniendo la información crítica en secreto hasta el nivel del firmware, con características basadas en el hardware. Controla tu información personal sin preocupaciones con Galaxy Book2 Pro.\n\nAcelera con Wi-Fi 6E: Acelera tus datos con la conectividad WiFi 6E. Experimentarás velocidades de datos ultrarrápidas con la banda adicional de 6GHz y la latencia superbaja que necesitas para un rendimiento increíble.\n\nEspecificaciones\n- Procesador/ Chipset Intel 12th Gen (Intel EVO™) i7 1260P\n- Pantalla 15.6” FHD AMOLED\n- Almacenamiento 512GB NVMe SSD\n- Gráficos Intel® Iris® X\n-Wi-Fi 6E (Gig+)\n- Batería 63Wh, carga USB-C 65W\n- Dimensiones (ancho x profundidad x alto) 355.4×225.8×11.7mm\n- Peso 1.05kg",
-    "price":1548,
+		"price":1548,
 		"category":"Laptop",
 		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1651412131/Productos/1719-samsung-galaxy-book2-pro-intel-core-i7-1260p-16gb-512gb-ssd-156_eravyk.webp",
 		}
@@ -65,7 +65,7 @@ prod3 = {
 		"id": prod3_id,
 		"name":"MSI GF63 Thin",
 		"description":"Características\n\nEquipa el último procesador Intel® Core ™ i7 de undécima generación, aumenta el rendimiento hasta en un 40./. con respecto a la generación anterior. Consiga una mayor potencia con este procesador de 8 núcleos que admite una frecuencia de doble núcleo de hasta 4,6 GHz para maximizar la eficiencia en el juego, el trabajo multitarea y la productividad.\n\nEspecificaciones\n- Procesador Intel Core Tiger Lake i7-11800H+HM570\n- Memoria RAM DDR IV 8GB*2 (3200MHz)\n- Almacenamiento 512GB NVMe PCIe Gen3x4 SSD (new)\n- Unidad óptica No dispone\n- Display 15.6” FHD (1920*1080), 144Hz 72%NTSC IPS-Level\n- Controlador gráfico RTX3050 Ti Max-Q, GDDR6 4GB\n- Webcam HD (30fps a 720p)\n- Micrófono Sí\n- Batería 51 Wh\n- Teclado Retroiluminado en rojo\n- Dimensiones (Ancho x Profundidad x Altura) 359 x 254 x 21.7 mm\n- Peso 1,86 kg\n- Color Negro",
-    "price":1249,
+		"price":1249,
 		"category":"Laptop",
 		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1651416806/Productos/1390-msi-gf63-thin-11ud-271xes-intel-core-i7-11800h-16-gb-512gb-ssd-rtx-3050ti-156_hycr54.webp",
 		}
@@ -253,7 +253,6 @@ prod26 = {
 		"category":"Keyboard",
 		"urlPhoto":"https://res.cloudinary.com/dedesktop/image/upload/v1651421071/Productos/1103-corsair-k70-rgb-pro-teclado-mecanico-gaming-switch-cherry-mx-speed-silver-negro_qxawc2.webp",
 		}
-
 
 # Insert Data
 rec_prod_id1 = collection.insert_one(prod1)

@@ -48,7 +48,8 @@ const Cart: React.FC<CartProps> = (props: CartProps) => {
                     borderRadius: 15,
                     backgroundColor: "#e8e8e8",
                     padding: "18px 36px",
-                    fontSize: "18px"
+                    fontSize: "18px",
+                    color: "black"
                 }}
                 className="confirmButton"
                 onClick={() => window.location.assign("/shipping") }
