@@ -1,0 +1,12 @@
+ignore:
+  - "webapp/e2e/**"
+  - "webapp/public/**"
+  - "webapp/loadtestexample/**"
+  - "webapp/src/test/**"
+  - "webapp/src/api/**"
+  - "webapp/src/*.[tsx, ts, css]"
+  - "webapp/src/styles/**"
+  - "webapp/src/shared/**"
+  - "webapp/src/img/**"
+  - "docs/**"
+  - "data/**"
