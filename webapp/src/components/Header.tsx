@@ -70,8 +70,6 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
     props.setAmount("0");
   }
 
-  console.log(localStorage.getItem("cart"))
-
   const getAmount = () => {
     let aux = parseInt(localStorage.getItem("amountInCart")!);
 
