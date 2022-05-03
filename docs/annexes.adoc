@@ -1,0 +1,34 @@
+== Annexes
+
+=== Usability survey
+
+To test our application and try to see how users use it, we made a survey with some of our friends and parents.
+
+We tried to test our web with two age groups. The first one is between 20 and 30 years old. All this group is considered as medium-high technology knowledge. The second one, between 45 and 55 years old, is a group with a low knowledges in techonolgy uses.
+
+First of all we made them login and signup in our web. Only one person had problems in this part, due to the little custom of carrying out this type of actions.
+
+image:annex11.png["log in problems"]
+
+One of the most important aspects when developing our application has been its usability. For this reason, we have asked the interviewees to tell us what problems they have encountered when browsing the application.
+The majority have not had problems, but there have been two cases in which there have been slight confusions, due to the language of the store. For these users, since the home store is in English, it could be a bit confusing when changing the language and without it, they could not navigate. There has also been a user who has detected that the header with the links, on small screens, is dislodged to be able to enter.
+The biggest navigability problem is that almost all those interviewed have found a bug in which one of the images on the home page was loaded incorrectly and was cut off.
+
+In addition, they have been asked to give a numerical score for usability.
+
+image:annex12.png["web usability"]
+
+As for the aesthetics of the application, there have been very good opinions and it has seemed attractive to users.
+
+image:annex13.png["beauty votation"]
+
+They have also been asked to simulate a purchase. Everyone has been able to add to cart easily. However, there have been a couple of problems in this regard.
+Some users wanted to know detailed information about the products to decide which one to buy. However, they were not very clear about how they could do it, since some did not see the signaling that appears when the mouse is placed over a product, indicating that it is a button.
+The filtering of products has been carried out correctly in general, except for one case in which, due to the resolution of its screen, some buttons were slightly pressed and made their use inappropriate.
+They have also been asked to pay for the purchase. This is the aspect in which there have been problems. Using a slightly different technology than usual, just over half have had trouble uploading their POD data to our app.
+
+image:annex14.png["satisfaction with the application"]
+
+None of the interviewees had a POD and in many cases it has even been necessary to help them create one in order to use it.
+Finally, they have been asked about the response of the application and the load times. In general terms, users are satisfied.
+As a conclusion of this study, the general opinion is good, although it is clouded by the use of PODs since it is something that has been difficult for them to understand how to use and that most of them do not see as necessary, preferring the traditional method.
