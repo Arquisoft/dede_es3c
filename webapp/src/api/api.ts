@@ -247,7 +247,7 @@ export async function getCanBuyProduct(name: string, amount: number): Promise<bo
 
 export async function addProductToDistributionCenter(distCenterID: string, productId: string, amount: number): Promise<boolean> {
   const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
-  let response = await fetch(apiEndPoint + '/distributioncenters/', {
+  let response = await fetch(apiEndPoint + '/productstore/', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ 'distCenterID': distCenterID, 'productId': productId, 'amount': amount })
@@ -260,7 +260,7 @@ export async function addProductToDistributionCenter(distCenterID: string, produ
 
 export async function deleteProductInDistributionCenter(distCenterID: string, productId: string): Promise<boolean> {
   const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
-  let response = await fetch(apiEndPoint + '/distributioncenters/', {
+  let response = await fetch(apiEndPoint + '/productstore/', {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ 'distCenterId': distCenterID, 'productId': productId })
@@ -273,7 +273,7 @@ export async function deleteProductInDistributionCenter(distCenterID: string, pr
 
 export async function updateProductInDistributionCenter(distCenterID: string, productId: string, amount: number): Promise<boolean> {
   const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
-  let response = await fetch(apiEndPoint + '/distributioncenters/', {
+  let response = await fetch(apiEndPoint + '/productstore/', {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ 'distCenterID': distCenterID, 'productId': productId, 'amount': amount })
