@@ -115,19 +115,20 @@ Once unit tests passed successfully, integration tests were implemented, which t
 We have load tests to check our application under real-life load conditions, it gives us an idea of the respond time having a determined users load.
 
 ===== Get products (catalog)
-3 usuarios en 15 segundos
+3 users in 15 seconds
 image:08_loadtests_getproducts3-15.png["Load test - Catalog 1"]
-15 usuarios en 30 segundos
+15 users in 30 seconds
 image:08_loadtests_getproducts15-30.png["Load test - Catalog 2"]
 
 ===== Login
-15 usuarios en 60 segundos
+15 users in 60 seconds
 image:08_loadtests_login15-60.png["Load test - Login 1"]
+5000 users in 60 seconds. We can check that 5000 users in 1 minute is too much and some petitions fail.
+image:08_loadtests_login5000-60.png["Load test - Login 2"]
 
 
 ===== Get users list
-This load test implicates a login as admin before listing the users.
-
+This load test implicates a login as admin before listing users.
 image:08_loadtests_getuserslist3-15.png["Load test - Get users 1"]
 
 
