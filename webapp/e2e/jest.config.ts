@@ -5,5 +5,5 @@ export default {
         testMatch: ["**/steps/*.ts"],
         moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
         preset: "jest-puppeteer",
-        testTimeout : 30000
+        testTimeout : 3000000
 }

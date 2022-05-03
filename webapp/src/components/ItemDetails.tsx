@@ -39,7 +39,7 @@ const ItemDetails: React.FC<Props> = ({ item, setAmount }) => {
 
         auxDescription = item.description.split("\n");
         console.log(auxDescription);
-    }, [item.name]);
+    }, [item.name, item.description]);
 
     return(
     <div className='itemDetailsContainer'>

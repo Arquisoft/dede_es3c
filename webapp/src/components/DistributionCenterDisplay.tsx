@@ -19,7 +19,7 @@ const DisplayDistributionCenters = (props: DistributionCenterProps) => {
             setDistributionCenter(event.target.value as string);
             console.log(event.target.value as string);
           };
-    if (centers.length == 0){
+    if (centers.length === 0){
         getCenters();
         console.log(centers);
     }   

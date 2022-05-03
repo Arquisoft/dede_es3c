@@ -24,9 +24,9 @@ _DeDe user interface is desinged to give every user an intuitive and familiar ex
 
 Prototype version of DeDesktop:
 
-image:08_UI-Homepage.PNG["Catalog initial prototype"]
+image:08_UI-Homepage.png["Catalog initial prototype"]
 
-image:08_UI-OtherWindows.PNG["Other Windows initial prototype"]
+image:08_UI-OtherWindows.png["Other Windows initial prototype"]
 
 Middle Version of DeDesktop
 
@@ -139,12 +139,11 @@ The hexagonal architecture is an architectural pattern used in software design. 
 
 Hexagonal architecture is an alternative to traditional layered architecture.
 
-image:08_Hexagonal.png["Hexagonal architecture"]
-=======
+image:13_Hexagonal.png["Hexagonal"]
 
 ==== Microservices
 
-
+In our application we decided to use microservices to divide the application into webapp, restapi, database and data. With this we achieve a low coupling in these layers, a better control over them and an improvement in the quality of the software. To achieve this decoupling, we use docker, to build the images of each service.
 
 === Code Quality standards
 
