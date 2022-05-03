@@ -57,7 +57,11 @@ jobs:
         cache: 'pip'
     - run: npm --prefix restapi install
     - run: npm --prefix webapp install
-      command: cd ./data && pip -r install requirements.txt && python3 -r data.py
+      with:
+        command:  |
+          cd ./data
+          pip -r install requirements.txt
+          python3 -r data.py
     - run: npm --prefix webapp run build
     - run: npm --prefix webapp run test:e2e
   docker-push-webapp:
