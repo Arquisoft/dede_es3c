@@ -233,7 +233,7 @@ export async function addProductToDistributionCenter(distCenterID: string, produ
   const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
   let response = await fetch(apiEndPoint + '/productstore/', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { authorization: localStorage.getItem("token") + "",'Content-Type': 'application/json' },
     body: JSON.stringify({ 'distCenterID': distCenterID, 'productId': productId, 'amount': amount })
   });
   if (response.status === 200)
