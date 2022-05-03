@@ -85,7 +85,7 @@ export async function getProductsByCategory(category: string): Promise<Product[]
 export async function addProduct(product: Product): Promise<boolean>{
   let response = await fetch(apiEndPoint + '/products', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { authorization: localStorage.getItem("token") + "", 'Content-Type': 'application/json' },
     body: JSON.stringify({ 'name': product.name, 'description': product.description, 'price': product.price, 'category': product.category, 'urlPhoto': product.urlPhoto })
   });
   if (response.status === 200)
@@ -97,7 +97,7 @@ export async function addProduct(product: Product): Promise<boolean>{
 export async function updateProduct(id: string, product: Product): Promise<boolean> {
   let response = await fetch(apiEndPoint + '/products/' + id, {
     method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { authorization: localStorage.getItem("token") + "", 'Content-Type': 'application/json' },
     body: JSON.stringify({ 'name': product.name, 'description': product.description, 'price': product.price, 'category': product.category, 'urlPhoto': product.urlPhoto })
   });
   if (response.status === 200)
@@ -109,8 +109,7 @@ export async function updateProduct(id: string, product: Product): Promise<boole
 export async function deleteProduct(id: string): Promise<boolean> {
   let response = await fetch(apiEndPoint + '/products/' + id, {
     method: 'DELETE',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ 'id': id })
+    headers: { authorization: localStorage.getItem("token") + "", 'Content-Type': 'application/json' },
   });
   if (response.status === 200)
     return true;
