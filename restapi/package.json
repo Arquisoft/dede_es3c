@@ -15,6 +15,7 @@
   "dependencies": {
     "@inrupt/solid-client": "^1.19.0",
     "@inrupt/vocab-common-rdf": "^1.0.3",
+    "all": "^0.0.0",
     "axios": "^0.26.1",
     "cloudinary": "^1.28.1",
     "cors": "^2.8.5",

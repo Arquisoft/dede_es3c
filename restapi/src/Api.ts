@@ -111,7 +111,7 @@ const setOrdersRoutes = (): void => {
  
     api.route('/orders')
         // Get all orders
-        .get( ordersController.getOrders)
+        .get(auth.isAuth, ordersController.getOrders)
         // Create new orders
         .post(auth.isAuth, ordersController.addOrder);
 
@@ -121,8 +121,8 @@ const setOrdersRoutes = (): void => {
         .get(auth.isAuth, ordersController.getOrdersByUserEmail)
 
     api.route('/orders/shippingprice')
-        .post(ordersController.calculateShippingPrice)
-    
+        .post(auth.isAuth, ordersController.calculateShippingPrice)
+
     api.route('/orders/:id')
         // Get orders by id
         .get(auth.isAuth, ordersController.getOrderById)
@@ -130,8 +130,6 @@ const setOrdersRoutes = (): void => {
         .delete(auth.isAdminAuth, ordersController.deleteOrder)
         // Update orders by id
         .put(auth.isAdminAuth, ordersController.updateOrder)
-
-    
 
 }
 
@@ -142,7 +140,6 @@ const setDistributionCentersRoutes = (): void => {
         .get(auth.isAuth, distributioncentersController.getDistributionCenters)
         // Create new orders
         .post(auth.isAdminAuth, distributioncentersController.addDistributionCenter);
-
 
     api.route('/distributioncenters/:productname/:quantity')
         // Get distribution centers by available product
@@ -157,7 +154,6 @@ const setProductStoreRoutes = (): void => {
         
     api.route('/store/:productname/:quantity')
         .get(auth.isAuth, productstoreController.canBuy)
-
 
 }
 

@@ -26,8 +26,6 @@ test('Client view page renders properly', async () => {
     expect(linkElement).toBeInTheDocument();
     linkElement = screen.getByLabelText(/Email/i);
     expect(linkElement).toBeInTheDocument();
-    linkElement = screen.getByLabelText(/Rol/i);
-    expect(linkElement).toBeInTheDocument();
     linkElement = screen.getByText(/Change username/i);
     expect(linkElement).toBeInTheDocument();
     linkElement = screen.getByText(/Change password/i);
