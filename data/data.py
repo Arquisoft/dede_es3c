@@ -339,18 +339,6 @@ rec_user_id5 = collection.insert_one(user5)
 
 # print("Data inserted with record ids",rec_user_id1," ",rec_user_id2)
 
-'''
-# Printing the data inserted
-cursor = collection.find()
-for record in cursor:
-	print(record)
-import sys 
-print("Output from Python") 
-print("First name: " + sys.argv[1]) 
-print("Last name: " + sys.argv[2]) 
-'''
-
-
 
 collection = db.distribution_center
 
@@ -360,7 +348,7 @@ dc1 = {
 }
 dc2 = {
 		"id": dc2_id,
-		"address": "Escuela Tecnica Superior de Ingenieria Informatica, Universidad de Sevilla, 41012 Sevilla",
+		"address": "Plaza de la Independencia, 7, 28001 Madrid"
 }	
 # Insert Data
 rec_distcenter_id1=collection.insert_one(dc1)
