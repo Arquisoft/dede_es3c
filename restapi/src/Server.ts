@@ -20,7 +20,7 @@ import cors from "cors";
      origin: ['http://localhost:3000', 'http://34.239.101.188:3000'],
      credentials:true
  };
- app.use(cors(cors_options));
+ app.use(cors());
 
  const metricsMiddleware:RequestHandler = promBundle({includeMethod: true}); // Prometheus middleware
  
