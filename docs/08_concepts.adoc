@@ -123,7 +123,7 @@ image:08_loadtests_getproducts15-30.png["Load test - Catalog 2"]
 ===== Login
 15 users in 60 seconds
 image:08_loadtests_login15-60.png["Load test - Login 1"]
-5000 users in 60 seconds. We can check that 5000 users in 1 minute is too much and some petitions fail.
+5000 users in 60 seconds. We can check that 5000 users in 1 minute is too much and some petitions fail. Most of the responds are slower but don't fail.
 image:08_loadtests_login5000-60.png["Load test - Login 2"]
 
 
