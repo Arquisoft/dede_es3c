@@ -1,0 +1,35 @@
+.sticky__wrapper {
+    position: relative;
+    height: 3rem;
+}
+
+.sticky .sticky--inner {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    background-color: rgb(207, 228, 241);
+    width: 100%;
+}
+
+.grid {
+    width: 100%;
+}
+
+.leftHeader {
+    float: left;
+    display: grid;
+    gap: 0.1rem;
+    grid-auto-flow: column;
+}
+
+.rightHeader {
+    float: right;
+    display: grid;
+    gap: 0.1rem;
+    grid-auto-flow: column;
+}
+
+.editProductsHeader {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+}

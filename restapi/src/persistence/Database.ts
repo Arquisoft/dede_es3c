@@ -1,6 +1,6 @@
 /**
  * Database Manager class
- * @author: Sergio Arroni del Reigo - UO276341
+ * @author: Sergio Arroni del Riego - UO276341
  */
  import { createConnection, getConnectionOptions, Connection } from "typeorm";
 
@@ -22,14 +22,15 @@
       * @returns Promise<boolean>
       */
      public async setDB(databaseName: string) : Promise<boolean> {
-
          let result = false;
          try {
              let options = await getConnectionOptions(databaseName);
              this.db = await createConnection(options);
              result = true;
          } catch (error) {
-             console.log(`Error on create connection: ${error.message}`);
+            if (error instanceof Error) {
+                console.log(`Error on create connection: ${error.message}`);
+              }
          }
          return result;
      }

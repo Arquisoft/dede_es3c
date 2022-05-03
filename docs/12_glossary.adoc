@@ -22,5 +22,9 @@
 | _Testability_ | _Hability of something to be tested as an experiment and make decisions with the obtained results_
 | _Usability_ | _The hability of something to be easily used by the biggest part of users_
 | _Web application_ | _Tools that a user can use by accessing a web server_
+| _MUI_ | _React component library_
+| _Bootstrap_ | _Front-end open source toolkit_
+| _Bootswatch_ | _Styles for bootstrap components library_
+| _SweetAlert2_ | _Animated alerts library_
 
 |===

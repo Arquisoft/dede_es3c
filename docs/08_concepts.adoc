@@ -19,10 +19,10 @@ At the beginning there was a debate about whether it was better to use SQL or No
 
 === User interface
 
-_DeDe user interface is desinged to give every user an intuitive and familiar experience related using the React framework combined with TypeScript as constraints. We follow the usual standards of e-commerce online sites to make the navigation closer to what most of the people already know. Also, the interface is meant to pass the AAA validation so we make sure it's usable for almost everyone_
+_DeDe user interface is desinged to give every user an intuitive and familiar experience related using the React framework combined with TypeScript as constraints. We follow the usual standards of e-commerce online sites to make the navigation closer to what most of the people already know. Also, the interface is meant to pass the AAA validation so we make sure it's usable for almost everyone. In terms of dependencies, we worked with MUI for some of the components (buttons, tables...), bootstrap alongside with bootswatch to give the app a defined style and use some of it's components, and, sweetalert2 to throw modal windows at some points of the application._
 
-image:08_UI-Homepage.png["Homepage prototype"]
-image:08_UI-OtherWindows.png["Other Functionalities"]
+image:08_dede_login.PNG["Login"]
+image:08_dede_catalog.PNG["Catalogo"]
 
 === Internazionalization
 
@@ -73,7 +73,13 @@ Dependencies in the backend:
 
 === Archiutecture and design patterns
 
-TODO
+==== Hexagonal architecture
+
+We are using hexagonal architecture in our app. We took this decision because it presents several advantadges.
+
+The hexagonal architecture is an architectural pattern used in software design. It divides a system into different layers or regions with their own responsibility. In this way, it manages to decouple layers of our application, allowing them to evolve in isolation. In addition, having the system separated by responsibilities will facilitate reuse. The components are loosely-coupled and interchangeable, such as the application core, the database, the user interface, test scripts and interfaces with other systems.
+
+Hexagonal architecture is an alternative to traditional layered architecture.
 
 
 === Code Quality standards
@@ -88,3 +94,6 @@ Applications should be strongly tested. We will use user histories to make accep
 We think this is the best way to be sure the project works correctly.
 
 To test our code, Postman was used in the backend during the whole development of the work, to check if the requests were being carried out correctly. Later, once we had a more or less solid project, we added a series of unit tests, which use Jest technology, these tests try to include all the backend and frontend parts, but separately, without joining them. Once these tests passed successfully, integration tests were implemented, which test the union of frontend and backend, all these tests were done exhaustively and were performed by people who had not done that part of the code, with that we get that we do not test things that are known to work. 
+
+
+image:13_Hexagonal.png["Hexagonal architecture"]

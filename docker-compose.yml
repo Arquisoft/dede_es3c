@@ -13,7 +13,7 @@ services:
     build: ./webapp
     ports:
       - "3000:3000"
-    depends_on: 
+    depends_on:
       - restapi
   prometheus:
     image: prom/prometheus

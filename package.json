@@ -1,5 +1,11 @@
 {
+  "name": "dedesktop",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "docker-compose up -d --build"
+  },
+  "author": "SergioArroni",
   "dependencies": {
-    "cloudinary": "^1.28.1"
+    "@inrupt/solid-ui-react": "^2.7.0"
   }
 }

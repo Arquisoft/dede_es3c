@@ -33,5 +33,4 @@ export class Product {
 
     @Column()
     urlPhoto: string;
-
 }

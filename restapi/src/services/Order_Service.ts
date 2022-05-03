@@ -14,6 +14,22 @@ export class OrderService {
     }
 
     /**
+     * Return all orders
+     * @param app Express application
+     * @returns Promise<Order[]>
+     */
+     public static getOrdersByUserEmail(app: Application, email: string): Promise<Order[]> {
+        return app
+            .get('db')
+            .getRepository(Order)
+            .find({
+            where:{
+                user: email,
+            },
+        });
+    }
+
+    /**
      * Return order by id
      * @param app Express application
      * @param id Order id
@@ -56,6 +72,17 @@ export class OrderService {
      */
     public static updateOrder(app: Application, id: string, order: Order): Promise<UpdateResult> {
         return app.get('db').getRepository(Order).update({id: id}, order);
+    }
+
+    /**
+     * Update order by id
+     * @param app Express application
+     * @param id Order id
+     * @param order Order object
+     * @returns Promise<UpdateResult>
+     */
+     public static updatePriceOrder(app: Application, id: string, price: number): Promise<UpdateResult> {
+        return app.get('db').getRepository(Order).updateOne({ id: id }, { $inc: { price: price } });
     }
 
 }
