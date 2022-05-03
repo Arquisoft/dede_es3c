@@ -12,7 +12,6 @@ defineFeature(feature, test => {
         browser = process.env.GITHUB_ACTIONS
             ? await puppeteer.launch()
             : await puppeteer.launch({ headless: true });
-            //: await puppeteer.launch({ headless: false, slowMo: 0 });
         page = await browser.newPage();
 
         await page
@@ -33,12 +32,6 @@ defineFeature(feature, test => {
         });
 
         when('Fill the form and click log in button', async () => {
-            function timeout(ms: any) {
-                return new Promise(resolve => setTimeout(resolve, ms));
-            }
-            await timeout(1);
-           
-            await expect(page).toClick('a', { text: 'Logout' })
             await expect(page).toMatch('Log in DeDesktop')
             await expect(page).toFillForm('form[id="loginForm"]', {
                 username: usernameTest,
@@ -64,7 +57,6 @@ defineFeature(feature, test => {
         });
 
         when('Fill the form and click log in button', async () => {
-            await expect(page).toClick('a', { text: 'Logout' })
             await expect(page).toMatch('Log in DeDesktop')
             await expect(page).toFillForm('form[id="loginForm"]', {
                 username: usernameTest,
@@ -88,7 +80,6 @@ defineFeature(feature, test => {
         });
 
         when('Fill password field and click log in button', async () => {
-            await expect(page).toClick('a', { text: 'Logout' })
             await expect(page).toMatch('Log in DeDesktop')
             await expect(page).toFillForm('form[id="loginForm"]', {
                 password: passwordTest,
@@ -111,7 +102,6 @@ defineFeature(feature, test => {
         });
 
         when('Fill username field and click log in button', async () => {
-            await expect(page).toClick('a', { text: 'Logout' })
             await expect(page).toMatch('Log in DeDesktop')
             await expect(page).toFillForm('form[id="loginForm"]', {
                 username: usernameTest,
@@ -127,7 +117,6 @@ defineFeature(feature, test => {
     test('User tries to go to sign up page via link', ({ when, then }) => {
 
         when('User clicks in go to register link', async () => {
-            await expect(page).toClick('a', { text: 'Logout' })
             await expect(page).toMatch('Log in DeDesktop')
             await expect(page).toClick('a', { text: "Don't have an account? Sign Up" })
         });

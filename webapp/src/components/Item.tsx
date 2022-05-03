@@ -54,7 +54,7 @@ const Item = (props: Props) => {
             }
 
             <Card key={props.item.name} >
-                <Button onClick={handleOpen} className="buttonImageItemCatalog">
+                <Button onClick={handleOpen} className="buttonImageItemCatalog" id={props.item.name}>
                     <CardMedia component="img" image={props.item.urlPhoto} alt={props.item.name} className="imageItemCatalog" />
                 </Button>
 

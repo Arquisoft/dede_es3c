@@ -48,9 +48,8 @@ services:
     ports:
       - "27017:27017"
   python:
-    build: ./restapi/data
+    build: ./data
     image: python
     ports:
       - "8000:8000"
     depends_on: 
-      - mongo

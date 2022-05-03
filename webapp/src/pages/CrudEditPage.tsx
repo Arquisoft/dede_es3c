@@ -137,7 +137,7 @@ const CrudEditPage: FC<CrudPageProps> = (props: CrudPageProps) => {
 
                     <Card className={"main"} elevation={10} style={{ display: "grid" }}>
                         <CardContent style={{ display: "grid", margin: "auto", textAlign: "center" }}>
-                            <h3 aria-label="addProductTitle">T-Add productg to dist center</h3>
+                            <h3 aria-label="addProductTitle">Edit product in distribution center</h3>
                             <Fragment>
                                 <form id="editProductCenter">
                                     <TextField
@@ -172,7 +172,7 @@ const CrudEditPage: FC<CrudPageProps> = (props: CrudPageProps) => {
                                     />
                                 </form>
                             </Fragment>
-                            <Button onClick={() => editProductInDistCenter()} variant="contained" type="submit" sx={{ my: 2 }} aria-label="editCenterButton">T-Edit product in distribution center</Button>
+                            <Button onClick={() => editProductInDistCenter()} variant="contained" type="submit" sx={{ my: 2 }} aria-label="editCenterButton">Edit product in distribution center</Button>
                         </CardContent>
                     </Card>
                     
