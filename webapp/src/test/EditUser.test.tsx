@@ -26,12 +26,30 @@ test('Client view page renders properly', async () => {
     expect(linkElement).toBeInTheDocument();
     linkElement = screen.getByLabelText(/Email/i);
     expect(linkElement).toBeInTheDocument();
-    linkElement = screen.getByLabelText(/Rol/i);
-    expect(linkElement).toBeInTheDocument();
     linkElement = screen.getByText(/Change username/i);
     expect(linkElement).toBeInTheDocument();
     linkElement = screen.getByText(/Change password/i);
     expect(linkElement).toBeInTheDocument();
     linkElement = screen.getByText(/Back to catalog/i);
+    expect(linkElement).toBeInTheDocument();
+});
+
+test('There is no one logged', async () => {
+    localStorage.setItem('currentUser', "not logged");
+
+    render(
+        <React.StrictMode>
+            <Router>
+                <UserState>
+                    <LangState>
+                        <EditUserPage setUser={() => "not logged"} />
+                    </LangState>
+                </UserState>
+            </Router>
+        </React.StrictMode>,
+    )
+
+    let linkElement = screen.getByText(/You are not logged/i);
+    linkElement = screen.getByText(/You are not logged/i);
     expect(linkElement).toBeInTheDocument();
 });

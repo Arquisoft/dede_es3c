@@ -131,8 +131,6 @@ const setOrdersRoutes = (): void => {
         // Update orders by id
         .put(auth.isAdminAuth, ordersController.updateOrder)
 
-    
-
 }
 
 const setDistributionCentersRoutes = (): void => {
@@ -142,7 +140,6 @@ const setDistributionCentersRoutes = (): void => {
         .get(auth.isAuth, distributioncentersController.getDistributionCenters)
         // Create new orders
         .post(auth.isAdminAuth, distributioncentersController.addDistributionCenter);
-
 
     api.route('/distributioncenters/:productname/:quantity')
         // Get distribution centers by available product
@@ -165,7 +162,6 @@ const setProductStoreRoutes = (): void => {
         
     api.route('/store/:productname/:quantity')
         .get(auth.isAuth, productstoreController.canBuy)
-
 
 
 }
