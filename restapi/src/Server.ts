@@ -17,7 +17,8 @@ import cors from "cors";
  
  app.disable("x-powered-by");
  const cors_options: cors.CorsOptions = {
-     origin: ['http://localhost:3000']
+     origin: ['http://localhost:3000', 'http://34.239.101.188:3000'],
+     credentials:true
  };
  app.use(cors(cors_options));
 
