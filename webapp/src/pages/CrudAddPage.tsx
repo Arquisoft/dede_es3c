@@ -114,10 +114,10 @@ const CrudAddPage: FC<CrudPageProps> = (props: CrudPageProps) => {
                                             size="small"
                                             sx={{ my: 2 }}
                                         >
-                                            <MenuItem value="Laptops">{translate('category.laptop')}</MenuItem>
-                                            <MenuItem value="Monitors">{translate('category.monitors')}</MenuItem>
-                                            <MenuItem value="Chairs">T-Chairs</MenuItem>
-                                            <MenuItem value="Keyboards">T-Keyboards</MenuItem>
+                                            <MenuItem value="Laptop">{translate('category.laptop')}</MenuItem>
+                                            <MenuItem value="Monitor">{translate('category.monitors')}</MenuItem>
+                                            <MenuItem value="Chair">Chairs</MenuItem>
+                                            <MenuItem value="Keyboard">Keyboards</MenuItem>
                                         </Select>
                                     </FormControl>
                                 </form>
