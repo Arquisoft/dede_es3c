@@ -56,7 +56,7 @@ defineFeature(feature, test => {
 
         });
 
-        when('Fill the form and click log in button', async () => {
+        when('Fill the form and click log in', async () => {
             await expect(page).toMatch('Log in DeDesktop')
             await expect(page).toFillForm('form[id="loginForm"]', {
                 username: usernameTest,

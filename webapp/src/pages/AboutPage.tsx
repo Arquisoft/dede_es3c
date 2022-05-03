@@ -4,7 +4,6 @@ import { LangContext } from '../lang';
 import '../styles/About.scss';
 import HorizontalSeparator from '../components/HorizontalSeparator';
 import Footer from '../components/Footer';
-import { Link } from "react-router-dom";
 
 const HomePage = () => {
     const { dispatch: { translate } } = useContext(LangContext);
