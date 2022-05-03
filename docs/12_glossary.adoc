@@ -6,6 +6,8 @@
 | _ACID_    | _Acronym that refers to the set of 4 key properties that define a transaction: Atomicity (The transaction can be commited or rollbacked), Consistency (the data must be coherent), Isolation (multiple transactions should be able to execute at the same time without interfering with each other) , and Durability (The changes must be persistent)_
 | _API_ | _Application Programming Interface. A set of routines and methods provided by a library for use by other software_
 | _Backend_    | _Part of the application that implements the logical business and interacts with both the frontend and the database_
+| _Bootstrap_ | _Front-end open source toolkit_
+| _Bootswatch_ | _Styles for bootstrap components library_
 | _Continuous integration system_ | _The practice of making automatic integrations to a project in order to detect errors prematurely_
 | _Decentralised data warehouse (DeDe)_ | _Collection of centrally available data stores maintained by individual regions_
 | _Efficiency_    | _Hability of working fast consuming the least amount of resources_
@@ -14,17 +16,14 @@
 | _Integrity_ | _The hability of being in a consistent state_ 
 | _Mobile application_ | _Tools that a user can use by accessing an application on a mobile device_
 | _Modifiability_ | _The hability of something to be modified easily_
+| _MUI_ | _React component library_
 | _Open Source_| _Software development model based on open collaboration_
 | _POD_     | _Personal Online Datastore. Allows its users store every kind of personal data and manage the external access_
 | _Privacy_    | _The right of not sharing information if the user decides so_
 | _SOLID_ | _Web data decentralisation project_
 | _Superset_ | _A language that is a subset of another language, fully compatible with that language_
+| _SweetAlert2_ | _Animated alerts library_
 | _Testability_ | _Hability of something to be tested as an experiment and make decisions with the obtained results_
 | _Usability_ | _The hability of something to be easily used by the biggest part of users_
 | _Web application_ | _Tools that a user can use by accessing a web server_
-| _MUI_ | _React component library_
-| _Bootstrap_ | _Front-end open source toolkit_
-| _Bootswatch_ | _Styles for bootstrap components library_
-| _SweetAlert2_ | _Animated alerts library_
-
 |===

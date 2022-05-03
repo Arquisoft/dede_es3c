@@ -96,7 +96,7 @@
         .get(productsController.getProductByCategory);
         
     api.route('/products/price/:min/:max')
-        .get(productsController.getProductByPrice);
+        .put(productsController.getProductByPrice);
 
     api.route('/products/:id')
         // Get products by id
@@ -111,7 +111,7 @@ const setOrdersRoutes = (): void => {
  
     api.route('/orders')
         // Get all orders
-        .get( ordersController.getOrders)
+        .get(auth.isAuth, ordersController.getOrders)
         // Create new orders
         .post(auth.isAuth, ordersController.addOrder);
 
@@ -119,7 +119,10 @@ const setOrdersRoutes = (): void => {
     api.route('/orders/user/:email')
         // Get orders by user email
         .get(auth.isAuth, ordersController.getOrdersByUserEmail)
-    
+
+    api.route('/orders/shippingprice')
+        .post(auth.isAuth, ordersController.calculateShippingPrice)
+
     api.route('/orders/:id')
         // Get orders by id
         .get(auth.isAuth, ordersController.getOrderById)
@@ -138,7 +141,6 @@ const setDistributionCentersRoutes = (): void => {
         // Create new orders
         .post(auth.isAdminAuth, distributioncentersController.addDistributionCenter);
 
-
     api.route('/distributioncenters/:productname/:quantity')
         // Get distribution centers by available product
         .get(auth.isAuth, distributioncentersController.getDistributionCentersByAvailableProduct)
@@ -152,7 +154,6 @@ const setProductStoreRoutes = (): void => {
         
     api.route('/store/:productname/:quantity')
         .get(auth.isAuth, productstoreController.canBuy)
-
 
 }
 
