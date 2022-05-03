@@ -131,8 +131,6 @@ const setOrdersRoutes = (): void => {
         // Update orders by id
         .put(auth.isAdminAuth, ordersController.updateOrder)
 
-    
-
 }
 
 const setDistributionCentersRoutes = (): void => {
