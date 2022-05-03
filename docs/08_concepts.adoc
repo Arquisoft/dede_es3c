@@ -31,6 +31,7 @@ image:08_dede_catalog.PNG["Catalogo"]
 Final Version of DeDesktop
 image:08_Homepage-final.PNG["Login"]
 image:08_Login-final.PNG["Catalogo"]
+
 === Internazionalization
 
 The application will potentially deal with various locations and people, so make a multi-language application looks like the best decision. This decision must be done since the begining of the desing (lately will cost a lot of resources).
