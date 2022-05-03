@@ -85,7 +85,7 @@ export async function getProductsByCategory(category: string): Promise<Product[]
 export async function addProduct(product: Product): Promise<boolean>{
   let response = await fetch(apiEndPoint + '/products', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {authorization: localStorage.getItem("token") + "", 'Content-Type': 'application/json' },
     body: JSON.stringify({ 'name': product.name, 'description': product.description, 'price': product.price, 'category': product.category, 'urlPhoto': product.urlPhoto })
   });
   if (response.status === 200)
@@ -234,7 +234,7 @@ export async function addProductToDistributionCenter(distCenterID: string, produ
   const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
   let response = await fetch(apiEndPoint + '/productstore/', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { authorization: localStorage.getItem("token") + "",'Content-Type': 'application/json' },
     body: JSON.stringify({ 'distCenterID': distCenterID, 'productId': productId, 'amount': amount })
   });
   if (response.status === 200)
