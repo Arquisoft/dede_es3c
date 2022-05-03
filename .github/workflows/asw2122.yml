@@ -57,7 +57,6 @@ jobs:
     - uses: actions/setup-python@v2
       with:
         python-version: '3.9'
-        cache: 'pip'
         command:  |
           cd ./data
           pip -r install requirements.txt
