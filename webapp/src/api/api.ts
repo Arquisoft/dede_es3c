@@ -160,6 +160,7 @@ export async function addOrder(email:string, products: OrderProduct[], address:s
     body: JSON.stringify({ 'user':email, 'products': products, 'address':address})
   });
 }
+
 export async function getDistributionCenters(product: Product): Promise<DistributionCenter[]>{
   let response = await fetch(apiEndPoint+'/distributioncenters/'+ product.name + '/' + product.amount , {
     method: 'GET',
@@ -171,7 +172,7 @@ export async function getDistributionCenters(product: Product): Promise<Distribu
 export async function getShippingPrice(products: OrderProduct[], address:string): Promise<number> {
   let response = await fetch(apiEndPoint + '/orders/shippingprice', {
     method: 'POST',
-    headers: {'Content-Type': 'application/json' },
+    headers: {authorization: localStorage.getItem("token") +"" , 'Content-Type': 'application/json' },
     body: JSON.stringify({'products': products, 'address':address})
   });
   return response.json();
@@ -226,4 +227,44 @@ export async function getCanBuyProduct(name: string, amount: number): Promise<bo
     headers: { "Content-Type": "application/json" },
   });
   return response.json();
+
+}
+
+export async function addProductToDistributionCenter(distCenterID: string, productId: string, amount: number): Promise<boolean> {
+  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+  let response = await fetch(apiEndPoint + '/productstore/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ 'distCenterID': distCenterID, 'productId': productId, 'amount': amount })
+  });
+  if (response.status === 200)
+    return true;
+  else
+    return false;
+}
+
+export async function deleteProductInDistributionCenter(distCenterID: string, productId: string): Promise<boolean> {
+  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+  let response = await fetch(apiEndPoint + '/productstore/', {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ 'distCenterId': distCenterID, 'productId': productId })
+  });
+  if (response.status === 200)
+    return true;
+  else
+    return false;
+}
+
+export async function updateProductInDistributionCenter(distCenterID: string, productId: string, amount: number): Promise<boolean> {
+  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+  let response = await fetch(apiEndPoint + '/productstore/', {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ 'distCenterID': distCenterID, 'productId': productId, 'amount': amount })
+  });
+  if (response.status === 200)
+    return true;
+  else
+    return false;
 }

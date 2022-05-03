@@ -53,6 +53,15 @@ const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
                 icon: "error",
             });
         }
+
+        if (user.username.includes("admin")){
+            Swal.fire({
+                title: "Error",
+                text: translate("user.invalid"),
+                icon: "error",
+            });
+        }
+
         else if (!isBlank(user.username) && !isBlank(user.password) && !isBlank(user.email) && !isBlank(repeatedPassword)){
            let response = await checkUserAndLogin(name, password);
            if (!(response.status === 200)){
@@ -158,7 +167,8 @@ const SignUpPage: FC<SignUpProps> = (props: SignUpProps) => {
                         borderRadius: 15,
                         backgroundColor: "#e8e8e8",
                         padding: "18px 36px",
-                        fontSize: "16px"
+                        fontSize: "16px",
+                        color: "black"
                     }}
                      >{translate('signup.signup')}</Button>
                 <Link to="/login" className="goToLoginSignup">{translate('signup.login')}</Link>

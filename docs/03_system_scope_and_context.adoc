@@ -44,6 +44,7 @@ In the project, we use the following libraries, APIs and dependencies
 | _SweetAlert2_ | _It's a dependence that gives the possibility of launching dialogs, modals and alerts in an easy way. Plus, this alerts are animated and give dynamism to the user experience._
 | _Distance Matrix API_ | _This is a Google Maps API used in backend to get the distance between two different points in the world. It's simple,  efficient and quick._
 | _react-material-ui-carousel_ |  _Used in fontend to give dynamism to the homepage. It's very customizable and easy to use and it gives a little information about the website before entering the catalog or the website technology_
+|_Cloudinary_ | _Used in Backend to storage the product images in props to save space and increment the website performance. It also makes it easier for the Admin at the moment of adding products so the system does not have to download the photo_
 |
 |===
 

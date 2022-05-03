@@ -149,11 +149,20 @@ const setDistributionCentersRoutes = (): void => {
 
 const setProductStoreRoutes = (): void => {
 
+    api.route('/productstore')
+        // Create 
+        .post(auth.isAdminAuth, productstoreController.addProductStore)
+        // Delete
+        .delete(auth.isAdminAuth,productstoreController.deleteProductStore)
+        // Update 
+        .put(auth.isAdminAuth,productstoreController.updateProductStore)
+
     api.route('/store/:productname')
         .get(productstoreController.getMaxStockByProduct)
         
     api.route('/store/:productname/:quantity')
         .get(auth.isAuth, productstoreController.canBuy)
+
 
 }
 
