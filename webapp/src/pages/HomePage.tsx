@@ -39,6 +39,8 @@ function Item(props: { item: { name: string; description: string; imageURL1: str
 
     const { dispatch: { translate } } = useContext(LangContext);
 
+    console.log(localStorage.getItem("currentUser"));
+
     return (
         <Paper>
             <div className="containerHome">
