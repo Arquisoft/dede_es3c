@@ -1,6 +1,6 @@
 == Domain model
 
-[options="header",cols="1,2,2"]
+[options="header",cols="1,2"]
 |===
 |Name|Description
 | Client | User who choose and buy products
@@ -9,6 +9,7 @@
 | Product | Contains information about a product, such as name and price.
 | ProductInOrder | Product associated with an order, saves the quantity that the customer wants of the product.
 | Distribution Center | Place from where the products are distributed, contains the address of the distribution center.
+| ProductStore | Entity which join Product with Distribution Center. It has the stock.
 |===
 
 image:08_umldiagram.png["Domain Model - UML Diagram"]
