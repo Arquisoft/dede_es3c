@@ -58,10 +58,12 @@ const Catalog = (props: CatalogPageProps) => {
     }
 
     async function FilterByName(name: string){
-        try {
-            setProducts(await getProductsByName(name));    
-        } catch (error) {
-            console.log("Error en el filtrado por nombre");
+        if (name !== ""){
+            try {
+                setProducts(await getProductsByName(name));
+            } catch (error) {
+                console.log("Error en el filtrado por nombre");
+            }
         }
     }
 
