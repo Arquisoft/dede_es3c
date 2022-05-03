@@ -96,7 +96,7 @@
         .get(productsController.getProductByCategory);
         
     api.route('/products/price/:min/:max')
-        .put(productsController.getProductByPrice);
+        .get(productsController.getProductByPrice);
 
     api.route('/products/:id')
         // Get products by id

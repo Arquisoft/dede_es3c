@@ -19,3 +19,5 @@ ignore:
   - "webapp/src/components/LoginSolid.tsx"
   - "webapp/src/components/ProductDetailModal.tsx"
   - "webapp/src/components/HorizontalSeparator.tsx"
+  - "webapp/src/components/ItemDetails.tsx"
+  - "webapp/src/components/RelatedProduct.tsx"
