@@ -1,6 +1,6 @@
 import {User, Product, Order, OrderProduct, DistributionCenter} from '../shared/shareddtypes';
-const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
-
+const apiEndPoint= 'http://44.204.36.128:5000/api' || process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+console.log(process.env.REACT_APP_API_URI)
 export async function addUser(user:User):Promise<boolean>{
     let response = await fetch(apiEndPoint+'/users', {
         method: 'POST',
