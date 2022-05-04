@@ -58,3 +58,4 @@ This is the compilation of the identified risks ordered by priority that we must
 * We would like to have improved the selector to choose the amount of product to add to the cart because when there is a lot of stock, the combobox is huge.
 * Redirect from order placed to my orders.
 * We wanted not not to load the entire catalog directly, but load a few items and add a "see more" button to show more.
+* There are pages and front-end components that are coupled because they have components that render together. Would have to undock to get more coverage.
