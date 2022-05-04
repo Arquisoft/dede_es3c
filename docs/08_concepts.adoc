@@ -1,4 +1,6 @@
-== Domain model
+== Concepts
+
+=== Domain model
 
 [options="header",cols="1,2"]
 |===
@@ -114,7 +116,6 @@ Dependencies in FrontEnd
 - bootstrap: ^5.1.3,
 - bootswatch: ^5.1.3,
 - cors: ^2.8.5,
-- express: ^4.17.2,
 - jsonwebtoken: ^8.5.1,
 - node-sass: ^7.0.1,
 - react: ^17.0.2,
@@ -139,7 +140,7 @@ The hexagonal architecture is an architectural pattern used in software design. 
 
 Hexagonal architecture is an alternative to traditional layered architecture.
 
-image:13_Hexagonal.png["Hexagonal"]
+image:08_Hexagonal.png["Hexagonal"]
 
 ==== Microservices
 
