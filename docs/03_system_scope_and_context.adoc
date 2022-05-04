@@ -33,6 +33,7 @@ image:03-Technical-Context.png["Technical Context diagram"]
 | _Postman_ | _It is used for testing the backend functionlity due to it's popularity and previous tips given by older students_
 | _Docker_ |  _I'ts one of our main ideas. We use Docker to divide the application in multiple services (containers) based in the microservices idea. We have a container for each service (Grafana, Prometheus, Main database, test database, webapp, and mongo)_
 | _Amazon Web Services_ |  _Is the platform used for the system deployment. Chosen because after trying to deploy our app in another services like Heroku (we had problems because of our Docker architecture. The free version only allows to deply one container and we had 2) and Azure we couldn't get a proper result so we decided to try with this one_
+| _CSS_ | _CSS is a language to set styles and positions of our components in the application. We used it because of our familiarity with it._
 |===
 In the project, we use the following libraries, APIs and dependencies
 [options = "header",cols="1,1"]
@@ -44,7 +45,5 @@ In the project, we use the following libraries, APIs and dependencies
 | _SweetAlert2_ | _It's a dependence that gives the possibility of launching dialogs, modals and alerts in an easy way. Plus, this alerts are animated and give dynamism to the user experience._
 | _Distance Matrix API_ | _This is a Google Maps API used in backend to get the distance between two different points in the world. It's simple,  efficient and quick._
 | _react-material-ui-carousel_ |  _Used in fontend to give dynamism to the homepage. It's very customizable and easy to use and it gives a little information about the website before entering the catalog or the website technology_
-|_Cloudinary_ | _Used in Backend to storage the product images in props to save space and increment the website performance. It also makes it easier for the Admin at the moment of adding products so the system does not have to download the photo_
-|
+| _Cloudinary_ | _Used in Backend to storage the product images in props to save space and increment the website performance. It also makes it easier for the Admin at the moment of adding products so the system does not have to download the photo_
 |===
-

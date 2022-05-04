@@ -53,6 +53,3 @@ This is the compilation of the identified risks ordered by priority that we must
 * We could not add checkboxes on the shopping cart because we were busy doing other mandatory tasks. at the end we could not complete it
 * We wanted to incorporate a drag and drop component so the admin could update a picture of a new product by dragging it to the field but, again, we were concenrated in completing the mandatory tasks
 * Removing the articles from the cart after buying something. We had problems trying to connect the two components and at the end, we had no time to fix this issue
-
-
-

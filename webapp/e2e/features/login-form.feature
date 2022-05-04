@@ -7,7 +7,7 @@ Scenario: An existing user tries to log in the app
 
 Scenario: Non existing user tries to log in the app
     Given A non existing user
-    When Fill the form and click log in button
+    When Fill the form and click log in
     Then Error message should be displayed
 
 Scenario: Existing user tries to login without filling name
