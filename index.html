@@ -447,6 +447,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_requirements_overview">1.1. Requirements Overview</a></li>
 <li><a href="#_quality_goals">1.2. Quality Goals</a></li>
 <li><a href="#_stakeholders">1.3. Stakeholders</a></li>
+<li><a href="#_implemented_features">1.4. Implemented features</a></li>
 </ul>
 </li>
 <li><a href="#_architecture_constraints">2. Architecture Constraints</a>
@@ -497,16 +498,17 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_infrastructure_level_2">7.2. Infrastructure Level 2</a></li>
 </ul>
 </li>
-<li><a href="#_domain_model">8. Domain model</a>
+<li><a href="#_concepts">8. Concepts</a>
 <ul class="sectlevel2">
-<li><a href="#_persistence">8.1. Persistence</a></li>
-<li><a href="#_user_interface">8.2. User interface</a></li>
-<li><a href="#_internazionalization">8.3. Internazionalization</a></li>
-<li><a href="#_security">8.4. Security</a></li>
-<li><a href="#_additional_libraries">8.5. Additional libraries</a></li>
-<li><a href="#_archiutecture_and_design_patterns">8.6. Archiutecture and design patterns</a></li>
-<li><a href="#_code_quality_standards">8.7. Code Quality standards</a></li>
-<li><a href="#_testability">8.8. Testability</a></li>
+<li><a href="#_domain_model">8.1. Domain model</a></li>
+<li><a href="#_persistence">8.2. Persistence</a></li>
+<li><a href="#_user_interface">8.3. User interface</a></li>
+<li><a href="#_internazionalization">8.4. Internazionalization</a></li>
+<li><a href="#_security">8.5. Security</a></li>
+<li><a href="#_additional_libraries">8.6. Additional libraries</a></li>
+<li><a href="#_archiutecture_and_design_patterns">8.7. Archiutecture and design patterns</a></li>
+<li><a href="#_code_quality_standards">8.8. Code Quality standards</a></li>
+<li><a href="#_testability">8.9. Testability</a></li>
 </ul>
 </li>
 <li><a href="#_design_decisions">9. Design Decisions</a></li>
@@ -733,6 +735,58 @@ For documentation of your own system you use better the <em>plain</em> version.<
 </tr>
 </tbody>
 </table>
+</div>
+<div class="sect2">
+<h3 id="_implemented_features">1.4. Implemented features</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>The system will emulate an online shopping system where end-users can select and order products to buy.</p>
+</li>
+<li>
+<p>Once a user selects the products to buy, the system will calculate the delivery costs by looking up the desired address of the end-users in their pods and calculating the costs according to the distance from the distribution center to that address.</p>
+</li>
+<li>
+<p>The system will show the final costs of the products to buy and once the user decides to buy them, it will record the event simulating that the sale has been done and it can proceed with the delivery.</p>
+</li>
+<li>
+<p>The system will allow the users to visualize the orders done.</p>
+</li>
+<li>
+<p>The application should be accessible and deployed using a continuous integration system.</p>
+</li>
+<li>
+<p>Support for different types of actors like customers, managers, administrators, etc. who can do different actions like inventory management, prices changes, items cataloging, etc.</p>
+</li>
+<li>
+<p>Add the possibility that there are several distribution centers or warehouses where the products are stored.</p>
+</li>
+<li>
+<p>Internationalization</p>
+</li>
+<li>
+<p>Name, price and category filters</p>
+</li>
+<li>
+<p>Microservices: use of 4 principal docker containers: webapp, restapi, mongodb (database), python (data)</p>
+</li>
+<li>
+<p>Use of 3 extra docker container for data bases: local, test e2e and unit test apart from the normal mongodb docker for deployment</p>
+</li>
+<li>
+<p>Unit tests</p>
+</li>
+<li>
+<p>Load tests</p>
+</li>
+<li>
+<p>Continuous integration (CI)</p>
+</li>
+<li>
+<p>Hexagonal architecture</p>
+</li>
+</ul>
+</div>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
@@ -1304,8 +1358,10 @@ As we can see in the following image, we are going to use AWS to deploy the appl
 </div>
 </div>
 <div class="sect1">
-<h2 id="_domain_model">8. Domain model</h2>
+<h2 id="_concepts">8. Concepts</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_domain_model">8.1. Domain model</h3>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -1351,14 +1407,15 @@ As we can see in the following image, we are going to use AWS to deploy the appl
 <div class="paragraph">
 <p><span class="image"><img src="./images/08_umldiagram.png" alt="Domain Model - UML Diagram"></span></p>
 </div>
+</div>
 <div class="sect2">
-<h3 id="_persistence">8.1. Persistence</h3>
+<h3 id="_persistence">8.2. Persistence</h3>
 <div class="paragraph">
 <p>At the beginning there was a debate about whether it was better to use SQL or NoSQL for persistence. After some discussion it was concluded that the best option for this problem is NoSQL. To be more specific MongoDB, which is a NoSQL document database. We will use a NoSQL database as opposed to a SQL database, because our model encompasses many products. These products have several attributes which are very different. For example, a power supply differs in many ways from a graphics card. Because there are so many items, we believe it is best to use a NoSQL DB. But, because of our hexagonal architecture, we can switch from NoSQL to SQL without needing to modify the code, or switch from MongoDB to Cassandra, the change doesn&#8217;t matter because the backend is not related to the persistence used</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_user_interface">8.2. User interface</h3>
+<h3 id="_user_interface">8.3. User interface</h3>
 <div class="paragraph">
 <p><em>DeDe user interface is desinged to give every user an intuitive and familiar experience related using the React framework combined with TypeScript as constraints. We follow the usual standards of e-commerce online sites to make the navigation closer to what most of the people already know. Also, the interface is meant to pass the AAA validation so we make sure it&#8217;s usable for almost everyone. In terms of dependencies, we worked with MUI for some of the components (buttons, tables&#8230;&#8203;), bootstrap alongside with bootswatch to give the app a defined style and use some of it&#8217;s components, and, sweetalert2 to throw modal windows at some points of the application.</em></p>
 </div>
@@ -1391,7 +1448,7 @@ As we can see in the following image, we are going to use AWS to deploy the appl
 </div>
 </div>
 <div class="sect2">
-<h3 id="_internazionalization">8.3. Internazionalization</h3>
+<h3 id="_internazionalization">8.4. Internazionalization</h3>
 <div class="paragraph">
 <p>The application will potentially deal with various locations and people, so make a multi-language application looks like the best decision. This decision must be done since the begining of the desing (lately will cost a lot of resources).</p>
 </div>
@@ -1400,14 +1457,14 @@ As we can see in the following image, we are going to use AWS to deploy the appl
 </div>
 </div>
 <div class="sect2">
-<h3 id="_security">8.4. Security</h3>
+<h3 id="_security">8.5. Security</h3>
 <div class="paragraph">
 <p>For security we have used an asynchronous encryption algorithm called PBKDF2, which is one of the most famous KDF encryption algorithms. The user will put a password in plain text, which will be encrypted using a Hash function, a salt will be added to it, which is a random number added at the beginning of the password, all this string will be saved in the database, achieving a very high level of security.
 We have a role system, which defines if a user is an Administrator or a normal User, and depending on that he will have one or other options enabled, such as a CRUD of products or users, to avoid a scale of privileges we have made it impossible to be Admin, it always inserts users as User and we have a couple of Administrators created by default.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_additional_libraries">8.5. Additional libraries</h3>
+<h3 id="_additional_libraries">8.6. Additional libraries</h3>
 <div class="paragraph">
 <p>Dependencies in the backend:</p>
 </div>
@@ -1538,9 +1595,6 @@ We have a role system, which defines if a user is an Administrator or a normal U
 <p>cors: ^2.8.5,</p>
 </li>
 <li>
-<p>express: ^4.17.2,</p>
-</li>
-<li>
 <p>jsonwebtoken: ^8.5.1,</p>
 </li>
 <li>
@@ -1583,9 +1637,9 @@ We have a role system, which defines if a user is an Administrator or a normal U
 </div>
 </div>
 <div class="sect2">
-<h3 id="_archiutecture_and_design_patterns">8.6. Archiutecture and design patterns</h3>
+<h3 id="_archiutecture_and_design_patterns">8.7. Archiutecture and design patterns</h3>
 <div class="sect3">
-<h4 id="_hexagonal_architecture">8.6.1. Hexagonal architecture</h4>
+<h4 id="_hexagonal_architecture">8.7.1. Hexagonal architecture</h4>
 <div class="paragraph">
 <p>We are using hexagonal architecture in our app. We took this decision because it presents several advantadges.</p>
 </div>
@@ -1596,18 +1650,18 @@ We have a role system, which defines if a user is an Administrator or a normal U
 <p>Hexagonal architecture is an alternative to traditional layered architecture.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="./images/13_Hexagonal.png" alt="Hexagonal"></span></p>
+<p><span class="image"><img src="./images/08_Hexagonal.png" alt="Hexagonal"></span></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_microservices">8.6.2. Microservices</h4>
+<h4 id="_microservices">8.7.2. Microservices</h4>
 <div class="paragraph">
 <p>In our application we decided to use microservices to divide the application into webapp, restapi, database and data. With this we achieve a low coupling in these layers, a better control over them and an improvement in the quality of the software. To achieve this decoupling, we use docker, to build the images of each service.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_code_quality_standards">8.7. Code Quality standards</h3>
+<h3 id="_code_quality_standards">8.8. Code Quality standards</h3>
 <div class="paragraph">
 <p>Code quality standars allows us to make an understable, maintainable and reusable code for future revisions and changes. Code should always have a correct structure to be easily understandable.</p>
 </div>
@@ -1616,31 +1670,31 @@ We have a role system, which defines if a user is an Administrator or a normal U
 </div>
 </div>
 <div class="sect2">
-<h3 id="_testability">8.8. Testability</h3>
+<h3 id="_testability">8.9. Testability</h3>
 <div class="paragraph">
 <p>Applications should be strongly tested. We use user stories to make acceptance tests and unit test to test the rest of the application components and states during running process.
 We think this is the best way to be sure the project works correctly.</p>
 </div>
 <div class="sect3">
-<h4 id="_postman">8.8.1. Postman</h4>
+<h4 id="_postman">8.9.1. Postman</h4>
 <div class="paragraph">
 <p>To test our code, Postman was used in the backend during the whole development of the work, to check if the requests were being carried out correctly. Postman is an application in which we can test requests and obtain a successfully respond if everything is ok.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_unit_tests">8.8.2. Unit tests</h4>
+<h4 id="_unit_tests">8.9.2. Unit tests</h4>
 <div class="paragraph">
 <p>Later, once we had a more or less solid project, we added a series of unit tests, which use Jest technology, these tests try to include all the backend and frontend parts, but separately, without joining them.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_integration_tests">8.8.3. Integration tests</h4>
+<h4 id="_integration_tests">8.9.3. Integration tests</h4>
 <div class="paragraph">
 <p>Once unit tests passed successfully, integration tests were implemented, which test the union of frontend and backend, all these tests were done exhaustively and were performed by people who had not done that part of the code, with that we get that we do not test things that are known to work.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_load_tests">8.8.4. Load tests</h4>
+<h4 id="_load_tests">8.9.4. Load tests</h4>
 <div class="paragraph">
 <p>We have load tests to check our application under real-life load conditions, it gives us an idea of the respond time having a determined users load.</p>
 </div>
@@ -1758,8 +1812,8 @@ We think this is the best way to be sure the project works correctly.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">When used both components at the sae time, sometimes they are not same-styled</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ASW</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The decision to use ASW was practically not a decision, but a necessary decision given our resources and focus. By having 3 distinct dockers, we can no longer deploy for free on Heroku, as it is a cloud computing platform as a service that only allows 2 containers simultaneously for free. In Azure we had no credit, so we were left with ASW</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AWS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The decision to use AWS was practically not a decision, but a necessary decision given our resources and focus. By having 3 distinct dockers, we can no longer deploy for free on Heroku, as it is a cloud computing platform as a service that only allows 2 containers simultaneously for free. In Azure we had no credit, so we were left with ASW</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A big advantage was the free credit and the good guidance of pglez82 which we followed step by step</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">We had a hard time getting our whole project to work on ASW, but I think we would have had the same problems on any other platform</p></td>
 </tr>
@@ -1936,7 +1990,7 @@ We think this is the best way to be sure the project works correctly.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">We don&#8217;t know how to use it.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Heroku</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AWS</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">It costs time to adapt to it due to we have never used it.</p></td>
 </tr>
 <tr>
@@ -1958,6 +2012,10 @@ We think this is the best way to be sure the project works correctly.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Git</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">We have little knowledge about using Git, so we can easily go wrong.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gatling</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We use it to do load test. We had no idea about this tool.</p></td>
 </tr>
 </tbody>
 </table>
@@ -2040,7 +2098,22 @@ We think this is the best way to be sure the project works correctly.</p>
 <p>We wanted to incorporate a drag and drop component so the admin could update a picture of a new product by dragging it to the field but, again, we were concenrated in completing the mandatory tasks</p>
 </li>
 <li>
-<p>Removing the articles from the cart after buying something. We had problems trying to connect the two components and at the end, we had no time to fix this issue</p>
+<p>SOLID in the deployment is no posible due to SOLID needs HTTPS requests and AWS no allows to do HTTPS.</p>
+</li>
+<li>
+<p>In the deployment, the database could not be seeded because we need to make the package public and we do not have permissions.</p>
+</li>
+<li>
+<p>We would like to have improved the selector to choose the amount of product to add to the cart because when there is a lot of stock, the combobox is huge.</p>
+</li>
+<li>
+<p>Redirect from order placed to my orders.</p>
+</li>
+<li>
+<p>We wanted not not to load the entire catalog directly, but load a few items and add a "see more" button to show more.</p>
+</li>
+<li>
+<p>There are pages and front-end components that are coupled because they have components that render together. Would have to undock to get more coverage.</p>
 </li>
 </ul>
 </div>
@@ -2234,7 +2307,7 @@ Created by Dr. Peter Hruschka &amp; Dr. Gernot Starke.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-05-04 01:57:33 +0200
+Last updated 2022-05-04 02:50:13 +0200
 </div>
 </div>
 </body>
