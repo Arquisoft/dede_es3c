@@ -15,12 +15,13 @@ This is the compilation of the identified risks ordered by priority that we must
 | Grafana and Prometeus| We have never used these tools to monitor a project and we need to adapt to them.
 | Postman| We have never used this testing tool.
 | Node.js|We don't know how to use it.
-| Heroku| It costs time to adapt to it due to we have never used it.
+| AWS| It costs time to adapt to it due to we have never used it.
 | Docker| We have to learn how to use it.
 | Express| We may have some dificulties, we need to learn about it.
 | Bootstrap| We have to learn about this style library. It will cost some time.
 | TypeScript| Some members of the group have some knowledge of JavaScript, and since TypeScript is similar to JavaScript, it won't be too difficult to adapt, although it will take time to learn this language.
 |Git| We have little knowledge about using Git, so we can easily go wrong.
+| Gatling | We use it to do load test. We had no idea about this tool.
 |===
 
 * Other risks:
@@ -52,4 +53,9 @@ This is the compilation of the identified risks ordered by priority that we must
 * We had intention to complete some optional exercises (pick up points, delivery stimation, and delivery services) but we had no time to do them before the last release.
 * We could not add checkboxes on the shopping cart because we were busy doing other mandatory tasks. at the end we could not complete it
 * We wanted to incorporate a drag and drop component so the admin could update a picture of a new product by dragging it to the field but, again, we were concenrated in completing the mandatory tasks
-* Removing the articles from the cart after buying something. We had problems trying to connect the two components and at the end, we had no time to fix this issue
+* SOLID in the deployment is no posible due to SOLID needs HTTPS requests and AWS no allows to do HTTPS. 
+* In the deployment, the database could not be seeded because we need to make the package public and we do not have permissions.
+* We would like to have improved the selector to choose the amount of product to add to the cart because when there is a lot of stock, the combobox is huge.
+* Redirect from order placed to my orders.
+* We wanted not not to load the entire catalog directly, but load a few items and add a "see more" button to show more.
+* There are pages and front-end components that are coupled because they have components that render together. Would have to undock to get more coverage.

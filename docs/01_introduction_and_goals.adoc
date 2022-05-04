@@ -75,3 +75,36 @@ Detailed priority in epigraph 10.
 | Development Team | They are the creators of the application. They can modify, update and improve it. | Develop a complete application that contain the requirements. Learn to work in a team efficiently and learn new technologies.
 |Delivery business|Dstribute the products to the client's address| Their objective is to get the list of the products to deliver and the address of the client who ordered.
 |===
+
+
+=== Implemented features
+* The system will emulate an online shopping system where end-users can select and order products to buy.
+
+* Once a user selects the products to buy, the system will calculate the delivery costs by looking up the desired address of the end-users in their pods and calculating the costs according to the distance from the distribution center to that address.
+
+* The system will show the final costs of the products to buy and once the user decides to buy them, it will record the event simulating that the sale has been done and it can proceed with the delivery.
+
+* The system will allow the users to visualize the orders done.
+
+* The application should be accessible and deployed using a continuous integration system.
+
+* Support for different types of actors like customers, managers, administrators, etc. who can do different actions like inventory management, prices changes, items cataloging, etc.
+
+* Add the possibility that there are several distribution centers or warehouses where the products are stored.
+
+* Internationalization
+
+* Name, price and category filters
+
+* Microservices: use of 4 principal docker containers: webapp, restapi, mongodb (database), python (data)
+
+* Use of 3 extra docker container for data bases: local, test e2e and unit test apart from the normal mongodb docker for deployment
+
+* Unit tests
+
+* Load tests
+
+* Continuous integration (CI)
+
+* Hexagonal architecture
+
