@@ -53,4 +53,8 @@ This is the compilation of the identified risks ordered by priority that we must
 * We had intention to complete some optional exercises (pick up points, delivery stimation, and delivery services) but we had no time to do them before the last release.
 * We could not add checkboxes on the shopping cart because we were busy doing other mandatory tasks. at the end we could not complete it
 * We wanted to incorporate a drag and drop component so the admin could update a picture of a new product by dragging it to the field but, again, we were concenrated in completing the mandatory tasks
-* Removing the articles from the cart after buying something. We had problems trying to connect the two components and at the end, we had no time to fix this issue
+* SOLID in the deployment is no posible due to SOLID needs HTTPS requests and AWS no allows to do HTTPS. 
+* In the deployment, the database could not be seeded because we need to make the package public and we do not have permissions.
+* We would like to have improved the selector to choose the amount of product to add to the cart because when there is a lot of stock, the combobox is huge.
+* Redirect from order placed to my orders.
+* We wanted not not to load the entire catalog directly, but load a few items and add a "see more" button to show more.
