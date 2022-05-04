@@ -94,7 +94,7 @@ jobs:
           registry: ghcr.io
           workdir: restapi
   docker-push-python:
-    name: Push restapi Docker Image to GitHub Packages
+    name: Push python Docker Image to GitHub Packages
     needs: [e2e-tests]
     runs-on: ubuntu-latest
     steps:
