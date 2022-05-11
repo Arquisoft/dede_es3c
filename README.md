@@ -42,7 +42,7 @@ npm install
 npm start
 ```
 
-- You should be able to access the application in [DeDesktop](http://54.161.229.97:3000/).
+- You should be able to access the application in [DeDesktop](http://44.204.36.128:3000/).
 - You should be able to access the documentation in [Documentación](https://arquisoft.github.io/dede_es3c/)
 
 ## More information
